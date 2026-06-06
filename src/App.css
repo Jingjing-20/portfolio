@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
+
+.slanted-lines {
+  background-color: white;
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.045) 0,
+      rgba(15, 23, 42, 0.045) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+}
