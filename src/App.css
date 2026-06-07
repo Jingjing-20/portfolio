@@ -4,13 +4,47 @@
 }
 
 .slanted-lines {
-  background-color: white;
+  background-color: #fafafa;
   background-image:
     repeating-linear-gradient(
       135deg,
-      rgba(15, 23, 42, 0.045) 0,
-      rgba(15, 23, 42, 0.045) 1px,
+      rgba(15, 23, 42, 0.035) 0,
+      rgba(15, 23, 42, 0.035) 1px,
       transparent 1px,
       transparent 18px
     );
 }
+
+/* Text Rotation Animation */
+.text-rotate {
+  display: inline-flex;
+  height: 1.25em;
+  overflow: hidden;
+  position: relative;
+  vertical-align: bottom;
+}
+
+.text-rotate > span {
+  display: flex;
+  flex-direction: column;
+  animation: rotate-text 14s infinite cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@keyframes rotate-text {
+  0%, 12% { transform: translateY(0); }
+  16%, 28% { transform: translateY(-16.66%); }
+  32%, 44% { transform: translateY(-33.33%); }
+  48%, 60% { transform: translateY(-50%); }
+  64%, 76% { transform: translateY(-66.66%); }
+  80%, 92% { transform: translateY(-83.33%); }
+  96%, 100% { transform: translateY(0); }
+}
+
+/* Card glass effect */
+.glass-premium {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(241, 245, 249, 0.8);
+}
+

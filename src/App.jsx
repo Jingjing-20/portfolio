@@ -2,14 +2,6 @@ import './App.css'
 import profileImage from './assets/gian.png'
 import resumePdf from './assets/Gian Carlo N. Ulep - RESUME - 2026.pdf'
 
-// Import certificates (kept but section removed, so not used in output)
-import PMCert from './assets/certs/Understanding Project management from basic to advance.png'
-import ChatGPTCert from './assets/certs/Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.png'
-import CyberSecurityCert from './assets/certs/Usage of AI Tools in Cyber Security.png'
-import MentalHealthCert from './assets/certs/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png'
-import EACert from './assets/certs/AI x Enterprise Architecture - Powering Emerging Tech.png'
-import DevFestCert from './assets/certs/DevFest_2025_Certificate.png'
-
 const navItems = [
   {
     label: 'About',
@@ -46,15 +38,7 @@ const navItems = [
   },
 ]
 
-// Empty projects array
-const projects = []
 
-const certificates = [] // Empty certificates array
-
-const getTechIcon = (tech) => {
-  // Simplified for empty template
-  return { color: 'bg-slate-50 text-slate-700 border-slate-200/80', icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg> }
-}
 
 function Navbar() {
   return (
@@ -100,10 +84,8 @@ function Navbar() {
           </details>
         </div>
         
-        {/* Empty space for balance - pushes center items to middle */}
         <div className="flex-1"></div>
         
-        {/* Centered Navigation Icons */}
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1 gap-1 bg-base-300 shadow-xl rounded-box">
             {navItems.map((item) => (
@@ -116,7 +98,6 @@ function Navbar() {
           </ul>
         </div>
         
-        {/* Empty space for balance */}
         <div className="flex-1"></div>
       </div>
     </div>
@@ -125,226 +106,185 @@ function Navbar() {
 
 function App() {
   return (
-    <main data-theme="light" className="slanted-lines min-h-screen text-slate-950">
+    <main data-theme="light" className="slanted-lines">
       <Navbar />
 
-      {/* Empty Card Template: About */}
-      <section id="about" className="w-full min-h-screen px-4 md:px-12 lg:px-20 pb-20 pt-30 md:pt-25">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
-          {/* Left side - 4 columns (3D Card) */}
-          <div className="lg:col-span-3 flex items-center justify-center lg:p-16">
-            <a href="#" className="hover-3d w-full max-w-md lg:max-w-none cursor-pointer shadow-xl">
-              <div className="card w-full bg-black text-white bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)]" style={{ backgroundSize: '4.95em 4.95em' }}>
-                <div className="card-body p-6 md:p-8">
-                  <div className="flex items-start justify-between mb-6 md:mb-10">
-                    {/* Profile Image - Top Left */}
-                    <div className="avatar">
-                      <div className="w-20 h-20 md:w-28 md:h-28 lg:w-30 lg:h-30 rounded-2xl border border-white/20 overflow-hidden shadow-inner bg-slate-900">
-                        <img src={profileImage} alt="Gian Carlo N. Ulep" className="object-cover object-top h-full w-full" />
+      <div className="flex flex-col lg:flex-row h-screen overflow-hidden">
+        {/* Fixed Left Side - Desktop Only */}
+        <aside className="hidden lg:flex lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-1/2 items-center justify-center p-12">
+          {/* Profile Card - Bigger */}
+          <div className="hover-3d w-full max-w-lg cursor-pointer">
+            <div
+              className="card w-full bg-[#151312] text-white border border-slate-800 shadow-2xl relative p-8 flex flex-col justify-between aspect-[1.58/1] rounded-2xl overflow-hidden"
+              style={{ backgroundSize: '4.95em 4.95em' }}
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)] bg-size-[4.95em_4.95em] opacity-80 pointer-events-none"></div>
+              <div className="absolute -right-10 -top-10 w-52 h-52 bg-lime-500/10 rounded-full blur-2xl pointer-events-none"></div>
+              <div className="absolute -left-10 -bottom-10 w-52 h-52 bg-orange-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+              <div className="flex justify-between items-start z-10">
+                <div>
+                  <div className="text-xs font-mono tracking-widest text-[#c5ff41] uppercase font-black">IT Specialist</div>
+                  <div className="text-[10px] text-slate-400 font-mono mt-1">CHMSU Bacolod</div>
+                </div>
+                <div className="avatar">
+                  <div className="w-20 h-20 rounded-xl border border-white/10 overflow-hidden bg-slate-900 shadow-lg">
+                    <img src={profileImage} alt="Gian Carlo N. Ulep" className="object-cover object-top h-full w-full" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="my-3 z-10">
+                <div className="text-base tracking-widest font-mono text-slate-300">jingjing052704@gmail.com</div>
+              </div>
+
+              <div className="flex justify-between items-end z-10 border-t border-white/5 pt-5">
+                <div>
+                  <div className="text-[9px] uppercase tracking-widest text-slate-500 font-mono">Cardholder</div>
+                  <div className="font-bold text-sm tracking-wider text-white">GIAN CARLO N. ULEP</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-[9px] uppercase tracking-widest text-slate-500 font-mono">Birthdate</div>
+                  <div className="font-mono text-sm text-white">05/27/2004</div>
+                </div>
+              </div>
+            </div>
+            {/* 8 empty divs for 3D card tilt effect */}
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+          </div>
+        </aside>
+
+        {/* Scrollable Content - Full width on mobile, right side on desktop */}
+        <div className="w-full lg:ml-[50%] lg:w-1/2 h-screen overflow-y-auto bg-white/50">
+          <div className="min-h-screen">
+            
+            {/* About Section - Shows profile info on mobile */}
+            <section id="about" className="min-h-screen flex items-center justify-center p-6 lg:p-12">
+              <div className="w-full max-w-2xl">
+                {/* Mobile Profile Card */}
+                <div className="lg:hidden mb-12">
+                  <div className="hover-3d w-full max-w-96 mx-auto cursor-pointer mb-8">
+                    <div
+                      className="card w-full bg-[#151312] text-white border border-slate-800 shadow-2xl relative p-6 flex flex-col justify-between aspect-[1.58/1] rounded-2xl overflow-hidden"
+                      style={{ backgroundSize: '4.95em 4.95em' }}
+                    >
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,#ffffff04_35%,transparent_36%),radial-gradient(circle_at_top_right,#ffffff04_35%,transparent_36%)] bg-size-[4.95em_4.95em] opacity-80 pointer-events-none"></div>
+                      <div className="absolute -right-10 -top-10 w-44 h-44 bg-lime-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                      <div className="absolute -left-10 -bottom-10 w-44 h-44 bg-orange-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                      <div className="flex justify-between items-start z-10">
+                        <div>
+                          <div className="text-[10px] font-mono tracking-widest text-[#c5ff41] uppercase font-black">IT Specialist</div>
+                          <div className="text-[9px] text-slate-400 font-mono mt-0.5">CHMSU Bacolod</div>
+                        </div>
+                        <div className="avatar">
+                          <div className="w-16 h-16 rounded-xl border border-white/10 overflow-hidden bg-slate-900 shadow-lg">
+                            <img src={profileImage} alt="Gian Carlo N. Ulep" className="object-cover object-top h-full w-full" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="my-2 z-10">
+                        <div className="text-sm tracking-widest font-mono text-slate-300">jingjing052704@gmail.com</div>
+                      </div>
+
+                      <div className="flex justify-between items-end z-10 border-t border-white/5 pt-4">
+                        <div>
+                          <div className="text-[8px] uppercase tracking-widest text-slate-500 font-mono">Cardholder</div>
+                          <div className="font-bold text-xs tracking-wider text-white">GIAN CARLO N. ULEP</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-[8px] uppercase tracking-widest text-slate-500 font-mono">Birthdate</div>
+                          <div className="font-mono text-xs text-white">05/27/2004</div>
+                        </div>
                       </div>
                     </div>
-                    {/* Icon - Top Right */}
-                      <div>
-                        <div className="font-medium text-sm md:text-xl lg:text-2xl text-right">Web & Software Developer</div>
-                      </div>                    
+                    {/* 8 empty divs for 3D card tilt effect */}
+                    <div></div><div></div><div></div><div></div>
+                    <div></div><div></div><div></div><div></div>
                   </div>
+                </div>
+
+                {/* Profile Info Text */}
+                <div className="text-center lg:text-left">
+                  <span className="px-3 py-1 rounded-full bg-slate-100 border border-slate-200/80 text-xs font-bold uppercase tracking-wider text-slate-500">
+                    BS in Information Technology (2022 - 2026)
+                  </span>
+                  <h1 className="mt-6 text-5xl lg:text-6xl font-black leading-none tracking-tight text-slate-900 uppercase">
+                    WEB<br />DEVELOPER
+                  </h1>
                   
-                  <div className="space-y-4 md:space-y-6">
-                    <div className="mb-6 md:mb-9">
-                      <div className="text-3xl md:text-5xl lg:text-6xl mt-1 font-medium opacity-40">Gian Carlo N. Ulep</div>
-                    </div>   
-                    <div className="flex justify-between">
-                      <div>
-                        <div className="text-xs opacity-30">Email</div>
-                        <div className="text-sm md:text-lg lg:text-xl">jingjing052704@gmail.com</div>
-                      </div>
-                      <div>
-                        <div className="text-xs opacity-30">Age</div>
-                        <div className="text-sm md:text-lg lg:text-xl">22</div>
-                      </div>
+                  {/* Smooth Text Rotation Animation */}
+                  <div className="mt-5 text-3xl lg:text-4xl font-extrabold text-slate-800">
+                    <span className="text-rotate">
+                      <span className="justify-items-start text-orange-500">
+                        <span>DESIGN</span>
+                        <span>DEVELOP</span>
+                        <span>DEPLOY</span>
+                        <span>SCALE</span>
+                        <span>MAINTAIN</span>
+                        <span>REPEAT</span>
+                      </span>
+                    </span>
+                  </div>
+
+                  <p className="mt-6 text-base lg:text-lg leading-relaxed text-slate-600">
+                    Aspiring software and web developer with a passion for building efficient, 
+                    user-friendly, and scalable applications. Skilled in web development, 
+                    database management, UI/UX design, and modern technologies, with a strong 
+                    commitment to continuous learning.
+                  </p>
+
+                  <div className="mt-6 grid gap-3 text-sm text-slate-600">
+                    <div className="flex gap-2 justify-center lg:justify-start">
+                      <span className="font-bold text-slate-900">Institution:</span>
+                      <span>CHMSU - Alijis</span>
+                    </div>
+                    <div className="flex gap-2 justify-center lg:justify-start">
+                      <span className="font-bold text-slate-900">Phone:</span>
+                      <span>09382877598 / 09562657521</span>
                     </div>
                   </div>
                 </div>
               </div>
-              {/* 8 empty divs needed for the 3D effect */}
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </a>
-          </div>
+            </section>
 
-          {/* Right side - 2 columns (Info Cards) */}
-          <div className="lg:col-span-2 flex flex-col gap-6">
-            <div className="rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-800 mb-4">About Me</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                Aspiring software and web developer with a passion for building efficient, user-friendly, and scalable applications.
-              </p>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="font-semibold text-slate-700">Education:</span>
-                  <span className="text-slate-600">BS IT, CHMSU</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-semibold text-slate-700">Year:</span>
-                  <span className="text-slate-600">2022-2026</span>
-                </div>
+            {/* Experience Section */}
+            <section id="experience" className="min-h-screen flex items-center justify-center border-t border-slate-200 p-6 lg:p-12">
+              <div className="text-center max-w-2xl">
+                <h2 className="text-4xl font-bold text-slate-900 mb-4">Experience</h2>
+                <p className="text-lg text-slate-600">Content for the Experience section goes here.</p>
               </div>
-            </div>
+            </section>
 
-            <div className="rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-800 mb-4">Contact</h3>
-              <div className="space-y-3 text-sm">
-                <div>
-                  <div className="text-xs text-slate-500 font-semibold uppercase mb-1">Phone</div>
-                  <div className="text-slate-700">09382877598</div>
-                  <div className="text-slate-700">09562657521</div>
-                </div>
-                <div>
-                  <div className="text-xs text-slate-500 font-semibold uppercase mb-1">Email</div>
-                  <div className="text-slate-700">jingjing052704@gmail.com</div>
-                </div>
+            {/* Tech Tools Section */}
+            <section id="tools" className="min-h-screen flex items-center justify-center border-t border-slate-200 p-6 lg:p-12">
+              <div className="text-center max-w-2xl">
+                <h2 className="text-4xl font-bold text-slate-900 mb-4">Tech Tools</h2>
+                <p className="text-lg text-slate-600">Content for the Tech Tools section goes here.</p>
               </div>
-            </div>
+            </section>
 
-            <div className="rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-800 mb-4">Quick Stats</h3>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
-                  <div className="text-2xl font-bold text-slate-800">2+</div>
-                  <div className="text-xs text-slate-600">Projects</div>
-                </div>
-                <div className="text-center p-3 bg-slate-50 rounded-lg">
-                  <div className="text-2xl font-bold text-slate-800">9+</div>
-                  <div className="text-xs text-slate-600">Certificates</div>
-                </div>
+            {/* Projects Section */}
+            <section id="projects" className="min-h-screen flex items-center justify-center border-t border-slate-200 p-6 lg:p-12">
+              <div className="text-center max-w-2xl">
+                <h2 className="text-4xl font-bold text-slate-900 mb-4">Projects</h2>
+                <p className="text-lg text-slate-600">Content for the Projects section goes here.</p>
               </div>
-            </div>
+            </section>
+
+            {/* Others Section */}
+            <section id="others" className="min-h-screen flex items-center justify-center border-t border-slate-200 p-6 lg:p-12">
+              <div className="text-center max-w-2xl">
+                <h2 className="text-4xl font-bold text-slate-900 mb-4">Others</h2>
+                <p className="text-lg text-slate-600">Content for the Others section goes here.</p>
+              </div>
+            </section>
+
           </div>
         </div>
-      </section>
-
-      {/* Empty Card Template: Experience */}
-      <section id="experience" className="w-full px-4 md:px-12 lg:px-20 py-20">
-        <div className="w-full rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8 text-center">
-          <div className="flex flex-col items-center justify-center space-y-6 min-h-[60vh]">
-            <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center">
-              <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold text-slate-700">Experience Section</h2>
-            <p className="text-slate-500 max-w-md">This is an empty card template. Add your experience content here.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Empty Card Template: Tech Tools */}
-      <section id="tools" className="w-full px-4 md:px-12 lg:px-20 py-20">
-        <div className="w-full rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8 text-center">
-          <div className="flex flex-col items-center justify-center space-y-6 min-h-[60vh]">
-            <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center">
-              <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold text-slate-700">Tech Tools Section</h2>
-            <p className="text-slate-500 max-w-md">This is an empty card template. Add your tech tools content here.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Empty Card Template: Projects */}
-      <section id="projects" className="w-full px-4 md:px-12 lg:px-20 py-20">
-        <div className="w-full rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8 text-center">
-          <div className="flex flex-col items-center justify-center space-y-6 min-h-[60vh]">
-            <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center">
-              <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold text-slate-700">Projects Section</h2>
-            <p className="text-slate-500 max-w-md">This is an empty card template. Add your project content here.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Empty Card Template: Others */}
-      <section id="others" className="w-full px-4 md:px-12 lg:px-20 py-20">
-        <div className="w-full rounded-box border border-slate-200 bg-white/90 p-6 shadow-sm md:p-8 text-center">
-          <div className="flex flex-col items-center justify-center space-y-6 min-h-[60vh]">
-            <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center">
-              <svg className="w-12 h-12 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold text-slate-700">Others Section</h2>
-            <p className="text-slate-500 max-w-md">This is an empty card template. Add your other content here.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10 mt-10">
-        <nav>
-          <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
-        </nav>
-        <nav>
-          <h6 className="footer-title">Company</h6>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
-        </nav>
-        <nav>
-          <h6 className="footer-title">Social</h6>
-          <div className="grid grid-flow-col gap-4">
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current">
-                <path
-                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-              </svg>
-            </a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current">
-                <path
-                  d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-              </svg>
-            </a>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                className="fill-current">
-                <path
-                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-              </svg>
-            </a>
-          </div>
-        </nav>
-      </footer>
+      </div>
     </main>
   )
 }
