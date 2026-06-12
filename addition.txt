@@ -1,0 +1,20 @@
+-in recent projects add a tag to first 2 that its deployed then add this under
+Others:
+
+Volunteering Management System
+QR-Code Based Memorandum Distribution System
+Capstone Archive Management System
+Patient Appointment System 
+
+-make the 3rd card bigger and w-full in mobile size in centered  and the content under the name should be
+role
+email
+number             
+birthdate 05/27/2004
+
+both number and email should have a copy clipboard function and remove the barcode since its useless  unless you want to add some function behind it 
+in mobile size rearrange the entire card and make it in landscape format 
+
+-add height limit in modal to avoid too being to long in mobile size
+
+-theres a lot of const codes, is it possible to separate file all const codes 
