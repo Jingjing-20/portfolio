@@ -3,16 +3,9 @@
   themes: light --default;
 }
 
-.slanted-lines {
-  background-color: #fafafa;
-  background-image:
-    repeating-linear-gradient(
-      135deg,
-      rgba(15, 23, 42, 0.035) 0,
-      rgba(15, 23, 42, 0.035) 1px,
-      transparent 3px,
-      transparent 18px
-    );
+.custom-background {
+  min-height: 100svh;
+  background: #ffffff;
 }
 
 /* Smooth transitions for tooltips and dropdowns */

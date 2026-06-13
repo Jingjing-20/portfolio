@@ -1,0 +1,61 @@
+<div className="navbar bg-base-100 shadow-sm">
+  <div className="navbar-start">
+    <div className="dropdown">
+      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabIndex="-1"
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a>Item 1</a></li>
+        <li>
+          <a>Parent</a>
+          <ul className="p-2">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </li>
+        <li><a>Item 3</a></li>
+      </ul>
+    </div>
+    <a className="btn btn-ghost text-xl">daisyUI</a>
+  </div>
+  <div className="navbar-center hidden lg:flex">
+    <ul className="menu menu-horizontal px-1">
+      <li><a>Item 1</a></li>
+      <li>
+        <details>
+          <summary>Parent</summary>
+          <ul className="p-2 bg-base-100 w-40 z-1">
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a>Item 3</a></li>
+    </ul>
+  </div>
+  <div className="navbar-end">
+    <a className="btn">Button</a>
+  </div>
+</div>
+
+use this icons as well instead of text in the centered
+the socials should be inside the parent but display it in right corner and remove the button on it 
+retain the floating navbar format, dont make it w-full, make it like max-w-7 or 6xl
+
+
+replace the about with Home 
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">home-outline-rounded</title><path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75"/></svg>
+
+Work Experience
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">case-linear</title><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12c0 3.771 0 7.657 1.318 8.828C5.636 22 7.758 22 12 22s6.364 0 7.682-1.172S21 15.771 21 12"/><path d="m14.66 14.202l6.008-1.802c.595-.179.893-.268 1.082-.482a1 1 0 0 0 .1-.134c.15-.243.15-.553.15-1.175c0-2.45 0-3.675-.673-4.502a3 3 0 0 0-.434-.434C20.066 5 18.841 5 16.391 5H7.61c-2.45 0-3.675 0-4.502.673q-.24.195-.434.434C2 6.934 2 8.159 2 10.609c0 .622 0 .932.15 1.175q.045.07.1.134c.19.214.487.303 1.082.482l6.008 1.802M6.5 5c.823-.02 1.66-.545 1.94-1.32l.035-.103L8.5 3.5c.042-.127.064-.19.086-.246a2 2 0 0 1 1.735-1.25C10.38 2 10.448 2 10.58 2h2.838c.133 0 .2 0 .26.004a2 2 0 0 1 1.735 1.25c.023.056.044.12.086.246l.026.077c.018.053.026.08.035.103c.28.775 1.116 1.3 1.939 1.32"/><path stroke-linecap="round" d="M14 12.5h-4a.5.5 0 0 0-.5.5v2.162a.5.5 0 0 0 .314.464l.7.28a4 4 0 0 0 2.972 0l.7-.28a.5.5 0 0 0 .314-.464V13a.5.5 0 0 0-.5-.5Z"/></g></svg>
+
+Projects Developed
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">folder</title><path fill="currentColor" fill-rule="evenodd" d="M4 1.5a2 2 0 0 0-2 2v1q0 .086.007.168A3 3 0 0 0 0 7.5v12a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3v-12a3 3 0 0 0-3-3h-9.126A4 4 0 0 0 8 1.5zm5.732 3A2 2 0 0 0 8 3.5H4v1zM3 6.5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-12a1 1 0 0 0-1-1z" clip-rule="evenodd"/></svg>
+
+Tech Stack & Tools
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">stack</title><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m20.27 7.796l-3.61 1.876l-4.392 2.236a.55.55 0 0 1-.536 0L7.341 9.672L3.73 7.796a.594.594 0 0 1 0-1.06l8.014-3.925a.57.57 0 0 1 .512 0l8.014 3.925a.594.594 0 0 1 0 1.06"/><path d="m7.34 9.672l-3.61 1.723a.594.594 0 0 0 0 1.06l3.61 1.876l4.392 2.236a.55.55 0 0 0 .536 0l4.391-2.236l3.611-1.875a.594.594 0 0 0 0-1.014l-3.61-1.77"/><path d="m7.34 14.33l-3.61 1.725a.594.594 0 0 0 0 1.06l8.002 4.065a.55.55 0 0 0 .536 0l8.002-4.065a.594.594 0 0 0 0-1.014l-3.61-1.77"/></g></svg>
+
+Participation Certificates
+<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><title xmlns="">certificate-success</title><path fill="currentColor" fill-rule="evenodd" d="m283.735 52.918l31.295 26.614a42.7 42.7 0 0 0 24.213 10.03l40.947 3.309c20.86 1.686 37.42 18.246 39.106 39.106l3.31 40.947a42.7 42.7 0 0 0 10.029 24.213l26.614 31.294c13.557 15.942 13.557 39.362 0 55.304l-26.614 31.295a42.7 42.7 0 0 0-10.03 24.213l-3.31 40.947c-1.685 20.86-18.246 37.42-39.105 39.106l-40.947 3.31a42.7 42.7 0 0 0-24.213 10.029l-31.295 26.614c-15.942 13.557-39.362 13.557-55.304 0l-31.294-26.614a42.7 42.7 0 0 0-24.213-10.03l-40.947-3.31c-20.86-1.685-37.42-18.246-39.106-39.105l-3.31-40.947a42.7 42.7 0 0 0-10.03-24.213l-26.613-31.295c-13.557-15.942-13.557-39.362 0-55.304l26.614-31.294a42.7 42.7 0 0 0 10.03-24.213l3.309-40.947c1.686-20.86 18.246-37.42 39.106-39.106l40.947-3.31a42.7 42.7 0 0 0 24.213-10.03l31.294-26.613c15.942-13.557 39.362-13.557 55.304 0m-27.64 32.503l-31.317 26.613a85.35 85.35 0 0 1-48.417 20.055l-40.947 3.31l-3.325 40.962a85.35 85.35 0 0 1-20.055 48.417l-26.613 31.295l26.613 31.316a85.35 85.35 0 0 1 20.055 48.416l3.31 40.947l40.962 3.326a85.35 85.35 0 0 1 48.417 20.054l31.295 26.614l31.316-26.614a85.35 85.35 0 0 1 48.416-20.054l40.947-3.31l3.326-40.963a85.35 85.35 0 0 1 20.054-48.416l26.614-31.295l-26.614-31.316a85.35 85.35 0 0 1-20.054-48.417l-3.31-40.947l-40.963-3.325a85.35 85.35 0 0 1-48.416-20.055zm80.24 94.36l30.167 30.167l-131.836 132.388l-79.083-79.084l30.167-30.166l48.916 48.916z"/></svg>
