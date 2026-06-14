@@ -70,7 +70,7 @@ export default function Experience() {
             <div className="min-w-0">
               <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
               <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
@@ -85,7 +85,7 @@ export default function Experience() {
                 <div className="text-[10px] opacity-60 mt-0.5">
                   {work.period} · {work.location}
                 </div>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">{work.summary}</p>
+                <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{work.summary}</p>
               </div>
               <button
                 type="button"

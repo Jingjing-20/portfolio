@@ -38,8 +38,8 @@ export default function About() {
       {/* Header */}
       <header>
         <div className="flex items-start justify-between gap-4">
-          <h2 className="text-shadow-lg uppercase text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none">
-            <span className="md:hidden">
+        <h2 className="text-shadow-lg uppercase text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none">
+        <span className="md:hidden">
               Software <span className="text-gray-500">Developer</span>
             </span>
             <span className="hidden md:block">
@@ -60,7 +60,7 @@ export default function About() {
 
       {/* Body */}
       <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-4">
-        <p className="text-sm text-gray-600 leading-relaxed">{aboutIntro}</p>
+        <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{aboutIntro}</p>
         
         <ul className="list rounded-box gap-3">
           {aboutData.map((item) => (
@@ -68,7 +68,7 @@ export default function About() {
               <div className="min-w-0">
                 <div className="text-[10px] uppercase font-semibold opacity-60">{item.label}</div>
                 <div className="text-xs md:text-sm font-bold mt-0.5">{item.title}</div>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">{item.detail}</p>
+                <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{item.detail}</p>
               </div>
             </li>
           ))}
@@ -80,7 +80,7 @@ export default function About() {
             </div>
             <div className="min-w-0">
               <div className="text-xs md:text-sm font-bold leading-snug">Resume - Gian Carlo N. Ulep</div>
-              <p className="mt-1 text-sm text-gray-600 leading-relaxed">Download PDF · updated 2026</p>
+              <p className="mt-1 text-xs md:text-sm text-gray-600 leading-relaxed">Download PDF · updated 2026</p>
             </div>
             <a
               href={resumePdf}

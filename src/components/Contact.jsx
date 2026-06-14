@@ -177,7 +177,7 @@ export default function Contact() {
 
       {/* Body */}
       <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-4">
-        <p className="text-sm text-gray-600 leading-relaxed">{contactIntro}</p>
+        <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{contactIntro}</p>
         
         {/* Extra Response Info */}
         <ul className="list rounded-box gap-3">
@@ -185,7 +185,7 @@ export default function Contact() {
             <div className="min-w-0">
               <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
               <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
@@ -198,7 +198,7 @@ export default function Contact() {
             {/* Standard Social Links */}
             {socialLinks.map((link) => (
               <li key={link.label} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-center p-3 bg-white/50 rounded-box flex">
-                <div className="size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
+                <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
                   {link.icon}
                 </div>
                 <div className="min-w-0 flex-1 ml-3">
@@ -220,7 +220,7 @@ export default function Contact() {
 
             {/* Gmail Row */}
             <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-center p-3 bg-white/50 rounded-box flex">
-              <div className="size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
+              <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
                 {gmailIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
@@ -231,7 +231,7 @@ export default function Contact() {
                 type="button"
                 onClick={handleCopyEmail}
                 className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
-                data-tip={copiedEmail ? 'Copied!' : 'Copy email'}
+                data-tip={copiedEmail ? 'Copied!' : 'Copy'}
                 aria-label="Copy Gmail Address"
               >
                 {copiedEmail ? checkIcon : copyIcon}
@@ -240,7 +240,7 @@ export default function Contact() {
 
             {/* Phone Row */}
             <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-center p-3 bg-white/50 rounded-box flex">
-              <div className="size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
+              <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
                 {phoneIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
@@ -251,7 +251,7 @@ export default function Contact() {
                 type="button"
                 onClick={handleCopyPhone}
                 className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
-                data-tip={copiedPhone ? 'Copied!' : 'Copy phone'}
+                data-tip={copiedPhone ? 'Copied!' : 'Copy'}
                 aria-label="Copy Phone Number"
               >
                 {copiedPhone ? checkIcon : copyIcon}

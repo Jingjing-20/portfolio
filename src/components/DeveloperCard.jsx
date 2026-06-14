@@ -6,6 +6,7 @@ const name = 'Gian Carlo N. Ulep'
 const role = 'Software Developer'
 const birthDate = '05/27/2004'
 const age = '22'
+const languages = 'Filipino, English'
 
 return ( <div className="hover-3d my-6 mx-auto w-full max-w-sm">
 
@@ -42,6 +43,17 @@ return ( <div className="hover-3d my-6 mx-auto w-full max-w-sm">
 
       {/* Information */}
       <div className="space-y-1 md:space-y-2 font-bold text-xs md:text-sm leading-relaxed">
+
+      <p className="text-neutral-400">
+          Adress:
+          <span className="ml-2 text-white">Valladolid, Negros Occidental</span>
+        </p>
+
+        <p className="text-neutral-400">
+          Languages:
+          <span className="ml-2 text-white">{languages}</span>
+        </p>
+        
         <p className="text-neutral-400">
           Birth Date:
           <span className="ml-2 text-white">{birthDate}</span>
@@ -50,16 +62,6 @@ return ( <div className="hover-3d my-6 mx-auto w-full max-w-sm">
         <p className="text-neutral-400">
           Age:
           <span className="ml-2 text-white">{age}</span>
-        </p>
-
-        <p className="text-neutral-400">
-          Course:
-          <span className="ml-2 text-white">BSIT</span>
-        </p>
-
-        <p className="text-neutral-400">
-          Graduation:
-          <span className="ml-2 text-white">2026</span>
         </p>
       </div>
 

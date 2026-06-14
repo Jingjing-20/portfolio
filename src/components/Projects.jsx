@@ -106,7 +106,7 @@ export default function Projects() {
             <div className="min-w-0">
               <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
               <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
@@ -117,7 +117,7 @@ export default function Projects() {
           <ul className="list rounded-box gap-3">
             {recentProjectsData.map((project) => (
               <li key={project.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
-                <div className="size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0 text-xs font-bold font-mono">
+                <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0 text-xs font-bold font-mono">
                   {project.year}
                 </div>
                 <div className="min-w-0">
@@ -125,7 +125,7 @@ export default function Projects() {
                     <span className="text-[10px] uppercase font-semibold opacity-60">{project.beneficiary}</span>
                   </div>
                   <div className="text-xs md:text-sm font-bold mt-0.5">{project.title}</div>
-                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">{project.summary}</p>
+                  <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
                 </div>
                 <button
                   type="button"
@@ -149,7 +149,7 @@ export default function Projects() {
               <li key={project.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
                 <div className="min-w-0">
                   <div className="text-xs md:text-sm font-bold text-neutral-800">{project.title}</div>
-                  <p className="mt-1 text-sm text-gray-600 leading-relaxed">{project.summary}</p>
+                  <p className="mt-1 text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
                 </div>
                 <button
                   type="button"

@@ -110,7 +110,7 @@ export default function TechStack() {
             <div className="min-w-0">
               <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
               <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
@@ -119,7 +119,7 @@ export default function TechStack() {
         <ul className="list rounded-box grid grid-cols-2 gap-3">
           {techIcons.map((icon) => (
             <li key={icon.name} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors p-3 bg-white/50 rounded-box flex items-center gap-3">
-              <div className="size-10 rounded-box bg-base-300 p-1.5 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
+              <div className="shadow-lg size-10 rounded-box bg-base-300 p-1.5 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
                 {icon.svg}
               </div>
               <div className="min-w-0">

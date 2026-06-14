@@ -67,7 +67,7 @@ const contactIcon = (
 export default function Navbar() {
   return (
     <div className="fixed left-0 right-0 top-3 z-50 flex justify-center px-4 w-full">
-      <ul className="menu menu-horizontal bg-base-200 rounded-box shadow-xl border border-gray-300 p-2 gap-1 md:gap-2 font-mono">
+      <ul className="menu menu-horizontal bg-base-300 rounded-box shadow-xl border border-gray-600 p-2 gap-1 md:gap-2 font-mono">
         <li>
           <a href="#about-me" className="tooltip tooltip-bottom" data-tip="Home" aria-label="Home">
             {homeIcon}
