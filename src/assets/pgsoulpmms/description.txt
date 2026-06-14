@@ -1,0 +1,68 @@
+Home page
+
+Main landing page displaying both Lot and Property Management System overview
+
+
+Lot Signin Page
+
+page used to access lot management system
+
+
+Property Signin Page
+
+page used to access property management system
+
+
+
+
+Interactive Mapping
+
+View all provincial lots on an interactive map. Track boundaries and check real-time status easily.
+
+
+
+Details Monitoring
+
+Access clear summaries of all your lot data. Make better management decisions using detailed area reports.
+
+
+
+Centralized Oversight
+
+Keep all lot records in one secure place. Manage ownership and update status information with speed.
+
+
+
+Financial Administration
+
+Track lot payments and transaction history. Monitor balances and upcoming due dates automatically in the system.
+
+
+
+Document Repository
+
+Safe storage for all your land documents. Scan, organize, and find your files whenever needed.
+
+
+
+Spatial Tracking
+
+Map all provincial properties in detail. See exact locations and track property boundaries clearly on the screen.
+
+
+
+Locality Insights
+
+Get quick summaries for each property location. View your asset data organized efficiently by specific area.
+
+
+
+Unified Filing
+
+Organize all property documents in a central vault. Keep your records safe, secure, and easy to search.
+
+
+
+Asset Control
+
+Monitor current conditions, usage, and maintenance status from one dashboard.
