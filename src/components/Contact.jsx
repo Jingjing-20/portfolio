@@ -193,7 +193,7 @@ export default function Contact() {
         {/* Connect Social Grid */}
         <div>
           <p className="text-[10px] uppercase font-semibold opacity-60 mb-2">Connect:</p>
-          <ul className="list rounded-box grid grid-cols-2 gap-3">
+          <ul className="list rounded-box grid grid-cols-1 md:grid-cols-2 gap-3">
             
             {/* Standard Social Links */}
             {socialLinks.map((link) => (
