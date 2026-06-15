@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import DeveloperCard from './components/DeveloperCard'
+import ScrollReveal from './components/ScrollReveal'
 import About from './components/About'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
@@ -20,8 +21,8 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-16">
           
           {/* 2. Left side developer card */}
-          <div className="md:col-span-2 md:sticky md:top-24 h-fit flex justify-center md:block">
-            <DeveloperCard />
+          <div className="animated slideInLeft md:col-span-2 md:sticky md:top-24 h-fit flex justify-center">
+                <DeveloperCard />
           </div>
 
           {/* Right side sections (3 to 8) */}
@@ -29,22 +30,34 @@ function App() {
             <div className="space-y-12 pb-12 pt-4">
               
               {/* 3. About */}
-              <About />
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <About />
+              </ScrollReveal>
 
               {/* 4. Experience */}
-              <Experience />
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <Experience />
+              </ScrollReveal>
 
               {/* 5. Projects */}
-              <Projects />
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <Projects />
+              </ScrollReveal>
 
               {/* 6. Tech Stack */}
-              <TechStack />
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <TechStack />
+              </ScrollReveal>
 
               {/* 7. Certificates */}
-              <Certificates />
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <Certificates />
+              </ScrollReveal>
 
               {/* 8. Contact */}
-              <Contact />
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <Contact />
+              </ScrollReveal>
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ export default function DeveloperCard() {
 const name = 'Gian Carlo N. Ulep'
 const role = 'Software Developer'
 const birthDate = '05/27/2004'
+const gender = 'Male'
 const age = '22'
 const languages = 'Filipino, English'
 
@@ -39,7 +40,7 @@ return ( <div className="hover-3d my-6 mx-auto w-full max-w-sm">
       </p>
 
       {/* Divider */}
-      <div className="my-4 border-t border-neutral-800" />
+      <div className="my-4 border-t border-neutral-600" />
 
       {/* Information */}
       <div className="space-y-1 md:space-y-2 font-bold text-xs md:text-sm leading-relaxed">
@@ -53,10 +54,15 @@ return ( <div className="hover-3d my-6 mx-auto w-full max-w-sm">
           Languages:
           <span className="ml-2 text-white">{languages}</span>
         </p>
-        
+
         <p className="text-neutral-400">
           Birth Date:
           <span className="ml-2 text-white">{birthDate}</span>
+        </p>
+
+        <p className="text-neutral-400">
+          Gender:
+          <span className="ml-2 text-white">{gender}</span>
         </p>
 
         <p className="text-neutral-400">
