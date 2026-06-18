@@ -4,6 +4,20 @@ const externalLinkIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
 )
 
+// Import all the project images
+import homePageImg from '../assets/pgsoulpmms/Home page.jpg'
+import lotSigninImg from '../assets/pgsoulpmms/Lot Signin Page.jpg'
+import propertySigninImg from '../assets/pgsoulpmms/Property Signin Page.jpg'
+import interactiveMappingImg from '../assets/pgsoulpmms/Interactive Mapping.jpg'
+import detailsMonitoringImg from '../assets/pgsoulpmms/Details Monitoring.jpg'
+import centralizedOversightImg from '../assets/pgsoulpmms/Centralized Oversight.jpg'
+import financialAdminImg from '../assets/pgsoulpmms/Financial Administration.jpg'
+import documentRepoImg from '../assets/pgsoulpmms/Document Repository.jpg'
+import spatialTrackingImg from '../assets/pgsoulpmms/Spatial Tracking.jpg'
+import localityInsightsImg from '../assets/pgsoulpmms/Locality Insights.jpg'
+import unifiedFilingImg from '../assets/pgsoulpmms/Unified Filing.jpg'
+import assetControlImg from '../assets/pgsoulpmms/Asset Control.jpg'
+
 export default function Projects() {
   const sectionExtra = {
     label: 'Impact',
@@ -22,6 +36,8 @@ export default function Projects() {
         'Role-based academic platform for administrators, faculty, and students with enrollment, grade management, QR attendance, automated emails, and PDF/Excel reporting.',
       description:
         'A comprehensive academic management system was built for Carlos Hilado Memorial State University to centralize and streamline institutional data. The platform supports three distinct user roles: administrators, faculty, and students, each with a tailored dashboard and access level. Administrators manage students, faculty profiles, course enrollments, academic programs, sections, and grading periods. Faculty members encode and manage grades across multiple grading components such as assessments, exams, participation, projects, and term grades, with automatic computation. Students can view their academic records, monitor enrollment status, and track grades in real time. The system also features QR-based attendance scanning, where faculty generate QR codes per session and students scan them using a device camera for instant attendance logging. Automated email notifications handle enrollment confirmations, signup verifications, and password resets. Data can be exported as formatted PDF reports and Excel spreadsheets for institutional reporting.',
+      images: [],
+      techStack: []
     },
     {
       id: 'project-pgso-ulpmms',
@@ -34,6 +50,21 @@ export default function Projects() {
         'Provincial lot and property system with awardee tracking, payments, document management, Leaflet map plotting, dashboard analytics, and Excel import/export.',
       description:
         'A provincial-scale digital platform was developed for the Provincial General Services Office of Negros Occidental to manage and monitor government housing lots and property assets. The system is divided into two modules: Lot Management and Property Management, both operating under a unified authentication and user management layer. Key features include awardee and beneficiary tracking, lot and location assignment, payment recording and monitoring with support for multiple payment methods, document management with categorized file uploads, and duplicate transaction detection. Geographic boundary mapping is integrated using Leaflet.js, enabling administrators to visually plot and view lot boundaries and locations on an interactive map. The platform also provides dashboard analytics with charts, Excel import/export for bulk data operations, and print-ready reports for official documentation.',
+      images: [
+        { src: homePageImg, alt: 'Home Page', description: 'Main landing page displaying both Lot and Property Management System overview' },
+        { src: lotSigninImg, alt: 'Lot Signin Page', description: 'Page used to access lot management system' },
+        { src: propertySigninImg, alt: 'Property Signin Page', description: 'Page used to access property management system' },
+        { src: interactiveMappingImg, alt: 'Interactive Mapping', description: 'View all provincial lots on an interactive map. Track boundaries and check real-time status easily.' },
+        { src: detailsMonitoringImg, alt: 'Details Monitoring', description: 'Access clear summaries of all your lot data. Make better management decisions using detailed area reports.' },
+        { src: centralizedOversightImg, alt: 'Centralized Oversight', description: 'Keep all lot records in one secure place. Manage ownership and update status information with speed.' },
+        { src: financialAdminImg, alt: 'Financial Administration', description: 'Track lot payments and transaction history. Monitor balances and upcoming due dates automatically in the system.' },
+        { src: documentRepoImg, alt: 'Document Repository', description: 'Safe storage for all your land documents. Scan, organize, and find your files whenever needed.' },
+        { src: spatialTrackingImg, alt: 'Spatial Tracking', description: 'Map all provincial properties in detail. See exact locations and track property boundaries clearly on the screen.' },
+        { src: localityInsightsImg, alt: 'Locality Insights', description: 'Get quick summaries for each property location. View your asset data organized efficiently by specific area.' },
+        { src: unifiedFilingImg, alt: 'Unified Filing', description: 'Organize all property documents in a central vault. Keep your records safe, secure, and easy to search.' },
+        { src: assetControlImg, alt: 'Asset Control', description: 'Monitor current conditions, usage, and maintenance status from one dashboard.' }
+      ],
+      techStack: ['Laravel', 'React', 'Tailwind CSS', 'MySQL', 'Leaflet']
     },
   ]
 
@@ -91,45 +122,45 @@ export default function Projects() {
             03
           </span>
         </div>
-        <p className="mt-2 text-xs text-gray-500 leading-relaxed max-w-lg">
+        <p className="mt-2 text-xs md:text-sm text-gray-500 leading-relaxed max-w-lg">
           Deployed institutional systems plus academic builds that shaped my development workflow.
         </p>
-        <hr className="mt-4 mb-4 border-gray-300" />
+        <hr className="mt-4 mb-6 border-gray-300" />
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-5">
+      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-6">
         
         {/* Extra Impact Info */}
-        <ul className="list rounded-box gap-3">
-          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
+        <ul className="list rounded-box gap-4">
+          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
             <div className="min-w-0">
               <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
-              <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <div className="text-sm md:text-base font-bold mt-1">{sectionExtra.title}</div>
+              <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
 
         {/* Deployed Projects Section */}
         <div>
-          <p className="text-[10px] uppercase font-semibold opacity-60 mb-2">Deployed:</p>
-          <ul className="list rounded-box gap-3">
+          <p className="text-[10px] uppercase font-semibold opacity-60 mb-3">Deployed:</p>
+          <ul className="list rounded-box gap-4">
             {recentProjectsData.map((project) => (
-              <li key={project.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
-                <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0 text-xs font-bold font-mono">
+              <li key={project.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
+                <div className="shadow-xl size-12 rounded-box bg-base-300 flex items-center justify-center shrink-0 text-sm font-bold font-mono">
                   {project.year}
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center flex-wrap gap-1.5">
                     <span className="text-[10px] uppercase font-semibold opacity-60">{project.beneficiary}</span>
                   </div>
-                  <div className="text-xs md:text-sm font-bold mt-0.5">{project.title}</div>
-                  <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
+                  <div className="text-sm md:text-base font-bold mt-1">{project.title}</div>
+                  <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{project.summary}</p>
                 </div>
                 <button
                   type="button"
-                  className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                  className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono hover:bg-base-300 transition-colors"
                   data-tip="See more"
                   aria-label={`View ${project.title} details`}
                   onClick={() => document.getElementById(project.id).showModal()}
@@ -143,17 +174,17 @@ export default function Projects() {
 
         {/* Other Academic Projects Section */}
         <div>
-          <p className="text-[10px] uppercase font-semibold opacity-60 mb-2">Others:</p>
-          <ul className="list rounded-box gap-2.5">
+          <p className="text-[10px] uppercase font-semibold opacity-60 mb-3">Others:</p>
+          <ul className="list rounded-box gap-4">
             {otherProjects.map((project) => (
-              <li key={project.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
+              <li key={project.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
                 <div className="min-w-0">
-                  <div className="text-xs md:text-sm font-bold text-neutral-800">{project.title}</div>
-                  <p className="mt-1 text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
+                  <div className="text-sm md:text-base font-bold text-neutral-800">{project.title}</div>
+                  <p className="mt-2 text-sm md:text-base text-gray-600 leading-relaxed">{project.summary}</p>
                 </div>
                 <button
                   type="button"
-                  className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                  className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono hover:bg-base-300 transition-colors"
                   data-tip="See more"
                   aria-label={`View ${project.title} details`}
                   onClick={() => document.getElementById(project.id).showModal()}
@@ -166,7 +197,7 @@ export default function Projects() {
         </div>
 
         {/* Section Meta */}
-        <p className="mt-2 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
+        <p className="mt-4 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
           {recentProjectsData.length} deployed · {otherProjects.length} academic ·{' '}
           {recentProjectsData.length + otherProjects.length} total
         </p>
@@ -174,15 +205,62 @@ export default function Projects() {
         {/* Project Detail Modals with max-height limits for mobile */}
         {recentProjectsData.map((project) => (
           <dialog key={`${project.id}-modal`} id={project.id} className="modal">
-            <div className="modal-box max-w-2xl max-h-[80vh] overflow-y-auto border border-gray-200 shadow-2xl rounded-box p-6 bg-white">
+            <div className="modal-box max-w-4xl max-h-[80vh] overflow-y-auto border border-gray-200 shadow-2xl rounded-box p-6 bg-white">
               <form method="dialog">
-                <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10">✕</button>
               </form>
               <p className="text-[10px] uppercase font-semibold opacity-60 text-gray-500">{project.beneficiary}</p>
               <h3 className="font-bold text-lg text-neutral-800 mt-1">{project.title}</h3>
               <p className="text-sm opacity-70 mt-1 font-mono">{project.year} · Deployed Project</p>
               <hr className="my-3 border-gray-200" />
               <p className="py-2 text-sm leading-relaxed text-gray-600">{project.description}</p>
+
+              {/* Add carousel if project has images */}
+              {project.images && project.images.length > 0 && (
+                <div className="mt-4">
+                  <h4 className="font-bold text-sm text-neutral-800 mb-2">Screenshots:</h4>
+                  <div className="carousel w-full rounded-box overflow-hidden">
+                    {project.images.map((img, idx) => (
+                      <div id={`${project.id}-img${idx}`} key={idx} className="carousel-item w-full">
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          className="w-full h-80 object-contain bg-base-200 p-4"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex w-full justify-center gap-2 py-2">
+                    {project.images.map((img, idx) => (
+                      <a key={idx} href={`#${project.id}-img${idx}`} className="btn btn-xs">
+                        {idx + 1}
+                      </a>
+                    ))}
+                  </div>
+                  {/* Image descriptions */}
+                  <div className="mt-2 text-sm text-gray-600">
+                    {project.images.map((img, idx) => (
+                      <p key={idx} className="hidden" id={`${project.id}-desc${idx}`}>
+                        {img.description}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Add tech stack if available */}
+              {project.techStack && project.techStack.length > 0 && (
+                <div className="mt-4">
+                  <h4 className="font-bold text-sm text-neutral-800 mb-2">Tech Stack:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map((tech, idx) => (
+                      <span key={idx} className="badge badge-outline badge-sm font-mono text-gray-600 font-bold border-gray-300">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
             <form method="dialog" className="modal-backdrop bg-black/30 backdrop-blur-xs">
               <button type="submit">close</button>

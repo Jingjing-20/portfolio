@@ -55,41 +55,41 @@ export default function Experience() {
             02
           </span>
         </div>
-        <p className="mt-2 text-xs text-gray-500 leading-relaxed max-w-lg">
+        <p className="mt-2 text-xs md:text-sm text-gray-500 leading-relaxed max-w-lg">
           Real-world internship experience shipping features for government property management.
         </p>
-        <hr className="mt-4 mb-4 border-gray-300" />
+        <hr className="mt-4 mb-6 border-gray-300" />
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-4">
+      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-6">
         
         {/* Extra Environment Info */}
-        <ul className="list rounded-box gap-3 mb-3">
-          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
+        <ul className="list rounded-box gap-4 mb-4">
+          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
             <div className="min-w-0">
               <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
-              <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <div className="text-sm md:text-base font-bold mt-1">{sectionExtra.title}</div>
+              <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
 
         {/* Work Experience List */}
-        <ul className="list rounded-box gap-3">
+        <ul className="list rounded-box gap-4">
           {workExperienceData.map((work) => (
-            <li key={work.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
+            <li key={work.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
               <div className="min-w-0">
                 <div className="text-[10px] uppercase font-semibold opacity-60">{work.organization}</div>
-                <div className="text-xs md:text-sm font-bold mt-0.5">{work.role}</div>
-                <div className="text-[10px] opacity-60 mt-0.5">
+                <div className="text-sm md:text-base font-bold mt-1">{work.role}</div>
+                <div className="text-[10px] opacity-60 mt-1">
                   {work.period} · {work.location}
                 </div>
-                <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{work.summary}</p>
+                <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{work.summary}</p>
               </div>
               <button
                 type="button"
-                className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono hover:bg-base-300 transition-colors"
                 data-tip="See more"
                 aria-label={`View ${work.role} details`}
                 onClick={() => document.getElementById(work.id).showModal()}
@@ -101,7 +101,7 @@ export default function Experience() {
         </ul>
 
         {/* Section Meta */}
-        <p className="mt-2 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
+        <p className="mt-4 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
           {workExperienceData.length} role{workExperienceData.length !== 1 ? 's' : ''} · Internship · On-site
         </p>
 

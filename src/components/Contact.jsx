@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const externalLinkIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
 )
 
 const copyIcon = (
@@ -33,7 +33,7 @@ const gmailIcon = (
 )
 
 const phoneIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-5 text-gray-600" viewBox="0 0 16 16"><title>Phone</title><path fill="currentColor" fill-rule="evenodd" d="M7.808 10.197H6.796L5.859 13H4.485l.937-2.803H3.966l.219-1.25h1.647l.608-1.805H4.991l.226-1.251h1.64l.95-2.844h1.368l-.95 2.844h1.018l.95-2.844h1.374l-.95 2.844h1.51l-.218 1.25h-1.702l-.608 1.805h1.497l-.219 1.251H9.182L8.252 13H6.878zm-.602-1.25h1.012l.615-1.805H7.814z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-5 text-gray-600" viewBox="0 0 16 16"><title>Phone</title><path fill="currentColor" fillRule="evenodd" d="M7.808 10.197H6.796L5.859 13H4.485l.937-2.803H3.966l.219-1.25h1.647l.608-1.805H4.991l.226-1.251h1.64l.95-2.844h1.368l-.95 2.844h1.018l.95-2.844h1.374l-.95 2.844h1.51l-.218 1.25h-1.702l-.608 1.805h1.497l-.219 1.251H9.182L8.252 13H6.878zm-.602-1.25h1.012l.615-1.805H7.814z"/></svg>
 )
 
 async function copyText(value) {
@@ -54,7 +54,6 @@ async function copyText(value) {
 export default function Contact() {
   const recipientEmail = 'jingjing052704@gmail.com'
   const phone = '09562657521'
-  const contactIntro = "Have a project idea, internship opening, or collaboration in mind? Send a message and I'll get back to you as soon as I can."
 
   const sectionExtra = {
     label: 'Response time',
@@ -177,7 +176,6 @@ export default function Contact() {
 
       {/* Body */}
       <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-4">
-        <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{contactIntro}</p>
         
         {/* Extra Response Info */}
         <ul className="list rounded-box gap-3">
@@ -192,13 +190,13 @@ export default function Contact() {
 
         {/* Connect Social Grid */}
         <div>
-          <p className="text-[10px] uppercase font-semibold opacity-60 mb-2">Connect:</p>
+          <p className="text-[10px] uppercase font-extrabold text-gray-600 mb-2 kbd shadow-xl">Connect:</p>
           <ul className="list rounded-box grid grid-cols-1 md:grid-cols-2 gap-3">
             
             {/* Standard Social Links */}
             {socialLinks.map((link) => (
-              <li key={link.label} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-center p-3 bg-white/50 rounded-box flex">
-                <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
+              <li key={link.label} className="border border-gray-400 list-row bg-base-200 hover:bg-based-300 shadow-xl transition-colors items-center p-3 rounded-box flex">
+                <div className="shadow-xl size-10 rounded-box bg-base-100 flex items-center justify-center shrink-0">
                   {link.icon}
                 </div>
                 <div className="min-w-0 flex-1 ml-3">
@@ -209,7 +207,7 @@ export default function Contact() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                  className="p-2 btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
                   data-tip="Open link"
                   aria-label={`Open ${link.label}`}
                 >
@@ -219,8 +217,8 @@ export default function Contact() {
             ))}
 
             {/* Gmail Row */}
-            <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-center p-3 bg-white/50 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
+            <li className="border border-gray-400 list-row bg-base-200 shadow-xl transition-colors items-center p-3 rounded-box flex">
+              <div className="shadow-xl size-10 rounded-box bg-base-100 flex items-center justify-center shrink-0">
                 {gmailIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
@@ -239,8 +237,8 @@ export default function Contact() {
             </li>
 
             {/* Phone Row */}
-            <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-center p-3 bg-white/50 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box bg-base-300 flex items-center justify-center shrink-0">
+            <li className="border border-gray-400 list-row bg-base-200 shadow-xl transition-colors items-center p-3 rounded-box flex">
+              <div className="shadow-xl size-10 rounded-box bg-base-100 flex items-center justify-center shrink-0">
                 {phoneIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
@@ -250,7 +248,7 @@ export default function Contact() {
               <button
                 type="button"
                 onClick={handleCopyPhone}
-                className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                className="p-2 shrink-0 tooltip tooltip-top font-mono"
                 data-tip={copiedPhone ? 'Copied!' : 'Copy'}
                 aria-label="Copy Phone Number"
               >
@@ -262,8 +260,8 @@ export default function Contact() {
 
         {/* Contact Form */}
         <div className="mt-4">
-          <p className="text-[10px] uppercase font-semibold opacity-60 mb-2">Send a message:</p>
-          <form onSubmit={handleSubmit} className="rounded-box p-4 md:p-5 space-y-3 bg-base-300 shadow-xl border border-gray-200">
+          <p className="text-[10px] uppercase font-extrabold text-gray-600 mb-2 kbd shadow-xl">Send a message:</p>
+          <form onSubmit={handleSubmit} className="rounded-box p-4 md:p-5 space-y-3 bg-base-300 shadow-xl border border-gray-400">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label className="form-control w-full">
                 <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Name</span>
