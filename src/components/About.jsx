@@ -1,5 +1,5 @@
 import React from 'react'
-import resumePdf from '../assets/resume versions/GCNU - Resume v3.pdf'
+import resumePdf from '../assets/resume versions/GCNU - RESUME v3.pdf'
 
 const resumeIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.5em] text-gray-600" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" /></svg>
