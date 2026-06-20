@@ -103,7 +103,7 @@ export default function TechStack() {
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
+      <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         {/* Extra Tech Info */}
         <ul className="list rounded-box gap-3">
           <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-3 md:p-4 bg-white/50 rounded-box">
@@ -120,12 +120,12 @@ export default function TechStack() {
         <ul className="list rounded-box grid grid-cols-2 gap-3">
           {techIcons.map((icon) => (
             <li key={icon.name} className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box flex items-center gap-3">
-              <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
+              <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
                 {icon.svg}
               </div>
               <div className="min-w-0">
                 <div className="font-bold text-sm md:text-base text-neutral-800 leading-snug">{icon.name}</div>
-                <div className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mt-1">{icon.category}</div>
+                <div className="shadow-xl text-[8px] md:text-[10px] mt-1">{icon.category}</div>
               </div>
             </li>
           ))}

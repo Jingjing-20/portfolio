@@ -175,7 +175,7 @@ export default function Contact() {
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
+      <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         
         {/* Extra Response Info */}
         <ul className="list rounded-box gap-3">
@@ -191,7 +191,7 @@ export default function Contact() {
 
         {/* Connect Social Grid */}
         <div>
-          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mb-3">Connect:</p>
+          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase mb-3">Connect:</p>
           <ul className="list rounded-box grid grid-cols-1 md:grid-cols-2 gap-3">
             
             {/* Standard Social Links */}
@@ -239,7 +239,7 @@ export default function Contact() {
 
             {/* Phone Row */}
             <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0">
+              <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center shrink-0">
                 {phoneIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
@@ -261,8 +261,8 @@ export default function Contact() {
 
         {/* Contact Form */}
         <div className="mt-4">
-          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mb-3">Send a message:</p>
-          <form onSubmit={handleSubmit} className="rounded-box p-3 md:p-4 space-y-3 bg-white/50 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 border border-gray-300 hover:border-gray-400">
+          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase mb-3">Send a message:</p>
+          <form onSubmit={handleSubmit} className="rounded-box p-3 md:p-4 space-y-3 bg-base-300 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-300 hover:border-gray-400">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label className="form-control w-full">
                 <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Name</span>

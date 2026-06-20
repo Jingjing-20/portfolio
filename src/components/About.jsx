@@ -58,7 +58,7 @@ export default function About() {
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
+      <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{aboutIntro}</p>
         
         <ul className="list rounded-box gap-3">
@@ -75,7 +75,7 @@ export default function About() {
 
           {/* Resume link row */}
           <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
-            <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
+            <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
               {resumeIcon}
             </div>
 

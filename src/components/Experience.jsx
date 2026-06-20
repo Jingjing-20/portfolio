@@ -57,7 +57,7 @@ export default function Experience() {
         <hr className="mt-3 mb-3 border-dashed border-gray-500" />
       </header>
 
-      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
+      <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         <ul className="list rounded-box gap-3">
           {workExperienceData.map((work) => (
             <li key={work.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">

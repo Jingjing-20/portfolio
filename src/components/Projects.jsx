@@ -15,15 +15,17 @@ const chevronRightIcon = (
 )
 
 const techIcons = {
+  QR : (
+    <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em]" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M2 7V2h5v2H4v3zm0 15v-5h2v3h3v2zm15 0v-2h3v-3h2v5zm3-15V4h-3V2h5v5zm-2.5 10.5H19V19h-1.5zm0-3H19V16h-1.5zM16 16h1.5v1.5H16zm-1.5 1.5H16V19h-1.5zM13 16h1.5v1.5H13zm3-3h1.5v1.5H16zm-1.5 1.5H16V16h-1.5zM13 13h1.5v1.5H13zm6-8v6h-6V5zm-8 8v6H5v-6zm0-8v6H5V5zM9.5 17.5v-3h-3v3zm0-8v-3h-3v3zm8 0v-3h-3v3z"/></svg>
+  ),
   PHP: (
-    <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em]" width="1em" height="1em" viewBox="0 0 128 128"><path fill="#777bb3" d="M64 95.167c33.965 0 61.5-13.955 61.5-31.167c0-17.214-27.535-31.167-61.5-31.167S2.5 46.786 2.5 64c0 17.212 27.535 31.167 61.5 31.167"/><path d="M34.772 67.864c2.793 0 4.877-.515 6.196-1.53c1.306-1.006 2.207-2.747 2.68-5.175c.44-2.27.272-3.854-.5-4.71c-.788-.874-2.493-1.317-5.067-1.317h-4.464l-2.473 12.732zM20.173 83.547a.694.694 0 0 1-.68-.828l6.557-33.738a.695.695 0 0 1 .68-.561h14.134c4.442 0 7.748 1.206 9.827 3.585c2.088 2.39 2.734 5.734 1.917 9.935c-.333 1.711-.905 3.3-1.7 4.724a15.8 15.8 0 0 1-3.128 3.92c-1.531 1.432-3.264 2.472-5.147 3.083c-1.852.604-4.232.91-7.07.91h-5.724l-1.634 8.408a.695.695 0 0 1-.682.562z"/><path fill="#fff" d="M34.19 55.826h3.891c3.107 0 4.186.682 4.553 1.089c.607.674.723 2.097.331 4.112c-.439 2.257-1.253 3.858-2.42 4.756c-1.194.92-3.138 1.386-5.773 1.386h-2.786zm6.674-8.1H26.731a1.39 1.39 0 0 0-1.364 1.123L18.81 82.588a1.39 1.39 0 0 0 1.363 1.653h7.35a1.39 1.39 0 0 0 1.363-1.124l1.525-7.846h5.151c2.912 0 5.364-.318 7.287-.944c1.977-.642 3.796-1.731 5.406-3.237a16.5 16.5 0 0 0 3.259-4.087c.831-1.487 1.429-3.147 1.775-4.931c.86-4.423.161-7.964-2.076-10.524c-2.216-2.537-5.698-3.823-10.349-3.823z"/><path d="M69.459 74.577a.694.694 0 0 1-.682-.827l2.9-14.928c.277-1.42.209-2.438-.19-2.87c-.245-.263-.979-.704-3.15-.704h-5.256l-3.646 18.768a.695.695 0 0 1-.683.56h-7.29a.695.695 0 0 1-.683-.826l6.558-33.739a.695.695 0 0 1 .682-.561h7.29a.695.695 0 0 1 .683.826L64.41 48.42h5.653c4.307 0 7.227.758 8.928 2.321c1.733 1.593 2.275 4.14 1.608 7.573l-3.051 15.702a.695.695 0 0 1-.682.56z"/><path fill="#fff" d="M65.31 38.755h-7.291a1.39 1.39 0 0 0-1.364 1.124l-6.557 33.738a1.39 1.39 0 0 0 1.363 1.654h7.291a1.39 1.39 0 0 0 1.364-1.124l3.537-18.205h4.682c2.168 0 2.624.463 2.641.484c.132.14.305.795.019 2.264l-2.9 14.927a1.39 1.39 0 0 0 1.364 1.654h7.408a1.39 1.39 0 0 0 1.363-1.124l3.051-15.7c.715-3.686.103-6.45-1.82-8.217c-1.836-1.686-4.91-2.505-9.398-2.505h-4.81l1.421-7.315a1.39 1.39 0 0 0-1.364-1.655"/><path d="M92.136 67.864c2.793 0 4.878-.515 6.198-1.53c1.304-1.006 2.206-2.747 2.679-5.175c.44-2.27.273-3.854-.5-4.71c-.788-.874-2.493-1.317-5.067-1.317h-4.463l-2.475 12.732zM77.54 83.547a.694.694 0 0 1-.682-.828l6.557-33.738a.695.695 0 0 1 .682-.561H98.23c4.442 0 7.748 1.206 9.826 3.585c2.089 2.39 2.734 5.734 1.917 9.935a15.9 15.9 0 0 1-1.699 4.724a15.8 15.8 0 0 1-3.128 3.92c-1.53 1.432-3.265 2.472-5.147 3.083c-1.852.604-4.232.91-7.071.91h-5.723l-1.633 8.408a.695.695 0 0 1-.683.562z"/><path fill="#fff" d="M91.555 55.826h3.891c3.107 0 4.186.682 4.552 1.089c.61.674.724 2.097.333 4.112c-.44 2.257-1.254 3.858-2.421 4.756c-1.195.92-3.139 1.386-5.773 1.386h-2.786zm6.674-8.1H84.096a1.39 1.39 0 0 0-1.363 1.123l-6.558 33.739a1.39 1.39 0 0 0 1.364 1.653h7.35a1.39 1.39 0 0 0 1.363-1.124l1.525-7.846h5.15c2.911 0 5.364-.318 7.286-.944c1.978-.642 3.797-1.731 5.408-3.238a16.5 16.5 0 0 0 3.258-4.086c.832-1.487 1.428-3.147 1.775-4.931c.86-4.423.162-7.964-2.076-10.524c-2.216-2.537-5.697-3.823-10.35-3.823z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em]" width="1em" height="1em" viewBox="0 0 128 128"><path fill="url(#SVGC9rnueOH)" d="M0 64c0 18.593 28.654 33.667 64 33.667S128 82.593 128 64S99.345 30.333 64 30.333S0 45.407 0 64"/><path fill="#777bb3" d="M64 95.167c33.965 0 61.5-13.955 61.5-31.167c0-17.214-27.535-31.167-61.5-31.167S2.5 46.786 2.5 64c0 17.212 27.535 31.167 61.5 31.167"/><path d="M34.772 67.864c2.793 0 4.877-.515 6.196-1.53c1.306-1.006 2.207-2.747 2.68-5.175c.44-2.27.272-3.854-.5-4.71c-.788-.874-2.493-1.317-5.067-1.317h-4.464l-2.473 12.732zM20.173 83.547a.694.694 0 0 1-.68-.828l6.557-33.738a.695.695 0 0 1 .68-.561h14.134c4.442 0 7.748 1.206 9.827 3.585c2.088 2.39 2.734 5.734 1.917 9.935c-.333 1.711-.905 3.3-1.7 4.724a15.8 15.8 0 0 1-3.128 3.92c-1.531 1.432-3.264 2.472-5.147 3.083c-1.852.604-4.232.91-7.07.91h-5.724l-1.634 8.408a.695.695 0 0 1-.682.562z"/><path fill="#fff" d="M34.19 55.826h3.891c3.107 0 4.186.682 4.553 1.089c.607.674.723 2.097.331 4.112c-.439 2.257-1.253 3.858-2.42 4.756c-1.194.92-3.138 1.386-5.773 1.386h-2.786zm6.674-8.1H26.731a1.39 1.39 0 0 0-1.364 1.123L18.81 82.588a1.39 1.39 0 0 0 1.363 1.653h7.35a1.39 1.39 0 0 0 1.363-1.124l1.525-7.846h5.151c2.912 0 5.364-.318 7.287-.944c1.977-.642 3.796-1.731 5.406-3.237a16.5 16.5 0 0 0 3.259-4.087c.831-1.487 1.429-3.147 1.775-4.931c.86-4.423.161-7.964-2.076-10.524c-2.216-2.537-5.698-3.823-10.349-3.823zM30.301 68.557h4.471q4.445.001 6.62-1.675q2.175-1.674 2.938-5.591q.728-3.762-.665-5.308q-1.395-1.546-5.584-1.546h-5.036l-2.743 14.12m10.563-19.445q6.378 0 9.303 3.348t1.76 9.346q-.482 2.472-1.625 4.518q-1.145 2.048-2.991 3.747q-2.2 2.06-4.892 2.935q-2.691.876-6.857.875h-6.296l-1.743 8.97h-7.35l6.558-33.739z"/><path d="M69.459 74.577a.694.694 0 0 1-.682-.827l2.9-14.928c.277-1.42.209-2.438-.19-2.87c-.245-.263-.979-.704-3.15-.704h-5.256l-3.646 18.768a.695.695 0 0 1-.683.56h-7.29a.695.695 0 0 1-.683-.826l6.558-33.739a.695.695 0 0 1 .682-.561h7.29a.695.695 0 0 1 .683.826L64.41 48.42h5.653c4.307 0 7.227.758 8.928 2.321c1.733 1.593 2.275 4.14 1.608 7.573l-3.051 15.702a.695.695 0 0 1-.682.56z"/><path fill="#fff" d="M65.31 38.755h-7.291a1.39 1.39 0 0 0-1.364 1.124l-6.557 33.738a1.39 1.39 0 0 0 1.363 1.654h7.291a1.39 1.39 0 0 0 1.364-1.124l3.537-18.205h4.682c2.168 0 2.624.463 2.641.484c.132.14.305.795.019 2.264l-2.9 14.927a1.39 1.39 0 0 0 1.364 1.654h7.408a1.39 1.39 0 0 0 1.363-1.124l3.051-15.7c.715-3.686.103-6.45-1.82-8.217c-1.836-1.686-4.91-2.505-9.398-2.505h-4.81l1.421-7.315a1.39 1.39 0 0 0-1.364-1.655m0 1.39l-1.743 8.968h6.496q6.131 0 8.457 2.14q2.328 2.138 1.398 6.93l-3.052 15.699h-7.407l2.901-14.928q.495-2.547-.365-3.474q-.86-.926-3.658-.926h-5.829l-3.756 19.327H51.46l6.558-33.739h7.292z"/><path d="M92.136 67.864c2.793 0 4.878-.515 6.198-1.53c1.304-1.006 2.206-2.747 2.679-5.175c.44-2.27.273-3.854-.5-4.71c-.788-.874-2.493-1.317-5.067-1.317h-4.463l-2.475 12.732zM77.54 83.547a.694.694 0 0 1-.682-.828l6.557-33.738a.695.695 0 0 1 .682-.561H98.23c4.442 0 7.748 1.206 9.826 3.585c2.089 2.39 2.734 5.734 1.917 9.935a15.9 15.9 0 0 1-1.699 4.724a15.8 15.8 0 0 1-3.128 3.92c-1.53 1.432-3.265 2.472-5.147 3.083c-1.852.604-4.232.91-7.071.91h-5.723l-1.633 8.408a.695.695 0 0 1-.683.562z"/><path fill="#fff" d="M91.555 55.826h3.891c3.107 0 4.186.682 4.552 1.089c.61.674.724 2.097.333 4.112c-.44 2.257-1.254 3.858-2.421 4.756c-1.195.92-3.139 1.386-5.773 1.386h-2.786zm6.674-8.1H84.096a1.39 1.39 0 0 0-1.363 1.123l-6.558 33.739a1.39 1.39 0 0 0 1.364 1.653h7.35a1.39 1.39 0 0 0 1.363-1.124l1.525-7.846h5.15c2.911 0 5.364-.318 7.286-.944c1.978-.642 3.797-1.731 5.408-3.238a16.5 16.5 0 0 0 3.258-4.086c.832-1.487 1.428-3.147 1.775-4.931c.86-4.423.162-7.964-2.076-10.524c-2.216-2.537-5.697-3.823-10.35-3.823zM87.666 68.557h4.47q4.445.001 6.622-1.675q2.175-1.674 2.936-5.591q.731-3.762-.665-5.308t-5.583-1.546h-5.035Zm10.563-19.445q6.378 0 9.303 3.348t1.759 9.346q-.48 2.472-1.624 4.518q-1.144 2.048-2.992 3.747q-2.2 2.06-4.892 2.935q-2.69.876-6.856.875h-6.295l-1.745 8.97h-7.35l6.558-33.739h14.133"/><defs><radialGradient id="SVGC9rnueOH" cx="0" cy="0" r="1" gradientTransform="translate(38.426 42.169)scale(84.04136)" gradientUnits="userSpaceOnUse"><stop stop-color="#aeb2d5"/><stop offset=".3" stop-color="#aeb2d5"/><stop offset=".75" stop-color="#484c89"/><stop offset="1" stop-color="#484c89"/></radialGradient></defs></svg>
   ),
   JavaScript: (
     <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em]" width="1em" height="1em" viewBox="0 0 256 256"><rect width="256" height="256" fill="#f0db4f" rx="60"/><path fill="#323330" d="m67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371c7.905 0 12.889-3.092 12.889-15.12v-81.798h24.058v82.138c0 24.917-14.606 36.259-35.916 36.259c-19.245 0-30.416-9.967-36.087-21.996m85.07-2.576l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607c9.969 0 16.325-4.984 16.325-11.858c0-8.248-6.53-11.17-17.528-15.98l-6.013-2.579c-17.357-7.388-28.871-16.668-28.871-36.258c0-18.044 13.748-31.792 35.229-31.792c15.294 0 26.292 5.328 34.196 19.247l-18.731 12.029c-4.125-7.389-8.591-10.31-15.465-10.31c-7.046 0-11.514 4.468-11.514 10.31c0 7.217 4.468 10.139 14.778 14.608l6.014 2.577c20.449 8.765 31.963 17.699 31.963 37.804c0 21.654-17.012 33.51-39.867 33.51c-22.339 0-36.774-10.654-43.819-24.574"/></svg>
   ),
-  AJAX: (
-    <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em] text-info" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h10l-3-3m3 3l-3 3M17 17H7l3 3m-3-3l3-3M3 12h18"/></svg>
-  ),
+  jQuery: (
+    <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em]" width="1em" height="1em" viewBox="0 0 128 128"><path fill="#0868ac" d="M9.625 32.181C-1.404 48.032-.031 68.657 8.394 85.501c.2.404.41.801.617 1.198l.394.759l.246.437l.439.786q.393.691.804 1.379l.459.756q.456.735.933 1.46l.398.614c.439.655.888 1.309 1.352 1.951l.039.05l.228.308q.603.83 1.232 1.639l.464.59q.56.703 1.138 1.399l.435.52a75 75 0 0 0 1.586 1.812l.033.033l.061.068a80 80 0 0 0 1.612 1.699l.517.521q.635.638 1.287 1.262l.527.5q.869.82 1.764 1.607l.028.022l.307.262q.792.686 1.603 1.353l.664.529q.662.531 1.336 1.044l.714.543q.744.548 1.499 1.075l.546.387l.15.107c.478.329.967.646 1.456.963l.63.42c.75.474 1.51.943 2.279 1.396l.63.355q.847.49 1.71.959c.312.168.632.327.946.488c.407.213.811.429 1.225.636l.283.137l.501.242q.961.46 1.94.897l.41.184a67 67 0 0 0 2.263.941l.551.217c.704.271 1.418.539 2.135.791l.268.093c.787.275 1.581.53 2.381.779l.575.172c.814.245 1.619.538 2.458.693c53.339 9.727 68.833-32.053 68.833-32.053c-13.013 16.953-36.111 21.425-57.996 16.446c-.829-.187-1.633-.446-2.442-.685l-.609-.185a73 73 0 0 1-2.352-.765l-.323-.117a72 72 0 0 1-2.074-.769l-.582-.229q-1.13-.445-2.239-.931l-.447-.198a93 93 0 0 1-1.889-.879l-.546-.262c-.491-.239-.977-.493-1.461-.743c-.324-.171-.654-.332-.975-.51a59 59 0 0 1-1.751-.982l-.591-.33a81 81 0 0 1-2.28-1.397l-.615-.41a59 59 0 0 1-1.623-1.079l-.522-.367a89 89 0 0 1-1.534-1.109l-.679-.514a65 65 0 0 1-1.384-1.082l-.617-.495a83 83 0 0 1-1.724-1.453l-.189-.159a84 84 0 0 1-1.812-1.647l-.511-.491c-.441-.42-.875-.843-1.302-1.277l-.51-.509a71 71 0 0 1-1.598-1.69l-.079-.084a67 67 0 0 1-1.621-1.844l-.424-.504a71 71 0 0 1-1.167-1.442l-.427-.532a78 78 0 0 1-1.347-1.794c-12.15-16.574-16.516-39.432-6.805-58.204m25.629-2.434c-7.977 11.478-7.543 26.844-1.321 38.983a51 51 0 0 0 3.528 5.889c1.195 1.713 2.52 3.751 4.106 5.127a48 48 0 0 0 1.79 1.858l.472.465a52 52 0 0 0 1.828 1.698l.074.064l.018.018a55 55 0 0 0 2.135 1.767l.485.378a54 54 0 0 0 2.233 1.631l.065.049c.336.232.678.448 1.019.672l.483.319q.816.525 1.655 1.015l.235.136q.726.418 1.463.818l.521.271c.339.177.678.358 1.023.53l.155.07c.703.346 1.412.68 2.136.995l.472.194c.579.246 1.164.486 1.75.71l.75.275c.533.198 1.068.378 1.607.559l.727.233c.767.238 1.525.539 2.324.672c41.183 6.823 50.691-24.886 50.691-24.886c-8.57 12.343-25.168 18.233-42.879 13.635a50 50 0 0 1-2.333-.674l-.701-.227a45 45 0 0 1-1.631-.562l-.736-.274a56 56 0 0 1-1.756-.708l-.473-.2a48 48 0 0 1-2.148-.999c-.363-.177-.72-.364-1.078-.548l-.622-.32a45 45 0 0 1-1.363-.77l-.326-.185a48 48 0 0 1-1.651-1.008l-.498-.332a62 62 0 0 1-1.069-.707a58 58 0 0 1-2.226-1.628l-.501-.395c-7.752-6.12-13.898-14.486-16.819-23.971c-3.062-9.836-2.402-20.878 2.903-29.84m22.278-.775c-4.702 6.92-5.164 15.514-1.901 23.156c3.441 8.113 10.491 14.476 18.72 17.495c.339.125.679.237 1.022.354l.451.143c.485.152.966.329 1.467.424c22.74 4.394 28.908-11.669 30.549-14.034c-5.402 7.779-14.482 9.646-25.623 6.942c-.88-.213-1.847-.531-2.695-.832a33 33 0 0 1-3.201-1.329a33 33 0 0 1-5.612-3.424c-9.969-7.565-16.162-21.994-9.657-33.745"/></svg>  ),
   Laravel: (
     <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.35em]" width="1em" height="1em" viewBox="0 0 32 32"><path fill="#ff5252" d="M31.963 9.12c-.008-.03-.023-.056-.034-.085a1 1 0 0 0-.07-.156a2 2 0 0 0-.162-.205a1 1 0 0 0-.088-.072a1 1 0 0 0-.083-.068l-.044-.02l-.035-.024l-6-3a1 1 0 0 0-.894 0l-6 3l-.035.024l-.044.02a1 1 0 0 0-.083.068a.7.7 0 0 0-.187.191a1 1 0 0 0-.064.086a1 1 0 0 0-.069.156c-.01.029-.026.055-.034.085a1 1 0 0 0-.037.265v5.382l-4 2V5.385a1 1 0 0 0-.037-.265c-.008-.03-.023-.056-.034-.085a1 1 0 0 0-.07-.156a1 1 0 0 0-.063-.086a.7.7 0 0 0-.187-.191a1 1 0 0 0-.083-.068l-.044-.02l-.035-.024l-6-3a1 1 0 0 0-.894 0l-6 3l-.035.024l-.044.02a1 1 0 0 0-.083.068a1 1 0 0 0-.088.072a1 1 0 0 0-.1.119a1 1 0 0 0-.063.086a1 1 0 0 0-.069.156c-.01.029-.026.055-.034.085A1 1 0 0 0 0 5.385v19a1 1 0 0 0 .553.894l6 3l6 3c.014.007.03.005.046.011a.9.9 0 0 0 .802 0c.015-.006.032-.004.046-.01l12-6a1 1 0 0 0 .553-.895v-5.382l5.447-2.724a1 1 0 0 0 .553-.894v-6a1 1 0 0 0-.037-.265M9.236 21.385l4.211-2.106h.001L19 16.503l3.764 1.882L13 23.267ZM24 13.003v3.764l-4-2v-3.764Zm1-5.5l3.764 1.882L25 11.267l-3.764-1.882ZM8 19.767V9.003l4-2v10.764ZM7 3.503l3.764 1.882L7 7.267L3.236 5.385Zm-5 3.5l4 2v16.764l-4-2Zm6 16l4 2v3.764l-4-2Zm16 .764l-10 5v-3.764l10-5Zm6-9l-4 2v-3.764l4-2Z"/></svg>
   ),
@@ -43,8 +45,8 @@ const techIcons = {
 
 function TechIcon({ tech }) {
   return (
-    <span className="tooltip tooltip-top" data-tip={tech}>
-      <span className="btn btn-sm btn-square border border-gray-300 bg-white/80 hover:border-gray-400" aria-label={tech}>
+    <span className="tooltip tooltip-top font-bold" data-tip={tech}>
+      <span className="" aria-label={tech}>
         {techIcons[tech]}
       </span>
     </span>
@@ -141,7 +143,7 @@ export default function Projects() {
         { src: chmsuStudentQrImg, alt: 'Student QR' },
         { src: chmsuProfileImg, alt: 'Profile' },
       ],
-      techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'AJAX']
+      techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'jQuery', 'QR']
     },
     {
       id: 'project-pgso-ulpmms',
@@ -233,7 +235,7 @@ export default function Projects() {
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
+      <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         
         {/* Extra Impact Info */}
         <ul className="list rounded-box gap-3">
@@ -249,19 +251,14 @@ export default function Projects() {
 
         {/* Deployed Projects Section */}
         <div>
-          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mb-3">Deployed:</p>
           <ul className="list rounded-box gap-3">
             {recentProjectsData.map((project) => (
               <li key={project.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0 space-y-1">
-                    <h3 className="font-bold text-sm md:text-base text-neutral-800">
+                    <h3 className="font-bold text-xs md:text-sm">
                       {project.title}
                     </h3>
-
-                    <p className="text-xs md:text-sm font-medium text-gray-600 mt-1">
-                      {project.beneficiary}
-                    </p>
                   </div>
                   <button
                     type="button"
@@ -281,6 +278,10 @@ export default function Projects() {
                   <span className="kbd kbd-xs md:kbd-sm font-medium">Deployed</span>
                 </div>
 
+                <p className="text-[10px] md:text-xs font-bold text-gray-900 mb-3">
+                  {project.beneficiary}
+                </p>
+
                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
               </li>
             ))}
@@ -289,14 +290,13 @@ export default function Projects() {
 
         {/* Other Academic Projects Section */}
         <div>
-          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mb-3">Others:</p>
+          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase mb-3">Others:</p>
           <ul className="list rounded-box gap-3">
             {otherProjects.map((project) => (
               <li key={project.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">
                 <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 space-y-1">
-                    <h3 className="font-extrabold text-sm md:text-base text-neutral-800">{project.title}</h3>
-                    <p className="text-xs md:text-sm font-medium text-gray-600 mt-1">Academic Build</p>
+                  <div className="min-w-0 self-center">
+                    <h3 className="font-bold text-xs md:text-sm text-neutral-800">{project.title}</h3>
                   </div>
                   <button
                     type="button"
@@ -339,42 +339,38 @@ export default function Projects() {
 
               <div className="p-6 pb-0">
                 <div className="min-w-0 space-y-1 pr-10">
-                  <h3 className="font-extrabold text-sm md:text-base text-neutral-800">
+                  <h3 className="font-bold text-sm md:text-base text-neutral-800">
                     {project.title}
                   </h3>
-                  <p className="text-xs md:text-sm font-medium text-gray-600 mt-1">
-                    {project.beneficiary}
-                  </p>
                 </div>
 
                 <hr className="mt-3 mb-3 border-gray-400" />
 
                 <div className="text-xs md:text-sm flex flex-wrap gap-1.5 mb-3">
                   <span className="kbd kbd-xs md:kbd-sm font-medium">{project.year}</span>
-                  <span className="kbd kbd-xs md:kbd-sm font-medium">Deployed Project</span>
+                  <span className="kbd kbd-xs md:kbd-sm font-medium">Deployed</span>
                 </div>
+
+                <p className="text-[10px] md:text-xs font-bold text-gray-900 mb-3">
+                  {project.beneficiary}
+                </p>
               </div>
 
               <div className="p-6 pt-0">
                 <div className="mb-5">
-                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-2">
-                    Overview
-                  </h4>
-                  <p className="text-sm leading-relaxed text-gray-700">{project.description}</p>
+                  <p className="text-xs md:text-sm leading-relaxed text-gray-700">{project.description}</p>
                 </div>
 
                 {project.images && project.images.length > 0 && (
-                  <div className="mb-5">
-                    <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-3">
-                      Screenshots
-                    </h4>
-                    <div className="carousel w-full rounded-box overflow-hidden border border-gray-200 bg-base-200">
+                  <div className="mb-3">
+                    <hr className="mt-3 mb-3 border-gray-400" />
+                    <div className="carousel w-full rounded-box overflow-hidden border border-gray-300 bg-base-100">
                       {project.images.map((img, idx) => (
-                        <div id={`${project.id}-img${idx}`} key={idx} className="carousel-item relative w-full flex-col">
+                        <div id={`${project.id}-img${idx}`} key={idx} className="carousel-item relative w-full flex-col border border-gray-400">
                           <img
                             src={img.src}
                             alt={img.alt}
-                            className="w-full h-64 md:h-80 object-contain bg-base-200 p-4"
+                            className="w-full h-64 md:h-96 object-contain bg-base-300 p-3"
                           />
                           <div className="absolute left-2 right-2 top-1/2 flex -translate-y-1/2 justify-between">
                             <a
@@ -403,7 +399,7 @@ export default function Projects() {
 
                 {project.techStack && project.techStack.length > 0 && (
                   <div>
-                    <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-3">
+                    <h4 className="kbd shadow-xl text-xs uppercase font-bold text-gray-500 mb-3">
                       Tools Used
                     </h4>
                     <div className="flex flex-wrap gap-2">
@@ -433,8 +429,7 @@ export default function Projects() {
 
               <div className="p-6 pb-0">
                 <div className="min-w-0 space-y-1 pr-10">
-                  <h3 className="font-extrabold text-sm md:text-base text-neutral-800">{project.title}</h3>
-                  <p className="text-xs md:text-sm font-medium text-gray-600 mt-1">Academic Build</p>
+                  <h3 className="font-bold text-sm md:text-base text-neutral-800">{project.title}</h3>
                 </div>
 
                 <hr className="mt-3 mb-3 border-gray-400" />
@@ -445,9 +440,6 @@ export default function Projects() {
               </div>
 
               <div className="p-6 pt-0">
-                <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-2">
-                  Overview
-                </h4>
                 <p className="text-sm leading-relaxed text-gray-700">{project.description}</p>
               </div>
             </div>

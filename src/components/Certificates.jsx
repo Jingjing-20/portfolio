@@ -105,12 +105,12 @@ export default function Certificates() {
         </header>
 
         {/* Gallery - 3 column grid with rectangle images only */}
-        <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500">
+        <div className="relative pl-4 md:pl-5 border-l border-gray-500">
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {certificates.map((certItem) => (
               <div
                 key={certItem.id}
-                className="bg-white/50 rounded-box p-3 md:p-4 shadow-xl relative group border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300"
+                className="bg-base-300 rounded-box p-3 md:p-4 shadow-xl relative group border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300"
               >
                 <img
                   src={certItem.image}
@@ -157,8 +157,8 @@ export default function Certificates() {
           {/* Text under image */}
           {selectedCert && (
             <div className="p-6 border-t border-base-200">
-              <h3 className="font-bold text-lg text-neutral-800">{selectedCert.title}</h3>
-              <p className="text-xs md:text-sm font-bold mt-1 text-gray-600 kbd">{selectedCert.date}</p>
+              <h3 className="font-bold text-xs md:text-sm text-neutral-800">{selectedCert.title}</h3>
+              <p className="text-[10px] md:text-xs font-bold mt-1 text-gray-600 kbd">{selectedCert.date}</p>
             </div>
           )}
         </div>
