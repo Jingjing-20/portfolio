@@ -50,7 +50,7 @@ const stackIcon = (
 );
 
 const certificateIcon = (
-<svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" d="M11.8 6.12a.683.683 0 0 0-.11-.973a.715.715 0 0 0-.992.108l-3.31 4.06l-1.77-1.36a.715.715 0 0 0-.994.089a.683.683 0 0 0 .09.975l2.32 1.81a.715.715 0 0 0 1.003-.1l3.76-4.62z"/><path fill="currentColor" fillRule="evenodd" clipRule="evenodd" d="M6.51.714C7.044.322 7.311.126 7.6.05a1.6 1.6 0 0 1 .787 0c.292.076.56.272 1.09.664l.677.497c.185.136.278.204.378.257q.134.07.279.116c.109.033.222.05.449.085l.83.127c.655.1.982.151 1.24.304c.23.135.422.327.557.557c.153.26.203.588.304 1.24l.127.83c.035.227.052.341.085.45q.045.145.116.278c.054.1.121.193.257.378l.497.677c.392.534.588.801.664 1.09a1.6 1.6 0 0 1 0 .787c-.075.292-.272.56-.664 1.09l-.497.677c-.136.185-.204.278-.257.378a1.6 1.6 0 0 0-.116.28c-.033.108-.05.221-.085.448l-.127.83c-.1.655-.151.982-.304 1.24c-.135.23-.327.422-.557.557c-.26.153-.588.203-1.24.304l-.83.127c-.227.034-.34.052-.449.086q-.145.044-.279.116c-.1.053-.193.12-.378.257l-.677.497c-.534.392-.801.588-1.09.664a1.6 1.6 0 0 1-.787 0c-.292-.076-.56-.272-1.09-.664l-.677-.497c-.185-.136-.278-.204-.378-.257a1.6 1.6 0 0 0-.279-.116a3 3 0 0 0-.449-.086l-.83-.127c-.655-.1-.983-.15-1.24-.304a1.6 1.6 0 0 1-.557-.557c-.153-.26-.203-.588-.304-1.24l-.127-.83c-.035-.227-.052-.34-.085-.449a1.5 1.5 0 0 0-.116-.279a3 3 0 0 0-.257-.378l-.497-.677c-.392-.534-.588-.8-.664-1.09a1.6 1.6 0 0 1 0-.787c.075-.292.272-.56.664-1.09l.497-.677c.136-.185.204-.278.257-.378q.07-.133.116-.279c.033-.109.05-.222.085-.449l.127-.83c.1-.655.151-.983.304-1.24c.135-.23.327-.42.557-.557c.26-.153.588-.203 1.24-.304l.83-.127c.227-.034.341-.052.449-.085q.145-.045.279-.116c.1-.053.193-.121.378-.257zm2.38.806l.711.522c.151.111.3.221.466.309q.22.117.456.189a4 4 0 0 0 .548.111l.872.134c.741.114.833.145.887.177q.127.076.202.202c.032.054.064.146.177.887l.134.872a4 4 0 0 0 .111.548q.073.238.189.456c.088.166.198.315.309.466l.522.711c.444.604.486.691.502.753a.6.6 0 0 1 0 .286c-.016.061-.058.148-.502.753l-.522.711c-.111.151-.221.3-.309.466a2.6 2.6 0 0 0-.189.456a4 4 0 0 0-.111.548l-.134.872c-.114.741-.145.833-.177.887a.6.6 0 0 1-.202.202c-.054.032-.146.064-.887.177l-.872.134a4 4 0 0 0-.548.111a2.6 2.6 0 0 0-.456.189c-.166.088-.315.198-.466.309l-.711.522c-.604.444-.691.486-.753.502a.6.6 0 0 1-.286 0c-.061-.016-.148-.058-.753-.502l-.711-.522a4 4 0 0 0-.466-.309a2.6 2.6 0 0 0-.456-.189a4 4 0 0 0-.548-.111l-.872-.134c-.741-.114-.833-.145-.887-.177a.6.6 0 0 1-.202-.202c-.032-.054-.064-.146-.177-.887l-.134-.872a4 4 0 0 0-.111-.548a2.6 2.6 0 0 0-.189-.456c-.088-.166-.198-.315-.309-.466l-.522-.711c-.444-.604-.486-.691-.502-.753a.6.6 0 0 1 0-.286c.016-.061.058-.148.502-.753l.522-.711c.111-.151.221-.3.309-.466q.116-.22.189-.456a4 4 0 0 0 .111-.548l.134-.872c.114-.741.145-.833.177-.887a.6.6 0 0 1 .202-.202c.054-.032.146-.064.887-.177l.872-.134a4 4 0 0 0 .548-.111q.238-.073.456-.189c.166-.088.315-.198.466-.309l.711-.522c.604-.444.691-.486.753-.502a.6.6 0 0 1 .286 0c.061.016.148.058.753.502zm1.246 2.59l.06.146c.117.287.223.727.118 1.321a4 4 0 0 0-.02.27l-.013.148c-.045.506-.138.972-.328 1.287a1.8 1.8 0 0 1-.482.505a1.5 1.5 0 0 1-.663.224c-.25 0-.503-.065-.765-.184a4.4 4.4 0 0 0-.625-.256c-.227-.077-.471-.117-.725-.117a3.6 3.6 0 0 0-.692.066a4 4 0 0 0-.624.195c-.284.112-.538.276-.71.466a1.8 1.8 0 0 1-.358.528a1.6 1.6 0 0 1-.228.216a.5.5 0 0 1-.705-.07l-.348-.373a.5.5 0 0 1 .07-.704c.124-.117.247-.244.352-.398a2.7 2.7 0 0 0 .262-.386a3.5 3.5 0 0 0 .18-.347c.062-.143.117-.278.162-.397a1.9 1.9 0 0 1 .15-.273a1 1 0 0 1 .244-.217c.09-.047.19-.07.307-.07c.125 0 .253.024.386.074c.134.05.277.118.424.188c.293.14.61.257.877.257c.17 0 .32-.048.423-.13a.7.7 0 0 1 .191-.226c.094-.085.197-.21.292-.402c.095-.193.186-.453.254-.768c.034-.157.062-.322.084-.492l.017-.13a5.7 5.7 0 0 0 .018-.174a2.7 2.7 0 0 1 .209-.998a.5.5 0 0 1 .451-.236m-4.54 3.847a2.8 2.8 0 0 0 .41-.01c.143-.017.285-.048.421-.104a2.6 2.6 0 0 0 .393-.158c.177-.095.335-.216.459-.384a.5.5 0 0 1 .707.07l.346.376a.5.5 0 0 1-.072.706a3 3 0 0 1-.455.513a3.4 3.4 0 0 0-.52.574c-.083.115-.154.222-.21.318a2.7 2.7 0 0 0-.206.375c-.066.154-.116.293-.15.41a2.1 2.1 0 0 1-.208.368a1.2 1.2 0 0 1-.318.223c-.118.05-.244.076-.377.076a1.8 1.8 0 0 1-.482-.111a6 6 0 0 0-.53-.205c-.302-.102-.642-.183-.979-.183c-.192 0-.364.056-.485.157a.9.9 0 0 1-.218.261c-.107.1-.225.25-.334.479a4.4 4.4 0 0 0-.29.767l-.018.064a.5.5 0 0 1-.942-.26l.034-.123c.076-.279.19-.594.334-.898a3.4 3.4 0 0 0 .469-.738a2.2 2.2 0 0 1 .163-.204a1.7 1.7 0 0 1 .272-.214a1.4 1.4 0 0 1 .333-.136"/></svg>
+<svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/><path d="M13 17.5V22l2-1.5l2 1.5v-4.5"/><path d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2"/></g></svg>
 );
 
 const contactIcon = (
@@ -67,34 +67,34 @@ const contactIcon = (
 export default function Navbar() {
   return (
     <div className="fixed left-0 right-0 top-3 z-50 flex justify-center px-4 w-full">
-      <ul className="menu menu-horizontal bg-base-300 rounded-box shadow-xl border border-gray-600 p-2 gap-1 md:gap-2 font-mono">
+      <ul className="menu menu-horizontal bg-base-300 rounded-box shadow-xl border border-gray-400 p-2 gap-1 md:gap-2 ">
         <li>
-          <a href="#about-me" className="tooltip tooltip-bottom" data-tip="Home" aria-label="Home">
+          <a href="#about-me" className="border-b-2 border-transparent hover:border-gray-400 tooltip tooltip-bottom font-bold" data-tip="Home" aria-label="Home">
             {homeIcon}
           </a>
         </li>
         <li>
-          <a href="#work-experience" className="tooltip tooltip-bottom" data-tip="Experience" aria-label="Experience">
+          <a href="#work-experience" className="border-b-2 border-transparent hover:border-gray-400 tooltip tooltip-bottom font-bold" data-tip="Experience" aria-label="Experience">
             {caseIcon}
           </a>
         </li>
         <li>
-          <a href="#recent-projects" className="tooltip tooltip-bottom" data-tip="Projects" aria-label="Projects">
+          <a href="#recent-projects" className="border-b-2 border-transparent hover:border-gray-400 tooltip tooltip-bottom font-bold" data-tip="Projects" aria-label="Projects">
             {folderIcon}
           </a>
         </li>
         <li>
-          <a href="#tech-stack" className="tooltip tooltip-bottom" data-tip="Tools" aria-label="Tools">
+          <a href="#tech-stack" className="border-b-2 border-transparent hover:border-gray-400 tooltip tooltip-bottom font-bold" data-tip="Tools" aria-label="Tools">
             {stackIcon}
           </a>
         </li>
         <li>
-          <a href="#participation-certificates" className="tooltip tooltip-bottom" data-tip="Certificates" aria-label="Certificates">
+          <a href="#participation-certificates" className="border-b-2 border-transparent hover:border-gray-400 tooltip tooltip-bottom font-bold" data-tip="Certificates" aria-label="Certificates">
             {certificateIcon}
           </a>
         </li>
         <li>
-          <a href="#contact" className="tooltip tooltip-bottom" data-tip="Contact" aria-label="Contact">
+          <a href="#contact" className="border-b-2 border-transparent hover:border-gray-400 tooltip tooltip-bottom font-bold" data-tip="Contact" aria-label="Contact">
             {contactIcon}
           </a>
         </li>

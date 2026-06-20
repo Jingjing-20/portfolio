@@ -92,25 +92,26 @@ export default function TechStack() {
               <span className="text-gray-500">& Tools</span>
             </span>
           </h2>
-          <span className="badge badge-outline badge-sm font-mono text-gray-600 font-bold border-gray-300 shrink-0 mt-1 kbd" aria-hidden="true">
+          <span className="shadow-xl badge badge-outline badge-sm text-gray-400 font-extrabold border-gray-400 shrink-0 mt-1 kbd kbd-sm md:kbd-md" aria-hidden="true">
             04
           </span>
         </div>
         <p className="mt-2 text-xs text-gray-500 leading-relaxed max-w-lg">
           Languages, frameworks, and tools I use to design, build, and maintain web applications.
         </p>
-        <hr className="mt-4 mb-4 border-gray-300" />
+        <hr className="mt-3 mb-3 border-dashed border-gray-500" />
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-4">
+      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
         {/* Extra Tech Info */}
         <ul className="list rounded-box gap-3">
-          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
+          <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-3 md:p-4 bg-white/50 rounded-box">
             <div className="min-w-0">
-              <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
-              <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <div className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60">{sectionExtra.label}</div>
+              <div className="text-sm md:text-base font-bold">{sectionExtra.title}</div>
+              <hr className="border border-gray-300 mt-1"></hr>
+              <p className="mt-1 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
@@ -118,13 +119,13 @@ export default function TechStack() {
         {/* Tech Grid */}
         <ul className="list rounded-box grid grid-cols-2 gap-3">
           {techIcons.map((icon) => (
-            <li key={icon.name} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors p-3 bg-white/50 rounded-box flex items-center gap-3">
-              <div className="shadow-lg size-10 rounded-box bg-base-300 p-1.5 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
+            <li key={icon.name} className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box flex items-center gap-3">
+              <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0 [&_svg]:w-full [&_svg]:h-full">
                 {icon.svg}
               </div>
               <div className="min-w-0">
-                <div className="font-bold text-xs md:text-sm text-neutral-800 leading-snug">{icon.name}</div>
-                <div className="text-[8px] md:text-[10px] uppercase font-semibold opacity-60 mt-0.5">{icon.category}</div>
+                <div className="font-bold text-sm md:text-base text-neutral-800 leading-snug">{icon.name}</div>
+                <div className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mt-1">{icon.category}</div>
               </div>
             </li>
           ))}

@@ -94,23 +94,23 @@ export default function Certificates() {
                 <span className="text-gray-500">Certificates</span>
               </span>
             </h2>
-            <span className="badge badge-outline badge-sm font-mono text-gray-600 font-bold border-gray-300 shrink-0 mt-1 kbd">
+            <span className="shadow-xl badge badge-outline badge-sm text-gray-400 font-extrabold border-gray-400 shrink-0 mt-1 kbd kbd-sm md:kbd-md" aria-hidden="true">
               05
             </span>
           </div>
           <p className="mt-2 text-xs md:text-sm text-gray-500 leading-relaxed max-w-lg">
             Continuous learning through webinars, seminars, certifications, and industry events.
           </p>
-          <hr className="mt-4 mb-6 border-gray-300" />
+          <hr className="mt-3 mb-3 border-dashed border-gray-500" />
         </header>
 
         {/* Gallery - 3 column grid with rectangle images only */}
-        <div className="relative pl-4 md:pl-5 border-l-2 border-base-300">
+        <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500">
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {certificates.map((certItem) => (
               <div
                 key={certItem.id}
-                className="bg-base-300 rounded-box p-3 shadow-xl relative group border border-gray-200 hover:shadow-2xl transition-all duration-300"
+                className="bg-white/50 rounded-box p-3 md:p-4 shadow-xl relative group border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300"
               >
                 <img
                   src={certItem.image}
@@ -119,7 +119,7 @@ export default function Certificates() {
                 />
                 <button
                   type="button"
-                  className="p-2 rounded-md shrink-0 tooltip tooltip-top font-mono absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:top-4 md:right-4 md:translate-x-0 md:translate-y-0 bg-base-200 hover:bg-base-300 shadow-xl"
+                  className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:top-4 md:right-4 md:translate-x-0 md:translate-y-0 shadow-xl"
                   data-tip="Enlarge"
                   aria-label={`Enlarge ${certItem.title}`}
                   onClick={() => setSelectedCert(certItem)}
@@ -131,7 +131,7 @@ export default function Certificates() {
           </div>
         </div>
 
-        <p className="mt-4 text-right text-[10px] uppercase tracking-wider text-gray-400">
+        <p className="mt-4 text-right text-[10px] uppercase tracking-wide font-semibold text-gray-400">
           {certificates.length} Certificates · 2023–2025
         </p>
       </section>

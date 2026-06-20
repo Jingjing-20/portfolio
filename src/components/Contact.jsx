@@ -164,50 +164,51 @@ export default function Contact() {
               <span className="text-gray-500">Together</span>
             </span>
           </h2>
-          <span className="badge badge-outline badge-sm font-mono text-gray-600 font-bold border-gray-300 shrink-0 mt-1 kbd" aria-hidden="true">
+          <span className="shadow-xl badge badge-outline badge-sm text-gray-400 font-extrabold border-gray-400 shrink-0 mt-1 kbd kbd-sm md:kbd-md" aria-hidden="true">
             06
           </span>
         </div>
         <p className="mt-2 text-xs text-gray-500 leading-relaxed max-w-lg">
           Tell me about your project, timeline, and how I can help — I reply within 1–2 business days.
         </p>
-        <hr className="mt-4 mb-4 border-gray-300" />
+        <hr className="mt-3 mb-3 border-dashed border-gray-500" />
       </header>
 
       {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-4">
+      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
         
         {/* Extra Response Info */}
         <ul className="list rounded-box gap-3">
-          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-xl transition-colors items-start p-3 bg-white/50 rounded-box">
+          <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-3 md:p-4 bg-white/50 rounded-box">
             <div className="min-w-0">
-              <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
-              <div className="text-xs md:text-sm font-bold mt-0.5">{sectionExtra.title}</div>
-              <p className="mt-2 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
+              <div className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60">{sectionExtra.label}</div>
+              <div className="text-sm md:text-base font-bold">{sectionExtra.title}</div>
+              <hr className="border border-gray-300 mt-1"></hr>
+              <p className="mt-1 text-xs md:text-sm text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
             </div>
           </li>
         </ul>
 
         {/* Connect Social Grid */}
         <div>
-          <p className="text-[10px] uppercase font-extrabold text-gray-600 mb-2 kbd shadow-xl">Connect:</p>
+          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mb-3">Connect:</p>
           <ul className="list rounded-box grid grid-cols-1 md:grid-cols-2 gap-3">
             
             {/* Standard Social Links */}
             {socialLinks.map((link) => (
-              <li key={link.label} className="border border-gray-400 list-row bg-base-200 hover:bg-based-300 shadow-xl transition-colors items-center p-3 rounded-box flex">
-                <div className="shadow-xl size-10 rounded-box bg-base-100 flex items-center justify-center shrink-0">
+              <li key={link.label} className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
+                <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0">
                   {link.icon}
                 </div>
                 <div className="min-w-0 flex-1 ml-3">
-                  <div className="text-xs md:text-sm font-bold leading-snug">{link.label}</div>
-                  <p className="text-[11px] text-gray-500 truncate">{link.value}</p>
+                  <div className="text-sm md:text-base font-bold leading-snug">{link.label}</div>
+                  <p className="text-xs md:text-sm text-gray-600 truncate">{link.value}</p>
                 </div>
                 <a
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                  className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
                   data-tip="Open link"
                   aria-label={`Open ${link.label}`}
                 >
@@ -217,18 +218,18 @@ export default function Contact() {
             ))}
 
             {/* Gmail Row */}
-            <li className="border border-gray-400 list-row bg-base-200 shadow-xl transition-colors items-center p-3 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box bg-base-100 flex items-center justify-center shrink-0">
+            <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
+              <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0">
                 {gmailIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
-                <div className="text-xs md:text-sm font-bold leading-snug">Gmail</div>
-                <p className="text-[11px] text-gray-500 truncate">{recipientEmail}</p>
+                <div className="text-sm md:text-base font-bold leading-snug">Gmail</div>
+                <p className="text-xs md:text-sm text-gray-600 truncate">{recipientEmail}</p>
               </div>
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono"
+                className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
                 data-tip={copiedEmail ? 'Copied!' : 'Copy'}
                 aria-label="Copy Gmail Address"
               >
@@ -237,18 +238,18 @@ export default function Contact() {
             </li>
 
             {/* Phone Row */}
-            <li className="border border-gray-400 list-row bg-base-200 shadow-xl transition-colors items-center p-3 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box bg-base-100 flex items-center justify-center shrink-0">
+            <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
+              <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0">
                 {phoneIcon}
               </div>
               <div className="min-w-0 flex-1 ml-3">
-                <div className="text-xs md:text-sm font-bold leading-snug">Phone</div>
-                <p className="text-[11px] text-gray-500 font-mono">{phone}</p>
+                <div className="text-sm md:text-base font-bold leading-snug">Phone</div>
+                <p className="text-xs md:text-sm text-gray-600">{phone}</p>
               </div>
               <button
                 type="button"
                 onClick={handleCopyPhone}
-                className="p-2 shrink-0 tooltip tooltip-top font-mono"
+                className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
                 data-tip={copiedPhone ? 'Copied!' : 'Copy'}
                 aria-label="Copy Phone Number"
               >
@@ -260,8 +261,8 @@ export default function Contact() {
 
         {/* Contact Form */}
         <div className="mt-4">
-          <p className="text-[10px] uppercase font-extrabold text-gray-600 mb-2 kbd shadow-xl">Send a message:</p>
-          <form onSubmit={handleSubmit} className="rounded-box p-4 md:p-5 space-y-3 bg-base-300 shadow-xl border border-gray-400">
+          <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase opacity-60 mb-3">Send a message:</p>
+          <form onSubmit={handleSubmit} className="rounded-box p-3 md:p-4 space-y-3 bg-white/50 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 border border-gray-300 hover:border-gray-400">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label className="form-control w-full">
                 <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Name</span>
@@ -310,7 +311,7 @@ export default function Contact() {
                 required
               />
             </label>
-            <button type="submit" className="btn btn-neutral font-mono mt-3" disabled={status === 'sending'}>
+            <button type="submit" className="btn btn-neutral  mt-3" disabled={status === 'sending'}>
               {status === 'sending' ? 'Sending…' : 'Send message'}
             </button>
           </form>

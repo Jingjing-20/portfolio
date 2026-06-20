@@ -5,40 +5,36 @@ const externalLinkIcon = (
 )
 
 export default function Experience() {
-  const sectionExtra = {
-    label: 'Environment',
-    title: 'On-site provincial internship',
-    detail: 'Built production features alongside PGSO staff with real datasets, scanners, and reporting requirements.',
-  }
-
   const workExperienceData = [
     {
       id: 'work-pgso-intern',
-      role: 'Web Developer',
-      organization: 'Provincial General Services Office - Property Management Division · Internship',
-      period: 'Feb 2026 - May 2026 · 4 mos',
-      location: 'Bacolod, Western Visayas, Philippines · On-site',
+      role: 'Software Developer',
+      organization: 'Provincial General Services Office - Property Management Division',
+      period: 'Feb - May 2026',
+      employmentType: 'Internship',
+      workArrangement: 'On-site',
+      location: 'Bacolod, Negros Occidental, Philippines',
       summary:
-        'Developed PGSOPMD - ULPMMS, a provincial platform for managing lots and properties with integrated tracking, interactive mapping, and document scanner processing.',
+        'Developed PGSOPMD–ULPMMS, a provincial property management platform with integrated tracking, interactive mapping, and document scanner processing.',
       description:
-        'Developed and implemented the Provincial General Services Office Property Management Division - Unified Lot & Property Management and Monitoring System (PGSOPMD - ULPMMS), a comprehensive platform for managing provincial lots and properties, featuring integrated tracking, documentation, and monitoring capabilities for efficient asset management. Includes interactive mapping and connected scanner for document processing.',
+        'Developed and implemented the Provincial General Services Office Property Management Division - Unified Lot & Property Management and Monitoring System (PGSOPMD–ULPMMS), a centralized platform for managing provincial lots and properties. The system streamlines property monitoring, document management, beneficiary tracking, and geographic visualization while improving operational efficiency through integrated mapping and scanner-assisted document processing.',
       contributions: [
-        'Built dual-module system managing lot allocations and property donations across Negros Occidental province',
-        'Migrated and consolidated legacy data records into unified database structure with data validation and integrity checks',
-        'Implemented beneficiary/awardee contract tracking with payment processing and amortization schedules',
-        'Integrated interactive GeoJSON mapping with Leaflet for geographic boundary visualization',
-        'Developed hierarchical document management system with secure storage and scanner integration for automated document processing',
-        'Created Excel import/export functionality for bulk data operations and reporting',
-        'Designed responsive UI with real-time statistics dashboard and analytics',
-        'Implemented secure authentication system with role-based access control',
+        'Developed a dual-module platform for managing lot allocations and property donations across Negros Occidental',
+        'Migrated and consolidated legacy records into a unified database with validation and integrity checks',
+        'Implemented beneficiary and awardee tracking with payment monitoring and amortization management',
+        'Integrated interactive GeoJSON maps using Leaflet for geographic visualization of properties',
+        'Built a secure document management system with scanner integration for digital record processing',
+        'Created Excel import and export features for bulk data management and reporting',
+        'Designed responsive dashboards with real-time statistics and operational insights',
+        'Implemented role-based authentication and access control for secure system administration',
       ],
-      technologies: 'PHP, MySQL, JavaScript, Leaflet.js, Tailwind CSS, Excel integration, Scanner API',
-    },
+      technologies:
+        'PHP, MySQL, JavaScript, Tailwind CSS, Leaflet.js, Excel Integration, Scanner API',
+    }
   ]
 
   return (
     <section id="work-experience" className="scroll-mt-24">
-      {/* Header */}
       <header>
         <div className="flex items-start justify-between gap-4">
           <h2 className="text-shadow-lg uppercase text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none">
@@ -51,81 +47,139 @@ export default function Experience() {
               <span className="text-gray-500">Experience</span>
             </span>
           </h2>
-          <span className="badge badge-outline badge-sm font-mono text-gray-600 font-bold border-gray-300 shrink-0 mt-1 kbd" aria-hidden="true">
+          <span className="shadow-xl badge badge-outline badge-sm text-gray-400 font-extrabold border-gray-400 shrink-0 mt-1 kbd kbd-sm md:kbd-md" aria-hidden="true">
             02
           </span>
         </div>
         <p className="mt-2 text-xs md:text-sm text-gray-500 leading-relaxed max-w-lg">
           Real-world internship experience shipping features for government property management.
         </p>
-        <hr className="mt-4 mb-6 border-gray-300" />
+        <hr className="mt-3 mb-3 border-dashed border-gray-500" />
       </header>
 
-      {/* Body */}
-      <div className="relative pl-4 md:pl-5 border-l-2 border-base-300 space-y-6">
-        
-        {/* Extra Environment Info */}
-        <ul className="list rounded-box gap-4 mb-4">
-          <li className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
-            <div className="min-w-0">
-              <div className="text-[10px] uppercase font-semibold opacity-60">{sectionExtra.label}</div>
-              <div className="text-sm md:text-base font-bold mt-1">{sectionExtra.title}</div>
-              <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{sectionExtra.detail}</p>
-            </div>
-          </li>
-        </ul>
-
-        {/* Work Experience List */}
-        <ul className="list rounded-box gap-4">
+      <div className="relative pl-4 md:pl-5 border-dashed border-l-2 border-gray-500 space-y-6">
+        <ul className="list rounded-box gap-3">
           {workExperienceData.map((work) => (
-            <li key={work.id} className="border border-gray-200 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-4 md:p-5 bg-white/50 rounded-box">
-              <div className="min-w-0">
-                <div className="text-[10px] uppercase font-semibold opacity-60">{work.organization}</div>
-                <div className="text-sm md:text-base font-bold mt-1">{work.role}</div>
-                <div className="text-[10px] opacity-60 mt-1">
-                  {work.period} · {work.location}
+            <li key={work.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 space-y-1">
+                  <h3 className="font-extrabold text-sm md:text-base text-neutral-800">
+                    {work.role}
+                  </h3>
+
+                  <p className="text-xs md:text-sm font-medium text-gray-600 mt-1">
+                    {work.organization}
+                  </p>
                 </div>
-                <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{work.summary}</p>
+                <button
+                  type="button"
+                  className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
+                  data-tip="See more"
+                  aria-label={`View ${work.role} details`}
+                  onClick={() => document.getElementById(work.id).showModal()}
+                >
+                  {externalLinkIcon}
+                </button>
               </div>
-              <button
-                type="button"
-                className="btn btn-square btn-ghost shrink-0 tooltip tooltip-top font-mono hover:bg-base-300 transition-colors"
-                data-tip="See more"
-                aria-label={`View ${work.role} details`}
-                onClick={() => document.getElementById(work.id).showModal()}
-              >
-                {externalLinkIcon}
-              </button>
+
+              <hr className="mt-3 mb-3 border-gray-400" />
+
+              <div className="text-xs md:text-sm flex flex-wrap gap-1.5 mb-3">
+                <span className="kbd kbd-xs md:kbd-sm font-medium">
+                  {work.employmentType}
+                </span>
+
+                <span className="kbd kbd-xs md:kbd-sm font-medium">
+                  {work.workArrangement}
+                </span>
+
+                <span className="kbd kbd-xs md:kbd-sm font-medium">
+                  {work.period}
+                </span>
+
+                <span className="kbd kbd-xs md:kbd-sm font-medium">
+                  {work.location}
+                </span>
+              </div>
+
+              <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                {work.summary}
+              </p>
             </li>
           ))}
         </ul>
 
-        {/* Section Meta */}
         <p className="mt-4 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
-          {workExperienceData.length} role{workExperienceData.length !== 1 ? 's' : ''} · Internship · On-site
+          {workExperienceData.length} role{workExperienceData.length !== 1 ? 's' : ''} - Internship - On-site
         </p>
 
-        {/* Modals with max-height limits for mobile */}
         {workExperienceData.map((work) => (
           <dialog key={`${work.id}-modal`} id={work.id} className="modal">
-            <div className="modal-box max-w-2xl max-h-[80vh] overflow-y-auto border border-gray-200 shadow-2xl rounded-box p-6 bg-white">
+            <div className="modal-box max-w-2xl max-h-[80vh] overflow-y-auto border border-gray-300 hover:border-gray-400 bg-white/95 backdrop-blur-sm rounded-box p-0 shadow-2xl">
               <form method="dialog">
-                <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10 bg-white/80 hover:bg-white hover:border-gray-300 border">✕</button>
               </form>
-              <h3 className="font-bold text-lg text-neutral-800">{work.role}</h3>
-              <p className="text-sm opacity-70 mt-1">{work.organization}</p>
-              <p className="text-sm opacity-70 font-mono text-gray-500">{work.period} · {work.location}</p>
-              <hr className="my-3 border-gray-200" />
-              <p className="py-2 text-sm leading-relaxed text-gray-600">{work.description}</p>
-              <h4 className="font-bold text-sm text-neutral-800 mt-4">Key contributions:</h4>
-              <ul className="list-disc list-inside mt-2 space-y-1.5 text-sm text-gray-600">
-                {work.contributions.map((item, idx) => (
-                  <li key={idx} className="leading-relaxed">{item}</li>
-                ))}
-              </ul>
-              <p className="mt-5 text-sm bg-neutral-50 p-2.5 rounded border border-neutral-200">
-                <span className="font-bold text-neutral-700">Technologies:</span> <span className="font-mono text-xs">{work.technologies}</span>
-              </p>
+              
+              {/* Card Header - matches card format */}
+              <div className="p-6 pb-0">
+                <div className="min-w-0 space-y-1">
+                  <h3 className="font-extrabold text-sm md:text-base text-neutral-800">
+                    {work.role}
+                  </h3>
+
+                  <p className="text-xs md:text-sm font-medium text-gray-600 mt-1">
+                    {work.organization}
+                  </p>
+                </div>
+                
+                <hr className="mt-3 mb-3 border-gray-400" />
+
+                <div className="text-xs md:text-sm flex flex-wrap gap-1.5 mb-3">
+                  <span className="kbd kbd-xs md:kbd-sm font-medium">
+                    {work.employmentType}
+                  </span>
+
+                  <span className="kbd kbd-xs md:kbd-sm font-medium">
+                    {work.workArrangement}
+                  </span>
+
+                  <span className="kbd kbd-xs md:kbd-sm font-medium">
+                    {work.period}
+                  </span>
+
+                  <span className="kbd kbd-xs md:kbd-sm font-medium">
+                    {work.location}
+                  </span>
+                </div>
+              </div>
+              
+              {/* Card Body */}
+              <div className="p-6 pt-0">
+                {/* Overview */}
+                <div className="mb-5">
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-2">
+                    Overview
+                  </h4>
+                  <p className="text-sm leading-relaxed text-gray-700">
+                    {work.description}
+                  </p>
+                </div>
+
+                {/* Contributions */}
+                <div>
+                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-3">
+                    Key Contributions
+                  </h4>
+                  <ul className="space-y-2">
+                    {work.contributions.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
+                        <span className="text-gray-400 font-bold mt-0.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
             <form method="dialog" className="modal-backdrop bg-black/30 backdrop-blur-xs">
               <button type="submit">close</button>

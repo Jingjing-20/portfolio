@@ -69,11 +69,11 @@ export default function Footer() {
           {/* Quick Links Section - with arrow icons w-3 h-3 */}
           <nav>
             <h6 className="text-sm md:text-base">Quick Links</h6>
-            <a className="link link-hover flex items-center gap-1">
+            <a href="/" className="link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
               {arrowIcon}
               Home
             </a>
-            <a className="link link-hover flex items-center gap-1">
+            <a href="/projects" className="link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
               {arrowIcon}
               Projects
             </a>
