@@ -170,7 +170,7 @@ export default function Projects() {
         { src: unifiedFilingImg, alt: 'Unified Filing', description: 'Organize all property documents in a central vault. Keep your records safe, secure, and easy to search.' },
         { src: assetControlImg, alt: 'Asset Control', description: 'Monitor current conditions, usage, and maintenance status from one dashboard.' }
       ],
-      techStack: ['Laravel', 'React', 'Tailwind CSS', 'MySQL', 'Leaflet']
+      techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'Leaflet']
     },
   ]
 
