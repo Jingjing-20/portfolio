@@ -1,17 +1,23 @@
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: light --default;
 }
 
+.tooltip:before {
+  font-size: 0.75rem;
+  /* text-xs */
+}
+
 .custom-background {
   min-height: 100svh;
-  background: #fafbfc;
-  /* Subtle textured background */
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9) 0%, rgba(250,251,252,1) 50%),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 3px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 3px);
-  background-size: cover, auto, auto;
+  background-color: #fafafa;
+  background-image: repeating-linear-gradient(45deg,
+      #f3f4f6 0px,
+      #f3f4f6 2px,
+      transparent 2px,
+      transparent 8px);
+  background-attachment: fixed;
 }
 
 /* Smooth transitions for tooltips and dropdowns */
@@ -22,4 +28,3 @@
 .dropdown-content {
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
-

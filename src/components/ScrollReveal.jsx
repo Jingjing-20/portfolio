@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function ScrollReveal({ children, animation = 'fadeInUp', duration = '0.8s', delay = '0s' }) {
   const [isIntersecting, setIsIntersecting] = useState(false)

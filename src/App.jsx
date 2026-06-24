@@ -1,4 +1,3 @@
-import React from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import DeveloperCard from './components/DeveloperCard'
@@ -17,18 +16,18 @@ function App() {
       {/* 1. Navbar */}
       <Navbar />
 
-      <div className="mt-10 md:mt-24 max-w-7xl mx-auto px-4 md:px-12 lg:px-24 py-8">
+      <div className="pt-16 md:pt-32 pb-8 max-w-7xl mx-auto px-4 md:px-12 lg:px-24">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-16">
-          
+
           {/* 2. Left side developer card */}
           <div className="animated slideInLeft md:col-span-2 md:sticky md:top-24 h-fit flex justify-center">
-                <DeveloperCard />
+            <DeveloperCard />
           </div>
 
           {/* Right side sections (3 to 8) */}
           <div className="md:col-span-3">
             <div className="space-y-12 pb-12 pt-4">
-              
+
               {/* 3. About */}
               <ScrollReveal animation="fadeInUp" duration="0.8s">
                 <About />

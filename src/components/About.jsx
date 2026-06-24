@@ -1,4 +1,3 @@
-import React from 'react'
 import resumePdf from '../assets/resume versions/GCNU - RESUME v8.pdf'
 
 const resumeIcon = (
@@ -6,7 +5,7 @@ const resumeIcon = (
 )
 
 const downloadIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-600" width="1em" height="1em" viewBox="0 0 512 512"><title xmlns="">download-outline</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M336 176h40a40 40 0 0 1 40 40v208a40 40 0 0 1-40 40H136a40 40 0 0 1-40-40V216a40 40 0 0 1 40-40h40"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m176 272l80 80l80-80M256 48v288"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-600" width="1em" height="1em" viewBox="0 0 512 512"><title xmlns="">download-outline</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M336 176h40a40 40 0 0 1 40 40v208a40 40 0 0 1-40 40H136a40 40 0 0 1-40-40V216a40 40 0 0 1 40-40h40"/><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="m176 272l80 80l80-80M256 48v288"/></svg>
 )
 
 export default function About() {

@@ -1,4 +1,3 @@
-import React from 'react'
 
 const externalLinkIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
@@ -60,7 +59,7 @@ export default function Experience() {
       <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         <ul className="list rounded-box gap-3">
           {workExperienceData.map((work) => (
-            <li key={work.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">
+            <li key={work.id} className="border border-gray-300 hover:border-gray-400 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 rounded-box" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(255,255,255,0.75) 0%, rgba(243,243,243,0.45) 100%), url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='%23000' fill-opacity='0.04'/%3E%3C/svg%3E\")" }}>
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 space-y-1">
                   <h3 className="font-extrabold text-sm md:text-base text-neutral-800">
