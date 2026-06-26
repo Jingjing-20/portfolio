@@ -1,11 +1,11 @@
-import resumePdf from '../assets/resume versions/GCNU - RESUME v8.pdf'
+import resumePdf from '../assets/resume versions/GCNU - RESUME v9.pdf'
 
 const resumeIcon = (
   <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.5em] text-gray-600" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" /></svg>
 )
 
 const downloadIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-600" width="1em" height="1em" viewBox="0 0 512 512"><title xmlns="">download-outline</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M336 176h40a40 40 0 0 1 40 40v208a40 40 0 0 1-40 40H136a40 40 0 0 1-40-40V216a40 40 0 0 1 40-40h40"/><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="m176 272l80 80l80-80M256 48v288"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-600" width="1em" height="1em" viewBox="0 0 512 512"><title xmlns="">download-outline</title><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M336 176h40a40 40 0 0 1 40 40v208a40 40 0 0 1-40 40H136a40 40 0 0 1-40-40V216a40 40 0 0 1 40-40h40" /><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="m176 272l80 80l80-80M256 48v288" /></svg>
 )
 
 export default function About() {
@@ -15,7 +15,7 @@ export default function About() {
   const aboutData = [
     {
       label: 'Education',
-      title: "BS in Information Technology - 2026",
+      title: "Bachelor of Science in Information Technology - 2026",
       detail: "Carlos Hilado Memorial State University - Alijis · Capstone focused on institutional web systems. Specialized in web development, database design, and software engineering principles.",
     },
     {
@@ -36,8 +36,8 @@ export default function About() {
       {/* Header */}
       <header>
         <div className="flex items-start justify-between gap-4">
-        <h2 className="text-shadow-lg uppercase text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none">
-        <span className="md:hidden">
+          <h2 className="text-shadow-lg uppercase text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-none">
+            <span className="md:hidden">
               Software <span className="text-gray-500">Developer</span>
             </span>
             <span className="hidden md:block">
@@ -59,7 +59,7 @@ export default function About() {
       {/* Body */}
       <div className="relative pl-4 md:pl-5 border-l border-gray-500 space-y-6">
         <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{aboutIntro}</p>
-        
+
         <ul className="list rounded-box gap-3">
           {aboutData.map((item) => (
             <li key={item.label} className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-start p-3 md:p-4 bg-white/50 rounded-box">

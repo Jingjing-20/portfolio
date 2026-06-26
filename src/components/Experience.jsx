@@ -1,34 +1,32 @@
 
 const externalLinkIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1.2em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" /></svg>
 )
 
 export default function Experience() {
   const workExperienceData = [
     {
       id: 'work-pgso-intern',
-      role: 'Software Developer',
+      role: 'Full-Stack Developer & Systems Administrator',
       organization: 'Provincial General Services Office - Property Management Division',
       period: 'Feb - May 2026',
       employmentType: 'Internship',
       workArrangement: 'On-site',
       location: 'Bacolod, Negros Occidental, Philippines',
       summary:
-        'Developed PGSOPMD–ULPMMS, a provincial property management platform with integrated tracking, interactive mapping, and document scanner processing.',
+        'Developed and maintained PGSO-PMD: ULPMMS, a provincial property management platform with integrated tracking, interactive mapping, and document scanner processing.',
       description:
-        'Developed and implemented the Provincial General Services Office Property Management Division - Unified Lot & Property Management and Monitoring System (PGSOPMD–ULPMMS), a centralized platform for managing provincial lots and properties. The system streamlines property monitoring, document management, beneficiary tracking, and geographic visualization while improving operational efficiency through integrated mapping and scanner-assisted document processing.',
+        'Developed and implemented the Provincial General Services Office Property Management Division - Unified Lot & Property Management and Monitoring System (PGSO-PMD: ULPMMS), a centralized platform for managing provincial lots and properties. The system streamlines property monitoring, document management, beneficiary tracking, and geographic visualization while improving operational efficiency through integrated mapping and scanner-assisted document processing.',
       contributions: [
-        'Developed a dual-module platform for managing lot allocations and property donations across Negros Occidental',
-        'Migrated and consolidated legacy records into a unified database with validation and integrity checks',
-        'Implemented beneficiary and awardee tracking with payment monitoring and amortization management',
-        'Integrated interactive GeoJSON maps using Leaflet for geographic visualization of properties',
-        'Built a secure document management system with scanner integration for digital record processing',
-        'Created Excel import and export features for bulk data management and reporting',
-        'Designed responsive dashboards with real-time statistics and operational insights',
-        'Implemented role-based authentication and access control for secure system administration',
+        'Improved property management by developing a system for lot allocations and property donations.',
+        'Increased data accuracy by migrating legacy records into a unified database.',
+        'Simplified payment processing by implementing beneficiary and amortization tracking.',
+        'Enhanced property monitoring by integrating interactive maps with Leaflet.',
+        'Reduced manual paperwork by building a secure document management system.',
+        'Optimized reporting by creating Excel import and export features.',
+        'Improved decision-making by designing dashboards with real-time statistics.',
+        'Strengthened security by implementing role-based access control and authentication.'
       ],
-      technologies:
-        'PHP, MySQL, JavaScript, Tailwind CSS, Leaflet.js, Excel Integration, Scanner API',
     }
   ]
 
@@ -118,7 +116,7 @@ export default function Experience() {
               <form method="dialog">
                 <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10 bg-white/80 hover:bg-white hover:border-gray-300 border">✕</button>
               </form>
-              
+
               {/* Card Header - matches card format */}
               <div className="p-6 pb-0">
                 <div className="min-w-0 space-y-1">
@@ -130,7 +128,7 @@ export default function Experience() {
                     {work.organization}
                   </p>
                 </div>
-                
+
                 <hr className="mt-3 mb-3 border-gray-400" />
 
                 <div className="text-xs md:text-sm flex flex-wrap gap-1.5 mb-3">
@@ -151,27 +149,27 @@ export default function Experience() {
                   </span>
                 </div>
               </div>
-              
+
               {/* Card Body */}
               <div className="p-6 pt-0">
                 {/* Overview */}
                 <div className="mb-5">
-                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-2">
+                  <h4 className="text-xs md:text-sm uppercase tracking-wider font-bold text-gray-500 mb-2">
                     Overview
                   </h4>
-                  <p className="text-sm leading-relaxed text-gray-700">
+                  <p className="text-[10px] md:text-xs text-gray-700 leading-relaxed">
                     {work.description}
                   </p>
                 </div>
 
                 {/* Contributions */}
                 <div>
-                  <h4 className="text-xs uppercase tracking-wider font-bold text-gray-500 mb-3">
+                  <h4 className="text-xs md:text-sm uppercase tracking-wider font-bold text-gray-500 mb-3">
                     Key Contributions
                   </h4>
                   <ul className="space-y-2">
                     {work.contributions.map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
+                      <li key={idx} className="flex items-start gap-1.5 text-[10px] md:text-xs text-gray-700 leading-relaxed">
                         <span className="text-gray-400 font-bold mt-0.5">•</span>
                         <span>{item}</span>
                       </li>

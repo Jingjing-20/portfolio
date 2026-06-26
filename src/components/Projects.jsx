@@ -108,11 +108,21 @@ export default function Projects() {
       year: '2025',
       beneficiary: 'Carlos Hilado Memorial State University - Alijis',
       title:
-        'CHMSU: AGRM (Carlos Hilado Memorial State University: Integrated Online Platform for Academic Grade and Report Management)',
+        'Integrated Online Platform for Academic Grade and Report Management',
       summary:
         'Role-based academic platform for administrators, faculty, and students with enrollment, grade management, QR attendance, automated emails, and PDF/Excel reporting.',
       description:
-        'A comprehensive academic management system was built for Carlos Hilado Memorial State University to centralize and streamline institutional data. The platform supports three distinct user roles: administrators, faculty, and students, each with a tailored dashboard and access level. Administrators manage students, faculty profiles, course enrollments, academic programs, sections, and grading periods. Faculty members encode and manage grades across multiple grading components such as assessments, exams, participation, projects, and term grades, with automatic computation. Students can view their academic records, monitor enrollment status, and track grades in real time. The system also features QR-based attendance scanning, where faculty generate QR codes per session and students scan them using a device camera for instant attendance logging. Automated email notifications handle enrollment confirmations, signup verifications, and password resets. Data can be exported as formatted PDF reports and Excel spreadsheets for institutional reporting.',
+        'A comprehensive academic management system built to centralize and streamline institutional data.',
+      details: [
+        'Created an academic management system for Carlos Hilado Memorial State University.',
+        'Built separate dashboards for administrators, faculty, and students.',
+        'Managed student, faculty, enrollment, program, and section records.',
+        'Reduced manual grading by adding automatic grade computation.',
+        'Allowed students to check grades and enrollment status online.',
+        'Used QR codes to make attendance recording faster and easier.',
+        'Sent email notifications for account verification and password recovery.',
+        'Generated PDF and Excel reports for school records.',
+      ],
       images: [
         { src: chmsuIndexImg, alt: 'Index Page' },
         { src: chmsuSigninFormImg, alt: 'Signin Form' },
@@ -151,11 +161,21 @@ export default function Projects() {
       beneficiary:
         'Provincial Government of Negros Occidental (General Services Office - Property Management Division)',
       title:
-        'PGSO-PMD : ULPMMS (Provincial General Services Office-Property Management Division: Unified Lot and Property Management and Monitoring System)',
+        'Unified Lot and Property Management and Monitoring System',
       summary:
         'Provincial lot and property system with awardee tracking, payments, document management, Leaflet map plotting, dashboard analytics, and Excel import/export.',
       description:
-        'A provincial-scale digital platform was developed for the Provincial General Services Office of Negros Occidental to manage and monitor government housing lots and property assets. The system is divided into two modules: Lot Management and Property Management, both operating under a unified authentication and user management layer. Key features include awardee and beneficiary tracking, lot and location assignment, payment recording and monitoring with support for multiple payment methods, document management with categorized file uploads, and duplicate transaction detection. Geographic boundary mapping is integrated using Leaflet.js, enabling administrators to visually plot and view lot boundaries and locations on an interactive map. The platform also provides dashboard analytics with charts, Excel import/export for bulk data operations, and print-ready reports for official documentation.',
+        'A provincial-scale digital platform developed to manage and monitor government housing lots and property assets.',
+      details: [
+        'Developed a digital platform for managing government housing lots and property assets.',
+        'Built separate modules for lot management and property management.',
+        'Tracked beneficiaries, lot assignments, and payment records.',
+        'Added document management and duplicate transaction checking.',
+        'Used Leaflet.js to display lot boundaries and property locations.',
+        'Created dashboards with charts and real-time statistics.',
+        'Supported bulk operations through Excel import and export features.',
+        'Generated print-ready reports for official records.',
+      ],
       images: [
         { src: homePageImg, alt: 'Home Page', description: 'Main landing page displaying both Lot and Property Management System overview' },
         { src: lotSigninImg, alt: 'Lot Signin Page', description: 'Page used to access lot management system' },
@@ -282,7 +302,7 @@ export default function Projects() {
                   {project.beneficiary}
                 </p>
 
-                <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
+                <p className="text-[10px] md:text-xs text-gray-600 leading-relaxed">{project.summary}</p>
               </li>
             ))}
           </ul>
@@ -315,7 +335,7 @@ export default function Projects() {
                   <span className="kbd kbd-xs md:kbd-sm font-medium">Academic</span>
                 </div>
 
-                <p className="text-xs md:text-sm text-gray-600 leading-relaxed">{project.summary}</p>
+                <p className="text-[10px] md:text-xs text-gray-600 leading-relaxed">{project.summary}</p>
               </li>
             ))}
           </ul>
@@ -330,7 +350,7 @@ export default function Projects() {
         {/* Project Detail Modals */}
         {recentProjectsData.map((project) => (
           <dialog key={`${project.id}-modal`} id={project.id} className="modal">
-            <div className="modal-box max-w-4xl max-h-[80vh] overflow-y-auto border border-gray-300 hover:border-gray-400 bg-white/95 backdrop-blur-sm rounded-box p-0 shadow-2xl">
+            <div className="modal-box max-w-3xl max-h-[80vh] overflow-y-auto border border-gray-300 hover:border-gray-400 bg-white/95 backdrop-blur-sm rounded-box p-0 shadow-2xl">
               <form method="dialog">
                 <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10 bg-white/80 hover:bg-white hover:border-gray-300 border" aria-label="Close modal">
                   {closeIcon}
@@ -357,8 +377,15 @@ export default function Projects() {
               </div>
 
               <div className="p-6 pt-0">
-                <div className="mb-5">
+                <div className="mb-5 space-y-3">
                   <p className="text-xs md:text-sm leading-relaxed text-gray-700">{project.description}</p>
+                  {project.details && project.details.length > 0 && (
+                    <ul className="list-disc list-inside text-xs md:text-sm leading-relaxed text-gray-700 space-y-1">
+                      {project.details.map((detail, idx) => (
+                        <li key={idx}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 {project.images && project.images.length > 0 && (
