@@ -161,7 +161,7 @@ export default function Projects() {
       beneficiary:
         'Provincial Government of Negros Occidental (General Services Office - Property Management Division)',
       title:
-        'Unified Lot and Property Management and Monitoring System',
+        'Unified Lot and Property Management and Monitoring ',
       summary:
         'Provincial lot and property system with awardee tracking, payments, document management, Leaflet map plotting, dashboard analytics, and Excel import/export.',
       description:
@@ -177,7 +177,7 @@ export default function Projects() {
         'Generated print-ready reports for official records.',
       ],
       images: [
-        { src: homePageImg, alt: 'Home Page', description: 'Main landing page displaying both Lot and Property Management System overview' },
+        { src: homePageImg, alt: 'Home Page', description: 'Main landing page displaying both Lot and Property Management overview' },
         { src: lotSigninImg, alt: 'Lot Signin Page', description: 'Page used to access lot management system' },
         { src: propertySigninImg, alt: 'Property Signin Page', description: 'Page used to access property management system' },
         { src: interactiveMappingImg, alt: 'Interactive Mapping', description: 'View all provincial lots on an interactive map. Track boundaries and check real-time status easily.' },
@@ -197,7 +197,7 @@ export default function Projects() {
   const otherProjects = [
     {
       id: 'project-volunteering',
-      title: 'Volunteering Management System',
+      title: 'Volunteering Management ',
       summary:
         'Platform for coordinating volunteer registrations, event assignments, hour tracking, and activity reporting.',
       description:
@@ -205,7 +205,7 @@ export default function Projects() {
     },
     {
       id: 'project-qr-memorandum',
-      title: 'QR-Code Based Memorandum Distribution System',
+      title: 'QR-Code Based Memorandum Distribution ',
       summary:
         'Digital memorandum distribution with QR verification for secure document access and acknowledgment tracking.',
       description:
@@ -213,7 +213,7 @@ export default function Projects() {
     },
     {
       id: 'project-capstone-archive',
-      title: 'Capstone Archive Management System',
+      title: 'Capstone Archive Management ',
       summary:
         'Archive and retrieval system for capstone projects with metadata search, file uploads, and role-based access.',
       description:
@@ -221,7 +221,7 @@ export default function Projects() {
     },
     {
       id: 'project-patient-appointment',
-      title: 'Patient Appointment System',
+      title: 'Patient Appointment ',
       summary:
         'Clinic scheduling system with patient registration, doctor availability, appointment booking, and status tracking.',
       description:
@@ -274,8 +274,8 @@ export default function Projects() {
           <ul className="list rounded-box gap-3">
             {recentProjectsData.map((project) => (
               <li key={project.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 space-y-1">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="min-w-0">
                     <h3 className="font-bold text-xs md:text-sm">
                       {project.title}
                     </h3>
@@ -314,8 +314,8 @@ export default function Projects() {
           <ul className="list rounded-box gap-3">
             {otherProjects.map((project) => (
               <li key={project.id} className="border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300 p-3 md:p-4 bg-white/50 rounded-box">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 self-center">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="min-w-0">
                     <h3 className="font-bold text-xs md:text-sm text-neutral-800">{project.title}</h3>
                   </div>
                   <button
