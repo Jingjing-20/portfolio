@@ -52,13 +52,13 @@ export default function Footer() {
         <div className="footer sm:footer-horizontal p-10 pb-8">
           {/* Quote Section - with coffee icon and each word in separate kbd */}
           <nav className="max-w-md">
-            <h6 className="text-xs md:text-sm flex items-center gap-2 mb-3">
+            <h6 className="kbd text-[10px] md:text-xs font-extrabold bg-base-200 shadow-xl uppercase gap-1">
               {coffeeIcon}
               <span>Caffeine Log</span>
             </h6>
             <div className="flex flex-wrap gap-0.5">
               {coffeePhraseWords.map((word, index) => (
-                <kbd key={index} className="kbd kbd-xs md:kbd-sm bg-base-200">
+                <kbd key={index} className="kbd kbd-xs md:kbd-sm bg-base-200 shadow-xl">
                   {word}
                 </kbd>
               ))}
@@ -67,20 +67,28 @@ export default function Footer() {
 
           {/* Quick Links Section - with arrow icons w-3 h-3 */}
           <nav>
-            <h6 className="text-xs md:text-sm">Quick Links</h6>
-            <a href="/" className="link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
-              {arrowIcon}
-              Home
-            </a>
-            <a href="/projects" className="link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
-              {arrowIcon}
-              Projects
-            </a>
-            <a className="link link-hover flex items-center gap-1">
+            <h6 className="kbd text-[10px] md:text-xs font-extrabold bg-base-200 shadow-xl uppercase">Quick Links</h6>
+            <a href="#about-me" className="text-xs text-gray-700 font-semibold link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
               {arrowIcon}
               About
             </a>
-            <a className="link link-hover flex items-center gap-1">
+            <a href="#work-experience" className="text-xs text-gray-700 font-semibold link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
+              {arrowIcon}
+              Experience
+            </a>
+            <a href="#recent-projects" className="text-xs text-gray-700 font-semibold link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
+              {arrowIcon}
+              Projects
+            </a>
+            <a href="#tech-stack" className="text-xs text-gray-700 font-semibold link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
+              {arrowIcon}
+              Tools
+            </a>
+            <a href="#participation-certificates" className="text-xs text-gray-700 font-semibold link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
+              {arrowIcon}
+              Certificates
+            </a>
+            <a href="#contact" className="text-xs text-gray-700 font-semibold link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
               {arrowIcon}
               Contact
             </a>
@@ -88,7 +96,7 @@ export default function Footer() {
 
           {/* Built With Section - Horizontal icons */}
           <nav>
-            <h6 className="text-xs md:text-sm">Built With</h6>
+            <h6 className="kbd text-[10px] md:text-xs font-extrabold bg-base-200 shadow-xl uppercase">Built With</h6>
             <div className="flex flex-row gap-4">
               {portfolioStack.map((item) => (
                 <div key={item.name} className="tooltip tooltip-top font-bold" data-tip={item.name}>

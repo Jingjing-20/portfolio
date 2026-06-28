@@ -61,39 +61,39 @@ export default function DeveloperCard() {
           <div className="my-5 h-px bg-gradient-to-r from-transparent via-neutral-600 to-transparent" />
 
           {/* Information */}
-          <div className="space-y-3 text-sm">
+          <div className="space-y-2 md:space-y-3 text-sm">
 
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-neutral-500">Address</span>
-              <span className="text-right font-medium text-white">
-                Valladolid, Negros Occidental
+              <span className="font-semibold text-xs md:text-sm text-neutral-500">Address</span>
+              <span className="text-right text-xs md:text-sm font-medium text-white">
+                Negros Occidental, Philippines
               </span>
             </div>
 
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-neutral-500">Languages</span>
-              <span className="text-right font-medium text-white">
+              <span className="font-semibold text-xs md:text-sm text-neutral-500">Languages</span>
+              <span className="text-right text-xs md:text-sm font-medium text-white">
                 {languages}
               </span>
             </div>
 
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-neutral-500">Birth Date</span>
-              <span className="font-medium text-white">
+              <span className="font-semibold text-xs md:text-sm text-neutral-500">Birth Date</span>
+              <span className="text-right text-xs md:text-sm font-medium text-white">
                 {birthDate}
               </span>
             </div>
 
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-neutral-500">Gender</span>
-              <span className="font-medium text-white">
+              <span className="font-semibold text-xs md:text-sm text-neutral-500">Gender</span>
+              <span className="text-right text-xs md:text-sm font-medium text-white">
                 {gender}
               </span>
             </div>
 
             <div className="flex justify-between gap-4">
-              <span className="font-semibold text-neutral-500">Age</span>
-              <span className="font-medium text-white">
+              <span className="font-semibold text-xs md:text-sm text-neutral-500">Age</span>
+              <span className="text-right text-xs md:text-sm font-medium text-white">
                 {age}
               </span>
             </div>
