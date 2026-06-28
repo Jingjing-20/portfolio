@@ -46,13 +46,13 @@ export default function Footer() {
   const name = 'Gian Carlo N. Ulep'
 
   return (
-    <footer className="shadow-xl bg-base-300 border border-gray-400 text-base-content mt-6 rounded-box">
+    <footer className="duration-300 shadow-md hover:shadow-xl bg-base-300 border border-gray-300 hover:border-gray-400 text-base-content mt-6 rounded-box">
       <div className="flex w-full flex-col">
         {/* Upper Section - 3 Columns */}
         <div className="footer sm:footer-horizontal p-10 pb-8">
           {/* Quote Section - with coffee icon and each word in separate kbd */}
           <nav className="max-w-md">
-            <h6 className="text-sm md:text-base flex items-center gap-2 mb-3 kbd">
+            <h6 className="text-xs md:text-sm flex items-center gap-2 mb-3">
               {coffeeIcon}
               <span>Caffeine Log</span>
             </h6>
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Quick Links Section - with arrow icons w-3 h-3 */}
           <nav>
-            <h6 className="text-sm md:text-base kbd">Quick Links</h6>
+            <h6 className="text-xs md:text-sm">Quick Links</h6>
             <a href="/" className="link link-hover flex items-center gap-1 border-b-2 border-transparent hover:border-gray-400">
               {arrowIcon}
               Home
@@ -88,7 +88,7 @@ export default function Footer() {
 
           {/* Built With Section - Horizontal icons */}
           <nav>
-            <h6 className="text-sm md:text-base kbd">Built With</h6>
+            <h6 className="text-xs md:text-sm">Built With</h6>
             <div className="flex flex-row gap-4">
               {portfolioStack.map((item) => (
                 <div key={item.name} className="tooltip tooltip-top font-bold" data-tip={item.name}>

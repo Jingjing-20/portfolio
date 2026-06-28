@@ -5,8 +5,7 @@
 }
 
 .tooltip:before {
-  font-size: 0.75rem;
-  /* text-xs */
+  font-size: 0.65rem;
 }
 
 .custom-background {
