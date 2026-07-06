@@ -100,11 +100,6 @@ export default function About() {
             </div>
           </li>
         </ul>
-
-        {/* Meta */}
-        <p className="text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
-          Based in Negros Occidental, Philippines · BSIT GRADUATE 2026
-        </p>
       </div>
     </section>
   )

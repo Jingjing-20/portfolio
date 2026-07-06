@@ -341,12 +341,6 @@ export default function Projects() {
           </ul>
         </div>
 
-        {/* Section Meta */}
-        <p className="mt-4 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
-          {recentProjectsData.length} deployed · {otherProjects.length} academic ·{' '}
-          {recentProjectsData.length + otherProjects.length} total
-        </p>
-
         {/* Project Detail Modals */}
         {recentProjectsData.map((project) => (
           <dialog key={`${project.id}-modal`} id={project.id} className="modal">

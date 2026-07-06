@@ -5,11 +5,11 @@ const externalLinkIcon = (
 )
 
 const copyIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-3.5" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></g></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></g></svg>
 )
 
 const checkIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-3.5 text-success" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 6L9 17l-5-5" /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-success" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 6L9 17l-5-5" /></svg>
 )
 
 const facebookIcon = (
@@ -196,65 +196,98 @@ export default function Contact() {
 
             {/* Standard Social Links */}
             {socialLinks.map((link) => (
-              <li key={link.label} className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
-                <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0">
-                  {link.icon}
+              <li
+                key={link.label}
+                className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex"
+              >
+                {/* Social Icon with Overlay */}
+                <div className="relative shrink-0">
+                <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center">
+                    {link.icon}
+                  </div>
+
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute -top-2 -right-2 btn btn-xs btn-square border border-gray-300 bg-white hover:border-gray-400 tooltip tooltip-top shadow-md"
+                    data-tip="Open link"
+                    aria-label={`Open ${link.label}`}
+                  >
+                    {externalLinkIcon}
+                  </a>
                 </div>
+
+                {/* Link Information */}
                 <div className="min-w-0 flex-1 ml-3">
-                  <div className="text-xs md:text-sm font-bold leading-snug">{link.label}</div>
-                  <p className="text-[10px] md:text-xs text-gray-600 truncate">{link.value}</p>
+                  <div className="text-xs md:text-sm font-bold leading-snug">
+                    {link.label}
+                  </div>
+                  <p className="text-[10px] md:text-xs text-gray-600 truncate">
+                    {link.value}
+                  </p>
                 </div>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
-                  data-tip="Open link"
-                  aria-label={`Open ${link.label}`}
-                >
-                  {externalLinkIcon}
-                </a>
               </li>
             ))}
 
             {/* Gmail Row */}
             <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box bg-base-300 p-2 flex items-center justify-center shrink-0">
-                {gmailIcon}
+              {/* Gmail Icon with Copy Overlay */}
+              <div className="relative shrink-0">
+                <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center">
+                  {gmailIcon}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="absolute -top-2 -right-2 btn btn-xs btn-square border border-gray-300 bg-white hover:border-gray-400 tooltip tooltip-top shadow-md"
+                  data-tip={copiedEmail ? "Copied!" : "Copy"}
+                  aria-label="Copy Gmail Address"
+                >
+                  {copiedEmail ? checkIcon : copyIcon}
+                </button>
               </div>
+
+              {/* Gmail Info */}
               <div className="min-w-0 flex-1 ml-3">
-                <div className="text-xs md:text-sm font-bold leading-snug">Gmail</div>
-                <p className="text-[10px] md:text-sm text-gray-600 truncate">{recipientEmail}</p>
+                <div className="text-xs md:text-sm font-bold leading-snug">
+                  Gmail
+                </div>
+                <p className="text-[10px] md:text-xs text-gray-600 truncate">
+                  {recipientEmail}
+                </p>
               </div>
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
-                data-tip={copiedEmail ? 'Copied!' : 'Copy'}
-                aria-label="Copy Gmail Address"
-              >
-                {copiedEmail ? checkIcon : copyIcon}
-              </button>
             </li>
 
             {/* Phone Row */}
             <li className="border border-gray-300 hover:border-gray-400 list-row hover:bg-base-300 hover:shadow-2xl transition-all duration-300 items-center p-3 md:p-4 bg-white/50 rounded-box flex">
-              <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center shrink-0">
-                {phoneIcon}
+              {/* Phone Icon with Copy Overlay */}
+              <div className="relative shrink-0">
+                <div className="shadow-xl size-10 rounded-box border border-gray-300 bg-base-300 p-2 flex items-center justify-center">
+                  {phoneIcon}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleCopyPhone}
+                  className="absolute -top-2 -right-2 btn btn-xs btn-square border border-gray-300 bg-white hover:border-gray-400 tooltip tooltip-top shadow-md"
+                  data-tip={copiedPhone ? "Copied!" : "Copy"}
+                  aria-label="Copy Phone Number"
+                >
+                  {copiedPhone ? checkIcon : copyIcon}
+                </button>
               </div>
+
+              {/* Phone Info */}
               <div className="min-w-0 flex-1 ml-3">
-                <div className="text-xs md:text-sm font-bold leading-snug">Phone</div>
-                <p className="text-[10px] md:text-xs text-gray-600 truncate">{phone}</p>
+                <div className="text-xs md:text-sm font-bold leading-snug">
+                  Contact Number
+                </div>
+                <p className="text-[10px] md:text-xs text-gray-600 truncate">
+                  {phone}
+                </p>
               </div>
-              <button
-                type="button"
-                onClick={handleCopyPhone}
-                className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold shrink-0"
-                data-tip={copiedPhone ? 'Copied!' : 'Copy'}
-                aria-label="Copy Phone Number"
-              >
-                {copiedPhone ? checkIcon : copyIcon}
-              </button>
             </li>
           </ul>
         </div>
@@ -263,13 +296,12 @@ export default function Contact() {
         <div className="mt-4">
           <p className="shadow-xl bg-base-300 border border-gray-400 kbd font-extrabold text-[8px] md:text-[10px] uppercase mb-3">Send a message:</p>
           <form onSubmit={handleSubmit} className="rounded-box p-3 md:p-4 space-y-3 bg-base-300 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-300 hover:border-gray-400">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <label className="form-control w-full">
-                <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Name</span>
+                <span className="text-[10px] uppercase font-semibold opacity-60">Name</span>
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your name"
                   className="input input-bordered w-full"
                   value={form.name}
                   onChange={update('name')}
@@ -277,11 +309,10 @@ export default function Contact() {
                 />
               </label>
               <label className="form-control w-full">
-                <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Email</span>
+                <span className="text-[10px] uppercase font-semibold opacity-60">Email</span>
                 <input
                   type="email"
                   name="email"
-                  placeholder="you@example.com"
                   className="input input-bordered w-full"
                   value={form.email}
                   onChange={update('email')}
@@ -289,28 +320,30 @@ export default function Contact() {
                 />
               </label>
             </div>
-            <label className="form-control w-full">
-              <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Subject</span>
-              <input
-                type="text"
-                name="subject"
-                placeholder="Project inquiry, collaboration, etc."
-                className="input input-bordered w-full"
-                value={form.subject}
-                onChange={update('subject')}
-              />
-            </label>
-            <label className="form-control w-full">
-              <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Message</span>
-              <textarea
-                name="message"
-                placeholder="Tell me about your project, timeline, and goals..."
-                className="textarea textarea-bordered w-full min-h-32"
-                value={form.message}
-                onChange={update('message')}
-                required
-              />
-            </label>
+            <div>
+              <label className="form-control w-full">
+                <span className="text-[10px] uppercase font-semibold opacity-60 mb-1">Subject</span>
+                <input
+                  type="text"
+                  name="subject"
+                  className="input input-bordered w-full"
+                  value={form.subject}
+                  onChange={update('subject')}
+                />
+              </label>
+            </div>
+            <div>
+              <label className="form-control w-full">
+                <span className="text-[10px] uppercase font-semibold opacity-60">Message</span>
+                <textarea
+                  name="message"
+                  className="textarea textarea-bordered w-full min-h-32"
+                  value={form.message}
+                  onChange={update('message')}
+                  required
+                />
+              </label>
+            </div>
             <button type="submit" className="btn btn-neutral  mt-3" disabled={status === 'sending'}>
               {status === 'sending' ? 'Sending…' : 'Send message'}
             </button>
@@ -323,11 +356,6 @@ export default function Contact() {
             </div>
           )}
         </div>
-
-        {/* Section Meta */}
-        <p className="mt-2 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
-          Messages delivered to {recipientEmail}
-        </p>
       </div>
     </section>
   )

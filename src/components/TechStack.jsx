@@ -99,11 +99,6 @@ export default function TechStack() {
             </li>
           ))}
         </ul>
-
-        {/* Section Meta */}
-        <p className="mt-2 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
-          13 Tools
-        </p>
       </div>
     </section>
   )

@@ -106,10 +106,6 @@ export default function Experience() {
           ))}
         </ul>
 
-        <p className="mt-4 text-[10px] uppercase tracking-wide font-semibold text-gray-400 text-right">
-          {workExperienceData.length} role{workExperienceData.length !== 1 ? 's' : ''} - Internship - On-site
-        </p>
-
         {workExperienceData.map((work) => (
           <dialog key={`${work.id}-modal`} id={work.id} className="modal">
             <div className="modal-box max-w-2xl max-h-[80vh] overflow-y-auto border border-gray-300 hover:border-gray-400 bg-white/95 backdrop-blur-sm rounded-box p-0 shadow-2xl">

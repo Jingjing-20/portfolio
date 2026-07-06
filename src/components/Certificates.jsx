@@ -107,7 +107,7 @@ export default function Certificates() {
             {certificates.map((certItem) => (
               <div
                 key={certItem.id}
-                className="bg-base-300 rounded-box p-3 md:p-4 shadow-xl relative group border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300"
+                className="bg-base-300 rounded-box p-2 shadow-xl relative group border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300"
               >
                 <img
                   src={certItem.image}
@@ -116,7 +116,7 @@ export default function Certificates() {
                 />
                 <button
                   type="button"
-                  className="btn btn-sm btn-square border hover:border-gray-400 tooltip tooltip-top font-bold absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:top-4 md:right-4 md:translate-x-0 md:translate-y-0 shadow-xl"
+                  className="btn btn-xs btn-square border hover:border-gray-400 tooltip tooltip-top font-bold absolute top-2 right-2 shadow-xl"
                   data-tip="Enlarge"
                   aria-label={`Enlarge ${certItem.title}`}
                   onClick={() => setSelectedCert(certItem)}
@@ -127,10 +127,6 @@ export default function Certificates() {
             ))}
           </div>
         </div>
-
-        <p className="mt-4 text-right text-[10px] uppercase tracking-wide font-semibold text-gray-400">
-          {certificates.length} Certificates · 2023–2025
-        </p>
       </section>
 
       {/* Certificate Modal - consistent with other modals */}
