@@ -1,83 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
-
-
-const enlargeIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" className="size-[1em] text-gray-500" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.5 9.5L21 3m0 0h-6m6 0v6M3 21l6.5-6.5M3 21v-6m0 6h6"/></svg>
-)
-
-const cert = (filename) => new URL(`../assets/certs/${filename}`, import.meta.url).href
-
-const certificates = [
-  {
-    id: 'cert-devfest-2025',
-    title: 'Google DevFest Bacolod 2025',
-    date: '22/11/2025',
-    image: cert('DevFest_2025_Certificate.png'),
-  },
-  {
-    id: 'cert-ai-enterprise',
-    title: 'AI x Enterprise Architecture - Powering Emerging Tech',
-    date: '25/09/2025',
-    image: cert('AI x Enterprise Architecture - Powering Emerging Tech.png'),
-  },
-  {
-    id: 'cert-mental-health-ai',
-    title: '10 Keys to Mental Health at Work',
-    date: '18/09/2025',
-    image: cert('10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png'),
-  },
-  {
-    id: 'cert-ai-cybersecurity',
-    title: 'Usage of AI Tools in Cyber Security',
-    date: '15/09/2025',
-    image: cert('Usage of AI Tools in Cyber Security.png'),
-  },
-  {
-    id: 'cert-chatgpt-agent',
-    title: 'Unleashing ChatGPT Agent Mode',
-    date: '10/09/2025',
-    image: cert('Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.png'),
-  },
-  {
-    id: 'cert-project-management',
-    title: 'Understanding Project Management',
-    date: '02/09/2025',
-    image: cert('Understanding Project management from basic to advance.png'),
-  },
-  {
-    id: 'cert-networking-devices',
-    title: 'Networking Devices and Initial Configuration',
-    date: '06/12/2023',
-    image: cert('Networking Devices and Initial Configuration.png'),
-  },
-  {
-    id: 'cert-network-addressing',
-    title: 'Network Addressing and Basic Troubleshooting',
-    date: '01/11/2023',
-    image: cert('Network Addressing and Basic Troubleshooting.png'),
-  },
-  {
-    id: 'cert-networking-basics',
-    title: 'Networking Basics',
-    date: '07/10/2023',
-    image: cert('Networking Basics.png'),
-  },
-]
-
+// Certificates.jsx
 export default function Certificates() {
-  const [selectedCert, setSelectedCert] = useState(null)
-  const modalRef = useRef(null)
-
-  useEffect(() => {
-    if (selectedCert && modalRef.current) {
-      modalRef.current.showModal()
-    }
-  }, [selectedCert])
-
   return (
     <>
       {/* Certificates Section */}
-      <section id="participation-certificates" className="scroll-mt-24">
+      <section id="certificates" className="scroll-mt-24">
         {/* Header */}
         <header>
           <div className="flex items-start justify-between gap-4">
@@ -95,6 +21,7 @@ export default function Certificates() {
               05
             </span>
           </div>
+
           <p className="mt-2 text-xs md:text-sm text-gray-500 leading-relaxed max-w-lg">
             Continuous learning through webinars, seminars, certifications, and industry events.
           </p>
@@ -103,61 +30,13 @@ export default function Certificates() {
 
         {/* Gallery - 3 column grid with rectangle images only */}
         <div className="relative pl-4 md:pl-5 border-l border-gray-500">
-          <div className="grid grid-cols-3 gap-3 md:gap-6">
-            {certificates.map((certItem) => (
-              <div
-                key={certItem.id}
-                className="bg-base-300 rounded-box p-2 shadow-xl relative group border border-gray-300 hover:border-gray-400 hover:bg-base-300 hover:shadow-2xl transition-all duration-300"
-              >
-                <img
-                  src={certItem.image}
-                  alt={certItem.title}
-                  className="w-full object-cover rounded-lg border border-gray-400 transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-                <button
-                  type="button"
-                  className="btn btn-xs btn-square border hover:border-gray-400 tooltip tooltip-top font-bold absolute top-2 right-2 shadow-xl"
-                  data-tip="Enlarge"
-                  aria-label={`Enlarge ${certItem.title}`}
-                  onClick={() => setSelectedCert(certItem)}
-                >
-                  {enlargeIcon}
-                </button>
-              </div>
-            ))}
-          </div>
+          {/* Content removed */}
         </div>
       </section>
 
       {/* Certificate Modal - consistent with other modals */}
-      <dialog ref={modalRef} className="modal" onClose={() => setSelectedCert(null)}>
-        <div className="modal-box max-w-2xl max-h-[80vh] overflow-y-auto border border-gray-200 shadow-2xl rounded-box p-0 bg-white">
-          <form method="dialog">
-            <button type="submit" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 z-10 bg-white/80 hover:bg-white">✕</button>
-          </form>
-          
-          {/* Image */}
-          <div className="w-full bg-base-300 flex items-center justify-center p-6">
-            {selectedCert && (
-              <img
-                src={selectedCert.image}
-                alt={selectedCert.title}
-                className="border border-gray-400 max-w-full max-h-[60vh] object-contain rounded-lg shadow-xl"
-              />
-            )}
-          </div>
-          
-          {/* Text under image */}
-          {selectedCert && (
-            <div className="p-6 border-t border-base-200">
-              <h3 className="font-bold text-xs md:text-sm text-neutral-800">{selectedCert.title}</h3>
-              <p className="text-[10px] md:text-xs font-bold mt-1 text-gray-600 kbd">{selectedCert.date}</p>
-            </div>
-          )}
-        </div>
-        <form method="dialog" className="modal-backdrop bg-black/30 backdrop-blur-xs">
-          <button type="submit">close</button>
-        </form>
+      <dialog className="modal">
+        {/* Content removed */}
       </dialog>
     </>
   )
