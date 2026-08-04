@@ -1,91 +1,193 @@
+import { useState } from 'react';
+import { useTheme } from 'next-themes';
+import { Monitor, Moon, Sun } from 'lucide-react';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { GalleryHorizontalEnd } from '@/components/animate-ui/icons/gallery-horizontal-end';
 import { Layers } from '@/components/animate-ui/icons/layers';
 import { UserRound } from '@/components/animate-ui/icons/user-round';
 import { BadgeCheck } from '@/components/animate-ui/icons/badge-check';
 import { PanelBottom } from '@/components/animate-ui/icons/panel-bottom';
+import { Highlight } from '@/components/animate-ui/primitives/effects/highlight';
+import { Particles, ParticlesEffect } from '@/components/animate-ui/primitives/effects/particles';
+import { ThemeToggler } from '@/components/animate-ui/primitives/effects/theme-toggler';
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from '@/components/animate-ui/primitives/animate/tooltip';
 
-const homeIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-  </svg>
-);
+const NAV_ITEMS = [
+  { value: 'about', label: 'About', icon: UserRound, href: '#about' },
+  { value: 'experience', label: 'Experience', icon: PanelBottom, href: '#experience' },
+  { value: 'projects', label: 'Projects', icon: GalleryHorizontalEnd, href: '#projects' },
+  { value: 'stack', label: 'Stack', icon: Layers, href: '#stack' },
+  { value: 'certificates', label: 'Certificates', icon: BadgeCheck, href: '#certificates' },
+];
 
-const caseIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="h-5 w-5"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-  </svg>
-);
+function ThemeTogglerBtn({ direction = 'ltr' }) {
+  const { theme, resolvedTheme, setTheme } = useTheme();
+  const [clickCount, setClickCount] = useState(0);
 
+  const handleThemeToggle = (nextTheme, toggleTheme) => {
+    toggleTheme(nextTheme);
+    setClickCount((prev) => prev + 1);
+  };
 
+  return (
+    <ThemeToggler
+      theme={theme}
+      resolvedTheme={resolvedTheme}
+      setTheme={setTheme}
+      direction={direction}
+    >
+      {({ effective, toggleTheme }) => {
+        const nextTheme =
+          effective === 'dark'
+            ? 'light'
+            : effective === 'system'
+              ? 'dark'
+              : 'system';
 
-const stackIcon = (
-  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.649l-9.285-5.57a.5.5 0 0 1 0-.858l1.202-.721L12 15.35zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 12.999L2.715 7.43a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0M12 3.332L5.887 7L12 10.668L18.113 7z" /></svg>
-);
-
-const certificateIcon = (
-  <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0" /><path d="M13 17.5V22l2-1.5l2 1.5v-4.5" /><path d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2" /></g></svg>
-);
-
+        return (
+          <Tooltip side="top" sideOffset={12}>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => handleThemeToggle(nextTheme, toggleTheme)}
+                className="p-2 rounded-lg hover:bg-gray-600/20 text-base-content transition-colors duration-200 flex items-center justify-center cursor-pointer relative"
+                aria-label="Toggle theme"
+              >
+                <Particles animate={true}>
+                  <AnimateIcon animateOnHover>
+                    <span className="flex items-center justify-center">
+                      {effective === 'system' ? (
+                        <Monitor className="h-5 w-5" />
+                      ) : effective === 'dark' ? (
+                        <Moon className="h-5 w-5" />
+                      ) : (
+                        <Sun className="h-5 w-5" />
+                      )}
+                    </span>
+                  </AnimateIcon>
+                  {clickCount > 0 && (
+                    <ParticlesEffect
+                      key={clickCount}
+                      count={10}
+                      radius={35}
+                      spread={360}
+                      duration={0.6}
+                      holdDelay={0.02}
+                      style={{ top: '50%', left: '50%' }}
+                      className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
+                    />
+                  )}
+                </Particles>
+              </button>
+            </TooltipTrigger>
+            <TooltipContent className="bg-base-300 border border-gray-400 dark:border-gray-700 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
+              {`Theme: ${effective || 'system'} (Click for ${nextTheme})`}
+            </TooltipContent>
+          </Tooltip>
+        );
+      }}
+    </ThemeToggler>
+  );
+}
 
 export default function Navbar() {
+  const [activeTab, setActiveTab] = useState(NAV_ITEMS[0]?.value);
+  const [clickCounts, setClickCounts] = useState({});
+
+  const handleValueChange = (value) => {
+    if (value) {
+      setActiveTab(value);
+      setClickCounts((prev) => ({
+        ...prev,
+        [value]: (prev[value] || 0) + 1,
+      }));
+    }
+  };
+
+  const handleButtonClick = (e, value) => {
+    e.preventDefault();
+    setClickCounts((prev) => ({
+      ...prev,
+      [value]: (prev[value] || 0) + 1,
+    }));
+    const href = NAV_ITEMS.find((item) => item.value === value)?.href;
+    if (href) {
+      window.location.hash = href;
+    }
+  };
+
   return (
-    <div className="fixed left-0 right-0 top-6 z-50 flex justify-center px-4 w-full">
-      <ul className="menu menu-horizontal bg-base-300 rounded-box shadow-xl border border-gray-400 p-2 gap-1 md:gap-2 ">
-        <li className="tooltip font-bold" data-tip="About" aria-label="About">
-          <AnimateIcon animateOnHover>
-            <a href="#about" className="border-b-2 border-transparent hover:border-gray-400">
-              <UserRound size={20} className="h-5 w-5" />
-            </a>
-          </AnimateIcon>
-        </li>
-        <li className="tooltip font-bold" data-tip="Experience" aria-label="Experience">
-          <AnimateIcon animateOnHover>
-            <a href="#experience" className="border-b-2 border-transparent hover:border-gray-400">
-              <PanelBottom size={20} className="h-5 w-5" />
-            </a>
-          </AnimateIcon>
-        </li>
-        <li className="tooltip font-bold" data-tip="Projects" aria-label="Projects">
-          <AnimateIcon animateOnHover>
-            <a href="#projects" className="border-b-2 border-transparent hover:border-gray-400">
-              <GalleryHorizontalEnd size={20} className="h-5 w-5" />
-            </a>
-          </AnimateIcon>
-        </li>
-        <li className="tooltip font-bold" data-tip="Tech-Stack" aria-label="Tech-Stack">
-          <AnimateIcon animateOnHover>
-            <a href="#stack" className="border-b-2 border-transparent hover:border-gray-400">
-              <Layers size={20} className="h-5 w-5" />
-            </a>
-          </AnimateIcon>
-        </li>
-        <li className="tooltip font-bold" data-tip="Certificates" aria-label="Certificates">
-          <AnimateIcon animateOnHover>
-            <a href="#certificates" className="border-b-2 border-transparent hover:border-gray-400">
-              <BadgeCheck size={20} className="h-5 w-5" />
-            </a>
-          </AnimateIcon>
-        </li>
-      </ul>
-    </div>
+    <TooltipProvider openDelay={200} closeDelay={100}>
+      <div className="fixed left-0 right-0 top-6 z-50 flex justify-center px-4 w-full">
+        <div className="flex items-center justify-between w-full relative">
+          {/* Left spacer for balance on wider screens */}
+          <div className="w-10 hidden sm:block" />
+
+          {/* Center Nav Items */}
+          <ul className="menu menu-horizontal bg-base-300 rounded-box shadow-xl border border-gray-400 dark:border-gray-700 p-2 gap-1 md:gap-2">
+            <Highlight
+              value={activeTab}
+              onValueChange={handleValueChange}
+              defaultValue={NAV_ITEMS[0]?.value}
+              className="rounded-lg bg-gray-600/20 inset-0"
+              containerClassName="flex gap-1 md:gap-2"
+              mode="children"
+              exitDelay={200}
+              hover={false}
+            >
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeTab === item.value;
+                const clickCount = clickCounts[item.value] || 0;
+
+                return (
+                  <li key={item.value} data-value={item.value}>
+                    <Tooltip side="top" sideOffset={12}>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={item.href}
+                          onClick={(e) => handleButtonClick(e, item.value)}
+                          data-active={isActive}
+                          className="border-b-2 border-transparent hover:border-gray-400 data-[active=true]:border-gray-400 relative cursor-pointer block p-2"
+                        >
+                          <Particles animate={isActive}>
+                            <AnimateIcon animateOnHover>
+                              <item.icon size={20} className="h-5 w-5" />
+                            </AnimateIcon>
+                            {clickCount > 0 && (
+                              <ParticlesEffect
+                                key={clickCount}
+                                count={10}
+                                radius={35}
+                                spread={360}
+                                duration={0.6}
+                                holdDelay={0.02}
+                                style={{ top: '50%', left: '50%' }}
+                                className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
+                              />
+                            )}
+                          </Particles>
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent className="bg-base-300 border border-gray-400 dark:border-gray-700 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
+                        {item.label}
+                      </TooltipContent>
+                    </Tooltip>
+                  </li>
+                );
+              })}
+            </Highlight>
+          </ul>
+
+          {/* Right aligned Theme Toggler */}
+          <div className="bg-base-300 rounded-box shadow-xl border border-gray-400 dark:border-gray-700 p-1 flex items-center justify-center">
+            <ThemeTogglerBtn />
+          </div>
+        </div>
+      </div>
+    </TooltipProvider>
   );
 }

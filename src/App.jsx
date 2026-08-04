@@ -10,7 +10,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <main data-theme="light" className="custom-background min-h-screen">
+    <main className="custom-background min-h-screen transition-colors duration-300">
       {/* 1. Navbar */}
       <Navbar />
 
