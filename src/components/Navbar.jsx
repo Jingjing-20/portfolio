@@ -15,6 +15,7 @@ import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
+  TooltipArrow,
 } from '@/components/animate-ui/primitives/animate/tooltip';
 
 const NAV_ITEMS = [
@@ -24,6 +25,9 @@ const NAV_ITEMS = [
   { value: 'stack', label: 'Stack', icon: Layers, href: '#stack' },
   { value: 'certificates', label: 'Certificates', icon: BadgeCheck, href: '#certificates' },
 ];
+
+const SURFACE_CLASSES =
+  'bg-base-300 rounded-box shadow-xl border border-gray-400 dark:border-gray-700';
 
 function ThemeTogglerBtn({ direction = 'ltr' }) {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -42,52 +46,40 @@ function ThemeTogglerBtn({ direction = 'ltr' }) {
       direction={direction}
     >
       {({ effective, toggleTheme }) => {
-        const nextTheme =
-          effective === 'dark'
-            ? 'light'
-            : effective === 'system'
-              ? 'dark'
-              : 'system';
+        const nextTheme = effective === 'dark' ? 'light' : 'dark';
 
         return (
-          <Tooltip side="top" sideOffset={12}>
-            <TooltipTrigger asChild>
-              <button
-                onClick={() => handleThemeToggle(nextTheme, toggleTheme)}
-                className="p-2 rounded-lg hover:bg-gray-600/20 text-base-content transition-colors duration-200 flex items-center justify-center cursor-pointer relative"
-                aria-label="Toggle theme"
-              >
-                <Particles animate={true}>
-                  <AnimateIcon animateOnHover>
-                    <span className="flex items-center justify-center">
-                      {effective === 'system' ? (
-                        <Monitor className="h-5 w-5" />
-                      ) : effective === 'dark' ? (
-                        <Moon className="h-5 w-5" />
-                      ) : (
-                        <Sun className="h-5 w-5" />
-                      )}
-                    </span>
-                  </AnimateIcon>
-                  {clickCount > 0 && (
-                    <ParticlesEffect
-                      key={clickCount}
-                      count={10}
-                      radius={35}
-                      spread={360}
-                      duration={0.6}
-                      holdDelay={0.02}
-                      style={{ top: '50%', left: '50%' }}
-                      className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
-                    />
+          <button
+            onClick={() => handleThemeToggle(nextTheme, toggleTheme)}
+            className="p-2 rounded-lg hover:bg-gray-600/20 text-base-content transition-colors duration-200 flex items-center justify-center cursor-pointer relative"
+            aria-label="Toggle theme"
+          >
+            <Particles animate={true}>
+              <AnimateIcon animateOnHover>
+                <span className="flex items-center justify-center">
+                  {effective === 'system' ? (
+                    <Monitor className="h-5 w-5" />
+                  ) : effective === 'dark' ? (
+                    <Moon className="h-5 w-5" />
+                  ) : (
+                    <Sun className="h-5 w-5" />
                   )}
-                </Particles>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent className="bg-base-300 border border-gray-400 dark:border-gray-700 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
-              {`Theme: ${effective || 'system'} (Click for ${nextTheme})`}
-            </TooltipContent>
-          </Tooltip>
+                </span>
+              </AnimateIcon>
+              {clickCount > 0 && (
+                <ParticlesEffect
+                  key={clickCount}
+                  count={10}
+                  radius={35}
+                  spread={360}
+                  duration={0.6}
+                  holdDelay={0.02}
+                  style={{ top: '50%', left: '50%' }}
+                  className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
+                />
+              )}
+            </Particles>
+          </button>
         );
       }}
     </ThemeToggler>
@@ -99,21 +91,18 @@ export default function Navbar() {
   const [clickCounts, setClickCounts] = useState({});
 
   const handleValueChange = (value) => {
-    if (value) {
-      setActiveTab(value);
-      setClickCounts((prev) => ({
-        ...prev,
-        [value]: (prev[value] || 0) + 1,
-      }));
-    }
+    if (!value) return;
+    setActiveTab(value);
   };
 
   const handleButtonClick = (e, value) => {
     e.preventDefault();
+    handleValueChange(value);
     setClickCounts((prev) => ({
       ...prev,
       [value]: (prev[value] || 0) + 1,
     }));
+
     const href = NAV_ITEMS.find((item) => item.value === value)?.href;
     if (href) {
       window.location.hash = href;
@@ -122,13 +111,14 @@ export default function Navbar() {
 
   return (
     <TooltipProvider openDelay={200} closeDelay={100}>
-      <div className="fixed left-0 right-0 top-6 z-50 flex justify-center px-4 w-full">
-        <div className="flex items-center justify-between w-full relative">
-          {/* Left spacer for balance on wider screens */}
+      {/* Single navbar for all screen sizes */}
+      <div className="fixed left-0 right-0 top-5 z-50 flex w-full justify-center px-4">
+        <div className="relative flex w-full items-center justify-between">
+          {/* Left spacer for balance */}
           <div className="w-10 hidden sm:block" />
 
           {/* Center Nav Items */}
-          <ul className="menu menu-horizontal bg-base-300 rounded-box shadow-xl border border-gray-400 dark:border-gray-700 p-2 gap-1 md:gap-2">
+          <ul className={`menu menu-horizontal ${SURFACE_CLASSES} gap-1 p-2 md:gap-2`}>
             <Highlight
               value={activeTab}
               onValueChange={handleValueChange}
@@ -151,7 +141,7 @@ export default function Navbar() {
                           href={item.href}
                           onClick={(e) => handleButtonClick(e, item.value)}
                           data-active={isActive}
-                          className="border-b-2 border-transparent hover:border-gray-400 data-[active=true]:border-gray-400 relative cursor-pointer block p-2"
+                          className="flex items-center justify-center p-2 rounded-lg hover:bg-gray-600/20 transition-colors duration-200"
                         >
                           <Particles animate={isActive}>
                             <AnimateIcon animateOnHover>
@@ -173,6 +163,11 @@ export default function Navbar() {
                         </a>
                       </TooltipTrigger>
                       <TooltipContent className="bg-base-300 border border-gray-400 dark:border-gray-700 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
+                        <TooltipArrow
+                          fill="currentColor"
+                          className="text-base-300 stroke-gray-400 dark:stroke-gray-700"
+                          strokeWidth={1}
+                        />                        
                         {item.label}
                       </TooltipContent>
                     </Tooltip>
@@ -183,7 +178,7 @@ export default function Navbar() {
           </ul>
 
           {/* Right aligned Theme Toggler */}
-          <div className="bg-base-300 rounded-box shadow-xl border border-gray-400 dark:border-gray-700 p-1 flex items-center justify-center">
+          <div className={`${SURFACE_CLASSES} flex items-center justify-center p-1`}>
             <ThemeTogglerBtn />
           </div>
         </div>
