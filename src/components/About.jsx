@@ -58,7 +58,7 @@ const CONTACT_LINKS = [
 
 // Custom outline button styling - with label and arrow
 const outlineButtonWithLabelClasses = cn(
-  "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2.5",
+  "inline-flex items-center justify-center gap-2 rounded-md p-2",
   "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
   "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
   "transition-[box-shadow,_color,_background-color,_border-color]",
@@ -161,14 +161,14 @@ export default function About() {
 
             <div className="text-xs md:text-sm leading-relaxed text-base-content/80 sm:text-base space-y-2">
               <p>
-              I am a software developer who focuses on building web applications that address practical needs and provide meaningful value to users. My approach emphasizes performance, accessibility, and usability, and I strive to translate complex requirements into clean, maintainable software that serves its intended purpose effectively.
-              </p>
+              I am a software developer who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
+            </p>
             </div>
           </div>
 
           <nav
             aria-label="Contact links"
-            className="flex flex-wrap items-center justify-center gap-2 md:justify-start"
+            className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
           >
             {CONTACT_LINKS.map((contact) => (
               <button
@@ -179,7 +179,6 @@ export default function About() {
                 aria-label={contact.label}
               >
                 {contact.icon}
-                <span>{contact.label}</span>
                 ↗
               </button>
             ))}
