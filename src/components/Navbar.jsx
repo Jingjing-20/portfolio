@@ -113,7 +113,7 @@ export default function Navbar() {
   return (
     <TooltipProvider openDelay={200} closeDelay={100}>
       {/* Single navbar for all screen sizes */}
-      <div className="fixed left-0 right-0 top-5 z-50 flex w-full justify-center px-4">
+      <div className="fixed left-0 right-0 top-3 z-50 flex w-full justify-center px-4">
         <div className="relative flex w-full items-center justify-between">
           {/* Left spacer for balance on desktop */}
           <div className="hidden w-10 md:block" />
