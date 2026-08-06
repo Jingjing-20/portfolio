@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 import './App.css'
 import Navbar from './components/Navbar'
 import ScrollReveal from './components/ScrollReveal'
@@ -7,22 +9,24 @@ import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Certificates from './components/Certificates'
 import Footer from './components/Footer'
-import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars'
+import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
 
 function App() {
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === 'dark'
+  const starColor = isDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(115, 115, 115, 0.35)'
+
   return (
     <main className="custom-background relative min-h-screen transition-colors duration-300">
       {/* Background stars */}
-      <div className="fixed inset-0 pointer-events-none z-0 text-gray-500/50 dark:text-gray-300/60">
-        <GravityStarsBackground
-          starsCount={90}
-          starsSize={2}
-          starsOpacity={0.7}
-          movementSpeed={0.4}
-          mouseInfluence={140}
-          gravityStrength={70}
-          starsInteraction={true}
-        />
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <StarsBackground starColor={starColor} pointerEvents={false} />
       </div>
 
       {/* Main content layer */}

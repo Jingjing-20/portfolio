@@ -17,6 +17,7 @@ import {
   TooltipContent,
   TooltipArrow,
 } from '@/components/animate-ui/primitives/animate/tooltip';
+import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
   { value: 'about', label: 'About', icon: UserRound, href: '#about' },
@@ -113,12 +114,12 @@ export default function Navbar() {
     <TooltipProvider openDelay={200} closeDelay={100}>
       {/* Single navbar for all screen sizes */}
       <div className="fixed left-0 right-0 top-5 z-50 flex w-full justify-center px-4">
-        <div className="relative flex w-full items-center justify-between">
-          {/* Left spacer for balance */}
-          <div className="w-10 hidden sm:block" />
+        <div className="relative flex w-full max-w-3xl items-center justify-between">
+          {/* Left spacer for balance on desktop */}
+          <div className="hidden w-10 md:block" />
 
-          {/* Center Nav Items */}
-          <ul className={`menu menu-horizontal ${SURFACE_CLASSES} gap-1 p-2 md:gap-2`}>
+          {/* Center nav items */}
+          <ul className={cn('menu menu-horizontal gap-1 md:gap-2', SURFACE_CLASSES)}>
             <Highlight
               value={activeTab}
               onValueChange={handleValueChange}
@@ -177,7 +178,7 @@ export default function Navbar() {
             </Highlight>
           </ul>
 
-          {/* Right aligned Theme Toggler */}
+          {/* Right aligned theme toggler */}
           <div className={`${SURFACE_CLASSES} flex items-center justify-center p-1`}>
             <ThemeTogglerBtn />
           </div>
