@@ -27,12 +27,13 @@ function DialogBackdrop(
     ...props
   }
 ) {
-  return (<DialogBackdropPrimitive className={cn('fixed inset-0 z-50 bg-black/50', className)} {...props} />);
+  return (<DialogBackdropPrimitive className={cn('fixed inset-0 z-50 bg-black/50 backdrop-blur-md', className)} {...props} />);
 }
 
 function DialogPanel(
   {
     className,
+    backdropClassName,
     children,
     showCloseButton = true,
     ...props
@@ -40,7 +41,7 @@ function DialogPanel(
 ) {
   return (
     <>
-      <DialogBackdrop />
+      <DialogBackdrop className={backdropClassName} />
       <DialogPanelPrimitive
         className={cn(
           'bg-background fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg sm:max-w-lg',
