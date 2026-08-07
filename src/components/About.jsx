@@ -35,9 +35,7 @@ const CONTACT_LINKS = [
     href: 'https://www.linkedin.com/in/gian-carlo-ulep-003490346/',
     description: 'Connect with me professionally.',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">linkedin</title><path fill="#3743ff" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
     ),
   },
   {
@@ -71,8 +69,8 @@ const CONTACT_LINKS = [
 
 // Custom outline button styling - with label and arrow
 const outlineButtonWithLabelClasses = cn(
-  "inline-flex items-center justify-center gap-2 rounded-md p-2",
-  "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
+  "shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2",
+  "border bg-background hover:bg-accent hover:text-accent-foreground",
   "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
   "transition-[box-shadow,_color,_background-color,_border-color]",
   "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
@@ -148,9 +146,16 @@ export default function About() {
 
   return (
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
-      <div className="grid grid-cols-1 items-start gap-3 md:gap-6 md:grid-cols-[30%_70%] md:gap-10">
+              {/* Name on top */}
+        <div className="block md:hidden text-left mb-4">
+          <h2 className="text-3xl font-bold tracking-tight text-base-content sm:text-4xl md:text-5xl">
+            Gian Carlo N. Ulep
+          </h2>
+        </div>
+
+      <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%] md:gap-10">
         {/* Left: Polaroid-style portrait */}
-        <div className="flex justify-center md:block">
+        <div className="flex block">
           <Tilt maxTilt={12} className="w-48 sm:w-56 md:w-full max-w-xs">
             <TiltContent className="border border-gray-900 dark:border-gray-600 overflow-hidden rounded-lg bg-white p-2 shadow-xl dark:bg-gray-800 dark:shadow-2xl">
               <div className="overflow-hidden rounded-lg bg-white dark:bg-[#1a1b1d]">
@@ -167,8 +172,8 @@ export default function About() {
         {/* Right: intro + contact */}
         <div className="flex min-h-full flex-col justify-between gap-6">
           <div className="space-y-3">
-            <div className="text-center md:text-left">
-              <h2 className="text-3xl font-bold tracking-tight text-base-content sm:text-4xl md:text-5xl">
+            <div className="hidden md:block text-center md:text-left">
+              <h2 className="text-6xl font-bold tracking-tight text-base-content">
                 Gian Carlo N. Ulep
               </h2>
             </div>
@@ -178,9 +183,33 @@ export default function About() {
                 I am a <ShimmeringText text="Software Developer" className="font-bold" /> who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
               </p>
             </div>
-          </div>
 
-          <nav
+            <div className="hidden md:block">
+              <nav
+                  aria-label="Contact links"
+                  className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
+                >
+                  {CONTACT_LINKS.map((contact) => (
+                    <button
+                      key={contact.id}
+                      type="button"
+                      className={outlineButtonWithLabelClasses}
+                      onClick={() => setActiveContact(contact)}
+                      aria-label={contact.label}
+                    >
+                      {contact.icon}
+                      <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
+                      ↗
+                    </button>
+                  ))}
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 block md:hidden">
+        <nav
             aria-label="Contact links"
             className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
           >
@@ -197,10 +226,8 @@ export default function About() {
                 ↗
               </button>
             ))}
-          </nav>
-        </div>
+        </nav>
       </div>
-
       <ContactDialog
         contact={activeContact}
         open={activeContact !== null}
