@@ -283,21 +283,18 @@ export default function About() {
       <div className="block md:hidden mt-3">
         <nav
           aria-label="Contact links"
-          className="grid grid-cols-2 gap-2"
+          className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
         >
           {CONTACT_LINKS.map((contact) => (
             <button
               key={contact.id}
               type="button"
-              className={cn(
-                outlineButtonWithLabelClasses,
-                "w-full justify-center px-2 py-2"
-              )}
+              className={outlineButtonWithLabelClasses}
               onClick={() => setActiveContact(contact)}
               aria-label={contact.label}
             >
               {contact.icon}
-              <span className="text-[10px] font-medium text-base-content/80">{contact.label}</span>
+              <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
               ↗
             </button>
           ))}

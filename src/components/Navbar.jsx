@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Monitor, Moon, Sun } from 'lucide-react';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
-import { GalleryHorizontalEnd } from '@/components/animate-ui/icons/gallery-horizontal-end';
-import { Layers } from '@/components/animate-ui/icons/layers';
-import { UserRound } from '@/components/animate-ui/icons/user-round';
-import { BadgeCheck } from '@/components/animate-ui/icons/badge-check';
-import { PanelBottom } from '@/components/animate-ui/icons/panel-bottom';
+import { AboutInfo } from '@/components/animate-ui/icons/about-info';
+import { Briefcase } from '@/components/animate-ui/icons/briefcase';
+import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
+import { StackLine } from '@/components/animate-ui/icons/stack-line';
+import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { Highlight } from '@/components/animate-ui/primitives/effects/highlight';
 import { Particles, ParticlesEffect } from '@/components/animate-ui/primitives/effects/particles';
 import { ThemeToggler } from '@/components/animate-ui/primitives/effects/theme-toggler';
@@ -20,11 +20,11 @@ import {
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
-  { value: 'about', label: 'About', icon: UserRound, href: '#about' },
-  { value: 'experience', label: 'Experience', icon: PanelBottom, href: '#experience' },
-  { value: 'projects', label: 'Projects', icon: GalleryHorizontalEnd, href: '#projects' },
-  { value: 'stack', label: 'Stack', icon: Layers, href: '#stack' },
-  { value: 'certificates', label: 'Certificates', icon: BadgeCheck, href: '#certificates' },
+  { value: 'about', label: 'About', icon: AboutInfo, href: '#about' },
+  { value: 'experience', label: 'Experience', icon: Briefcase, href: '#experience' },
+  { value: 'projects', label: 'Projects', icon: FolderFiles, href: '#projects' },
+  { value: 'stack', label: 'Stack', icon: StackLine, href: '#stack' },
+  { value: 'certificates', label: 'Certificates', icon: Certificate, href: '#certificates' },
 ];
 
 const SURFACE_CLASSES =
