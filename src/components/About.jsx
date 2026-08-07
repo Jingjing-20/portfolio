@@ -69,7 +69,7 @@ const CONTACT_LINKS = [
 
 // Custom outline button styling - with label and arrow
 const outlineButtonWithLabelClasses = cn(
-  "shadow-xl inline-flex items-center justify-center gap-1 md:gap-2 rounded-md p-1 md:p-2",
+  "shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2",
   "border bg-background hover:bg-accent hover:text-accent-foreground",
   "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
   "transition-[box-shadow,_color,_background-color,_border-color]",
@@ -148,7 +148,7 @@ export default function About() {
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
               {/* Name on top */}
         <div className="block md:hidden text-left mb-4">
-          <h2 className="text-3xl font-bold tracking-tight text-base-content sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-base-content">
             Gian Carlo N. Ulep
           </h2>
         </div>
@@ -173,7 +173,7 @@ export default function About() {
         <div className="flex min-h-full flex-col justify-between gap-6">
           <div className="space-y-6">
             <div className="hidden md:block text-center md:text-left">
-              <h2 className="text-6xl font-bold tracking-tight text-base-content">
+              <h2 className="text-5xl font-bold tracking-tight text-base-content">
                 Gian Carlo N. Ulep
               </h2>
             </div>
@@ -208,10 +208,10 @@ export default function About() {
         </div>
       </div>
 
-      <div className="block md:hidden">
+      <div className="block md:hidden mt-3">
         <nav
             aria-label="Contact links"
-            className="grid grid-cols-4"
+            className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
           >
             {CONTACT_LINKS.map((contact) => (
               <button
@@ -222,7 +222,7 @@ export default function About() {
                 aria-label={contact.label}
               >
                 {contact.icon}
-                <span className="text-[7px] md:text-[10px] font-medium text-base-content/80">{contact.label}</span>
+                <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
                 ↗
               </button>
             ))}
