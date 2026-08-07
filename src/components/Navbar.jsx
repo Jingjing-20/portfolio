@@ -52,7 +52,7 @@ function ThemeTogglerBtn({ direction = 'ltr' }) {
         return (
           <button
             onClick={() => handleThemeToggle(nextTheme, toggleTheme)}
-            className="p-2 rounded-lg hover:bg-gray-600/20 text-base-content transition-colors duration-200 flex items-center justify-center cursor-pointer relative"
+            className="p-1.5 rounded-lg hover:bg-gray-600/20 text-base-content transition-colors duration-200 flex items-center justify-center cursor-pointer relative"
             aria-label="Toggle theme"
           >
             <Particles animate={true}>
@@ -142,7 +142,7 @@ export default function Navbar() {
                           href={item.href}
                           onClick={(e) => handleButtonClick(e, item.value)}
                           data-active={isActive}
-                          className="flex items-center justify-center p-2 rounded-lg hover:bg-gray-600/20 transition-colors duration-200"
+                          className="flex items-center justify-center p-1.5 rounded-lg hover:bg-gray-600/20 transition-colors duration-200"
                         >
                           <Particles animate={isActive}>
                             <AnimateIcon animateOnHover>
