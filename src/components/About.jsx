@@ -34,7 +34,9 @@ const CONTACT_LINKS = [
     href: 'https://www.linkedin.com/in/gian-carlo-ulep-003490346/',
     description: 'Connect with me professionally.',
     icon: (
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">linkedin</title><path fill="#4b6ff4" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+      </svg>
     ),
   },
   {
@@ -49,6 +51,18 @@ const CONTACT_LINKS = [
         <path fill="#ea4335" d="m58.182 93.14l-4.174-38.647l4.174-36.989L128 69.868l69.818-52.364l4.669 34.992l-4.669 40.644L128 145.504z" />
         <path fill="#fbbc04" d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945z" />
         <path fill="#c5221f" d="m0 49.504l26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'number',
+    label: 'Phone',
+    phone: '+63 956 565 7521',
+    description: 'Contact me directly.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56">
+        <title>number</title>
+        <path fill="currentColor" d="M8.746 37.703h7.149l-2.133 10.594a4 4 0 0 0-.07.75c0 1.148.796 1.781 1.898 1.781c1.125 0 1.945-.61 2.18-1.758l2.296-11.367h11.086L29.02 48.297c-.07.234-.093.516-.093.75c0 1.148.797 1.781 1.922 1.781s1.945-.61 2.18-1.758L35.3 37.703h8.367c1.289 0 2.18-.937 2.18-2.203c0-1.031-.703-1.875-1.758-1.875h-7.946L38.63 21.25h8.203c1.29 0 2.18-.937 2.18-2.203c0-1.031-.703-1.875-1.758-1.875H39.45l1.922-9.445c.023-.141.07-.446.07-.75c0-1.149-.82-1.805-1.945-1.805c-1.312 0-1.898.726-2.133 1.828l-2.062 10.172H24.215l1.922-9.445c.023-.141.07-.446.07-.75c0-1.149-.844-1.805-1.945-1.805c-1.336 0-1.946.726-2.157 1.828l-2.062 10.172h-7.687c-1.29 0-2.18.984-2.18 2.273c0 1.055.703 1.805 1.758 1.805h7.289l-2.485 12.375h-7.57c-1.29 0-2.18.984-2.18 2.273c0 1.055.703 1.805 1.758 1.805m12.14-4.078l2.509-12.375H34.48l-2.508 12.375Z"/>
       </svg>
     ),
   },
@@ -80,8 +94,9 @@ const outlineButtonClasses = cn(
 function ContactDialog({ contact, open, onClose }) {
   if (!contact) return null;
 
-  const value = contact.email ?? contact.href;
+  const value = contact.email ?? contact.phone ?? contact.href;
   const isEmail = Boolean(contact.email);
+  const isPhone = Boolean(contact.phone);
 
   const handleOpenLink = () => {
     if (contact.href) {
@@ -106,11 +121,11 @@ function ContactDialog({ contact, open, onClose }) {
             type="text"
             readOnly
             value={value}
-            aria-label={isEmail ? 'Email address' : 'Profile URL'}
+            aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : 'Profile URL'}
             className="flex-1 rounded-md border border-gray-900/20 bg-base-200 px-3 py-2 text-sm text-base-content outline-none dark:border-gray-600/40"
           />
-          {isEmail ? (
-            <CopyButton content={contact.email} variant="outline" aria-label="Copy email" />
+          {isEmail || isPhone ? (
+            <CopyButton content={contact.email ?? contact.phone} variant="outline" aria-label="Copy to clipboard" />
           ) : (
             <button
               type="button"
@@ -132,7 +147,7 @@ export default function About() {
 
   return (
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
-      <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-[30%_70%] md:gap-10">
+      <div className="grid grid-cols-1 items-start gap-3 md:gap-6 md:grid-cols-[30%_70%] md:gap-10">
         {/* Left: Polaroid-style portrait */}
         <div className="flex justify-center md:block">
           <Tilt maxTilt={12} className="w-48 sm:w-56 md:w-full max-w-xs">
@@ -159,8 +174,8 @@ export default function About() {
 
             <div className="text-xs md:text-sm leading-relaxed text-base-content/80 sm:text-base space-y-2">
               <p>
-              I am a software developer who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
-            </p>
+                I am a software developer who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
+              </p>
             </div>
           </div>
 
