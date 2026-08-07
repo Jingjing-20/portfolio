@@ -69,7 +69,7 @@ const CONTACT_LINKS = [
 
 // Custom outline button styling - with label and arrow
 const outlineButtonWithLabelClasses = cn(
-  "shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2",
+  "shadow-xl inline-flex items-center justify-center gap-1 md:gap-2 rounded-md p-1 md:p-2",
   "border bg-background hover:bg-accent hover:text-accent-foreground",
   "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
   "transition-[box-shadow,_color,_background-color,_border-color]",
@@ -157,8 +157,8 @@ export default function About() {
         {/* Left: Polaroid-style portrait */}
         <div className="flex block">
           <Tilt maxTilt={12} className="w-48 sm:w-56 md:w-full max-w-xs">
-            <TiltContent className="border border-gray-900 dark:border-gray-600 overflow-hidden rounded-lg bg-white p-2 shadow-xl dark:bg-gray-800 dark:shadow-2xl">
-              <div className="overflow-hidden rounded-lg bg-white dark:bg-[#1a1b1d]">
+            <TiltContent className="border border-gray-900 dark:border-gray-600 overflow-hidden rounded-lg bg-white p-1 md:p-2 shadow-xl dark:bg-gray-800 dark:shadow-2xl">
+              <div className="overflow-hidden border border-gray-900 dark:border-gray-600 rounded-lg bg-white dark:bg-[#1a1b1d]">
                 <img
                   src={profileImage}
                   alt="Gian Carlo N. Ulep"
@@ -171,16 +171,16 @@ export default function About() {
 
         {/* Right: intro + contact */}
         <div className="flex min-h-full flex-col justify-between gap-6">
-          <div className="space-y-3">
+          <div className="space-y-6">
             <div className="hidden md:block text-center md:text-left">
               <h2 className="text-6xl font-bold tracking-tight text-base-content">
                 Gian Carlo N. Ulep
               </h2>
             </div>
 
-            <div className="text-xs md:text-sm leading-relaxed text-base-content/80 sm:text-base space-y-2">
+            <div className="text-xs md:text-sm leading-relaxed text-base-content/80 sm:text-base">
               <p>
-                I am a <ShimmeringText text="Software Developer" className="font-bold" /> who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
+                I am a <ShimmeringText text="Software Developer" className="font-bold" /> who builds performant, accessible web apps that solve real problems. I turn complex requirements into clean, maintainable code that delivers value to users.
               </p>
             </div>
 
@@ -208,10 +208,10 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-6 block md:hidden">
+      <div className="block md:hidden">
         <nav
             aria-label="Contact links"
-            className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
+            className="grid grid-cols-4"
           >
             {CONTACT_LINKS.map((contact) => (
               <button
@@ -222,7 +222,7 @@ export default function About() {
                 aria-label={contact.label}
               >
                 {contact.icon}
-                <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
+                <span className="text-[7px] md:text-[10px] font-medium text-base-content/80">{contact.label}</span>
                 ↗
               </button>
             ))}
