@@ -1,6 +1,13 @@
 import { useState } from 'react';
+import { CheckIcon } from 'lucide-react';
+import { AnimatePresence, motion } from 'motion/react';
 import profileImage from '@/assets/gian.png';
-import { CopyButton } from '@/components/animate-ui/components/buttons/copy';
+import { CopyButton, buttonVariants } from '@/components/animate-ui/components/buttons/copy';
+import ResumeImg from '@/assets/about/resume.png';
+import LinkedInImg from '@/assets/about/linkedin.png';
+import GitHubImg from '@/assets/about/github.png';
+import GmailImg from '@/assets/about/gmail.png';
+import ResumePDF from '@/assets/resumes/GCNU - RESUME v9.pdf';
 import {
   Dialog,
   DialogDescription,
@@ -8,6 +15,8 @@ import {
   DialogTitle,
 } from '@/components/animate-ui/components/headless/dialog';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
+import { Download } from '@/components/animate-ui/icons/download';
+import { Button as ButtonPrimitive } from '@/components/animate-ui/primitives/buttons/button';
 import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
@@ -20,8 +29,9 @@ const CONTACT_LINKS = [
     label: 'GitHub',
     href: 'https://github.com/Jingjing-20',
     description: 'View my open-source work.',
+    previewImage: GitHubImg,
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="5em" height="5em" aria-hidden="true">
         <path
           fill="currentColor"
           d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
@@ -34,8 +44,12 @@ const CONTACT_LINKS = [
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/gian-carlo-ulep-003490346/',
     description: 'Connect with me professionally.',
+    previewImage: LinkedInImg,
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title xmlns="">linkedin</title><path fill="#3743ff" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24">
+        <title>linkedin</title>
+        <path fill="#0A66C2" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/>
+      </svg>
     ),
   },
   {
@@ -43,8 +57,9 @@ const CONTACT_LINKS = [
     label: 'Gmail',
     email: 'jingjing0527004@gmail.com',
     description: 'Send me an email.',
+    previewImage: GmailImg,
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 193" className="h-5 w-5" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 193" width="5em" height="5em" aria-hidden="true">
         <path fill="#4285f4" d="M58.182 192.05V93.14L27.507 65.077L0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455z" />
         <path fill="#34a853" d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837l-27.026 25.798z" />
         <path fill="#ea4335" d="m58.182 93.14l-4.174-38.647l4.174-36.989L128 69.868l69.818-52.364l4.669 34.992l-4.669 40.644L128 145.504z" />
@@ -54,20 +69,20 @@ const CONTACT_LINKS = [
     ),
   },
   {
-    id: 'number',
-    label: 'Phone',
-    phone: '+63 956 565 7521',
-    description: 'Contact me directly.',
+    id: 'resume',
+    label: 'Resume',
+    href: ResumePDF,
+    description: 'Download my resume PDF.',
+    previewImage: ResumeImg,
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 56 56">
-        <title>number</title>
-        <path fill="currentColor" d="M8.746 37.703h7.149l-2.133 10.594a4 4 0 0 0-.07.75c0 1.148.796 1.781 1.898 1.781c1.125 0 1.945-.61 2.18-1.758l2.296-11.367h11.086L29.02 48.297c-.07.234-.093.516-.093.75c0 1.148.797 1.781 1.922 1.781s1.945-.61 2.18-1.758L35.3 37.703h8.367c1.289 0 2.18-.937 2.18-2.203c0-1.031-.703-1.875-1.758-1.875h-7.946L38.63 21.25h8.203c1.29 0 2.18-.937 2.18-2.203c0-1.031-.703-1.875-1.758-1.875H39.45l1.922-9.445c.023-.141.07-.446.07-.75c0-1.149-.82-1.805-1.945-1.805c-1.312 0-1.898.726-2.133 1.828l-2.062 10.172H24.215l1.922-9.445c.023-.141.07-.446.07-.75c0-1.149-.844-1.805-1.945-1.805c-1.336 0-1.946.726-2.157 1.828l-2.062 10.172h-7.687c-1.29 0-2.18.984-2.18 2.273c0 1.055.703 1.805 1.758 1.805h7.289l-2.485 12.375h-7.57c-1.29 0-2.18.984-2.18 2.273c0 1.055.703 1.805 1.758 1.805m12.14-4.078l2.509-12.375H34.48l-2.508 12.375Z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24">
+        <title>file</title>
+        <path fill="currentColor" d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
       </svg>
     ),
   },
 ];
 
-// Custom outline button styling - with label and arrow
 const outlineButtonWithLabelClasses = cn(
   "shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2",
   "border bg-background hover:bg-accent hover:text-accent-foreground",
@@ -79,7 +94,6 @@ const outlineButtonWithLabelClasses = cn(
   "text-sm font-medium"
 );
 
-// Custom outline button styling for dialog link button
 const outlineButtonClasses = cn(
   "inline-flex items-center justify-center rounded-md size-9",
   "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
@@ -96,11 +110,28 @@ function ContactDialog({ contact, open, onClose }) {
   const value = contact.email ?? contact.phone ?? contact.href;
   const isEmail = Boolean(contact.email);
   const isPhone = Boolean(contact.phone);
+  const isResume = contact.id === 'resume';
+  const [isDownloaded, setIsDownloaded] = useState(false);
 
   const handleOpenLink = () => {
     if (contact.href) {
       window.open(contact.href, '_blank', 'noopener,noreferrer');
     }
+  };
+
+  const handleDownload = () => {
+    if (!contact.href || isDownloaded) return;
+    const a = document.createElement('a');
+    a.href = contact.href;
+    a.download = '';
+    a.rel = 'noopener,noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setIsDownloaded(true);
+    setTimeout(() => {
+      setIsDownloaded(false);
+    }, 3000);
   };
 
   return (
@@ -111,8 +142,27 @@ function ContactDialog({ contact, open, onClose }) {
           <DialogDescription>{contact.description}</DialogDescription>
         </div>
 
-        <div className="flex justify-center bg-base-300 border border-gray-400 p-3 rounded-md [&_svg]:h-24 [&_svg]:w-24">
-          {contact.icon}
+        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 min-h-[150px]">
+          {contact.previewImage && (
+            <>
+              <img
+                src={contact.previewImage}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover scale-110 opacity-80 pointer-events-none select-none"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-base-300/50 pointer-events-none"
+              />
+            </>
+          )}
+          {!contact.previewImage && (
+            <div className="absolute inset-0 bg-base-300 pointer-events-none" />
+          )}
+          <div className="relative z-10 drop-shadow-xl">
+            {contact.icon}
+          </div>
         </div>
 
         <div className="flex items-center gap-2">
@@ -120,11 +170,32 @@ function ContactDialog({ contact, open, onClose }) {
             type="text"
             readOnly
             value={value}
-            aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : 'Profile URL'}
-            className="flex-1 rounded-md border border-gray-900/20 bg-base-200 px-3 py-2 text-sm text-base-content outline-none dark:border-gray-600/40"
+            aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : isResume ? 'Resume file' : 'Profile URL'}
+            className="flex-1 rounded-md border border-gray-900/20 bg-base-200 p-3 text-sm text-base-content outline-none dark:border-gray-600/40"
           />
           {isEmail || isPhone ? (
             <CopyButton content={contact.email ?? contact.phone} variant="outline" aria-label="Copy to clipboard" />
+          ) : isResume ? (
+            <ButtonPrimitive
+              type="button"
+              data-slot="download-button"
+              className={cn(buttonVariants({ variant: 'outline', size: 'default' }))}
+              onClick={handleDownload}
+              disabled={isDownloaded}
+              aria-label={isDownloaded ? `Downloaded ${contact.label}` : `Download ${contact.label}`}
+            >
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={isDownloaded ? 'check' : 'download'}
+                  data-slot="download-button-icon"
+                  initial={{ scale: 0, opacity: 0.4, filter: 'blur(4px)' }}
+                  animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
+                  exit={{ scale: 0, opacity: 0.4, filter: 'blur(4px)' }}
+                  transition={{ duration: 0.25 }}>
+                  {isDownloaded ? <CheckIcon /> : <Download size={16} />}
+                </motion.span>
+              </AnimatePresence>
+            </ButtonPrimitive>
           ) : (
             <button
               type="button"
@@ -146,12 +217,12 @@ export default function About() {
 
   return (
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
-              {/* Name on top */}
-        <div className="block md:hidden text-left mb-4">
-          <h2 className="text-3xl font-bold tracking-tight text-base-content">
-            Gian Carlo N. Ulep
-          </h2>
-        </div>
+      {/* Name on top - mobile */}
+      <div className="block md:hidden text-left mb-4">
+        <h2 className="text-3xl font-bold tracking-tight text-base-content">
+          Gian Carlo N. Ulep
+        </h2>
+      </div>
 
       <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%] md:gap-10">
         {/* Left: Polaroid-style portrait */}
@@ -186,48 +257,53 @@ export default function About() {
 
             <div className="hidden md:block">
               <nav
-                  aria-label="Contact links"
-                  className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
-                >
-                  {CONTACT_LINKS.map((contact) => (
-                    <button
-                      key={contact.id}
-                      type="button"
-                      className={outlineButtonWithLabelClasses}
-                      onClick={() => setActiveContact(contact)}
-                      aria-label={contact.label}
-                    >
-                      {contact.icon}
-                      <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
-                      ↗
-                    </button>
-                  ))}
+                aria-label="Contact links"
+                className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
+              >
+                {CONTACT_LINKS.map((contact) => (
+                  <button
+                    key={contact.id}
+                    type="button"
+                    className={outlineButtonWithLabelClasses}
+                    onClick={() => setActiveContact(contact)}
+                    aria-label={contact.label}
+                  >
+                    {contact.icon}
+                    <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
+                    ↗
+                  </button>
+                ))}
               </nav>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Mobile contact buttons */}
       <div className="block md:hidden mt-3">
         <nav
-            aria-label="Contact links"
-            className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
-          >
-            {CONTACT_LINKS.map((contact) => (
-              <button
-                key={contact.id}
-                type="button"
-                className={outlineButtonWithLabelClasses}
-                onClick={() => setActiveContact(contact)}
-                aria-label={contact.label}
-              >
-                {contact.icon}
-                <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
-                ↗
-              </button>
-            ))}
+          aria-label="Contact links"
+          className="grid grid-cols-2 gap-2"
+        >
+          {CONTACT_LINKS.map((contact) => (
+            <button
+              key={contact.id}
+              type="button"
+              className={cn(
+                outlineButtonWithLabelClasses,
+                "w-full justify-center px-2 py-2"
+              )}
+              onClick={() => setActiveContact(contact)}
+              aria-label={contact.label}
+            >
+              {contact.icon}
+              <span className="text-[10px] font-medium text-base-content/80">{contact.label}</span>
+              ↗
+            </button>
+          ))}
         </nav>
       </div>
+
       <ContactDialog
         contact={activeContact}
         open={activeContact !== null}
