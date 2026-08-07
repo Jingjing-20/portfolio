@@ -6,8 +6,8 @@ import { AboutInfo } from '@/components/animate-ui/icons/about-info';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { CopyButton, buttonVariants } from '@/components/animate-ui/components/buttons/copy';
 import ResumeImg from '@/assets/about/resume.png';
-import LinkedInImg from '@/assets/about/linkedin.png';
-import GitHubImg from '@/assets/about/github.png';
+import LinkedInImg from '@/assets/about/LinkedIn.png';
+import GitHubImg from '@/assets/about/Github.png';
 import GmailImg from '@/assets/about/gmail.png';
 import ResumePDF from '@/assets/resumes/GCNU - RESUME v9.pdf';
 import {
