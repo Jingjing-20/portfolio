@@ -28,7 +28,7 @@ const NAV_ITEMS = [
 ];
 
 const SURFACE_CLASSES =
-  'bg-base-300 rounded-box shadow-xl border border-gray-900 dark:border-gray-600';
+  'bg-base-300 rounded-box shadow-xl border border-gray-300 dark:border-white/20';
 
 function ThemeTogglerBtn({ direction = 'ltr' }) {
   const { theme, resolvedTheme, setTheme } = useTheme();
@@ -163,7 +163,7 @@ export default function Navbar() {
                           </Particles>
                         </a>
                       </TooltipTrigger>
-                      <TooltipContent className="bg-base-300 border border-gray-400 dark:border-gray-700 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
+                      <TooltipContent className="bg-base-300 border border-gray-300 dark:border-white/20 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
                         <TooltipArrow
                           fill="currentColor"
                           className="text-base-300 stroke-gray-400 dark:stroke-gray-700"
