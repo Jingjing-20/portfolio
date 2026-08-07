@@ -140,7 +140,8 @@ function ContactDialog({ contact, open, onClose }) {
       <DialogPanel className={DIALOG_PANEL_CLASSES}>
         <div className="space-y-1.5 pr-6">
           <DialogTitle>{contact.label}</DialogTitle>
-          <DialogDescription>{contact.description}</DialogDescription>
+          <hr></hr>
+          <DialogDescription className="text-xs md:text-sm leading-relaxed">{contact.description}</DialogDescription>
         </div>
 
         <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 min-h-[150px]">

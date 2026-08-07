@@ -1,4 +1,5 @@
 // Experience.jsx
+import { useState } from 'react';
 import PGNOImg from '@/assets/experience/pgno.png';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
@@ -16,6 +17,12 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/components/ui/avatar';
+import {
+  Dialog,
+  DialogDescription,
+  DialogPanel,
+  DialogTitle,
+} from '@/components/animate-ui/components/headless/dialog';
 import { cn } from '@/lib/utils';
 
 // Stack icons
@@ -96,8 +103,49 @@ const outlineButtonWithLabelClasses = cn(
   "text-sm font-medium"
 );
 
+const KEY_CONTRIBUTIONS_TITLE = 'Key Contributions';
+
+function OpenLineIcon({ size = 16 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <title>open-line</title>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"
+      />
+    </svg>
+  );
+}
+
+function KeyContributionsDialog({ contributions, company, open, onClose }) {
+  return (
+    <Dialog open={open} onClose={onClose}>
+      <DialogPanel className="gap-4 p-6 w-sm">
+        <div className="space-y-1.5 pr-6">
+          <DialogTitle>{KEY_CONTRIBUTIONS_TITLE}</DialogTitle>
+          <hr></hr>
+          <DialogDescription className="text-xs md:text-sm leading-relaxed">{company}</DialogDescription>
+        </div>
+        <ul className="space-y-2">
+          {contributions.map((item, i) => (
+            <li key={i} className="flex gap-2 text-[10px] md:text-xs leading-relaxed">
+              <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </DialogPanel>
+    </Dialog>
+  );
+}
+
 export default function Experience() {
   const exp = PGNO_EXPERIENCE;
+  const [open, setOpen] = useState(false);
   return (
     <section id="experience" className="scroll-mt-24">
       <header className="mb-8 flex items-end justify-between">
@@ -168,28 +216,20 @@ export default function Experience() {
               ))}
             </div>
 
-            {exp.keyContributions?.length ? (
-              <div className="mt-4">
-                <p className="text-[10px] md:text-xs mb-1.5 text-sm font-semibold text-base-content">
-                  Key Contributions
-                </p>
-                <ul className="space-y-1.5">
-                  {exp.keyContributions.map((item, i) => (
-                    <li key={i} className="flex gap-2 text-[10px] md:text-xs leading-relaxed">
-                      <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
             {exp.stack?.length ? (
               <div className="mt-4">
-                <p className="text-[10px] md:text-xs mb-2 text-sm font-semibold text-base-content">
-                  Stack
-                </p>
                 <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    className={outlineButtonWithLabelClasses}
+                    onClick={() => setOpen(true)}
+                    aria-label={KEY_CONTRIBUTIONS_TITLE}
+                  >
+                    <OpenLineIcon size={16} />
+                    <span className="hidden md:block text-[10px] font-medium text-base-content">
+                      {KEY_CONTRIBUTIONS_TITLE}
+                    </span>
+                  </button>
                   {exp.stack.map((tech) => {
                     const stackIcon = stackIcons[tech];
                     if (!stackIcon) return null;
@@ -213,6 +253,13 @@ export default function Experience() {
           </TimelineContent>
         </TimelineItem>
       </Timeline>
+
+      <KeyContributionsDialog
+        contributions={exp.keyContributions ?? []}
+        company={exp.company}
+        open={open}
+        onClose={() => setOpen(false)}
+      />
     </section>
   );
 }
