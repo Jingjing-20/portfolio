@@ -9,6 +9,7 @@ import {
 } from '@/components/animate-ui/components/headless/dialog';
 import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
 import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
+import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
 
 const DIALOG_PANEL_CLASSES = 'gap-4 p-6 w-sm';
@@ -174,7 +175,7 @@ export default function About() {
 
             <div className="text-xs md:text-sm leading-relaxed text-base-content/80 sm:text-base space-y-2">
               <p>
-                I am a software developer who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
+                I am a <ShimmeringText text="Software Developer" className="font-bold" /> who builds practical web applications that provide significant value to users. I prioritize performance, accessibility, and usability, translating complex requirements into clean, maintainable software that serves its purpose effectively.
               </p>
             </div>
           </div>
@@ -192,7 +193,7 @@ export default function About() {
                 aria-label={contact.label}
               >
                 {contact.icon}
-                <span className="text-[10px] font-medium text-base-content/80">{contact.label}</span>
+                <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
                 ↗
               </button>
             ))}
