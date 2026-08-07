@@ -14,7 +14,7 @@ export default function Certificates() {
             </AnimateIcon>
           </div>
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-base-content sm:text-3xl">
+            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
               Certificates
             </h2>
             <p className="text-sm text-base-content/70">

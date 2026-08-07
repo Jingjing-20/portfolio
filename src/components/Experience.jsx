@@ -19,7 +19,7 @@ import {
 
 const PGNO_EXPERIENCE = {
   step: 1,
-  company: 'Provincial Government of Negros Occidental',
+  company: 'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
   logo: PGNOImg,
   logoInitials: 'PG',
   employmentType: 'Internship',
@@ -29,7 +29,7 @@ const PGNO_EXPERIENCE = {
   role: 'Software Developer & Systems Administrator',
   dateRange: 'Feb 2026 – May 2026',
   description: [
-    'Developed PGSO-PMD: ULPMMS, a centralized platform for managing provincial lots and properties, integrating property monitoring, document management, beneficiary tracking, and geographic visualization.',
+    'Developed GSO-ULPMMS, a centralized platform for managing provincial lots and properties, integrating property monitoring, document management, beneficiary tracking, and geographic visualization.',
   ],
   keyContributions: [
     'Built lot allocation and property donation modules.',
@@ -56,16 +56,16 @@ export default function Experience() {
     <section id="experience" className="scroll-mt-24">
       <header className="mb-8 flex items-end justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/60">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20">
             <AnimateIcon animateOnHover>
-              <Briefcase size={20} className="h-5 w-5 text-muted-foreground/80" />
+              <Briefcase size={20} className="h-5 w-5" />
             </AnimateIcon>
           </div>
           <div>
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
               Experience
             </h2>
-            <p className="text-sm text-base-content/70">
+            <p className="text-xs md:text-sm leading-relaxed text-base-content/70">
               Work history and professional engagements
             </p>
           </div>
@@ -90,15 +90,15 @@ export default function Experience() {
           </TimelineHeader>
           <TimelineContent>
             <div className="space-y-1">
-              <h3 className="text-base font-semibold text-base-content">
+              <h3 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
                 {exp.company}
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-[10px] md:text-xs text-muted-foreground">
                 {exp.employmentType}
                 <span className="mx-2 text-base-content/40">·</span>
                 {exp.durationMonths}
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-[10px] md:text-xs text-muted-foreground">
                 {exp.location}
                 <span className="mx-2 text-base-content/40">·</span>
                 {exp.workMode}
@@ -106,17 +106,17 @@ export default function Experience() {
             </div>
 
             <div className="mt-2 space-y-1">
-              <h4 className="text-sm font-medium text-base-content">
+              <h4 className="text-xs md:text-sm font-medium text-base-content">
                 {exp.role}
               </h4>
-              <TimelineDate className="mt-0.5 mb-0">
+              <TimelineDate className="text-[10px] md:text-xs mt-0.5 mb-0">
                 {exp.dateRange}
                 <span className="mx-2 text-base-content/50">·</span>
                 {exp.durationMonths}
               </TimelineDate>
             </div>
 
-            <div className="mt-3 space-y-3 text-sm leading-relaxed">
+            <div className="text-[10px] md:text-xs mt-3 space-y-3 text-sm leading-relaxed">
               {exp.description.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -124,12 +124,12 @@ export default function Experience() {
 
             {exp.keyContributions?.length ? (
               <div className="mt-4">
-                <p className="mb-1.5 text-sm font-semibold text-base-content">
+                <p className="text-[10px] md:text-xs mb-1.5 text-sm font-semibold text-base-content">
                   Key Contributions
                 </p>
                 <ul className="space-y-1.5">
                   {exp.keyContributions.map((item, i) => (
-                    <li key={i} className="flex gap-2 text-sm leading-relaxed">
+                    <li key={i} className="flex gap-2 text-[10px] md:text-xs leading-relaxed">
                       <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
                       <span>{item}</span>
                     </li>

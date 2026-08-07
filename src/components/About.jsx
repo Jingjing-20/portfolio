@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { CheckIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import profileImage from '@/assets/gian.png';
-import { AboutInfo } from '@/components/animate-ui/icons/about-info';
-import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { CopyButton, buttonVariants } from '@/components/animate-ui/components/buttons/copy';
 import ResumeImg from '@/assets/about/resume.png';
-import LinkedInImg from '@/assets/about/LinkedIn.png';
-import GitHubImg from '@/assets/about/Github.png';
+import LinkedInImg from '@/assets/about/linkedin.png';
+import GitHubImg from '@/assets/about/github.png';
 import GmailImg from '@/assets/about/gmail.png';
 import ResumePDF from '@/assets/resumes/GCNU - RESUME v9.pdf';
 import {
@@ -218,25 +216,7 @@ export default function About() {
   const [activeContact, setActiveContact] = useState(null);
 
   return (
-    <section id="about" className="scroll-mt-24">
-      <header className="mb-8 flex items-end justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/60">
-            <AnimateIcon animateOnHover>
-              <AboutInfo size={20} className="h-5 w-5 text-muted-foreground/80" />
-            </AnimateIcon>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold tracking-tight text-base-content sm:text-3xl">
-              About
-            </h2>
-            <p className="text-sm text-base-content/70">
-              Get to know me and how to connect
-            </p>
-          </div>
-        </div>
-      </header>
-
+    <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
       {/* Name on top - mobile */}
       <div className="block md:hidden text-left mb-4">
         <h2 className="text-3xl font-bold tracking-tight text-base-content">
@@ -269,7 +249,7 @@ export default function About() {
               </h2>
             </div>
 
-            <div className="text-xs md:text-sm leading-relaxed text-base-content/80 sm:text-base">
+            <div className="text-xs md:text-sm leading-relaxed">
               <p>
                 I am a <ShimmeringText text="Software Developer" className="font-bold" /> who builds performant, accessible web apps that solve real problems. I turn complex requirements into clean, maintainable code that delivers value to users.
               </p>
@@ -303,21 +283,18 @@ export default function About() {
       <div className="block md:hidden mt-3">
         <nav
           aria-label="Contact links"
-          className="grid grid-cols-2 gap-2"
+          className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
         >
           {CONTACT_LINKS.map((contact) => (
             <button
               key={contact.id}
               type="button"
-              className={cn(
-                outlineButtonWithLabelClasses,
-                "w-full justify-center px-2 py-2"
-              )}
+              className={outlineButtonWithLabelClasses}
               onClick={() => setActiveContact(contact)}
               aria-label={contact.label}
             >
               {contact.icon}
-              <span className="text-[10px] font-medium text-base-content/80">{contact.label}</span>
+              <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
               ↗
             </button>
           ))}
