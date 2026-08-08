@@ -146,7 +146,7 @@ export default function Navbar() {
                         >
                           <Particles animate={isActive}>
                             <AnimateIcon animateOnHover>
-                              <item.icon size={20} className="h-5 w-5" />
+                              <item.icon size={20} className="text-base-content" />
                             </AnimateIcon>
                             {clickCount > 0 && (
                               <ParticlesEffect
@@ -157,16 +157,16 @@ export default function Navbar() {
                                 duration={0.6}
                                 holdDelay={0.02}
                                 style={{ top: '50%', left: '50%' }}
-                                className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
+                                className="w-1.5 h-1.5 rounded-full bg-primary shadow-xl shadow-primary/50"
                               />
                             )}
                           </Particles>
                         </a>
-                      </TooltipTrigger>
-                      <TooltipContent className="bg-base-300 border border-gray-300 dark:border-white/20 text-base-content text-xs font-semibold px-2.5 py-1 rounded-md shadow-lg z-50">
+                      </TooltipTrigger> 
+                      <TooltipContent className="text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
                         <TooltipArrow
                           fill="currentColor"
-                          className="text-base-300 stroke-gray-400 dark:stroke-gray-700"
+                          className="text-base-300 stroke-gray-400 dark:stroke-gray-400"
                           strokeWidth={1}
                         />                        
                         {item.label}
