@@ -224,7 +224,7 @@ export default function About() {
       {/* Name on top - mobile */}
       <header className="mb-8 flex items-end justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20">
+          <div className="shadow-xl flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20">
             <AnimateIcon animateOnHover>
               <AboutInfo size={20} className="h-5 w-5" />
             </AnimateIcon>
@@ -261,8 +261,10 @@ export default function About() {
           <div className="space-y-6">
             <div className="text-[10px] md:text-sm leading-relaxed">
               <p>
-                I am a <ShimmeringText text="Software Developer" className="font-bold" /> focused on building accessible and responsive web applications. 
-                I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.
+                <span className="text-base-content/50">I am a </span>
+                <span className="font-bold"><ShimmeringText text="Software Developer" className="font-bold" /></span>
+                <span className="text-base-content/50"> focused on building accessible and responsive web applications. I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.
+              </span>
               </p>
             </div>
 
@@ -294,7 +296,7 @@ export default function About() {
       <div className="block md:hidden mt-3">
         <nav
           aria-label="Contact links"
-          className="flex flex-wrap items-center justify-center gap-6 md:justify-start"
+          className="flex flex-wrap items-center justify-center gap-3 md:justify-start"
         >
           {CONTACT_LINKS.map((contact) => (
             <button
@@ -305,7 +307,7 @@ export default function About() {
               aria-label={contact.label}
             >
               {contact.icon}
-              <span className="text-[10px] font-medium text-base-content/80">{contact.label}</span>
+              <span className="text-[8px] font-medium text-base-content/80">{contact.label}</span>
             </button>
           ))}
         </nav>
