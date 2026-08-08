@@ -35,28 +35,28 @@ function App() {
         <Navbar />
 
         <div className="pt-16 md:pt-32 pb-8 max-w-3xl mx-auto px-4 md:px-6">
-          <div className="space-y-12 pb-12 pt-4">
+          <div className="space-y-6 pb-12 pt-4">
 
             {/* 3. About */}
             <ScrollReveal animation="fadeInUp" duration="0.8s">
               <About />
             </ScrollReveal>
-
+            <hr />
             {/* 4. Experience */}
             <ScrollReveal animation="fadeInUp" duration="0.8s">
               <Experience />
             </ScrollReveal>
-
+            <hr />
             {/* 5. Projects */}
             <ScrollReveal animation="fadeInUp" duration="0.8s">
               <Projects />
             </ScrollReveal>
-
+            <hr />
             {/* 6. Tech Stack */}
             <ScrollReveal animation="fadeInUp" duration="0.8s">
               <TechStack />
             </ScrollReveal>
-
+            <hr />
             {/* 7. Certificates */}
             <ScrollReveal animation="fadeInUp" duration="0.8s">
               <Certificates />

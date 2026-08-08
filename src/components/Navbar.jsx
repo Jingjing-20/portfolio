@@ -163,7 +163,7 @@ export default function Navbar() {
                           </Particles>
                         </a>
                       </TooltipTrigger> 
-                      <TooltipContent className="text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
+                      <TooltipContent className="bg-base-300 text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
                         <TooltipArrow
                           fill="currentColor"
                           className="text-base-300 stroke-gray-400 dark:stroke-gray-400"

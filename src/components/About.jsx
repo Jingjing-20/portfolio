@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { CheckIcon } from 'lucide-react';
+import { AnimateIcon } from '@/components/animate-ui/icons/icon';
+import { AboutInfo } from '@/components/animate-ui/icons/about-info';
 import { AnimatePresence, motion } from 'motion/react';
 import profileImage from '@/assets/gian.png';
 import { CopyButton, buttonVariants } from '@/components/animate-ui/components/buttons/copy';
@@ -220,16 +222,28 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
       {/* Name on top - mobile */}
-      <div className="block md:hidden text-left mb-4">
-        <h2 className="text-3xl font-bold tracking-tight text-base-content">
-          Gian Carlo N. Ulep
-        </h2>
-      </div>
+      <header className="mb-8 flex items-end justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20">
+            <AnimateIcon animateOnHover>
+              <AboutInfo size={20} className="h-5 w-5" />
+            </AnimateIcon>
+          </div>
+          <div>
+            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
+              Gian Carlo N. Ulep
+            </h2>
+            <p className="text-xs md:text-sm leading-relaxed text-base-content/70">
+              BS in Information Technology : Batch 2025 – 2026
+            </p>
+          </div>
+        </div>
+      </header>
 
-      <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%] md:gap-10">
+      <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%] md:grid-cols-[20%_80%] md:gap-6">
         {/* Left: Polaroid-style portrait */}
         <div className="flex block">
-          <Tilt maxTilt={12} className="w-48 sm:w-56 md:w-full max-w-xs">
+          <Tilt maxTilt={12} className="w-34 max-w-xs">
             <TiltContent className="border border-gray-300 dark:border-white/20 overflow-hidden rounded-lg p-1 md:p-2 shadow-xl dark:shadow-2xl">
               <div className="overflow-hidden border border-gray-300 dark:border-white/20 rounded-lg bg-white dark:bg-[#1a1b1d]">
                 <img
@@ -245,15 +259,10 @@ export default function About() {
         {/* Right: intro + contact */}
         <div className="flex min-h-full flex-col justify-between gap-6">
           <div className="space-y-6">
-            <div className="hidden md:block text-center md:text-left">
-              <h2 className="text-5xl font-bold tracking-tight text-base-content">
-                Gian Carlo N. Ulep
-              </h2>
-            </div>
-
-            <div className="text-xs md:text-sm leading-relaxed">
+            <div className="text-[10px] md:text-sm leading-relaxed">
               <p>
-                I am a <ShimmeringText text="Software Developer" className="font-bold" /> who builds performant, accessible web apps that solve real problems. I turn complex requirements into clean, maintainable code that delivers value to users.
+                I am a <ShimmeringText text="Software Developer" className="font-bold" /> focused on building accessible and responsive web applications. 
+                I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.
               </p>
             </div>
 
@@ -272,7 +281,7 @@ export default function About() {
                   >
                     {contact.icon}
                     <span className="hidden md:block text-[10px] font-medium text-base-content">{contact.label}</span>
-                    ↗
+                    
                   </button>
                 ))}
               </nav>
@@ -296,8 +305,7 @@ export default function About() {
               aria-label={contact.label}
             >
               {contact.icon}
-              <span className="hidden md:block text-[10px] font-medium text-base-content/80">{contact.label}</span>
-              ↗
+              <span className="text-[10px] font-medium text-base-content/80">{contact.label}</span>
             </button>
           ))}
         </nav>

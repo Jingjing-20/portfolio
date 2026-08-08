@@ -1,0 +1,16 @@
+Unified Lot and Property Management and Monitoring
+
+Feb 2026 – May 2026
+
+Provincial Government of Negros Occidental (General Services Office - Property Management Division)
+
+A provincial-scale digital platform developed to manage and monitor government housing lots and property assets.
+
+-Developed a digital platform for managing government housing lots and property assets.
+-Built separate modules for lot management and property management.
+-Tracked beneficiaries, lot assignments, and payment records.
+-Added document management and duplicate transaction checking.
+-Used Leaflet.js to display lot boundaries and property locations.
+-Created dashboards with charts and real-time statistics.
+-Supported bulk operations through Excel import and export features.
+-Generated print-ready reports for official records.

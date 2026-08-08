@@ -129,7 +129,7 @@ function OpenLineIcon({ size = 16 }) {
 function KeyContributionsDialog({ contributions, company, open, onClose }) {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 p-6 w-sm">
+      <DialogPanel className="gap-4 p-6 max-w-sm">
         <div className="space-y-1.5 pr-6">
           <DialogTitle>{KEY_CONTRIBUTIONS_TITLE}</DialogTitle>
           <hr></hr>
