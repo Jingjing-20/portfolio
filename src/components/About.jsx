@@ -23,8 +23,6 @@ import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/ti
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
 
-const DIALOG_PANEL_CLASSES = 'gap-4 p-6 w-sm';
-
 const CONTACT_LINKS = [
   {
     id: 'github',
@@ -139,9 +137,9 @@ function ContactDialog({ contact, open, onClose }) {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className={DIALOG_PANEL_CLASSES}>
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle>{contact.label}</DialogTitle>
+          <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
           <hr></hr>
           <DialogDescription className="text-xs md:text-sm leading-relaxed">{contact.description}</DialogDescription>
         </div>

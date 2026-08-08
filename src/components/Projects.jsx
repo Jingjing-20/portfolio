@@ -114,7 +114,6 @@ const PROJECTS = [
     id: 'chmsuagrm',
     title: 'Integrated Online Platform for Academic Grade and Report Management',
     organization: 'Carlos Hilado Memorial State University - Alijis',
-    dateRange: 'Feb 2025 – Nov 2025',
     role: 'Full-Stack Developer',
     description:
       'A comprehensive academic management system built to centralize and streamline institutional data.',
@@ -165,8 +164,7 @@ const PROJECTS = [
     id: 'pgsoulpmms',
     title: 'Unified Lot and Property Management and Monitoring',
     organization:
-      'Provincial Government of Negros Occidental (General Services Office - Property Management Division)',
-    dateRange: 'Feb 2026 – May 2026',
+      'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
     role: 'Software Developer & Systems Administrator',
     description:
       'A provincial-scale digital platform developed to manage and monitor government housing lots and property assets.',
@@ -260,15 +258,13 @@ function ImageCarousel({ images, startIndex = 0 }) {
   const next = () => setIndex((i) => (i + 1) % total);
 
   return (
-    <div className="relative overflow-hidden rounded-md border border-gray-400 bg-base-300/30">
-      <div
-        className="relative flex aspect-[4/3] items-center justify-center w-full"
-      >
+    <div className="relative overflow-hidden rounded-md border border-gray-400 bg-base-300/30 h-[300px] flex flex-col flex-shrink-0">
+      <div className="flex-1 flex items-center justify-center w-full p-2 md:p-4 min-h-0">
         <img
           key={index}
           src={images[index].src}
           alt={images[index].alt}
-          className="max-h-[70vh] max-w-full object-contain"
+          className="h-full w-full object-contain"
         />
       </div>
 
@@ -280,8 +276,7 @@ function ImageCarousel({ images, startIndex = 0 }) {
             aria-label="Previous image"
             className={cn(
               outlineButtonClasses,
-              'absolute left-3 top-1/2 -translate-y-1/2 backdrop-blur-sm bg-background/60'
-            )}
+              'absolute left-3 top-1/2 -translate-y-1/2 backdrop-blur-sm bg-background/80 hover:bg-accent hover:text-accent-foreground border-border'            )}
           >
             <ChevronLeftIcon />
           </button>
@@ -296,25 +291,10 @@ function ImageCarousel({ images, startIndex = 0 }) {
           >
             <ChevronRightIcon />
           </button>
-
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setIndex(i)}
-                aria-label={`Go to image ${i + 1}`}
-                className={cn(
-                  'h-2 rounded-full transition-all',
-                  i === index ? 'w-6 bg-base-content' : 'w-2 bg-base-content/40 hover:bg-base-content/60'
-                )}
-              />
-            ))}
-          </div>
         </>
       )}
 
-      <div className="border-t border-gray-400/40 px-3 py-2 text-[11px] md:text-xs text-base-content/70 flex items-center justify-between">
+      <div className="border-t border-gray-400 p-1.5 md:p-2 text-[10px] md:text-xs text-base-content flex items-center justify-between flex-shrink-0">
         <span className="truncate">{images[index].alt}</span>
         <span className="tabular-nums">
           {index + 1} / {total}
@@ -328,12 +308,15 @@ function ImagesDialog({ project, open, onClose }) {
   if (!project) return null;
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 p-4 w-[min(90vw,720px)] sm:max-w-3xl">
-        <div className="space-y-1.5 pr-6 px-2">
-          <DialogTitle>Screenshots</DialogTitle>
-          <DialogDescription>{project.title}</DialogDescription>
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
+        <div className="space-y-1.5 pr-6">
+          <DialogTitle className="text-sm md:text-base leading-relaxed">Screenshots</DialogTitle>
+          <hr />
+          <DialogDescription className="text-xs md:text-sm leading-relaxed">{project.title}</DialogDescription>
         </div>
-        <ImageCarousel images={project.images ?? []} />
+        <div className="flex-1 min-h-0">
+          <ImageCarousel images={project.images ?? []} />
+        </div>
       </DialogPanel>
     </Dialog>
   );
@@ -343,28 +326,19 @@ function FeaturesDialog({ project, open, onClose }) {
   if (!project) return null;
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 p-6 w-sm">
-        <div className="space-y-1.5 pr-6">
-          <DialogTitle>Features</DialogTitle>
-          <DialogDescription>{project.title}</DialogDescription>
-        </div>
-
-        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 min-h-[100px]">
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-base-300/50 pointer-events-none"
-          />
-          <div className="relative z-10 drop-shadow-xl">
-            <FeaturesIcon size={80} />
-          </div>
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
+      <div className="space-y-1.5 pr-6">
+          <DialogTitle className="text-sm md:text-base leading-relaxed">Features</DialogTitle>
+          <hr></hr>
+          <DialogDescription className="text-xs md:text-sm leading-relaxed">{project.title}</DialogDescription>
         </div>
 
         <ul className="space-y-2">
           {(project.features ?? []).map((item, i) => (
-            <li key={i} className="flex gap-2 text-xs leading-relaxed">
-              <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
-              <span>{item}</span>
-            </li>
+            <li key={i} className="flex gap-2 text-[10px] md:text-xs leading-relaxed">
+            <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
+            <span>{item}</span>
+          </li>
           ))}
         </ul>
       </DialogPanel>
@@ -400,18 +374,18 @@ export default function Projects() {
         {PROJECTS.map((project) => (
           <article
             key={project.id}
-            className="overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-[#1a1b1d] shadow-xl dark:shadow-2xl p-5 md:p-6"
+            className=""
           >
             <div className="space-y-1">
-              <h3 className="text-sm md:text-base font-semibold text-base-content leading-snug">
+              <h3 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
                 {project.title}
               </h3>
               <p className="text-[10px] md:text-xs text-muted-foreground">
                 {project.organization}
               </p>
-              <p className="text-[10px] md:text-xs text-muted-foreground">
-                {project.dateRange}
-              </p>
+              <ul className="list-disc list-outside text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed pl-5">
+                <li className="pl-1">{project.description}</li>
+              </ul>
             </div>
 
             <div className="mt-2 space-y-1">
@@ -420,50 +394,53 @@ export default function Projects() {
               </h4>
             </div>
 
-            <div className="text-[10px] md:text-xs mt-3 space-y-3 leading-relaxed">
-              <p>{project.description}</p>
+            <div className="mt-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  type="button"
+                  className={outlineButtonWithLabelClasses}
+                  onClick={() => setImagesProject(project)}
+                  aria-label="Screenshots"
+                >
+                  <ImageIcon size={16} />
+                  <span className="text-[8px] mmd:text-[10px] font-medium text-base-content">
+                    Screenshots
+                  </span>
+                </button>
+                <button
+                  type="button"
+                  className={outlineButtonWithLabelClasses}
+                  onClick={() => setFeaturesProject(project)}
+                  aria-label="Features"
+                >
+                  <FeaturesIcon size={16} />
+                  <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                    Features
+                  </span>
+                </button>
+              </div>
             </div>
 
             {project.stack?.length ? (
-              <div className="mt-4">
+              <div className="pt-3">
+                <h4 className="text-[10px] md:text-xs font-medium text-base-content mb-2">Tools:</h4>
                 <div className="flex flex-wrap items-center gap-2">
-                  <button
-                    type="button"
-                    className={outlineButtonWithLabelClasses}
-                    onClick={() => setImagesProject(project)}
-                    aria-label="Screenshots"
-                  >
-                    <ImageIcon size={16} />
-                    <span className="hidden md:block text-[10px] font-medium text-base-content">
-                      Screenshots
-                    </span>
-                  </button>
-                  <button
-                    type="button"
-                    className={outlineButtonWithLabelClasses}
-                    onClick={() => setFeaturesProject(project)}
-                    aria-label="Features"
-                  >
-                    <FeaturesIcon size={16} />
-                    <span className="hidden md:block text-[10px] font-medium text-base-content">
-                      Features
-                    </span>
-                  </button>
                   {project.stack.map((tech) => {
                     const stackIcon = stackIcons[tech];
                     if (!stackIcon) return null;
                     return (
-                      <button
+                      <div
                         key={tech}
-                        type="button"
-                        className={outlineButtonWithLabelClasses}
-                        aria-label={tech}
+                        className={cn(
+                          outlineButtonWithLabelClasses,
+                          'cursor-default'
+                        )}
                       >
                         {stackIcon.icon}
-                        <span className="hidden md:block text-[10px] font-medium text-base-content">
+                        <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                           {tech}
                         </span>
-                      </button>
+                      </div>
                     );
                   })}
                 </div>

@@ -73,9 +73,9 @@ function OpenLineIcon({ size = 16 }) {
 function KeyContributionsDialog({ contributions, company, open, onClose }) {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 p-6 max-w-sm">
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle>{KEY_CONTRIBUTIONS_TITLE}</DialogTitle>
+          <DialogTitle className="text-sm md:text-base leading-relaxed">{KEY_CONTRIBUTIONS_TITLE}</DialogTitle>
           <hr></hr>
           <DialogDescription className="text-xs md:text-sm leading-relaxed">{company}</DialogDescription>
         </div>
@@ -141,6 +141,10 @@ export default function Experience() {
                 <span className="mx-2 text-base-content/40">·</span>
                 {exp.durationMonths}
               </p>
+              <TimelineDate className="text-[10px] md:text-xs mt-0.5 mb-0">
+                {exp.dateRange}
+                <span className="mx-2 text-base-content/50">·</span>
+              </TimelineDate>
               <p className="text-[10px] md:text-xs text-muted-foreground">
                 {exp.location}
                 <span className="mx-2 text-base-content/40">·</span>
@@ -148,23 +152,21 @@ export default function Experience() {
               </p>
             </div>
 
-            <div className="mt-2 space-y-1">
+            <div className="mt-2">
               <h4 className="text-xs md:text-sm font-medium text-base-content">
                 {exp.role}
               </h4>
-              <TimelineDate className="text-[10px] md:text-xs mt-0.5 mb-0">
-                {exp.dateRange}
-                <span className="mx-2 text-base-content/50">·</span>
-                {exp.durationMonths}
-              </TimelineDate>
             </div>
 
-            <div className="text-[10px] md:text-xs mt-3 space-y-3 leading-relaxed">
+            <ul className="text-[10px] md:text-xs mt-3 space-y-3 leading-relaxed">
               {exp.description.map((para, i) => (
-                <p key={i}>{para}</p>
+                <li key={i} className="flex gap-2">
+                  <span className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60 mt-[7px]" />
+                  <span className="flex-1">{para}</span>
+                </li>
               ))}
-            </div>
-              <div className="mt-4">
+            </ul>
+              <div className="mt-3">
                 <div className="flex flex-wrap items-center gap-2">
                   <button
                     type="button"
