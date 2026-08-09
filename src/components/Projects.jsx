@@ -13,7 +13,7 @@ const PROJECTS = [
     title: 'Integrated Online Platform for Academic Grade and Report Management',
     organization: 'Carlos Hilado Memorial State University - Alijis',
     description:
-      'A comprehensive academic management system built to centralize and streamline institutional data.',
+      'A centralized web-based academic information system designed to automate grade computation, QR-based attendance tracking, academic record management, and report generation through role-based access control for administrators, faculty, and students.',
     features: [
       'Created an academic management system for Carlos Hilado Memorial State University.',
       'Built separate dashboards for administrators, faculty, and students.',
@@ -24,7 +24,7 @@ const PROJECTS = [
       'Sent email notifications for account verification and password recovery.',
       'Generated PDF and Excel reports for school records.',
     ],
-    stack: ['Apache', 'PHP', 'JavaScript', 'Tailwind CSS', 'MySQL'],
+    stack: ['Hostinger', 'Apache', 'PHP', 'MySQL', 'JavaScript', 'Tailwind CSS'],
     images: chmsuagrmImages,
   },
   {
@@ -33,7 +33,7 @@ const PROJECTS = [
     organization:
       'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
     description:
-      'A provincial-scale digital platform developed to manage and monitor government housing lots and property assets.',
+      'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',    
     features: [
       'Developed a digital platform for managing government housing lots and property assets.',
       'Built separate modules for lot management and property management.',
@@ -44,7 +44,7 @@ const PROJECTS = [
       'Supported bulk operations through Excel import and export features.',
       'Generated print-ready reports for official records.',
     ],
-    stack: ['Leaflet', 'MySQL', 'PHP', 'Tailwind CSS', 'JavaScript'],
+    stack: ['Apache', 'PHP', 'MySQL', 'JavaScript', 'Leaflet', 'Tailwind CSS'],
     images: pgsoulpmmsImages,
   },
 ];
