@@ -1,7 +1,7 @@
 // TechStack.jsx
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
-import { Tools } from '@/assets/projects/tools';
+import { Tools } from '@/assets/stack/tools';
 import { cn } from '@/lib/utils';
 
 const TECH_STACK = [

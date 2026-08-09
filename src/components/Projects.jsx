@@ -5,7 +5,6 @@ import { Dialog, DialogDescription, DialogPanel, DialogTitle, } from '@/componen
 import { cn } from '@/lib/utils';
 import { chmsuagrmImages } from '@/assets/projects/chmsuagrm_ss';
 import { pgsoulpmmsImages } from '@/assets/projects/pgsoulpmms_ss';
-import { Tools } from '@/assets/projects/tools';
 
 const PROJECTS = [
   {
@@ -24,7 +23,6 @@ const PROJECTS = [
       'Sent email notifications for account verification and password recovery.',
       'Generated PDF and Excel reports for school records.',
     ],
-    stack: ['PHP', 'MySQL', 'JavaScript', 'Tailwind CSS'],
     images: chmsuagrmImages,
   },
   {
@@ -44,7 +42,6 @@ const PROJECTS = [
       'Supported bulk operations through Excel import and export features.',
       'Generated print-ready reports for official records.',
     ],
-    stack: ['PHP', 'MySQL', 'JavaScript', 'Leaflet', 'Tailwind CSS'],
     images: pgsoulpmmsImages,
   },
 ];
@@ -273,31 +270,6 @@ export default function Projects() {
               </div>
             </div>
 
-            {project.stack?.length ? (
-              <div className="pt-3">
-                <h4 className="text-[10px] md:text-xs font-medium text-base-content mb-2">Tech Stack:</h4>
-                <div className="flex flex-wrap items-center gap-2">
-                  {project.stack.map((tech) => {
-                    const stackIcon = Tools[tech];
-                    if (!stackIcon) return null;
-                    return (
-                      <div
-                        key={tech}
-                        className={cn(
-                          outlineButtonWithLabelClasses,
-                          'cursor-default'
-                        )}
-                      >
-                        {stackIcon.icon}
-                        <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                          {tech}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            ) : null}
           </article>
         ))}
       </div>
