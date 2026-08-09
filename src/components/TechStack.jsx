@@ -11,19 +11,15 @@ const TECH_STACK = [
     tools: ['React', 'JavaScript', 'Tailwind CSS', 'Vue.js', 'Next.js', 'Vite'],
   },
   {
-    category: 'Backend & Server',
-    description: 'Application logic, APIs, and server-side processing.',
-    tools: ['PHP', 'Laravel', 'Node.js', 'Apache'],
+    category: 'Backend',
+    description: 'Server infrastructure, application logic, APIs, and data storage.',
+    tools: ['Apache', 'PHP', 'Laravel', 'Node.js', 'MySQL', 'Supabase', 'PostgreSQL', 'Firebase', 'REST'],
   },
-  {
-    category: 'Database',
-    description: 'Reliable data storage and real-time database services.',
-    tools: ['MySQL', 'Supabase', 'PostgreSQL', 'Firebase'],
-  },
+
   {
     category: 'Development Tools',
     description: 'Version control, CI/CD, and development environment tools.',
-    tools: ['Git', 'GitHub', 'GitHub Actions', 'Antigravity'],
+    tools: ['Git', 'GitHub', 'GitHub Actions', 'Antigravity', 'Codex'],
   },
 ];
 
