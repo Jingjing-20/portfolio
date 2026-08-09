@@ -42,14 +42,21 @@ const EXPERIENCES = [
       'Developed GSO-ULPMMS, a centralized platform for managing provincial lots and properties, integrating property monitoring, document management, beneficiary tracking, and geographic visualization.',
     ],
     keyContributions: [
-      'Built lot allocation and property donation modules.',
-      'Migrated legacy records into a unified database.',
-      'Implemented beneficiary and amortization payment tracking.',
-      'Integrated interactive property maps with Leaflet.',
-      'Built secure document management with scanner support.',
-      'Created Excel import and export reporting features.',
-      'Designed real-time statistics dashboards.',
-      'Implemented RBAC and authentication workflows.',
+      'Improved property management by developing a system for lot allocations and property donations.',
+      'Increased data accuracy by migrating legacy records into a unified database.',
+      'Simplified payment processing by implementing beneficiary and amortization tracking.',
+      'Enhanced property monitoring by integrating interactive maps with Leaflet.',
+      'Reduced manual paperwork by building a secure document management system.',
+      'Optimized reporting by creating Excel import and export features.',
+      'Improved decision-making by designing dashboards with real-time statistics.',
+      'Strengthened security by implementing role-based access control and authentication.',
+      'Maintained and configured office computers, software, and IT equipment.',
+      'Provided technical support by troubleshooting hardware, software, and system issues.',
+      'Assisted with user account management, access permissions, and system configuration.',
+      'Performed database maintenance and backups to help ensure data integrity.',
+      'Assisted with network and connectivity troubleshooting for office workstations.',
+      'Supported system deployment, updates, and routine maintenance.',
+      'Documented system configurations and technical procedures for future maintenance.'
     ],
   },
 ];
@@ -89,14 +96,19 @@ function KeyContributionsDialog({ contributions, company, open, onClose }) {
             {company}
           </DialogDescription>
         </div>
-        <ul className="space-y-2">
-          {contributions.map((item, i) => (
-            <li key={i} className="flex gap-2 text-[10px] md:text-xs leading-relaxed">
-              <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="max-h-[350px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
+          <ul className="space-y-1 p-1.5 md:p-2">
+            {contributions.map((item, i) => (
+              <li
+                key={i}
+                className="flex gap-2 text-[10px] md:text-xs leading-relaxed"
+              >
+                <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DialogPanel>
     </Dialog>
   );
@@ -125,28 +137,25 @@ function ExperienceItem({ experience, onOpenContributions }) {
             {experience.company}
           </h3>
           <p className="text-[10px] md:text-xs text-muted-foreground">
-            {experience.employmentType}
-            <span className="mx-2 text-base-content/40">·</span>
-            {experience.durationMonths}
-          </p>
-          <TimelineDate className="text-[10px] md:text-xs mt-0.5 mb-0">
-            {experience.dateRange}
-            <span className="mx-2 text-base-content/50">·</span>
-          </TimelineDate>
-          <p className="text-[10px] md:text-xs text-muted-foreground">
             {experience.location}
             <span className="mx-2 text-base-content/40">·</span>
             {experience.workMode}
           </p>
+          <div className="">
+            <h4 className="text-xs md:text-sm font-medium text-base-content">
+              {experience.role}
+            </h4>
+          </div>
+          <TimelineDate className="text-[10px] md:text-xs text-muted-foreground">
+            {experience.employmentType}
+            <span className="mx-1 text-base-content/40">·</span>
+            {experience.dateRange}
+            <span className="mx-1 text-base-content/40">·</span>
+            {experience.durationMonths}          
+          </TimelineDate>
         </div>
 
-        <div className="mt-2 space-y-1">
-          <h4 className="text-xs md:text-sm font-medium text-base-content">
-            {experience.role}
-          </h4>
-        </div>
-
-        <ul className="text-[10px] md:text-xs mt-3 space-y-3 leading-relaxed">
+        <ul className="text-[10px] md:text-xs space-y-3 leading-relaxed">
           {experience.description.map((para, i) => (
             <li key={i} className="flex gap-2">
               <span className="inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60 mt-[7px]" />
@@ -191,21 +200,20 @@ export default function Experience() {
 
   return (
     <section id="experience" className="scroll-mt-24">
-      <header className="mb-8 flex items-end justify-between">
-        <div className="flex items-center gap-3">
-          <div className="shadow-xl flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20">
-            <AnimateIcon animateOnHover>
-              <Briefcase size={20} className="h-5 w-5" />
-            </AnimateIcon>
-          </div>
-          <div>
-            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
-              Experience
-            </h2>
-            <p className="text-xs md:text-sm leading-relaxed text-base-content/70">
-              Work history and professional engagements
-            </p>
-          </div>
+      <header className="mb-8 flex items-center justify-between">
+        <div>
+          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
+            Experience
+          </h2>
+          <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
+            Work history and professional engagements
+          </p>
+        </div>
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20 shadow-xl">
+          <AnimateIcon animateOnHover>
+            <Briefcase size={20} className="h-5 w-5" />
+          </AnimateIcon>
         </div>
       </header>
 

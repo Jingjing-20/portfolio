@@ -114,7 +114,6 @@ const PROJECTS = [
     id: 'chmsuagrm',
     title: 'Integrated Online Platform for Academic Grade and Report Management',
     organization: 'Carlos Hilado Memorial State University - Alijis',
-    role: 'Full-Stack Developer',
     description:
       'A comprehensive academic management system built to centralize and streamline institutional data.',
     features: [
@@ -165,7 +164,6 @@ const PROJECTS = [
     title: 'Unified Lot and Property Management and Monitoring',
     organization:
       'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
-    role: 'Software Developer & Systems Administrator',
     description:
       'A provincial-scale digital platform developed to manage and monitor government housing lots and property assets.',
     features: [
@@ -333,14 +331,19 @@ function FeaturesDialog({ project, open, onClose }) {
           <DialogDescription className="text-xs md:text-sm leading-relaxed">{project.title}</DialogDescription>
         </div>
 
-        <ul className="space-y-2">
-          {(project.features ?? []).map((item, i) => (
-            <li key={i} className="flex gap-2 text-[10px] md:text-xs leading-relaxed">
-            <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
-            <span>{item}</span>
-          </li>
-          ))}
-        </ul>
+        <div className="max-h-[500px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
+          <ul className="space-y-2 p-1.5 md:p-2">
+            {(project.features ?? []).map((item, i) => (
+              <li
+                key={i}
+                className="flex gap-2 text-[10px] md:text-xs leading-relaxed"
+              >
+                <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </DialogPanel>
     </Dialog>
   );
@@ -352,21 +355,21 @@ export default function Projects() {
 
   return (
     <section id="projects" className="scroll-mt-24">
-      <header className="mb-8 flex items-end justify-between">
-        <div className="flex items-center gap-3">
-          <div className="shadow-xl flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20">
-            <AnimateIcon animateOnHover>
-              <FolderFiles size={20} className="h-5 w-5" />
-            </AnimateIcon>
-          </div>
-          <div>
-            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
-              Projects
-            </h2>
-            <p className="text-xs md:text-sm leading-relaxed text-base-content/70">
-              Selected work and personal builds
-            </p>
-          </div>
+      <header className="mb-8 flex items-center justify-between">
+        <div>
+          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
+            Projects
+          </h2>
+
+          <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
+            Selected work and personal builds
+          </p>
+        </div>
+
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20 shadow-xl">
+          <AnimateIcon animateOnHover>
+            <FolderFiles size={20} className="h-5 w-5" />
+          </AnimateIcon>
         </div>
       </header>
 
@@ -386,12 +389,6 @@ export default function Projects() {
               <ul className="list-disc list-outside text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed pl-5">
                 <li className="pl-1">{project.description}</li>
               </ul>
-            </div>
-
-            <div className="mt-2 space-y-1">
-              <h4 className="text-xs md:text-sm font-medium text-base-content">
-                {project.role}
-              </h4>
             </div>
 
             <div className="mt-3">
