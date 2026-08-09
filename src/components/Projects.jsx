@@ -24,7 +24,7 @@ const PROJECTS = [
       'Sent email notifications for account verification and password recovery.',
       'Generated PDF and Excel reports for school records.',
     ],
-    stack: ['Hostinger', 'Apache', 'PHP', 'MySQL', 'JavaScript', 'Tailwind CSS'],
+    stack: ['PHP', 'MySQL', 'JavaScript', 'Tailwind CSS'],
     images: chmsuagrmImages,
   },
   {
@@ -33,7 +33,7 @@ const PROJECTS = [
     organization:
       'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
     description:
-      'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',    
+      'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',
     features: [
       'Developed a digital platform for managing government housing lots and property assets.',
       'Built separate modules for lot management and property management.',
@@ -44,7 +44,7 @@ const PROJECTS = [
       'Supported bulk operations through Excel import and export features.',
       'Generated print-ready reports for official records.',
     ],
-    stack: ['Apache', 'PHP', 'MySQL', 'JavaScript', 'Leaflet', 'Tailwind CSS'],
+    stack: ['PHP', 'MySQL', 'JavaScript', 'Leaflet', 'Tailwind CSS'],
     images: pgsoulpmmsImages,
   },
 ];
@@ -74,7 +74,7 @@ function ImageIcon({ size = 16 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
       <title>image</title>
-      <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm1-4h12l-3.75-5l-3 4L9 13z"/>
+      <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm1-4h12l-3.75-5l-3 4L9 13z" />
     </svg>
   );
 }
@@ -83,7 +83,7 @@ function FeaturesIcon({ size = 16 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" aria-hidden="true">
       <title>list-filled</title>
-      <path fill="currentColor" fillRule="evenodd" d="M2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM4 6h6V5H4zm7 0h1V5h-1zm-1 2.5H4v-1h6zm1 0h1v-1h-1zM10 11H4v-1h6zm1 0h1v-1h-1z" clipRule="evenodd"/>
+      <path fill="currentColor" fillRule="evenodd" d="M2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM4 6h6V5H4zm7 0h1V5h-1zm-1 2.5H4v-1h6zm1 0h1v-1h-1zM10 11H4v-1h6zm1 0h1v-1h-1z" clipRule="evenodd" />
     </svg>
   );
 }
@@ -91,7 +91,7 @@ function FeaturesIcon({ size = 16 }) {
 function ChevronLeftIcon({ size = 18 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="15 18 9 12 15 6"/>
+      <polyline points="15 18 9 12 15 6" />
     </svg>
   );
 }
@@ -99,7 +99,7 @@ function ChevronLeftIcon({ size = 18 }) {
 function ChevronRightIcon({ size = 18 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="9 18 15 12 9 6"/>
+      <polyline points="9 18 15 12 9 6" />
     </svg>
   );
 }
@@ -129,7 +129,7 @@ function ImageCarousel({ images, startIndex = 0 }) {
             aria-label="Previous image"
             className={cn(
               outlineButtonClasses,
-              'absolute left-3 top-1/2 -translate-y-1/2 backdrop-blur-sm bg-background/80 hover:bg-accent hover:text-accent-foreground border-border'            )}
+              'absolute left-3 top-1/2 -translate-y-1/2 backdrop-blur-sm bg-background/80 hover:bg-accent hover:text-accent-foreground border-border')}
           >
             <ChevronLeftIcon />
           </button>
@@ -180,7 +180,7 @@ function FeaturesDialog({ project, open, onClose }) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
-      <div className="space-y-1.5 pr-6">
+        <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">Features</DialogTitle>
           <hr></hr>
           <DialogDescription className="text-xs md:text-sm leading-relaxed">{project.title}</DialogDescription>
@@ -190,7 +190,7 @@ function FeaturesDialog({ project, open, onClose }) {
           <ul className="p-1.5 md:p-2 text-[10px] md:text-xs text-muted-foreground space-y-1.5 md:space-y-2 leading-relaxed">
             {(project.features ?? []).map((item, i) => (
               <li key={i} className="flex gap-2">
-                  <span className="inline-block">•</span>
+                <span className="inline-block">•</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -275,7 +275,7 @@ export default function Projects() {
 
             {project.stack?.length ? (
               <div className="pt-3">
-                <h4 className="text-[10px] md:text-xs font-medium text-base-content mb-2">Tools:</h4>
+                <h4 className="text-[10px] md:text-xs font-medium text-base-content mb-2">Tech Stack:</h4>
                 <div className="flex flex-wrap items-center gap-2">
                   {project.stack.map((tech) => {
                     const stackIcon = Tools[tech];

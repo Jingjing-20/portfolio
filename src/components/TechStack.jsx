@@ -6,19 +6,24 @@ import { cn } from '@/lib/utils';
 
 const TECH_STACK = [
   {
-    category: 'Frontend & UI',
-    description: 'Interfaces built for clarity, responsiveness, and accessibility.',
-    tools: ['React', 'JavaScript', 'Tailwind CSS'],
+    category: 'Frontend',
+    description: 'Modern component libraries and styling for responsive user experiences.',
+    tools: ['React', 'JavaScript', 'Tailwind CSS', 'Vue.js', 'Next.js', 'Vite'],
   },
   {
     category: 'Backend & Server',
-    description: 'Application logic and web-server tooling for reliable systems.',
-    tools: ['PHP', 'Laravel', 'Apache'],
+    description: 'Application logic, APIs, and server-side processing.',
+    tools: ['PHP', 'Laravel', 'Node.js', 'Apache'],
   },
   {
-    category: 'Database & Services',
-    description: 'Structured data management and backend services.',
-    tools: ['MySQL', 'Supabase'],
+    category: 'Database',
+    description: 'Reliable data storage and real-time database services.',
+    tools: ['MySQL', 'Supabase', 'PostgreSQL', 'Firebase'],
+  },
+  {
+    category: 'Development Tools',
+    description: 'Version control, CI/CD, and development environment tools.',
+    tools: ['Git', 'GitHub', 'GitHub Actions', 'Antigravity'],
   },
 ];
 
