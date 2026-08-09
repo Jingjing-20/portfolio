@@ -220,7 +220,7 @@ export default function About() {
   return (
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
       {/* Name on top - mobile */}
-      <header className="mb-8 flex items-center justify-between">
+      <header className="mb-3 md:mb-6 flex items-center justify-between">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Gian Carlo N. Ulep
@@ -230,7 +230,7 @@ export default function About() {
           </p>
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20 shadow-xl">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background dark:bg-gray-600/20 shadow-xl">
           <AnimateIcon animateOnHover>
             <AboutInfo size={20} className="h-5 w-5" />
           </AnimateIcon>

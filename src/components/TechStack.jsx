@@ -6,7 +6,7 @@ import SectionSkeleton from './SectionSkeleton';
 export default function TechStack() {
   return (
     <section id="stack" className="scroll-mt-24">
-      <header className="mb-8 flex items-center justify-between">
+      <header className="mb-3 md:mb-6 flex items-center justify-between">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Stack
@@ -16,7 +16,7 @@ export default function TechStack() {
           </p>
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20 shadow-xl">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background dark:bg-gray-600/20 shadow-xl">
           <AnimateIcon animateOnHover>
             <StackLine size={20} className="h-5 w-5" />
           </AnimateIcon>

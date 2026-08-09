@@ -332,13 +332,10 @@ function FeaturesDialog({ project, open, onClose }) {
         </div>
 
         <div className="max-h-[500px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
-          <ul className="space-y-2 p-1.5 md:p-2">
+          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs text-muted-foreground space-y-1.5 md:space-y-2 leading-relaxed">
             {(project.features ?? []).map((item, i) => (
-              <li
-                key={i}
-                className="flex gap-2 text-[10px] md:text-xs leading-relaxed"
-              >
-                <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/60" />
+              <li key={i} className="flex gap-2">
+                  <span className="inline-block">•</span>
                 <span>{item}</span>
               </li>
             ))}
@@ -355,7 +352,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="scroll-mt-24">
-      <header className="mb-8 flex items-center justify-between">
+      <header className="mb-3 md:mb-6 flex items-center justify-between">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Projects
@@ -366,7 +363,7 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-600/20 shadow-xl">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background dark:bg-gray-600/20 shadow-xl">
           <AnimateIcon animateOnHover>
             <FolderFiles size={20} className="h-5 w-5" />
           </AnimateIcon>
@@ -386,8 +383,11 @@ export default function Projects() {
               <p className="text-[10px] md:text-xs text-muted-foreground">
                 {project.organization}
               </p>
-              <ul className="list-disc list-outside text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed pl-5">
-                <li className="pl-1">{project.description}</li>
+              <ul className="text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed">
+                <li className="flex gap-2">
+                  <span className="inline-block">•</span>
+                  <span>{project.description}</span>
+                </li>
               </ul>
             </div>
 
