@@ -1,7 +1,32 @@
 // TechStack.jsx
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
-import SectionSkeleton from './SectionSkeleton';
+import { Tools } from '@/assets/projects/tools';
+import { cn } from '@/lib/utils';
+
+const TECH_STACK = [
+  {
+    category: 'Frontend & UI',
+    description: 'Interfaces built for clarity, responsiveness, and accessibility.',
+    tools: ['React', 'JavaScript', 'Tailwind CSS'],
+  },
+  {
+    category: 'Backend & Server',
+    description: 'Application logic and web-server tooling for reliable systems.',
+    tools: ['PHP', 'Laravel', 'Apache'],
+  },
+  {
+    category: 'Database & Services',
+    description: 'Structured data management and backend services.',
+    tools: ['MySQL', 'Supabase'],
+  },
+];
+
+const techBadgeClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'border bg-background dark:bg-input/30 dark:border-input',
+  'text-sm font-medium'
+);
 
 export default function TechStack() {
   return (
@@ -22,7 +47,36 @@ export default function TechStack() {
           </AnimateIcon>
         </div>
       </header>
-      <SectionSkeleton icon={StackLine} />
+      <div className="space-y-6 md:space-y-8">
+        {TECH_STACK.map(({ category, description, tools }) => (
+          <article key={category}>
+            <div className="space-y-1">
+              <h3 className="text-xs md:text-sm leading-relaxed font-semibold text-base-content">
+                {category}
+              </h3>
+              <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed">
+                {description}
+              </p>
+            </div>
+
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              {tools.map((tool) => {
+                const stackTool = Tools[tool];
+                if (!stackTool) return null;
+
+                return (
+                  <div key={tool} className={techBadgeClasses}>
+                    {stackTool.icon}
+                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                      {tool}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }
