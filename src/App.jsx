@@ -8,7 +8,6 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Certificates from './components/Certificates'
-import Footer from './components/Footer'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
 
 function App() {
@@ -63,9 +62,6 @@ function App() {
             </ScrollReveal>
 
           </div>
-
-          {/* 9. Footer */}
-          <Footer />
         </div>
       </div>
     </main>
