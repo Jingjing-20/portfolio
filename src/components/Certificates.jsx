@@ -6,9 +6,10 @@ import { CERTIFICATE_CATEGORIES } from '@/components/certificates/certificates_d
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl border-5 border-double shadow-xl',
-  'bg-base-300 bg-slant-lines border-gray-300 dark:border-white/20',
-  'cursor-pointer transition-all duration-200 hover:border-primary/50'
+  'relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl shadow-xl',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
+  'cursor-pointer'
 );
 
 // Helper function to format date
@@ -33,7 +34,7 @@ export default function Certificates() {
           </p>
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-base-300 border border-gray-300 dark:border-white/20 shadow-xl">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background dark:bg-gray-600/20 shadow-xl">
           <AnimateIcon animateOnHover>
             <Certificate size={20} className="h-5 w-5" />
           </AnimateIcon>

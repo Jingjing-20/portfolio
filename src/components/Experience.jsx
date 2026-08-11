@@ -63,13 +63,12 @@ const EXPERIENCES = [
 
 const outlineButtonWithLabelClasses = cn(
   "shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2",
-  "border bg-background hover:bg-accent text-accent-foreground",
-  "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-  "transition-[box-shadow,_color,_background-color,_border-color]",
+  "bg-textured border border-gray-300 dark:border-white/20",
+  "hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200",
   "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
   "disabled:pointer-events-none",
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  "text-sm font-medium"
+  "text-sm font-medium cursor-pointer"
 );
 
 const KEY_CONTRIBUTIONS_TITLE = 'Key Contributions';

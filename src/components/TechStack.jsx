@@ -25,8 +25,9 @@ const TECH_STACK = [
 
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'border bg-background dark:bg-input/30 dark:border-input',
-  'text-sm font-medium'
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
+  'text-sm font-medium cursor-default'
 );
 
 export default function TechStack() {

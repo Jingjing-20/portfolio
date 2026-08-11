@@ -35,7 +35,7 @@
   color: #a6adbb;
 }
 
-.bg-slant-lines {
+.bg-textured {
   background-color: #f3f4f6;
   background-image: repeating-linear-gradient(
     -45deg,
@@ -46,8 +46,8 @@
   );
 }
 
-.dark .bg-slant-lines,
-[data-theme="dark"] .bg-slant-lines {
+.dark .bg-textured,
+[data-theme="dark"] .bg-textured {
   background-color: #1a1b1d;
   background-image: repeating-linear-gradient(
     -45deg,
