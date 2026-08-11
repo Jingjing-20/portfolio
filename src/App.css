@@ -24,10 +24,38 @@
   background-color: #0d0d0e;
 }
 
+.bg-base-300 {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
 .dark .bg-base-300,
 [data-theme="dark"] .bg-base-300 {
   background-color: #1a1b1d;
   color: #a6adbb;
+}
+
+.bg-slant-lines {
+  background-color: #f3f4f6;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(0, 0, 0, 0.05) 6px,
+    rgba(0, 0, 0, 0.05) 7px
+  );
+}
+
+.dark .bg-slant-lines,
+[data-theme="dark"] .bg-slant-lines {
+  background-color: #1a1b1d;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(255, 255, 255, 0.06) 6px,
+    rgba(255, 255, 255, 0.06) 7px
+  );
 }
 
 .tooltip {

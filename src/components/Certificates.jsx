@@ -6,10 +6,17 @@ import { CERTIFICATE_CATEGORIES } from '@/components/certificates/certificates_d
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'relative flex flex-col h-25 md:h-30 p-2 md:p-3 rounded-xl border-5 border-double shadow-xl',
-  'bg-background dark:bg-input/30 border-gray-300 dark:border-input',
-  'cursor-pointer'
+  'relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl border-5 border-double shadow-xl',
+  'bg-base-300 bg-slant-lines border-gray-300 dark:border-white/20',
+  'cursor-pointer transition-all duration-200 hover:border-primary/50'
 );
+
+// Helper function to format date
+const formatDate = (dateString) => {
+  if (!dateString) return null;
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+};
 
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);
@@ -26,7 +33,7 @@ export default function Certificates() {
           </p>
         </div>
 
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background shadow-xl dark:bg-gray-600/20">
+        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-base-300 border border-gray-300 dark:border-white/20 shadow-xl">
           <AnimateIcon animateOnHover>
             <Certificate size={20} className="h-5 w-5" />
           </AnimateIcon>
@@ -48,6 +55,7 @@ export default function Certificates() {
             <div className="grid grid-cols-3 gap-1 sm:gap-2">
               {items.map((cert) => {
                 const IconComponent = cert.icon;
+                const formattedDate = formatDate(cert.issuedDate);
 
                 return (
                   <div
@@ -65,7 +73,7 @@ export default function Certificates() {
                   >
                     {/* Top: Organization with icon logo beside it */}
                     <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
-                      <IconComponent className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-muted-foreground flex-shrink-0" />
+                      <IconComponent className="text-muted-foreground flex-shrink-0" />
                       <span className="text-[8px] sm:text-[10px] font-medium text-base-content line-clamp-1">
                         {cert.org}
                       </span>
@@ -73,17 +81,17 @@ export default function Certificates() {
 
                     <hr className="mb-1 md:mb-1.5" />
 
-                    {/* Middle: Certificate Title (now in the middle) */}
+                    {/* Middle: Certificate Title */}
                     <div className="flex items-center justify-center my-auto">
                       <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
                         {cert.title}
                       </h3>
                     </div>
 
-                    {/* Bottom: Description */}
+                    {/* Bottom: Issued Date with terminal-style arrow */}
                     <div className="flex items-center justify-center mt-0.5 md:mt-1">
-                      <p className="text-[6px] md:text-[8px] text-muted-foreground text-center line-clamp-2">
-                        {cert.description || 'Certificate'}
+                      <p className="text-[6px] md:text-[8px] text-muted-foreground text-cente">
+                        {formattedDate ? `< Issued ${formattedDate} />` : '< Certificate />'}
                       </p>
                     </div>
                   </div>
