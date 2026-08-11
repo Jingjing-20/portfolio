@@ -1,6 +1,6 @@
 // Experience.jsx
 import { useState } from 'react';
-import PGNOImg from '@/assets/experience/pgno.png';
+import PGNOImg from '@/components/experience/pgno.png';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import {

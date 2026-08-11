@@ -1,11 +1,11 @@
-import CHMSUAGRM_dashboard from '@/assets/projects/chmsuagrm/dashboard.png';
-import CHMSUAGRM_index from '@/assets/projects/chmsuagrm/index.png';
-import CHMSUAGRM_signin from '@/assets/projects/chmsuagrm/signin form.png';
-import CHMSUAGRM_enrollments from '@/assets/projects/chmsuagrm/enrollments.png';
-import CHMSUAGRM_enrollment_request from '@/assets/projects/chmsuagrm/enrollment request.png';
-import CHMSUAGRM_assigned_class from '@/assets/projects/chmsuagrm/assigned class.png';
-import CHMSUAGRM_attendance_qr from '@/assets/projects/chmsuagrm/attendance qr scanning.jpg';
-import CHMSUAGRM_student_qr from '@/assets/projects/chmsuagrm/student qr.png';
+import CHMSUAGRM_dashboard from '@/components/projects/chmsuagrm/dashboard.png';
+import CHMSUAGRM_index from '@/components/projects/chmsuagrm/index.png';
+import CHMSUAGRM_signin from '@/components/projects/chmsuagrm/signin form.png';
+import CHMSUAGRM_enrollments from '@/components/projects/chmsuagrm/enrollments.png';
+import CHMSUAGRM_enrollment_request from '@/components/projects/chmsuagrm/enrollment request.png';
+import CHMSUAGRM_assigned_class from '@/components/projects/chmsuagrm/assigned class.png';
+import CHMSUAGRM_attendance_qr from '@/components/projects/chmsuagrm/attendance qr scanning.jpg';
+import CHMSUAGRM_student_qr from '@/components/projects/chmsuagrm/student qr.png';
 
 export const chmsuagrmImages = [
   { src: CHMSUAGRM_index, alt: 'Index' },

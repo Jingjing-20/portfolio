@@ -1,15 +1,15 @@
-import PGSOULPMMS_home from '@/assets/projects/pgsoulpmms/Home page.jpg';
-import PGSOULPMMS_lot_signin from '@/assets/projects/pgsoulpmms/Lot Signin Page.jpg';
-import PGSOULPMMS_property_signin from '@/assets/projects/pgsoulpmms/Property Signin Page.jpg';
-import PGSOULPMMS_interactive_mapping from '@/assets/projects/pgsoulpmms/Interactive Mapping.jpg';
-import PGSOULPMMS_details_monitoring from '@/assets/projects/pgsoulpmms/Details Monitoring.jpg';
-import PGSOULPMMS_centralized_oversight from '@/assets/projects/pgsoulpmms/Centralized Oversight.jpg';
-import PGSOULPMMS_financial_admin from '@/assets/projects/pgsoulpmms/Financial Administration.jpg';
-import PGSOULPMMS_document_repo from '@/assets/projects/pgsoulpmms/Document Repository.jpg';
-import PGSOULPMMS_spatial_tracking from '@/assets/projects/pgsoulpmms/Spatial Tracking.jpg';
-import PGSOULPMMS_locality_insights from '@/assets/projects/pgsoulpmms/Locality Insights.jpg';
-import PGSOULPMMS_unified_filing from '@/assets/projects/pgsoulpmms/Unified Filing.jpg';
-import PGSOULPMMS_asset_control from '@/assets/projects/pgsoulpmms/Asset Control.jpg';
+import PGSOULPMMS_home from '@/components/projects/pgsoulpmms/Home page.jpg';
+import PGSOULPMMS_lot_signin from '@/components/projects/pgsoulpmms/Lot Signin Page.jpg';
+import PGSOULPMMS_property_signin from '@/components/projects/pgsoulpmms/Property Signin Page.jpg';
+import PGSOULPMMS_interactive_mapping from '@/components/projects/pgsoulpmms/Interactive Mapping.jpg';
+import PGSOULPMMS_details_monitoring from '@/components/projects/pgsoulpmms/Details Monitoring.jpg';
+import PGSOULPMMS_centralized_oversight from '@/components/projects/pgsoulpmms/Centralized Oversight.jpg';
+import PGSOULPMMS_financial_admin from '@/components/projects/pgsoulpmms/Financial Administration.jpg';
+import PGSOULPMMS_document_repo from '@/components/projects/pgsoulpmms/Document Repository.jpg';
+import PGSOULPMMS_spatial_tracking from '@/components/projects/pgsoulpmms/Spatial Tracking.jpg';
+import PGSOULPMMS_locality_insights from '@/components/projects/pgsoulpmms/Locality Insights.jpg';
+import PGSOULPMMS_unified_filing from '@/components/projects/pgsoulpmms/Unified Filing.jpg';
+import PGSOULPMMS_asset_control from '@/components/projects/pgsoulpmms/Asset Control.jpg';
 
 export const pgsoulpmmsImages = [
   { src: PGSOULPMMS_home, alt: 'Home page' },

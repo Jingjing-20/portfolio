@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { AboutInfo } from '@/components/animate-ui/icons/about-info';
-import profileImage from '@/assets/gian.png';
-import ResumeImg from '@/assets/about/resume.png';
-import LinkedInImg from '@/assets/about/linkedin.png';
-import GitHubImg from '@/assets/about/github.png';
-import GmailImg from '@/assets/about/gmail.png';
-import ResumePDF from '@/assets/about/resumes/GCNU - RESUME v10.pdf';
+import profileImage from '@/components/about/gian.png';
+import ResumeImg from '@/components/about/resume.png';
+import LinkedInImg from '@/components/about/linkedin.png';
+import GitHubImg from '@/components/about/github.png';
+import GmailImg from '@/components/about/gmail.png';
+import ResumePDF from '@/components/about/resumes/GCNU - RESUME v10.pdf';
 import ContactDialog from '@/components/about/ContactDialog';
 import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';

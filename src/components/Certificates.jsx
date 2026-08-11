@@ -6,16 +6,16 @@ import { cn } from '@/lib/utils';
 
 
 // Certificate image assets
-import MentalHealthImg from '@/assets/certificates/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png';
-import EnterpriseArchImg from '@/assets/certificates/AI x Enterprise Architecture - Powering Emerging Tech.png';
-import DevFestImg from '@/assets/certificates/DevFest_2025_Certificate.png';
-import NetAddressingImg from '@/assets/certificates/Network Addressing and Basic Troubleshooting.png';
-import NetBasicsImg from '@/assets/certificates/Networking Basics.png';
-import NetDevicesImg from '@/assets/certificates/Networking Devices and Initial Configuration.png';
-import SqlImg from '@/assets/certificates/SQL.png';
-import ProjectMgmtImg from '@/assets/certificates/Understanding Project management from basic to advance.png';
-import ChatGptAgentImg from '@/assets/certificates/Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.png';
-import CyberSecurityImg from '@/assets/certificates/Usage of AI Tools in Cyber Security.png';
+import MentalHealthImg from '@/components/certificates/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png';
+import EnterpriseArchImg from '@/components/certificates/AI x Enterprise Architecture - Powering Emerging Tech.png';
+import DevFestImg from '@/components/certificates/DevFest_2025_Certificate.png';
+import NetAddressingImg from '@/components/certificates/Network Addressing and Basic Troubleshooting.png';
+import NetBasicsImg from '@/components/certificates/Networking Basics.png';
+import NetDevicesImg from '@/components/certificates/Networking Devices and Initial Configuration.png';
+import SqlImg from '@/components/certificates/SQL.png';
+import ProjectMgmtImg from '@/components/certificates/Understanding Project management from basic to advance.png';
+import ChatGptAgentImg from '@/components/certificates/Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.png';
+import CyberSecurityImg from '@/components/certificates/Usage of AI Tools in Cyber Security.png';
 
 // Issuing Organization SVG Icons
 const CiscoIcon = (props) => (
