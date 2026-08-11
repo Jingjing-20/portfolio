@@ -6,7 +6,7 @@ import { CERTIFICATE_CATEGORIES } from '@/components/certificates/certificates_d
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'relative flex flex-col justify-between h-32 sm:h-36 md:h-40 p-2.5 sm:p-3.5 rounded-xl border-4 border-double shadow-xl',
+  'relative flex flex-col h-25 md:h-30 p-2 md:p-3 rounded-xl border-5 border-double shadow-xl',
   'bg-background dark:bg-input/30 border-gray-300 dark:border-input',
   'cursor-pointer'
 );
@@ -45,7 +45,7 @@ export default function Certificates() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
+            <div className="grid grid-cols-3 gap-1 sm:gap-2">
               {items.map((cert) => {
                 const IconComponent = cert.icon;
 
@@ -63,25 +63,28 @@ export default function Certificates() {
                       }
                     }}
                   >
-                    {/* Icon only in top right corner */}
-                    <div className="flex justify-start w-full">
-                      <div className="shadow-xl inline-flex items-center justify-center rounded-md p-2 border bg-background dark:bg-input/30 dark:border-input text-sm font-medium">
-                        <IconComponent className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                      </div>
+                    {/* Top: Organization with icon logo beside it */}
+                    <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
+                      <IconComponent className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-muted-foreground flex-shrink-0" />
+                      <span className="text-[8px] sm:text-[10px] font-medium text-base-content line-clamp-1">
+                        {cert.org}
+                      </span>
                     </div>
 
-                    {/* Middle: Certificate Title */}
-                    <div className="my-auto">
-                      <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content line-clamp-2">
+                    <hr className="mb-1 md:mb-1.5" />
+
+                    {/* Middle: Certificate Title (now in the middle) */}
+                    <div className="flex items-center justify-center my-auto">
+                      <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
                         {cert.title}
                       </h3>
                     </div>
 
-                    {/* Bottom: Border top and org name */}
-                    <div className="border-t border-gray-300 dark:border-gray-700/60 pt-1.5 mt-1 flex items-center justify-between">
-                      <span className="text-[8px] sm:text-[10px] font-medium text-muted-foreground line-clamp-1">
-                        {cert.org}
-                      </span>
+                    {/* Bottom: Description */}
+                    <div className="flex items-center justify-center mt-0.5 md:mt-1">
+                      <p className="text-[6px] md:text-[8px] text-muted-foreground text-center line-clamp-2">
+                        {cert.description || 'Certificate'}
+                      </p>
                     </div>
                   </div>
                 );
