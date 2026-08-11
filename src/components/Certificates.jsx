@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
-import {
-  Dialog,
-  DialogPanel,
-  DialogTitle,
-} from '@/components/animate-ui/components/headless/dialog';
-import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
+import CertificateDialog from '@/components/certificates/CertificateDialog';
 import { cn } from '@/lib/utils';
+
 
 // Certificate image assets
 import MentalHealthImg from '@/assets/certificates/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png';
@@ -34,25 +30,10 @@ const TestDomeIcon = (props) => (
   </svg>
 );
 
-const KoenigIcon = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1.2em"
-    height="1.2em"
-    viewBox="0 0 100 100"
-    aria-hidden="true"
-    {...props}
-  >
-    <path
-      fill="currentColor"
-      d="M 38 18 L 6 50 L 38 82 L 48 72 L 24 50 L 48 28 Z"
-    />
-    <path
-      fill="currentColor"
-      fillRule="evenodd"
-      d="M 68 18 C 82.36 18 94 32.33 94 50 C 94 67.67 82.36 82 68 82 C 53.64 82 42 67.67 42 50 C 42 32.33 53.64 18 68 18 Z M 68 29 C 59.16 29 52 38.4 52 50 C 52 61.6 59.16 71 68 71 C 76.84 71 84 61.6 84 50 C 84 38.4 76.84 29 68 29 Z"
-      clipRule="evenodd"
-    />
+const KoenigIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 100 100" aria-hidden="true">
+    <path fill="currentColor" d="M 38 18 L 6 50 L 38 82 L 48 72 L 24 50 L 48 28 Z" />
+    <path fill="currentColor" fillRule="evenodd" d="M 68 18 C 82.36 18 94 32.33 94 50 C 94 67.67 82.36 82 68 82 C 53.64 82 42 67.67 42 50 C 42 32.33 53.64 18 68 18 Z M 68 29 C 59.16 29 52 38.4 52 50 C 52 61.6 59.16 71 68 71 C 76.84 71 84 61.6 84 50 C 84 38.4 76.84 29 68 29 Z" clipRule="evenodd" />
   </svg>
 );
 
@@ -65,7 +46,7 @@ const GoogleIcon = (props) => (
 const CERTIFICATES = [
   {
     id: 'sql-testdome',
-    title: 'SQL Assessment (Top 10%)',
+    title: 'SQL Assessment',
     org: 'TestDome',
     image: SqlImg,
     icon: TestDomeIcon,
@@ -161,59 +142,6 @@ const certCardClasses = cn(
   'cursor-pointer'
 );
 
-function CertificateDialog({ cert, open, onClose }) {
-  if (!cert) return null;
-
-  const handleOpenLink = () => {
-    if (cert.link && cert.link !== 'no link') {
-      window.open(cert.link, '_blank', 'noopener,noreferrer');
-    }
-  };
-
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full">
-        <div className="space-y-1.5 pr-6">
-          <div className="text-xs text-muted-foreground font-medium mb-1">
-            {cert.org}
-          </div>
-          <DialogTitle className="text-sm md:text-base font-semibold leading-relaxed">
-            {cert.title}
-          </DialogTitle>
-        </div>
-
-        {/* Certificate Image Container */}
-        {cert.image && (
-          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/10 bg-base-200/50 p-2 max-h-64 w-full my-3">
-            <img
-              src={cert.image}
-              alt={cert.title}
-              className="max-h-56 w-full object-contain rounded"
-            />
-          </div>
-        )}
-
-        <div className="flex items-center gap-2 mt-4">
-          <input
-            type="text"
-            readOnly
-            value={cert.link || 'no link'}
-            aria-label="Certificate link"
-            className="flex-1 rounded-md border border-gray-300/20 bg-base-200 p-3 text-xs md:text-sm text-base-content outline-none dark:border-white/40"
-          />
-          <button
-            type="button"
-            className={outlineButtonClasses}
-            onClick={handleOpenLink}
-            aria-label={`Open link for ${cert.title}`}
-          >
-            <SquareArrowOutUpRight size={16} />
-          </button>
-        </div>
-      </DialogPanel>
-    </Dialog>
-  );
-}
 
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);

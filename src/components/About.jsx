@@ -1,27 +1,17 @@
 import { useState } from 'react';
-import { CheckIcon } from 'lucide-react';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { AboutInfo } from '@/components/animate-ui/icons/about-info';
-import { AnimatePresence, motion } from 'motion/react';
 import profileImage from '@/assets/gian.png';
-import { CopyButton, buttonVariants } from '@/components/animate-ui/components/buttons/copy';
 import ResumeImg from '@/assets/about/resume.png';
-import LinkedInImg from '@/assets/about/LinkedIn.png';
-import GitHubImg from '@/assets/about/Github.png';
+import LinkedInImg from '@/assets/about/linkedin.png';
+import GitHubImg from '@/assets/about/github.png';
 import GmailImg from '@/assets/about/gmail.png';
 import ResumePDF from '@/assets/about/resumes/GCNU - RESUME v10.pdf';
-import {
-  Dialog,
-  DialogDescription,
-  DialogPanel,
-  DialogTitle,
-} from '@/components/animate-ui/components/headless/dialog';
-import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
-import { Download } from '@/components/animate-ui/icons/download';
-import { Button as ButtonPrimitive } from '@/components/animate-ui/primitives/buttons/button';
+import ContactDialog from '@/components/about/ContactDialog';
 import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
+
 
 const CONTACT_LINKS = [
   {
@@ -48,7 +38,7 @@ const CONTACT_LINKS = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24" aria-hidden="true">
         <title>linkedin</title>
-        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z"/>
+        <path fill="currentColor" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
       </svg>
     ),
   },
@@ -61,11 +51,11 @@ const CONTACT_LINKS = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 193" width="5em" height="5em" aria-hidden="true">
         <title>gmail</title>
-        <path fill="currentColor" d="M58.182 192.05V93.14L27.507 65.077L0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455h40.727z"/>
-        <path fill="currentColor" d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837-27.026 25.798v98.91z"/>
-        <path fill="currentColor" d="m58.182 93.14l-4.174-38.647l4.174-36.989L128 69.868l69.818-52.364l4.669 34.992-4.669 40.644L128 145.504l-69.818-52.364z"/>
-        <path fill="currentColor" d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945l-16.292-10.782z"/>
-        <path fill="currentColor" d="m0 49.504l26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23v23.274z"/>
+        <path fill="currentColor" d="M58.182 192.05V93.14L27.507 65.077L0 49.504v125.091c0 9.658 7.825 17.455 17.455 17.455h40.727z" />
+        <path fill="currentColor" d="M197.818 192.05h40.727c9.659 0 17.455-7.826 17.455-17.455V49.505l-31.156 17.837-27.026 25.798v98.91z" />
+        <path fill="currentColor" d="m58.182 93.14l-4.174-38.647l4.174-36.989L128 69.868l69.818-52.364l4.669 34.992-4.669 40.644L128 145.504l-69.818-52.364z" />
+        <path fill="currentColor" d="M197.818 17.504V93.14L256 49.504V26.231c0-21.585-24.64-33.89-41.89-20.945l-16.292-10.782z" />
+        <path fill="currentColor" d="m0 49.504l26.759 20.07L58.182 93.14V17.504L41.89 5.286C24.61-7.66 0 4.646 0 26.23v23.274z" />
       </svg>
     ),
   },
@@ -78,7 +68,7 @@ const CONTACT_LINKS = [
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" viewBox="0 0 24 24" aria-hidden="true">
         <title>file</title>
-        <path fill="currentColor" d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
+        <path fill="currentColor" d="M13 9V3.5L18.5 9M6 2c-1.11 0-2 .89-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
       </svg>
     ),
   },
@@ -105,114 +95,6 @@ const outlineButtonClasses = cn(
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
 );
 
-function ContactDialog({ contact, open, onClose }) {
-  if (!contact) return null;
-
-  const value = contact.email ?? contact.phone ?? contact.href;
-  const isEmail = Boolean(contact.email);
-  const isPhone = Boolean(contact.phone);
-  const isResume = contact.id === 'resume';
-  const [isDownloaded, setIsDownloaded] = useState(false);
-
-  const handleOpenLink = () => {
-    if (contact.href) {
-      window.open(contact.href, '_blank', 'noopener,noreferrer');
-    }
-  };
-
-  const handleDownload = () => {
-    if (!contact.href || isDownloaded) return;
-    const a = document.createElement('a');
-    a.href = contact.href;
-    a.download = '';
-    a.rel = 'noopener,noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setIsDownloaded(true);
-    setTimeout(() => {
-      setIsDownloaded(false);
-    }, 3000);
-  };
-
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
-        <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
-          <hr></hr>
-          <DialogDescription className="text-xs md:text-sm leading-relaxed">{contact.description}</DialogDescription>
-        </div>
-
-        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 min-h-[150px]">
-          {contact.previewImage && (
-            <>
-              <img
-                src={contact.previewImage}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full object-cover scale-110 opacity-80 pointer-events-none select-none"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-base-300/50 pointer-events-none"
-              />
-            </>
-          )}
-          {!contact.previewImage && (
-            <div className="absolute inset-0 bg-base-300 pointer-events-none" />
-          )}
-          <div className="relative z-10 drop-shadow-xl">
-            {contact.icon}
-          </div>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <input
-            type="text"
-            readOnly
-            value={value}
-            aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : isResume ? 'Resume file' : 'Profile URL'}
-            className="flex-1 rounded-md border border-gray-300/20 bg-base-200 p-3 text-sm text-base-content outline-none dark:border-white/40"
-          />
-          {isEmail || isPhone ? (
-            <CopyButton content={contact.email ?? contact.phone} variant="outline" aria-label="Copy to clipboard" />
-          ) : isResume ? (
-            <ButtonPrimitive
-              type="button"
-              data-slot="download-button"
-              className={cn(buttonVariants({ variant: 'outline', size: 'default' }))}
-              onClick={handleDownload}
-              disabled={isDownloaded}
-              aria-label={isDownloaded ? `Downloaded ${contact.label}` : `Download ${contact.label}`}
-            >
-              <AnimatePresence mode="popLayout">
-                <motion.span
-                  key={isDownloaded ? 'check' : 'download'}
-                  data-slot="download-button-icon"
-                  initial={{ scale: 0, opacity: 0.4, filter: 'blur(4px)' }}
-                  animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-                  exit={{ scale: 0, opacity: 0.4, filter: 'blur(4px)' }}
-                  transition={{ duration: 0.25 }}>
-                  {isDownloaded ? <CheckIcon /> : <Download size={16} />}
-                </motion.span>
-              </AnimatePresence>
-            </ButtonPrimitive>
-          ) : (
-            <button
-              type="button"
-              className={outlineButtonClasses}
-              onClick={handleOpenLink}
-              aria-label={`Open ${contact.label}`}
-            >
-              <SquareArrowOutUpRight size={16} />
-            </button>
-          )}
-        </div>
-      </DialogPanel>
-    </Dialog>
-  );
-}
 
 export default function About() {
   const [activeContact, setActiveContact] = useState(null);
@@ -261,7 +143,7 @@ export default function About() {
                 <span className="text-base-content/50">I am a </span>
                 <span className="font-bold"><ShimmeringText text="Software Developer" className="font-bold" /></span>
                 <span className="text-base-content/50"> focused on building accessible and responsive web applications. I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.
-              </span>
+                </span>
               </p>
             </div>
 
@@ -280,7 +162,7 @@ export default function About() {
                   >
                     {contact.icon}
                     <span className="hidden md:block text-[10px] font-medium text-base-content">{contact.label}</span>
-                    
+
                   </button>
                 ))}
               </nav>

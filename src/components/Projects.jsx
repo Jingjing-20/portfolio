@@ -3,8 +3,8 @@ import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { Dialog, DialogDescription, DialogPanel, DialogTitle, } from '@/components/animate-ui/components/headless/dialog';
 import { cn } from '@/lib/utils';
-import { chmsuagrmImages } from '@/assets/projects/chmsuagrm_ss';
-import { pgsoulpmmsImages } from '@/assets/projects/pgsoulpmms_ss';
+import { chmsuagrmImages } from '@/components/projects/chmsuagrm_ss';
+import { pgsoulpmmsImages } from '@/components/projects/pgsoulpmms_ss';
 
 const PROJECTS = [
   {
@@ -162,7 +162,7 @@ function ImagesDialog({ project, open, onClose }) {
         <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">Screenshots</DialogTitle>
           <hr />
-          <DialogDescription className="text-xs md:text-sm leading-relaxed">{project.title}</DialogDescription>
+          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{project.title}</DialogDescription>
         </div>
         <div className="flex-1 min-h-0">
           <ImageCarousel images={project.images ?? []} />
@@ -180,11 +180,11 @@ function FeaturesDialog({ project, open, onClose }) {
         <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">Features</DialogTitle>
           <hr></hr>
-          <DialogDescription className="text-xs md:text-sm leading-relaxed">{project.title}</DialogDescription>
+          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{project.title}</DialogDescription>
         </div>
 
         <div className="max-h-[500px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
-          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs text-muted-foreground space-y-1.5 md:space-y-2 leading-relaxed">
+          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-1.5 md:space-y-2 leading-relaxed text-base-content">
             {(project.features ?? []).map((item, i) => (
               <li key={i} className="flex gap-2">
                 <span className="inline-block">•</span>

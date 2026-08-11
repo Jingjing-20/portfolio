@@ -78,7 +78,7 @@ function OpenLineIcon({ size = 16 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
       <title>help-outline</title>
-      <path fill="currentColor" d="M21.71 8.71c1.25-1.25.68-2.71 0-3.42l-3-3c-1.26-1.25-2.71-.68-3.42 0L13.59 4H11C9.1 4 8 5 7.44 6.15L3 10.59v4l-.71.7c-1.25 1.26-.68 2.71 0 3.42l3 3c.54.54 1.12.74 1.67.74c.71 0 1.36-.35 1.75-.74l2.7-2.71H15c1.7 0 2.56-1.06 2.87-2.1c1.13-.3 1.75-1.16 2-2C21.42 14.5 22 13.03 22 12V9h-.59zM20 12c0 .45-.19 1-1 1h-1v1c0 .45-.19 1-1 1h-1v1c0 .45-.19 1-1 1h-4.41l-3.28 3.28c-.31.29-.49.12-.6.01l-2.99-2.98c-.29-.31-.12-.49-.01-.6L5 15.41v-4l2-2V11c0 1.21.8 3 3 3s3-1.79 3-3h7zm.29-4.71L18.59 9H11v2c0 .45-.19 1-1 1s-1-.55-1-1V8c0-.46.17-2 2-2h3.41l2.28-2.28c.31.29-.49.12-.6.01l2.99 2.98c.29.31.12.49.01.6"/>
+      <path fill="currentColor" d="M21.71 8.71c1.25-1.25.68-2.71 0-3.42l-3-3c-1.26-1.25-2.71-.68-3.42 0L13.59 4H11C9.1 4 8 5 7.44 6.15L3 10.59v4l-.71.7c-1.25 1.26-.68 2.71 0 3.42l3 3c.54.54 1.12.74 1.67.74c.71 0 1.36-.35 1.75-.74l2.7-2.71H15c1.7 0 2.56-1.06 2.87-2.1c1.13-.3 1.75-1.16 2-2C21.42 14.5 22 13.03 22 12V9h-.59zM20 12c0 .45-.19 1-1 1h-1v1c0 .45-.19 1-1 1h-1v1c0 .45-.19 1-1 1h-4.41l-3.28 3.28c-.31.29-.49.12-.6.01l-2.99-2.98c-.29-.31-.12-.49-.01-.6L5 15.41v-4l2-2V11c0 1.21.8 3 3 3s3-1.79 3-3h7zm.29-4.71L18.59 9H11v2c0 .45-.19 1-1 1s-1-.55-1-1V8c0-.46.17-2 2-2h3.41l2.28-2.28c.31.29-.49.12-.6.01l2.99 2.98c.29.31.12.49.01.6" />
     </svg>
   );
 }
@@ -92,12 +92,12 @@ function KeyContributionsDialog({ contributions, company, open, onClose }) {
             {KEY_CONTRIBUTIONS_TITLE}
           </DialogTitle>
           <hr />
-          <DialogDescription className="text-xs md:text-sm leading-relaxed">
+          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">
             {company}
           </DialogDescription>
         </div>
         <div className="max-h-[350px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
-          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs text-muted-foreground space-y-1.5 md:space-y-2 leading-relaxed">
+          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-1.5 md:space-y-2 leading-relaxed text-base-content">
             {contributions.map((item, i) => (
               <li key={i} className="flex gap-2">
                 <span className="inline-block">•</span>
@@ -148,11 +148,11 @@ function ExperienceItem({ experience, onOpenContributions }) {
             <span className="mx-1 text-base-content/40">·</span>
             {experience.dateRange}
             <span className="mx-1 text-base-content/40">·</span>
-            {experience.durationMonths}          
+            {experience.durationMonths}
           </TimelineDate>
         </div>
 
-          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs text-muted-foreground space-y-1.5 md:space-y-2 leading-relaxed">
+        <ul className="p-1.5 md:p-2 text-[10px] md:text-xs text-muted-foreground space-y-1.5 md:space-y-2 leading-relaxed">
           {experience.description.map((para, i) => (
             <li key={i} className="flex gap-2">
               <span className="inline-block">•</span>

@@ -25,3 +25,14 @@ export const pgsoulpmmsImages = [
   { src: PGSOULPMMS_unified_filing, alt: 'Unified Filing' },
   { src: PGSOULPMMS_asset_control, alt: 'Asset Control' },
 ];
+
+export const pgsoulpmmsFeatures = [
+  'Developed a digital platform for managing government housing lots and property assets.',
+  'Built separate modules for lot management and property management.',
+  'Tracked beneficiaries, lot assignments, and payment records.',
+  'Added document management and duplicate transaction checking.',
+  'Used Leaflet.js to display lot boundaries and property locations.',
+  'Created dashboards with charts and real-time statistics.',
+  'Supported bulk operations through Excel import and export features.',
+  'Generated print-ready reports for official records.',
+];
