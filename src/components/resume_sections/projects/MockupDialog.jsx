@@ -61,7 +61,23 @@ export function MockupDialog({ mockup, open, onClose }) {
         </div>
 
         <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 h-[250px]">
-          <div className="absolute inset-0 bg-base-300 pointer-events-none" />
+          {mockup.previewImage && (
+            <>
+              <img
+                src={mockup.previewImage}
+                alt={mockup.name}
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover scale-110 opacity-80 pointer-events-none select-none"
+              />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-base-300/50 pointer-events-none"
+              />
+            </>
+          )}
+          {!mockup.previewImage && (
+            <div className="absolute inset-0 bg-base-300 pointer-events-none" />
+          )}
           <div className="relative z-10 drop-shadow-xl text-base-content">
             <WebIcon size={80} />
           </div>

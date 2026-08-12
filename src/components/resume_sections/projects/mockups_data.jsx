@@ -1,3 +1,8 @@
+import willowPreview from '@/components/resume_sections/projects/mockups/willow.png';
+import thedriftPreview from '@/components/resume_sections/projects/mockups/thedrift.png';
+import shiroPreview from '@/components/resume_sections/projects/mockups/shiro.png';
+import waxandwanePreview from '@/components/resume_sections/projects/mockups/waxandwane.png';
+
 export const mockupsData = [
   {
     id: 'willow',
@@ -9,6 +14,7 @@ export const mockupsData = [
     styling:
       'Warm, approachable, and low-pressure healthcare aesthetic. A sage, moss, cream, and coral palette replaces the conventional clinical blue. Fraunces is used for display typography, paired with Nunito Sans for a soft editorial feel. Rounded pill navigation, generous corner radii, organic background shapes, stitched borders, and record-tab-inspired card accents create a handcrafted, calm, and welcoming character.',
     livePreview: 'https://willow-dental-studio.example.com',
+    previewImage: willowPreview,
   },
   {
     id: 'thedrift',
@@ -20,6 +26,7 @@ export const mockupsData = [
     styling:
       'Inspired by traditional print journalism and literary publications. The design combines warm paper white, ink black, thin divider rules, muted gray typography, navy interaction accents, and rust editorial details. Source Serif 4 is used for headlines and long-form reading text, while Karla and Space Mono distinguish interface elements and publication metadata. A structured masthead, volume line, drop caps, and spacious article grids create a refined literary-magazine character.',
     livePreview: 'https://the-drift.example.com',
+    previewImage: thedriftPreview,
   },
   {
     id: 'shiro',
@@ -31,6 +38,7 @@ export const mockupsData = [
     styling:
       'Contemporary Japanese minimalism with an emphasis on precision and restraint. The palette uses black, white, rice beige, hairline-gray rules, and subtle clay accents. Oversized Space Grotesk headlines are paired with Work Sans for body copy and JetBrains Mono for labels and metadata. A fixed desktop sidebar, full-screen mobile menu, fine grid borders, Japanese-character watermarks, image-led cards, and a noren-curtain transition reinforce the exclusive and carefully crafted atmosphere.',
     livePreview: 'https://shiro.example.com',
+    previewImage: shiroPreview,
   },
   {
     id: 'waxandwane',
@@ -42,5 +50,6 @@ export const mockupsData = [
     styling:
       'Dark, tactile, and music-focused. A near-black plum background is paired with muted taupe text, warm bone highlights, amber accents, and dusty teal details to create a vintage record-store atmosphere. Bricolage Grotesque provides expressive display typography, while Instrument Sans handles interface and body text and IBM Plex Mono is used for catalog-style labels. A spinning vinyl record acts as the central visual motif throughout the interface, appearing in animated record graphics, hover interactions, and a subtle needle-drop transition between views.',
     livePreview: 'https://wax-and-wane.example.com',
+    previewImage: waxandwanePreview,
   },
 ];

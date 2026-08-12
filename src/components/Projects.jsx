@@ -156,7 +156,7 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Mockup grid layout (similar to certificates)
-                <div className="grid grid-cols-3 gap-1 sm:gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2">
                   {items.map((mockup) => (
                     <div
                       key={mockup.id}
@@ -171,18 +171,18 @@ export default function Projects() {
                         }
                       }}
                     >
-                      {/* Middle: Mockup Name with Icon */}
-                      <div className="flex flex-col items-center justify-center h-full gap-2">
-                        <div className="text-base-content/70">
+                      {/* Center: Mockup Icon and Name */}
+                      <div className="flex flex-col items-center justify-center flex-1">
+                        <div className="text-base-content/70 mb-2">
                           <WebIcon size={32} />
                         </div>
-                        <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
+                        <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2 px-1">
                           {mockup.name}
                         </h3>
                       </div>
 
                       {/* Bottom: Category */}
-                      <div className="absolute bottom-2 left-0 right-0 flex items-center justify-center">
+                      <div className="flex items-center justify-center mt-auto pt-2">
                         <p className="text-[6px] md:text-[8px] text-muted-foreground text-center">
                           &lt; {mockup.category} /&gt;
                         </p>
