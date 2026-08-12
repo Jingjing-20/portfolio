@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Willow Dental Studio — Dental Care That Doesn't Feel Clinical</title>
+<meta name="description" content="Willow Dental Studio offers cleanings, cosmetic and family dentistry in a calm, unhurried setting. Book a visit online." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bg:      '#f1f4ec',
+          cream:   '#fffdf8',
+          paper:   '#faf7ef',
+          charcoal:'#282720',
+          sub:     '#6d7268',
+          sage:    '#8ea888',
+          sagedark:'#3f5a3a',
+          moss:    '#2c4029',
+          clay:    '#c76b4a',
+          coral:   '#e98a6e',
+        },
+        fontFamily: {
+          display: ['"Fraunces"', 'serif'],
+          body: ['"Nunito Sans"', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+  body { background: #f1f4ec; color: #282720; }
+
+  .fade { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 2px solid #3f5a3a; outline-offset: 3px; }
+  ::selection { background: #3f5a3a; color: #fffdf8; }
+
+  img.ph { background: linear-gradient(135deg, #dfe8da, #eef3ea); }
+
+  .blob { position: absolute; border-radius: 50%; filter: blur(2px); z-index: 0; }
+
+  /* ---- page router ---- */
+  .page { display: none; }
+  .page.is-active { display: block; }
+  .page-enter { animation: pageIn .45s ease both; }
+  @keyframes pageIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- folder-tab nav (signature element: looks like an appointment record tab) ---- */
+  .tab-link { position: relative; }
+  .tab-link[aria-current="page"] { color: #fffdf8; }
+  .tab-link[aria-current="page"] .tab-pill { opacity: 1; transform: scale(1); }
+  .tab-pill { position: absolute; inset: 0; background: #3f5a3a; border-radius: 999px; z-index: -1; opacity: 0; transform: scale(.85); transition: opacity .25s ease, transform .25s ease; }
+
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-item[data-open="true"] .faq-answer { max-height: 260px; }
+  .faq-item[data-open="true"] .faq-chevron { transform: rotate(45deg); }
+  .faq-chevron { transition: transform .3s ease; }
+
+  .step-line { background-image: repeating-linear-gradient(to right, #b9c7b3 0, #b9c7b3 6px, transparent 6px, transparent 14px); height: 2px; }
+
+  .testi-slide { display: none; }
+  .testi-slide.is-active { display: block; }
+  .dot[aria-current="true"] { background: #3f5a3a; }
+
+  /* stitched edge — quilted, hand-finished feel rather than clinical */
+  .stitched { border: 1.5px dashed rgba(63,90,58,0.28); }
+
+  /* record-tab corner clip on service/team cards */
+  .record-card { position: relative; }
+  .record-card::before {
+    content: '';
+    position: absolute; top: 0; right: 22px; width: 34px; height: 12px;
+    background: #d7c9a3; border-radius: 0 0 6px 6px; opacity: .6;
+  }
+</style>
+</head>
+
+<body class="font-body antialiased">
+
+<a href="#/home" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-sagedark focus:text-cream focus:px-4 focus:py-2 focus:text-sm focus:rounded-full">Skip to content</a>
+
+<!-- ============ FLOATING NAV ============ -->
+<header class="sticky top-4 z-50 px-4">
+  <div id="navbar" class="max-w-6xl mx-auto bg-cream/95 backdrop-blur rounded-full shadow-sm border border-black/5 px-5 md:px-7 h-16 flex items-center justify-between transition-shadow">
+    <a href="#/home" class="font-display font-semibold text-lg md:text-xl flex items-center gap-2 shrink-0">
+      <span class="w-8 h-8 rounded-full bg-sage flex items-center justify-center text-cream text-sm">🌿</span>
+      Willow Dental
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-1.5 font-display text-sm text-charcoal/80" aria-label="Main pages">
+      <a data-nav="home"     href="#/home"     class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>Home</a>
+      <a data-nav="services" href="#/services" class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>Services</a>
+      <a data-nav="visit"    href="#/visit"    class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>Your Visit</a>
+      <a data-nav="team"     href="#/team"     class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>Team</a>
+      <a data-nav="reviews"  href="#/reviews"  class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>Reviews</a>
+      <a data-nav="faq"      href="#/faq"      class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>FAQ</a>
+      <a data-nav="location" href="#/location" class="tab-link px-4 py-2 rounded-full"><span class="tab-pill"></span>Location</a>
+    </nav>
+
+    <div class="flex items-center gap-3 shrink-0">
+      <a href="#/book" class="hidden sm:inline-block bg-sagedark text-cream font-display text-sm font-medium px-5 py-2.5 rounded-full hover:bg-charcoal transition-colors">Book a Visit</a>
+      <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel" class="lg:hidden w-9 h-9 rounded-full bg-bg flex flex-col items-center justify-center gap-[4px]">
+        <span class="block w-4 h-0.5 bg-charcoal rounded-full" id="bar1"></span>
+        <span class="block w-4 h-0.5 bg-charcoal rounded-full" id="bar2"></span>
+        <span class="block w-4 h-0.5 bg-charcoal rounded-full" id="bar3"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-panel" class="lg:hidden max-w-6xl mx-auto mt-2 bg-cream rounded-3xl shadow-sm border border-black/5 overflow-hidden max-h-0 transition-[max-height] duration-300" aria-hidden="true">
+    <nav class="flex flex-col font-display text-base p-3" aria-label="Main pages, mobile">
+      <a data-nav="home"     href="#/home"     class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">Home</a>
+      <a data-nav="services" href="#/services" class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">Services</a>
+      <a data-nav="visit"    href="#/visit"    class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">Your Visit</a>
+      <a data-nav="team"     href="#/team"     class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">Team</a>
+      <a data-nav="reviews"  href="#/reviews"  class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">Reviews</a>
+      <a data-nav="faq"      href="#/faq"      class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">FAQ</a>
+      <a data-nav="location" href="#/location" class="mobile-tab px-4 py-3 rounded-2xl hover:bg-bg">Location</a>
+      <a data-nav="book"     href="#/book"     class="mobile-tab px-4 py-3 rounded-2xl bg-sagedark text-cream mt-1 text-center">Book a Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================================================================ -->
+  <!-- PAGE: HOME                                                        -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="home">
+
+    <section class="relative max-w-6xl mx-auto px-6 pt-10 md:pt-16 pb-16 grid lg:grid-cols-2 gap-12 items-center overflow-hidden">
+      <div class="blob w-72 h-72 bg-sage/25 -top-10 -left-16"></div>
+      <div class="blob w-56 h-56 bg-coral/15 bottom-0 right-0 lg:right-1/3"></div>
+
+      <div class="relative z-10 fade">
+        <p class="font-display text-sm font-medium text-sagedark bg-sage/15 inline-block px-4 py-1.5 rounded-full mb-6">Now welcoming new patients</p>
+        <h1 class="font-display font-semibold text-4xl md:text-5xl lg:text-[3.4rem] leading-tight mb-6">Dental care that doesn't <span class="text-sagedark italic">feel clinical.</span></h1>
+        <p class="text-sub text-lg font-light max-w-md mb-8">Cleanings, cosmetic work and family dentistry in a small studio built to be unhurried — no waiting rooms full of strangers, no rushed exams.</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#/book" class="bg-sagedark text-cream font-display font-medium px-7 py-3.5 rounded-full hover:bg-charcoal transition-colors">Book a Visit</a>
+          <a href="#/services" class="border border-charcoal/20 font-display font-medium px-7 py-3.5 rounded-full hover:bg-cream transition-colors">See Services</a>
+        </div>
+        <div class="flex items-center gap-6 mt-10 text-sm text-sub">
+          <span><strong class="text-charcoal font-display">4.9★</strong> average rating</span>
+          <span class="w-px h-4 bg-charcoal/15"></span>
+          <span><strong class="text-charcoal font-display">15+ yrs</strong> in Riverside Commons</span>
+        </div>
+      </div>
+
+      <div class="relative z-10 fade">
+        <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1000&q=80" alt="Bright, calm dental treatment room with natural light" class="w-full h-[340px] md:h-[420px] object-cover rounded-[2.5rem] ph" loading="eager" />
+      </div>
+    </section>
+
+    <!-- value strip -->
+    <section class="max-w-6xl mx-auto px-6 py-10">
+      <div class="grid sm:grid-cols-3 gap-5 fade">
+        <div class="bg-cream stitched rounded-3xl p-6">
+          <p class="font-display font-semibold mb-1">One dentist, every visit</p>
+          <p class="text-sub text-sm leading-relaxed">No rotating faces — you keep the same provider from consult to cleanup.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-6">
+          <p class="font-display font-semibold mb-1">Costs explained first</p>
+          <p class="text-sub text-sm leading-relaxed">You approve every line item before any work begins. No surprise invoices.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-6">
+          <p class="font-display font-semibold mb-1">Real appointment windows</p>
+          <p class="text-sub text-sm leading-relaxed">We book fewer patients per hour on purpose, so visits don't feel rushed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- services preview -->
+    <section class="max-w-6xl mx-auto px-6 py-14">
+      <div class="flex items-end justify-between mb-8 fade flex-wrap gap-4">
+        <div>
+          <p class="font-display text-sm font-medium text-sagedark mb-2">What We Offer</p>
+          <h2 class="font-display font-semibold text-3xl md:text-4xl">A short list, done properly.</h2>
+        </div>
+        <a href="#/services" class="font-display text-sm font-medium text-sagedark hover:underline underline-offset-4">View all services →</a>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">🦷</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Cleanings &amp; Checkups</h3>
+          <p class="text-sub text-sm leading-relaxed">Routine care, gentle hygienists, plain-language explanations.</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">✨</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Cosmetic Dentistry</h3>
+          <p class="text-sub text-sm leading-relaxed">Whitening, bonding and veneers planned around how your smile moves.</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">👨‍👩‍👧</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Family Dentistry</h3>
+          <p class="text-sub text-sm leading-relaxed">Ages six and up, same studio, same dentist visit after visit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- testimonial teaser -->
+    <section class="bg-sagedark text-cream py-16 md:py-20">
+      <div class="max-w-3xl mx-auto px-6 text-center fade">
+        <p class="font-display text-sm font-medium text-cream/70 mb-6">Patients Say</p>
+        <p class="font-display text-xl md:text-2xl leading-snug mb-6">"First dentist I've had who didn't make me feel bad about not flossing enough. Just told me how to actually fix it."</p>
+        <p class="text-cream/70 text-sm mb-8">— Marisol T.</p>
+        <a href="#/reviews" class="text-cream/90 underline underline-offset-4 text-sm font-medium">Read more reviews →</a>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-14 grid sm:grid-cols-3 gap-6">
+      <div class="record-card bg-cream border border-black/5 rounded-3xl p-6"><p class="font-display text-lg mb-2">Clear next steps</p><p class="text-sm text-charcoal/65 leading-relaxed">We explain what we see, what can wait, and what each option costs before treatment begins.</p></div>
+      <div class="record-card bg-cream border border-black/5 rounded-3xl p-6"><p class="font-display text-lg mb-2">Time to ask</p><p class="text-sm text-charcoal/65 leading-relaxed">Appointments leave room for questions, including the small ones that are easy to forget in a rush.</p></div>
+      <div class="record-card bg-cream border border-black/5 rounded-3xl p-6"><p class="font-display text-lg mb-2">Gentle follow-through</p><p class="text-sm text-charcoal/65 leading-relaxed">After a visit, you’ll receive a plain-language recap and a simple plan for what happens next.</p></div>
+    </section>
+
+    <!-- CTA banner -->
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <div class="bg-cream rounded-[2.5rem] p-10 md:p-14 grid md:grid-cols-[1fr_auto] gap-8 items-center fade">
+        <div>
+          <h2 class="font-display font-semibold text-2xl md:text-3xl mb-2">Ready to find a time that fits?</h2>
+          <p class="text-sub">Most requests are confirmed within one business day.</p>
+        </div>
+        <a href="#/book" class="bg-sagedark text-cream font-display font-medium px-8 py-3.5 rounded-full hover:bg-charcoal transition-colors whitespace-nowrap text-center">Book a Visit</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: SERVICES                                                    -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="services">
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-6">
+      <p class="font-display text-sm font-medium text-sagedark mb-3 fade">What We Offer</p>
+      <h1 class="font-display font-semibold text-3xl md:text-4xl mb-4 fade max-w-xl">Everything for a healthy, easy smile.</h1>
+      <p class="text-sub max-w-xl fade">Every price below is a starting estimate for the mockup — your dentist will confirm the exact cost during your visit, before anything is done.</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-10">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">🦷</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Cleanings &amp; Checkups</h3>
+          <p class="text-sub text-sm leading-relaxed mb-4">Routine care, gentle hygienists, and a dentist who actually explains what they're looking at.</p>
+          <p class="font-display text-xs font-medium text-sagedark">From $110 · 45 min</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">✨</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Cosmetic Dentistry</h3>
+          <p class="text-sub text-sm leading-relaxed mb-4">Whitening, bonding and veneers, planned around how your smile actually moves.</p>
+          <p class="font-display text-xs font-medium text-sagedark">From $350 · consult required</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">👨‍👩‍👧</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Family Dentistry</h3>
+          <p class="text-sub text-sm leading-relaxed mb-4">Ages six and up, same studio, same dentist visit after visit.</p>
+          <p class="font-display text-xs font-medium text-sagedark">From $95 · 30–45 min</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">🩹</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Restorative Care</h3>
+          <p class="text-sub text-sm leading-relaxed mb-4">Fillings, crowns and root canals done with the least amount of drama possible.</p>
+          <p class="font-display text-xs font-medium text-sagedark">From $180 · varies by case</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">🌙</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Night Guards &amp; TMJ</h3>
+          <p class="text-sub text-sm leading-relaxed mb-4">Custom fit for clenching, grinding, and jaw tension relief.</p>
+          <p class="font-display text-xs font-medium text-sagedark">From $275 · 2 visits</p>
+        </div>
+        <div class="bg-cream record-card rounded-3xl p-7 fade">
+          <div class="w-12 h-12 rounded-2xl bg-sage/20 flex items-center justify-center text-2xl mb-5">🚨</div>
+          <h3 class="font-display font-semibold text-lg mb-2">Emergency Visits</h3>
+          <p class="text-sub text-sm leading-relaxed mb-4">Same-day slots held every morning for active pain, swelling or a broken tooth.</p>
+          <p class="font-display text-xs font-medium text-sagedark">Call ahead · same day</p>
+        </div>
+        <div class="bg-sagedark rounded-3xl p-7 flex flex-col justify-center fade sm:col-span-2 lg:col-span-1">
+          <p class="text-cream font-display font-semibold text-lg mb-3">Not sure what you need?</p>
+          <p class="text-cream/75 text-sm mb-4">A short consult can point you the right direction before anything's scheduled.</p>
+          <a href="#/book" class="text-cream/90 underline underline-offset-4 text-sm font-medium">Book a consult →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-10 pb-20">
+      <div class="bg-bg stitched rounded-3xl p-8 md:p-10 grid md:grid-cols-2 gap-8 fade">
+        <div>
+          <h3 class="font-display font-semibold text-xl mb-2">Insurance</h3>
+          <p class="text-sub text-sm leading-relaxed">In-network with most major PPO plans. Send your card ahead of your visit and we'll check your benefits before you arrive.</p>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-xl mb-2">Financing</h3>
+          <p class="text-sub text-sm leading-relaxed">Interest-free payment plans available for treatment over $500, through a third-party provider, arranged at your visit.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: YOUR VISIT                                                  -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="visit">
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-10">
+      <p class="font-display text-sm font-medium text-sagedark mb-3 fade">Your Visit</p>
+      <h1 class="font-display font-semibold text-3xl md:text-4xl mb-4 fade max-w-xl">Here's how a first appointment goes.</h1>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-16">
+      <div class="flex items-start justify-between relative">
+        <div class="step-line absolute top-6 left-6 right-6 hidden md:block"></div>
+        <div class="relative z-10 flex-1 text-center px-2 fade">
+          <div class="w-12 h-12 rounded-full bg-sagedark text-cream font-display font-semibold flex items-center justify-center mx-auto mb-4">1</div>
+          <h3 class="font-display font-semibold text-sm md:text-base mb-1">Book Online</h3>
+          <p class="text-sub text-xs md:text-sm">Pick a time that fits your week.</p>
+        </div>
+        <div class="relative z-10 flex-1 text-center px-2 fade">
+          <div class="w-12 h-12 rounded-full bg-sagedark text-cream font-display font-semibold flex items-center justify-center mx-auto mb-4">2</div>
+          <h3 class="font-display font-semibold text-sm md:text-base mb-1">Meet Your Dentist</h3>
+          <p class="text-sub text-xs md:text-sm">A real conversation before any tools come out.</p>
+        </div>
+        <div class="relative z-10 flex-1 text-center px-2 fade">
+          <div class="w-12 h-12 rounded-full bg-sagedark text-cream font-display font-semibold flex items-center justify-center mx-auto mb-4">3</div>
+          <h3 class="font-display font-semibold text-sm md:text-base mb-1">Treatment Plan</h3>
+          <p class="text-sub text-xs md:text-sm">Options and costs explained up front.</p>
+        </div>
+        <div class="relative z-10 flex-1 text-center px-2 fade">
+          <div class="w-12 h-12 rounded-full bg-sagedark text-cream font-display font-semibold flex items-center justify-center mx-auto mb-4">4</div>
+          <h3 class="font-display font-semibold text-sm md:text-base mb-1">Follow-Up Care</h3>
+          <p class="text-sub text-xs md:text-sm">Reminders when it's time to come back.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-20 grid md:grid-cols-2 gap-6">
+      <div class="bg-cream stitched rounded-3xl p-8 fade">
+        <h3 class="font-display font-semibold text-xl mb-4">What to bring</h3>
+        <ul class="space-y-3 text-sm text-sub">
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Photo ID and insurance card, if you have one</li>
+          <li class="flex gap-3"><span class="text-sagedark">—</span>A list of current medications</li>
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Any prior X-rays from another dentist</li>
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Questions — write them down, we'll go through each one</li>
+        </ul>
+      </div>
+      <div class="bg-cream stitched rounded-3xl p-8 fade">
+        <h3 class="font-display font-semibold text-xl mb-4">Comfort options</h3>
+        <ul class="space-y-3 text-sm text-sub">
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Noise-cancelling headphones and a curated playlist</li>
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Weighted blanket for longer procedures</li>
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Hand signal to pause at any point, no questions asked</li>
+          <li class="flex gap-3"><span class="text-sagedark">—</span>Numbing gel before any injection</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: TEAM                                                        -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="team">
+    <section class="max-w-6xl mx-auto px-6 pt-14 pb-10">
+      <p class="font-display text-sm font-medium text-sagedark mb-3 fade">Meet the Team</p>
+      <h1 class="font-display font-semibold text-3xl md:text-4xl mb-4 fade max-w-xl">Four people, one studio.</h1>
+      <p class="text-sub max-w-xl fade">Small on purpose — you'll recognize every face before your second visit.</p>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 pb-20">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center fade">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=500&q=80" alt="Portrait of Dr. Hana Reyes" class="w-32 h-32 rounded-full object-cover mx-auto mb-5 ph" loading="lazy" />
+          <h3 class="font-display font-semibold text-lg">Dr. Hana Reyes</h3>
+          <p class="text-sagedark text-sm font-medium mb-2">Founder &amp; Dentist</p>
+          <p class="text-sub text-sm leading-relaxed">Twelve years practicing, four running Willow. DDS, University of Michigan.</p>
+        </div>
+        <div class="text-center fade">
+          <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&w=500&q=80" alt="Portrait of Dr. Owen Marsh" class="w-32 h-32 rounded-full object-cover mx-auto mb-5 ph" loading="lazy" />
+          <h3 class="font-display font-semibold text-lg">Dr. Owen Marsh</h3>
+          <p class="text-sagedark text-sm font-medium mb-2">Cosmetic Dentist</p>
+          <p class="text-sub text-sm leading-relaxed">Focused on whitening, bonding and veneers. Joined Willow in 2022.</p>
+        </div>
+        <div class="text-center fade">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80" alt="Portrait of Sana Blake, dental hygienist" class="w-32 h-32 rounded-full object-cover mx-auto mb-5 ph" loading="lazy" />
+          <h3 class="font-display font-semibold text-lg">Sana Blake</h3>
+          <p class="text-sagedark text-sm font-medium mb-2">Lead Hygienist</p>
+          <p class="text-sub text-sm leading-relaxed">Handles most cleanings — patients ask for her by name.</p>
+        </div>
+        <div class="text-center fade">
+          <img src="https://images.unsplash.com/photo-1580281657702-257584239a55?auto=format&fit=crop&w=500&q=80" alt="Portrait of Malik Osei, front desk coordinator" class="w-32 h-32 rounded-full object-cover mx-auto mb-5 ph" loading="lazy" />
+          <h3 class="font-display font-semibold text-lg">Malik Osei</h3>
+          <p class="text-sagedark text-sm font-medium mb-2">Front Desk &amp; Scheduling</p>
+          <p class="text-sub text-sm leading-relaxed">First voice you'll hear on the phone, and the one who sorts out insurance.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: REVIEWS                                                     -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="reviews">
+    <section class="bg-sagedark text-cream py-16 md:py-20">
+      <div class="max-w-3xl mx-auto px-6 text-center">
+        <p class="font-display text-sm font-medium text-cream/70 mb-8 fade">Patients Say</p>
+        <div class="relative min-h-[160px] fade">
+          <div class="testi-slide is-active">
+            <p class="font-display text-xl md:text-2xl leading-snug mb-6">"First dentist I've had who didn't make me feel bad about not flossing enough. Just told me how to actually fix it."</p>
+            <p class="text-cream/70 text-sm">— Marisol T.</p>
+          </div>
+          <div class="testi-slide">
+            <p class="font-display text-xl md:text-2xl leading-snug mb-6">"The studio doesn't feel like a waiting room. I've never sat there more than five minutes."</p>
+            <p class="text-cream/70 text-sm">— Ben O.</p>
+          </div>
+          <div class="testi-slide">
+            <p class="font-display text-xl md:text-2xl leading-snug mb-6">"Got a full cost breakdown before anything happened. No surprise bill afterward, for once."</p>
+            <p class="text-cream/70 text-sm">— Priya K.</p>
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-2 mt-8">
+          <button class="dot w-2.5 h-2.5 rounded-full bg-cream/30" data-i="0" aria-current="true" aria-label="Testimonial 1"></button>
+          <button class="dot w-2.5 h-2.5 rounded-full bg-cream/30" data-i="1" aria-label="Testimonial 2"></button>
+          <button class="dot w-2.5 h-2.5 rounded-full bg-cream/30" data-i="2" aria-label="Testimonial 3"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <h2 class="font-display font-semibold text-2xl md:text-3xl mb-8 fade">More from patients.</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-cream stitched rounded-3xl p-7 fade">
+          <p class="text-sm leading-relaxed mb-4">"Dr. Marsh talked me through veneer options with photos of my own teeth — no pressure, just information."</p>
+          <p class="text-sagedark text-sm font-medium">— Dana W.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-7 fade">
+          <p class="text-sm leading-relaxed mb-4">"Brought my two kids in for cleanings. Sana had both of them laughing by the end."</p>
+          <p class="text-sagedark text-sm font-medium">— Farid A.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-7 fade">
+          <p class="text-sm leading-relaxed mb-4">"Chipped a tooth on a Saturday morning, got seen by 11am. Genuinely relieved."</p>
+          <p class="text-sagedark text-sm font-medium">— Colette R.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-7 fade">
+          <p class="text-sm leading-relaxed mb-4">"Financing plan meant I could finally get the crown done instead of putting it off another year."</p>
+          <p class="text-sagedark text-sm font-medium">— Trevor N.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-7 fade">
+          <p class="text-sm leading-relaxed mb-4">"Night guard fit perfectly on the first try. My jaw pain is basically gone."</p>
+          <p class="text-sagedark text-sm font-medium">— Ines M.</p>
+        </div>
+        <div class="bg-cream stitched rounded-3xl p-7 fade">
+          <p class="text-sm leading-relaxed mb-4">"Malik sorted out a whole insurance mess for me over one phone call. Painless, ironically."</p>
+          <p class="text-sagedark text-sm font-medium">— Owen P.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: FAQ                                                         -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="faq">
+    <section class="max-w-3xl mx-auto px-6 pt-14 pb-6">
+      <p class="font-display text-sm font-medium text-sagedark mb-3 fade">Questions</p>
+      <h1 class="font-display font-semibold text-3xl md:text-4xl mb-4 fade">Before you book.</h1>
+    </section>
+
+    <section class="max-w-3xl mx-auto px-6 pb-20">
+      <div class="space-y-3">
+        <div class="faq-item bg-cream stitched rounded-2xl px-6 fade" data-open="true">
+          <button class="faq-toggle w-full flex items-center justify-between py-5 text-left font-display font-medium">
+            Do you accept insurance?
+            <span class="faq-chevron text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sub text-sm leading-relaxed pb-5 pr-6">We're in-network with most major PPO plans and happy to check your specific benefits before your visit — just send your insurance card ahead of time.</p>
+          </div>
+        </div>
+        <div class="faq-item bg-cream stitched rounded-2xl px-6 fade" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between py-5 text-left font-display font-medium">
+            What happens at a first visit?
+            <span class="faq-chevron text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sub text-sm leading-relaxed pb-5 pr-6">A full exam, X-rays if needed, a conversation with your dentist, and a plain-language treatment plan — no work is done without your sign-off.</p>
+          </div>
+        </div>
+        <div class="faq-item bg-cream stitched rounded-2xl px-6 fade" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between py-5 text-left font-display font-medium">
+            Do you offer financing?
+            <span class="faq-chevron text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sub text-sm leading-relaxed pb-5 pr-6">Yes, we offer interest-free payment plans for treatment over $500 through a third-party provider.</p>
+          </div>
+        </div>
+        <div class="faq-item bg-cream stitched rounded-2xl px-6 fade" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between py-5 text-left font-display font-medium">
+            What if I have a dental emergency?
+            <span class="faq-chevron text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sub text-sm leading-relaxed pb-5 pr-6">Call the studio directly — we hold same-day emergency slots each morning for active pain, swelling or a broken tooth.</p>
+          </div>
+        </div>
+        <div class="faq-item bg-cream stitched rounded-2xl px-6 fade" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between py-5 text-left font-display font-medium">
+            Do you treat children?
+            <span class="faq-chevron text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sub text-sm leading-relaxed pb-5 pr-6">We see patients age six and up. For younger children, we're happy to recommend a pediatric specialist nearby.</p>
+          </div>
+        </div>
+        <div class="faq-item bg-cream stitched rounded-2xl px-6 fade" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between py-5 text-left font-display font-medium">
+            How do I cancel or reschedule?
+            <span class="faq-chevron text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer">
+            <p class="text-sub text-sm leading-relaxed pb-5 pr-6">Reply to your confirmation email or call the studio at least 24 hours ahead, so we can offer the slot to someone else.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: BOOK                                                        -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="book">
+    <section class="max-w-5xl mx-auto px-6 py-16 md:py-20">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12">
+        <div class="fade">
+          <p class="font-display text-sm font-medium text-sagedark mb-3">Book a Visit</p>
+          <h1 class="font-display font-semibold text-3xl md:text-4xl leading-tight mb-6">Let's find you a time.</h1>
+          <p class="text-sub leading-relaxed mb-6 max-w-sm">This is a design mockup — the form doesn't submit anywhere. A live build would connect to real scheduling availability.</p>
+          <div class="bg-cream stitched rounded-2xl p-5 space-y-2 max-w-sm">
+            <p class="font-display text-sm font-medium">Studio hours</p>
+            <p class="text-sub text-sm">Mon–Thu 8am–5pm · Fri 8am–2pm</p>
+            <p class="text-sub text-sm">Most requests confirmed within one business day.</p>
+          </div>
+        </div>
+
+        <form id="booking-form" class="bg-cream rounded-3xl p-8 md:p-10 space-y-6 fade" novalidate>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="b-name" class="font-display text-sm font-medium block mb-2">Name</label>
+              <input id="b-name" name="name" type="text" required class="w-full border border-black/10 focus:border-sagedark rounded-2xl px-4 py-3 outline-none bg-bg/40" />
+            </div>
+            <div>
+              <label for="b-email" class="font-display text-sm font-medium block mb-2">Email</label>
+              <input id="b-email" name="email" type="email" required class="w-full border border-black/10 focus:border-sagedark rounded-2xl px-4 py-3 outline-none bg-bg/40" />
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label for="b-date" class="font-display text-sm font-medium block mb-2">Preferred Date</label>
+              <input id="b-date" name="date" type="date" required class="w-full border border-black/10 focus:border-sagedark rounded-2xl px-4 py-3 outline-none bg-bg/40" />
+            </div>
+            <div>
+              <label for="b-time" class="font-display text-sm font-medium block mb-2">Preferred Time</label>
+              <select id="b-time" name="time" required class="w-full border border-black/10 focus:border-sagedark rounded-2xl px-4 py-3 outline-none bg-bg/40">
+                <option value="">Select</option>
+                <option>Morning (8–11am)</option>
+                <option>Midday (11am–2pm)</option>
+                <option>Afternoon (2–5pm)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="b-reason" class="font-display text-sm font-medium block mb-2">Reason for Visit</label>
+            <select id="b-reason" name="reason" required class="w-full border border-black/10 focus:border-sagedark rounded-2xl px-4 py-3 outline-none bg-bg/40">
+              <option value="">Select</option>
+              <option>Cleaning &amp; Checkup</option>
+              <option>Cosmetic Consultation</option>
+              <option>Tooth Pain / Emergency</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <fieldset>
+            <legend class="font-display text-sm font-medium mb-2">Are you a new patient?</legend>
+            <div class="flex gap-5 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="newpatient" value="yes" checked class="accent-sagedark" /> Yes, first visit</label>
+              <label class="flex items-center gap-2"><input type="radio" name="newpatient" value="no" class="accent-sagedark" /> Returning patient</label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="bg-sagedark text-cream font-display font-medium px-8 py-3.5 rounded-full hover:bg-charcoal transition-colors w-full sm:w-auto">Request Appointment</button>
+          <p id="form-status" class="text-sub text-sm pt-1" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: LOCATION                                                    -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="location">
+    <section class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div class="fade">
+          <p class="font-display text-sm font-medium text-sagedark mb-3">Find Us</p>
+          <h1 class="font-display font-semibold text-3xl md:text-4xl mb-8">Come by the studio.</h1>
+          <div class="space-y-5 mb-8">
+            <p><span class="block font-display text-sm font-medium text-sagedark mb-1">Address</span>19 Willow Court, Riverside Commons</p>
+            <p><span class="block font-display text-sm font-medium text-sagedark mb-1">Phone</span><a href="tel:+10005550199" class="hover:underline">(000) 555-0199</a></p>
+            <p><span class="block font-display text-sm font-medium text-sagedark mb-1">Email</span><a href="mailto:hello@willowdental.example" class="hover:underline">hello@willowdental.example</a></p>
+          </div>
+          <div class="bg-cream stitched rounded-2xl p-6">
+            <p class="font-display text-sm font-medium mb-3">Hours</p>
+            <div class="space-y-1.5 text-sm text-sub">
+              <div class="flex justify-between max-w-xs"><span>Monday – Thursday</span><span>8am – 5pm</span></div>
+              <div class="flex justify-between max-w-xs"><span>Friday</span><span>8am – 2pm</span></div>
+              <div class="flex justify-between max-w-xs"><span>Saturday – Sunday</span><span>Closed</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="relative rounded-[2.5rem] overflow-hidden bg-sage/20 h-72 md:h-96 flex items-center justify-center fade">
+          <div class="blob w-40 h-40 bg-sage/40 top-6 left-6"></div>
+          <div class="blob w-24 h-24 bg-coral/25 bottom-8 right-10"></div>
+          <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" class="relative z-10 bg-cream px-6 py-3.5 rounded-full font-display font-medium text-sm shadow-sm hover:shadow transition-shadow">Open in Maps</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-cream border-t border-black/5">
+  <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+    <div class="flex items-center gap-2 font-display font-semibold text-lg">
+      <span class="w-7 h-7 rounded-full bg-sage flex items-center justify-center text-cream text-xs">🌿</span>
+      Willow Dental
+    </div>
+    <p class="text-sub text-sm">&copy; <span id="year"></span> Willow Dental Studio. All rights reserved.</p>
+    <div class="flex gap-5 text-sm">
+      <a href="#" class="hover:text-sagedark">Instagram</a>
+      <a href="#/book" class="hover:text-sagedark">Book a Visit</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // navbar shadow on scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('shadow-md', window.scrollY > 40);
+  }, { passive: true });
+
+  // mobile panel
+  const toggle = document.getElementById('menu-toggle');
+  const panel = document.getElementById('mobile-panel');
+  let menuOpen = false;
+  function setMobilePanel(open) {
+    menuOpen = open;
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.setAttribute('aria-hidden', String(!open));
+    panel.style.maxHeight = open ? panel.scrollHeight + 'px' : '0px';
+  }
+  toggle.addEventListener('click', () => setMobilePanel(!menuOpen));
+  document.querySelectorAll('#mobile-panel a').forEach(a => a.addEventListener('click', () => setMobilePanel(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMobilePanel(false); });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) setMobilePanel(false);
+    else if (menuOpen) panel.style.maxHeight = panel.scrollHeight + 'px';
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-toggle').addEventListener('click', () => {
+      const isOpen = item.getAttribute('data-open') === 'true';
+      item.closest('.page').querySelectorAll('.faq-item').forEach(i => i.setAttribute('data-open', 'false'));
+      item.setAttribute('data-open', String(!isOpen));
+    });
+  });
+
+  // testimonial carousel
+  const slides = document.querySelectorAll('.testi-slide');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  function showSlide(i) {
+    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
+    dots.forEach((d, idx) => d.setAttribute('aria-current', String(idx === i)));
+    current = i;
+  }
+  dots.forEach(dot => dot.addEventListener('click', () => showSlide(Number(dot.dataset.i))));
+  setInterval(() => showSlide((current + 1) % slides.length), 6000);
+
+  // booking form (mock)
+  const form = document.getElementById('booking-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    status.textContent = `Thanks, ${form.name.value.trim() || 'there'} — this mockup would request ${form.time.value || 'a time'} on ${form.date.value || 'your chosen date'}. No data was actually sent.`;
+    form.reset();
+  });
+
+  // fade-in on scroll (re-observes whenever a page becomes active)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.12 });
+  function observeFades(scope) {
+    scope.querySelectorAll('.fade').forEach(el => io.observe(el));
+  }
+
+  // broken image fallback
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => { img.removeAttribute('srcset'); img.style.opacity = '0'; }, { once: true });
+  });
+
+  // ============ PAGE ROUTER ============
+  const pages = document.querySelectorAll('[data-page]');
+  const validPages = new Set(Array.from(pages).map(p => p.dataset.page));
+
+  function setActiveNav(id) {
+    document.querySelectorAll('[data-nav]').forEach(a => {
+      const active = a.dataset.nav === id;
+      a.toggleAttribute('aria-current', active);
+      if (active) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      a.classList.toggle('font-semibold', active);
+    });
+  }
+
+  function showPage(id, { scroll = true } = {}) {
+    pages.forEach(p => {
+      const isTarget = p.dataset.page === id;
+      p.classList.toggle('is-active', isTarget);
+      if (isTarget) {
+        p.classList.remove('page-enter');
+        void p.offsetWidth; // restart animation
+        p.classList.add('page-enter');
+      }
+    });
+    setActiveNav(id);
+    const activePage = document.querySelector(`[data-page="${id}"]`);
+    if (activePage) observeFades(activePage);
+    if (scroll) window.scrollTo({ top: 0, behavior: 'auto' });
+    document.title = id === 'home'
+      ? "Willow Dental Studio — Dental Care That Doesn't Feel Clinical"
+      : `${id.charAt(0).toUpperCase()}${id.slice(1)} · Willow Dental Studio`;
+  }
+
+  function routeFromHash() {
+    setMobilePanel(false);
+    const raw = (location.hash || '#/home').replace(/^#\/?/, '');
+    const id = validPages.has(raw) ? raw : 'home';
+    showPage(id);
+  }
+
+  window.addEventListener('hashchange', routeFromHash);
+  routeFromHash();
+</script>
+
+</body>
+</html>

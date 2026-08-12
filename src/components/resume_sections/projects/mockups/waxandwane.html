@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wax &amp; Wane — Records &amp; Listening Bar</title>
+<meta name="description" content="Wax & Wane is a record shop and listening bar. Browse the crate, book a headphone station, or catch a live session." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void:     '#16121a',
+          groove:   '#1e1a22',
+          panel:    '#241f29',
+          paper:    '#f3ead9',
+          sub:      '#a89a8c',
+          shellac:  '#e8b464',
+          statik:   '#5b8a86',
+          line:     '#37303e',
+        },
+        fontFamily: {
+          display: ['"Bricolage Grotesque"', 'sans-serif'],
+          body: ['"Instrument Sans"', 'sans-serif'],
+          mono: ['"IBM Plex Mono"', 'monospace'],
+        },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+  body { background: #16121a; color: #f3ead9; position: relative; }
+
+  /* groove-ring texture: faint concentric circles, like a record surface, fixed behind content */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .5;
+    background-image: repeating-radial-gradient(circle at 82% 8%, rgba(243,234,217,0.05) 0px, rgba(243,234,217,0.05) 1px, transparent 1px, transparent 7px);
+  }
+
+  .fade { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+  .fade.in { opacity: 1; transform: translateY(0); }
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #e8b464; outline-offset: 3px;
+  }
+  ::selection { background: #e8b464; color: #16121a; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  img.ph { background: linear-gradient(135deg, #241f29, #16121a); }
+
+  /* ---- page router ---- */
+  .page { display: none; }
+  .page.is-active { display: block; }
+  .page-enter { animation: pageIn .45s ease both; }
+  @keyframes pageIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ---- signature element: spinning vinyl (SVG), used as hero, mini icons, and page-transition ---- */
+  .platter { animation: spin 5.5s linear infinite; transform-origin: 50% 50%; }
+  .platter.slow { animation-duration: 9s; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .card:hover .mini-platter, .card:focus-within .mini-platter { animation-play-state: running; }
+  .mini-platter { animation: spin 3s linear infinite; animation-play-state: paused; transform-origin: 50% 50%; }
+
+  /* ---- tonearm nav indicator: pivots to point at the active link ---- */
+  .tonearm-nav { position: relative; }
+  #tonearm {
+    position: absolute; top: -6px; height: 2px; background: #e8b464; transform-origin: left center;
+    transition: left .35s cubic-bezier(.65,0,.35,1), width .35s cubic-bezier(.65,0,.35,1);
+  }
+  #tonearm::after {
+    content: ""; position: absolute; right: -3px; top: -2.5px; width: 6px; height: 6px; border-radius: 999px; background: #e8b464;
+  }
+  .nav-link { position: relative; color: #a89a8c; transition: color .2s ease; }
+  .nav-link[aria-current="page"], .nav-link:hover { color: #f3ead9; }
+
+  /* ---- needle-drop transition overlay ---- */
+  #needle-drop { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; background: #16121a; opacity: 0; pointer-events: none; transition: opacity .28s ease; }
+  #needle-drop.active { opacity: 1; pointer-events: auto; }
+
+  /* ---- catalog code chip ---- */
+  .cat-code { font-family: "IBM Plex Mono", monospace; letter-spacing: .04em; }
+
+  /* ---- genre filter pills ---- */
+  .genre-pill { border: 1px solid #37303e; color: #a89a8c; }
+  .genre-pill.is-active { background: #e8b464; color: #16121a; border-color: #e8b464; }
+
+  /* ---- session ticket stub: perforated edge between date block and details ---- */
+  .stub::before {
+    content: ""; position: absolute; left: 108px; top: -8px; width: 16px; height: 16px; border-radius: 999px; background: #16121a;
+  }
+  .stub::after {
+    content: ""; position: absolute; left: 108px; bottom: -8px; width: 16px; height: 16px; border-radius: 999px; background: #16121a;
+  }
+
+  /* ---- mobile full-screen menu ---- */
+  #mobile-panel { position: fixed; inset: 0; z-index: 80; background: #16121a; transform: translateY(-100%); transition: transform .4s cubic-bezier(.65,0,.35,1); }
+  #mobile-panel.open { transform: translateY(0); }
+
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-item[data-open="true"] .faq-answer { max-height: 260px; }
+  .faq-item[data-open="true"] .faq-chevron { transform: rotate(45deg); }
+  .faq-chevron { transition: transform .3s ease; }
+
+  .marquee-track { animation: marquee 22s linear infinite; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</head>
+
+<body class="font-body antialiased">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-shellac focus:text-void focus:px-4 focus:py-2 focus:text-sm focus:rounded">Skip to content</a>
+
+<!-- ============ NEEDLE-DROP TRANSITION OVERLAY ============ -->
+<div id="needle-drop" aria-hidden="true">
+  <svg width="120" height="120" viewBox="0 0 120 120" class="platter">
+    <circle cx="60" cy="60" r="58" fill="#1e1a22" stroke="#37303e" />
+    <circle cx="60" cy="60" r="50" fill="none" stroke="#37303e" stroke-width="0.6" />
+    <circle cx="60" cy="60" r="42" fill="none" stroke="#37303e" stroke-width="0.6" />
+    <circle cx="60" cy="60" r="34" fill="none" stroke="#37303e" stroke-width="0.6" />
+    <circle cx="60" cy="60" r="20" fill="#e8b464" />
+    <circle cx="60" cy="60" r="3" fill="#16121a" />
+  </svg>
+</div>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="relative z-10 border-b border-line">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-20">
+    <a href="#/home" class="flex items-center gap-3 shrink-0">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+        <circle cx="17" cy="17" r="16" fill="none" stroke="#e8b464" stroke-width="1.4" />
+        <circle cx="17" cy="17" r="6" fill="#e8b464" />
+        <circle cx="17" cy="17" r="1.6" fill="#16121a" />
+      </svg>
+      <span class="font-display font-semibold text-xl tracking-tight text-paper">Wax &amp; Wane</span>
+    </a>
+
+    <nav class="tonearm-nav hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-[0.14em]" id="desktop-nav">
+      <div id="tonearm"></div>
+      <a href="#/home" data-nav="home" class="nav-link py-2">Home</a>
+      <a href="#/crate" data-nav="crate" class="nav-link py-2">Crate</a>
+      <a href="#/sessions" data-nav="sessions" class="nav-link py-2">Sessions</a>
+      <a href="#/bar" data-nav="bar" class="nav-link py-2">Bar</a>
+      <a href="#/story" data-nav="story" class="nav-link py-2">Story</a>
+      <a href="#/visit" data-nav="visit" class="nav-link py-2">Visit</a>
+      <a href="#/join" data-nav="join" class="ml-2 px-4 py-2 rounded-full bg-shellac text-void hover:bg-paper transition-colors">Join</a>
+    </nav>
+
+    <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel" class="md:hidden font-mono text-xs uppercase tracking-[0.14em] text-paper flex items-center gap-2">
+      Menu
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 9h14M2 13h14" stroke="#f3ead9" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE FULL-SCREEN MENU ============ -->
+<div id="mobile-panel" aria-hidden="true">
+  <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between border-b border-line">
+    <span class="font-display font-semibold text-xl text-paper">Wax &amp; Wane</span>
+    <button id="menu-close" aria-label="Close menu" class="text-paper">
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 3l14 14M17 3L3 17" stroke="#f3ead9" stroke-width="1.4"/></svg>
+    </button>
+  </div>
+  <nav class="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-1 font-display text-3xl">
+    <a href="#/home" class="mobile-link flex items-baseline gap-4 py-4 border-b border-line text-paper"><span class="cat-code text-sm text-shellac">A1</span>Home</a>
+    <a href="#/crate" class="mobile-link flex items-baseline gap-4 py-4 border-b border-line text-paper"><span class="cat-code text-sm text-shellac">A2</span>Crate</a>
+    <a href="#/sessions" class="mobile-link flex items-baseline gap-4 py-4 border-b border-line text-paper"><span class="cat-code text-sm text-shellac">A3</span>Sessions</a>
+    <a href="#/bar" class="mobile-link flex items-baseline gap-4 py-4 border-b border-line text-paper"><span class="cat-code text-sm text-shellac">B1</span>Bar</a>
+    <a href="#/story" class="mobile-link flex items-baseline gap-4 py-4 border-b border-line text-paper"><span class="cat-code text-sm text-shellac">B2</span>Story</a>
+    <a href="#/visit" class="mobile-link flex items-baseline gap-4 py-4 border-b border-line text-paper"><span class="cat-code text-sm text-shellac">B3</span>Visit</a>
+    <a href="#/join" class="mobile-link flex items-baseline gap-4 py-4 text-shellac"><span class="cat-code text-sm">B4</span>Join</a>
+  </nav>
+</div>
+
+<main id="main" class="relative z-10 max-w-6xl mx-auto px-6">
+
+  <!-- ================================================================ -->
+  <!-- PAGE: HOME                                                        -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="home">
+
+    <!-- HERO -->
+    <section class="grid lg:grid-cols-[1.1fr_.9fr] gap-12 items-center py-16 md:py-24">
+      <div class="fade">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-5">Record shop &amp; listening bar</p>
+        <h1 class="font-display font-semibold text-[2.6rem] leading-[1.05] md:text-6xl md:leading-[1.03] text-paper">
+          Records first.<br>Then everything slows down.
+        </h1>
+        <p class="text-sub text-lg mt-6 max-w-md">We sell what we'd actually play — new pressings, used gems, and local runs — then hand you a set of headphones and a chair.</p>
+        <div class="flex flex-wrap gap-4 mt-9">
+          <a href="#/crate" class="px-6 py-3.5 bg-shellac text-void rounded-full font-mono text-xs uppercase tracking-[0.14em] hover:bg-paper transition-colors">Browse the crate</a>
+          <a href="#/sessions" class="px-6 py-3.5 border border-line text-paper rounded-full font-mono text-xs uppercase tracking-[0.14em] hover:border-shellac transition-colors">Book a session</a>
+        </div>
+      </div>
+
+      <div class="fade flex justify-center lg:justify-end" aria-hidden="true">
+        <svg width="300" height="300" viewBox="0 0 300 300" class="platter slow max-w-full h-auto">
+          <circle cx="150" cy="150" r="146" fill="#1e1a22" stroke="#37303e" stroke-width="1.5" />
+          <circle cx="150" cy="150" r="128" fill="none" stroke="#37303e" stroke-width="0.6" />
+          <circle cx="150" cy="150" r="112" fill="none" stroke="#37303e" stroke-width="0.6" />
+          <circle cx="150" cy="150" r="98" fill="none" stroke="#37303e" stroke-width="0.6" />
+          <circle cx="150" cy="150" r="84" fill="none" stroke="#37303e" stroke-width="0.6" />
+          <circle cx="150" cy="150" r="70" fill="none" stroke="#37303e" stroke-width="0.6" />
+          <circle cx="150" cy="150" r="52" fill="#e8b464" />
+          <text x="150" y="145" text-anchor="middle" font-family="IBM Plex Mono" font-size="9" fill="#16121a" letter-spacing="1">WAX &amp; WANE</text>
+          <text x="150" y="160" text-anchor="middle" font-family="IBM Plex Mono" font-size="7" fill="#16121a">SIDE A · 33⅓</text>
+          <circle cx="150" cy="150" r="4" fill="#16121a" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- NOW SPINNING TICKER -->
+    <section class="border-y border-line py-3 overflow-hidden fade">
+      <div class="flex whitespace-nowrap font-mono text-xs uppercase tracking-[0.14em] text-sub">
+        <div class="marquee-track flex gap-10 pr-10">
+          <span>Now spinning at the bar — Alice Coltrane, <em class="text-paper not-italic">Journey in Satchidananda</em></span>
+          <span>Station 3 open</span>
+          <span>Friday session — Dub &amp; Delay, 8pm</span>
+          <span>New arrivals in the crate every Tuesday</span>
+          <span>Now spinning at the bar — Alice Coltrane, <em class="text-paper not-italic">Journey in Satchidananda</em></span>
+          <span>Station 3 open</span>
+          <span>Friday session — Dub &amp; Delay, 8pm</span>
+          <span>New arrivals in the crate every Tuesday</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED RELEASES -->
+    <section class="py-16 md:py-20">
+      <div class="flex items-end justify-between mb-10 fade">
+        <h2 class="font-display font-semibold text-2xl md:text-3xl text-paper">This week in the crate</h2>
+        <a href="#/crate" class="font-mono text-xs uppercase tracking-[0.14em] text-statik hover:text-paper transition-colors hidden sm:block">View all →</a>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="home-featured"></div>
+    </section>
+
+    <!-- BAR TEASER -->
+    <section class="grid md:grid-cols-2 gap-10 items-center py-16 md:py-20 border-t border-line fade">
+      <div class="aspect-[4/3] rounded-2xl ph bg-panel"></div>
+      <div>
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">The listening bar</p>
+        <h2 class="font-display font-semibold text-3xl text-paper mb-4">Six stations. One record at a time.</h2>
+        <p class="text-sub mb-6">Pick a station, hand the bartender a record — yours or ours — and we'll cue it up on a proper turntable. Coffee by day, natural wine by night.</p>
+        <a href="#/bar" class="font-mono text-xs uppercase tracking-[0.14em] text-shellac hover:text-paper transition-colors">See the bar →</a>
+      </div>
+    </section>
+
+    <!-- JOIN CTA -->
+    <section class="py-16 md:py-20 border-t border-line fade">
+      <div class="bg-panel rounded-2xl px-8 py-12 md:px-14 md:py-16 text-center">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">Record club</p>
+        <h2 class="font-display font-semibold text-3xl md:text-4xl text-paper mb-4 max-w-xl mx-auto">One record a month, picked by people who'd never send you a bad one.</h2>
+        <a href="#/join" class="inline-block mt-4 px-7 py-3.5 bg-shellac text-void rounded-full font-mono text-xs uppercase tracking-[0.14em] hover:bg-paper transition-colors">Join the club</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: CRATE                                                       -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="crate">
+    <section class="py-14 md:py-16 border-b border-line fade">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">Shop</p>
+      <h1 class="font-display font-semibold text-4xl md:text-5xl text-paper mb-4">The crate</h1>
+      <p class="text-sub max-w-lg">New pressings, used copies we've actually played, and short-run local presses. Catalog codes follow real side and track order — A1 is always the first cut.</p>
+    </section>
+
+    <section class="py-8 border-b border-line overflow-x-auto no-scrollbar fade">
+      <div class="flex gap-3 w-max" id="genre-filters">
+        <button class="genre-pill is-active px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wide" data-genre="all">All</button>
+        <button class="genre-pill px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wide" data-genre="jazz">Jazz</button>
+        <button class="genre-pill px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wide" data-genre="soul">Soul &amp; Funk</button>
+        <button class="genre-pill px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wide" data-genre="electronic">Electronic</button>
+        <button class="genre-pill px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wide" data-genre="local">Local Press</button>
+        <button class="genre-pill px-4 py-2 rounded-full font-mono text-xs uppercase tracking-wide" data-genre="reissue">Reissues</button>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-14">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="crate-grid"></div>
+      <p class="font-mono text-xs uppercase tracking-wide text-sub text-center mt-12">The crate turns over every Tuesday. Come dig.</p>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: SESSIONS                                                    -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="sessions">
+    <section class="py-14 md:py-16 border-b border-line fade">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">Live &amp; recorded</p>
+      <h1 class="font-display font-semibold text-4xl md:text-5xl text-paper mb-4">Sessions</h1>
+      <p class="text-sub max-w-lg">Album-in-full nights, guest selectors, and the occasional live set — played loud on the good system, no phones out.</p>
+    </section>
+
+    <section class="py-12 md:py-14 space-y-5">
+      <div class="stub relative bg-panel rounded-2xl pl-8 pr-6 md:pr-10 py-6 flex flex-col sm:flex-row gap-6 sm:items-center fade">
+        <div class="sm:w-28 shrink-0 sm:border-r sm:border-line sm:pr-6">
+          <p class="font-mono text-xs uppercase tracking-wide text-statik">Fri</p>
+          <p class="font-display font-semibold text-3xl text-paper">14</p>
+          <p class="font-mono text-xs text-sub">Aug, 8pm</p>
+        </div>
+        <div class="flex-1">
+          <h2 class="font-display font-semibold text-xl text-paper mb-1">Dub &amp; Delay — a night of echo</h2>
+          <p class="text-sub text-sm">Guest selector Marlowe R. plays two hours of dub, deep and slow, straight through the room system.</p>
+        </div>
+        <div class="sm:text-right shrink-0">
+          <p class="font-mono text-xs uppercase tracking-wide text-shellac">6 of 24 seats left</p>
+        </div>
+      </div>
+
+      <div class="stub relative bg-panel rounded-2xl pl-8 pr-6 md:pr-10 py-6 flex flex-col sm:flex-row gap-6 sm:items-center fade">
+        <div class="sm:w-28 shrink-0 sm:border-r sm:border-line sm:pr-6">
+          <p class="font-mono text-xs uppercase tracking-wide text-statik">Wed</p>
+          <p class="font-display font-semibold text-3xl text-paper">19</p>
+          <p class="font-mono text-xs text-sub">Aug, 7pm</p>
+        </div>
+        <div class="flex-1">
+          <h2 class="font-display font-semibold text-xl text-paper mb-1">Album in Full: <em class="not-italic">A Love Supreme</em></h2>
+          <p class="text-sub text-sm">Lights down, one record, no talking. Doors close once the needle drops.</p>
+        </div>
+        <div class="sm:text-right shrink-0">
+          <p class="font-mono text-xs uppercase tracking-wide text-sub">Waitlist open</p>
+        </div>
+      </div>
+
+      <div class="stub relative bg-panel rounded-2xl pl-8 pr-6 md:pr-10 py-6 flex flex-col sm:flex-row gap-6 sm:items-center fade">
+        <div class="sm:w-28 shrink-0 sm:border-r sm:border-line sm:pr-6">
+          <p class="font-mono text-xs uppercase tracking-wide text-statik">Sat</p>
+          <p class="font-display font-semibold text-3xl text-paper">29</p>
+          <p class="font-mono text-xs text-sub">Aug, 9pm</p>
+        </div>
+        <div class="flex-1">
+          <h2 class="font-display font-semibold text-xl text-paper mb-1">Local Press Showcase</h2>
+          <p class="text-sub text-sm">Three neighborhood labels play their newest cuts back to back, before they hit the crate.</p>
+        </div>
+        <div class="sm:text-right shrink-0">
+          <p class="font-mono text-xs uppercase tracking-wide text-shellac">14 of 24 seats left</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid sm:grid-cols-3 gap-6 py-12 md:py-14 border-t border-line fade">
+      <div>
+        <p class="cat-code text-shellac text-sm mb-2">01</p>
+        <h3 class="font-display font-semibold text-lg text-paper mb-1">Reserve a seat</h3>
+        <p class="text-sub text-sm">Seats are first-come through the Join page or at the counter. No cover for club members.</p>
+      </div>
+      <div>
+        <p class="cat-code text-shellac text-sm mb-2">02</p>
+        <h3 class="font-display font-semibold text-lg text-paper mb-1">Arrive on time</h3>
+        <p class="text-sub text-sm">Doors close when the needle drops. Latecomers wait for a break between sides.</p>
+      </div>
+      <div>
+        <p class="cat-code text-shellac text-sm mb-2">03</p>
+        <h3 class="font-display font-semibold text-lg text-paper mb-1">Listen, mostly</h3>
+        <p class="text-sub text-sm">Talk between sides. Phones stay in pockets — we'll post photos after.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: BAR                                                         -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="bar">
+    <section class="grid md:grid-cols-2 gap-10 items-center py-14 md:py-16 border-b border-line">
+      <div class="fade">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">The listening bar</p>
+        <h1 class="font-display font-semibold text-4xl md:text-5xl text-paper mb-4">Six stations, one at a time</h1>
+        <p class="text-sub max-w-md">Each station is a real turntable, a pair of open-back headphones, and a low chair. Bring your own record or pull one from the house shelf.</p>
+      </div>
+      <div class="aspect-[4/3] rounded-2xl ph bg-panel fade"></div>
+    </section>
+
+    <section class="py-12 md:py-14 border-b border-line">
+      <h2 class="font-display font-semibold text-2xl text-paper mb-8 fade">Stations</h2>
+      <div class="grid sm:grid-cols-3 gap-4" id="stations-grid">
+        <div class="bg-panel rounded-xl p-5 fade">
+          <p class="cat-code text-shellac text-sm mb-2">Station 1–2</p>
+          <p class="text-paper font-medium">Window bar</p>
+          <p class="text-sub text-sm mt-1">Street-facing, good light, best for daytime coffee sessions.</p>
+        </div>
+        <div class="bg-panel rounded-xl p-5 fade">
+          <p class="cat-code text-shellac text-sm mb-2">Station 3–4</p>
+          <p class="text-paper font-medium">Back room</p>
+          <p class="text-sub text-sm mt-1">Low light, deeper chairs, where most evening sessions land.</p>
+        </div>
+        <div class="bg-panel rounded-xl p-5 fade">
+          <p class="cat-code text-shellac text-sm mb-2">Station 5–6</p>
+          <p class="text-paper font-medium">Counter</p>
+          <p class="text-sub text-sm mt-1">Shared table, first-come — the one to grab solo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-14">
+      <h2 class="font-display font-semibold text-2xl text-paper mb-8 fade">Menu</h2>
+      <div class="grid sm:grid-cols-3 gap-10">
+        <div class="fade">
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-statik mb-4 pb-3 border-b border-line">Coffee &amp; tonics</p>
+          <ul class="space-y-3 text-sm">
+            <li class="flex justify-between text-sub"><span class="text-paper">Pour-over</span><span>$5</span></li>
+            <li class="flex justify-between text-sub"><span class="text-paper">Iced tonic</span><span>$6</span></li>
+            <li class="flex justify-between text-sub"><span class="text-paper">Cortado</span><span>$5</span></li>
+          </ul>
+        </div>
+        <div class="fade">
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-statik mb-4 pb-3 border-b border-line">Natural wine</p>
+          <ul class="space-y-3 text-sm">
+            <li class="flex justify-between text-sub"><span class="text-paper">Glass, rotating</span><span>$11</span></li>
+            <li class="flex justify-between text-sub"><span class="text-paper">Bottle, rotating</span><span>$42</span></li>
+            <li class="flex justify-between text-sub"><span class="text-paper">Pét-nat, by the can</span><span>$9</span></li>
+          </ul>
+        </div>
+        <div class="fade">
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-statik mb-4 pb-3 border-b border-line">Non-alcoholic</p>
+          <ul class="space-y-3 text-sm">
+            <li class="flex justify-between text-sub"><span class="text-paper">Shrub soda</span><span>$5</span></li>
+            <li class="flex justify-between text-sub"><span class="text-paper">Sparkling water</span><span>$3</span></li>
+            <li class="flex justify-between text-sub"><span class="text-paper">House cola</span><span>$4</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-sub text-sm mt-10 fade">All ages before 6pm. 21+ after, ID at the door. A station holds one drink minimum per set.</p>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: STORY                                                       -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="story">
+    <section class="py-14 md:py-16 border-b border-line fade">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">About</p>
+      <h1 class="font-display font-semibold text-4xl md:text-5xl text-paper mb-6 max-w-2xl">Two collectors who ran out of shelf space.</h1>
+      <p class="text-sub max-w-xl">Wax &amp; Wane started as a closet's worth of records and a shared conviction that most shops make you shop faster than you want to. We built the kind we'd want to stay in.</p>
+    </section>
+
+    <!-- history — genuinely sequential, so years are meaningful here -->
+    <section class="py-12 md:py-14 border-b border-line">
+      <h2 class="font-display font-semibold text-2xl text-paper mb-8 fade">History</h2>
+      <div class="space-y-8">
+        <div class="flex gap-6 fade">
+          <p class="cat-code text-shellac shrink-0 w-16">2016</p>
+          <p class="text-sub">Two friends start trading records out of a shared apartment, mostly soul and early electronic.</p>
+        </div>
+        <div class="flex gap-6 fade">
+          <p class="cat-code text-shellac shrink-0 w-16">2019</p>
+          <p class="text-sub">The first storefront opens, one room, four crates, and a single pair of headphones behind the counter.</p>
+        </div>
+        <div class="flex gap-6 fade">
+          <p class="cat-code text-shellac shrink-0 w-16">2022</p>
+          <p class="text-sub">The bar opens next door. Six stations, a coffee machine, and a wine list chosen by ear as much as taste.</p>
+        </div>
+        <div class="flex gap-6 fade">
+          <p class="cat-code text-shellac shrink-0 w-16">Now</p>
+          <p class="text-sub">Weekly sessions, a growing local-press shelf, and a club that ships one record a month to a few hundred people.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-14">
+      <h2 class="font-display font-semibold text-2xl text-paper mb-8 fade">Who's behind the counter</h2>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="fade">
+          <div class="aspect-square rounded-2xl ph bg-panel mb-4"></div>
+          <p class="text-paper font-medium">Nadia Oyelaran</p>
+          <p class="text-sub text-sm">Buyer — jazz &amp; local press</p>
+        </div>
+        <div class="fade">
+          <div class="aspect-square rounded-2xl ph bg-panel mb-4"></div>
+          <p class="text-paper font-medium">Theo Marsh</p>
+          <p class="text-sub text-sm">Buyer — electronic &amp; reissues</p>
+        </div>
+        <div class="fade">
+          <div class="aspect-square rounded-2xl ph bg-panel mb-4"></div>
+          <p class="text-paper font-medium">June Park</p>
+          <p class="text-sub text-sm">Bar &amp; sessions</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: VISIT                                                       -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="visit">
+    <section class="py-14 md:py-16 border-b border-line fade">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">Find us</p>
+      <h1 class="font-display font-semibold text-4xl md:text-5xl text-paper mb-4">Visit</h1>
+    </section>
+
+    <section class="grid md:grid-cols-2 gap-12 py-12 md:py-14 border-b border-line">
+      <div class="fade">
+        <div class="aspect-[4/3] rounded-2xl ph bg-panel mb-6"></div>
+        <p class="text-sub text-sm">318 Amherst Street, Unit B — corner entrance, look for the amber sign.</p>
+      </div>
+      <div class="space-y-8 fade">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-statik mb-2">Shop hours</p>
+          <ul class="text-sub space-y-1">
+            <li class="flex justify-between max-w-xs"><span>Tue–Fri</span><span class="text-paper">11am–8pm</span></li>
+            <li class="flex justify-between max-w-xs"><span>Sat</span><span class="text-paper">10am–9pm</span></li>
+            <li class="flex justify-between max-w-xs"><span>Sun</span><span class="text-paper">12pm–6pm</span></li>
+            <li class="flex justify-between max-w-xs"><span>Mon</span><span class="text-paper">Closed</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-statik mb-2">Bar hours</p>
+          <ul class="text-sub space-y-1">
+            <li class="flex justify-between max-w-xs"><span>Wed–Sat</span><span class="text-paper">6pm–midnight</span></li>
+            <li class="flex justify-between max-w-xs"><span>All other days</span><span class="text-paper">Coffee only</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.14em] text-statik mb-2">Getting here</p>
+          <p class="text-sub text-sm">Two blocks from the Amherst St. transit stop. Street parking after 6pm; a small lot sits behind the building.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 md:py-14">
+      <h2 class="font-display font-semibold text-2xl text-paper mb-8 fade">Before you come</h2>
+      <div class="divide-y divide-line" id="faq-list">
+        <div class="faq-item py-5" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between text-left" aria-expanded="false">
+            <span class="text-paper font-medium">Do I need to book a station?</span>
+            <span class="faq-chevron text-shellac text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer"><p class="text-sub text-sm pt-3 pr-8">Walk-ins are welcome any time. For evenings and sessions, booking through Join holds your seat.</p></div>
+        </div>
+        <div class="faq-item py-5" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between text-left" aria-expanded="false">
+            <span class="text-paper font-medium">Can I sell records to the shop?</span>
+            <span class="faq-chevron text-shellac text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer"><p class="text-sub text-sm pt-3 pr-8">Yes — bring up to 50 at a time, Tuesday through Thursday, no appointment needed.</p></div>
+        </div>
+        <div class="faq-item py-5" data-open="false">
+          <button class="faq-toggle w-full flex items-center justify-between text-left" aria-expanded="false">
+            <span class="text-paper font-medium">Is the shop wheelchair accessible?</span>
+            <span class="faq-chevron text-shellac text-xl leading-none">+</span>
+          </button>
+          <div class="faq-answer"><p class="text-sub text-sm pt-3 pr-8">Yes, step-free from the corner entrance, with an accessible station at the counter.</p></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================================================================ -->
+  <!-- PAGE: JOIN                                                        -->
+  <!-- ================================================================ -->
+  <div class="page" data-page="join">
+    <section class="grid md:grid-cols-[1fr_1.1fr] gap-14 py-14 md:py-16">
+      <div class="fade">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-statik mb-4">Record club</p>
+        <h1 class="font-display font-semibold text-4xl md:text-5xl text-paper mb-6">Join Wax &amp; Wane</h1>
+        <p class="text-sub mb-8 max-w-md">One record a month, chosen by our buyers and shipped or held for pickup. Members also get session seats before anyone else.</p>
+
+        <div class="space-y-5">
+          <div class="flex gap-4">
+            <p class="cat-code text-shellac w-10 shrink-0">01</p>
+            <p class="text-sub text-sm">First pick at every session, no waitlist.</p>
+          </div>
+          <div class="flex gap-4">
+            <p class="cat-code text-shellac w-10 shrink-0">02</p>
+            <p class="text-sub text-sm">10% off everything in the crate, always.</p>
+          </div>
+          <div class="flex gap-4">
+            <p class="cat-code text-shellac w-10 shrink-0">03</p>
+            <p class="text-sub text-sm">One curated record a month — skip or swap any time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade">
+        <form id="join-form" class="bg-panel rounded-2xl p-8 md:p-10 space-y-5">
+          <div>
+            <label for="jf-name" class="block font-mono text-xs uppercase tracking-wide text-sub mb-2">Name</label>
+            <input id="jf-name" type="text" required class="w-full bg-void border border-line rounded-lg px-4 py-3 text-paper placeholder:text-sub focus:border-shellac outline-none" placeholder="Full name">
+          </div>
+          <div>
+            <label for="jf-email" class="block font-mono text-xs uppercase tracking-wide text-sub mb-2">Email</label>
+            <input id="jf-email" type="email" required class="w-full bg-void border border-line rounded-lg px-4 py-3 text-paper placeholder:text-sub focus:border-shellac outline-none" placeholder="you@email.com">
+          </div>
+          <fieldset>
+            <legend class="block font-mono text-xs uppercase tracking-wide text-sub mb-3">Genre interests</legend>
+            <div class="grid grid-cols-2 gap-2 text-sm text-paper">
+              <label class="flex items-center gap-2"><input type="checkbox" class="accent-shellac"> Jazz</label>
+              <label class="flex items-center gap-2"><input type="checkbox" class="accent-shellac"> Soul &amp; Funk</label>
+              <label class="flex items-center gap-2"><input type="checkbox" class="accent-shellac"> Electronic</label>
+              <label class="flex items-center gap-2"><input type="checkbox" class="accent-shellac"> Local Press</label>
+            </div>
+          </fieldset>
+          <button type="submit" class="w-full py-3.5 bg-shellac text-void rounded-full font-mono text-xs uppercase tracking-[0.14em] hover:bg-paper transition-colors">Join the club — $28/mo</button>
+          <p id="join-status" class="font-mono text-xs text-statik text-center" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative z-10 border-t border-line mt-10">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="font-mono text-xs text-sub">© Wax &amp; Wane. 318 Amherst Street.</p>
+    <div class="flex gap-6 font-mono text-xs uppercase tracking-wide text-sub">
+      <a href="#/visit" class="hover:text-paper transition-colors">Visit</a>
+      <a href="#/join" class="hover:text-paper transition-colors">Join</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     DATA
+  ============================================================ */
+  const records = [
+    { code: 'A1', title: 'Journey in Satchidananda', artist: 'Alice Coltrane', genre: 'jazz', price: '$32', tag: 'Staff pick' },
+    { code: 'A2', title: 'Voodoo', artist: "D'Angelo", genre: 'soul', price: '$28', tag: null },
+    { code: 'A3', title: 'Selected Ambient Works 85–92', artist: 'Aphex Twin', genre: 'electronic', price: '$36', tag: 'Reissue' },
+    { code: 'B1', title: 'Corner Store Sessions', artist: 'The Amherst Four', genre: 'local', price: '$22', tag: 'Local press' },
+    { code: 'B2', title: 'Talking Book', artist: 'Stevie Wonder', genre: 'soul', price: '$24', tag: null },
+    { code: 'B3', title: 'Discreet Music', artist: 'Brian Eno', genre: 'electronic', price: '$30', tag: 'New arrival' },
+    { code: 'C1', title: 'Blue Train', artist: 'John Coltrane', genre: 'jazz', price: '$34', tag: null },
+    { code: 'C2', title: 'Late Shift Radio', artist: 'Nadia O.', genre: 'local', price: '$20', tag: 'New arrival' },
+    { code: 'C3', title: 'Maggot Brain', artist: 'Funkadelic', genre: 'soul', price: '$26', tag: 'Reissue' },
+  ];
+
+  function recordCardHTML(r) {
+    return `
+      <div class="card bg-panel rounded-2xl p-5 hover:bg-groove transition-colors" data-genre="${r.genre}" tabindex="0">
+        <div class="flex items-start justify-between mb-4">
+          <span class="cat-code text-xs text-statik">${r.code}</span>
+          <svg width="26" height="26" viewBox="0 0 26 26" class="mini-platter" aria-hidden="true">
+            <circle cx="13" cy="13" r="12" fill="none" stroke="#37303e" />
+            <circle cx="13" cy="13" r="5" fill="#e8b464" />
+            <circle cx="13" cy="13" r="1.4" fill="#16121a" />
+          </svg>
+        </div>
+        <div class="aspect-square rounded-xl ph bg-void mb-4"></div>
+        <p class="text-paper font-medium leading-snug">${r.title}</p>
+        <p class="text-sub text-sm mb-3">${r.artist}</p>
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-xs text-shellac">${r.price}</span>
+          ${r.tag ? `<span class="font-mono text-[10px] uppercase tracking-wide text-statik border border-line rounded-full px-2 py-1">${r.tag}</span>` : ''}
+        </div>
+      </div>`;
+  }
+
+  document.getElementById('home-featured').innerHTML = records.slice(0, 3).map(recordCardHTML).join('');
+  const crateGrid = document.getElementById('crate-grid');
+  function renderCrate(genre) {
+    const list = genre === 'all' ? records : records.filter(r => r.genre === genre);
+    crateGrid.innerHTML = list.map(recordCardHTML).join('');
+  }
+  renderCrate('all');
+
+  document.querySelectorAll('.genre-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.genre-pill').forEach(b => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      renderCrate(btn.dataset.genre);
+    });
+  });
+
+  /* ============================================================
+     PAGE ROUTER
+  ============================================================ */
+  const pages = document.querySelectorAll('[data-page]');
+  const validPages = new Set(Array.from(pages).map(p => p.dataset.page));
+  const needleDrop = document.getElementById('needle-drop');
+  const tonearm = document.getElementById('tonearm');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function positionTonearm(id) {
+    const link = document.querySelector(`.nav-link[data-nav="${id}"]`);
+    if (!link || !tonearm) return;
+    const navRect = document.getElementById('desktop-nav').getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    tonearm.style.left = (linkRect.left - navRect.left) + 'px';
+    tonearm.style.width = (linkRect.width) + 'px';
+  }
+
+  function setActiveNav(id) {
+    navLinks.forEach(a => {
+      const active = a.dataset.nav === id;
+      if (active) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    positionTonearm(id);
+  }
+
+  function showPage(id) {
+    pages.forEach(p => {
+      const isTarget = p.dataset.page === id;
+      p.classList.toggle('is-active', isTarget);
+      if (isTarget) { p.classList.remove('page-enter'); void p.offsetWidth; p.classList.add('page-enter'); }
+    });
+    setActiveNav(id);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    observeFades(document.querySelector(`[data-page="${id}"]`));
+  }
+
+  function routeFromHash(withTransition) {
+    const seg = (location.hash || '#/home').replace(/^#\/?/, '').split('/').filter(Boolean)[0];
+    const id = validPages.has(seg) ? seg : 'home';
+    const titles = { home: 'Wax & Wane', crate: 'Crate · Wax & Wane', sessions: 'Sessions · Wax & Wane', bar: 'Bar · Wax & Wane', story: 'Story · Wax & Wane', visit: 'Visit · Wax & Wane', join: 'Join · Wax & Wane' };
+    document.title = titles[id] || titles.home;
+
+    if (withTransition) {
+      needleDrop.classList.add('active');
+      setTimeout(() => {
+        showPage(id);
+        setTimeout(() => needleDrop.classList.remove('active'), 60);
+      }, 260);
+    } else {
+      showPage(id);
+    }
+  }
+
+  window.addEventListener('hashchange', () => { routeFromHash(true); closeMobile(); });
+  window.addEventListener('resize', () => positionTonearm(document.querySelector('.nav-link[aria-current="page"]')?.dataset.nav || 'home'));
+
+  /* ============================================================
+     MOBILE MENU
+  ============================================================ */
+  const menuToggle = document.getElementById('menu-toggle');
+  const menuClose = document.getElementById('menu-close');
+  const mobilePanel = document.getElementById('mobile-panel');
+  function openMobile() {
+    mobilePanel.classList.add('open');
+    mobilePanel.setAttribute('aria-hidden', 'false');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  }
+  function closeMobile() {
+    mobilePanel.classList.remove('open');
+    mobilePanel.setAttribute('aria-hidden', 'true');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+  menuToggle.addEventListener('click', openMobile);
+  menuClose.addEventListener('click', closeMobile);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
+
+  /* ============================================================
+     FAQ ACCORDION
+  ============================================================ */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-toggle');
+    btn.addEventListener('click', () => {
+      const isOpen = item.dataset.open === 'true';
+      item.dataset.open = String(!isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  /* ============================================================
+     JOIN FORM (mock)
+  ============================================================ */
+  const joinForm = document.getElementById('join-form');
+  const joinStatus = document.getElementById('join-status');
+  joinForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    joinStatus.textContent = 'Mock only — no membership was created.';
+    joinForm.reset();
+  });
+
+  /* ============================================================
+     FADE-IN ON SCROLL
+  ============================================================ */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  function observeFades(scope) {
+    if (!scope) return;
+    scope.querySelectorAll('.fade').forEach(el => { el.classList.remove('in'); io.observe(el); });
+  }
+
+  /* ============================================================
+     INIT
+  ============================================================ */
+  routeFromHash(false);
+</script>
+
+</body>
+</html>

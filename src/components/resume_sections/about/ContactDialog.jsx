@@ -62,7 +62,7 @@ export function ContactDialog({ contact, open, onClose }) {
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{contact.description}</DialogDescription>
         </div>
 
-        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 min-h-[150px]">
+        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 h-[250px]">
           {contact.previewImage && (
             <>
               <img

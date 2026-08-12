@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import { chmsuagrmImages } from '@/components/resume_sections/projects/chmsuagrm_ss';
 import { pgsoulpmmsImages } from '@/components/resume_sections/projects/pgsoulpmms_ss';
 import { ImagesDialog, DetailsDialog } from '@/components/resume_sections/projects/ProjectDialogs';
+import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
+import { mockupsData } from '@/components/resume_sections/projects/mockups_data';
 
 const PROJECT_CATEGORIES = [
   {
@@ -50,6 +52,18 @@ const PROJECT_CATEGORIES = [
       },
     ],
   },
+  {
+    category: 'Personal',
+    description: 'Experimental builds and hobby projects exploring new technologies and concepts.',
+    items: [
+      // Add your personal projects here
+    ],
+  },
+  {
+    category: 'Mockups',
+    description: 'Design concepts and interface prototypes available for development or licensing.',
+    items: mockupsData,
+  },
 ];
 
 const outlineButtonWithLabelClasses = cn(
@@ -61,6 +75,34 @@ const outlineButtonWithLabelClasses = cn(
   '[&_svg]:pointer-events-none [&_svg:not([class*=\'size-\'])]:size-4 shrink-0 [&_svg]:shrink-0',
   'text-sm font-medium cursor-pointer'
 );
+
+const mockupCardClasses = cn(
+  'relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl shadow-xl',
+  'bg-textured border-5 border-double border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
+  'cursor-pointer'
+);
+
+function WebIcon({ size = 16 }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+    >
+      <title>web-line</title>
+      <g fill="none">
+        <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+        <path
+          fill="currentColor"
+          d="M19 4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 8H5v6h14zm0-6H5v4h14zM7 7a1 1 0 1 1 0 2a1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2"
+        />
+      </g>
+    </svg>
+  );
+}
 
 function ImageIcon({ size = 16 }) {
   return (
@@ -83,6 +125,7 @@ function DetailsIcon({ size = 16 }) {
 export default function Projects() {
   const [imagesProject, setImagesProject] = useState(null);
   const [detailsProject, setDetailsProject] = useState(null);
+  const [mockupProject, setMockupProject] = useState(null);
 
   return (
     <section id="projects" className="scroll-mt-24">
@@ -111,45 +154,88 @@ export default function Projects() {
             </div>
 
             <div className="space-y-6 md:space-y-7">
-              {items.map((project) => (
-                <div key={project.id} className="">
-                  <div className="space-y-1">
-                    <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
-                      {project.title}
-                    </h4>
-                    <p className="text-[10px] md:text-xs text-muted-foreground">
-                      {project.organization}
-                    </p>
-                  </div>
+              {category === 'Mockups' ? (
+                // Mockup grid layout (similar to certificates)
+                <div className="grid grid-cols-3 gap-1 sm:gap-2">
+                  {items.map((mockup) => (
+                    <div
+                      key={mockup.id}
+                      className={mockupCardClasses}
+                      onClick={() => setMockupProject(mockup)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          setMockupProject(mockup);
+                        }
+                      }}
+                    >
+                      {/* Middle: Mockup Name with Icon */}
+                      <div className="flex flex-col items-center justify-center h-full gap-2">
+                        <div className="text-base-content/70">
+                          <WebIcon size={32} />
+                        </div>
+                        <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
+                          {mockup.name}
+                        </h3>
+                      </div>
 
-                  <div className="mt-3">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <button
-                        type="button"
-                        className={outlineButtonWithLabelClasses}
-                        onClick={() => setImagesProject(project)}
-                        aria-label="Screenshots"
-                      >
-                        <ImageIcon size={16} />
-                        <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                          Screenshots
-                        </span>
-                      </button>
-                      <button
-                        type="button"
-                        className={outlineButtonWithLabelClasses}
-                        onClick={() => setDetailsProject(project)}
-                        aria-label="Details"
-                      >
-                        <DetailsIcon size={16} />
-                        <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                          Details
-                        </span>
-                      </button>
+                      {/* Bottom: Category */}
+                      <div className="absolute bottom-2 left-0 right-0 flex items-center justify-center">
+                        <p className="text-[6px] md:text-[8px] text-muted-foreground text-center">
+                          &lt; {mockup.category} /&gt;
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                // Deployed and Personal project layout
+                items.map((project) => (
+                  <div key={project.id} className="">
+                    <div className="space-y-1">
+                      <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
+                        {project.title}
+                      </h4>
+                      {project.organization && (
+                        <p className="text-[10px] md:text-xs text-muted-foreground">
+                          {project.organization}
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="mt-3">
+                      <div className="flex flex-wrap items-center gap-2">
+                        {project.images && (
+                          <button
+                            type="button"
+                            className={outlineButtonWithLabelClasses}
+                            onClick={() => setImagesProject(project)}
+                            aria-label="Screenshots"
+                          >
+                            <ImageIcon size={16} />
+                            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                              Screenshots
+                            </span>
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          className={outlineButtonWithLabelClasses}
+                          onClick={() => setDetailsProject(project)}
+                          aria-label="Details"
+                        >
+                          <DetailsIcon size={16} />
+                          <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                            Details
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              )}
             </div>
           </article>
         ))}
@@ -164,6 +250,11 @@ export default function Projects() {
         project={detailsProject}
         open={detailsProject !== null}
         onClose={() => setDetailsProject(null)}
+      />
+      <MockupDialog
+        mockup={mockupProject}
+        open={mockupProject !== null}
+        onClose={() => setMockupProject(null)}
       />
     </section>
   );
