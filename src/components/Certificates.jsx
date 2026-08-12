@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
-import CertificateDialog from '@/components/certificates/CertificateDialog';
-import { CERTIFICATE_CATEGORIES } from '@/components/certificates/certificates_data';
+import CertificateDialog from '@/components/resume_sections/certificates/CertificateDialog';
+import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificates/certificates_data';
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(

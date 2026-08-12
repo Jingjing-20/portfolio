@@ -3,8 +3,8 @@ import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { Dialog, DialogDescription, DialogPanel, DialogTitle, } from '@/components/animate-ui/components/headless/dialog';
 import { cn } from '@/lib/utils';
-import { chmsuagrmImages } from '@/components/projects/chmsuagrm_ss';
-import { pgsoulpmmsImages } from '@/components/projects/pgsoulpmms_ss';
+import { chmsuagrmImages } from '@/components/resume_sections/projects/chmsuagrm_ss';
+import { pgsoulpmmsImages } from '@/components/resume_sections/projects/pgsoulpmms_ss';
 
 const PROJECT_CATEGORIES = [
   {
