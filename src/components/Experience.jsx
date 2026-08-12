@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PGNOImg from '@/components/resume_sections/experience/pgno.png';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { AnimateIcon } from '@/components/animate-ui/icons/icon';
+import { KeyContributionsDialog } from '@/components/resume_sections/experience/ExperienceDialog';
 import {
   Timeline,
   TimelineContent,
@@ -17,12 +18,6 @@ import {
   AvatarFallback,
   AvatarImage,
 } from '@/components/ui/avatar';
-import {
-  Dialog,
-  DialogDescription,
-  DialogPanel,
-  DialogTitle,
-} from '@/components/animate-ui/components/headless/dialog';
 import { cn } from '@/lib/utils';
 
 // Experience Data
@@ -82,34 +77,6 @@ function OpenLineIcon({ size = 16 }) {
   );
 }
 
-function KeyContributionsDialog({ contributions, company, open, onClose }) {
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
-        <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">
-            {KEY_CONTRIBUTIONS_TITLE}
-          </DialogTitle>
-          <hr />
-          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">
-            {company}
-          </DialogDescription>
-        </div>
-        <div className="max-h-[350px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
-          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-1.5 md:space-y-2 leading-relaxed text-base-content">
-            {contributions.map((item, i) => (
-              <li key={i} className="flex gap-2">
-                <span className="inline-block">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </DialogPanel>
-    </Dialog>
-  );
-}
-
 function ExperienceItem({ experience, onOpenContributions }) {
   return (
     <TimelineItem
@@ -166,11 +133,11 @@ function ExperienceItem({ experience, onOpenContributions }) {
               type="button"
               className={outlineButtonWithLabelClasses}
               onClick={() => onOpenContributions(experience)}
-              aria-label={KEY_CONTRIBUTIONS_TITLE}
+              aria-label="Key Contributions"
             >
               <OpenLineIcon size={16} />
               <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                {KEY_CONTRIBUTIONS_TITLE}
+                Key Contributions
               </span>
             </button>
           </div>

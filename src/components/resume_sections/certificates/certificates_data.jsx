@@ -1,14 +1,14 @@
 // Certificate image assets
-import MentalHealthImg from '@/components/resume_sections/certificates/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png';
-import EnterpriseArchImg from '@/components/resume_sections/certificates/AI x Enterprise Architecture - Powering Emerging Tech.png';
-import DevFestImg from '@/components/resume_sections/certificates/DevFest_2025_Certificate.png';
-import NetAddressingImg from '@/components/resume_sections/certificates/Network Addressing and Basic Troubleshooting.png';
-import NetBasicsImg from '@/components/resume_sections/certificates/Networking Basics.png';
-import NetDevicesImg from '@/components/resume_sections/certificates/Networking Devices and Initial Configuration.png';
-import SqlImg from '@/components/resume_sections/certificates/SQL.png';
-import ProjectMgmtImg from '@/components/resume_sections/certificates/Understanding Project management from basic to advance.png';
-import ChatGptAgentImg from '@/components/resume_sections/certificates/Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.png';
-import CyberSecurityImg from '@/components/resume_sections/certificates/Usage of AI Tools in Cyber Security.png';
+import MentalHealthImg from '@/components/resume_sections/certificates/certimg/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png';
+import EnterpriseArchImg from '@/components/resume_sections/certificates/certimg/AI x Enterprise Architecture - Powering Emerging Tech.png';
+import DevFestImg from '@/components/resume_sections/certificates/certimg/DevFest_2025_Certificate.png';
+import NetAddressingImg from '@/components/resume_sections/certificates/certimg/Network Addressing and Basic Troubleshooting.png';
+import NetBasicsImg from '@/components/resume_sections/certificates/certimg/Networking Basics.png';
+import NetDevicesImg from '@/components/resume_sections/certificates/certimg/Networking Devices and Initial Configuration.png';
+import SqlImg from '@/components/resume_sections/certificates/certimg/SQL.png';
+import ProjectMgmtImg from '@/components/resume_sections/certificates/certimg/Understanding Project management from basic to advance.png';
+import ChatGptAgentImg from '@/components/resume_sections/certificates/certimg/Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.png';
+import CyberSecurityImg from '@/components/resume_sections/certificates/certimg/Usage of AI Tools in Cyber Security.png';
 
 // Issuing Organization SVG Icons
 export const CiscoIcon = (props) => (
