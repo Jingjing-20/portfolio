@@ -6,7 +6,7 @@ import ResumeImg from '@/components/about/resume.png';
 import LinkedInImg from '@/components/about/linkedin.png';
 import GitHubImg from '@/components/about/github.png';
 import GmailImg from '@/components/about/gmail.png';
-import ResumePDF from '@/components/about/resumes/GCNU - RESUME v10.pdf';
+import ResumePDF from '@/components/about/resumes/GCNU - RESUME v11.pdf';
 import ContactDialog from '@/components/about/ContactDialog';
 import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
@@ -137,7 +137,7 @@ export default function About() {
         {/* Right: intro + contact */}
         <div className="flex min-h-full flex-col justify-between gap-6">
           <div className="space-y-6">
-            <div className="text-[10px] md:text-sm leading-relaxed">
+            <div className="text-[10px] md:text-xs leading-relaxed">
               <p>
                 <span className="text-base-content/50">I am a </span>
                 <span className="font-bold"><ShimmeringText text="Software Developer" className="font-bold" /></span>

@@ -6,43 +6,49 @@ import { cn } from '@/lib/utils';
 import { chmsuagrmImages } from '@/components/projects/chmsuagrm_ss';
 import { pgsoulpmmsImages } from '@/components/projects/pgsoulpmms_ss';
 
-const PROJECTS = [
+const PROJECT_CATEGORIES = [
   {
-    id: 'chmsuagrm',
-    title: 'Integrated Online Platform for Academic Grade and Report Management',
-    organization: 'Carlos Hilado Memorial State University - Alijis',
-    description:
-      'A centralized web-based academic information system designed to automate grade computation, QR-based attendance tracking, academic record management, and report generation through role-based access control for administrators, faculty, and students.',
-    features: [
-      'Created an academic management system for Carlos Hilado Memorial State University.',
-      'Built separate dashboards for administrators, faculty, and students.',
-      'Managed student, faculty, enrollment, program, and section records.',
-      'Reduced manual grading by adding automatic grade computation.',
-      'Allowed students to check grades and enrollment status online.',
-      'Used QR codes to make attendance recording faster and easier.',
-      'Sent email notifications for account verification and password recovery.',
-      'Generated PDF and Excel reports for school records.',
+    category: 'Deployed',
+    description: 'Production systems actively serving end users in real-world environments.',
+    items: [
+      {
+        id: 'chmsuagrm',
+        title: 'Integrated Online Platform for Academic Grade and Report Management',
+        organization: 'Carlos Hilado Memorial State University - Alijis',
+        description:
+          'A centralized web-based academic information system designed to automate grade computation, QR-based attendance tracking, academic record management, and report generation through role-based access control for administrators, faculty, and students.',
+        details: [
+          'Created an academic management system for Carlos Hilado Memorial State University.',
+          'Built separate dashboards for administrators, faculty, and students.',
+          'Managed student, faculty, enrollment, program, and section records.',
+          'Reduced manual grading by adding automatic grade computation.',
+          'Allowed students to check grades and enrollment status online.',
+          'Used QR codes to make attendance recording faster and easier.',
+          'Sent email notifications for account verification and password recovery.',
+          'Generated PDF and Excel reports for school records.',
+        ],
+        images: chmsuagrmImages,
+      },
+      {
+        id: 'pgsoulpmms',
+        title: 'Unified Lot and Property Management and Monitoring',
+        organization:
+          'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
+        description:
+          'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',
+        details: [
+          'Developed a digital platform for managing government housing lots and property assets.',
+          'Built separate modules for lot management and property management.',
+          'Tracked beneficiaries, lot assignments, and payment records.',
+          'Added document management and duplicate transaction checking.',
+          'Used Leaflet.js to display lot boundaries and property locations.',
+          'Created dashboards with charts and real-time statistics.',
+          'Supported bulk operations through Excel import and export features.',
+          'Generated print-ready reports for official records.',
+        ],
+        images: pgsoulpmmsImages,
+      },
     ],
-    images: chmsuagrmImages,
-  },
-  {
-    id: 'pgsoulpmms',
-    title: 'Unified Lot and Property Management and Monitoring',
-    organization:
-      'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
-    description:
-      'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',
-    features: [
-      'Developed a digital platform for managing government housing lots and property assets.',
-      'Built separate modules for lot management and property management.',
-      'Tracked beneficiaries, lot assignments, and payment records.',
-      'Added document management and duplicate transaction checking.',
-      'Used Leaflet.js to display lot boundaries and property locations.',
-      'Created dashboards with charts and real-time statistics.',
-      'Supported bulk operations through Excel import and export features.',
-      'Generated print-ready reports for official records.',
-    ],
-    images: pgsoulpmmsImages,
   },
 ];
 
@@ -75,10 +81,10 @@ function ImageIcon({ size = 16 }) {
   );
 }
 
-function FeaturesIcon({ size = 16 }) {
+function DetailsIcon({ size = 16 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" aria-hidden="true">
-      <title>list-filled</title>
+      <title>details</title>
       <path fill="currentColor" fillRule="evenodd" d="M2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM4 6h6V5H4zm7 0h1V5h-1zm-1 2.5H4v-1h6zm1 0h1v-1h-1zM10 11H4v-1h6zm1 0h1v-1h-1z" clipRule="evenodd" />
     </svg>
   );
@@ -171,26 +177,35 @@ function ImagesDialog({ project, open, onClose }) {
   );
 }
 
-function FeaturesDialog({ project, open, onClose }) {
+function DetailsDialog({ project, open, onClose }) {
   if (!project) return null;
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">Features</DialogTitle>
+          <DialogTitle className="text-sm md:text-base leading-relaxed">Details</DialogTitle>
           <hr></hr>
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{project.title}</DialogDescription>
         </div>
 
         <div className="max-h-[500px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
-          <ul className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-1.5 md:space-y-2 leading-relaxed text-base-content">
-            {(project.features ?? []).map((item, i) => (
-              <li key={i} className="flex gap-2">
-                <span className="inline-block">•</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
+            <div>
+              <p className="font-semibold mb-1.5">Description:</p>
+              <p>{project.description}</p>
+            </div>
+            <div>
+              <p className="font-semibold mb-1.5">Key Features:</p>
+              <ul className="space-y-1.5 md:space-y-2">
+                {(project.details ?? []).map((item, i) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="inline-block">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </DialogPanel>
     </Dialog>
@@ -199,7 +214,7 @@ function FeaturesDialog({ project, open, onClose }) {
 
 export default function Projects() {
   const [imagesProject, setImagesProject] = useState(null);
-  const [featuresProject, setFeaturesProject] = useState(null);
+  const [detailsProject, setDetailsProject] = useState(null);
 
   return (
     <section id="projects" className="scroll-mt-24">
@@ -221,54 +236,65 @@ export default function Projects() {
         </div>
       </header>
 
-      <div className="space-y-8 md:space-y-10">
-        {PROJECTS.map((project) => (
-          <article
-            key={project.id}
-            className=""
-          >
-            <div className="space-y-1">
-              <h3 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
-                {project.title}
+      <div className="space-y-6 md:space-y-8">
+        {PROJECT_CATEGORIES.map(({ category, description, items }) => (
+          <article key={category}>
+            <div className="space-y-1 mb-3">
+              <h3 className="text-xs md:text-sm leading-relaxed font-semibold text-base-content">
+                {category}
               </h3>
-              <p className="text-[10px] md:text-xs text-muted-foreground">
-                {project.organization}
+              <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed">
+                {description}
               </p>
-              <ul className="text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed">
-                <li className="flex gap-2">
-                  <span className="inline-block">•</span>
-                  <span>{project.description}</span>
-                </li>
-              </ul>
             </div>
 
-            <div className="mt-3">
-              <div className="flex flex-wrap items-center gap-2">
-                <button
-                  type="button"
-                  className={outlineButtonWithLabelClasses}
-                  onClick={() => setImagesProject(project)}
-                  aria-label="Screenshots"
-                >
-                  <ImageIcon size={16} />
-                  <span className="text-[8px] mmd:text-[10px] font-medium text-base-content">
-                    Screenshots
-                  </span>
-                </button>
-                <button
-                  type="button"
-                  className={outlineButtonWithLabelClasses}
-                  onClick={() => setFeaturesProject(project)}
-                  aria-label="Features"
-                >
-                  <FeaturesIcon size={16} />
-                  <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                    Features
-                  </span>
-                </button>
-              </div>
-            </div>
+            <div className="space-y-6 md:space-y-7">
+              {items.map((project) => (
+                <div key={project.id} className="">
+                  <div className="space-y-1">
+                    <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
+                      {project.title}
+                    </h4>
+                    <p className="text-[10px] md:text-xs text-muted-foreground">
+                      {project.organization}
+                    </p>
+                    <ul className="text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed">
+                      <li className="flex gap-2">
+                        <span className="inline-block">•</span>
+                        <span>{project.description}</span>
+                      </li>
+                    </ul>
+                  </div>
 
+                  <div className="mt-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <button
+                        type="button"
+                        className={outlineButtonWithLabelClasses}
+                        onClick={() => setImagesProject(project)}
+                        aria-label="Screenshots"
+                      >
+                        <ImageIcon size={16} />
+                        <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                          Screenshots
+                        </span>
+                      </button>
+                      <button
+                        type="button"
+                        className={outlineButtonWithLabelClasses}
+                        onClick={() => setDetailsProject(project)}
+                        aria-label="Details"
+                      >
+                        <DetailsIcon size={16} />
+                        <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                          Details
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </article>
         ))}
       </div>
@@ -278,10 +304,10 @@ export default function Projects() {
         open={imagesProject !== null}
         onClose={() => setImagesProject(null)}
       />
-      <FeaturesDialog
-        project={featuresProject}
-        open={featuresProject !== null}
-        onClose={() => setFeaturesProject(null)}
+      <DetailsDialog
+        project={detailsProject}
+        open={detailsProject !== null}
+        onClose={() => setDetailsProject(null)}
       />
     </section>
   );

@@ -8,18 +8,27 @@ const TECH_STACK = [
   {
     category: 'Frontend',
     description: 'Modern component libraries and styling for responsive user experiences.',
-    tools: ['React', 'JavaScript', 'Tailwind CSS', 'Vue.js', 'Next.js', 'Vite'],
+    tools: ['React', 'Vue.js', 'JavaScript', 'Tailwind CSS', 'Vite'],
   },
   {
-    category: 'Backend',
-    description: 'Server infrastructure, application logic, APIs, and data storage.',
-    tools: ['Apache', 'PHP', 'Laravel', 'Node.js', 'MySQL', 'Supabase', 'PostgreSQL', 'Firebase', 'REST'],
+    category: 'Backend & APIs',
+    description: 'Server-side frameworks and API development technologies.',
+    tools: ['PHP', 'Laravel', 'Node.js', 'Next.js', 'REST'],
   },
-
+  {
+    category: 'Databases & Backend Services',
+    description: 'Data storage solutions and backend-as-a-service platforms.',
+    tools: ['MySQL', 'PostgreSQL', 'Supabase', 'Firebase'],
+  },
+  {
+    category: 'Infrastructure & DevOps',
+    description: 'Server infrastructure, deployment automation, and CI/CD pipelines.',
+    tools: ['Apache', 'GitHub Actions'],
+  },
   {
     category: 'Development Tools',
-    description: 'Version control, CI/CD, and development environment tools.',
-    tools: ['Git', 'GitHub', 'GitHub Actions', 'Antigravity', 'Codex'],
+    description: 'Version control, AI-powered development, and productivity tools.',
+    tools: ['Git', 'GitHub', 'Antigravity', 'Codex'],
   },
 ];
 

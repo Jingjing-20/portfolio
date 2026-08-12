@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
   'relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl shadow-xl',
-  'bg-textured border border-gray-300 dark:border-white/20',
+  'bg-textured border-5 border-double border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'cursor-pointer'
 );
