@@ -126,12 +126,6 @@ export default function Projects() {
                     <p className="text-[10px] md:text-xs text-muted-foreground">
                       {project.organization}
                     </p>
-                    <ul className="text-[10px] md:text-xs text-muted-foreground space-y-3 leading-relaxed">
-                      <li className="flex gap-2">
-                        <span className="inline-block">•</span>
-                        <span>{project.description}</span>
-                      </li>
-                    </ul>
                   </div>
 
                   <div className="mt-3">
