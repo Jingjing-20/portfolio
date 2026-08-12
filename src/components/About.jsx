@@ -62,21 +62,17 @@ export default function About() {
 
   return (
     <section id="about" className="scroll-mt-24 pt-4 sm:pt-6 md:pt-0">
-      <header className="mb-3 md:mb-6 flex items-center justify-between">
+      <header className="mb-3 md:mb-6">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">Gian Carlo N. Ulep</h2>
           <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">BS in Information Technology : Batch 2025 – 2026</p>
-        </div>
-
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl">
-          <AnimateIcon animateOnHover><AboutInfo size={20} className="h-5 w-5" /></AnimateIcon>
         </div>
       </header>
 
       <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%] md:grid-cols-[20%_80%]">
         <div className="flex block">
           <Tilt maxTilt={12} className="w-34 max-w-xs">
-            <TiltContent className="overflow-hidden rounded-lg p-1 md:p-2 bg-textured border border-gray-300 dark:border-white/20 shadow-xl dark:shadow-2xl">
+            <TiltContent className="overflow-hidden rounded-lg p-1 md:p-1.5 bg-textured border-5 border-double border-gray-300 dark:border-white/20 shadow-xl dark:shadow-2xl">
               <div className="overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-[#1a1b1d]">
                 <img src={profileImage} alt="Gian Carlo N. Ulep" className="aspect-square w-full object-cover transition-all duration-500 hover:scale-105" />
               </div>

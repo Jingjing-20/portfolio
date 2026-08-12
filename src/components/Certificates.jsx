@@ -24,7 +24,7 @@ export default function Certificates() {
 
   return (
     <section id="certificates" className="scroll-mt-24">
-      <header className="mb-3 flex items-center justify-between md:mb-6">
+      <header className="mb-3 md:mb-6">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-5xl">
             Certificates
@@ -32,12 +32,6 @@ export default function Certificates() {
           <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
             Certifications and earned credentials categorized by domain
           </p>
-        </div>
-
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background dark:bg-gray-600/20 shadow-xl">
-          <AnimateIcon animateOnHover>
-            <Certificate size={20} className="h-5 w-5" />
-          </AnimateIcon>
         </div>
       </header>
 

@@ -33,7 +33,7 @@ function App() {
         {/* 1. Navbar */}
         <Navbar />
 
-        <div className="pt-16 md:pt-32 pb-8 max-w-4xl mx-auto px-4 md:px-6">
+        <div className="pt-16 md:pt-32 pb-8 max-w-3xl mx-auto px-4 md:px-6">
           <div className="space-y-6 pb-12 pt-4">
 
             {/* 3. About */}

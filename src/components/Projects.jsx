@@ -86,7 +86,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="scroll-mt-24">
-      <header className="mb-3 md:mb-6 flex items-center justify-between">
+      <header className="mb-3 md:mb-6">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Projects
@@ -95,12 +95,6 @@ export default function Projects() {
           <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
             Selected work and personal builds
           </p>
-        </div>
-
-        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-background dark:bg-gray-600/20 shadow-xl">
-          <AnimateIcon animateOnHover>
-            <FolderFiles size={20} className="h-5 w-5" />
-          </AnimateIcon>
         </div>
       </header>
 
