@@ -24,6 +24,40 @@
   background-color: #0d0d0e;
 }
 
+/* View Transition Theme Slide-In-Left */
+::view-transition-old(root) {
+  animation: 0.5s cubic-bezier(0.25, 1, 0.5, 1) both slideOutRight;
+}
+
+::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.25, 1, 0.5, 1) both slideInLeft;
+}
+
+::view-transition-group(theme-toggle-thumb),
+::view-transition-group(theme-toggle-thumb-mobile) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 9999;
+}
+
+@keyframes slideInLeft {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.85;
+  }
+}
+
 .bg-base-300 {
   background-color: #f3f4f6;
   color: #1f2937;

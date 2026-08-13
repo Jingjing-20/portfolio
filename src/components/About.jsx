@@ -84,9 +84,9 @@ export default function About() {
           <div className="space-y-1.5 md:space-y-3">
             <div className="text-[10px] md:text-xs leading-relaxed">
               <p>
-                <span className="text-base-content/50">I am a </span>
+                <span className="text-base-content">I am a </span>
                 <span className="font-bold"><ShimmeringText text="Software Developer" className="font-bold" /></span>
-                <span className="text-base-content/50"> focused on building accessible and responsive web applications. I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.</span>
+                <span className="text-base-content"> focused on building accessible and responsive web applications. I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.</span>
               </p>
             </div>
 

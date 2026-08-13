@@ -78,7 +78,14 @@ function ThemeTogglerBtn({ showLabel = false }) {
   const isDark = resolvedTheme === 'dark';
 
   const handleToggle = (checked) => {
-    setTheme(checked ? 'dark' : 'light');
+    const nextTheme = checked ? 'dark' : 'light';
+    if (typeof document !== 'undefined' && document.startViewTransition) {
+      document.startViewTransition(() => {
+        setTheme(nextTheme);
+      });
+    } else {
+      setTheme(nextTheme);
+    }
   };
 
   if (showLabel) {
@@ -88,7 +95,10 @@ function ThemeTogglerBtn({ showLabel = false }) {
         onCheckedChange={handleToggle}
         className="relative inline-flex h-6 w-11 items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 transition-all duration-200 cursor-pointer p-0.5"
       >
-        <SwitchThumb className="pointer-events-none flex items-center justify-center h-5 w-5 rounded-full bg-white dark:bg-zinc-800 border border-gray-300/70 dark:border-white/20 shadow-sm transition-transform data-[state=checked]:translate-x-[18px] data-[state=unchecked]:translate-x-0">
+        <SwitchThumb
+          style={{ viewTransitionName: 'theme-toggle-thumb-mobile' }}
+          className="pointer-events-none flex items-center justify-center h-5 w-5 rounded-full bg-white dark:bg-zinc-800 border border-gray-300/70 dark:border-white/20 shadow-sm transition-transform duration-300 data-[state=checked]:translate-x-[18px] data-[state=unchecked]:translate-x-0"
+        >
           {isDark ? (
             <Moon className="h-3 w-3 text-gray-800 dark:text-gray-200" />
           ) : (
@@ -107,7 +117,10 @@ function ThemeTogglerBtn({ showLabel = false }) {
         className="relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 shadow-xl cursor-pointer p-1"
         aria-label="Toggle theme"
       >
-        <SwitchThumb className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0">
+        <SwitchThumb
+          style={{ viewTransitionName: 'theme-toggle-thumb' }}
+          className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform duration-300 data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0"
+        >
           {isDark ? (
             <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" />
           ) : (

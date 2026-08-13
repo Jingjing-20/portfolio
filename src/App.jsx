@@ -9,6 +9,7 @@ import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Certificates from './components/Certificates'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
+import { CometCursor } from '@/components/ui/comet-cursor'
 
 function App() {
   const { resolvedTheme } = useTheme()
@@ -23,6 +24,9 @@ function App() {
 
   return (
     <main className="custom-background relative min-h-screen transition-colors duration-300">
+      {/* Comet Cursor Trail */}
+      <CometCursor />
+
       {/* Background stars */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <StarsBackground starColor={starColor} pointerEvents={false} />

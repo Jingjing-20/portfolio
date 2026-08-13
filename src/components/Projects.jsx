@@ -196,7 +196,7 @@ export default function Projects() {
                 <ul className="space-y-6 md:space-y-7">
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start gap-3">
-                      <span className="text-base-content/40 flex-shrink-0 mt-1">
+                      <span className="text-base-content flex-shrink-0 mt-1">
                         <ArrowIcon size={14} />
                       </span>
                       <div className="flex-1">
