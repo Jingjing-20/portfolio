@@ -86,10 +86,6 @@ export function MockupDialog({ mockup, open, onClose }) {
         <div className="max-h-[300px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
           <div className="p-3 md:p-4 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
             <div>
-              <p className="font-semibold mb-1.5">Format:</p>
-              <p>{mockup.format}</p>
-            </div>
-            <div>
               <p className="font-semibold mb-1.5">Styling:</p>
               <p>{mockup.styling}</p>
             </div>
