@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import logoImg from '@/components/resume_sections/about/logo.jpg';
 import { AboutInfo } from '@/components/animate-ui/icons/about-info';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
@@ -99,34 +100,22 @@ function ThemeTogglerBtn({ showLabel = false }) {
   }
 
   return (
-    <Tooltip side="bottom" sideOffset={8}>
-      <TooltipTrigger asChild>
-        <div className="relative inline-flex items-center">
-          <Switch
-            checked={isDark}
-            onCheckedChange={handleToggle}
-            className="relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 shadow-xl cursor-pointer p-1"
-            aria-label="Toggle theme"
-          >
-            <SwitchThumb className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0">
-              {isDark ? (
-                <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" />
-              ) : (
-                <Sun className="h-4 w-4 text-gray-800 dark:text-gray-200" />
-              )}
-            </SwitchThumb>
-          </Switch>
-        </div>
-      </TooltipTrigger>
-      <TooltipContent className="bg-white/50 dark:bg-black/50 text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
-        <TooltipArrow
-          fill="currentColor"
-          className="text-base-300 stroke-gray-400 dark:stroke-gray-400"
-          strokeWidth={1}
-        />
-        {isDark ? 'Dark' : 'Light'}
-      </TooltipContent>
-    </Tooltip>
+    <div className="relative inline-flex items-center">
+      <Switch
+        checked={isDark}
+        onCheckedChange={handleToggle}
+        className="relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 shadow-xl cursor-pointer p-1"
+        aria-label="Toggle theme"
+      >
+        <SwitchThumb className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0">
+          {isDark ? (
+            <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" />
+          ) : (
+            <Sun className="h-4 w-4 text-gray-800 dark:text-gray-200" />
+          )}
+        </SwitchThumb>
+      </Switch>
+    </div>
   );
 }
 
@@ -151,11 +140,16 @@ export default function Navbar() {
     <TooltipProvider openDelay={200} closeDelay={100}>
       <div className="fixed left-0 right-0 top-3 z-50 flex w-full justify-center px-4">
         <div className={cn(
-          'flex w-full max-w-3xl items-center justify-between px-4 py-3',
+          'flex w-full max-w-xl items-center justify-between px-4 py-3',
           'shadow-xl rounded-xl bg-theme border-5 border-double border-gray-300 dark:border-white/20'
         )}>
-          {/* Left: Portfolio Text */}
-          <div className="flex items-center">
+          {/* Left: Logo and Portfolio Text */}
+          <div className="flex items-center gap-2">
+            <img
+              src={logoImg}
+              alt="Logo"
+              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border border-gray-300 dark:border-white/20"
+            />
             <h1 className="text-xs md:text-sm font-bold text-base-content">Portfolio</h1>
           </div>
 

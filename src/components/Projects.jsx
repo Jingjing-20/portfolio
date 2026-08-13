@@ -53,13 +53,6 @@ const PROJECT_CATEGORIES = [
     ],
   },
   {
-    category: 'Personal',
-    description: 'Experimental builds and hobby projects exploring new technologies and concepts.',
-    items: [
-      // Add your personal projects here
-    ],
-  },
-  {
     category: 'Mockups',
     description: 'Design concepts and interface prototypes available for development or licensing.',
     items: mockupsData,
@@ -82,6 +75,14 @@ const mockupCardClasses = cn(
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'cursor-pointer'
 );
+
+function ArrowIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="size-2 md:size-3" viewBox="0 0 15 15" aria-hidden="true">
+      <path fill="currentColor" d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414" />
+    </svg>
+  );
+}
 
 function WebIcon({ size = 16 }) {
   return (
@@ -191,50 +192,57 @@ export default function Projects() {
                   ))}
                 </div>
               ) : (
-                // Deployed and Personal project layout
-                items.map((project) => (
-                  <div key={project.id} className="">
-                    <div className="space-y-1">
-                      <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
-                        {project.title}
-                      </h4>
-                      {project.organization && (
-                        <p className="text-[10px] md:text-xs text-muted-foreground">
-                          {project.organization}
-                        </p>
-                      )}
-                    </div>
+                // Deployed project layout with vertically centered arrow
+                <ul className="space-y-6 md:space-y-7">
+                  {items.map((project) => (
+                    <li key={project.id} className="flex items-start gap-3">
+                      <span className="text-base-content/40 flex-shrink-0 mt-1">
+                        <ArrowIcon size={14} />
+                      </span>
+                      <div className="flex-1">
+                        <div className="space-y-1">
+                          <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
+                            {project.title}
+                          </h4>
+                          {project.organization && (
+                            <p className="text-[10px] md:text-xs text-muted-foreground">
+                              {project.organization}
+                            </p>
+                          )}
+                        </div>
 
-                    <div className="mt-3">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {project.images && (
-                          <button
-                            type="button"
-                            className={outlineButtonWithLabelClasses}
-                            onClick={() => setImagesProject(project)}
-                            aria-label="Screenshots"
-                          >
-                            <ImageIcon size={16} />
-                            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                              Screenshots
-                            </span>
-                          </button>
-                        )}
-                        <button
-                          type="button"
-                          className={outlineButtonWithLabelClasses}
-                          onClick={() => setDetailsProject(project)}
-                          aria-label="Details"
-                        >
-                          <DetailsIcon size={16} />
-                          <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                            Details
-                          </span>
-                        </button>
+                        <div className="mt-3">
+                          <div className="flex flex-wrap items-center gap-2">
+                            {project.images && (
+                              <button
+                                type="button"
+                                className={outlineButtonWithLabelClasses}
+                                onClick={() => setImagesProject(project)}
+                                aria-label="Screenshots"
+                              >
+                                <ImageIcon size={16} />
+                                <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                                  Screenshots
+                                </span>
+                              </button>
+                            )}
+                            <button
+                              type="button"
+                              className={outlineButtonWithLabelClasses}
+                              onClick={() => setDetailsProject(project)}
+                              aria-label="Details"
+                            >
+                              <DetailsIcon size={16} />
+                              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                                Details
+                              </span>
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                ))
+                    </li>
+                  ))}
+                </ul>
               )}
             </div>
           </article>
