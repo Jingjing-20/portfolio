@@ -67,7 +67,7 @@ const activeButtonClasses = cn(
 
 const mobileMenuButtonClasses = cn(
   'shadow-xl inline-flex items-center gap-2 rounded-md p-2',
-  'bg-background border border-gray-300 dark:border-white/20',
+  'bg-textured border border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'cursor-pointer'
@@ -302,7 +302,7 @@ export default function Navbar() {
                 
                 {/* Dropdown Content */}
                 <div className={cn(
-                  'absolute right-0 top-full mt-2 w-56 z-50',
+                  'absolute right-0 top-full mt-2 z-50',
                   'shadow-xl rounded-xl bg-background border border-gray-300 dark:border-white/20',
                   'p-3 space-y-2'
                 )}>
