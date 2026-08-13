@@ -1,14 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Monitor, Moon, Sun, Menu } from 'lucide-react';
-import { AnimateIcon } from '@/components/animate-ui/icons/icon';
+import { Moon, Sun, Menu } from 'lucide-react';
 import { AboutInfo } from '@/components/animate-ui/icons/about-info';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
 import { Certificate } from '@/components/animate-ui/icons/certificate';
-import { Particles, ParticlesEffect } from '@/components/animate-ui/primitives/effects/particles';
-import { ThemeToggler } from '@/components/animate-ui/primitives/effects/theme-toggler';
+import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
 import {
   TooltipProvider,
   Tooltip,
@@ -53,7 +51,7 @@ const NAV_ITEMS = [
 
 const navButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-  'bg-background border border-gray-300 dark:border-white/20',
+  'bg-textured border border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
@@ -62,7 +60,7 @@ const navButtonClasses = cn(
 );
 
 const activeButtonClasses = cn(
-  'border-double border-5 border-gray-800 dark:border-white/70'
+  'border border-gray-800 dark:border-white/70'
 );
 
 const mobileMenuButtonClasses = cn(
@@ -74,146 +72,72 @@ const mobileMenuButtonClasses = cn(
 );
 
 function ThemeTogglerBtn({ showLabel = false }) {
-  const { theme, resolvedTheme, setTheme } = useTheme();
-  const [clickCount, setClickCount] = useState(0);
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
 
-  const handleThemeToggle = (nextTheme, toggleTheme) => {
-    toggleTheme(nextTheme);
-    setClickCount((prev) => prev + 1);
+  const handleToggle = (checked) => {
+    setTheme(checked ? 'dark' : 'light');
   };
 
+  if (showLabel) {
+    return (
+      <div className={cn(mobileMenuButtonClasses, 'relative w-full justify-between')}>
+        <div className="flex items-center gap-2">
+          <Sun className="h-4 w-4" />
+          <span className="text-[8px] md:text-[10px] font-medium text-base-content">Theme</span>
+        </div>
+        <Switch
+          checked={isDark}
+          onCheckedChange={handleToggle}
+          className="relative inline-flex h-5 w-9 items-center rounded-full bg-gray-300 dark:bg-gray-700 transition-colors"
+        >
+          <SwitchThumb className="pointer-events-none flex items-center justify-center h-4 w-4 rounded-full bg-white shadow-md transition-transform data-[state=checked]:translate-x-[18px] data-[state=unchecked]:translate-x-0.5">
+            {isDark ? (
+              <Moon className="h-2.5 w-2.5 text-gray-700" />
+            ) : (
+              <Sun className="h-2.5 w-2.5 text-yellow-500" />
+            )}
+          </SwitchThumb>
+        </Switch>
+      </div>
+    );
+  }
+
   return (
-    <ThemeToggler
-      theme={theme}
-      resolvedTheme={resolvedTheme}
-      setTheme={setTheme}
-      direction="ltr"
-    >
-      {({ effective, toggleTheme }) => {
-        const nextTheme = effective === 'dark' ? 'light' : 'dark';
-        const ThemeIcon = effective === 'system' ? Monitor : effective === 'dark' ? Moon : Sun;
-        const themeLabel = effective === 'system' ? 'System' : effective === 'dark' ? 'Dark' : 'Light';
-
-        if (showLabel) {
-          return (
-            <button
-              onClick={() => handleThemeToggle(nextTheme, toggleTheme)}
-              className={cn(mobileMenuButtonClasses, 'relative w-full justify-start')}
-              aria-label="Toggle theme"
-            >
-              <Particles animate={true}>
-                <AnimateIcon animateOnHover>
-                  <ThemeIcon className="h-5 w-5" />
-                </AnimateIcon>
-                {clickCount > 0 && (
-                  <ParticlesEffect
-                    key={clickCount}
-                    count={10}
-                    radius={35}
-                    spread={360}
-                    duration={0.6}
-                    holdDelay={0.02}
-                    style={{ top: '50%', left: '50%' }}
-                    className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
-                  />
-                )}
-              </Particles>
-              <span className="text-[8px] md:text-[10px] font-medium text-base-content">{themeLabel}</span>
-            </button>
-          );
-        }
-
-        return (
-          <Tooltip side="bottom" sideOffset={8}>
-            <TooltipTrigger asChild>
-              <button
-                onClick={() => handleThemeToggle(nextTheme, toggleTheme)}
-                className={cn(navButtonClasses, 'relative')}
-                aria-label="Toggle theme"
-              >
-                <Particles animate={true}>
-                  <AnimateIcon animateOnHover>
-                    <ThemeIcon className="h-5 w-5" />
-                  </AnimateIcon>
-                  {clickCount > 0 && (
-                    <ParticlesEffect
-                      key={clickCount}
-                      count={10}
-                      radius={35}
-                      spread={360}
-                      duration={0.6}
-                      holdDelay={0.02}
-                      style={{ top: '50%', left: '50%' }}
-                      className="w-1.5 h-1.5 rounded-full bg-primary shadow-lg shadow-primary/50"
-                    />
-                  )}
-                </Particles>
-              </button>
-            </TooltipTrigger>
-            <TooltipContent className="bg-white/50 dark:bg-black/50 text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
-              <TooltipArrow
-                fill="currentColor"
-                className="text-base-300 stroke-gray-400 dark:stroke-gray-400"
-                strokeWidth={1}
-              />
-              {themeLabel}
-            </TooltipContent>
-          </Tooltip>
-        );
-      }}
-    </ThemeToggler>
+    <Tooltip side="bottom" sideOffset={8}>
+      <TooltipTrigger asChild>
+        <div className="relative">
+          <Switch
+            checked={isDark}
+            onCheckedChange={handleToggle}
+            className="relative inline-flex h-[34px] w-[60px] items-center rounded-full bg-gray-300 dark:bg-gray-700 transition-colors shadow-xl border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 cursor-pointer"
+            aria-label="Toggle theme"
+          >
+            <SwitchThumb className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white shadow-lg transition-transform data-[state=checked]:translate-x-[30px] data-[state=unchecked]:translate-x-1">
+              {isDark ? (
+                <Moon className="h-4 w-4 text-gray-700" />
+              ) : (
+                <Sun className="h-4 w-4 text-yellow-500" />
+              )}
+            </SwitchThumb>
+          </Switch>
+        </div>
+      </TooltipTrigger>
+      <TooltipContent className="bg-white/50 dark:bg-black/50 text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
+        <TooltipArrow
+          fill="currentColor"
+          className="text-base-300 stroke-gray-400 dark:stroke-gray-400"
+          strokeWidth={1}
+        />
+        {isDark ? 'Dark' : 'Light'}
+      </TooltipContent>
+    </Tooltip>
   );
 }
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState(NAV_ITEMS[0]?.value);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Scroll detection to update active section
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = NAV_ITEMS.map(item => ({
-        id: item.value,
-        element: document.querySelector(item.href)
-      })).filter(section => section.element);
-
-      if (sections.length === 0) return;
-
-      // Get current scroll position
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-
-      // If at the bottom of the page, set last section as active
-      if (scrollPosition + windowHeight >= documentHeight - 50) {
-        setActiveTab(sections[sections.length - 1].id);
-        return;
-      }
-
-      // Find the section that's currently most visible in viewport
-      // Check from the top of the viewport with an offset for the navbar
-      const offset = 100; // Account for fixed navbar height
-      let currentSection = sections[0].id;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        const rect = section.element.getBoundingClientRect();
-        const absoluteTop = scrollPosition + rect.top;
-
-        if (scrollPosition >= absoluteTop - offset) {
-          currentSection = section.id;
-          break;
-        }
-      }
-
-      setActiveTab(currentSection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleNavClick = (e, value, href) => {
     e.preventDefault();
@@ -232,12 +156,12 @@ export default function Navbar() {
     <TooltipProvider openDelay={200} closeDelay={100}>
       <div className="fixed left-0 right-0 top-3 z-50 flex w-full justify-center px-4">
         <div className={cn(
-          'flex w-full max-w-3xl items-center justify-between px-3 py-2',
-          'shadow-xl rounded-xl bg-background border border-gray-300 dark:border-white/20'
+          'flex w-full max-w-3xl items-center justify-between px-4 py-3',
+          'shadow-xl rounded-xl bg-theme border-5 border-double border-gray-300 dark:border-white/20'
         )}>
           {/* Left: Portfolio Text */}
           <div className="flex items-center">
-            <h1 className="text-sm md:text-xl font-bold text-base-content">Portfolio</h1>
+            <h1 className="text-xs md:text-sm font-bold text-base-content">Portfolio</h1>
           </div>
 
           {/* Desktop: Center Navigation Buttons */}
@@ -303,7 +227,7 @@ export default function Navbar() {
                 {/* Dropdown Content */}
                 <div className={cn(
                   'absolute right-0 top-full mt-2 z-50',
-                  'shadow-xl rounded-xl bg-background border border-gray-300 dark:border-white/20',
+                  'shadow-xl rounded-xl bg-theme border border-gray-300 dark:border-white/20',
                   'p-3 space-y-2'
                 )}>
                   <div className="space-y-1 pb-2 border-b border-gray-300 dark:border-white/20">

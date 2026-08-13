@@ -35,6 +35,14 @@
   color: #a6adbb;
 }
 
+.bg-theme {
+  background-color: #f3f4f6;
+}
+
+.dark .bg-theme,
+[data-theme="dark"] .bg-textured {
+  background-color: #1a1b1d;
+}
 .bg-textured {
   background-color: #f3f4f6;
   background-image: repeating-linear-gradient(
