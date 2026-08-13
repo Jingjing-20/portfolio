@@ -18,33 +18,33 @@ import {
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
-  { 
-    value: 'about', 
-    label: 'About', 
+  {
+    value: 'about',
+    label: 'About',
     href: '#about',
     icon: <AboutInfo size={20} />
   },
-  { 
-    value: 'experience', 
-    label: 'Experience', 
+  {
+    value: 'experience',
+    label: 'Experience',
     href: '#experience',
     icon: <Briefcase size={20} />
   },
-  { 
-    value: 'projects', 
-    label: 'Projects', 
+  {
+    value: 'projects',
+    label: 'Projects',
     href: '#projects',
     icon: <FolderFiles size={20} />
   },
-  { 
-    value: 'stack', 
-    label: 'Stack', 
+  {
+    value: 'stack',
+    label: 'Stack',
     href: '#stack',
     icon: <StackLine size={20} />
   },
-  { 
-    value: 'certificates', 
-    label: 'Certificates', 
+  {
+    value: 'certificates',
+    label: 'Certificates',
     href: '#certificates',
     icon: <Certificate size={20} />
   },
@@ -82,25 +82,19 @@ function ThemeTogglerBtn({ showLabel = false }) {
 
   if (showLabel) {
     return (
-      <div className={cn(mobileMenuButtonClasses, 'relative w-full justify-between')}>
-        <div className="flex items-center gap-2">
-          {isDark ? <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" /> : <Sun className="h-4 w-4 text-gray-800 dark:text-gray-200" />}
-          <span className="text-[8px] md:text-[10px] font-medium text-base-content">Theme</span>
-        </div>
-        <Switch
-          checked={isDark}
-          onCheckedChange={handleToggle}
-          className="relative inline-flex h-6 w-11 items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 transition-all duration-200 cursor-pointer p-0.5"
-        >
-          <SwitchThumb className="pointer-events-none flex items-center justify-center h-5 w-5 rounded-full bg-white dark:bg-zinc-800 border border-gray-300/70 dark:border-white/20 shadow-sm transition-transform data-[state=checked]:translate-x-[18px] data-[state=unchecked]:translate-x-0">
-            {isDark ? (
-              <Moon className="h-3 w-3 text-gray-800 dark:text-gray-200" />
-            ) : (
-              <Sun className="h-3 w-3 text-gray-800 dark:text-gray-200" />
-            )}
-          </SwitchThumb>
-        </Switch>
-      </div>
+      <Switch
+        checked={isDark}
+        onCheckedChange={handleToggle}
+        className="relative inline-flex h-6 w-11 items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 transition-all duration-200 cursor-pointer p-0.5"
+      >
+        <SwitchThumb className="pointer-events-none flex items-center justify-center h-5 w-5 rounded-full bg-white dark:bg-zinc-800 border border-gray-300/70 dark:border-white/20 shadow-sm transition-transform data-[state=checked]:translate-x-[18px] data-[state=unchecked]:translate-x-0">
+          {isDark ? (
+            <Moon className="h-3 w-3 text-gray-800 dark:text-gray-200" />
+          ) : (
+            <Sun className="h-3 w-3 text-gray-800 dark:text-gray-200" />
+          )}
+        </SwitchThumb>
+      </Switch>
     );
   }
 
@@ -144,7 +138,7 @@ export default function Navbar() {
     e.preventDefault();
     setActiveTab(value);
     setIsMobileMenuOpen(false);
-    
+
     if (href) {
       const element = document.querySelector(href);
       if (element) {
@@ -229,7 +223,7 @@ export default function Navbar() {
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-hidden="true"
                   />
-                  
+
                   {/* Animated Dropdown Content */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.94, y: -10 }}
@@ -237,15 +231,15 @@ export default function Navbar() {
                     exit={{ opacity: 0, scale: 0.94, y: -10 }}
                     transition={{ type: 'spring', stiffness: 400, damping: 28 }}
                     className={cn(
-                      'absolute right-0 top-full mt-2 z-50 min-w-[200px]',
+                      'absolute right-0 top-full mt-2 z-50 w-30',
                       'shadow-2xl rounded-xl bg-theme border border-gray-300 dark:border-white/20',
                       'p-3 space-y-2 origin-top-right'
                     )}
                   >
-                    <div className="space-y-1 pb-2 border-b border-gray-300 dark:border-white/20">
-                      <h3 className="text-xs font-semibold text-base-content">Navigation</h3>
-                      <p className="text-[10px] text-base-content/70 leading-relaxed">Browse through sections</p>
+                    <div className="w-full flex justify-end">
+                      <ThemeTogglerBtn showLabel={true} />
                     </div>
+                    <hr />
 
                     <nav aria-label="Mobile navigation" className="space-y-2">
                       {NAV_ITEMS.map((item) => {
@@ -269,10 +263,6 @@ export default function Navbar() {
                         );
                       })}
                     </nav>
-
-                    <div className="pt-2 border-t border-gray-300 dark:border-white/20">
-                      <ThemeTogglerBtn showLabel={true} />
-                    </div>
                   </motion.div>
                 </>
               )}
