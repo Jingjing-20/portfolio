@@ -143,7 +143,7 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Carousel Mockup Layout
-                <div className="border border-gray-600 dark:border-gray-400 p-2 rounded-lg relative">
+                <div className="border border-gray-300 dark:border-white/20 shadow-xl p-2 rounded-lg relative">
                   <div className="p-3 overflow-hidden" ref={emblaRef}>
                     <div className="flex touch-pan-y touch-pinch-zoom gap-3 sm:gap-4">
                       {items.map((mockup) => (
@@ -164,7 +164,7 @@ export default function Projects() {
                             onClick={() => setMockupProject(mockup)}
                             aria-label={`Open ${mockup.name} mockup`}
                           >
-                            <OpenIcon size={18} />
+                            <OpenIcon size={15} />
                           </button>
 
                           {/* Polaroid Photo Frame */}

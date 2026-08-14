@@ -85,7 +85,7 @@ export default function Certificates() {
                       onClick={() => setActiveCert(cert)}
                       aria-label={`Open ${cert.title} certificate`}
                     >
-                      <OpenIcon size={18} />
+                      <OpenIcon size={15} />
                     </button>
 
                     {/* Top: Organization with icon logo beside it */}
