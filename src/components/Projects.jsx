@@ -14,6 +14,16 @@ const outlineButtonWithLabelClasses = cn(
   'text-sm font-medium cursor-pointer'
 );
 
+const iconButtonClasses = cn(
+  'absolute top-2 right-2 p-1.5 rounded-full',
+  'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
+  'hover:bg-white dark:hover:bg-black transition-all duration-200',
+  'border border-gray-300 dark:border-white/30',
+  'hover:scale-110 hover:shadow-lg',
+  'shadow-md',
+  'z-10'
+);
+
 function ArrowIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="size-2 md:size-3" viewBox="0 0 15 15" aria-hidden="true">
@@ -45,6 +55,15 @@ function DetailsIcon({ size = 16 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" aria-hidden="true">
       <path fill="currentColor" fillRule="evenodd" d="M2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM4 6h6V5H4zm7 0h1V5h-1zm-1 2.5H4v-1h6zm1 0h1v-1h-1zM10 11H4v-1h6zm1 0h1v-1h-1z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function OpenIcon({ size = 18 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <title>Open</title>
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
   );
 }
@@ -83,26 +102,27 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Polaroid Mockup Grid Layout
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
                   {items.map((mockup) => (
                     <div
                       key={mockup.id}
                       className={cn(
-                        'group relative flex flex-col p-2.5 sm:p-3 rounded-lg shadow-lg hover:shadow-2xl',
+                        'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
                         'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
                         'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-                        'cursor-pointer transform hover:-translate-y-1 hover:rotate-1'
+                        'transform hover:-translate-y-1 hover:rotate-3'
                       )}
-                      onClick={() => setMockupProject(mockup)}
-                      role="button"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          setMockupProject(mockup);
-                        }
-                      }}
                     >
+                      {/* Open Icon Button - Top Right */}
+                      <button
+                        type="button"
+                        className={iconButtonClasses}
+                        onClick={() => setMockupProject(mockup)}
+                        aria-label={`Open ${mockup.name} mockup`}
+                      >
+                        <OpenIcon size={18} />
+                      </button>
+
                       {/* Polaroid Photo Frame */}
                       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                         {mockup.previewImage ? (
@@ -118,31 +138,16 @@ export default function Projects() {
                         )}
                       </div>
 
-                      {/* Polaroid Bottom Caption (Under Photo: Name + Button) */}
-                      <div className="flex flex-col justify-between flex-1 pt-2.5 space-y-2">
+                      {/* Polaroid Bottom Caption (Under Photo: Name only) */}
+                      <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
-                          <h3 className="text-xs md:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                          <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
                             {mockup.name}
                           </h3>
-                          <p className="text-[9px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
+                          <p className="text-[8px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
                             {mockup.category}
                           </p>
                         </div>
-
-                        <button
-                          type="button"
-                          className={cn(outlineButtonWithLabelClasses, 'w-full py-1.5 px-2 mt-1')}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setMockupProject(mockup);
-                          }}
-                          aria-label={`Open ${mockup.name} mockup dialog`}
-                        >
-                          <DetailsIcon size={14} />
-                          <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                            Open Mockup
-                          </span>
-                        </button>
                       </div>
                     </div>
                   ))}

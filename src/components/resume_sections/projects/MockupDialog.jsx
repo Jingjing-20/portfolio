@@ -60,29 +60,6 @@ export function MockupDialog({ mockup, open, onClose }) {
           </DialogDescription>
         </div>
 
-        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 h-[250px]">
-          {mockup.previewImage && (
-            <>
-              <img
-                src={mockup.previewImage}
-                alt={mockup.name}
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full object-cover scale-110 opacity-80 pointer-events-none select-none"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-base-300/50 pointer-events-none"
-              />
-            </>
-          )}
-          {!mockup.previewImage && (
-            <div className="absolute inset-0 bg-base-300 pointer-events-none" />
-          )}
-          <div className="relative z-10 drop-shadow-xl text-base-content">
-            <WebIcon size={80} />
-          </div>
-        </div>
-
         <div className="max-h-[300px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
           <div className="p-3 md:p-4 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
             <div>
@@ -99,7 +76,7 @@ export function MockupDialog({ mockup, open, onClose }) {
               readOnly
               value={mockup.livePreview}
               aria-label="Live preview URL"
-              className="flex-1 rounded-md border border-gray-300/20 bg-base-200 p-3 text-sm text-base-content outline-none dark:border-white/40"
+            className="flex-1 rounded-md border border-gray-600 dark:border-gray-400 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
             />
             <button
               type="button"

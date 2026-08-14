@@ -6,11 +6,30 @@ import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificate
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl shadow-xl',
+  'group relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl shadow-xl',
   'bg-textured border-5 border-double border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
-  'cursor-pointer'
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
 );
+
+const iconButtonClasses = cn(
+  'absolute top-2 right-2 p-1.5 rounded-full',
+  'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
+  'hover:bg-white dark:hover:bg-black transition-all duration-200',
+  'border border-gray-300 dark:border-white/30',
+  'hover:scale-110 hover:shadow-lg',
+  'shadow-md',
+  'z-10'
+);
+
+function OpenIcon({ size = 18 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <title>Open</title>
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
+    </svg>
+  );
+}
 
 // Helper function to format date
 const formatDate = (dateString) => {
@@ -56,16 +75,19 @@ export default function Certificates() {
                   <div
                     key={cert.id}
                     className={certCardClasses}
-                    onClick={() => setActiveCert(cert)}
                     role="button"
                     tabIndex={0}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        setActiveCert(cert);
-                      }
-                    }}
                   >
+                    {/* Open Icon Button - Top Right */}
+                    <button
+                      type="button"
+                      className={iconButtonClasses}
+                      onClick={() => setActiveCert(cert)}
+                      aria-label={`Open ${cert.title} certificate`}
+                    >
+                      <OpenIcon size={18} />
+                    </button>
+
                     {/* Top: Organization with icon logo beside it */}
                     <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
                       <IconComponent className="text-muted-foreground flex-shrink-0" />
@@ -78,7 +100,7 @@ export default function Certificates() {
 
                     {/* Middle: Certificate Title */}
                     <div className="flex items-center justify-center my-auto">
-                      <h3 className="text-[8px] md:text-[10px] font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
+                      <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
                         {cert.title}
                       </h3>
                     </div>

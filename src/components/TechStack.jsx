@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils';
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
-  'text-sm font-medium cursor-default'
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'text-sm font-medium cursor-default transform hover:-translate-y-1 hover:rotate-3'
 );
 
 export default function TechStack() {

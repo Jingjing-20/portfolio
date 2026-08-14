@@ -14,13 +14,13 @@ import { Button as ButtonPrimitive } from '@/components/animate-ui/primitives/bu
 import { cn } from '@/lib/utils';
 
 const outlineButtonClasses = cn(
-  "inline-flex items-center justify-center rounded-md size-9",
+  "inline-flex items-center justify-center rounded-md size-9 shrink-0",
   "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
   "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
   "transition-[box-shadow,_color,_background-color,_border-color]",
   "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
   "disabled:pointer-events-none disabled:opacity-50",
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
+  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0"
 );
 
 export function ContactDialog({ contact, open, onClose }) {
@@ -56,34 +56,22 @@ export function ContactDialog({ contact, open, onClose }) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
-        <div className="space-y-1.5 pr-6">
+        <div className="space-y-1.5 pr-">
           <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
           <hr />
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{contact.description}</DialogDescription>
         </div>
 
-        <div className="relative flex items-center justify-center overflow-hidden rounded-md border border-gray-400 p-3 h-[250px]">
-          {contact.previewImage && (
-            <>
-              <img
-                src={contact.previewImage}
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full object-cover scale-110 opacity-80 pointer-events-none select-none"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-base-300/50 pointer-events-none"
-              />
-            </>
-          )}
-          {!contact.previewImage && (
-            <div className="absolute inset-0 bg-base-300 pointer-events-none" />
-          )}
-          <div className="relative z-10 drop-shadow-xl">
-            {contact.icon}
+        {/* Contact Preview Image Container */}
+        {contact.previewImage && (
+          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-600 dark:border-gray-400 bg-theme p-2 w-full">
+            <img
+              src={contact.previewImage}
+              alt={contact.label}
+              className="max-h-56 w-full object-contain rounded"
+            />
           </div>
-        </div>
+        )}
 
         <div className="flex items-center gap-2">
           <input
@@ -91,7 +79,7 @@ export function ContactDialog({ contact, open, onClose }) {
             readOnly
             value={value}
             aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : isResume ? 'Resume file' : 'Profile URL'}
-            className="flex-1 rounded-md border border-gray-300/20 bg-base-200 p-3 text-sm text-base-content outline-none dark:border-white/40"
+            className="flex-1 rounded-md border border-gray-600 dark:border-gray-400 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
           />
           {isEmail || isPhone ? (
             <CopyButton content={contact.email ?? contact.phone} variant="outline" aria-label="Copy to clipboard" />
