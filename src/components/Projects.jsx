@@ -143,9 +143,9 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Carousel Mockup Layout
-                <div className="border border-gray-300 dark:border-white/20 shadow-xl p-2 rounded-lg relative">
-                  <div className="p-3 overflow-hidden" ref={emblaRef}>
-                    <div className="flex touch-pan-y touch-pinch-zoom gap-3 sm:gap-4">
+                <div className="border border-gray-300 dark:border-white/20 shadow-xl p-3 rounded-lg relative">
+                  <div className="py-3 overflow-hidden" ref={emblaRef}>
+                    <div className="flex touch-pan-y touch-pinch-zoom gap-3">
                       {items.map((mockup) => (
                         <div
                           key={mockup.id}
@@ -199,7 +199,7 @@ export default function Projects() {
                   </div>
 
                   {/* Carousel Controls */}
-                  <div className="flex justify-between items-center mt-4">
+                  <div className="flex justify-between items-center mt-3">
                     <button
                       type="button"
                       className={outlineButtonWithLabelClasses}
