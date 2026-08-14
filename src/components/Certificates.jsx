@@ -78,7 +78,7 @@ export default function Certificates() {
 
                     {/* Middle: Certificate Title */}
                     <div className="flex items-center justify-center my-auto">
-                      <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
+                      <h3 className="text-[8px] md:text-[10px] font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
                         {cert.title}
                       </h3>
                     </div>
