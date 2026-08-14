@@ -73,7 +73,7 @@ const mobileMenuButtonClasses = cn(
   'cursor-pointer'
 );
 
-function ThemeTogglerBtn({ showLabel = false }) {
+function ThemeTogglerBtn({ showLabel = false, className = '' }) {
   const { resolvedTheme, setTheme } = useTheme();
   const isDark = resolvedTheme === 'dark';
 
@@ -93,16 +93,20 @@ function ThemeTogglerBtn({ showLabel = false }) {
       <Switch
         checked={isDark}
         onCheckedChange={handleToggle}
-        className="relative inline-flex h-6 w-11 items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 transition-all duration-200 cursor-pointer p-0.5"
+        className={cn(
+          "relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 shadow-xl cursor-pointer p-1",
+          className
+        )}
+        aria-label="Toggle theme"
       >
         <SwitchThumb
           style={{ viewTransitionName: 'theme-toggle-thumb-mobile' }}
-          className="pointer-events-none flex items-center justify-center h-5 w-5 rounded-full bg-white dark:bg-zinc-800 border border-gray-300/70 dark:border-white/20 shadow-sm transition-transform duration-300 data-[state=checked]:translate-x-[18px] data-[state=unchecked]:translate-x-0"
+          className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform duration-300 data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0"
         >
           {isDark ? (
-            <Moon className="h-3 w-3 text-gray-800 dark:text-gray-200" />
+            <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" />
           ) : (
-            <Sun className="h-3 w-3 text-gray-800 dark:text-gray-200" />
+            <Sun className="h-4 w-4 text-gray-800 dark:text-gray-200" />
           )}
         </SwitchThumb>
       </Switch>
@@ -110,7 +114,7 @@ function ThemeTogglerBtn({ showLabel = false }) {
   }
 
   return (
-    <div className="relative inline-flex items-center">
+    <div className={cn("relative inline-flex items-center", className)}>
       <Switch
         checked={isDark}
         onCheckedChange={handleToggle}
@@ -204,76 +208,75 @@ export default function Navbar() {
             <ThemeTogglerBtn />
           </div>
 
-          {/* Mobile: Dropdown Menu */}
-          <div className="relative md:hidden">
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={cn(navButtonClasses)}
-              aria-label="Open menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+          {/* Mobile: Theme Toggle + Dropdown Menu */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeTogglerBtn showLabel={true} className="h-9 w-[64px]" />
 
-            {/* Dropdown Panel with AnimatePresence */}
-            <AnimatePresence>
-              {isMobileMenuOpen && (
-                <>
-                  {/* Backdrop */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                    className="fixed inset-0 z-40"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    aria-hidden="true"
-                  />
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={cn(navButtonClasses, 'h-9 w-9')}
+                aria-label="Open menu"
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
 
-                  {/* Animated Dropdown Content */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.94, y: -10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.94, y: -10 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-                    className={cn(
-                      'absolute right-0 top-full mt-2 z-50 w-30',
-                      'shadow-2xl rounded-xl bg-theme border border-gray-300 dark:border-white/20',
-                      'p-3 space-y-2 origin-top-right'
-                    )}
-                  >
-                    <div className="w-full flex justify-end">
-                      <ThemeTogglerBtn showLabel={true} />
-                    </div>
-                    <hr />
+              {/* Dropdown Panel with AnimatePresence */}
+              <AnimatePresence>
+                {isMobileMenuOpen && (
+                  <>
+                    {/* Backdrop */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.15 }}
+                      className="fixed inset-0 z-40"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      aria-hidden="true"
+                    />
 
-                    <nav aria-label="Mobile navigation" className="space-y-2">
-                      {NAV_ITEMS.map((item) => {
-                        const isActive = activeTab === item.value;
-                        return (
-                          <button
-                            key={item.value}
-                            type="button"
-                            onClick={(e) => handleNavClick(e, item.value, item.href)}
-                            className={cn(
-                              mobileMenuButtonClasses,
-                              'w-full justify-start',
-                              isActive && activeButtonClasses
-                            )}
-                            aria-label={item.label}
-                            aria-current={isActive ? 'page' : undefined}
-                          >
-                            {item.icon}
-                            <span className="text-[8px] md:text-[10px] font-medium text-base-content">{item.label}</span>
-                          </button>
-                        );
-                      })}
-                    </nav>
-                  </motion.div>
-                </>
-              )}
-            </AnimatePresence>
+                    {/* Animated Dropdown Content */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.94, y: -10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.94, y: -10 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                      className={cn(
+                        'absolute right-0 top-full mt-2 z-50 w-30',
+                        'shadow-2xl rounded-xl bg-theme border border-gray-300 dark:border-white/20',
+                        'p-3 space-y-2 origin-top-right'
+                      )}
+                    >
+                      <nav aria-label="Mobile navigation" className="space-y-2">
+                        {NAV_ITEMS.map((item) => {
+                          const isActive = activeTab === item.value;
+                          return (
+                            <button
+                              key={item.value}
+                              type="button"
+                              onClick={(e) => handleNavClick(e, item.value, item.href)}
+                              className={cn(
+                                mobileMenuButtonClasses,
+                                'w-full justify-start',
+                                isActive && activeButtonClasses
+                              )}
+                              aria-label={item.label}
+                              aria-current={isActive ? 'page' : undefined}
+                            >
+                              {item.icon}
+                              <span className="text-[8px] md:text-[10px] font-medium text-base-content">{item.label}</span>
+                            </button>
+                          );
+                        })}
+                      </nav>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </div>
