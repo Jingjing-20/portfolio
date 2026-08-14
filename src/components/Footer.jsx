@@ -3,18 +3,8 @@ import { ArrowUp, Code2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ShadcnIcon = (props) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
-    viewBox="0 0 24 24"
-    {...props}
-  >
-    <title>shadcn-ui</title>
-    <path
-      fill="currentColor"
-      d="m19.01 11.55l-7.46 7.46c-.46.46-.46 1.19 0 1.65a1.16 1.16 0 0 0 1.64 0l7.46-7.46c.46-.46.46-1.19 0-1.65s-1.19-.46-1.65 0Zm.16-8.21c-.46-.46-1.19-.46-1.65 0L3.34 17.52c-.46.46-.46 1.19 0 1.65a1.16 1.16 0 0 0 1.64 0L19.16 4.99c.46-.46.46-1.19 0-1.65Z"
-    />
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <path fill="currentColor" d="m19.01 11.55l-7.46 7.46c-.46.46-.46 1.19 0 1.65a1.16 1.16 0 0 0 1.64 0l7.46-7.46c.46-.46.46-1.19 0-1.65s-1.19-.46-1.65 0Zm.16-8.21c-.46-.46-1.19-.46-1.65 0L3.34 17.52c-.46.46-.46 1.19 0 1.65a1.16 1.16 0 0 0 1.64 0L19.16 4.99c.46-.46.46-1.19 0-1.65Z" />
   </svg>
 );
 
@@ -22,15 +12,18 @@ const PORTFOLIO_STACK = [
   { name: 'React', icon: Tools['React']?.icon },
   { name: 'Vite', icon: Tools['Vite']?.icon },
   { name: 'Tailwind CSS', icon: Tools['Tailwind CSS']?.icon },
-  { name: 'Shadcn UI', icon: <ShadcnIcon className="h-4 w-4" /> },
+  { name: 'Shadcn UI', icon: <ShadcnIcon className="h-5 w-5" /> },
 ];
 
-const footerButtonClasses = cn(
-  'shadow-xl inline-flex items-center gap-2 rounded-md px-3 py-1.5',
+// Reusing the exact same button style from About section
+const outlineButtonWithLabelClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 hover:-translate-y-0.5',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-xs font-medium text-base-content cursor-default'
+  'disabled:pointer-events-none disabled:opacity-50',
+  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
+  'text-sm font-medium cursor-pointer'
 );
 
 const backToTopButtonClasses = cn(
@@ -57,9 +50,13 @@ export default function Footer() {
           </div>
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
             {PORTFOLIO_STACK.map((item) => (
-              <div key={item.name} className={footerButtonClasses}>
-                <span className="shrink-0 text-base-content">{item.icon}</span>
-                <span className="text-[11px] font-semibold">{item.name}</span>
+              <div key={item.name} className={outlineButtonWithLabelClasses}>
+                <span className="shrink-0 text-base-content [&_svg]:h-5 [&_svg]:w-5">
+                  {item.icon}
+                </span>
+                <span className="text-[8px] font-medium text-base-content">
+                  {item.name}
+                </span>
               </div>
             ))}
           </div>

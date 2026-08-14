@@ -1,7 +1,6 @@
 // Certificate image assets
 import MentalHealthImg from '@/components/resume_sections/certificates/certimg/10 Keys to Mental Health at Work - Support Wellbeing with AI Tools.png';
 import EnterpriseArchImg from '@/components/resume_sections/certificates/certimg/AI x Enterprise Architecture - Powering Emerging Tech.png';
-import DevFestImg from '@/components/resume_sections/certificates/certimg/DevFest_2025_Certificate.png';
 import NetAddressingImg from '@/components/resume_sections/certificates/certimg/Network Addressing and Basic Troubleshooting.png';
 import NetBasicsImg from '@/components/resume_sections/certificates/certimg/Networking Basics.png';
 import NetDevicesImg from '@/components/resume_sections/certificates/certimg/Networking Devices and Initial Configuration.png';
@@ -129,15 +128,6 @@ export const CERTIFICATE_CATEGORIES = [
         image: ProjectMgmtImg,
         icon: KoenigIcon,
         issuedDate: '2025-09-01',
-        link: 'no link',
-      },
-      {
-        id: 'devfest-2025',
-        title: 'DevFest 2025 Certificate',
-        org: 'Google Developer Groups',
-        image: DevFestImg,
-        icon: GoogleIcon,
-        issuedDate: '2025-12-01',
         link: 'no link',
       },
       {
