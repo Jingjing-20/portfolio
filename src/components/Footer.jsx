@@ -26,14 +26,6 @@ const outlineButtonWithLabelClasses = cn(
   'text-sm font-medium cursor-pointer'
 );
 
-const backToTopButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center rounded-md p-2.5',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 hover:-translate-y-0.5',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer text-base-content'
-);
-
 export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -44,7 +36,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Built with Stack */}
         <div className="space-y-2 text-center md:text-left">
-          <div className="flex items-center gap-1.5 justify-center md:justify-start text-xs text-base-content/70 font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs text-base-content/70 font-semibold uppercase tracking-wider">
             <Code2 className="h-3.5 w-3.5 text-base-content/60" />
             <span>Built With</span>
           </div>
@@ -65,10 +57,10 @@ export default function Footer() {
         {/* Right: Copyright & Back to Top */}
         <div className="flex items-center gap-4 text-center md:text-right">
           <div className="space-y-1">
-            <p className="text-xs font-medium text-base-content">
+            <p className="text-[10px] md:text-xs font-medium text-base-content">
               © {new Date().getFullYear()} Gian Carlo N. Ulep
             </p>
-            <p className="text-[10px] text-base-content/60">
+            <p className="text-[8px] md:text-[10px] text-base-content/60">
               Designed & Crafted with Motion
             </p>
           </div>
@@ -76,7 +68,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className={backToTopButtonClasses}
+            className={outlineButtonWithLabelClasses}
             aria-label="Back to top"
             title="Back to top"
           >

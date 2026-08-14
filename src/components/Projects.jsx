@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ImagesDialog, DetailsDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
@@ -22,6 +24,17 @@ const iconButtonClasses = cn(
   'hover:scale-110 hover:shadow-lg',
   'shadow-md',
   'z-10'
+);
+
+const carouselButtonClasses = cn(
+  'inline-flex items-center justify-center rounded-full',
+  'size-8 md:size-10 shrink-0',
+  'bg-white/90 dark:bg-black/90 backdrop-blur-sm',
+  'border border-gray-300 dark:border-white/30',
+  'hover:bg-white dark:hover:bg-black transition-all duration-200',
+  'hover:scale-110 hover:shadow-lg shadow-md',
+  'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
+  '[&_svg]:size-4 md:[&_svg]:size-5'
 );
 
 function ArrowIcon() {
@@ -72,6 +85,34 @@ export default function Projects() {
   const [imagesProject, setImagesProject] = useState(null);
   const [detailsProject, setDetailsProject] = useState(null);
   const [mockupProject, setMockupProject] = useState(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    slidesToScroll: 1,
+    align: 'start',
+  });
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
+
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setCanScrollPrev(emblaApi.canScrollPrev());
+      setCanScrollNext(emblaApi.canScrollNext());
+    };
+
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+    onSelect();
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
+  }, [emblaApi]);
 
   return (
     <section id="projects" className="scroll-mt-24">
@@ -101,56 +142,88 @@ export default function Projects() {
 
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
-                // Polaroid Mockup Grid Layout
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-                  {items.map((mockup) => (
-                    <div
-                      key={mockup.id}
-                      className={cn(
-                        'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
-                        'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
-                        'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-                        'transform hover:-translate-y-1 hover:rotate-3'
-                      )}
-                    >
-                      {/* Open Icon Button - Top Right */}
-                      <button
-                        type="button"
-                        className={iconButtonClasses}
-                        onClick={() => setMockupProject(mockup)}
-                        aria-label={`Open ${mockup.name} mockup`}
-                      >
-                        <OpenIcon size={18} />
-                      </button>
+                // Carousel Mockup Layout
+                <div className="border border-gray-600 dark:border-gray-400 p-2 rounded-lg relative">
+                  <div className="p-3 overflow-hidden" ref={emblaRef}>
+                    <div className="flex touch-pan-y touch-pinch-zoom gap-3 sm:gap-4">
+                      {items.map((mockup) => (
+                        <div
+                          key={mockup.id}
+                          className={cn(
+                            'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
+                            'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
+                            'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+                            'transform hover:-translate-y-1 hover:rotate-3',
+                            'flex-[0_0_33.333%] min-w-0 sm:flex-[0_0_25%]'
+                          )}
+                        >
+                          {/* Open Icon Button - Top Right */}
+                          <button
+                            type="button"
+                            className={iconButtonClasses}
+                            onClick={() => setMockupProject(mockup)}
+                            aria-label={`Open ${mockup.name} mockup`}
+                          >
+                            <OpenIcon size={18} />
+                          </button>
 
-                      {/* Polaroid Photo Frame */}
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                        {mockup.previewImage ? (
-                          <img
-                            src={mockup.previewImage}
-                            alt={mockup.name}
-                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center text-base-content/40">
-                            <WebIcon size={32} />
+                          {/* Polaroid Photo Frame */}
+                          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                            {mockup.previewImage ? (
+                              <img
+                                src={mockup.previewImage}
+                                alt={mockup.name}
+                                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center text-base-content/40">
+                                <WebIcon size={32} />
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
 
-                      {/* Polaroid Bottom Caption (Under Photo: Name only) */}
-                      <div className="flex flex-col justify-between flex-1 pt-2">
-                        <div>
-                          <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
-                            {mockup.name}
-                          </h3>
-                          <p className="text-[8px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
-                            {mockup.category}
-                          </p>
+                          {/* Polaroid Bottom Caption (Under Photo: Name only) */}
+                          <div className="flex flex-col justify-between flex-1 pt-2">
+                            <div>
+                              <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                                {mockup.name}
+                              </h3>
+                              <p className="text-[8px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
+                                {mockup.category}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Carousel Controls */}
+                  <div className="flex justify-between items-center mt-4">
+                    <button
+                      type="button"
+                      className={outlineButtonWithLabelClasses}
+                      onClick={scrollPrev}
+                      disabled={!canScrollPrev}
+                      aria-label="Previous mockups"
+                    >
+                      <ChevronLeft />
+                    </button>
+                    
+                    <div className="text-[10px] md:text-xs text-muted-foreground">
+                      Swipe to explore
+                    </div>
+
+                    <button
+                      type="button"
+                      className={outlineButtonWithLabelClasses}
+                      onClick={scrollNext}
+                      disabled={!canScrollNext}
+                      aria-label="Next mockups"
+                    >
+                      <ChevronRight />
+                    </button>
+                  </div>
                 </div>
               ) : (
                 // Deployed project layout with vertically centered arrow
