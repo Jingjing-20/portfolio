@@ -46,7 +46,7 @@ export function CertificateDialog({ cert, open, onClose }) {
           </div>
         )}
 
-        <div className="flex items-center gap-2 mt-4">
+        <div className="flex items-center gap-2">
           <input
             type="text"
             readOnly
