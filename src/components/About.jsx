@@ -69,9 +69,9 @@ export default function About() {
         </div>
       </header>
 
-      <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%] md:grid-cols-[20%_80%]">
+      <div className="items-start gap-3 md:gap-6 grid grid-cols-[30%_70%]">
         <div className="flex block">
-          <Tilt maxTilt={12} className="w-34 max-w-xs">
+          <Tilt maxTilt={12} className="w-46 max-w-xs">
             <TiltContent className="overflow-hidden rounded-lg p-1 md:p-1.5 bg-textured border-5 border-double border-gray-300 dark:border-white/20 shadow-xl dark:shadow-2xl">
               <div className="overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-white dark:bg-[#1a1b1d]">
                 <img src={profileImage} alt="Gian Carlo N. Ulep" className="aspect-square w-full object-cover transition-all duration-500 hover:scale-105" />
