@@ -60,25 +60,23 @@ function ExperienceItem({ experience, onOpenDetails }) {
       <TimelineContent>
         <div className="space-y-1">
           <h3 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
-            {experience.company}
+            {experience.role}
           </h3>
           <p className="text-[10px] md:text-xs text-muted-foreground">
-            {experience.location}
-            <span className="mx-2 text-base-content/40">·</span>
-            {experience.workMode}
-          </p>
-          <div className="">
-            <h4 className="text-xs md:text-sm font-medium text-base-content">
-              {experience.role}
-            </h4>
-          </div>
-          <TimelineDate className="text-[10px] md:text-xs text-muted-foreground">
-            {experience.employmentType}
+            {experience.company}
             <span className="mx-1 text-base-content/40">·</span>
+            {experience.employmentType}
+          </p>
+          <TimelineDate className="text-[10px] md:text-xs text-muted-foreground">
             {experience.dateRange}
             <span className="mx-1 text-base-content/40">·</span>
             {experience.durationMonths}
           </TimelineDate>
+          <p className="text-[10px] md:text-xs text-muted-foreground">
+            {experience.location}
+            <span className="mx-1 text-base-content/40">·</span>
+            {experience.workMode}
+          </p>
         </div>
 
         <div className="mt-3">

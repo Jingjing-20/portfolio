@@ -3,7 +3,7 @@ import PGNOImg from '@/components/resume_sections/experience/pgno.png';
 export const EXPERIENCES = [
   {
     step: 1,
-    company: 'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
+    company: 'Provincial Government of Negros Occidental',
     logo: PGNOImg,
     logoInitials: 'PG',
     employmentType: 'Internship',

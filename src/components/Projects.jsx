@@ -26,17 +26,6 @@ const iconButtonClasses = cn(
   'z-10'
 );
 
-const carouselButtonClasses = cn(
-  'inline-flex items-center justify-center rounded-full',
-  'size-8 md:size-10 shrink-0',
-  'bg-white/90 dark:bg-black/90 backdrop-blur-sm',
-  'border border-gray-300 dark:border-white/30',
-  'hover:bg-white dark:hover:bg-black transition-all duration-200',
-  'hover:scale-110 hover:shadow-lg shadow-md',
-  'disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100',
-  '[&_svg]:size-4 md:[&_svg]:size-5'
-);
-
 function ArrowIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className="size-2 md:size-3" viewBox="0 0 15 15" aria-hidden="true">
@@ -198,32 +187,32 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Carousel Controls */}
-                  <div className="flex justify-between items-center mt-3">
-                    <button
-                      type="button"
-                      className={outlineButtonWithLabelClasses}
-                      onClick={scrollPrev}
-                      disabled={!canScrollPrev}
-                      aria-label="Previous mockups"
-                    >
-                      <ChevronLeft />
-                    </button>
-                    
-                    <div className="text-[10px] md:text-xs text-muted-foreground">
-                      Swipe to explore
-                    </div>
+                  {/* Carousel Controls - Left and Right */}
+                  <button
+                    type="button"
+                    className={cn(
+                      outlineButtonWithLabelClasses,
+                      'absolute left-2 top-1/2 -translate-y-1/2 z-10'
+                    )}
+                    onClick={scrollPrev}
+                    disabled={!canScrollPrev}
+                    aria-label="Previous mockups"
+                  >
+                    <ChevronLeft />
+                  </button>
 
-                    <button
-                      type="button"
-                      className={outlineButtonWithLabelClasses}
-                      onClick={scrollNext}
-                      disabled={!canScrollNext}
-                      aria-label="Next mockups"
-                    >
-                      <ChevronRight />
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className={cn(
+                      outlineButtonWithLabelClasses,
+                      'absolute right-2 top-1/2 -translate-y-1/2 z-10'
+                    )}
+                    onClick={scrollNext}
+                    disabled={!canScrollNext}
+                    aria-label="Next mockups"
+                  >
+                    <ChevronRight />
+                  </button>
                 </div>
               ) : (
                 // Deployed project layout with vertically centered arrow

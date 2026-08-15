@@ -13,6 +13,9 @@ const techBadgeClasses = cn(
 );
 
 export default function TechStack() {
+  // Flatten all tools from all categories into a single array
+  const allTools = TECH_STACK.flatMap(({ tools }) => tools);
+
   return (
     <section id="stack" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
@@ -25,35 +28,21 @@ export default function TechStack() {
           </p>
         </div>
       </header>
-      <div className="space-y-6 md:space-y-8">
-        {TECH_STACK.map(({ category, description, tools }) => (
-          <article key={category}>
-            <div className="space-y-1">
-              <h3 className="text-xs md:text-sm leading-relaxed font-semibold text-base-content">
-                {category}
-              </h3>
-              <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed">
-                {description}
-              </p>
-            </div>
 
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              {tools.map((tool) => {
-                const stackTool = Tools[tool];
-                if (!stackTool) return null;
+      <div className="flex flex-wrap items-center gap-2">
+        {allTools.map((tool) => {
+          const stackTool = Tools[tool];
+          if (!stackTool) return null;
 
-                return (
-                  <div key={tool} className={techBadgeClasses}>
-                    {stackTool.icon}
-                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                      {tool}
-                    </span>
-                  </div>
-                );
-              })}
+          return (
+            <div key={tool} className={techBadgeClasses}>
+              {stackTool.icon}
+              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                {tool}
+              </span>
             </div>
-          </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
