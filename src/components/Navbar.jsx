@@ -26,6 +26,12 @@ const NAV_ITEMS = [
     icon: <AboutInfo size={20} />
   },
   {
+    value: 'stack',
+    label: 'Stack',
+    href: '#stack',
+    icon: <StackLine size={20} />
+  },
+  {
     value: 'experience',
     label: 'Experience',
     href: '#experience',
@@ -36,12 +42,6 @@ const NAV_ITEMS = [
     label: 'Projects',
     href: '#projects',
     icon: <FolderFiles size={20} />
-  },
-  {
-    value: 'stack',
-    label: 'Stack',
-    href: '#stack',
-    icon: <StackLine size={20} />
   },
   {
     value: 'certificates',
@@ -165,9 +165,9 @@ export default function Navbar() {
             <img
               src={logoImg}
               alt="Logo"
-              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border border-gray-300 dark:border-white/20"
+              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xs md:text-sm font-bold text-base-content">Portfolio</h1>
+            <h1 className="text-sm md:text-md font-bold text-base-content">Portfolio</h1>
           </div>
 
           {/* Desktop: Center Navigation Buttons */}

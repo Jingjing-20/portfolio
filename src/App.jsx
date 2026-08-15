@@ -49,32 +49,32 @@ function App() {
           <div className="pt-16 md:pt-32 pb-8 max-w-3xl mx-auto px-4 md:px-6">
             <div className="space-y-6 pb-12 pt-4">
 
-              {/* 3. About */}
+              {/* 1. About */}
               <ScrollReveal animation="fadeInUp" duration="0.8s">
                 <About />
               </ScrollReveal>
               <hr />
-              {/* 4. Experience */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <Experience />
-              </ScrollReveal>
-              <hr />
-              {/* 5. Projects */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <Projects />
-              </ScrollReveal>
-              <hr />
-              {/* 6. Tech Stack */}
+              {/* 2. Stack */}
               <ScrollReveal animation="fadeInUp" duration="0.8s">
                 <TechStack />
               </ScrollReveal>
               <hr />
-              {/* 7. Certificates */}
+              {/* 3. Experience */}
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <Experience />
+              </ScrollReveal>
+              <hr />
+              {/* 4. Projects */}
+              <ScrollReveal animation="fadeInUp" duration="0.8s">
+                <Projects />
+              </ScrollReveal>
+              <hr />
+              {/* 5. Certificates */}
               <ScrollReveal animation="fadeInUp" duration="0.8s">
                 <Certificates />
               </ScrollReveal>
               <hr />
-              {/* 8. Footer */}
+              {/* 6. Footer */}
               <ScrollReveal animation="fadeInUp" duration="0.8s">
                 <Footer />
               </ScrollReveal>
