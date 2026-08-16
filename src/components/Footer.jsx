@@ -32,11 +32,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="mt-16 pt-8 pb-12 border-t border-gray-300 dark:border-white/10">
+    <footer className="">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Built with Stack */}
         <div className="space-y-2 text-center md:text-left">
-          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs text-base-content/70 font-semibold uppercase tracking-wider">
+          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs text-base-content font-semibold tracking-wider">
             <Code2 className="h-3.5 w-3.5 text-base-content/60" />
             <span>Built With</span>
           </div>
