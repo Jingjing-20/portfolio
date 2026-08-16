@@ -6,7 +6,7 @@ import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificate
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'group relative flex flex-col h-25 md:h-35 p-2 md:p-3 rounded-xl shadow-xl',
+  'group relative flex flex-col h-25 md:h-30 p-2 md:p-3 rounded-xl shadow-xl',
   'bg-textured border-5 border-double border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
   'cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
@@ -25,7 +25,6 @@ const iconButtonClasses = cn(
 function OpenIcon({ size = 18 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      <title>Open</title>
       <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
   );
@@ -66,7 +65,7 @@ export default function Certificates() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-1 sm:gap-2">
+            <div className="grid grid-cols-3 gap-3 md:gap-4">
               {items.map((cert) => {
                 const IconComponent = cert.icon;
                 const formattedDate = formatDate(cert.issuedDate);
@@ -88,28 +87,25 @@ export default function Certificates() {
                       <OpenIcon size={15} />
                     </button>
 
-                    {/* Top: Organization with icon logo beside it */}
-                    <div className="flex items-center gap-1.5 mb-1 md:mb-1.5">
-                      <IconComponent className="text-muted-foreground flex-shrink-0" />
-                      <span className="text-[8px] sm:text-[10px] font-medium text-base-content line-clamp-1">
-                        {cert.org}
-                      </span>
+                    {/* Top: Date - Left aligned with fixed height */}
+                    <div className="flex items-center justify-start mb-1 md:mb-1.5 h-2 md:h-4">
+                      <p className="text-[6px] md:text-[8px] text-muted-foreground">
+                        {formattedDate || 'No date'}
+                      </p>
+                    </div>
+
+                    {/* Middle: Organization Logo Only with fixed height */}
+                    <div className="flex items-center justify-center mb-3 h-6 md:h-8">
+                      <IconComponent />
                     </div>
 
                     <hr className="mb-1 md:mb-1.5" />
 
-                    {/* Middle: Certificate Title */}
-                    <div className="flex items-center justify-center my-auto">
-                      <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content text-center line-clamp-2">
+                    {/* Bottom: Certificate Title with fixed height */}
+                    <div className="flex items-center justify-center h-4 md:h-6">
+                      <h3 className="text-[8px] md:text-[10px] tracking-tight leading-snug text-base-content text-center line-clamp-2">
                         {cert.title}
                       </h3>
-                    </div>
-
-                    {/* Bottom: Issued Date with terminal-style arrow */}
-                    <div className="flex items-center justify-center mt-0.5 md:mt-1">
-                      <p className="text-[6px] md:text-[8px] text-muted-foreground text-cente">
-                        {formattedDate ? `< Issued ${formattedDate} />` : '< Certificate />'}
-                      </p>
                     </div>
                   </div>
                 );

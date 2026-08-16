@@ -156,8 +156,8 @@ export default function Projects() {
                             <OpenIcon size={15} />
                           </button>
 
-                          {/* Polaroid Photo Frame */}
-                          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                          {/* Polaroid Photo Frame - 16:9 aspect ratio */}
+                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                             {mockup.previewImage ? (
                               <img
                                 src={mockup.previewImage}
