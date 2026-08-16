@@ -13,7 +13,7 @@ const certCardClasses = cn(
 );
 
 const iconButtonClasses = cn(
-  'absolute top-2 right-2 p-1.5 rounded-full',
+  'absolute -top-1.5 -right-1.5 p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
@@ -90,7 +90,7 @@ export default function Certificates() {
                     {/* Top: Date - Left aligned with fixed height */}
                     <div className="flex items-center justify-start mb-1 md:mb-1.5 h-2 md:h-4">
                       <p className="text-[6px] md:text-[8px] text-muted-foreground">
-                        {formattedDate || 'No date'}
+                        {`<${formattedDate || 'No date'}/>`}
                       </p>
                     </div>
 

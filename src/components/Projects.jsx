@@ -17,7 +17,7 @@ const outlineButtonWithLabelClasses = cn(
 );
 
 const iconButtonClasses = cn(
-  'absolute top-2 right-2 p-1.5 rounded-full',
+  'absolute -top-1.5 -right-1.5 p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
