@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import ScrollReveal from './components/ScrollReveal'
 import About from './components/About'
+import CardDev from './components/CardDev'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
@@ -30,7 +31,7 @@ function App() {
         {/* Top Scroll Progress Indicator */}
         <ScrollProgress
           mode="scaleX"
-          className="fixed top-0 left-0 right-0 h-1 bg-gray-900 dark:bg-white z-[100] origin-left shadow-sm"
+          className="fixed top-0 left-0 right-0 h-1 bg-gray-900 dark:bg-white z-[100] origin-left shadow-xl"
         />
 
         {/* Comet Cursor Trail */}
@@ -46,39 +47,49 @@ function App() {
           {/* 1. Navbar */}
           <Navbar />
 
-          <div className="pt-16 md:pt-32 pb-8 max-w-3xl mx-auto px-4 md:px-6">
-            <div className="space-y-6 pb-12 pt-4">
+          <div className="pt-20 pb-8 md:pt-28">
+            <div className="mx-auto max-w-6xl px-4 md:px-6">
+              {/* Grid with 12 columns for 40/60 split */}
+              <div className="md:grid md:grid-cols-12 md:gap-16">
+                {/* Left column - 40% (4 out of 12 columns) */}
+                <aside className="md:col-span-5 pb-6 md:sticky md:top-28 md:self-start">
+                  <div className="w-full">
+                    <ScrollReveal animation="fadeInUp" duration="0.5s"><CardDev /></ScrollReveal>
+                  </div>
+                </aside>
 
-              {/* 1. About */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <About />
-              </ScrollReveal>
-              <hr />
-              {/* 2. Stack */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <TechStack />
-              </ScrollReveal>
-              <hr />
-              {/* 3. Experience */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <Experience />
-              </ScrollReveal>
-              <hr />
-              {/* 4. Projects */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <Projects />
-              </ScrollReveal>
-              <hr />
-              {/* 5. Certificates */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <Certificates />
-              </ScrollReveal>
-              <hr />
-              {/* 6. Footer */}
-              <ScrollReveal animation="fadeInUp" duration="0.8s">
-                <Footer />
-              </ScrollReveal>
+                {/* Right column - 60% (8 out of 12 columns) */}
+                <div className="md:col-span-7 space-y-6 pb-6">
+                  <ScrollReveal animation="fadeInUp" duration="0.5s"><About /></ScrollReveal>
+                  <hr />
+                  {/* 1. Stack */}
+                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                    <TechStack />
+                  </ScrollReveal>
+                  <hr />
+                  {/* 2. Experience */}
+                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                    <Experience />
+                  </ScrollReveal>
+                  <hr />
+                  {/* 3. Projects */}
+                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                    <Projects />
+                  </ScrollReveal>
+                  <hr />
+                  {/* 4. Certificates */}
+                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                    <Certificates />
+                  </ScrollReveal>
+                </div>
+              </div>
 
+              {/* Footer intentionally sits below both resume columns. */}
+              <div className="border-t pt-6">
+                <ScrollReveal animation="fadeInUp" duration="0.5s">
+                  <Footer />
+                </ScrollReveal>
+              </div>
             </div>
           </div>
         </div>
@@ -88,4 +99,3 @@ function App() {
 }
 
 export default App
-

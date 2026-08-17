@@ -30,6 +30,13 @@ const outlineButtonWithLabelClasses = cn(
   "text-sm font-medium cursor-pointer"
 );
 
+const headerIconClasses = cn(
+  'inline-flex items-center justify-center rounded-md p-2 shadow-xl',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'transform hover:-translate-y-1 hover:rotate-3'
+);
+
 const KEY_CONTRIBUTIONS_TITLE = 'Key Contributions';
 
 function DetailsIcon({ size = 16 }) {
@@ -116,13 +123,16 @@ export default function Experience() {
   return (
     <section id="experience" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
-        <div>
+        <div className="flex items-start justify-between gap-4">
+          <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Experience
           </h2>
           <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
             Work history and professional engagements
           </p>
+          </div>
+          <div className={headerIconClasses} aria-hidden="true"><Briefcase size={20} /></div>
         </div>
       </header>
 

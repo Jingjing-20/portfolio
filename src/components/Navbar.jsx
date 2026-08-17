@@ -9,13 +9,6 @@ import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
 import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
-import {
-  TooltipProvider,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipArrow,
-} from '@/components/animate-ui/primitives/animate/tooltip';
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
@@ -52,13 +45,13 @@ const NAV_ITEMS = [
 ];
 
 const navButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center rounded-md p-2',
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'cursor-pointer'
+  'cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
 );
 
 const activeButtonClasses = cn(
@@ -137,7 +130,7 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
 }
 
 export default function Navbar() {
-  const [activeTab, setActiveTab] = useState(NAV_ITEMS[0]?.value);
+  const [activeTab, setActiveTab] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (e, value, href) => {
@@ -154,62 +147,83 @@ export default function Navbar() {
   };
 
   return (
-    <TooltipProvider openDelay={200} closeDelay={100}>
-      <div className="fixed left-0 right-0 top-3 z-50 flex w-full justify-center px-4">
+    <>
+      {/* Desktop Navbar - Full width with double border under */}
+      <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full">
         <div className={cn(
-          'flex w-full max-w-xl items-center justify-between px-4 py-3',
-          'shadow-xl rounded-xl bg-theme border-5 border-double border-gray-300 dark:border-white/20'
+          'flex w-full items-center justify-between px-6 py-3',
+          'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
         )}>
-          {/* Left: Logo and Portfolio Text */}
-          <div className="flex items-center gap-2">
+          {/* Portfolio identity */}
+          <button
+            type="button"
+            onClick={(event) => handleNavClick(event, 'about', '#about')}
+            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            aria-label="About Gian Carlo N. Ulep"
+            aria-current={activeTab === 'about' ? 'page' : undefined}
+          >
             <img
               src={logoImg}
-              alt="Logo"
+              alt=""
               className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
             <h1 className="text-sm md:text-md font-bold text-base-content">Portfolio</h1>
-          </div>
+          </button>
 
           {/* Desktop: Center Navigation Buttons */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-2 absolute left-1/2 transform -translate-x-1/2">
+          <nav aria-label="Main navigation" className="flex items-center gap-2">
             {NAV_ITEMS.map((item) => {
               const isActive = activeTab === item.value;
               return (
-                <Tooltip key={item.value} side="bottom" sideOffset={8}>
-                  <TooltipTrigger asChild>
-                    <button
-                      type="button"
-                      onClick={(e) => handleNavClick(e, item.value, item.href)}
-                      className={cn(
-                        navButtonClasses,
-                        isActive && activeButtonClasses
-                      )}
-                      aria-label={item.label}
-                      aria-current={isActive ? 'page' : undefined}
-                    >
-                      {item.icon}
-                    </button>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-white/50 dark:bg-black/50 text-base-content text-xs font-medium p-1.5 rounded-md shadow-xl border border-gray-400 dark:border-gray-400">
-                    <TooltipArrow
-                      fill="currentColor"
-                      className="text-base-300 stroke-gray-400 dark:stroke-gray-400"
-                      strokeWidth={1}
-                    />
-                    {item.label}
-                  </TooltipContent>
-                </Tooltip>
+                <button
+                  key={item.value}
+                  type="button"
+                  onClick={(e) => handleNavClick(e, item.value, item.href)}
+                  className={cn(
+                    navButtonClasses,
+                    isActive && activeButtonClasses
+                  )}
+                  aria-label={item.label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.icon}
+                  <span className="text-[10px] font-medium text-base-content">{item.label}</span>
+                </button>
               );
             })}
           </nav>
 
           {/* Desktop: Right Theme Toggle */}
-          <div className="hidden md:flex items-center">
+          <div className="flex items-center">
             <ThemeTogglerBtn />
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Navbar - Non-floating format */}
+      <div className="md:hidden fixed left-0 right-0 top-0 z-50 w-full">
+        <div className={cn(
+          'flex w-full items-center justify-between px-4 py-3',
+          'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
+        )}>
+          {/* Portfolio identity doubles as the About shortcut. */}
+          <button
+            type="button"
+            onClick={(event) => handleNavClick(event, 'about', '#about')}
+            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            aria-label="About Gian Carlo N. Ulep"
+            aria-current={activeTab === 'about' ? 'page' : undefined}
+          >
+            <img
+              src={logoImg}
+              alt=""
+              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+            />
+            <h1 className="text-sm md:text-md font-bold text-base-content">Portfolio</h1>
+          </button>
 
           {/* Mobile: Theme Toggle + Dropdown Menu */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2">
             <ThemeTogglerBtn showLabel={true} className="h-9 w-[64px]" />
 
             <div className="relative">
@@ -280,6 +294,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </TooltipProvider>
+    </>
   );
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { cn } from '@/lib/utils';
 import { ImagesDialog, DetailsDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
@@ -14,6 +15,13 @@ const outlineButtonWithLabelClasses = cn(
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
   'text-sm font-medium cursor-pointer'
+);
+
+const headerIconClasses = cn(
+  'inline-flex items-center justify-center rounded-md p-2 shadow-xl',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'transform hover:-translate-y-1 hover:rotate-3'
 );
 
 const iconButtonClasses = cn(
@@ -106,7 +114,8 @@ export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
-        <div>
+        <div className="flex items-start justify-between gap-4">
+          <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Projects
           </h2>
@@ -114,6 +123,8 @@ export default function Projects() {
           <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
             Selected work and personal builds
           </p>
+          </div>
+          <div className={headerIconClasses} aria-hidden="true"><FolderFiles size={20} /></div>
         </div>
       </header>
 
@@ -145,12 +156,24 @@ export default function Projects() {
                             'transform hover:-translate-y-1 hover:rotate-3',
                             'flex-[0_0_33.333%] min-w-0 sm:flex-[0_0_25%]'
                           )}
+                          role="button"
+                          tabIndex={0}
+                          onClick={() => setMockupProject(mockup)}
+                          onKeyDown={(event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                              event.preventDefault();
+                              setMockupProject(mockup);
+                            }
+                          }}
                         >
                           {/* Open Icon Button - Top Right */}
                           <button
                             type="button"
                             className={iconButtonClasses}
-                            onClick={() => setMockupProject(mockup)}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setMockupProject(mockup);
+                            }}
                             aria-label={`Open ${mockup.name} mockup`}
                           >
                             <OpenIcon size={15} />

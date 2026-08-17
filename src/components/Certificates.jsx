@@ -12,6 +12,13 @@ const certCardClasses = cn(
   'cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
 );
 
+const headerIconClasses = cn(
+  'inline-flex items-center justify-center rounded-md p-2 shadow-xl',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'transform hover:-translate-y-1 hover:rotate-3'
+);
+
 const iconButtonClasses = cn(
   'absolute -top-1.5 -right-1.5 p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
@@ -43,13 +50,16 @@ export default function Certificates() {
   return (
     <section id="certificates" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
-        <div>
+        <div className="flex items-start justify-between gap-4">
+          <div>
           <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-5xl">
             Certificates
           </h2>
           <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
             Certifications and earned credentials categorized by domain
           </p>
+          </div>
+          <div className={headerIconClasses} aria-hidden="true"><Certificate size={20} /></div>
         </div>
       </header>
 
@@ -76,12 +86,22 @@ export default function Certificates() {
                     className={certCardClasses}
                     role="button"
                     tabIndex={0}
+                    onClick={() => setActiveCert(cert)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setActiveCert(cert);
+                      }
+                    }}
                   >
                     {/* Open Icon Button - Top Right */}
                     <button
                       type="button"
                       className={iconButtonClasses}
-                      onClick={() => setActiveCert(cert)}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        setActiveCert(cert);
+                      }}
                       aria-label={`Open ${cert.title} certificate`}
                     >
                       <OpenIcon size={15} />
