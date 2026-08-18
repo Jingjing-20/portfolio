@@ -63,7 +63,7 @@ export const mockupsData = [
       'A responsive, seven-page e-commerce website featuring home, shop with roast-level filtering, origins and farm sourcing, brew guide with step-by-step instructions, subscription plans, FAQ, and roastery visit information. Includes a functional cart drawer, multi-step checkout flow, and interactive roast-level dials.',
     styling:
       'Warm, tactile coffee-sack aesthetic inspired by burlap, handwritten roast logs, and artisan packaging. The palette uses cream, smoke gray, rust, and gold accents. DM Serif Display provides editorial headlines, Space Grotesk handles body copy, IBM Plex Mono marks metadata, and Caveat adds handwritten field-note touches. Polaroid-style product cards with pushpin accents, dashed burlap-seam dividers, roast-level gradient tracks with movable indicators, and washi-tape visual details reinforce the small-batch craft character.',
-    livePreview: '/src/components/resume_sections/projects/mockups/kindling-coffee.html',
+    livePreview: 'https://kindling-coffee-beta.vercel.app',
     previewImage: kindlingPreview,
   },
   {
@@ -75,7 +75,7 @@ export const mockupsData = [
       'A responsive, five-page editorial platform featuring a hero with live field-log card, full journal archive with region filtering, detailed trip-report article template with elevation-profile reading indicator, author timeline, and newsletter subscription. Includes search overlay, table-of-contents navigation, mock comment system, and sticky navigation with topographic dividers.',
     styling:
       'Inspired by field notebooks, USGS topo maps, and backcountry trip reports. The palette uses paper beige, ink charcoal, teal trail markers, ochre highlights, and smoke gray. Fraunces provides literary display typography, Public Sans handles body text, JetBrains Mono marks trail data, and Shadows Into Light adds handwritten margin notes. Contour-line backgrounds, elevation SVG progress indicators, sticky-note margin comments, dotted trail dividers, and live elevation tracking create an authentic field-journal character.',
-    livePreview: '/src/components/resume_sections/projects/mockups/waypoint-journal.html',
+    livePreview: 'https://waypoint-journal.vercel.app/',
     previewImage: waypointPreview,
   },
 ];

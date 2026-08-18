@@ -22,6 +22,6 @@ export const TECH_STACK = [
   {
     category: 'Development Tools',
     description: 'Version control, AI-powered development, and productivity tools.',
-    tools: ['Git', 'GitHub', 'Antigravity', 'Codex'],
+    tools: ['Git', 'GitHub', 'Antigravity', 'Codex', 'Claude'],
   },
 ];
