@@ -47,6 +47,9 @@ const formatDate = (dateString) => {
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);
 
+  // Flatten all certificates from all categories into a single array
+  const allCertificates = CERTIFICATE_CATEGORIES.flatMap(({ items }) => items);
+
   return (
     <section id="certificates" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
@@ -56,101 +59,86 @@ export default function Certificates() {
             Certificates
           </h2>
           <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
-            Certifications and earned credentials categorized by domain
+            Certifications and earned credentials
           </p>
           </div>
           <div className={headerIconClasses} aria-hidden="true"><Certificate size={20} /></div>
         </div>
       </header>
 
-      <div className="space-y-6 md:space-y-8">
-        {CERTIFICATE_CATEGORIES.map(({ category, description, items }) => (
-          <article key={category}>
-            <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm leading-relaxed font-semibold text-base-content">
-                {category}
-              </h3>
-              <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed">
-                {description}
-              </p>
-            </div>
+      <div className="grid grid-cols-3 gap-3 md:gap-4">
+        {allCertificates.map((cert) => {
+          const IconComponent = cert.icon;
+          const formattedDate = formatDate(cert.issuedDate);
 
-            <div className="grid grid-cols-3 gap-3 md:gap-4">
-              {items.map((cert) => {
-                const IconComponent = cert.icon;
-                const formattedDate = formatDate(cert.issuedDate);
+          return (
+            <div
+              key={cert.id}
+              className={certCardClasses}
+              role="button"
+              tabIndex={0}
+              onClick={() => setActiveCert(cert)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  setActiveCert(cert);
+                }
+              }}
+            >
+              {/* Date Issued - Top Left */}
+              <div className="absolute top-1 left-1 p-1 rounded-sm bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-gray-300 dark:border-white/30 shadow-md z-10">
+                <p className="text-[6px] md:text-[8px] font-medium text-base-content">
+                  {formattedDate || 'No date'}
+                </p>
+              </div>
 
-                return (
-                  <div
-                    key={cert.id}
-                    className={certCardClasses}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => setActiveCert(cert)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        setActiveCert(cert);
-                      }
-                    }}
-                  >
-                    {/* Date Issued - Top Left */}
-                    <div className="absolute top-1 left-1 p-1 rounded-sm bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-gray-300 dark:border-white/30 shadow-md z-10">
-                      <p className="text-[6px] md:text-[8px] font-medium text-base-content">
-                        {formattedDate || 'No date'}
-                      </p>
-                    </div>
+              {/* Open Icon Button - Top Right */}
+              <button
+                type="button"
+                className={iconButtonClasses}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setActiveCert(cert);
+                }}
+                aria-label={`Open ${cert.title} certificate`}
+              >
+                <OpenIcon />
+              </button>
 
-                    {/* Open Icon Button - Top Right */}
-                    <button
-                      type="button"
-                      className={iconButtonClasses}
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        setActiveCert(cert);
-                      }}
-                      aria-label={`Open ${cert.title} certificate`}
-                    >
-                      <OpenIcon />
-                    </button>
-
-                    {/* Polaroid Photo Frame - 16:9 aspect ratio with certificate image */}
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                      {cert.image ? (
-                        <>
-                          <img
-                            src={cert.image}
-                            alt={cert.title}
-                            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                          />
-                          {/* Organization Logo Overlay - Centered */}
-                          <div className="absolute inset-0 flex items-center justify-center bg-black/40 dark:bg-black/60">
-                            <div className="text-white drop-shadow-lg">
-                              <IconComponent />
-                            </div>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center text-base-content/40">
-                          <IconComponent />
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Polaroid Bottom Caption */}
-                    <div className="flex flex-col justify-between flex-1 pt-2">
-                      <div>
-                        <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content truncate">
-                          {cert.title}
-                        </h3>
+              {/* Polaroid Photo Frame - 16:9 aspect ratio with certificate image */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                {cert.image ? (
+                  <>
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Organization Logo Overlay - Centered */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 dark:bg-black/60">
+                      <div className="text-white drop-shadow-lg">
+                        <IconComponent />
                       </div>
                     </div>
+                  </>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center text-base-content/40">
+                    <IconComponent />
                   </div>
-                );
-              })}
+                )}
+              </div>
+
+              {/* Polaroid Bottom Caption */}
+              <div className="flex flex-col justify-between flex-1 pt-2">
+                <div>
+                  <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content truncate">
+                    {cert.title}
+                  </h3>
+                </div>
+              </div>
             </div>
-          </article>
-        ))}
+          );
+        })}
       </div>
 
       <CertificateDialog
