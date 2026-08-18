@@ -14,7 +14,7 @@ const outlineButtonWithLabelClasses = cn(
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
+  'text-sm font-medium cursor-pointer transform hover:rotate-3'
 );
 
 const headerIconClasses = cn(
@@ -25,7 +25,7 @@ const headerIconClasses = cn(
 );
 
 const iconButtonClasses = cn(
-  'absolute -top-1.5 -right-1.5 p-1 md:p-1.5 rounded-full',
+  'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
