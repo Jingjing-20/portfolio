@@ -35,7 +35,6 @@ export default function TechStack() {
             Tools and technologies I work with
           </p>
           </div>
-          <div className={headerIconClasses} aria-hidden="true"><StackLine size={20} /></div>
         </div>
       </header>
 

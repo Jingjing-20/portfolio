@@ -17,13 +17,6 @@ const outlineButtonWithLabelClasses = cn(
   'text-sm font-medium cursor-pointer transform hover:rotate-3'
 );
 
-const headerIconClasses = cn(
-  'inline-flex items-center justify-center rounded-md p-2 shadow-xl',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-  'transform hover:-translate-y-1 hover:rotate-3'
-);
-
 const iconButtonClasses = cn(
   'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
@@ -33,14 +26,6 @@ const iconButtonClasses = cn(
   'shadow-md',
   'z-10'
 );
-
-function ArrowIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="size-2 md:size-3" viewBox="0 0 15 15" aria-hidden="true">
-      <path fill="currentColor" d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414" />
-    </svg>
-  );
-}
 
 function WebIcon({ size = 32 }) {
   return (
@@ -97,8 +82,7 @@ export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Projects
           </h2>
@@ -106,8 +90,6 @@ export default function Projects() {
           <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
             Selected work and personal builds
           </p>
-          </div>
-          <div className={headerIconClasses} aria-hidden="true"><FolderFiles size={20} /></div>
         </div>
       </header>
 
@@ -227,7 +209,7 @@ export default function Projects() {
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start gap-3">
                       <span className="text-base-content flex-shrink-0 self-center">
-                        <ArrowIcon size={14} />
+                        <FolderFiles size={14} />
                       </span>
                       <div className="flex-1 space-y-3">
                         <div className="flex gap-4 items-start">

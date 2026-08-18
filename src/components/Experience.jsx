@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
-import { AnimateIcon } from '@/components/animate-ui/icons/icon';
 import { DetailsDialog } from '@/components/resume_sections/experience/ExperienceDialog';
 import { EXPERIENCES } from '@/components/resume_sections/experience/experience_data';
 import {
@@ -30,22 +29,7 @@ const outlineButtonWithLabelClasses = cn(
   "text-sm font-medium cursor-pointer transform hover:-translate-y-1 hover:rotate-3"
 );
 
-const headerIconClasses = cn(
-  'inline-flex items-center justify-center rounded-md p-2 shadow-xl',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-  'transform hover:-translate-y-1 hover:rotate-3'
-);
-
 const KEY_CONTRIBUTIONS_TITLE = 'Key Contributions';
-
-function DetailsIcon({ size = 16 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" aria-hidden="true">
-      <path fill="currentColor" fillRule="evenodd" d="M2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM4 6h6V5H4zm7 0h1V5h-1zm-1 2.5H4v-1h6zm1 0h1v-1h-1zM10 11H4v-1h6zm1 0h1v-1h-1z" clipRule="evenodd" />
-    </svg>
-  );
-}
 
 function ExperienceItem({ experience, onOpenDetails }) {
   return (
@@ -94,7 +78,7 @@ function ExperienceItem({ experience, onOpenDetails }) {
               onClick={() => onOpenDetails(experience)}
               aria-label="Details"
             >
-              <DetailsIcon size={16} />
+              <Briefcase size={16} />
               <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                 Details
               </span>
@@ -123,16 +107,13 @@ export default function Experience() {
   return (
     <section id="experience" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
             Experience
           </h2>
           <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
             Work history and professional engagements
           </p>
-          </div>
-          <div className={headerIconClasses} aria-hidden="true"><Briefcase size={20} /></div>
         </div>
       </header>
 
