@@ -13,14 +13,14 @@ import { CopyButton, buttonVariants } from '@/components/animate-ui/components/b
 import { Button as ButtonPrimitive } from '@/components/animate-ui/primitives/buttons/button';
 import { cn } from '@/lib/utils';
 
-const outlineButtonClasses = cn(
-  "inline-flex items-center justify-center rounded-md size-9 shrink-0",
-  "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground",
-  "dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-  "transition-[box-shadow,_color,_background-color,_border-color]",
-  "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-  "disabled:pointer-events-none disabled:opacity-50",
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0"
+const buttonClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+  'disabled:pointer-events-none disabled:opacity-50',
+  '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+  'text-sm font-medium cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
 );
 
 export function ContactDialog({ contact, open, onClose }) {
@@ -107,7 +107,7 @@ export function ContactDialog({ contact, open, onClose }) {
           ) : (
             <button
               type="button"
-              className={outlineButtonClasses}
+              className={buttonClasses}
               onClick={handleOpenLink}
               aria-label={`Open ${contact.label}`}
             >
