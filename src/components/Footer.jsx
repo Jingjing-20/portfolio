@@ -24,7 +24,7 @@ const outlineButtonWithLabelClasses = cn(
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer'
+  'text-sm font-medium cursor-pointer  transform hover:-translate-y-1 hover:rotate-3'
 );
 
 export default function Footer() {
