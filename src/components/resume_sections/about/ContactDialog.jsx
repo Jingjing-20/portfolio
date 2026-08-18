@@ -64,7 +64,7 @@ export function ContactDialog({ contact, open, onClose }) {
 
         {/* Contact Preview Image Container */}
         {contact.previewImage && (
-          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-600 dark:border-gray-400 bg-theme p-2 w-full">
+          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-theme p-2 w-full">
             <img
               src={contact.previewImage}
               alt={contact.label}
@@ -79,7 +79,7 @@ export function ContactDialog({ contact, open, onClose }) {
             readOnly
             value={value}
             aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : isResume ? 'Resume file' : 'Profile URL'}
-            className="flex-1 rounded-md border border-gray-600 dark:border-gray-400 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
+            className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
           />
           {isEmail || isPhone ? (
             <CopyButton content={contact.email ?? contact.phone} variant="outline" aria-label="Copy to clipboard" />

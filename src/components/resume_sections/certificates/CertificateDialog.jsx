@@ -37,7 +37,7 @@ export function CertificateDialog({ cert, open, onClose }) {
 
         {/* Certificate Image Container */}
         {cert.image && (
-          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-600 dark:border-gray-400 bg-theme p-2 w-full">
+          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-theme p-2 w-full">
             <img
               src={cert.image}
               alt={cert.title}
@@ -52,7 +52,7 @@ export function CertificateDialog({ cert, open, onClose }) {
             readOnly
             value={cert.link || 'no link'}
             aria-label="Certificate link"
-            className="flex-1 rounded-md border border-gray-600 dark:border-gray-400 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
+            className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
           />
           <button
             type="button"

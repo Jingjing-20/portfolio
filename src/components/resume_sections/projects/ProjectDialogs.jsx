@@ -103,7 +103,7 @@ export function ProjectDialog({ project, open, onClose }) {
           )}
 
           {/* Details Section */}
-          <div className="max-h-[300px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
+          <div className="max-h-[300px] overflow-y-auto border border-gray-300 dark:border-white/20 rounded-md">
             <div className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
               <div>
                 <p className="font-semibold mb-1.5">Description:</p>
