@@ -4,6 +4,7 @@ import shiroPreview from '@/components/resume_sections/projects/mockups/shiro.pn
 import waxandwanePreview from '@/components/resume_sections/projects/mockups/waxandwane.png';
 import kindlingPreview from '@/components/resume_sections/projects/mockups/kindling-coffee.png';
 import waypointPreview from '@/components/resume_sections/projects/mockups/waypoint-journal.png';
+import saktoPosPreview from '@/components/resume_sections/projects/mockups/sakto-pos.png';
 
 export const mockupsData = [
   {
@@ -77,5 +78,17 @@ export const mockupsData = [
       'Inspired by field notebooks, USGS topo maps, and backcountry trip reports. The palette uses paper beige, ink charcoal, teal trail markers, ochre highlights, and smoke gray. Fraunces provides literary display typography, Public Sans handles body text, JetBrains Mono marks trail data, and Shadows Into Light adds handwritten margin notes. Contour-line backgrounds, elevation SVG progress indicators, sticky-note margin comments, dotted trail dividers, and live elevation tracking create an authentic field-journal character.',
     livePreview: 'https://waypoint-journal.vercel.app/',
     previewImage: waypointPreview,
+  },
+  {
+    id: 'sakto-pos',
+    name: 'Sakto POS',
+    type: 'Point of Sale system for retail and restaurant businesses',
+    category: 'Business & Retail',
+    format:
+      'A responsive point-of-sale web application featuring product catalog, cart management, order processing, payment handling, sales reporting, and inventory tracking. Includes real-time order updates, receipt printing, and multi-payment method support.',
+    styling:
+      'Clean, functional interface optimized for speed and efficiency in high-volume retail environments. Modern design with clear typography, intuitive touch-friendly buttons, and organized layout for quick transaction processing. Focus on usability and accessibility for all-day operation.',
+    livePreview: 'https://sakto-pos.vercel.app/',
+    previewImage: saktoPosPreview,
   },
 ];

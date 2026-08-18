@@ -1,7 +1,7 @@
-import ResumeImg from '@/components/resume_sections/about/resume.png';
-import LinkedInImg from '@/components/resume_sections/about/linkedin.png';
-import GitHubImg from '@/components/resume_sections/about/github.png';
-import GmailImg from '@/components/resume_sections/about/gmail.png';
+import ResumeImg from '@/components/resume_sections/about/resume.webp';
+import LinkedInImg from '@/components/resume_sections/about/linkedin.webp';
+import GitHubImg from '@/components/resume_sections/about/github.webp';
+import GmailImg from '@/components/resume_sections/about/gmail.webp';
 import ResumePDF from '@/components/resume_sections/about/resumes/GCNU - RESUME v11.pdf';
 
 export const CONTACT_LINKS = [

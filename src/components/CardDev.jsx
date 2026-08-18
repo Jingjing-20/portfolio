@@ -1,4 +1,4 @@
-import profileImage from '@/components/resume_sections/about/gian.png';
+import profileImage from '@/components/resume_sections/about/gian.webp';
 import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
 import { cn } from '@/lib/utils';
 
