@@ -1,6 +1,8 @@
 import { chmsuagrmImages } from '@/components/resume_sections/projects/chmsuagrm_ss';
 import { pgsoulpmmsImages } from '@/components/resume_sections/projects/pgsoulpmms_ss';
 import { mockupsData } from '@/components/resume_sections/projects/mockups_data';
+import chmsuagrmCover from '@/components/resume_sections/projects/chmsuagrm_cover.png';
+import pgsoulpmmsCover from '@/components/resume_sections/projects/pgsoulpmms_cover.png';
 
 export const PROJECT_CATEGORIES = [
   {
@@ -24,6 +26,7 @@ export const PROJECT_CATEGORIES = [
           'Generated PDF and Excel reports for school records.',
         ],
         images: chmsuagrmImages,
+        coverImage: chmsuagrmCover,
       },
       {
         id: 'pgsoulpmms',
@@ -43,6 +46,7 @@ export const PROJECT_CATEGORIES = [
           'Generated print-ready reports for official records.',
         ],
         images: pgsoulpmmsImages,
+        coverImage: pgsoulpmmsCover,
       },
     ],
   },

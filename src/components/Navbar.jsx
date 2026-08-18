@@ -151,7 +151,7 @@ export default function Navbar() {
       {/* Desktop Navbar - Full width with double border under */}
       <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full">
         <div className={cn(
-          'flex w-full items-center justify-between px-6 py-3',
+          'flex max-w-full items-center justify-between px-6 py-3',
           'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
         )}>
           {/* Portfolio identity */}

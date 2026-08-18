@@ -10,11 +10,11 @@ import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projec
 const outlineButtonWithLabelClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer'
+  'text-sm font-medium cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
 );
 
 const headerIconClasses = cn(
@@ -238,23 +238,41 @@ export default function Projects() {
                   </button>
                 </div>
               ) : (
-                // Deployed project layout with vertically centered arrow
+                // Deployed project layout with cover image beside text
                 <ul className="space-y-6 md:space-y-7">
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start gap-3">
                       <span className="text-base-content flex-shrink-0 mt-1">
                         <ArrowIcon size={14} />
                       </span>
-                      <div className="flex-1">
-                        <div className="space-y-1">
-                          <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
-                            {project.title}
-                          </h4>
-                          {project.organization && (
-                            <p className="text-[10px] md:text-xs text-muted-foreground">
-                              {project.organization}
-                            </p>
+                      <div className="flex-1 space-y-3">
+                        <div className="flex gap-4 items-start">
+                          {/* Cover Image - Double Border like Mockups */}
+                          {project.coverImage && (
+                            <div className="flex-shrink-0 w-24 md:w-32 lg:w-40">
+                              <div className="relative p-1.5 md:p-2 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20">
+                                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                                  <img
+                                    src={project.coverImage}
+                                    alt={`${project.title} cover`}
+                                    className="h-full w-full object-cover object-top"
+                                  />
+                                </div>
+                              </div>
+                            </div>
                           )}
+                          
+                          {/* Text Content */}
+                          <div className="flex-1 space-y-1">
+                            <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
+                              {project.title}
+                            </h4>
+                            {project.organization && (
+                              <p className="text-[10px] md:text-xs text-muted-foreground">
+                                {project.organization}
+                              </p>
+                            )}
+                          </div>
                         </div>
 
                         <div className="mt-3">
