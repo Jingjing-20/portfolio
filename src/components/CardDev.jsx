@@ -6,7 +6,7 @@ import { CONTACT_LINKS } from '@/components/resume_sections/carddev/contact_data
 import { cn } from '@/lib/utils';
 
 const cardClasses = cn(
-  'group relative mx-auto w-36 h-36 rounded-lg p-1.5 shadow-xl',
+  'group relative mx-auto w-35 h-35 rounded-lg p-1.5 shadow-xl',
   'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
   'transition-all duration-300',
   'md:w-46 md:h-46'
@@ -25,38 +25,57 @@ export default function CardDev() {
   const [activeContact, setActiveContact] = useState(null);
 
   return (
-    <section aria-label="Profile card" className="space-y-4">
-      {/* Mobile: Name beside image */}
-      <div className="flex flex-col md:hidden">
-        <div className="flex items-center gap-4">
-          <Tilt maxTilt={12} className="flex-shrink-0">
-            <TiltContent className={cn(cardClasses, 'w-24 h-24')}>
-              <div className="relative h-full w-full overflow-hidden rounded-sm border border-black/10 bg-base-300 shadow-inner dark:border-white/10">
-                <img
-                  src={profileImage}
-                  alt="Gian Carlo N. Ulep"
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
-            </TiltContent>
-          </Tilt>
-          <h1 className="font-bold tracking-tight text-base-content text-2xl flex-1">
+    <section aria-label="Profile card">
+      {/* Mobile Layout: Image left, Name + Contacts right */}
+      <div className="flex gap-4 md:hidden items-center">
+        {/* Profile Image */}
+        <Tilt maxTilt={12} className="flex-shrink-0">
+          <TiltContent className={cn(cardClasses, 'w-36 h-36')}>
+            <div className="relative h-full w-full overflow-hidden rounded-sm border border-black/10 bg-base-300 shadow-inner dark:border-white/10">
+              <img
+                src={profileImage}
+                alt="Gian Carlo N. Ulep"
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+          </TiltContent>
+        </Tilt>
+
+        {/* Name + Contact Buttons */}
+        <div className="flex-1 flex flex-col gap-3 justify-center">
+          <h1 className="font-bold tracking-tight text-base-content text-3xl">
             Gian Carlo N. Ulep
           </h1>
+          <nav aria-label="Contact links" className="flex flex-wrap items-start gap-2">
+            {CONTACT_LINKS.map((contact) => (
+              <button
+                key={contact.id}
+                type="button"
+                className={interactiveButtonClasses}
+                onClick={() => setActiveContact(contact)}
+                aria-label={contact.label}
+              >
+                {contact.icon}
+                <span className="text-[8px] font-medium text-base-content">
+                  {contact.label}
+                </span>
+              </button>
+            ))}
+          </nav>
         </div>
       </div>
 
-      {/* Desktop: Name above */}
-      <div className="hidden md:block text-center md:text-left">
-        <h1 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
-          Gian Carlo N. Ulep
-        </h1>
-      </div>
+      {/* Desktop Layout: Name above, Grid with Image + Contacts */}
+      <div className="hidden md:block space-y-4">
+        <div className="text-left">
+          <h1 className="font-bold tracking-tight text-base-content text-5xl">
+            Gian Carlo N. Ulep
+          </h1>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-        {/* Left: Profile Image (desktop only) */}
-        <div className="hidden md:block">
-          <Tilt maxTilt={12} className="flex-shrink-0 md:justify-self-start">
+        <div className="grid grid-cols-2 gap-4 items-start">
+          {/* Left: Profile Image */}
+          <Tilt maxTilt={12} className="justify-self-start">
             <TiltContent className={cardClasses}>
               <div className="relative h-full w-full overflow-hidden rounded-sm border border-black/10 bg-base-300 shadow-inner dark:border-white/10">
                 <img
@@ -67,28 +86,25 @@ export default function CardDev() {
               </div>
             </TiltContent>
           </Tilt>
-        </div>
 
-        {/* Right: Contact Buttons - Stacked vertically on desktop */}
-        <nav 
-          aria-label="Contact links" 
-          className="flex flex-col items-start gap-2 md:justify-start"
-        >
-          {CONTACT_LINKS.map((contact) => (
-            <button
-              key={contact.id}
-              type="button"
-              className={interactiveButtonClasses}
-              onClick={() => setActiveContact(contact)}
-              aria-label={contact.label}
-            >
-              {contact.icon}
-              <span className="text-[8px] font-medium text-base-content md:text-[10px]">
-                {contact.label}
-              </span>
-            </button>
-          ))}
-        </nav>
+          {/* Right: Contact Buttons with Labels */}
+          <nav aria-label="Contact links" className="flex flex-wrap items-start content-start gap-2">
+            {CONTACT_LINKS.map((contact) => (
+              <button
+                key={contact.id}
+                type="button"
+                className={interactiveButtonClasses}
+                onClick={() => setActiveContact(contact)}
+                aria-label={contact.label}
+              >
+                {contact.icon}
+                <span className="text-[10px] font-medium text-base-content">
+                  {contact.label}
+                </span>
+              </button>
+            ))}
+          </nav>
+        </div>
       </div>
 
       <ContactDialog
