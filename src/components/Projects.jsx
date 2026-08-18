@@ -3,7 +3,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { cn } from '@/lib/utils';
-import { ImagesDialog, DetailsDialog } from '@/components/resume_sections/projects/ProjectDialogs';
+import { ProjectDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
@@ -53,22 +53,6 @@ function WebIcon({ size = 32 }) {
   );
 }
 
-function ImageIcon({ size = 16 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm1-4h12l-3.75-5l-3 4L9 13z" />
-    </svg>
-  );
-}
-
-function DetailsIcon({ size = 16 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" aria-hidden="true">
-      <path fill="currentColor" fillRule="evenodd" d="M2.5 2a.5.5 0 0 0-.5.5v11a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-11a.5.5 0 0 0-.5-.5zM4 6h6V5H4zm7 0h1V5h-1zm-1 2.5H4v-1h6zm1 0h1v-1h-1zM10 11H4v-1h6zm1 0h1v-1h-1z" clipRule="evenodd" />
-    </svg>
-  );
-}
-
 function OpenIcon({ size = 18 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
@@ -79,8 +63,7 @@ function OpenIcon({ size = 18 }) {
 }
 
 export default function Projects() {
-  const [imagesProject, setImagesProject] = useState(null);
-  const [detailsProject, setDetailsProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [mockupProject, setMockupProject] = useState(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     slidesToScroll: 1,
@@ -143,7 +126,7 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Carousel Mockup Layout
-                <div className="border border-gray-300 dark:border-white/20 shadow-xl p-3 rounded-lg relative">
+                <div className="relative">
                   <div className="py-3 overflow-hidden" ref={emblaRef}>
                     <div className="flex touch-pan-y touch-pinch-zoom gap-3">
                       {items.map((mockup) => (
@@ -238,24 +221,40 @@ export default function Projects() {
                   </button>
                 </div>
               ) : (
-                // Deployed project layout with cover image beside text
+                // Deployed project layout with cover image and icon button
                 <ul className="space-y-6 md:space-y-7">
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start gap-3">
-                      <span className="text-base-content flex-shrink-0 mt-1">
+                      <span className="text-base-content flex-shrink-0 self-center">
                         <ArrowIcon size={14} />
                       </span>
                       <div className="flex-1 space-y-3">
                         <div className="flex gap-4 items-start">
-                          {/* Cover Image - Double Border like Mockups */}
+                          {/* Cover Image - Double Border with Icon Button and Hover Rotate */}
                           {project.coverImage && (
-                            <div className="flex-shrink-0 w-24 md:w-32 lg:w-40">
-                              <div className="relative p-1.5 md:p-2 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20">
+                            <div className="flex-shrink-0 w-24 md:w-32 lg:w-40 relative group">
+                              <div 
+                                className="relative p-1.5 md:p-2 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:rotate-3"
+                                onClick={() => setSelectedProject(project)}
+                              >
+                                {/* Open Icon Button - Top Right */}
+                                <button
+                                  type="button"
+                                  className={iconButtonClasses}
+                                  onClick={(event) => {
+                                    event.stopPropagation();
+                                    setSelectedProject(project);
+                                  }}
+                                  aria-label={`Open ${project.title} details`}
+                                >
+                                  <OpenIcon size={15} />
+                                </button>
+
                                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                                   <img
                                     src={project.coverImage}
                                     alt={`${project.title} cover`}
-                                    className="h-full w-full object-cover object-top"
+                                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                   />
                                 </div>
                               </div>
@@ -274,35 +273,6 @@ export default function Projects() {
                             )}
                           </div>
                         </div>
-
-                        <div className="mt-3">
-                          <div className="flex flex-wrap items-center gap-2">
-                            {project.images && (
-                              <button
-                                type="button"
-                                className={outlineButtonWithLabelClasses}
-                                onClick={() => setImagesProject(project)}
-                                aria-label="Screenshots"
-                              >
-                                <ImageIcon size={16} />
-                                <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                                  Screenshots
-                                </span>
-                              </button>
-                            )}
-                            <button
-                              type="button"
-                              className={outlineButtonWithLabelClasses}
-                              onClick={() => setDetailsProject(project)}
-                              aria-label="Details"
-                            >
-                              <DetailsIcon size={16} />
-                              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                                Details
-                              </span>
-                            </button>
-                          </div>
-                        </div>
                       </div>
                     </li>
                   ))}
@@ -313,15 +283,10 @@ export default function Projects() {
         ))}
       </div>
 
-      <ImagesDialog
-        project={imagesProject}
-        open={imagesProject !== null}
-        onClose={() => setImagesProject(null)}
-      />
-      <DetailsDialog
-        project={detailsProject}
-        open={detailsProject !== null}
-        onClose={() => setDetailsProject(null)}
+      <ProjectDialog
+        project={selectedProject}
+        open={selectedProject !== null}
+        onClose={() => setSelectedProject(null)}
       />
       <MockupDialog
         mockup={mockupProject}

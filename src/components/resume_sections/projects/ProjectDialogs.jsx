@@ -81,55 +81,58 @@ function ImageCarousel({ images, startIndex = 0 }) {
   );
 }
 
-export function ImagesDialog({ project, open, onClose }) {
+// Merged Dialog for both Screenshots and Details
+export function ProjectDialog({ project, open, onClose }) {
   if (!project) return null;
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-md">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">Screenshots</DialogTitle>
+          <DialogTitle className="text-sm md:text-base leading-relaxed">Project Details</DialogTitle>
           <hr />
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{project.title}</DialogDescription>
         </div>
-        <div className="flex-1 min-h-0">
-          <ImageCarousel images={project.images ?? []} />
-        </div>
-      </DialogPanel>
-    </Dialog>
-  );
-}
 
-export function DetailsDialog({ project, open, onClose }) {
-  if (!project) return null;
-  return (
-    <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
-        <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">Details</DialogTitle>
-          <hr></hr>
-          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{project.title}</DialogDescription>
-        </div>
-
-        <div className="max-h-[350px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
-          <div className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
+        <div className="space-y-4">
+          {/* Screenshots Section */}
+          {project.images && project.images.length > 0 && (
             <div>
-              <p className="font-semibold mb-1.5">Description:</p>
-              <p>{project.description}</p>
+              <p className="text-xs md:text-sm font-semibold mb-2 text-base-content">Screenshots:</p>
+              <ImageCarousel images={project.images} />
             </div>
-            <div>
-              <p className="font-semibold mb-1.5">Key Features:</p>
-              <ul className="space-y-1.5 md:space-y-2">
-                {(project.details ?? []).map((item, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="inline-block">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+          )}
+
+          {/* Details Section */}
+          <div className="max-h-[300px] overflow-y-auto border border-gray-600 dark:border-gray-400 rounded-md">
+            <div className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
+              <div>
+                <p className="font-semibold mb-1.5">Description:</p>
+                <p>{project.description}</p>
+              </div>
+              <div>
+                <p className="font-semibold mb-1.5">Key Features:</p>
+                <ul className="space-y-1.5 md:space-y-2">
+                  {(project.details ?? []).map((item, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="inline-block">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </DialogPanel>
     </Dialog>
   );
+}
+
+// Keep old exports for backward compatibility if needed elsewhere
+export function ImagesDialog({ project, open, onClose }) {
+  return <ProjectDialog project={project} open={open} onClose={onClose} />;
+}
+
+export function DetailsDialog({ project, open, onClose }) {
+  return <ProjectDialog project={project} open={open} onClose={onClose} />;
 }
