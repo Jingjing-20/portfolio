@@ -133,11 +133,11 @@ export default function Projects() {
                         <div
                           key={mockup.id}
                           className={cn(
-                            'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
+                            'group relative flex flex-col p-1 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
                             'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
                             'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
                             'transform hover:-translate-y-1 hover:rotate-3',
-                            'flex-[0_0_33.333%] min-w-0 sm:flex-[0_0_25%]'
+                            'w-30 md:w-35 flex-shrink-0'
                           )}
                           role="button"
                           tabIndex={0}
@@ -232,9 +232,9 @@ export default function Projects() {
                         <div className="flex gap-4 items-start">
                           {/* Cover Image - Double Border with Icon Button and Hover Rotate */}
                           {project.coverImage && (
-                            <div className="flex-shrink-0 w-24 md:w-32 lg:w-40 relative group">
+                            <div className="flex-shrink-0 w-30 md:w-35 relative group">
                               <div 
-                                className="relative p-1.5 md:p-2 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:rotate-3"
+                                className="relative p-1 md:p-2 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:rotate-3"
                                 onClick={() => setSelectedProject(project)}
                               >
                                 {/* Open Icon Button - Top Right */}
@@ -263,11 +263,11 @@ export default function Projects() {
                           
                           {/* Text Content */}
                           <div className="flex-1 space-y-1">
-                            <h4 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
+                            <h4 className="text-[10px] md:text-xs leading-relaxed font-base font-semibold text-base-content">
                               {project.title}
                             </h4>
                             {project.organization && (
-                              <p className="text-[10px] md:text-xs text-muted-foreground">
+                              <p className="text-[8px] md:text-[10px] text-muted-foreground">
                                 {project.organization}
                               </p>
                             )}
