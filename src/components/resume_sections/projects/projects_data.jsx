@@ -1,8 +1,8 @@
-import { chmsuagrmImages } from '@/components/resume_sections/projects/chmsuagrm_ss';
-import { pgsoulpmmsImages } from '@/components/resume_sections/projects/pgsoulpmms_ss';
-import { mockupsData } from '@/components/resume_sections/projects/mockups_data';
-import chmsuagrmCover from '@/components/resume_sections/projects/chmsuagrm_cover.png';
-import pgsoulpmmsCover from '@/components/resume_sections/projects/pgsoulpmms_cover.png';
+import { chmsuagrmImages } from '@/components/resume_sections/projects/chmsuagrm/chmsuagrm_ss';
+import { pgsoulpmmsImages } from '@/components/resume_sections/projects/pgsoulpmms/pgsoulpmms_ss';
+import { mockupsData } from '@/components/resume_sections/projects/mockups/mockups_data';
+import chmsuagrmCover from '@/components/resume_sections/projects/chmsuagrm/chmsuagrm_cover.webp';
+import pgsoulpmmsCover from '@/components/resume_sections/projects/pgsoulpmms/pgsoulpmms_cover.webp';
 
 export const PROJECT_CATEGORIES = [
   {
