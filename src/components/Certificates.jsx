@@ -47,8 +47,12 @@ const formatDate = (dateString) => {
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);
 
-  // Flatten all certificates from all categories into a single array
-  const allCertificates = CERTIFICATE_CATEGORIES.flatMap(({ items }) => items);
+  // Flatten all certificates from all categories and sort by date (most recent first)
+  const allCertificates = CERTIFICATE_CATEGORIES.flatMap(({ items }) => items).sort((a, b) => {
+    const dateA = a.issuedDate ? new Date(a.issuedDate) : new Date(0);
+    const dateB = b.issuedDate ? new Date(b.issuedDate) : new Date(0);
+    return dateB - dateA; // Descending order (newest first)
+  });
 
   return (
     <section id="certificates" className="scroll-mt-24">
