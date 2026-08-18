@@ -133,7 +133,7 @@ export default function Projects() {
                         <div
                           key={mockup.id}
                           className={cn(
-                            'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl hover:shadow-2xl',
+                            'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl hover:shadow-2xl',
                             'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
                             'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
                             'transform hover:-translate-y-1 hover:rotate-3',

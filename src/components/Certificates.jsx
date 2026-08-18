@@ -6,7 +6,7 @@ import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificate
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
+  'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl hover:shadow-2xl',
   'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
   'cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
@@ -70,7 +70,7 @@ export default function Certificates() {
         </div>
       </header>
 
-      <div className="grid grid-cols-3 gap-3 md:gap-4">
+      <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
         {allCertificates.map((cert) => {
           const IconComponent = cert.icon;
           const formattedDate = formatDate(cert.issuedDate);
@@ -136,7 +136,7 @@ export default function Certificates() {
               {/* Polaroid Bottom Caption */}
               <div className="flex flex-col justify-between flex-1 pt-2">
                 <div>
-                  <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content truncate">
+                  <h3 className="text-[8px] md:text-[10px] font-semibold tracking-tight leading-snug text-base-content truncate">
                     {cert.title}
                   </h3>
                 </div>
