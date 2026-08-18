@@ -94,6 +94,13 @@ export default function Certificates() {
                       }
                     }}
                   >
+                    {/* Date Issued - Top Left */}
+                    <div className="absolute top-1 left-1 p-1 rounded-sm bg-white/80 dark:bg-black/80 backdrop-blur-sm border border-gray-300 dark:border-white/30 shadow-md z-10">
+                      <p className="text-[6px] md:text-[8px] font-medium text-base-content">
+                        {formattedDate || 'No date'}
+                      </p>
+                    </div>
+
                     {/* Open Icon Button - Top Right */}
                     <button
                       type="button"
@@ -136,9 +143,6 @@ export default function Certificates() {
                         <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content truncate">
                           {cert.title}
                         </h3>
-                        <p className="text-[8px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
-                          {formattedDate || 'No date'}
-                        </p>
                       </div>
                     </div>
                   </div>
