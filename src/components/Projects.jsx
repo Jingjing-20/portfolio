@@ -168,6 +168,7 @@ export default function Projects() {
                               <img
                                 src={mockup.previewImage}
                                 alt={mockup.name}
+                                loading="lazy"
                                 className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                               />
                             ) : (
@@ -254,6 +255,7 @@ export default function Projects() {
                                   <img
                                     src={project.coverImage}
                                     alt={`${project.title} cover`}
+                                    loading="lazy"
                                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                   />
                                 </div>

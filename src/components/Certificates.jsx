@@ -116,6 +116,7 @@ export default function Certificates() {
                     <img
                       src={cert.image}
                       alt={cert.title}
+                      loading="lazy"
                       className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
                     {/* Organization Logo Overlay - Centered */}

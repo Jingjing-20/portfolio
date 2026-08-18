@@ -39,3 +39,13 @@ Format: A responsive, seven-view retail and hospitality website covering the rec
 Styling: Dark, tactile, and music-focused. A near-black plum background is paired with muted taupe text, warm bone highlights, amber accents, and dusty teal details to create a vintage record-store atmosphere. Bricolage Grotesque provides expressive display typography, while Instrument Sans handles interface and body text and IBM Plex Mono is used for catalog-style labels. A spinning vinyl record acts as the central visual motif throughout the interface, appearing in animated record graphics, hover interactions, and a subtle needle-drop transition between views.
 
 Live Preview: Wax & Wane
+
+Meridian POS (meridian-pos.html)
+
+Web Mockup Type: High-performance retail point of sale (POS) terminal & cashier system.
+
+Format: A full-screen, multi-view retail cashier workspace featuring live register checkout, barcode scanning, parked sales (held tickets), real-time inventory stock lookup, modal payment processing (Cash, Card, Apple Pay), and realistic thermal receipt printing.
+
+Styling: Modern dark-mode terminal aesthetic designed for fast-paced retail environments. Obsidian dark background (#090d16) paired with deep indigo accents (#6366f1), emerald green totals (#10b981), and amber alerts (#f59e0b). Plus Jakarta Sans provides clean UI readability while JetBrains Mono ensures precise barcode, SKU, and currency alignment. Built-in scanner pulse animations, numeric touch keypads, thermal paper receipt typography, and toast notifications provide instant feedback.
+
+Live Preview: Meridian POS
