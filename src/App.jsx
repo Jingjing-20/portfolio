@@ -60,6 +60,7 @@ function App() {
 
                 {/* Right column - 60% (8 out of 12 columns) */}
                 <div className="md:col-span-7 space-y-6 pb-6">
+                  <hr className='block md:hidden' />
                   <ScrollReveal animation="fadeInUp" duration="0.5s"><About /></ScrollReveal>
                   <hr />
                   {/* 1. Stack */}

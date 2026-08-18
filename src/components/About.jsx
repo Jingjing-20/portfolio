@@ -22,15 +22,15 @@ export default function About() {
         </div>
       </header>
 
-      <div className="space-y-3">
+      <div className="space-y-1 md:space-y-3">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[9px] text-base-content/45 md:text-[10px]">
+          <span>Born in 2004</span><span className="text-base-content/20">•</span><span>Male</span><span className="text-base-content/20">•</span><span>Valladolid, Negros Occidental, Philippines</span>
+        </div>
         <p className="text-[10px] leading-relaxed md:text-xs">
           <span className="text-base-content">I am a </span>
           <span className="font-bold"><ShimmeringText text="Software Developer" className="font-bold" /></span>
           <span className="text-base-content"> focused on building accessible and responsive web applications. I work with modern web technologies to create clean, maintainable solutions that address practical needs and improve user experience.</span>
         </p>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[9px] text-base-content/45 md:text-[10px]">
-          <span>Born in 2004</span><span className="text-base-content/20">•</span><span>Male</span><span className="text-base-content/20">•</span><span>Valladolid, Negros Occidental, Philippines</span>
-        </div>
       </div>
     </section>
   );

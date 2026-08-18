@@ -6,7 +6,7 @@ import { CONTACT_LINKS } from '@/components/resume_sections/carddev/contact_data
 import { cn } from '@/lib/utils';
 
 const cardClasses = cn(
-  'group relative mx-auto w-35 h-35 rounded-lg p-1.5 shadow-xl',
+  'group relative mx-auto w-30 h-30 rounded-lg p-1.5 shadow-xl',
   'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
   'transition-all duration-300',
   'md:w-46 md:h-46'
@@ -30,7 +30,7 @@ export default function CardDev() {
       <div className="flex gap-4 md:hidden items-center">
         {/* Profile Image */}
         <Tilt maxTilt={12} className="flex-shrink-0">
-          <TiltContent className={cn(cardClasses, 'w-36 h-36')}>
+          <TiltContent className={cn(cardClasses, 'w-20 h-20')}>
             <div className="relative h-full w-full overflow-hidden rounded-sm border border-black/10 bg-base-300 shadow-inner dark:border-white/10">
               <img
                 src={profileImage}
@@ -56,7 +56,7 @@ export default function CardDev() {
                 aria-label={contact.label}
               >
                 {contact.icon}
-                <span className="text-[8px] font-medium text-base-content">
+                <span className="hidden md:block text-[8px] font-medium text-base-content">
                   {contact.label}
                 </span>
               </button>
