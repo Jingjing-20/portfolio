@@ -6,8 +6,8 @@ import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificate
 import { cn } from '@/lib/utils';
 
 const certCardClasses = cn(
-  'group relative flex flex-col h-25 md:h-30 p-2 md:p-3 rounded-xl shadow-xl',
-  'bg-textured border-5 border-double border-gray-300 dark:border-white/20',
+  'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl hover:shadow-2xl',
+  'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
   'cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
 );
@@ -20,7 +20,7 @@ const headerIconClasses = cn(
 );
 
 const iconButtonClasses = cn(
-  'absolute -top-1.5 -right-1.5 p-1.5 rounded-full',
+  'absolute -top-1.5 -right-1.5 p-1 md:p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
@@ -31,7 +31,7 @@ const iconButtonClasses = cn(
 
 function OpenIcon({ size = 18 }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4">
       <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
   );
@@ -104,28 +104,42 @@ export default function Certificates() {
                       }}
                       aria-label={`Open ${cert.title} certificate`}
                     >
-                      <OpenIcon size={15} />
+                      <OpenIcon />
                     </button>
 
-                    {/* Top: Date - Left aligned with fixed height */}
-                    <div className="flex items-center justify-start mb-1 md:mb-1.5 h-2 md:h-4">
-                      <p className="text-[6px] md:text-[8px] text-muted-foreground">
-                        {`<${formattedDate || 'No date'}/>`}
-                      </p>
+                    {/* Polaroid Photo Frame - 16:9 aspect ratio with certificate image */}
+                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                      {cert.image ? (
+                        <>
+                          <img
+                            src={cert.image}
+                            alt={cert.title}
+                            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                          />
+                          {/* Organization Logo Overlay - Centered */}
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/40 dark:bg-black/60">
+                            <div className="text-white drop-shadow-lg">
+                              <IconComponent />
+                            </div>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-base-content/40">
+                          <IconComponent />
+                        </div>
+                      )}
                     </div>
 
-                    {/* Middle: Organization Logo Only with fixed height */}
-                    <div className="flex items-center justify-center mb-3 h-6 md:h-8">
-                      <IconComponent />
-                    </div>
-
-                    <hr className="mb-1 md:mb-1.5" />
-
-                    {/* Bottom: Certificate Title with fixed height */}
-                    <div className="flex items-center justify-center h-4 md:h-6">
-                      <h3 className="text-[8px] md:text-[10px] tracking-tight leading-snug text-base-content text-center line-clamp-2">
-                        {cert.title}
-                      </h3>
+                    {/* Polaroid Bottom Caption */}
+                    <div className="flex flex-col justify-between flex-1 pt-2">
+                      <div>
+                        <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content truncate">
+                          {cert.title}
+                        </h3>
+                        <p className="text-[8px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
+                          {formattedDate || 'No date'}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );

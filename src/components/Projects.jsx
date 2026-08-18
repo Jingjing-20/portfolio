@@ -25,7 +25,7 @@ const headerIconClasses = cn(
 );
 
 const iconButtonClasses = cn(
-  'absolute -top-1.5 -right-1.5 p-1.5 rounded-full',
+  'absolute -top-1.5 -right-1.5 p-1 md:p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
@@ -55,7 +55,7 @@ function WebIcon({ size = 32 }) {
 
 function OpenIcon({ size = 18 }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4">
       <title>Open</title>
       <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
@@ -159,7 +159,7 @@ export default function Projects() {
                             }}
                             aria-label={`Open ${mockup.name} mockup`}
                           >
-                            <OpenIcon size={15} />
+                            <OpenIcon />
                           </button>
 
                           {/* Polaroid Photo Frame - 16:9 aspect ratio */}
@@ -247,7 +247,7 @@ export default function Projects() {
                                   }}
                                   aria-label={`Open ${project.title} details`}
                                 >
-                                  <OpenIcon size={15} />
+                                  <OpenIcon />
                                 </button>
 
                                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
