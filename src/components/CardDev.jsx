@@ -27,7 +27,6 @@ export default function CardDev() {
     >
      {/* Profile Card */}
       <Tilt
-        className="w-[280px] md:w-[340px]"
         rotationFactor={8}
         springOptions={{
           stiffness: 350,
@@ -40,7 +39,7 @@ export default function CardDev() {
             'rounded-xl',
             'border-double border-5 border-gray-300 dark:border-white/20',
             'bg-textured shadow-xl',
-            'px-5 py-6 md:px-6 md:py-7'
+            'p-6 md:p-8'
           )}
         >
           {/* Profile Image */}
@@ -90,17 +89,6 @@ export default function CardDev() {
 
               <span className="text-base-content/80 text-right">
                 22
-              </span>
-            </div>
-
-            {/* Sex */}
-            <div className="flex items-center justify-between gap-3">
-              <span className="font-semibold text-left">
-                Sex :
-              </span>
-
-              <span className="text-base-content/80 text-right">
-                Male
               </span>
             </div>
 
