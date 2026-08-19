@@ -5,6 +5,9 @@ import NetAddressingImg from '@/components/resume_sections/certificates/certimg/
 import NetBasicsImg from '@/components/resume_sections/certificates/certimg/Networking Basics.webp';
 import NetDevicesImg from '@/components/resume_sections/certificates/certimg/Networking Devices and Initial Configuration.webp';
 import SqlImg from '@/components/resume_sections/certificates/certimg/SQL.webp';
+import phpImg from '@/components/resume_sections/certificates/certimg/PHP.webp';
+import pythonImg from '@/components/resume_sections/certificates/certimg/PYTHON.webp';
+import htmlcssImg from '@/components/resume_sections/certificates/certimg/HTML-CSS.webp';
 import ProjectMgmtImg from '@/components/resume_sections/certificates/certimg/Understanding Project management from basic to advance.webp';
 import ChatGptAgentImg from '@/components/resume_sections/certificates/certimg/Unleashing ChatGPT Agent Mode - From Chatbot to Autonomous AI.webp';
 import CyberSecurityImg from '@/components/resume_sections/certificates/certimg/Usage of AI Tools in Cyber Security.webp';
@@ -75,12 +78,39 @@ export const CERTIFICATE_CATEGORIES = [
     items: [
       {
         id: 'sql-testdome',
-        title: 'SQL Online Test',
+        title: 'SQL',
         org: 'TestDome',
         image: SqlImg,
         icon: TestDomeIcon,
         issuedDate: '2026-07-01',
         link: 'https://www.testdome.com/certificates/c523462eabb34a45a4d48a55822c798b',
+      },
+      {
+        id: 'php-testdome',
+        title: 'PHP',
+        org: 'TestDome',
+        image: phpImg,
+        icon: TestDomeIcon,
+        issuedDate: '2026-08-19',
+        link: 'https://www.testdome.com/certificates/8be7dc5ac42d4fb195d649f551edd55d',
+      },
+      {
+        id: 'python-testdome',
+        title: 'PYTHON',
+        org: 'TestDome',
+        image: pythonImg,
+        icon: TestDomeIcon,
+        issuedDate: '2026-08-19',
+        link: 'https://www.testdome.com/certificates/961006f82e884675b462f8f12e0fa45c',
+      },
+            {
+        id: 'html/css-testdome',
+        title: 'HTML/CSS',
+        org: 'TestDome',
+        image: htmlcssImg,
+        icon: TestDomeIcon,
+        issuedDate: '2026-08-19',
+        link: 'https://www.testdome.com/certificates/961006f82e884675b462f8f12e0fa45c',
       },
     ],
   },
