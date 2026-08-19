@@ -50,7 +50,7 @@ function PinList({
   return (
     <motion.div className={cn('', className)} {...props}>
       <LayoutGroup>
-        <div className={cn('border-l md:border-l-2 pl-1.5 md:pl-3 border-gray-300 dark:border-white/20  grid grid-cols-2 gap-3 relative', unpinnedSectionClassName)}>
+        <div className={cn('grid grid-cols-2 gap-3 relative', unpinnedSectionClassName)}>
           {unpinned.map((item) => (
             <motion.div
               key={item.id}

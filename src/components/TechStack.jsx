@@ -38,7 +38,7 @@ export default function TechStack() {
         </div>
       </header>
 
-      <div className="border-l md:border-l-2 pl-1.5 md:pl-3 border-gray-300 dark:border-white/20 flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {allTools.map((tool) => {
           const stackTool = Tools[tool];
           if (!stackTool) return null;

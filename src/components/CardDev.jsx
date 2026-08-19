@@ -25,7 +25,7 @@ export default function CardDev() {
       className="flex flex-col items-center space-y-4"
     >
       {/* Name */}
-      <h1 className="w-full font-bold tracking-tight text-base-content text-3xl md:text-5xl text-center md:text-left">
+      <h1 className="w-full font-bold tracking-tight text-base-content text-3xl md:text-5xl text-center">
         Gian Carlo N. Ulep
       </h1>
 
