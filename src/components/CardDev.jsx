@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import profileImage from '@/components/resume_sections/about/gian.webp';
+import profileImage from '@/components/resume_sections/carddev/gian.webp';
+import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
 import ContactDialog from '@/components/resume_sections/carddev/ContactDialog';
 import { CONTACT_LINKS } from '@/components/resume_sections/carddev/contact_data';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';

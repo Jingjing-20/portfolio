@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
+import logoImg from '@/components/resume_sections/carddev/android-chrome-512x512.png';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
