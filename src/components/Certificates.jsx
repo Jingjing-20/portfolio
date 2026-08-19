@@ -2,14 +2,34 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import CertificateDialog from '@/components/resume_sections/certificates/CertificateDialog';
 import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificates/certificates_data';
+import { PinList } from '@/components/animate-ui/components/community/pin-list';
 
-const certListItemClasses = cn(
-  'flex gap-3 bg-theme hover:bg-textured p-3 border border-gray-300 dark:border-white/20 rounded-md',
-   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+const openDialogBtn = cn(
+  'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
+  'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
+  'hover:bg-white dark:hover:bg-black transition-all duration-200',
+  'border border-gray-300 dark:border-white/30',
+  'hover:scale-110 hover:shadow-lg',
+  'shadow-md',
+  'z-10'
+);
+
+const orgLogo = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
+  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
+  'text-sm font-medium cursor-pointer  transform hover:-translate-y-1 hover:rotate-3'
 );
+
+// Helper function to format date
+const formatDate = (dateString) => {
+  if (!dateString) return null;
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+};
 
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);
@@ -20,6 +40,21 @@ export default function Certificates() {
     const dateB = b.issuedDate ? new Date(b.issuedDate) : new Date(0);
     return dateB - dateA; // Descending order (newest first)
   });
+
+  // Transform certificates into pin-list format
+  const pinListItems = allCertificates.map((cert) => ({
+    id: cert.id,
+    name: cert.title,
+    info: `${cert.org} • ${formatDate(cert.issuedDate) || 'No date'}`,
+    icon: cert.icon,
+    pinned: false, // Default unpinned, user can pin favorites
+    cert: cert, // Store original cert data for dialog
+  }));
+
+  const handleCertClick = (item) => {
+    // Open certificate dialog when clicking (not on pin button)
+    setActiveCert(item.cert);
+  };
 
   return (
     <section id="certificates" className="scroll-mt-24">
@@ -34,39 +69,11 @@ export default function Certificates() {
         </div>
       </header>
 
-      <div className="space-y-3">
-        {allCertificates.map((cert) => {
-          const IconComponent = cert.icon;
-
-          return (
-            <div
-              key={cert.id}
-              className={cn(certListItemClasses, 'relative')}
-              onClick={() => setActiveCert(cert)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setActiveCert(cert);
-                }
-              }}
-            >
-              {/* Icon inside the border */}
-              <div className="flex-shrink-0">
-                <IconComponent />
-              </div>
-
-              {/* Certificate Title */}
-              <div className="flex-1 min-w-0">
-                <h4 className="text-[10px] md:text-xs leading-tight md:leading-relaxed font-semibold text-base-content truncate">
-                  {cert.title}
-                </h4>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <PinList
+        items={pinListItems}
+        className="space-y-3"
+        onItemClick={handleCertClick}
+      />
 
       <CertificateDialog
         cert={activeCert}
