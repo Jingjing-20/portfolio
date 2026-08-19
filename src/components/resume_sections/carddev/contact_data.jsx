@@ -2,7 +2,7 @@ import ResumeImg from '@/components/resume_sections/carddev/resume.webp';
 import LinkedInImg from '@/components/resume_sections/carddev/linkedin.webp';
 import GitHubImg from '@/components/resume_sections/carddev/github.webp';
 import GmailImg from '@/components/resume_sections/carddev/gmail.webp';
-import ResumePDF from '@/components/resume_sections/carddev/resumes/GCNU - RESUME v11.pdf';
+import ResumePDF from '@/components/resume_sections/carddev/resumes/GCNU - RESUME v12.pdf';
 
 export const CONTACT_LINKS = [
   {
