@@ -117,7 +117,7 @@ export default function Experience() {
         </div>
       </header>
 
-      <Timeline defaultValue={1} className="w-full max-w-full ps-4">
+      <Timeline defaultValue={1} className=" border-l md:border-l-2 pl-4 md:pl-5 border-gray-300 dark:border-white/20  w-full max-w-full ps-4">
         {EXPERIENCES.map((experience) => (
           <ExperienceItem
             key={experience.step}

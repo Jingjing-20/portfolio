@@ -3,7 +3,6 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
-import { AboutInfo } from '@/components/animate-ui/icons/about-info';
 import { Briefcase } from '@/components/animate-ui/icons/briefcase';
 import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
@@ -12,12 +11,6 @@ import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/sw
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
-  {
-    value: 'about',
-    label: 'About',
-    href: '#about',
-    icon: <AboutInfo size={20} />
-  },
   {
     value: 'stack',
     label: 'Stack',
@@ -157,10 +150,10 @@ export default function Navbar() {
           {/* Portfolio identity */}
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'about', '#about')}
+            onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label="About Gian Carlo N. Ulep"
-            aria-current={activeTab === 'about' ? 'page' : undefined}
+            aria-current={activeTab === 'carddev' ? 'page' : undefined}
           >
             <img
               src={logoImg}
@@ -206,13 +199,13 @@ export default function Navbar() {
           'flex w-full items-center justify-between px-4 py-3',
           'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
         )}>
-          {/* Portfolio identity doubles as the About shortcut. */}
+          {/* Portfolio identity doubles as the CardDev shortcut. */}
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'about', '#about')}
+            onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label="About Gian Carlo N. Ulep"
-            aria-current={activeTab === 'about' ? 'page' : undefined}
+            aria-current={activeTab === 'carddev' ? 'page' : undefined}
           >
             <img
               src={logoImg}
