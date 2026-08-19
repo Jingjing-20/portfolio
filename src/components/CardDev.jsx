@@ -25,52 +25,101 @@ export default function CardDev() {
       aria-label="Profile card"
       className="flex flex-col items-center space-y-4"
     >
-      {/* Name */}
-      <h1 className="w-full font-bold tracking-tight text-base-content text-3xl md:text-5xl text-center">
-        Gian Carlo N. Ulep
-      </h1>
-
-      {/* Profile Image */}
-      <div className="hover-3d w-fit mx-auto">
-        <figure
+     {/* Profile Card */}
+      <Tilt
+        className="w-[280px] md:w-[340px]"
+        rotationFactor={8}
+        springOptions={{
+          stiffness: 350,
+          damping: 25,
+        }}
+      >
+        <TiltContent
           className={cn(
-            'relative overflow-hidden p-1 md:p-2',
-            'w-40 h-40 md:w-56 md:h-56',
-            'rounded-lg',
-            'border-4 border-double border-gray-300 dark:border-white/20',
-            'bg-textured shadow-xl'
+            'relative w-full overflow-hidden',
+            'rounded-xl',
+            'border-double border-5 border-gray-300 dark:border-white/20',
+            'bg-textured shadow-xl',
+            'px-5 py-6 md:px-6 md:py-7'
           )}
         >
-          <img
-            src={profileImage}
-            alt="Gian Carlo N. Ulep"
-            className="rounded-lg h-full w-full object-cover object-top"
-          />
-        </figure>
+          {/* Profile Image */}
+          <div className="flex justify-center mb-4">
+            <div
+              className={cn(
+                'relative overflow-hidden',
+                'w-24 h-24 md:w-28 md:h-28',
+                'rounded-full',
+                'border-4 border-double border-gray-300 dark:border-white/20',
+                'bg-textured shadow-lg'
+              )}
+            >
+              <img
+                src={profileImage}
+                alt="Gian Carlo N. Ulep"
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
+          </div>
 
-        {/* 8 empty divs required by DaisyUI hover-3d */}
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+          {/* Name */}
+          <h1 className="text-center font-bold tracking-tight text-base-content text-xl md:text-2xl">
+            Gian Carlo N. Ulep
+          </h1>
+
+          <hr className="mt-3 mb-3" />
+
+          {/* Personal Information */}
+          <div className="w-full text-[10px] md:text-xs text-base-content leading-relaxed space-y-1">
+            {/* BirthDate */}
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-semibold text-left">
+                BirthDate :
+              </span>
+
+              <span className="text-base-content/80 text-right">
+                May 27, 2004
+              </span>
+            </div>
+
+            {/* Age */}
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-semibold text-left">
+                Age :
+              </span>
+
+              <span className="text-base-content/80 text-right">
+                22
+              </span>
+            </div>
+
+            {/* Sex */}
+            <div className="flex items-center justify-between gap-3">
+              <span className="font-semibold text-left">
+                Sex :
+              </span>
+
+              <span className="text-base-content/80 text-right">
+                Male
+              </span>
+            </div>
+
+            {/* Address */}
+            <div className="flex items-start justify-between gap-3">
+              <span className="font-semibold text-left shrink-0">
+                Address :
+              </span>
+
+              <span className="text-base-content/80 text-right">
+                Negros Occidental, Philippines
+              </span>
+            </div>
+          </div>
+        </TiltContent>
+      </Tilt>
 
       {/* Description */}
       <div className="w-full text-base-content leading-relaxed text-center md:text-left">
-        <div className="text-[8px] md:text-[10px] flex flex-wrap items-center justify-center md:justify-start gap-x-1 gap-y-1">
-          <span>Born in 2004</span>
-
-          <span className="text-base-content/20">•</span>
-
-          <span>
-            Valladolid, Negros Occidental, Philippines
-          </span>
-        </div>
-
         <p className="text-[10px] md:text-xs mt-1">
           <span className="text-base-content">
             I am a{' '}
