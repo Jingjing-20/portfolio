@@ -2,17 +2,17 @@ export const TECH_STACK = [
   {
     category: 'Frontend',
     description: 'Modern component libraries and styling for responsive user experiences.',
-    tools: ['React', 'Vue.js', 'JavaScript', 'Tailwind CSS', 'Vite'],
+    tools: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
   },
   {
     category: 'Backend & APIs',
     description: 'Server-side frameworks and API development technologies.',
-    tools: ['PHP', 'Laravel', 'Node.js', 'Next.js', 'REST'],
+    tools: ['PHP', 'Laravel', 'Node.js', 'REST'],
   },
   {
     category: 'Databases & Backend Services',
     description: 'Data storage solutions and backend-as-a-service platforms.',
-    tools: ['MySQL', 'PostgreSQL', 'Supabase', 'Firebase'],
+    tools: ['MySQL', 'PostgreSQL', 'Supabase'],
   },
   {
     category: 'Infrastructure & DevOps',

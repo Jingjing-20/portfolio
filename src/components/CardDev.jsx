@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import profileImage from '@/components/resume_sections/carddev/gian.webp';
-import { Tilt, TiltContent } from '@/components/animate-ui/primitives/effects/tilt';
+import {
+  Tilt,
+  TiltContent,
+} from '@/components/animate-ui/primitives/effects/tilt';
 import ContactDialog from '@/components/resume_sections/carddev/ContactDialog';
 import { CONTACT_LINKS } from '@/components/resume_sections/carddev/contact_data';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
@@ -23,9 +26,22 @@ export default function CardDev() {
     <section
       id="carddev"
       aria-label="Profile card"
-      className="flex flex-col items-center space-y-4"
+      className="space-y-4"
     >
-     {/* Profile Card */}
+      {/* Header */}
+      <header className="mb-3 md:mb-6">
+        <div>
+          <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-5xl">
+            Gian Carlo N. Ulep
+          </h2>
+
+          <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
+            BS in Information Technology - 2026
+          </p>
+        </div>
+      </header>
+
+      {/* Profile Card */}
       <Tilt
         rotationFactor={8}
         springOptions={{
@@ -35,21 +51,25 @@ export default function CardDev() {
       >
         <TiltContent
           className={cn(
-            'relative w-full overflow-hidden',
+            'relative overflow-hidden',
+            'w-full max-w-2xl',
             'rounded-xl',
             'border-double border-5 border-gray-300 dark:border-white/20',
             'bg-textured shadow-xl',
-            'p-6 md:p-8'
+            'p-3 md:p-4',
+            'flex flex-row items-center',
+            'gap-3 md:gap-6'
           )}
         >
-          {/* Profile Image */}
-          <div className="flex justify-center mb-4">
+          {/* Left Side - Profile Image */}
+          <div className="shrink-0">
             <div
               className={cn(
                 'relative overflow-hidden',
-                'w-24 h-24 md:w-28 md:h-28',
-                'rounded-full',
-                'border-4 border-double border-gray-300 dark:border-white/20',
+                'w-30 h-30',
+                'md:w-35 md:h-35',
+                'rounded-lg',
+                'border-double border-4 border-gray-300 dark:border-white/20',
                 'bg-textured shadow-lg'
               )}
             >
@@ -61,78 +81,85 @@ export default function CardDev() {
             </div>
           </div>
 
-          {/* Name */}
-          <h1 className="text-center font-bold tracking-tight text-base-content text-xl md:text-2xl">
-            Gian Carlo N. Ulep
-          </h1>
+          {/* Right Side - Content */}
+          <div className="min-w-0 flex-1">
+            {/* Personal Information */}
+            <div className="w-full text-[8px] sm:text-[9px] md:text-[10px] text-base-content leading-relaxed space-y-1.5">
+              {/* Role */}
+              <div className="flex items-center min-w-0">
+                <span className="font-semibold w-16 sm:w-20 shrink-0">
+                  Role :
+                </span>
 
-          <hr className="mt-3 mb-3" />
+                <span className="text-base-content truncate">
+                  <ShimmeringText
+                    text="Software Developer"
+                    className="font-bold"
+                  />
+                </span>
+              </div>
 
-          {/* Personal Information */}
-          <div className="w-full text-[10px] md:text-xs text-base-content leading-relaxed space-y-1">
-            {/* BirthDate */}
-            <div className="flex items-center justify-between gap-3">
-              <span className="font-semibold text-left">
-                BirthDate :
-              </span>
+              {/* Birth Date */}
+              <div className="flex items-center min-w-0">
+                <span className="font-semibold w-16 sm:w-20 shrink-0">
+                  BirthDate:
+                </span>
 
-              <span className="text-base-content/80 text-right">
-                May 27, 2004
-              </span>
-            </div>
+                <span className="text-base-content truncate">
+                  May 27, 2004
+                </span>
+              </div>
 
-            {/* Age */}
-            <div className="flex items-center justify-between gap-3">
-              <span className="font-semibold text-left">
-                Age :
-              </span>
+              {/* Gender */}
+              <div className="flex items-center min-w-0">
+                <span className="font-semibold w-16 sm:w-20 shrink-0">
+                  Gender :
+                </span>
 
-              <span className="text-base-content/80 text-right">
-                22
-              </span>
-            </div>
+                <span className="text-base-content truncate">
+                  Male
+                </span>
+              </div>
 
-            {/* Address */}
-            <div className="flex items-start justify-between gap-3">
-              <span className="font-semibold text-left shrink-0">
-                Address :
-              </span>
+              {/* Location */}
+              <div className="flex items-start min-w-0">
+                <span className="font-semibold w-16 sm:w-20 shrink-0">
+                  Location :
+                </span>
 
-              <span className="text-base-content/80 text-right">
-                Negros Occidental, Philippines
-              </span>
+                <span className="text-base-content truncate">
+                  Negros Occidental, Philippines
+                </span>
+              </div>
+
+              {/* Availability */}
+              <div className="flex items-start min-w-0">
+                <span className="font-semibold w-16 sm:w-20 shrink-0">
+                  Availability :
+                </span>
+
+                <span className="text-base-content truncate">
+                  Open to Opportunities
+                </span>
+              </div>
             </div>
           </div>
         </TiltContent>
       </Tilt>
 
       {/* Description */}
-      <div className="w-full text-base-content leading-relaxed text-center md:text-left">
+      <div className="w-full text-base-content leading-relaxed text-left">
         <p className="text-[10px] md:text-xs mt-1">
-          <span className="text-base-content">
-            I am a{' '}
-          </span>
-
-          <span className="font-bold">
-            <ShimmeringText
-              text="Software Developer"
-              className="font-bold"
-            />
-          </span>
-
-          <span className="text-base-content">
-            {' '}
-            focused on building accessible and responsive web applications. I
-            work with modern web technologies to create clean, maintainable
-            solutions that address practical needs and improve user experience.
-          </span>
+          I focused on building accessible and responsive web applications. I
+          work with modern web technologies to create clean, maintainable
+          solutions that address practical needs and improve user experience.
         </p>
       </div>
 
       {/* Contact Buttons */}
       <nav
         aria-label="Contact links"
-        className="grid grid-cols-4 gap-1.5 md:gap-3 md:flex md:flex-row md:flex-wrap justify-center md:justify-start"
+        className="flex w-full flex-wrap items-center justify-center gap-1.5 md:gap-3"
       >
         {CONTACT_LINKS.map((contact) => (
           <button

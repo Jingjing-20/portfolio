@@ -142,16 +142,17 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop Navbar - Full width with double border under */}
-      <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full">
-        <div className={cn(
-          'flex max-w-full items-center justify-between px-6 py-3',
-          'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
-        )}>
+      <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20">
+        <div
+          className={cn(
+            'grid max-w-5xl mx-auto grid-cols-3 items-center px-6 py-3'
+          )}
+        >
           {/* Portfolio identity */}
           <button
             type="button"
             onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
-            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="flex items-center gap-2 justify-self-start rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label="About Gian Carlo N. Ulep"
             aria-current={activeTab === 'carddev' ? 'page' : undefined}
           >
@@ -160,13 +161,19 @@ export default function Navbar() {
               alt=""
               className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl font-bold text-base-content">Portfolio</h1>
+            <h1 className="text-xl font-bold text-base-content">
+              Portfolio
+            </h1>
           </button>
 
           {/* Desktop: Center Navigation Buttons */}
-          <nav aria-label="Main navigation" className="flex items-center gap-2">
+          <nav
+            aria-label="Main navigation"
+            className="flex items-center justify-self-center gap-2"
+          >
             {NAV_ITEMS.map((item) => {
               const isActive = activeTab === item.value;
+
               return (
                 <button
                   key={item.value}
@@ -180,14 +187,16 @@ export default function Navbar() {
                   aria-current={isActive ? 'page' : undefined}
                 >
                   {item.icon}
-                  <span className="text-[10px] font-medium text-base-content">{item.label}</span>
+                  <span className="text-[10px] font-medium text-base-content">
+                    {item.label}
+                  </span>
                 </button>
               );
             })}
           </nav>
 
           {/* Desktop: Right Theme Toggle */}
-          <div className="flex items-center">
+          <div className="flex items-center justify-self-end">
             <ThemeTogglerBtn />
           </div>
         </div>
