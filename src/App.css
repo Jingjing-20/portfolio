@@ -77,6 +77,49 @@
 [data-theme="dark"] .bg-textured {
   background-color: #1a1b1d;
 }
+
+.bg-gradient-card {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8f9fa 25%,
+    #f3f4f6 50%,
+    #e5e7eb 75%,
+    #d1d5db 100%
+  );
+}
+
+.dark .bg-gradient-card,
+[data-theme="dark"] .bg-gradient-card {
+  background: linear-gradient(
+    135deg,
+    #1a1b1d 0%,
+    #16181a 25%,
+    #121315 50%,
+    #0f1012 75%,
+    #0d0d0e 100%
+  );
+}
+
+.bg-gradient-image-border {
+  background: linear-gradient(
+    135deg,
+    #f3f4f6 0%,
+    #e5e7eb 50%,
+    #d1d5db 100%
+  );
+}
+
+.dark .bg-gradient-image-border,
+[data-theme="dark"] .bg-gradient-image-border {
+  background: linear-gradient(
+    135deg,
+    #1a1b1d 0%,
+    #16181a 50%,
+    #121315 100%
+  );
+}
+
 .bg-textured {
   background-color: #f3f4f6;
   background-image: repeating-linear-gradient(

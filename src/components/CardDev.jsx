@@ -56,7 +56,7 @@ export default function CardDev() {
             'max-w-md',
             'rounded-xl',
             'border-3 border-gray-300 dark:border-white/20',
-            'bg-textured shadow-xl',
+            'bg-gradient-card shadow-xl',
             'p-3 md:p-4',
             'flex flex-row items-center',
             'gap-3 md:gap-6'
@@ -71,7 +71,7 @@ export default function CardDev() {
                 'md:w-30 md:h-30',
                 'rounded-lg',
                 'border-double border-4 border-gray-300 dark:border-white/20',
-                'bg-textured shadow-lg'
+                'bg-gradient-image-border shadow-lg'
               )}
             >
               <img
