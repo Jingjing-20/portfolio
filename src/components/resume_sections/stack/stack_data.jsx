@@ -2,7 +2,7 @@ export const TECH_STACK = [
   {
     category: 'Frontend',
     description: 'Modern component libraries and styling for responsive user experiences.',
-    tools: ['React', 'JavaScript', 'Tailwind CSS', 'Vite'],
+    tools: ['React', 'JavaScript', 'Bootstrap', 'Tailwind CSS', 'Vite'],
   },
   {
     category: 'Backend & APIs',
