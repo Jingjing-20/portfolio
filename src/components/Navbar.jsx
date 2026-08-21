@@ -79,7 +79,7 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
         checked={isDark}
         onCheckedChange={handleToggle}
         className={cn(
-          "relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 shadow-xl cursor-pointer p-1",
+          "relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer p-1 hover-theme-switch",
           className
         )}
         aria-label="Toggle theme"
@@ -103,7 +103,7 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
       <Switch
         checked={isDark}
         onCheckedChange={handleToggle}
-        className="relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200 shadow-xl cursor-pointer p-1"
+        className="relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer p-1 hover-theme-switch"
         aria-label="Toggle theme"
       >
         <SwitchThumb

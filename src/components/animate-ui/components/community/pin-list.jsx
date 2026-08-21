@@ -6,10 +6,8 @@ import { cn } from '@/lib/utils';
 const openDialogBtn = cn(
   'flex items-center justify-center size-8 rounded-full flex-shrink-0',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
-  'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
-  'hover:scale-110 hover:shadow-lg',
-  'shadow-md',
+  'shadow-md hover-open-icon',
   'opacity-0 group-hover:opacity-100 transition-opacity duration-250'
 );
 
@@ -56,7 +54,7 @@ function PinList({
               layoutId={`item-${item.id}`}
               onClick={() => handleItemClick(item.id)}
               transition={transition}
-              className="border border-gray-300 dark:border-white/30 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 flex items-center justify-between gap-5 rounded-xl bg-neutral-200 dark:bg-neutral-800 p-2 group cursor-pointer hover:bg-neutral-300 transition-colors">
+              className="border border-gray-300 dark:border-white/30 flex items-center justify-between gap-5 rounded-xl bg-neutral-200 dark:bg-neutral-800 p-2 group cursor-pointer hover-list-item">
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <div className={orgLogo}>
                   <item.icon />

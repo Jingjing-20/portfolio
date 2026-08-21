@@ -19,11 +19,8 @@ const outlineButtonWithLabelClasses = cn(
 const iconButtonClasses = cn(
   'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
-  'hover:bg-white dark:hover:bg-black transition-all duration-200',
   'border border-gray-300 dark:border-white/30',
-  'hover:scale-110 hover:shadow-lg',
-  'shadow-md',
-  'z-10'
+  'shadow-md z-10 hover-open-icon'
 );
 
 function WebIcon({ size = 32 }) {
@@ -49,7 +46,7 @@ function OpenIcon({ size = 18 }) {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [mockupProject, setMockupProject] = useState(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     slidesToScroll: 1,
     align: 'start',
   });
@@ -114,11 +111,9 @@ export default function Projects() {
                         <div
                           key={mockup.id}
                           className={cn(
-                            'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl hover:shadow-2xl',
+                            'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
                             'bg-textured border-4 border-double border-gray-300 dark:border-white/20',
-                            'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-                            'transform hover:-translate-y-1 hover:rotate-3',
-                            'w-30 md:w-35 flex-shrink-0'
+                            'w-30 md:w-35 flex-shrink-0 hover-card'
                           )}
                           role="button"
                           tabIndex={0}
@@ -215,8 +210,8 @@ export default function Projects() {
                           {/* Cover Image - Double Border with Icon Button and Hover Rotate */}
                           {project.coverImage && (
                             <div className="flex-shrink-0 w-30 md:w-35 relative group">
-                              <div 
-                                className="relative p-1 md:p-1.5 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 hover:rotate-3"
+                              <div
+                                className="relative p-1 md:p-1.5 rounded-lg shadow-xl bg-textured border-4 border-double border-gray-300 dark:border-white/20 cursor-pointer hover-card"
                                 onClick={() => setSelectedProject(project)}
                               >
                                 {/* Open Icon Button - Top Right */}
@@ -243,7 +238,7 @@ export default function Projects() {
                               </div>
                             </div>
                           )}
-                          
+
                           {/* Text Content */}
                           <div className="flex-1 space-y-1">
                             <h4 className="text-[10px] md:text-xs leading-relaxed font-base font-semibold text-base-content">

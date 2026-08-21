@@ -39,101 +39,101 @@ export default function CardDev() {
         </div>
       </header>
 
-    <div className='flex justify-center'>
-      {/* Profile Card */}
-      <Tilt
-        rotationFactor={8}
-        springOptions={{
-          stiffness: 350,
-          damping: 25,
-        }}
-      >
-        <TiltContent
-          className={cn(
-            'relative overflow-hidden',
-            'max-w-md',
-            'rounded-xl',
-            'border-3 border-gray-300 dark:border-white/20',
-            'bg-gradient-card shadow-xl',
-            'p-3 md:p-4',
-            'flex flex-row items-center',
-            'gap-3 md:gap-6'
-          )}
+      <div className='flex justify-center'>
+        {/* Profile Card */}
+        <Tilt
+          rotationFactor={8}
+          springOptions={{
+            stiffness: 350,
+            damping: 25,
+          }}
         >
-          {/* Left Side - Profile Image */}
-          <div className="shrink-0">
-            <div
-              className={cn(
-                'relative overflow-hidden',
-                'w-25 h-25',
-                'md:w-30 md:h-30',
-                'rounded-lg',
-                'border-double border-4 border-gray-300 dark:border-white/20',
-                'bg-gradient-image-border shadow-lg'
-              )}
-            >
-              <img
-                src={profileImage}
-                alt="Gian Carlo N. Ulep"
-                className="h-full w-full object-cover object-top"
-              />
+          <TiltContent
+            className={cn(
+              'relative overflow-hidden',
+              'max-w-md',
+              'rounded-xl',
+              'border-3 border-gray-300 dark:border-white/20',
+              'bg-gradient-card shadow-xl',
+              'p-3 md:p-4',
+              'flex flex-col items-center',
+              'gap-3 md:gap-4'
+            )}
+          >
+            {/* Role - Positioned above image */}
+            <div className="w-full text-center">
+              <span className="text-base-content font-bold text-sm md:text-base tracking-wider">
+                <ShimmeringText
+                  text="Software Developer"
+                  className="font-bold"
+                />
+              </span>
             </div>
-          </div>
 
-          {/* Right Side - Content */}
-          <div className="min-w-0 flex-1">
-            {/* Personal Information */}
-            <div className="w-full text-[8px] sm:text-[9px] md:text-[10px] text-base-content leading-relaxed space-y-1.5">
-              {/* Role - Full width */}
-              <div className="flex flex-col min-w-0">
-                <span className="font-semibold text-base-content/70   tracking-wider">
-                  Role :
-                </span>
-                <span className="text-base-content font-medium">
-                  <ShimmeringText
-                    text="Software Developer"
-                    className="font-bold"
+            {/* Image and Details - Side by side */}
+            <div className="flex flex-row items-center w-full gap-4 md:gap-6">
+              {/* Left Side - Profile Image (Smaller) */}
+              <div className="shrink-0">
+                <div
+                  className={cn(
+                    'relative overflow-hidden',
+                    'w-20 h-20', // Smaller size
+                    'md:w-24 md:h-24', // Smaller size on desktop
+                    'rounded-lg',
+                    'border-double border-4 border-gray-300 dark:border-white/20',
+                    'bg-gradient-image-border shadow-lg'
+                  )}
+                >
+                  <img
+                    src={profileImage}
+                    alt="Gian Carlo N. Ulep"
+                    className="h-full w-full object-cover object-top"
                   />
-                </span>
-              </div>
-
-              {/* Birthdate and Gender - Side by side */}
-              <div className="grid grid-cols-2 gap-x-4">
-                {/* Birth Date */}
-                <div className="flex flex-col min-w-0">
-                  <span className="font-semibold text-base-content/70   tracking-wider">
-                    Birth Date :
-                  </span>
-                  <span className="text-base-content font-medium">
-                    05/27/2004
-                  </span>
-                </div>
-
-                {/* Gender */}
-                <div className="flex flex-col min-w-0">
-                  <span className="font-semibold text-base-content/70   tracking-wider">
-                    Gender :
-                  </span>
-                  <span className="text-base-content font-medium">
-                    Male
-                  </span>
                 </div>
               </div>
 
-              {/* Location - Full width */}
-              <div className="flex flex-col min-w-0">
-                <span className="font-semibold text-base-content/70   tracking-wider">
-                  Location :
-                </span>
-                <span className="text-base-content font-medium">
-                  Negros Occidental, Philippines
-                </span>
+              {/* Right Side - Content */}
+              <div className="min-w-0 flex-1">
+                {/* Personal Information */}
+                <div className="w-full text-[8px] sm:text-[9px] md:text-[10px] text-base-content leading-relaxed space-y-1.5">
+                  {/* Birthdate and Gender - Side by side */}
+                  <div className="grid grid-cols-2 gap-x-4">
+                    {/* Birth Date */}
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-semibold text-base-content/70 tracking-wider">
+                        Birth Date :
+                      </span>
+                      <span className="text-base-content font-medium">
+                        05/27/2004
+                      </span>
+                    </div>
+
+                    {/* Gender */}
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-semibold text-base-content/70 tracking-wider">
+                        Gender :
+                      </span>
+                      <span className="text-base-content font-medium">
+                        Male
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Location - Full width */}
+                  <div className="flex flex-col min-w-0">
+                    <span className="font-semibold text-base-content/70 tracking-wider">
+                      Location :
+                    </span>
+                    <span className="text-base-content font-medium">
+                      Negros Occidental, Philippines
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </TiltContent>
-      </Tilt>
-    </div>
+          </TiltContent>
+        </Tilt>
+      </div>
 
       {/* Description */}
       <div className="w-full text-base-content leading-relaxed text-left">

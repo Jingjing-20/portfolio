@@ -2,64 +2,141 @@
   font-size: 0.65rem;
 }
 
-/* Custom Interactive Hover Badge Effect */
-@layer utilities {
-  .hover-badge,
-  .custom-hover-badge {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    will-change: transform;
-  }
+/* ==========================================================================
+   Custom Pure CSS Hover Effects (Guaranteed Compatibility Across Deployments)
+   ========================================================================== */
 
-  .hover-badge:hover,
-  .custom-hover-badge:hover,
-  .hover-badge:focus-visible,
-  .custom-hover-badge:focus-visible {
-    transform: translateY(-4px) rotate(3deg) !important;
-    border-color: #1f2937 !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
-  }
-
-  .dark .hover-badge:hover,
-  [data-theme="dark"] .hover-badge:hover,
-  .dark .custom-hover-badge:hover,
-  [data-theme="dark"] .custom-hover-badge:hover,
-  .dark .hover-badge:focus-visible,
-  [data-theme="dark"] .hover-badge:focus-visible,
-  .dark .custom-hover-badge:focus-visible,
-  [data-theme="dark"] .custom-hover-badge:focus-visible {
-    border-color: rgba(255, 255, 255, 0.7) !important;
-    box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.08), 0 8px 10px -6px rgba(255, 255, 255, 0.05) !important;
-  }
-
-  .hover-badge:active,
-  .custom-hover-badge:active {
-    transform: translateY(0px) rotate(0deg) scale(0.97) !important;
-    transition-duration: 0.1s !important;
-  }
-}
-
-@utility hover-badge {
+/* 1. Badge & Button Tilt Hover (.hover-badge) */
+.hover-badge,
+.custom-hover-badge {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   will-change: transform;
+}
 
-  &:hover,
-  &:focus-visible {
-    transform: translateY(-4px) rotate(3deg) !important;
-    border-color: #1f2937 !important;
-  }
+.hover-badge:hover,
+.custom-hover-badge:hover,
+.hover-badge:focus-visible,
+.custom-hover-badge:focus-visible {
+  transform: translateY(-4px) rotate(3deg) !important;
+  border-color: #1f2937 !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
 
-  :is(.dark *, [data-theme="dark"] *) &:hover,
-  :is(.dark *, [data-theme="dark"] *) &:focus-visible {
-    border-color: rgba(255, 255, 255, 0.7) !important;
-  }
+.dark .hover-badge:hover,
+[data-theme="dark"] .hover-badge:hover,
+.dark .custom-hover-badge:hover,
+[data-theme="dark"] .custom-hover-badge:hover,
+.dark .hover-badge:focus-visible,
+[data-theme="dark"] .hover-badge:focus-visible,
+.dark .custom-hover-badge:focus-visible,
+[data-theme="dark"] .custom-hover-badge:focus-visible {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.08), 0 8px 10px -6px rgba(255, 255, 255, 0.05) !important;
+}
 
-  &:active {
-    transform: translateY(0px) rotate(0deg) scale(0.97) !important;
-  }
+.hover-badge:active,
+.custom-hover-badge:active {
+  transform: translateY(0px) rotate(0deg) scale(0.97) !important;
+  transition-duration: 0.1s !important;
+}
+
+/* 2. Project & Mockup Card Hover (.hover-card) */
+.hover-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+
+.hover-card:hover,
+.hover-card:focus-visible {
+  transform: translateY(-4px) rotate(3deg) !important;
+  border-color: #1f2937 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .hover-card:hover,
+[data-theme="dark"] .hover-card:hover,
+.dark .hover-card:focus-visible,
+[data-theme="dark"] .hover-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.08), 0 8px 10px -6px rgba(255, 255, 255, 0.05) !important;
+}
+
+.hover-card:active {
+  transform: translateY(0px) rotate(0deg) scale(0.98) !important;
+}
+
+/* 3. Open Icon Button Hover (.hover-open-icon) */
+.hover-open-icon {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hover-open-icon:hover {
+  transform: scale(1.15) !important;
+  background-color: #ffffff !important;
+  border-color: #1f2937 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark .hover-open-icon:hover,
+[data-theme="dark"] .hover-open-icon:hover {
+  background-color: #000000 !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.15) !important;
+}
+
+.hover-open-icon:active {
+  transform: scale(0.95) !important;
+}
+
+/* 4. Certificate List Item Row Hover (.hover-list-item) */
+.hover-list-item {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hover-list-item:hover {
+  transform: translateY(-2px) !important;
+  border-color: #1f2937 !important;
+  background-color: #e5e7eb !important;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .hover-list-item:hover,
+[data-theme="dark"] .hover-list-item:hover {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  background-color: #27272a !important;
+  box-shadow: 0 10px 20px -5px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 5. Theme Switch Button Hover (.hover-theme-switch) */
+.hover-theme-switch {
+  transition: border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              transform 0.25s ease !important;
+}
+
+.hover-theme-switch:hover {
+  border-color: #1f2937 !important;
+  box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dark .hover-theme-switch:hover,
+[data-theme="dark"] .hover-theme-switch:hover {
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 8px 16px -4px rgba(255, 255, 255, 0.1) !important;
+}
+
+.hover-theme-switch:active {
+  transform: scale(0.96) !important;
 }
 
 .custom-background {
