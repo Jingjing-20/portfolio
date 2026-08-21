@@ -6,7 +6,7 @@ const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
   'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-  'text-sm font-medium cursor-default transform hover:-translate-y-1 hover:rotate-3'
+  'text-sm font-medium cursor-default hover:-translate-y-1 hover:rotate-3 active:translate-y-0 active:rotate-0'
 );
 
 export default function TechStack() {

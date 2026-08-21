@@ -10,7 +10,7 @@ const openDialogBtn = cn(
   'border border-gray-300 dark:border-white/30',
   'hover:scale-110 hover:shadow-lg',
   'shadow-md',
-  'opacity-70 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200'
+  'opacity-0 group-hover:opacity-100 transition-opacity duration-250'
 );
 
 const orgLogo = cn(
@@ -57,7 +57,7 @@ function PinList({
               layoutId={`item-${item.id}`}
               onClick={() => handleItemClick(item.id)}
               transition={transition}
-              className="border border-gray-300 dark:border-white/30 hover:border-gray-800 dark:hover:border-white/70 active:scale-[0.98] transition-all duration-200 flex items-center justify-between gap-5 rounded-xl bg-neutral-200 dark:bg-neutral-800 p-2 group cursor-pointer hover:bg-neutral-300 transition-colors">
+              className="border border-gray-300 dark:border-white/30 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 flex items-center justify-between gap-5 rounded-xl bg-neutral-200 dark:bg-neutral-800 p-2 group cursor-pointer hover:bg-neutral-300 transition-colors">
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <div className={orgLogo}>
                   <item.icon />

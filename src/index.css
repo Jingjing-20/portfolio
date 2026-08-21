@@ -1,3 +1,14 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;

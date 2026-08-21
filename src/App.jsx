@@ -53,7 +53,7 @@ function App() {
                 {/* Left column - 40% (4 out of 12 columns) */}
                 <aside className="md:col-span-6 pb-6 md:sticky md:top-28 md:self-start">
                   <div className="w-full">
-                    <ScrollReveal animation="fadeInUp" duration="0.5s"><CardDev /></ScrollReveal>
+                    <ScrollReveal animation="fadeInDown" duration="0.5s"><CardDev /></ScrollReveal>
                   </div>
                 </aside>
 
@@ -61,17 +61,17 @@ function App() {
                 <div className="md:col-span-6 space-y-6 pb-6">
                   <hr className='block md:hidden' />
                   {/* 1. Stack */}
-                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                  <ScrollReveal animation="fadeInRight" duration="0.5s">
                     <TechStack />
                   </ScrollReveal>
                   <hr />
                   {/* 2. Experience */}
-                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                  <ScrollReveal animation="fadeInRight" duration="0.5s">
                     <Experience />
                   </ScrollReveal>
                   <hr />
                   {/* 3. Projects */}
-                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                  <ScrollReveal animation="fadeInRight" duration="0.5s">
                     <Projects />
                   </ScrollReveal>
                   <hr />
@@ -84,7 +84,7 @@ function App() {
 
               {/* Footer intentionally sits below both resume columns. */}
               <div className="border-t pt-6">
-                <ScrollReveal animation="fadeInUp" duration="0.5s">
+                <ScrollReveal animation="fadeInRight" duration="0.5s">
                   <Footer />
                 </ScrollReveal>
               </div>
