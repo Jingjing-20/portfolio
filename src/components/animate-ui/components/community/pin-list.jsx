@@ -7,8 +7,7 @@ const openDialogBtn = cn(
   'flex items-center justify-center size-8 rounded-full flex-shrink-0',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'border border-gray-300 dark:border-white/30',
-  'shadow-md hover-open-icon',
-  'opacity-0 group-hover:opacity-100 transition-opacity duration-250'
+  'shadow-md hover-open-icon'
 );
 
 const orgLogo = cn(

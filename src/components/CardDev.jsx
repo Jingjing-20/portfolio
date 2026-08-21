@@ -51,7 +51,7 @@ export default function CardDev() {
           <TiltContent
             className={cn(
               'relative overflow-hidden',
-              'max-w-md',
+              'max-w-xl',
               'rounded-xl',
               'border-3 border-gray-300 dark:border-white/20',
               'bg-gradient-card shadow-xl',
@@ -61,14 +61,16 @@ export default function CardDev() {
             )}
           >
             {/* Role - Positioned above image */}
-            <div className="w-full text-center">
-              <span className="text-base-content font-bold text-sm md:text-base tracking-wider">
+            <div className="w-full">
+              <span className="text-base-content font-bold text-lg md:text-xl tracking-wider">
                 <ShimmeringText
                   text="Software Developer"
                   className="font-bold"
                 />
               </span>
             </div>
+
+            <hr className="w-full" />
 
             {/* Image and Details - Side by side */}
             <div className="flex flex-row items-center w-full gap-4 md:gap-6">
@@ -77,8 +79,8 @@ export default function CardDev() {
                 <div
                   className={cn(
                     'relative overflow-hidden',
-                    'w-20 h-20', // Smaller size
-                    'md:w-24 md:h-24', // Smaller size on desktop
+                    'w-25 h-25', // Smaller size
+                    'md:w-30 md:h-30', // Smaller size on desktop
                     'rounded-lg',
                     'border-double border-4 border-gray-300 dark:border-white/20',
                     'bg-gradient-image-border shadow-lg'
@@ -95,25 +97,25 @@ export default function CardDev() {
               {/* Right Side - Content */}
               <div className="min-w-0 flex-1">
                 {/* Personal Information */}
-                <div className="w-full text-[8px] sm:text-[9px] md:text-[10px] text-base-content leading-relaxed space-y-1.5">
+                <div className="w-full text-base-content leading-relaxed space-y-1.5 md:space-y-3">
                   {/* Birthdate and Gender - Side by side */}
                   <div className="grid grid-cols-2 gap-x-4">
                     {/* Birth Date */}
                     <div className="flex flex-col min-w-0">
-                      <span className="font-semibold text-base-content/70 tracking-wider">
+                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                         Birth Date :
                       </span>
-                      <span className="text-base-content font-medium">
+                      <span className="text-xs md:text-sm text-base-content font-medium">
                         05/27/2004
                       </span>
                     </div>
 
                     {/* Gender */}
                     <div className="flex flex-col min-w-0">
-                      <span className="font-semibold text-base-content/70 tracking-wider">
+                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                         Gender :
                       </span>
-                      <span className="text-base-content font-medium">
+                      <span className="text-xs md:text-sm text-base-content font-medium">
                         Male
                       </span>
                     </div>
@@ -121,10 +123,20 @@ export default function CardDev() {
 
                   {/* Location - Full width */}
                   <div className="flex flex-col min-w-0">
-                    <span className="font-semibold text-base-content/70 tracking-wider">
+                    <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                      Languages :
+                    </span>
+                    <span className="text-xs md:text-sm text-base-content font-medium">
+                      Filipino, English
+                    </span>
+                  </div>
+
+                  {/* Location - Full width */}
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                       Location :
                     </span>
-                    <span className="text-base-content font-medium">
+                    <span className="text-xs md:text-sm text-base-content font-medium">
                       Negros Occidental, Philippines
                     </span>
                   </div>
@@ -137,10 +149,9 @@ export default function CardDev() {
 
       {/* Description */}
       <div className="w-full text-base-content leading-relaxed text-left">
-        <p className="text-[10px] md:text-xs mt-1">
-          I focused on building accessible and responsive web applications. I
-          work with modern web technologies to create clean, maintainable
-          solutions that address practical needs and improve user experience.
+        <p className="text-[8px] md:text-[10px] mt-1">
+          Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
+          I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
         </p>
       </div>
 
