@@ -8,6 +8,12 @@ import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
 import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from '@/components/animate-ui/primitives/animate/tooltip';
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
@@ -39,11 +45,11 @@ const NAV_ITEMS = [
 
 const navButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
+  'bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer hover-theme-switch',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'cursor-pointer hover-badge'
+  'cursor-pointer hover-theme-switch'
 );
 
 const activeButtonClasses = cn(
@@ -52,9 +58,9 @@ const activeButtonClasses = cn(
 
 const mobileMenuButtonClasses = cn(
   'shadow-xl inline-flex items-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
+  'bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer hover-theme-switch',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-badge'
+  'cursor-pointer hover-theme-switch'
 );
 
 function ThemeTogglerBtn({ showLabel = false, className = '' }) {
@@ -165,33 +171,39 @@ export default function Navbar() {
           </button>
 
           {/* Desktop: Center Navigation Buttons */}
-          <nav
-            aria-label="Main navigation"
-            className="flex items-center justify-self-center gap-2"
-          >
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeTab === item.value;
+          <TooltipProvider openDelay={100} closeDelay={100}>
+            <nav
+              aria-label="Main navigation"
+              className="flex items-center justify-self-center gap-2"
+            >
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeTab === item.value;
 
-              return (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={(e) => handleNavClick(e, item.value, item.href)}
-                  className={cn(
-                    navButtonClasses,
-                    isActive && activeButtonClasses
-                  )}
-                  aria-label={item.label}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {item.icon}
-                  <span className="text-[10px] font-medium text-base-content">
-                    {item.label}
-                  </span>
-                </button>
-              );
-            })}
-          </nav>
+                return (
+                  <Tooltip key={item.value} side="bottom" sideOffset={8}>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        onClick={(e) => handleNavClick(e, item.value, item.href)}
+                        className={cn(
+                          navButtonClasses,
+                          'transition-transform duration-300 ease-out hover:scale-110 active:scale-95',
+                          isActive && activeButtonClasses
+                        )}
+                        aria-label={item.label}
+                        aria-current={isActive ? 'page' : undefined}
+                      >
+                        {item.icon}
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent className="rounded-md bg-textured border border-gray-300 dark:border-white/20 px-2.5 py-1 text-xs font-medium text-base-content shadow-xl pointer-events-none">
+                      {item.label}
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
+            </nav>
+          </TooltipProvider>
 
           {/* Desktop: Right Theme Toggle */}
           <div className="flex items-center justify-self-end">
