@@ -135,7 +135,7 @@ export default function CardDev() {
                     {/* Gender */}
                     <div className="flex flex-col min-w-0">
                       <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
-                        Phone# :
+                        Phone # :
                       </span>
                       <span className="text-xs md:text-sm text-base-content font-medium">
                         09562657521
@@ -177,10 +177,13 @@ export default function CardDev() {
             key={contact.id}
             type="button"
             className={interactiveButtonClasses}
+            style={{ '--brand-color': contact.color }}
             onClick={() => setActiveContact(contact)}
             aria-label={contact.label}
           >
-            {contact.icon}
+            <span className="tool-icon flex items-center justify-center">
+              {contact.icon}
+            </span>
 
             <span className="text-[8px] md:text-[10px] font-medium text-base-content">
               {contact.label}
