@@ -2,6 +2,66 @@
   font-size: 0.65rem;
 }
 
+/* Custom Interactive Hover Badge Effect */
+@layer utilities {
+  .hover-badge,
+  .custom-hover-badge {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    will-change: transform;
+  }
+
+  .hover-badge:hover,
+  .custom-hover-badge:hover,
+  .hover-badge:focus-visible,
+  .custom-hover-badge:focus-visible {
+    transform: translateY(-4px) rotate(3deg) !important;
+    border-color: #1f2937 !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .dark .hover-badge:hover,
+  [data-theme="dark"] .hover-badge:hover,
+  .dark .custom-hover-badge:hover,
+  [data-theme="dark"] .custom-hover-badge:hover,
+  .dark .hover-badge:focus-visible,
+  [data-theme="dark"] .hover-badge:focus-visible,
+  .dark .custom-hover-badge:focus-visible,
+  [data-theme="dark"] .custom-hover-badge:focus-visible {
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.08), 0 8px 10px -6px rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .hover-badge:active,
+  .custom-hover-badge:active {
+    transform: translateY(0px) rotate(0deg) scale(0.97) !important;
+    transition-duration: 0.1s !important;
+  }
+}
+
+@utility hover-badge {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px) rotate(3deg) !important;
+    border-color: #1f2937 !important;
+  }
+
+  :is(.dark *, [data-theme="dark"] *) &:hover,
+  :is(.dark *, [data-theme="dark"] *) &:focus-visible {
+    border-color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  &:active {
+    transform: translateY(0px) rotate(0deg) scale(0.97) !important;
+  }
+}
+
 .custom-background {
   min-height: 100svh;
   background-color: #fafafa;

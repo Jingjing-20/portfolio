@@ -9,12 +9,11 @@ import { cn } from '@/lib/utils';
 
 const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
+  'bg-theme border border-gray-300 dark:border-white/20',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   '[&_svg]:pointer-events-none [&_svg]:shrink-0',
-  'text-sm font-medium cursor-pointer transform hover:-translate-y-1 hover:rotate-3'
+  'text-sm font-medium cursor-pointer hover-badge'
 );
 
 function WebIcon({ size = 56 }) {
@@ -76,7 +75,7 @@ export function MockupDialog({ mockup, open, onClose }) {
               readOnly
               value={mockup.livePreview}
               aria-label="Live preview URL"
-            className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
+              className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
             />
             <button
               type="button"

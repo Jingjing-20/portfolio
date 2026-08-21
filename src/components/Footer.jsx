@@ -20,11 +20,10 @@ const PORTFOLIO_STACK = [
 const outlineButtonWithLabelClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer  transform hover:-translate-y-1 hover:rotate-3'
+  'text-sm font-medium cursor-pointer hover-badge'
 );
 
 export default function Footer() {

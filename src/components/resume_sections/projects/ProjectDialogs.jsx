@@ -15,8 +15,7 @@ const buttonClasses = cn(
 const radioButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-  'text-sm font-medium cursor-pointer transform hover:-translate-y-1 hover:rotate-3',
+  'text-sm font-medium cursor-pointer hover-badge',
   'disabled:opacity-50 disabled:pointer-events-none'
 );
 

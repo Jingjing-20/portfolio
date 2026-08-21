@@ -17,9 +17,8 @@ const orgLogo = cn(
   'rounded-lg p-2 flex-shrink-0',
   'shadow-xl inline-flex items-center justify-center',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer transform hover:-translate-y-1 hover:rotate-3',
+  'cursor-pointer hover-badge',
   "[&_svg]:size-5 [&_svg]:text-neutral-500 dark:[&_svg]:text-neutral-400"
 );
 
