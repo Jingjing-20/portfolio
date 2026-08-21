@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -18,6 +19,19 @@ const buttonClasses = cn(
 );
 
 export function CertificateDialog({ cert, open, onClose }) {
+  useEffect(() => {
+    const stylesheetId = 'testdome-embed-css';
+    if (!document.getElementById(stylesheetId)) {
+      const link = document.createElement('link');
+      link.id = stylesheetId;
+      link.href = 'https://www.testdome.com/content/certificates/embed.css';
+      link.type = 'text/css';
+      link.rel = 'stylesheet';
+      link.media = 'screen,print';
+      document.head.appendChild(link);
+    }
+  }, []);
+
   if (!cert) return null;
 
   const handleOpenLink = () => {
@@ -35,8 +49,23 @@ export function CertificateDialog({ cert, open, onClose }) {
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{cert.title}</DialogDescription>
         </div>
 
-        {/* Certificate Image Container */}
-        {cert.image && (
+        {/* Certificate Display Container */}
+        {cert.stampType ? (
+          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-theme p-4 w-full">
+            <a
+              href={cert.link && cert.link !== 'no link' ? cert.link : '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`testdome-certificate-stamp ${cert.stampType}`}
+            >
+              <span className="testdome-certificate-name">{cert.stampName}</span>
+              <span className="testdome-certificate-test-name">{cert.stampTestName || cert.title}</span>
+              <span className="testdome-certificate-card-logo">
+                TestDome<br />Certificate
+              </span>
+            </a>
+          </div>
+        ) : cert.image ? (
           <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-theme p-2 w-full">
             <img
               src={cert.image}
@@ -44,7 +73,7 @@ export function CertificateDialog({ cert, open, onClose }) {
               className="max-h-56 w-full object-contain rounded"
             />
           </div>
-        )}
+        ) : null}
 
         <div className="flex items-center gap-2">
           <input

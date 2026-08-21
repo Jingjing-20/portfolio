@@ -84,6 +84,9 @@ export const CERTIFICATE_CATEGORIES = [
         icon: TestDomeIcon,
         issuedDate: '2026-07-01',
         link: 'https://www.testdome.com/certificates/c523462eabb34a45a4d48a55822c798b',
+        stampType: 'gold',
+        stampName: 'Gian Carlo N. Ule...',
+        stampTestName: 'SQL',
       },
       {
         id: 'php-testdome',
@@ -92,7 +95,10 @@ export const CERTIFICATE_CATEGORIES = [
         image: phpImg,
         icon: TestDomeIcon,
         issuedDate: '2026-08-19',
-        link: 'https://www.testdome.com/certificates/8be7dc5ac42d4fb195d649f551edd55d',
+        link: 'https://www.testdome.com/certificates/c08ebc6cfc4445acb03e8c7302469005',
+        stampType: 'silver',
+        stampName: 'Gian Carlo Ulep',
+        stampTestName: 'PHP',
       },
       /*
       {
@@ -103,15 +109,21 @@ export const CERTIFICATE_CATEGORIES = [
         icon: TestDomeIcon,
         issuedDate: '2026-08-19',
         link: 'https://www.testdome.com/certificates/961006f82e884675b462f8f12e0fa45c',
+        stampType: 'silver',
+        stampName: 'Gian Carlo Ulep',
+        stampTestName: 'PYTHON',
       },*/
-            {
+      {
         id: 'html/css-testdome',
         title: 'HTML/CSS',
         org: 'TestDome',
         image: htmlcssImg,
         icon: TestDomeIcon,
         issuedDate: '2026-08-19',
-        link: 'https://www.testdome.com/certificates/961006f82e884675b462f8f12e0fa45c',
+        link: 'https://www.testdome.com/certificates/c08ebc6cfc4445acb03e8c7302469005',
+        stampType: 'silver',
+        stampName: 'Gian Carlo Ulep',
+        stampTestName: 'HTML/CSS',
       },
     ],
   },
