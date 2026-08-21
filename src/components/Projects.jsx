@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { cn } from '@/lib/utils';
 import { ProjectDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
@@ -201,10 +200,7 @@ export default function Projects() {
                 // Deployed project layout with cover image and icon button
                 <ul className="space-y-6 md:space-y-7">
                   {items.map((project) => (
-                    <li key={project.id} className="flex items-start gap-3">
-                      <span className="text-base-content flex-shrink-0 self-center">
-                        <FolderFiles size={14} />
-                      </span>
+                    <li key={project.id} className="flex items-start">
                       <div className="flex-1 space-y-3">
                         <div className="flex gap-4 items-start">
                           {/* Cover Image - Double Border with Icon Button and Hover Rotate */}

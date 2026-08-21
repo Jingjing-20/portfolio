@@ -42,7 +42,7 @@ function App() {
         </div>
 
         {/* Main content layer */}
-        <div className="relative z-10">
+        <div className="relative z-10" >
           {/* 1. Navbar */}
           <Navbar />
 
@@ -53,7 +53,7 @@ function App() {
                 {/* Left column - 40% (4 out of 12 columns) */}
                 <aside className="md:col-span-6 pb-6 md:sticky md:top-28 md:self-start">
                   <div className="w-full">
-                    <ScrollReveal animation="fadeInDown" duration="0.5s"><CardDev /></ScrollReveal>
+                    <ScrollReveal animation="fadeInLeft" duration="0.5s"><CardDev /></ScrollReveal>
                   </div>
                 </aside>
 
@@ -76,7 +76,7 @@ function App() {
                   </ScrollReveal>
                   <hr />
                   {/* 4. Certificates */}
-                  <ScrollReveal animation="fadeInUp" duration="0.5s">
+                  <ScrollReveal animation="fadeInRight" duration="0.5s">
                     <Certificates />
                   </ScrollReveal>
                 </div>
@@ -84,7 +84,7 @@ function App() {
 
               {/* Footer intentionally sits below both resume columns. */}
               <div className="border-t pt-6">
-                <ScrollReveal animation="fadeInRight" duration="0.5s">
+                <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <Footer />
                 </ScrollReveal>
               </div>

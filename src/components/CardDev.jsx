@@ -7,6 +7,7 @@ import {
 import ContactDialog from '@/components/resume_sections/carddev/ContactDialog';
 import { CONTACT_LINKS } from '@/components/resume_sections/carddev/contact_data';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
+import cardLogo from '@/components/resume_sections/carddev/code-circle-outline.svg';
 import { cn } from '@/lib/utils';
 
 const interactiveButtonClasses = cn(
@@ -61,7 +62,10 @@ export default function CardDev() {
             )}
           >
             {/* Role - Positioned above image */}
-            <div className="w-full">
+            <div className="w-full flex gap-3 ">
+              <span className="flex items-center gap-2">
+                <img src={cardLogo} alt="Code Icon" className="w-6 h-6 dark:invert" />
+              </span>
               <span className="text-base-content font-bold text-md md:text-xl tracking-wider">
                 <ShimmeringText
                   text="Software Developer"
@@ -82,7 +86,7 @@ export default function CardDev() {
                     'w-20 h-20', // Smaller size
                     'md:w-25 md:h-25', // Smaller size on desktop
                     'p-0.5 md:p-1 rounded-md',
-                    'border-2 border-gray-600 dark:border-gray-300',
+                    'border-3 border-gray-300 dark:border-white/20',
                     'bg-gradient-image-border shadow-lg'
                   )}
                 >
