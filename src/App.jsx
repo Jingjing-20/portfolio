@@ -51,14 +51,14 @@ function App() {
               {/* Grid with 12 columns for 40/60 split */}
               <div className="md:grid md:grid-cols-12 md:gap-16">
                 {/* Left column - 40% (4 out of 12 columns) */}
-                <aside className="md:col-span-5 pb-6 md:sticky md:top-28 md:self-start">
+                <aside className="md:col-span-6 pb-6 md:sticky md:top-28 md:self-start">
                   <div className="w-full">
                     <ScrollReveal animation="fadeInUp" duration="0.5s"><CardDev /></ScrollReveal>
                   </div>
                 </aside>
 
                 {/* Right column - 60% (8 out of 12 columns) */}
-                <div className="md:col-span-7 space-y-6 pb-6">
+                <div className="md:col-span-6 space-y-6 pb-6">
                   <hr className='block md:hidden' />
                   {/* 1. Stack */}
                   <ScrollReveal animation="fadeInUp" duration="0.5s">
