@@ -121,14 +121,26 @@ export default function CardDev() {
                     </div>
                   </div>
 
-                  {/* Location - Full width */}
-                  <div className="flex flex-col min-w-0">
-                    <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
-                      Languages :
-                    </span>
-                    <span className="text-xs md:text-sm text-base-content font-medium">
-                      Filipino, English
-                    </span>
+                  <div className="grid grid-cols-2 gap-x-4">
+                    {/* Birth Date */}
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                        Languanges :
+                      </span>
+                      <span className="text-xs md:text-sm text-base-content font-medium">
+                        Filipino, English
+                      </span>
+                    </div>
+
+                    {/* Gender */}
+                    <div className="flex flex-col min-w-0">
+                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                        Phone# :
+                      </span>
+                      <span className="text-xs md:text-sm text-base-content font-medium">
+                        09562657521
+                      </span>
+                    </div>
                   </div>
 
                   {/* Location - Full width */}

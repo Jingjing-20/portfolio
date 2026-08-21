@@ -36,7 +36,7 @@ export default function TechStack() {
                 {stackCategory.description}
               </p>
             </div>
-            
+
             {/* Tools */}
             <div className="flex flex-wrap items-center gap-2">
               {stackCategory.tools.map((tool) => {
