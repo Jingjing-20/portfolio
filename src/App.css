@@ -117,20 +117,15 @@
   box-shadow: 0 10px 20px -5px rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Open Icon Visibility Inside Hover List Items */
+/* Open Icon Visibility Inside Hover List Items (Hidden by default, visible on hover/focus/active) */
 .hover-list-item .hover-open-icon {
-  opacity: 0.6;
+  opacity: 0 !important;
   transition: opacity 0.25s ease, transform 0.25s ease !important;
 }
 
-@media (min-width: 768px) {
-  .hover-list-item .hover-open-icon {
-    opacity: 0;
-  }
-}
-
 .hover-list-item:hover .hover-open-icon,
-.hover-list-item:focus-within .hover-open-icon {
+.hover-list-item:focus-within .hover-open-icon,
+.hover-list-item:active .hover-open-icon {
   opacity: 1 !important;
 }
 

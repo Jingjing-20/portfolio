@@ -53,9 +53,8 @@ const activeButtonClasses = cn(
 const mobileMenuButtonClasses = cn(
   'shadow-xl inline-flex items-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-200',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer'
+  'cursor-pointer hover-badge'
 );
 
 function ThemeTogglerBtn({ showLabel = false, className = '' }) {
