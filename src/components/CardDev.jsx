@@ -62,10 +62,10 @@ export default function CardDev() {
           >
             {/* Role - Positioned above image */}
             <div className="w-full">
-              <span className="text-base-content font-bold text-lg md:text-xl tracking-wider">
+              <span className="text-base-content font-bold text-md md:text-xl tracking-wider">
                 <ShimmeringText
                   text="Software Developer"
-                  className="font-bold"
+                  className="font-extrabold"
                 />
               </span>
             </div>
@@ -73,23 +73,23 @@ export default function CardDev() {
             <hr className="w-full" />
 
             {/* Image and Details - Side by side */}
-            <div className="flex flex-row items-center w-full gap-4 md:gap-6">
+            <div className="flex flex-row items-center w-full gap-3 md:gap-6">
               {/* Left Side - Profile Image (Smaller) */}
               <div className="shrink-0">
                 <div
                   className={cn(
                     'relative overflow-hidden',
-                    'w-25 h-25', // Smaller size
-                    'md:w-30 md:h-30', // Smaller size on desktop
-                    'rounded-lg',
-                    'border-double border-4 border-gray-300 dark:border-white/20',
+                    'w-20 h-20', // Smaller size
+                    'md:w-25 md:h-25', // Smaller size on desktop
+                    'p-0.5 md:p-1 rounded-md',
+                    'border-2 border-gray-600 dark:border-gray-300',
                     'bg-gradient-image-border shadow-lg'
                   )}
                 >
                   <img
                     src={profileImage}
                     alt="Gian Carlo N. Ulep"
-                    className="h-full w-full object-cover object-top"
+                    className="rounded-md h-full w-full object-cover object-top"
                   />
                 </div>
               </div>
@@ -99,13 +99,13 @@ export default function CardDev() {
                 {/* Personal Information */}
                 <div className="w-full text-base-content leading-relaxed space-y-1 md:space-y-2">
                   {/* Birthdate and Gender - Side by side */}
-                  <div className="grid grid-cols-2 gap-x-4">
+                  <div className="grid grid-cols-2 gap-x-6">
                     {/* Birth Date */}
                     <div className="flex flex-col min-w-0">
                       <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                         Birth Date :
                       </span>
-                      <span className="text-xs md:text-sm text-base-content font-medium">
+                      <span className="text-[10px] md:text-xs text-base-content font-medium">
                         05/27/2004
                       </span>
                     </div>
@@ -115,19 +115,19 @@ export default function CardDev() {
                       <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                         Gender :
                       </span>
-                      <span className="text-xs md:text-sm text-base-content font-medium">
+                      <span className="text-[10px] md:text-xs text-base-content font-medium">
                         Male
                       </span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-x-4">
+                  <div className="grid grid-cols-2 gap-x-6">
                     {/* Birth Date */}
                     <div className="flex flex-col min-w-0">
                       <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                         Languanges :
                       </span>
-                      <span className="text-xs md:text-sm text-base-content font-medium">
+                      <span className="text-[10px] md:text-xs text-base-content font-medium">
                         Filipino, English
                       </span>
                     </div>
@@ -137,7 +137,7 @@ export default function CardDev() {
                       <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                         Phone # :
                       </span>
-                      <span className="text-xs md:text-sm text-base-content font-medium">
+                      <span className="text-[10px] md:text-xs text-base-content font-medium">
                         09562657521
                       </span>
                     </div>
@@ -148,7 +148,7 @@ export default function CardDev() {
                     <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
                       Location :
                     </span>
-                    <span className="text-xs md:text-sm text-base-content font-medium">
+                    <span className="text-[10px] md:text-xs text-base-content font-medium">
                       Negros Occidental, Philippines
                     </span>
                   </div>
