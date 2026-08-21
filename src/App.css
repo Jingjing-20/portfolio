@@ -152,15 +152,24 @@
   box-shadow: 0 8px 16px -4px rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Tech Stack Brand Color Hover Effect */
-.hover-badge .tool-icon,
-.tech-badge-item .tool-icon {
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+/* Tech Stack Brand Color & Grayscale Hover Effect */
+.tool-icon-img {
+  width: 1.2em;
+  height: 1.2em;
+  object-fit: contain;
+  filter: grayscale(100%) contrast(150%);
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.hover-badge:hover .tool-icon,
-.tech-badge-item:hover .tool-icon {
-  color: var(--brand-color) !important;
+.dark .tool-icon-img,
+[data-theme="dark"] .tool-icon-img {
+  filter: grayscale(100%) invert(1) brightness(180%);
+}
+
+.hover-badge:hover .tool-icon-img,
+.tech-badge-item:hover .tool-icon-img,
+.tool-icon-img:hover {
+  filter: none !important;
 }
 
 .custom-background {
