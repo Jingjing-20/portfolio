@@ -97,7 +97,7 @@ export default function CardDev() {
               {/* Right Side - Content */}
               <div className="min-w-0 flex-1">
                 {/* Personal Information */}
-                <div className="w-full text-base-content leading-relaxed space-y-1.5 md:space-y-3">
+                <div className="w-full text-base-content leading-relaxed space-y-1 md:space-y-2">
                   {/* Birthdate and Gender - Side by side */}
                   <div className="grid grid-cols-2 gap-x-4">
                     {/* Birth Date */}

@@ -152,8 +152,15 @@
   box-shadow: 0 8px 16px -4px rgba(255, 255, 255, 0.1) !important;
 }
 
-.hover-theme-switch:active {
-  transform: scale(0.96) !important;
+/* Tech Stack Brand Color Hover Effect */
+.hover-badge .tool-icon,
+.tech-badge-item .tool-icon {
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hover-badge:hover .tool-icon,
+.tech-badge-item:hover .tool-icon {
+  color: var(--brand-color) !important;
 }
 
 .custom-background {

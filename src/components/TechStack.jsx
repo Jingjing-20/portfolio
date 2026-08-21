@@ -44,8 +44,14 @@ export default function TechStack() {
                 if (!stackTool) return null;
 
                 return (
-                  <div key={tool} className={techBadgeClasses}>
-                    {stackTool.icon}
+                  <div
+                    key={tool}
+                    className={techBadgeClasses}
+                    style={{ '--brand-color': stackTool.color }}
+                  >
+                    <span className="tool-icon flex items-center justify-center">
+                      {stackTool.icon}
+                    </span>
                     <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                       {tool}
                     </span>

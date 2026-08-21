@@ -47,7 +47,7 @@ function App() {
           <Navbar />
 
           <div className="pt-20 pb-8 md:pt-28">
-            <div className="mx-auto max-w-7xl px-4 md:px-6">
+            <div className="mx-auto max-w-6xl px-4 md:px-6">
               {/* Grid with 12 columns for 40/60 split */}
               <div className="md:grid md:grid-cols-12 md:gap-16">
                 {/* Left column - 40% (4 out of 12 columns) */}
