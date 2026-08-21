@@ -1,13 +1,5 @@
 import { Tools } from '@/components/resume_sections/stack/tools';
 import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
-import { cn } from '@/lib/utils';
-
-const techBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300',
-  'text-sm font-medium cursor-default hover:-translate-y-1 hover:rotate-3 active:translate-y-0 active:rotate-0'
-);
 
 export default function TechStack() {
   return (
@@ -45,7 +37,10 @@ export default function TechStack() {
                 if (!stackTool) return null;
 
                 return (
-                  <div key={tool} className={techBadgeClasses}>
+                  <div
+                    key={tool}
+                    className="shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2 bg-textured border border-gray-300 dark:border-white/20 hover:border-gray-800 dark:hover:border-white/70 transition-all duration-300 text-sm font-medium cursor-default hover:-translate-y-1 hover:rotate-3 active:translate-y-0 active:rotate-0"
+                  >
                     {stackTool.icon}
                     <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                       {tool}
