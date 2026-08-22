@@ -92,7 +92,7 @@ export const CERTIFICATE_CATEGORIES = [
         image: phpImg,
         icon: TestDomeIcon,
         issuedDate: '2026-08-19',
-        link: 'https://www.testdome.com/certificates/c08ebc6cfc4445acb03e8c7302469005',
+        link: 'https://www.testdome.com/certificates/8be7dc5ac42d4fb195d649f551edd55d',
       },
       /*
       {
