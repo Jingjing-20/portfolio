@@ -42,10 +42,10 @@ export const Tools = {
     color: '#F7DF1E',
     icon: <img src={jsSvg} alt="JavaScript" className="tool-icon-img" />,
   },
-  'Tailwind CSS': {
+  'Tailwind': {
     category: 'Frontend',
     color: '#38BDF8',
-    icon: <img src={tailwindSvg} alt="Tailwind CSS" className="tool-icon-img" />,
+    icon: <img src={tailwindSvg} alt="Tailwind" className="tool-icon-img" />,
   },
   'Vite': {
     category: 'Frontend',
