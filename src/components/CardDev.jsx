@@ -165,7 +165,7 @@ export default function CardDev() {
 
       {/* Description */}
       <div className="w-full text-base-content leading-relaxed text-left">
-        <p className="text-[8px] md:text-[10px] mt-1">
+        <p className="text-[10px] md:text-xs mt-1">
           Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
           I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
         </p>
