@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import Navbar from './components/Navbar'
 import ScrollReveal from './components/ScrollReveal'
@@ -26,6 +27,7 @@ function App() {
 
   return (
     <ScrollProgressProvider global>
+      <Analytics />
       <main className="custom-background relative min-h-screen transition-colors duration-300">
         {/* Top Scroll Progress Indicator */}
         <ScrollProgress
