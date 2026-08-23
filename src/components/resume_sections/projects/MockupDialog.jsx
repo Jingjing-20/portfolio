@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Dialog,
   DialogDescription,
@@ -14,6 +15,17 @@ const buttonClasses = cn(
   'disabled:pointer-events-none disabled:opacity-50',
   '[&_svg]:pointer-events-none [&_svg]:shrink-0',
   'text-sm font-medium cursor-pointer hover-badge'
+);
+
+const radioButtonClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'bg-textured border border-gray-300 dark:border-white/20',
+  'text-sm font-medium cursor-pointer hover-badge',
+  'disabled:opacity-50 disabled:pointer-events-none'
+);
+
+const radioButtonActiveClasses = cn(
+  'border-gray-800 dark:border-white/70'
 );
 
 function WebIcon({ size = 56 }) {
@@ -38,7 +50,11 @@ function WebIcon({ size = 56 }) {
 }
 
 export function MockupDialog({ mockup, open, onClose }) {
+  const [activeView, setActiveView] = useState('preview');
+
   if (!mockup) return null;
+
+  const hasPreviewImage = Boolean(mockup.previewImage);
 
   const handleOpenLink = () => {
     if (mockup.livePreview) {
@@ -48,7 +64,7 @@ export function MockupDialog({ mockup, open, onClose }) {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-md">
         <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">
             {mockup.name}
@@ -59,15 +75,85 @@ export function MockupDialog({ mockup, open, onClose }) {
           </DialogDescription>
         </div>
 
-        <div className="max-h-[300px] overflow-y-auto border border-gray-300 dark:border-white/20 rounded-md">
-          <div className="p-3 md:p-4 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
-            <div>
-              <p className="font-semibold mb-1.5">Styling:</p>
-              <p>{mockup.styling}</p>
-            </div>
-          </div>
+        {/* Radio Button Toggle */}
+        <div className="flex gap-2 items-center">
+          <label 
+            className={cn(
+              radioButtonClasses,
+              activeView === 'preview' && radioButtonActiveClasses,
+              !hasPreviewImage && 'opacity-50 pointer-events-none'
+            )}
+          >
+            <input
+              type="radio"
+              name="mockup-view"
+              value="preview"
+              checked={activeView === 'preview'}
+              onChange={() => setActiveView('preview')}
+              className="sr-only"
+              disabled={!hasPreviewImage}
+            />
+            <span className="text-[8px] md:text-[10px] font-medium text-base-content">Preview</span>
+          </label>
+          <label 
+            className={cn(
+              radioButtonClasses,
+              activeView === 'description' && radioButtonActiveClasses
+            )}
+          >
+            <input
+              type="radio"
+              name="mockup-view"
+              value="description"
+              checked={activeView === 'description'}
+              onChange={() => setActiveView('description')}
+              className="sr-only"
+            />
+            <span className="text-[8px] md:text-[10px] font-medium text-base-content">Description</span>
+          </label>
         </div>
 
+        <div className="space-y-4">
+          {/* Preview Section */}
+          {activeView === 'preview' && hasPreviewImage && (
+            <div className="relative overflow-hidden rounded-md border border-gray-400 bg-base-300/30">
+              <img
+                src={mockup.previewImage}
+                alt={mockup.name}
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          )}
+
+          {/* No Preview Message */}
+          {activeView === 'preview' && !hasPreviewImage && (
+            <div className="border border-gray-300 dark:border-white/20 rounded-md p-4 text-center">
+              <p className="text-[10px] md:text-xs text-base-content/70">No preview available</p>
+            </div>
+          )}
+
+          {/* Description Section */}
+          {activeView === 'description' && (
+            <div className="max-h-[300px] overflow-y-auto border border-gray-300 dark:border-white/20 rounded-md">
+              <div className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
+                <div>
+                  <p className="font-semibold mb-1.5">Category:</p>
+                  <p>{mockup.category}</p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-1.5">Format:</p>
+                  <p>{mockup.format}</p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-1.5">Styling:</p>
+                  <p>{mockup.styling}</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Live Preview Link */}
         {mockup.livePreview && (
           <div className="flex items-center gap-2">
             <input

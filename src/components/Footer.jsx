@@ -12,7 +12,7 @@ const PORTFOLIO_STACK = [
   { name: 'React', icon: Tools['React']?.icon },
   { name: 'JavaScript', icon: Tools['JavaScript']?.icon },
   { name: 'Vite', icon: Tools['Vite']?.icon },
-  { name: 'Tailwind CSS', icon: Tools['Tailwind CSS']?.icon },
+  { name: 'Tailwind', icon: Tools['Tailwind']?.icon },
   { name: 'Shadcn UI', icon: <ShadcnIcon className="h-5 w-5" /> },
 ];
 
