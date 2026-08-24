@@ -101,12 +101,12 @@ export default function CardDev() {
               {/* Right Side - Content */}
               <div className="min-w-0 flex-1">
                 {/* Personal Information */}
-                <div className="w-full text-base-content leading-relaxed space-y-1 md:space-y-2">
+                <div className="w-full text-base-content leading-relaxed space-y-0.5 md:space-y-1">
                   {/* Birthdate and Gender - Side by side */}
                   <div className="grid grid-cols-2 gap-x-6">
                     {/* Birth Date */}
                     <div className="flex flex-col min-w-0">
-                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
                         Birth Date :
                       </span>
                       <span className="text-[10px] md:text-xs text-base-content font-medium">
@@ -116,7 +116,7 @@ export default function CardDev() {
 
                     {/* Gender */}
                     <div className="flex flex-col min-w-0">
-                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
                         Gender :
                       </span>
                       <span className="text-[10px] md:text-xs text-base-content font-medium">
@@ -128,7 +128,7 @@ export default function CardDev() {
                   <div className="grid grid-cols-2 gap-x-6">
                     {/* Birth Date */}
                     <div className="flex flex-col min-w-0">
-                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
                         Languanges :
                       </span>
                       <span className="text-[10px] md:text-xs text-base-content font-medium">
@@ -138,7 +138,7 @@ export default function CardDev() {
 
                     {/* Gender */}
                     <div className="flex flex-col min-w-0">
-                      <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
                         Phone # :
                       </span>
                       <span className="text-[10px] md:text-xs text-base-content font-medium">
@@ -149,7 +149,7 @@ export default function CardDev() {
 
                   {/* Location - Full width */}
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider">
+                    <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
                       Location :
                     </span>
                     <span className="text-[10px] md:text-xs text-base-content font-medium">
@@ -189,7 +189,7 @@ export default function CardDev() {
               {contact.icon}
             </span>
 
-            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+            <span className="text-[6px] md:text-[10px] font-medium text-base-content">
               {contact.label}
             </span>
           </button>
