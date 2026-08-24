@@ -4,25 +4,6 @@ import CertificateDialog from '@/components/resume_sections/certificates/Certifi
 import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificates/certificates_data';
 import { PinList } from '@/components/animate-ui/components/community/pin-list';
 
-const openDialogBtn = cn(
-  'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
-  'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
-  'hover:bg-white dark:hover:bg-black transition-all duration-200',
-  'border border-gray-300 dark:border-white/30',
-  'hover:scale-110 hover:shadow-lg',
-  'shadow-md',
-  'z-10'
-);
-
-const orgLogo = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'disabled:pointer-events-none disabled:opacity-50',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer hover-badge'
-);
-
 // Helper function to format date
 const formatDate = (dateString) => {
   if (!dateString) return null;

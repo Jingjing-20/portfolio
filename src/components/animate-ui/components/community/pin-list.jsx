@@ -14,9 +14,6 @@ const orgLogo = cn(
   'rounded-lg p-2 flex-shrink-0',
   'shadow-xl inline-flex items-center justify-center',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-badge',
-  "[&_svg]:size-5 [&_svg]:text-neutral-500 dark:[&_svg]:text-neutral-400"
 );
 
 function PinList({
@@ -39,7 +36,7 @@ function PinList({
 
   const OpenIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/>
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
   );
 
