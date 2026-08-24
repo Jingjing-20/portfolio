@@ -234,7 +234,7 @@ export default function Navbar() {
 
           {/* Mobile: Theme Toggle + Dropdown Menu */}
           <div className="flex items-center gap-2">
-            <ThemeTogglerBtn showLabel={true} className="h-9 w-[64px]" />
+            <ThemeTogglerBtn showLabel={true} className="" />
 
             <div className="relative">
               <button
