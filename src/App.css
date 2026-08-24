@@ -163,8 +163,14 @@
 
 .hover-badge:hover .tool-icon-img,
 .tech-badge-item:hover .tool-icon-img,
+.hover-list-item:hover .tool-icon-img,
 .tool-icon-img:hover {
   filter: none !important;
+}
+
+.dark .hover-badge:hover .tool-icon-monochrome,
+[data-theme="dark"] .hover-badge:hover .tool-icon-monochrome {
+  filter: invert(1) brightness(180%) !important;
 }
 
 .custom-background {

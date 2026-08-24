@@ -1,9 +1,12 @@
 import apacheSvg from './stack icons/apache.svg';
 import bootstrapSvg from './stack icons/bootstrap.svg';
+import canvaSvg from './stack icons/canva.svg';
 import claudeSvg from './stack icons/claude.svg';
 import codexSvg from './stack icons/codex-light.svg';
 import cssSvg from './stack icons/css.svg';
+import figmaSvg from './stack icons/figma.svg';
 import tailwindSvg from './stack icons/file-type-tailwind.svg';
+import framerSvg from './stack icons/framer-filled.svg';
 import gitSvg from './stack icons/git.svg';
 import githubSvg from './stack icons/github.svg';
 import githubActionsSvg from './stack icons/githubactions.svg';
@@ -21,6 +24,22 @@ import supabaseSvg from './stack icons/supabase.svg';
 import viteSvg from './stack icons/vitejs.svg';
 
 export const Tools = {
+  // UI/UX & Design
+  'Figma': {
+    category: 'UI/UX & Design',
+    color: '#F24E1E',
+    icon: <img src={figmaSvg} alt="Figma" className="tool-icon-img" />,
+  },
+  'Framer': {
+    category: 'UI/UX & Design',
+    color: '#0055FF',
+    icon: <img src={framerSvg} alt="Framer" className="tool-icon-img tool-icon-monochrome" />,
+  },
+  'Canva': {
+    category: 'UI/UX & Design',
+    color: '#00C4CC',
+    icon: <img src={canvaSvg} alt="Canva" className="tool-icon-img" />,
+  },
   // Frontend
   'HTML': {
     category: 'Frontend',

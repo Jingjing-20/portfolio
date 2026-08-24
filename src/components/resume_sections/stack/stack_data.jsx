@@ -5,6 +5,11 @@ export const TECH_STACK = [
     tools: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Tailwind', 'React', 'Vite'],
   },
   {
+    category: 'UI/UX & Design',
+    description: 'Design systems, interactive prototypes, wireframes, and digital assets.',
+    tools: ['Figma', 'Framer', 'Canva'],
+  },
+  {
     category: 'Backend & APIs',
     description: 'Server-side frameworks and API development technologies.',
     tools: ['PHP', 'Laravel', 'Node.js', 'REST'],
