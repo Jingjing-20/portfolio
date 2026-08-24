@@ -13,7 +13,7 @@ const openDialogBtn = cn(
 const orgLogo = cn(
   'rounded-lg p-2 flex-shrink-0',
   'shadow-xl inline-flex items-center justify-center',
-  'bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double'
+  'bg-textured border border-gray-300 dark:border-white/20'
 );
 
 function PinList({
