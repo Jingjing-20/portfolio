@@ -1,32 +1,32 @@
 export const TECH_STACK = [
   {
     category: 'Frontend',
-    description: 'Modern component libraries and styling for responsive user experiences.',
-    tools: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Tailwind', 'React', 'Vite'],
+    description: 'Modern web technologies, frameworks, and styling tools for building responsive user interfaces.',
+    tools: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Tailwind', 'React'],
   },
   {
     category: 'UI/UX & Design',
-    description: 'Design systems, interactive prototypes, wireframes, and digital assets.',
+    description: 'Design systems, interactive prototypes, wireframes, and digital assets for modern user experiences.',
     tools: ['Figma', 'Framer', 'Canva'],
   },
   {
     category: 'Backend & APIs',
-    description: 'Server-side frameworks and API development technologies.',
+    description: 'Server-side development, backend frameworks, and API technologies.',
     tools: ['PHP', 'Laravel', 'Node.js', 'REST'],
   },
   {
     category: 'Databases & Backend Services',
-    description: 'Data storage solutions and backend-as-a-service platforms.',
+    description: 'Database systems and backend-as-a-service platforms for data storage and application development.',
     tools: ['MySQL', 'PostgreSQL', 'Supabase'],
   },
   {
     category: 'Infrastructure & DevOps',
-    description: 'Server infrastructure, deployment automation, and CI/CD pipelines.',
+    description: 'Web servers, deployment automation, and CI/CD tools for application delivery.',
     tools: ['Apache', 'GitHub Actions'],
   },
   {
     category: 'Development Tools',
-    description: 'Version control, AI-powered development, and productivity tools.',
+    description: 'Version control and AI-assisted development tools for modern software development.',
     tools: ['Git', 'GitHub', 'Antigravity', 'Codex', 'Claude'],
   },
 ];
