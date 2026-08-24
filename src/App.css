@@ -20,6 +20,7 @@
 .hover-badge:focus-visible,
 .custom-hover-badge:focus-visible {
   transform: translateY(-4px) rotate(3deg) !important;
+  border-style: double !important;
   border-color: #1f2937 !important;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
 }
@@ -106,6 +107,7 @@
 
 .hover-list-item:hover {
   transform: translateY(-2px) !important;
+  border-style: double !important;
   border-color: #1f2937 !important;
   background-color: #e5e7eb !important;
   box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1) !important;

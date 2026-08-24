@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
+  'bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'text-sm font-medium cursor-default hover-badge'
 );
 

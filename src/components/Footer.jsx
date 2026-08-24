@@ -19,11 +19,20 @@ const PORTFOLIO_STACK = [
 // Reusing the exact same button style from About section
 const outlineButtonWithLabelClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
+  'bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
   'text-sm font-medium cursor-pointer hover-badge'
+);
+
+const buttonUp = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+  'disabled:pointer-events-none disabled:opacity-50',
+  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
+  'text-sm font-medium cursor-pointer hover-theme-switch'
 );
 
 export default function Footer() {
@@ -68,7 +77,7 @@ export default function Footer() {
           <button
             type="button"
             onClick={scrollToTop}
-            className={outlineButtonWithLabelClasses}
+            className={buttonUp}
             aria-label="Back to top"
             title="Back to top"
           >
