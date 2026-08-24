@@ -45,22 +45,20 @@ const NAV_ITEMS = [
 
 const navButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer hover-theme-switch',
+  'bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'cursor-pointer hover-theme-switch'
+  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
 );
 
 const activeButtonClasses = cn(
-  'border border-gray-800 dark:border-white/70'
+  'border-2 border-gray-800 dark:border-white/70'
 );
 
 const mobileMenuButtonClasses = cn(
   'shadow-xl inline-flex items-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer hover-theme-switch',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-theme-switch'
+  'bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
+  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]'
 );
 
 function ThemeTogglerBtn({ showLabel = false, className = '' }) {
@@ -84,19 +82,19 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
         checked={isDark}
         onCheckedChange={handleToggle}
         className={cn(
-          "relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer p-1 hover-theme-switch",
+          "relative inline-flex h-7.5 w-[52px] items-center rounded-full bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer p-0.5 hover-theme-switch",
           className
         )}
         aria-label="Toggle theme"
       >
         <SwitchThumb
           style={{ viewTransitionName: 'theme-toggle-thumb-mobile' }}
-          className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform duration-300 data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0"
+          className="pointer-events-none flex items-center justify-center h-[20px] w-[20px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform duration-300 data-[state=checked]:translate-x-[22px] data-[state=unchecked]:translate-x-0"
         >
           {isDark ? (
-            <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" />
+            <Moon className="h-3 w-3 text-gray-800 dark:text-gray-200" />
           ) : (
-            <Sun className="h-4 w-4 text-gray-800 dark:text-gray-200" />
+            <Sun className="h-3 w-3 text-gray-800 dark:text-gray-200" />
           )}
         </SwitchThumb>
       </Switch>
@@ -108,17 +106,17 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
       <Switch
         checked={isDark}
         onCheckedChange={handleToggle}
-        className="relative inline-flex h-9 w-[64px] items-center rounded-full bg-textured border border-gray-300 dark:border-white/20 shadow-xl cursor-pointer p-1 hover-theme-switch"
+        className="relative inline-flex h-7.5 w-[52px] items-center rounded-full bg-textured border-2 hover:border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer p-0.5 hover-theme-switch"
         aria-label="Toggle theme"
       >
         <SwitchThumb
           style={{ viewTransitionName: 'theme-toggle-thumb' }}
-          className="pointer-events-none flex items-center justify-center h-[26px] w-[26px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform duration-300 data-[state=checked]:translate-x-[28px] data-[state=unchecked]:translate-x-0"
+          className="pointer-events-none flex items-center justify-center h-[20px] w-[20px] rounded-full bg-white dark:bg-zinc-800 border border-gray-300/80 dark:border-white/20 shadow-md transition-transform duration-300 data-[state=checked]:translate-x-[22px] data-[state=unchecked]:translate-x-0"
         >
           {isDark ? (
-            <Moon className="h-4 w-4 text-gray-800 dark:text-gray-200" />
+            <Moon className="h-3 w-3 text-gray-800 dark:text-gray-200" />
           ) : (
-            <Sun className="h-4 w-4 text-gray-800 dark:text-gray-200" />
+            <Sun className="h-3 w-3 text-gray-800 dark:text-gray-200" />
           )}
         </SwitchThumb>
       </Switch>
