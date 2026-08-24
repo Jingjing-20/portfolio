@@ -14,13 +14,13 @@ const buttonClasses = cn(
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   '[&_svg]:pointer-events-none [&_svg]:shrink-0',
-  'text-sm font-medium cursor-pointer hover-badge'
+  'text-sm font-medium cursor-pointer hover-theme-switch'
 );
 
 const radioButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'text-sm font-medium cursor-pointer hover-badge',
+  'text-sm font-medium cursor-pointer hover-theme-switch',
   'disabled:opacity-50 disabled:pointer-events-none'
 );
 
@@ -77,7 +77,7 @@ export function MockupDialog({ mockup, open, onClose }) {
 
         {/* Radio Button Toggle */}
         <div className="flex gap-2 items-center">
-          <label 
+          <label
             className={cn(
               radioButtonClasses,
               activeView === 'preview' && radioButtonActiveClasses,
@@ -95,7 +95,7 @@ export function MockupDialog({ mockup, open, onClose }) {
             />
             <span className="text-[8px] md:text-[10px] font-medium text-base-content">Preview</span>
           </label>
-          <label 
+          <label
             className={cn(
               radioButtonClasses,
               activeView === 'description' && radioButtonActiveClasses

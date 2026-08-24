@@ -15,7 +15,7 @@ const buttonClasses = cn(
 const radioButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20',
-  'text-sm font-medium cursor-pointer hover-badge',
+  'text-sm font-medium cursor-pointer hover-theme-switch',
   'disabled:opacity-50 disabled:pointer-events-none'
 );
 
@@ -111,7 +111,7 @@ export function ProjectDialog({ project, open, onClose }) {
 
         {/* Radio Button Toggle */}
         <div className="flex gap-2 items-center">
-          <label 
+          <label
             className={cn(
               radioButtonClasses,
               activeView === 'screenshots' && radioButtonActiveClasses,
@@ -129,7 +129,7 @@ export function ProjectDialog({ project, open, onClose }) {
             />
             <span className="text-[8px] md:text-[10px] font-medium text-base-content">Screenshots</span>
           </label>
-          <label 
+          <label
             className={cn(
               radioButtonClasses,
               activeView === 'description' && radioButtonActiveClasses

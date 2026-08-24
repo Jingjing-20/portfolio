@@ -19,7 +19,7 @@ const buttonClasses = cn(
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   '[&_svg]:pointer-events-none [&_svg]:shrink-0',
-  'text-sm font-medium cursor-pointer hover-badge'
+  'text-sm font-medium cursor-pointer hover-theme-switch'
 );
 
 export function ContactDialog({ contact, open, onClose }) {
