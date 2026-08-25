@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm font-medium cursor-default hover-badge'
+  'text-xs md:text-base font-medium cursor-default hover-badge'
 );
 
 export default function TechStack() {
@@ -52,7 +52,7 @@ export default function TechStack() {
                     <span className="tool-icon flex items-center justify-center">
                       {stackTool.icon}
                     </span>
-                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                    <span className="text-[10px] md:text-xs font-medium text-base-content">
                       {tool}
                     </span>
                   </div>

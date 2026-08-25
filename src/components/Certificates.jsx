@@ -4,6 +4,7 @@ import CertificateDialog from '@/components/resume_sections/certificates/Certifi
 import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificates/certificates_data';
 import { PinList } from '@/components/animate-ui/components/community/pin-list';
 
+
 // Helper function to format date
 const formatDate = (dateString) => {
   if (!dateString) return null;
