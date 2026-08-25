@@ -50,7 +50,7 @@ function PinList({
               layoutId={`item-${item.id}`}
               onClick={() => handleItemClick(item.id)}
               transition={transition}
-              className="border-4 border-solid border-gray-300 dark:border-white/30 hover:border-double flex items-center justify-between gap-5 rounded-xl bg-theme p-1 md:p-2 group cursor-pointer hover-list-item">
+              className="border-3 border-solid border-gray-300 dark:border-white/30 hover:border-double flex items-center justify-between gap-5 rounded-xl bg-theme p-1 md:p-2 group cursor-pointer hover-list-item">
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <div className={orgLogo}>
                   <item.icon />

@@ -111,7 +111,7 @@ export default function Projects() {
                           key={mockup.id}
                           className={cn(
                             'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
-                            'bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                            'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
                             'w-30 md:w-35 flex-shrink-0 hover-card'
                           )}
                           role="button"
@@ -207,7 +207,7 @@ export default function Projects() {
                           {project.coverImage && (
                             <div className="flex-shrink-0 w-30 md:w-35 relative group">
                               <div
-                                className="relative p-1 md:p-1.5 rounded-lg shadow-xl bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
+                                className="relative p-1 md:p-1.5 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
                                 onClick={() => setSelectedProject(project)}
                               >
                                 {/* Open Icon Button - Top Right */}

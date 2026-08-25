@@ -46,12 +46,12 @@ const navButtonClasses = cn(
 );
 
 const activeButtonClasses = cn(
-  'border-4 border-gray-800 dark:border-white/70'
+  'border-3 border-gray-800 dark:border-white/70'
 );
 
 const mobileMenuButtonClasses = cn(
   'shadow-xl inline-flex items-center gap-2 rounded-md p-2',
-  'bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]'
 );
 
@@ -76,7 +76,7 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
         checked={isDark}
         onCheckedChange={handleToggle}
         className={cn(
-          "relative inline-flex h-7.5 w-[52px] items-center rounded-full bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer p-0.5 hover-theme-switch",
+          "relative inline-flex h-7.5 w-[52px] items-center rounded-full bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer p-0.5 hover-theme-switch",
           className
         )}
         aria-label="Toggle theme"
@@ -100,7 +100,7 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
       <Switch
         checked={isDark}
         onCheckedChange={handleToggle}
-        className="relative inline-flex h-7.5 w-[52px] items-center rounded-full bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer p-0.5 hover-theme-switch"
+        className="relative inline-flex h-7.5 w-[52px] items-center rounded-full bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer p-0.5 hover-theme-switch"
         aria-label="Toggle theme"
       >
         <SwitchThumb
