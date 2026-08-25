@@ -8,12 +8,6 @@ import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
 import { StackLine } from '@/components/animate-ui/icons/stack-line';
 import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
-import {
-  TooltipProvider,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from '@/components/animate-ui/primitives/animate/tooltip';
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
@@ -45,7 +39,7 @@ const NAV_ITEMS = [
 
 const navButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
@@ -147,7 +141,7 @@ export default function Navbar() {
       <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
         <div
           className={cn(
-            'grid max-w-4xl mx-auto grid-cols-3 items-center px-6 py-3'
+            'grid max-w-6xl mx-auto grid-cols-3 items-center px-6 py-3'
           )}
         >
           {/* Portfolio identity */}
@@ -169,39 +163,33 @@ export default function Navbar() {
           </button>
 
           {/* Desktop: Center Navigation Buttons */}
-          <TooltipProvider openDelay={100} closeDelay={100}>
-            <nav
-              aria-label="Main navigation"
-              className="flex items-center justify-self-center gap-2"
-            >
-              {NAV_ITEMS.map((item) => {
-                const isActive = activeTab === item.value;
+          <nav
+            aria-label="Main navigation"
+            className="flex items-center justify-self-center gap-2"
+          >
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeTab === item.value;
 
-                return (
-                  <Tooltip key={item.value} side="bottom" sideOffset={8}>
-                    <TooltipTrigger asChild>
-                      <button
-                        type="button"
-                        onClick={(e) => handleNavClick(e, item.value, item.href)}
-                        className={cn(
-                          navButtonClasses,
-                          'transition-transform duration-300 ease-out hover:scale-110 active:scale-95',
-                          isActive && activeButtonClasses
-                        )}
-                        aria-label={item.label}
-                        aria-current={isActive ? 'page' : undefined}
-                      >
-                        {item.icon}
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent className="rounded-md bg-textured border border-gray-300 dark:border-white/20 px-2.5 py-1 text-xs font-medium text-base-content shadow-xl pointer-events-none">
-                      {item.label}
-                    </TooltipContent>
-                  </Tooltip>
-                );
-              })}
-            </nav>
-          </TooltipProvider>
+              return (
+                <button
+                  key={item.value}
+                  type="button"
+                  onClick={(e) => handleNavClick(e, item.value, item.href)}
+                  className={cn(
+                    navButtonClasses,
+                    isActive && activeButtonClasses
+                  )}
+                  aria-label={item.label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.icon}
+                  <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
 
           {/* Desktop: Right Theme Toggle */}
           <div className="flex items-center justify-self-end">
