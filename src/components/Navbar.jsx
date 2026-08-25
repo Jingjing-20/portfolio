@@ -141,14 +141,14 @@ export default function Navbar() {
       <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
         <div
           className={cn(
-            'grid max-w-6xl mx-auto grid-cols-3 items-center px-6 py-3'
+            'flex max-w-6xl mx-auto items-center px-6 py-3'
           )}
         >
           {/* Portfolio identity */}
           <button
             type="button"
             onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
-            className="flex items-center gap-2 justify-self-start rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0"
             aria-label="About Gian Carlo N. Ulep"
             aria-current={activeTab === 'carddev' ? 'page' : undefined}
           >
@@ -162,37 +162,43 @@ export default function Navbar() {
             </h1>
           </button>
 
-          {/* Desktop: Center Navigation Buttons */}
-          <nav
-            aria-label="Main navigation"
-            className="flex items-center justify-self-center gap-2"
-          >
-            {NAV_ITEMS.map((item) => {
-              const isActive = activeTab === item.value;
+          {/* Spacer to push nav and switch to the right */}
+          <div className="flex-1" />
 
-              return (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={(e) => handleNavClick(e, item.value, item.href)}
-                  className={cn(
-                    navButtonClasses,
-                    isActive && activeButtonClasses
-                  )}
-                  aria-label={item.label}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {item.icon}
-                  <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                    {item.label}
-                  </span>
-                </button>
-              );
-            })}
-          </nav>
+          {/* Desktop: Navigation Buttons + Theme Toggle Group */}
+          <div className="flex items-center gap-3">
+            <nav
+              aria-label="Main navigation"
+              className="flex items-center gap-2"
+            >
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeTab === item.value;
 
-          {/* Desktop: Right Theme Toggle */}
-          <div className="flex items-center justify-self-end">
+                return (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={(e) => handleNavClick(e, item.value, item.href)}
+                    className={cn(
+                      navButtonClasses,
+                      isActive && activeButtonClasses
+                    )}
+                    aria-label={item.label}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item.icon}
+                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                      {item.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+
+            {/* Vertical Divider */}
+            <div className="h-8 w-px bg-gray-300 dark:bg-white/20" />
+
+            {/* Theme Toggle */}
             <ThemeTogglerBtn />
           </div>
         </div>
