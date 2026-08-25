@@ -15,7 +15,7 @@ const interactiveButtonClasses = cn(
   'bg-textured border-4 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer hover-badge'
+  'text-sm md:text-base font-medium cursor-pointer hover-badge'
 );
 
 export default function CardDev() {
@@ -189,7 +189,7 @@ export default function CardDev() {
               {contact.icon}
             </span>
 
-            <span className="text-[6px] md:text-[10px] font-medium text-base-content">
+            <span className="text-[10px] md:text-xs font-medium text-base-content">
               {contact.label}
             </span>
           </button>
