@@ -56,24 +56,28 @@ function App() {
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <CardDev />
                 </ScrollReveal>
+
                 <hr />
                 
                 {/* 2. Stack */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <TechStack />
                 </ScrollReveal>
+
                 <hr />
                 
                 {/* 3. Experience */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <Experience />
                 </ScrollReveal>
+
                 <hr />
                 
                 {/* 4. Projects */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <Projects />
                 </ScrollReveal>
+                
                 <hr />
                 
                 {/* 5. Certificates */}
