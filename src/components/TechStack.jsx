@@ -41,7 +41,7 @@ export default function TechStack() {
               <span className="tool-icon flex items-center justify-center">
                 {stackTool.icon}
               </span>
-              <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                 {tool}
               </span>
             </div>
@@ -67,7 +67,7 @@ export default function TechStack() {
       </header>
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
-      
+
       {/* Mobile: Single column | Desktop: Two columns */}
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
         {/* Left Column */}

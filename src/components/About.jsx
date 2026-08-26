@@ -204,7 +204,7 @@ export default function About() {
                 {contact.icon}
               </span>
 
-              <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                 {contact.label}
               </span>
             </button>

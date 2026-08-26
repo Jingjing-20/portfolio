@@ -19,7 +19,7 @@ import { cn } from '@/lib/utils';
 const skillBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2 whitespace-nowrap flex-shrink-0',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base font-medium cursor-default hover-badge'
+  'text-[10px] md:text-xs font-medium cursor-default hover-theme-switch'
 );
 
 const arrowButtonClasses = cn(
@@ -30,14 +30,14 @@ const arrowButtonClasses = cn(
 
 function ArrowIcon({ direction = 'right' }) {
   return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width="0.5em" 
-      height="1em" 
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="0.5em"
+      height="1em"
       viewBox="0 0 12 24"
       style={{ transform: direction === 'left' ? 'rotate(180deg)' : 'none' }}
     >
-      <path fill="currentColor" fillRule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"/>
+      <path fill="currentColor" fillRule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
     </svg>
   );
 }
@@ -143,11 +143,11 @@ function ExperienceItem({ experience }) {
               )}
 
               {/* Scrollable skills container */}
-              <div 
+              <div
                 ref={scrollContainerRef}
                 className="flex items-center gap-2 overflow-x-auto flex-1"
                 onScroll={checkScroll}
-                style={{ 
+                style={{
                   scrollbarWidth: 'none',
                   msOverflowStyle: 'none',
                   WebkitOverflowScrolling: 'touch'
@@ -158,7 +158,7 @@ function ExperienceItem({ experience }) {
                     key={skill}
                     className={skillBadgeClasses}
                   >
-                    <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                       {skill}
                     </span>
                   </div>
@@ -199,7 +199,7 @@ export default function Experience() {
       </header>
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
-      
+
       <Timeline defaultValue={1} className=" w-full max-w-full ps-4">
         {EXPERIENCES.map((experience) => (
           <ExperienceItem

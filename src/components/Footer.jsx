@@ -41,7 +41,7 @@ export default function Footer() {
                 <span className="shrink-0 text-base-content [&_svg]:h-5 [&_svg]:w-5">
                   {item.icon}
                 </span>
-                <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+                <span className="text-[8px] md:text-[10px] font-medium text-base-content">
                   {item.name}
                 </span>
               </div>
