@@ -44,8 +44,8 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Built with Stack */}
         <div className="space-y-2 text-center md:text-left">
-          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs text-base-content font-semibold tracking-wider">
-            <Code2 className="h-3.5 w-3.5 text-base-content/60" />
+          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs lg:text-sm text-base-content font-semibold tracking-wider">
+            <Code2 className="h-3.5 w-3.5 lg:h-4 lg:w-4 text-base-content/60" />
             <span>Built With</span>
           </div>
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
@@ -54,7 +54,7 @@ export default function Footer() {
                 <span className="shrink-0 text-base-content [&_svg]:h-5 [&_svg]:w-5">
                   {item.icon}
                 </span>
-                <span className="text-[8px] font-medium text-base-content">
+                <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
                   {item.name}
                 </span>
               </div>
@@ -65,10 +65,10 @@ export default function Footer() {
         {/* Right: Copyright & Back to Top */}
         <div className="flex items-center gap-4 text-center md:text-right">
           <div className="space-y-1">
-            <p className="text-[10px] md:text-xs font-medium text-base-content">
+            <p className="text-[10px] md:text-xs lg:text-sm font-medium text-base-content">
               © {new Date().getFullYear()} Gian Carlo N. Ulep
             </p>
-            <p className="text-[8px] md:text-[10px] text-base-content/60">
+            <p className="text-[8px] md:text-[10px] lg:text-xs text-base-content/60">
               Designed & Crafted with Motion
             </p>
           </div>
@@ -80,7 +80,7 @@ export default function Footer() {
             aria-label="Back to top"
             title="Back to top"
           >
-            <ArrowUp className="h-4 w-4" />
+            <ArrowUp className="h-4 w-4 lg:h-5 lg:w-5" />
           </button>
         </div>
       </div>

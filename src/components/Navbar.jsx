@@ -137,7 +137,7 @@ export default function Navbar() {
       <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
         <div
           className={cn(
-            'flex max-w-7xl mx-auto items-center px-6 py-3'
+            'flex max-w-5xl mx-auto items-center px-6 py-3'
           )}
         >
           {/* Portfolio identity */}
@@ -152,7 +152,7 @@ export default function Navbar() {
               alt=""
               className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl font-bold text-base-content">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-base-content">
               Portfolio
             </h1>
           </button>
@@ -176,7 +176,7 @@ export default function Navbar() {
                     aria-label={item.label}
                   >
                     {item.icon}
-                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                    <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
                       {item.label}
                     </span>
                   </button>
@@ -211,7 +211,7 @@ export default function Navbar() {
               alt=""
               className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl font-bold text-base-content">Portfolio</h1>
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-base-content">Portfolio</h1>
           </button>
 
           {/* Mobile: Theme Toggle + Dropdown Menu */}
@@ -270,7 +270,7 @@ export default function Navbar() {
                               aria-label={item.label}
                             >
                               {item.icon}
-                              <span className="text-[8px] md:text-[10px] font-medium text-base-content">{item.label}</span>
+                              <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">{item.label}</span>
                             </button>
                           );
                         })}
