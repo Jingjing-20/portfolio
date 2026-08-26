@@ -3,37 +3,87 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImg from '@/components/resume_sections/carddev/android-chrome-512x512.png';
-import { Briefcase } from '@/components/animate-ui/icons/briefcase';
-import { FolderFiles } from '@/components/animate-ui/icons/folder-files';
-import { StackLine } from '@/components/animate-ui/icons/stack-line';
-import { Certificate } from '@/components/animate-ui/icons/certificate';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
 import { cn } from '@/lib/utils';
 
+// Custom SVG Icons
+function AboutIcon({ size = 20 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 512 512">
+      <path fill="currentColor" fillRule="evenodd" d="M256 42.667C138.18 42.667 42.667 138.179 42.667 256c0 117.82 95.513 213.334 213.333 213.334c117.822 0 213.334-95.513 213.334-213.334S373.822 42.667 256 42.667m0 384c-94.105 0-170.666-76.561-170.666-170.667S161.894 85.334 256 85.334c94.107 0 170.667 76.56 170.667 170.666S350.107 426.667 256 426.667m26.714-256c0 15.468-11.262 26.667-26.497 26.667c-15.851 0-26.837-11.2-26.837-26.963c0-15.15 11.283-26.37 26.837-26.37c15.235 0 26.497 11.22 26.497 26.666m-48 64h42.666v128h-42.666z"/>
+    </svg>
+  );
+}
+
+function StackIcon({ size = 20 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+      <path fill="currentColor" d="m20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.649l-9.285-5.57a.5.5 0 0 1 0-.858l1.202-.721L12 15.35zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 12.999L2.715 7.43a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0M12 3.332L5.887 7L12 10.668L18.113 7z"/>
+    </svg>
+  );
+}
+
+function BriefcaseIcon({ size = 20 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+        <path d="M3 9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm5-2V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m-4 5v.01"/>
+        <path d="M3 13a20 20 0 0 0 18 0"/>
+      </g>
+    </svg>
+  );
+}
+
+function FolderFilesIcon({ size = 20 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16">
+      <path fill="none" stroke="currentColor" strokeLinejoin="round" d="M3.5 4.5v-2h9V6m-10 2h11m-11-3.5v8h11V6h-6L6 4.5z"/>
+    </svg>
+  );
+}
+
+function CertificateIcon({ size = 20 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
+        <path d="M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0"/>
+        <path d="M13 17.5V22l2-1.5l2 1.5v-4.5"/>
+        <path d="M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2"/>
+      </g>
+    </svg>
+  );
+}
+
 const NAV_ITEMS = [
+  {
+    value: 'carddev',
+    label: 'About',
+    href: '#carddev',
+    icon: <AboutIcon size={20} />
+  },
   {
     value: 'stack',
     label: 'Stack',
     href: '#stack',
-    icon: <StackLine size={20} />
+    icon: <StackIcon size={20} />
   },
   {
     value: 'experience',
     label: 'Experience',
     href: '#experience',
-    icon: <Briefcase size={20} />
+    icon: <BriefcaseIcon size={20} />
   },
   {
     value: 'projects',
     label: 'Projects',
     href: '#projects',
-    icon: <FolderFiles size={20} />
+    icon: <FolderFilesIcon size={20} />
   },
   {
     value: 'certificates',
     label: 'Certificates',
     href: '#certificates',
-    icon: <Certificate size={20} />
+    icon: <CertificateIcon size={20} />
   },
 ];
 
@@ -137,7 +187,7 @@ export default function Navbar() {
       <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
         <div
           className={cn(
-            'flex max-w-5xl mx-auto items-center px-6 py-3'
+            'flex max-w-6xl mx-auto items-center px-6 py-3'
           )}
         >
           {/* Portfolio identity */}
