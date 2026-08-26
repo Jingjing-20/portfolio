@@ -168,12 +168,9 @@ export default function Navbar() {
             >
               {NAV_ITEMS.map((item) => {
                 return (
-                  <button
-                    key={item.value}
-                    type="button"
+                  <button key={item.value} type="button" 
                     onClick={(e) => handleNavClick(e, item.value, item.href)}
-                    className={navButtonClasses}
-                    aria-label={item.label}
+                    className={navButtonClasses} aria-label={item.label}
                   >
                     {item.icon}
                     <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
@@ -201,15 +198,12 @@ export default function Navbar() {
         )}>
           {/* Portfolio identity doubles as the CardDev shortcut. */}
           <button
-            type="button"
-            onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
+            type="button" onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label="About Gian Carlo N. Ulep"
           >
             <img
-              src={logoImg}
-              alt=""
-              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+              src={logoImg} alt="" className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-base-content">Portfolio</h1>
           </button>

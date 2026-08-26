@@ -12,7 +12,7 @@ const outlineButtonWithLabelClasses = cn(
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer hover-badge'
+  'text-sm font-medium cursor-pointer hover-theme-switch'
 );
 
 const iconButtonClasses = cn(
@@ -103,8 +103,20 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Carousel Mockup Layout
-                <div className="relative">
-                  <div className="py-3 overflow-hidden" ref={emblaRef}>
+                <div className="flex items-center gap-3">
+                  {/* Left control */}
+                  <button
+                    type="button"
+                    className={outlineButtonWithLabelClasses}
+                    onClick={scrollPrev}
+                    disabled={!canScrollPrev}
+                    aria-label="Previous mockups"
+                  >
+                    <ChevronLeft />
+                  </button>
+
+                  {/* Carousel container */}
+                  <div className="flex-1 py-3 overflow-hidden" ref={emblaRef}>
                     <div className="flex touch-pan-y touch-pinch-zoom gap-3">
                       {items.map((mockup) => (
                         <div
@@ -169,26 +181,10 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Carousel Controls - Left and Right */}
+                  {/* Right control */}
                   <button
                     type="button"
-                    className={cn(
-                      outlineButtonWithLabelClasses,
-                      'absolute left-2 top-1/2 -translate-y-1/2 z-10'
-                    )}
-                    onClick={scrollPrev}
-                    disabled={!canScrollPrev}
-                    aria-label="Previous mockups"
-                  >
-                    <ChevronLeft />
-                  </button>
-
-                  <button
-                    type="button"
-                    className={cn(
-                      outlineButtonWithLabelClasses,
-                      'absolute right-2 top-1/2 -translate-y-1/2 z-10'
-                    )}
+                    className={outlineButtonWithLabelClasses}
                     onClick={scrollNext}
                     disabled={!canScrollNext}
                     aria-label="Next mockups"
