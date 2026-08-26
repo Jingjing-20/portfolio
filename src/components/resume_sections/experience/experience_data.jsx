@@ -12,17 +12,15 @@ export const EXPERIENCES = [
     workMode: 'On-site',
     role: 'Software Developer',
     dateRange: 'Feb 2026 – May 2026',
-    description: [
-      'Developed GSO-ULPMMS, a centralized platform for managing provincial lots and properties, integrating property monitoring, document management, beneficiary tracking, and geographic visualization.',
-    ],
-    keyContributions: [
-      'Improved property management by developing a system for lot allocation and property donations',
-      'Simplified payment processing by implementing beneficiary and amortization tracking',
-      'Enhanced property monitoring by integrating interactive maps using Leaflet',
-      'Reduced manual paperwork by developing a secure document management system',
-      'Optimized reporting by implementing Excel import and export functionality',
-      'Improved decision-making by designing dashboards with real-time statistics',
-      'Strengthened system security by implementing role-based access control and user authentication'
+    description: 'Developed GSO-ULPMMS, a centralized platform for managing provincial lots and properties. The system handles lot allocation, property donations, beneficiary tracking, and amortization payments. Integrated interactive maps using Leaflet for property monitoring and location visualization. Built a secure document management system to reduce manual paperwork. Implemented Excel import/export for optimized reporting and designed dashboards with real-time statistics to support decision-making. Strengthened security with role-based access control and user authentication.',
+    skills: [
+      'Full Stack Development',
+      'Geographic Information Systems (GIS) Integration',
+      'Document Management Systems',
+      'Data Visualization & Reporting',
+      'System Security & Access Control',
+      'Database Management',
+      'Process Automation'
     ],
   },
 ];

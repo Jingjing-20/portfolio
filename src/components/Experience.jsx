@@ -1,6 +1,3 @@
-import { useState } from 'react';
-import { Briefcase } from '@/components/animate-ui/icons/briefcase';
-import { DetailsDialog } from '@/components/resume_sections/experience/ExperienceDialog';
 import { EXPERIENCES } from '@/components/resume_sections/experience/experience_data';
 import {
   Timeline,
@@ -18,19 +15,13 @@ import {
 } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 
-
-const outlineButtonWithLabelClasses = cn(
-  "shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2",
-  "bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double",
-  "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-  "disabled:pointer-events-none",
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  "text-sm font-medium cursor-pointer hover-badge"
+const skillBadgeClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'text-[10px] md:text-xs cursor-default hover-theme-switch'
 );
 
-const KEY_CONTRIBUTIONS_TITLE = 'Key Contributions';
-
-function ExperienceItem({ experience, onOpenDetails }) {
+function ExperienceItem({ experience }) {
   return (
     <TimelineItem
       step={experience.step}
@@ -48,51 +39,60 @@ function ExperienceItem({ experience, onOpenDetails }) {
         </TimelineIndicator>
       </TimelineHeader>
       <TimelineContent>
-        <div className="space-y-2">
-          {/* Role title - stays outside the card, aligned with timeline */}
-          <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
-            {experience.role}
-          </h3>
+        <div className="space-y-1 md:space-y-2">
+          <div>
+            {/* Company name - aligned with timeline */}
+            <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
+              {experience.company}
+            </h3>
 
-          {/* Card content with border */}
-          <div className="border border-gray-300 dark:border-white/20 rounded-sm md:rounded-md p-1 md:p-2 lg:p-3 shadow-xl">
-            {/* Desktop: Flex row with details button on right | Mobile: Stack vertically */}
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-4">
-              {/* Left side: Experience details */}
-              <div className="space-y-1 flex-1">
-                <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
-                  {experience.company}
-                  <span className="mx-1 text-base-content/40">·</span>
-                  {experience.employmentType}
-                </p>
-                <TimelineDate className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
-                  {experience.dateRange}
-                  <span className="mx-1 text-base-content/40">·</span>
-                  {experience.durationMonths}
-                </TimelineDate>
-                <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
-                  {experience.location}
-                  <span className="mx-1 text-base-content/40">·</span>
-                  {experience.workMode}
-                </p>
-              </div>
-
-              {/* Right side: Details button (Mobile: below, Desktop: aligned right) */}
-              <div className="mt-3 lg:mt-0 lg:flex-shrink-0">
-                <button
-                  type="button"
-                  className={outlineButtonWithLabelClasses}
-                  onClick={() => onOpenDetails(experience)}
-                  aria-label="Details"
-                >
-                  <Briefcase size={16} />
-                  <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
-                    Details
-                  </span>
-                </button>
-              </div>
-            </div>
+          {/* Employment type, duration, location - compact */}
+            <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+              {experience.employmentType}
+              <span className="mx-1 text-base-content/40">·</span>
+              {experience.durationMonths}
+            </p>
+            <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+              {experience.location}
+              <span className="mx-1 text-base-content/40">·</span>
+              {experience.workMode}
+            </p>
           </div>
+
+          {/* Role and Date range - compact */}
+          <div className="">
+            <h4 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+              {experience.role}
+            </h4>
+            <TimelineDate className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+              {experience.dateRange}
+              <span className="mx-1 text-base-content/40">·</span>
+              {experience.durationMonths}
+            </TimelineDate>
+          </div>
+
+          {/* Description - compact */}
+          {experience.description && (
+            <p className="text-[10px] md:text-xs lg:text-sm text-base-content/80 leading-relaxed">
+              {experience.description}
+            </p>
+          )}
+
+          {/* Skills - badge format like TechStack */}
+          {experience.skills && experience.skills.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              {experience.skills.map((skill) => (
+                <div
+                  key={skill}
+                  className={skillBadgeClasses}
+                >
+                  <span className="text-[8px] md:text-[10px] text-base-content">
+                    {skill}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </TimelineContent>
     </TimelineItem>
@@ -100,19 +100,6 @@ function ExperienceItem({ experience, onOpenDetails }) {
 }
 
 export default function Experience() {
-  const [detailsOpen, setDetailsOpen] = useState(false);
-  const [selectedExperience, setSelectedExperience] = useState(null);
-
-  const handleOpenDetails = (experience) => {
-    setSelectedExperience(experience);
-    setDetailsOpen(true);
-  };
-
-  const handleCloseDetails = () => {
-    setDetailsOpen(false);
-    setSelectedExperience(null);
-  };
-
   return (
     <section id="experience" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
@@ -131,16 +118,9 @@ export default function Experience() {
           <ExperienceItem
             key={experience.step}
             experience={experience}
-            onOpenDetails={handleOpenDetails}
           />
         ))}
       </Timeline>
-
-      <DetailsDialog
-        experience={selectedExperience}
-        open={detailsOpen}
-        onClose={handleCloseDetails}
-      />
     </section>
   );
 }
