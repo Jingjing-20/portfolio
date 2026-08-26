@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import { EXPERIENCES } from '@/components/resume_sections/experience/experience_data';
 import {
   Timeline,
@@ -16,12 +17,60 @@ import {
 import { cn } from '@/lib/utils';
 
 const skillBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2 whitespace-nowrap flex-shrink-0',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-[10px] md:text-xs cursor-default hover-theme-switch'
+  'text-sm md:text-base font-medium cursor-default hover-badge'
 );
 
+const arrowButtonClasses = cn(
+  'shadow-xl inline-flex items-center justify-center rounded-md p-1.5 flex-shrink-0',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'cursor-pointer hover-theme-switch'
+);
+
+function ArrowIcon({ direction = 'right' }) {
+  return (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="0.5em" 
+      height="1em" 
+      viewBox="0 0 12 24"
+      style={{ transform: direction === 'left' ? 'rotate(180deg)' : 'none' }}
+    >
+      <path fill="currentColor" fillRule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414"/>
+    </svg>
+  );
+}
+
 function ExperienceItem({ experience }) {
+  const scrollContainerRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 200;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'right' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      });
+      setTimeout(checkScroll, 100);
+    }
+  };
+
+  // Check scroll on mount
+  useEffect(() => {
+    setTimeout(checkScroll, 100);
+  }, [experience.skills]);
+
   return (
     <TimelineItem
       step={experience.step}
@@ -39,14 +88,14 @@ function ExperienceItem({ experience }) {
         </TimelineIndicator>
       </TimelineHeader>
       <TimelineContent>
-        <div className="space-y-1 md:space-y-2">
-          <div>
-            {/* Company name - aligned with timeline */}
-            <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
-              {experience.company}
-            </h3>
+        <div className="space-y-2">
+          {/* Company name - aligned with timeline */}
+          <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
+            {experience.company}
+          </h3>
 
           {/* Employment type, duration, location - compact */}
+          <div className="space-y-0.5">
             <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
               {experience.employmentType}
               <span className="mx-1 text-base-content/40">·</span>
@@ -60,7 +109,7 @@ function ExperienceItem({ experience }) {
           </div>
 
           {/* Role and Date range - compact */}
-          <div className="">
+          <div className="space-y-0.5">
             <h4 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
               {experience.role}
             </h4>
@@ -78,19 +127,55 @@ function ExperienceItem({ experience }) {
             </p>
           )}
 
-          {/* Skills - badge format like TechStack */}
+          {/* Skills - horizontal scrollable with arrows */}
           {experience.skills && experience.skills.length > 0 && (
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              {experience.skills.map((skill) => (
-                <div
-                  key={skill}
-                  className={skillBadgeClasses}
+            <div className="flex items-center gap-2 pt-1">
+              {/* Left arrow */}
+              {canScrollLeft && (
+                <button
+                  type="button"
+                  onClick={() => scroll('left')}
+                  className={arrowButtonClasses}
+                  aria-label="Scroll left"
                 >
-                  <span className="text-[8px] md:text-[10px] text-base-content">
-                    {skill}
-                  </span>
-                </div>
-              ))}
+                  <ArrowIcon direction="left" />
+                </button>
+              )}
+
+              {/* Scrollable skills container */}
+              <div 
+                ref={scrollContainerRef}
+                className="flex items-center gap-2 overflow-x-auto flex-1"
+                onScroll={checkScroll}
+                style={{ 
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                  WebkitOverflowScrolling: 'touch'
+                }}
+              >
+                {experience.skills.map((skill) => (
+                  <div
+                    key={skill}
+                    className={skillBadgeClasses}
+                  >
+                    <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+                      {skill}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Right arrow */}
+              {canScrollRight && (
+                <button
+                  type="button"
+                  onClick={() => scroll('right')}
+                  className={arrowButtonClasses}
+                  aria-label="Scroll right"
+                >
+                  <ArrowIcon direction="right" />
+                </button>
+              )}
             </div>
           )}
         </div>
