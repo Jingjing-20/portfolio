@@ -48,8 +48,8 @@ function App() {
           {/* 1. Navbar */}
           <Navbar />
 
-          <div className="pt-20 pb-8 md:pt-28">
-            <div className="mx-auto max-w-4xl px-4 md:px-6">
+          <div className="pb-8 pt-20">
+            <div className="mx-auto max-w-5xl px-4 md:px-6 lg:px-8">
               {/* All sections stacked vertically */}
               <div className="space-y-6">
                 {/* 1. CardDev */}

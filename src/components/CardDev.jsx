@@ -109,7 +109,7 @@ export default function CardDev() {
                     <div className="grid grid-cols-2 gap-x-6">
                       {/* Birth Date */}
                       <div className="flex flex-col min-w-0">
-                        <span className="text-[6px] md:text-[10px] lg:text-xs  text-base-content/70 tracking-wider">
+                        <span className="text-[6px] md:text-[10px] lg:text-xs text-base-content/70 tracking-wider">
                           Birth Date :
                         </span>
                         <span className="text-[10px] md:text-xs lg:text-sm text-base-content font-medium">
@@ -169,7 +169,7 @@ export default function CardDev() {
         {/* Description and Contact Buttons */}
         <div className="flex flex-col gap-4">
           {/* Description */}
-          <div className="w-full text-base-content leading-relaxed text-left">
+          <div className="w-full text-base-content/70 leading-relaxed text-left">
             <p className="text-[10px] md:text-xs lg:text-sm">
               Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
               I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
@@ -194,7 +194,7 @@ export default function CardDev() {
                   {contact.icon}
                 </span>
 
-                <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
                   {contact.label}
                 </span>
               </button>
