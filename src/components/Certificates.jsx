@@ -41,10 +41,10 @@ export default function Certificates() {
     <section id="certificates" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
             Certificates
           </h2>
-          <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
+          <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
             Certifications and earned credentials
           </p>
         </div>

@@ -43,7 +43,7 @@ function PinList({
   return (
     <motion.div className={cn('', className)} {...props}>
       <LayoutGroup>
-        <div className={cn('grid grid-cols-2 gap-3 relative', unpinnedSectionClassName)}>
+        <div className={cn('grid grid-cols-2 lg:grid-cols-3 gap-3 relative', unpinnedSectionClassName)}>
           {unpinned.map((item) => (
             <motion.div
               key={item.id}
@@ -56,8 +56,8 @@ function PinList({
                   <item.icon />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <div className="text-[10px] md:text-xs font-semibold truncate">{item.name}</div>
-                  <div className="text-[8px] md:text-[10px] text-neutral-500 dark:text-neutral-400 font-medium truncate">
+                  <div className="text-[10px] md:text-xs lg:text-sm font-semibold truncate">{item.name}</div>
+                  <div className="text-[8px] md:text-[10px] lg:text-xs text-neutral-500 dark:text-neutral-400 font-medium truncate">
                     {item.info}
                   </div>
                 </div>
