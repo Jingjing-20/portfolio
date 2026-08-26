@@ -1,5 +1,5 @@
+import { Code2 } from 'lucide-react';
 import { Tools } from '@/components/resume_sections/stack/tools';
-import { ArrowUp, Code2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ShadcnIcon = (props) => (
@@ -25,20 +25,7 @@ const outlineButtonWithLabelClasses = cn(
   'text-sm md:text-base font-medium cursor-pointer hover-badge'
 );
 
-const buttonUp = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'disabled:pointer-events-none disabled:opacity-50',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer hover-theme-switch'
-);
-
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="">
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -73,15 +60,6 @@ export default function Footer() {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={scrollToTop}
-            className={buttonUp}
-            aria-label="Back to top"
-            title="Back to top"
-          >
-            <ArrowUp className="h-4 w-4 lg:h-5 lg:w-5" />
-          </button>
         </div>
       </div>
     </footer>

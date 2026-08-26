@@ -198,6 +198,8 @@ export default function Experience() {
         </div>
       </header>
 
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      
       <Timeline defaultValue={1} className=" w-full max-w-full ps-4">
         {EXPERIENCES.map((experience) => (
           <ExperienceItem

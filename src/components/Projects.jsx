@@ -88,6 +88,8 @@ export default function Projects() {
         </div>
       </header>
 
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      
       <div className="space-y-6 md:space-y-8">
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>

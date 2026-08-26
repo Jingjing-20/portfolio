@@ -40,8 +40,12 @@ function PinList({
     </svg>
   );
 
+  
   return (
     <motion.div className={cn('', className)} {...props}>
+
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+
       <LayoutGroup>
         <div className={cn('grid grid-cols-2 lg:grid-cols-3 gap-3 relative', unpinnedSectionClassName)}>
           {unpinned.map((item) => (

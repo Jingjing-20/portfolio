@@ -12,7 +12,6 @@ import Certificates from './components/Certificates'
 import Footer from './components/Footer'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
 import { CometCursor } from '@/components/ui/comet-cursor'
-import { ScrollProgressProvider, ScrollProgress } from '@/components/animate-ui/primitives/animate/scroll-progress'
 
 function App() {
   const { resolvedTheme } = useTheme()
@@ -26,14 +25,9 @@ function App() {
   const starColor = isDark ? 'rgba(255, 255, 255, 0.65)' : 'rgba(115, 115, 115, 0.35)'
 
   return (
-    <ScrollProgressProvider global>
+    <>
       <Analytics />
       <main className="custom-background relative min-h-screen transition-colors duration-300">
-        {/* Top Scroll Progress Indicator */}
-        <ScrollProgress
-          mode="scaleX"
-          className="fixed top-0 left-0 right-0 h-1 bg-gray-900 dark:bg-white z-[100] origin-left shadow-xl"
-        />
 
         {/* Comet Cursor Trail */}
         <CometCursor />
@@ -56,30 +50,22 @@ function App() {
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <About />
                 </ScrollReveal>
-
-                <hr />
                 
                 {/* 2. Stack */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <TechStack />
                 </ScrollReveal>
-
-                <hr />
                 
                 {/* 3. Experience */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <Experience />
                 </ScrollReveal>
-
-                <hr />
                 
                 {/* 4. Projects */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <Projects />
                 </ScrollReveal>
-                
-                <hr />
-                
+                                
                 {/* 5. Certificates */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
                   <Certificates />
@@ -96,7 +82,7 @@ function App() {
           </div>
         </div>
       </main>
-    </ScrollProgressProvider>
+    </>
   )
 }
 

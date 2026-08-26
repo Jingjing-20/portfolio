@@ -66,6 +66,8 @@ export default function TechStack() {
         </div>
       </header>
 
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      
       {/* Mobile: Single column | Desktop: Two columns */}
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
         {/* Left Column */}

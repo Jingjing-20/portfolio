@@ -27,23 +27,25 @@ export default function About() {
       aria-label="About me"
       className="space-y-4"
     >
-      {/* Header */}
-      <header className="mb-3 md:mb-6">
+      {/* Header - Left aligned */}
+      <header>
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
-            Gian Carlo N. Ulep
+            About
           </h2>
 
           <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
-            Bachelor of Science in Information Technology - 2026
+            Get to know me better
           </p>
         </div>
       </header>
 
-      {/* Mobile: Centered | Desktop: Card on left, Description + Contact on right */}
-      <div className="flex flex-col md:flex-row gap-4 md:gap-6">
-        {/* Profile Card */}
-        <div className="flex justify-center md:flex-shrink-0 md:justify-start">
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+
+      {/* All content stacked and centered */}
+      <div className="flex flex-col items-center gap-4 md:gap-6">
+        {/* Profile Card - Centered */}
+        <div className="flex justify-center w-full">
           <Tilt
             rotationFactor={8}
             springOptions={{
@@ -54,7 +56,7 @@ export default function About() {
             <TiltContent
               className={cn(
                 'relative overflow-hidden',
-                'max-w-2xl',
+                'max-w-2xl w-full',
                 'rounded-xl',
                 'border-3 border-gray-300 dark:border-white/20',
                 'bg-gradient-card shadow-xl',
@@ -80,7 +82,7 @@ export default function About() {
 
               {/* Image and Details - Side by side */}
               <div className="flex flex-row items-center w-full gap-3 md:gap-6">
-                {/* Left Side - Profile Image (Smaller) */}
+                {/* Left Side - Profile Image */}
                 <div className="shrink-0">
                   <div
                     className={cn(
@@ -119,7 +121,7 @@ export default function About() {
 
                       {/* Gender */}
                       <div className="flex flex-col min-w-0">
-                        <span className="text-[6px] md:text-[10px] lg:text-xs  text-base-content/70 tracking-wider">
+                        <span className="text-[6px] md:text-[10px] lg:text-xs text-base-content/70 tracking-wider">
                           Gender :
                         </span>
                         <span className="text-[10px] md:text-xs lg:text-sm text-base-content font-medium">
@@ -131,7 +133,7 @@ export default function About() {
                     <div className="grid grid-cols-2 gap-x-6">
                       {/* Languages */}
                       <div className="flex flex-col min-w-0">
-                        <span className="text-[6px] md:text-[10px] lg:text-xs  text-base-content/70 tracking-wider">
+                        <span className="text-[6px] md:text-[10px] lg:text-xs text-base-content/70 tracking-wider">
                           Languages :
                         </span>
                         <span className="text-[10px] md:text-xs lg:text-sm text-base-content font-medium">
@@ -141,7 +143,7 @@ export default function About() {
 
                       {/* Phone */}
                       <div className="flex flex-col min-w-0">
-                        <span className="text-[6px] md:text-[10px] lg:text-xs  text-base-content/70 tracking-wider">
+                        <span className="text-[6px] md:text-[10px] lg:text-xs text-base-content/70 tracking-wider">
                           Phone # :
                         </span>
                         <span className="text-[10px] md:text-xs lg:text-sm text-base-content font-medium">
@@ -152,7 +154,7 @@ export default function About() {
 
                     {/* Location - Full width */}
                     <div className="flex flex-col min-w-0">
-                      <span className="text-[6px] md:text-[10px] lg:text-xs  text-base-content/70 tracking-wider">
+                      <span className="text-[6px] md:text-[10px] lg:text-xs text-base-content/70 tracking-wider">
                         Location :
                       </span>
                       <span className="text-[10px] md:text-xs lg:text-sm text-base-content font-medium">
@@ -166,41 +168,48 @@ export default function About() {
           </Tilt>
         </div>
 
-        {/* Description and Contact Buttons */}
-        <div className="flex flex-col gap-4">
-          {/* Description */}
-          <div className="w-full text-base-content/70 leading-relaxed text-left">
-            <p className="text-[10px] md:text-xs lg:text-sm">
-              Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
-              I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
-            </p>
-          </div>
-
-          {/* Contact Buttons */}
-          <nav
-            aria-label="Contact links"
-            className="flex w-full flex-wrap items-center justify-center md:items-start md:justify-start gap-1.5 md:gap-3"
-          >
-            {CONTACT_LINKS.map((contact) => (
-              <button
-                key={contact.id}
-                type="button"
-                className={interactiveButtonClasses}
-                style={{ '--brand-color': contact.color }}
-                onClick={() => setActiveContact(contact)}
-                aria-label={contact.label}
-              >
-                <span className="tool-icon flex items-center justify-center">
-                  {contact.icon}
-                </span>
-
-                <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
-                  {contact.label}
-                </span>
-              </button>
-            ))}
-          </nav>
+        {/* Name and Course - Centered with same size as header */}
+        <div className="w-full text-center">
+          <h3 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            Gian Carlo N. Ulep
+          </h3>
+          <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70">
+            Bachelor of Science in Information Technology - 2026
+          </p>
         </div>
+
+        {/* Description - Centered container with left-aligned text */}
+        <div className="w-full max-w-2xl">
+          <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70 leading-relaxed text-left">
+            Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
+            I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
+          </p>
+        </div>
+
+        {/* Contact Buttons - Centered */}
+        <nav
+          aria-label="Contact links"
+          className="flex w-full max-w-2xl flex-wrap items-center justify-center gap-1.5 md:gap-3"
+        >
+          {CONTACT_LINKS.map((contact) => (
+            <button
+              key={contact.id}
+              type="button"
+              className={interactiveButtonClasses}
+              style={{ '--brand-color': contact.color }}
+              onClick={() => setActiveContact(contact)}
+              aria-label={contact.label}
+            >
+              <span className="tool-icon flex items-center justify-center">
+                {contact.icon}
+              </span>
+
+              <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+                {contact.label}
+              </span>
+            </button>
+          ))}
+        </nav>
       </div>
 
       {/* Contact Dialog */}

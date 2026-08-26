@@ -39,7 +39,7 @@ export default function Certificates() {
 
   return (
     <section id="certificates" className="scroll-mt-24">
-      <header className="mb-3 md:mb-6">
+      <header>
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
             Certificates
@@ -62,5 +62,6 @@ export default function Certificates() {
         onClose={() => setActiveCert(null)}
       />
     </section>
+    
   );
 }
