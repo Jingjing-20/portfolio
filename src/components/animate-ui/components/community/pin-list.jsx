@@ -46,7 +46,7 @@ function PinList({
 
 
       <LayoutGroup>
-        <div className={cn('grid grid-cols-2 lg:grid-cols-3 gap-3 relative', unpinnedSectionClassName)}>
+        <div className={cn('grid grid-cols-2 gap-3 relative', unpinnedSectionClassName)}>
           {unpinned.map((item) => (
             <motion.div
               key={item.id}

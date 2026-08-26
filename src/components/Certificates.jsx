@@ -23,7 +23,7 @@ export default function Certificates() {
             Certificates
           </h2>
           <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
-            Certifications and earned credentials
+            Certifications, webinars, and earned credentials
           </p>
         </div>
       </header>

@@ -70,8 +70,8 @@ export const CERTIFICATE_CATEGORIES = [
     ],
   },
   {
-    category: 'Databases & Data Management',
-    description: 'Relational database concepts, query optimization, and data structures.',
+    category: 'Databases & Web Technologies',
+    description: 'Relational database concepts, server-side development, and frontend fundamentals.',
     items: [
       {
         id: 'sql-testdome',
@@ -91,16 +91,6 @@ export const CERTIFICATE_CATEGORIES = [
         issuedDate: '2026-08-19',
         link: 'https://www.testdome.com/certificates/8be7dc5ac42d4fb195d649f551edd55d',
       },
-      /*
-      {
-        id: 'python-testdome',
-        title: 'PYTHON',
-        org: 'TestDome',
-        image: pythonImg,
-        icon: TestDomeIcon,
-        issuedDate: '2026-08-19',
-        link: 'https://www.testdome.com/certificates/961006f82e884675b462f8f12e0fa45c',
-      },*/
       {
         id: 'html/css-testdome',
         title: 'HTML/CSS',
@@ -113,8 +103,8 @@ export const CERTIFICATE_CATEGORIES = [
     ],
   },
   {
-    category: 'Artificial Intelligence & Emerging Tech',
-    description: 'Autonomous AI agents, enterprise tech architecture, and cybersecurity applications.',
+    category: 'Webinars & Workshops',
+    description: 'Technical sessions on autonomous AI agents, enterprise architecture, cyber security, and project management.',
     items: [
       {
         id: 'chatgpt-agent',
@@ -143,12 +133,6 @@ export const CERTIFICATE_CATEGORIES = [
         issuedDate: '2025-09-01',
         link: 'no link',
       },
-    ],
-  },
-  {
-    category: 'Project Management & Professional Growth',
-    description: 'Project lifecycles, enterprise management, and tech community summits.',
-    items: [
       {
         id: 'project-mgmt',
         title: 'Understanding Project Management from Basic to Advance',
