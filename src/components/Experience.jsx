@@ -48,43 +48,50 @@ function ExperienceItem({ experience, onOpenDetails }) {
         </TimelineIndicator>
       </TimelineHeader>
       <TimelineContent>
-        {/* Desktop: Flex row with details button on right | Mobile: Stack vertically */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-4">
-          {/* Left side: Experience details */}
-          <div className="space-y-1 flex-1">
-            <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
-              {experience.role}
-            </h3>
-            <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
-              {experience.company}
-              <span className="mx-1 text-base-content/40">·</span>
-              {experience.employmentType}
-            </p>
-            <TimelineDate className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
-              {experience.dateRange}
-              <span className="mx-1 text-base-content/40">·</span>
-              {experience.durationMonths}
-            </TimelineDate>
-            <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
-              {experience.location}
-              <span className="mx-1 text-base-content/40">·</span>
-              {experience.workMode}
-            </p>
-          </div>
+        <div className="space-y-2">
+          {/* Role title - stays outside the card, aligned with timeline */}
+          <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
+            {experience.role}
+          </h3>
 
-          {/* Right side: Details button (Mobile: below, Desktop: aligned right) */}
-          <div className="mt-3 lg:mt-0 lg:flex-shrink-0">
-            <button
-              type="button"
-              className={outlineButtonWithLabelClasses}
-              onClick={() => onOpenDetails(experience)}
-              aria-label="Details"
-            >
-              <Briefcase size={16} />
-              <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
-                Details
-              </span>
-            </button>
+          {/* Card content with border */}
+          <div className="border border-gray-300 dark:border-white/20 rounded-sm md:rounded-md p-1 md:p-2 lg:p-3 shadow-xl">
+            {/* Desktop: Flex row with details button on right | Mobile: Stack vertically */}
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-4">
+              {/* Left side: Experience details */}
+              <div className="space-y-1 flex-1">
+                <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
+                  {experience.company}
+                  <span className="mx-1 text-base-content/40">·</span>
+                  {experience.employmentType}
+                </p>
+                <TimelineDate className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
+                  {experience.dateRange}
+                  <span className="mx-1 text-base-content/40">·</span>
+                  {experience.durationMonths}
+                </TimelineDate>
+                <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
+                  {experience.location}
+                  <span className="mx-1 text-base-content/40">·</span>
+                  {experience.workMode}
+                </p>
+              </div>
+
+              {/* Right side: Details button (Mobile: below, Desktop: aligned right) */}
+              <div className="mt-3 lg:mt-0 lg:flex-shrink-0">
+                <button
+                  type="button"
+                  className={outlineButtonWithLabelClasses}
+                  onClick={() => onOpenDetails(experience)}
+                  aria-label="Details"
+                >
+                  <Briefcase size={16} />
+                  <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
+                    Details
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </TimelineContent>
