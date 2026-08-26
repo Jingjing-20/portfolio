@@ -41,36 +41,39 @@ function ExperienceItem({ experience, onOpenDetails }) {
         <TimelineIndicator className="size-8 overflow-hidden rounded-full border-2 border-border group-data-[orientation=vertical]/timeline:-left-8 bg-background shadow-xl">
           <Avatar className="size-full">
             <AvatarImage src={experience.logo} alt={experience.company} />
-            <AvatarFallback className="text-[10px]">
+            <AvatarFallback className="text-[10px] lg:text-xs">
               {experience.logoInitials}
             </AvatarFallback>
           </Avatar>
         </TimelineIndicator>
       </TimelineHeader>
       <TimelineContent>
-        <div className="space-y-1">
-          <h3 className="text-xs md:text-sm leading-relaxed font-base font-semibold text-base-content">
-            {experience.role}
-          </h3>
-          <p className="text-[10px] md:text-xs text-muted-foreground">
-            {experience.company}
-            <span className="mx-1 text-base-content/40">·</span>
-            {experience.employmentType}
-          </p>
-          <TimelineDate className="text-[10px] md:text-xs text-muted-foreground">
-            {experience.dateRange}
-            <span className="mx-1 text-base-content/40">·</span>
-            {experience.durationMonths}
-          </TimelineDate>
-          <p className="text-[10px] md:text-xs text-muted-foreground">
-            {experience.location}
-            <span className="mx-1 text-base-content/40">·</span>
-            {experience.workMode}
-          </p>
-        </div>
+        {/* Desktop: Flex row with details button on right | Mobile: Stack vertically */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-4">
+          {/* Left side: Experience details */}
+          <div className="space-y-1 flex-1">
+            <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
+              {experience.role}
+            </h3>
+            <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
+              {experience.company}
+              <span className="mx-1 text-base-content/40">·</span>
+              {experience.employmentType}
+            </p>
+            <TimelineDate className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
+              {experience.dateRange}
+              <span className="mx-1 text-base-content/40">·</span>
+              {experience.durationMonths}
+            </TimelineDate>
+            <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground">
+              {experience.location}
+              <span className="mx-1 text-base-content/40">·</span>
+              {experience.workMode}
+            </p>
+          </div>
 
-        <div className="mt-3">
-          <div className="flex flex-wrap items-center gap-2">
+          {/* Right side: Details button (Mobile: below, Desktop: aligned right) */}
+          <div className="mt-3 lg:mt-0 lg:flex-shrink-0">
             <button
               type="button"
               className={outlineButtonWithLabelClasses}
@@ -78,7 +81,7 @@ function ExperienceItem({ experience, onOpenDetails }) {
               aria-label="Details"
             >
               <Briefcase size={16} />
-              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+              <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
                 Details
               </span>
             </button>
@@ -107,10 +110,10 @@ export default function Experience() {
     <section id="experience" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
         <div>
-          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
+          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
             Experience
           </h2>
-          <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
+          <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
             Work history and professional engagements
           </p>
         </div>
