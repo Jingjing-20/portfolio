@@ -40,161 +40,167 @@ export default function CardDev() {
         </div>
       </header>
 
-      <div className='flex justify-center'>
-        {/* Profile Card */}
-        <Tilt
-          rotationFactor={8}
-          springOptions={{
-            stiffness: 350,
-            damping: 25,
-          }}
-        >
-          <TiltContent
-            className={cn(
-              'relative overflow-hidden',
-              'max-w-xl',
-              'rounded-xl',
-              'border-3 border-gray-300 dark:border-white/20',
-              'bg-gradient-card shadow-xl',
-              'p-3 md:p-4',
-              'flex flex-col items-center',
-              'gap-3 md:gap-4'
-            )}
+      {/* Mobile: Card on left, Description + Contact on right */}
+      <div className="flex flex-col md:flex-row gap-4">
+        {/* Left Side - Profile Card */}
+        <div className="flex-shrink-0 md:w-auto">
+          <Tilt
+            rotationFactor={8}
+            springOptions={{
+              stiffness: 350,
+              damping: 25,
+            }}
           >
-            {/* Role - Positioned above image */}
-            <div className="w-full flex gap-3 ">
-              <span className="flex items-center gap-2">
-                <img src={cardLogo} alt="Code Icon" className="w-6 h-6 dark:invert" />
-              </span>
-              <span className="text-base-content font-bold text-md md:text-xl tracking-wider">
-                <ShimmeringText
-                  text="Software Developer"
-                  className="font-extrabold"
-                />
-              </span>
-            </div>
-
-            <hr className="w-full" />
-
-            {/* Image and Details - Side by side */}
-            <div className="flex flex-row items-center w-full gap-3 md:gap-6">
-              {/* Left Side - Profile Image (Smaller) */}
-              <div className="shrink-0">
-                <div
-                  className={cn(
-                    'relative overflow-hidden',
-                    'w-20 h-20', // Smaller size
-                    'md:w-25 md:h-25', // Smaller size on desktop
-                    'p-0.5 md:p-1 rounded-md',
-                    'border-3 border-gray-300 dark:border-white/20',
-                    'bg-gradient-image-border shadow-lg'
-                  )}
-                >
-                  <img
-                    src={profileImage}
-                    alt="Gian Carlo N. Ulep"
-                    className="rounded-md h-full w-full object-cover object-top"
+            <TiltContent
+              className={cn(
+                'relative overflow-hidden',
+                'w-full md:max-w-xl',
+                'rounded-xl',
+                'border-3 border-gray-300 dark:border-white/20',
+                'bg-gradient-card shadow-xl',
+                'p-3 md:p-4',
+                'flex flex-col items-center',
+                'gap-3 md:gap-4'
+              )}
+            >
+              {/* Role - Positioned above image */}
+              <div className="w-full flex gap-3">
+                <span className="flex items-center gap-2">
+                  <img src={cardLogo} alt="Code Icon" className="w-6 h-6 dark:invert" />
+                </span>
+                <span className="text-base-content font-bold text-md md:text-xl tracking-wider">
+                  <ShimmeringText
+                    text="Software Developer"
+                    className="font-extrabold"
                   />
-                </div>
+                </span>
               </div>
 
-              {/* Right Side - Content */}
-              <div className="min-w-0 flex-1">
-                {/* Personal Information */}
-                <div className="w-full text-base-content leading-relaxed space-y-0.5 md:space-y-1">
-                  {/* Birthdate and Gender - Side by side */}
-                  <div className="grid grid-cols-2 gap-x-6">
-                    {/* Birth Date */}
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
-                        Birth Date :
-                      </span>
-                      <span className="text-[10px] md:text-xs text-base-content font-medium">
-                        05/27/2004
-                      </span>
-                    </div>
+              <hr className="w-full" />
 
-                    {/* Gender */}
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
-                        Gender :
-                      </span>
-                      <span className="text-[10px] md:text-xs text-base-content font-medium">
-                        Male
-                      </span>
-                    </div>
+              {/* Image and Details - Side by side */}
+              <div className="flex flex-row items-center w-full gap-3 md:gap-6">
+                {/* Left Side - Profile Image (Smaller) */}
+                <div className="shrink-0">
+                  <div
+                    className={cn(
+                      'relative overflow-hidden',
+                      'w-20 h-20',
+                      'md:w-25 md:h-25',
+                      'p-0.5 md:p-1 rounded-md',
+                      'border-3 border-gray-300 dark:border-white/20',
+                      'bg-gradient-image-border shadow-lg'
+                    )}
+                  >
+                    <img
+                      src={profileImage}
+                      alt="Gian Carlo N. Ulep"
+                      className="rounded-md h-full w-full object-cover object-top"
+                    />
                   </div>
+                </div>
 
-                  <div className="grid grid-cols-2 gap-x-6">
-                    {/* Birth Date */}
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
-                        Languanges :
-                      </span>
-                      <span className="text-[10px] md:text-xs text-base-content font-medium">
-                        Filipino, English
-                      </span>
+                {/* Right Side - Content */}
+                <div className="min-w-0 flex-1">
+                  {/* Personal Information */}
+                  <div className="w-full text-base-content leading-relaxed space-y-0.5 md:space-y-1">
+                    {/* Birthdate and Gender - Side by side */}
+                    <div className="grid grid-cols-2 gap-x-6">
+                      {/* Birth Date */}
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
+                          Birth Date :
+                        </span>
+                        <span className="text-[10px] md:text-xs text-base-content font-medium">
+                          05/27/2004
+                        </span>
+                      </div>
+
+                      {/* Gender */}
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
+                          Gender :
+                        </span>
+                        <span className="text-[10px] md:text-xs text-base-content font-medium">
+                          Male
+                        </span>
+                      </div>
                     </div>
 
-                    {/* Gender */}
+                    <div className="grid grid-cols-2 gap-x-6">
+                      {/* Languages */}
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
+                          Languages :
+                        </span>
+                        <span className="text-[10px] md:text-xs text-base-content font-medium">
+                          Filipino, English
+                        </span>
+                      </div>
+
+                      {/* Phone */}
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
+                          Phone # :
+                        </span>
+                        <span className="text-[10px] md:text-xs text-base-content font-medium">
+                          09562657521
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Location - Full width */}
                     <div className="flex flex-col min-w-0">
                       <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
-                        Phone # :
+                        Location :
                       </span>
                       <span className="text-[10px] md:text-xs text-base-content font-medium">
-                        09562657521
+                        Negros Occidental, Philippines
                       </span>
                     </div>
-                  </div>
-
-                  {/* Location - Full width */}
-                  <div className="flex flex-col min-w-0">
-                    <span className="text-[6px] md:text-[10px] text-base-content/70 tracking-wider">
-                      Location :
-                    </span>
-                    <span className="text-[10px] md:text-xs text-base-content font-medium">
-                      Negros Occidental, Philippines
-                    </span>
                   </div>
                 </div>
               </div>
-            </div>
-          </TiltContent>
-        </Tilt>
-      </div>
+            </TiltContent>
+          </Tilt>
+        </div>
 
-      {/* Description */}
-      <div className="w-full text-base-content leading-relaxed text-left">
-        <p className="text-[10px] md:text-xs mt-1">
-          Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
-          I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
-        </p>
-      </div>
+        {/* Right Side - Description and Contact Buttons */}
+        <div className="flex-1 flex flex-col gap-4">
+          {/* Description */}
+          <div className="w-full text-base-content leading-relaxed text-left">
+            <p className="text-[10px] md:text-xs">
+              Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
+              I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
+            </p>
+          </div>
 
-      {/* Contact Buttons */}
-      <nav
-        aria-label="Contact links"
-        className="flex w-full flex-wrap items-center justify-center gap-1.5 md:gap-3"
-      >
-        {CONTACT_LINKS.map((contact) => (
-          <button
-            key={contact.id}
-            type="button"
-            className={interactiveButtonClasses}
-            style={{ '--brand-color': contact.color }}
-            onClick={() => setActiveContact(contact)}
-            aria-label={contact.label}
+          {/* Contact Buttons */}
+          <nav
+            aria-label="Contact links"
+            className="flex w-full flex-wrap items-start gap-1.5 md:gap-3"
           >
-            <span className="tool-icon flex items-center justify-center">
-              {contact.icon}
-            </span>
+            {CONTACT_LINKS.map((contact) => (
+              <button
+                key={contact.id}
+                type="button"
+                className={interactiveButtonClasses}
+                style={{ '--brand-color': contact.color }}
+                onClick={() => setActiveContact(contact)}
+                aria-label={contact.label}
+              >
+                <span className="tool-icon flex items-center justify-center">
+                  {contact.icon}
+                </span>
 
-            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-              {contact.label}
-            </span>
-          </button>
-        ))}
-      </nav>
+                <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                  {contact.label}
+                </span>
+              </button>
+            ))}
+          </nav>
+        </div>
+      </div>
 
       {/* Contact Dialog */}
       <ContactDialog
