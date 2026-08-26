@@ -1,8 +1,8 @@
-import ResumeImg from '@/components/resume_sections/carddev/resume.webp';
-import LinkedInImg from '@/components/resume_sections/carddev/linkedin.webp';
-import GitHubImg from '@/components/resume_sections/carddev/github.webp';
-import GmailImg from '@/components/resume_sections/carddev/gmail.webp';
-import ResumePDF from '@/components/resume_sections/carddev/resumes/GCNU - RESUME v13.pdf';
+import ResumeImg from '@/components/resume_sections/about/resume.webp';
+import LinkedInImg from '@/components/resume_sections/about/linkedin.webp';
+import GitHubImg from '@/components/resume_sections/about/github.webp';
+import GmailImg from '@/components/resume_sections/about/gmail.webp';
+import ResumePDF from '@/components/resume_sections/about/resumes/GCNU - RESUME v13.pdf';
 
 import githubSvg from './contact icons/github.svg';
 import gmailSvg from './contact icons/gmail-2026.svg';

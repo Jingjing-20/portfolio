@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import profileImage from '@/components/resume_sections/carddev/gian.webp';
+import profileImage from '@/components/resume_sections/about/gian.webp';
 import {
   Tilt,
   TiltContent,
 } from '@/components/animate-ui/primitives/effects/tilt';
-import ContactDialog from '@/components/resume_sections/carddev/ContactDialog';
-import { CONTACT_LINKS } from '@/components/resume_sections/carddev/contact_data';
+import ContactDialog from '@/components/resume_sections/about/ContactDialog';
+import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
-import cardLogo from '@/components/resume_sections/carddev/code-circle-outline.svg';
+import cardLogo from '@/components/resume_sections/about/code-circle-outline.svg';
 import { cn } from '@/lib/utils';
 
 const interactiveButtonClasses = cn(
@@ -18,13 +18,13 @@ const interactiveButtonClasses = cn(
   'text-sm md:text-base font-medium cursor-pointer hover-badge'
 );
 
-export default function CardDev() {
+export default function About() {
   const [activeContact, setActiveContact] = useState(null);
 
   return (
     <section
-      id="carddev"
-      aria-label="Profile card"
+      id="about"
+      aria-label="About me"
       className="space-y-4"
     >
       {/* Header */}
@@ -34,7 +34,7 @@ export default function CardDev() {
             Gian Carlo N. Ulep
           </h2>
 
-          <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
+          <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
             Bachelor of Science in Information Technology - 2026
           </p>
         </div>

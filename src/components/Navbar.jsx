@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import logoImg from '@/components/resume_sections/carddev/android-chrome-512x512.png';
+import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
 import { cn } from '@/lib/utils';
 
@@ -56,9 +56,9 @@ function CertificateIcon({ size = 20 }) {
 
 const NAV_ITEMS = [
   {
-    value: 'carddev',
+    value: 'about',
     label: 'About',
-    href: '#carddev',
+    href: '#about',
     icon: <AboutIcon size={20} />
   },
   {
@@ -193,7 +193,7 @@ export default function Navbar() {
           {/* Portfolio identity */}
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
+            onClick={(event) => handleNavClick(event, 'about', '#about')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0"
             aria-label="About Gian Carlo N. Ulep"
           >
@@ -246,9 +246,9 @@ export default function Navbar() {
           'flex w-full items-center justify-between px-4 py-3',
           'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
         )}>
-          {/* Portfolio identity doubles as the CardDev shortcut. */}
+          {/* Portfolio identity doubles as the about shortcut. */}
           <button
-            type="button" onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
+            type="button" onClick={(event) => handleNavClick(event, 'about', '#about')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label="About Gian Carlo N. Ulep"
           >

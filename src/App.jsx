@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import Navbar from './components/Navbar'
 import ScrollReveal from './components/ScrollReveal'
-import CardDev from './components/CardDev'
+import About from './components/About'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
@@ -52,9 +52,9 @@ function App() {
             <div className="mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
               {/* All sections stacked vertically */}
               <div className="space-y-6">
-                {/* 1. CardDev */}
+                {/* 1. About */}
                 <ScrollReveal animation="fadeInUp" duration="0.5s">
-                  <CardDev />
+                  <About />
                 </ScrollReveal>
 
                 <hr />
