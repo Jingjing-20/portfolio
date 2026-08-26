@@ -78,11 +78,11 @@ export default function Projects() {
     <section id="projects" className="scroll-mt-24">
       <header className="mb-3 md:mb-6">
         <div>
-          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-5xl">
+          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
             Projects
           </h2>
 
-          <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70">
+          <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
             Selected work and personal builds
           </p>
         </div>
@@ -92,10 +92,10 @@ export default function Projects() {
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm leading-relaxed font-semibold text-base-content">
+              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
                 {category}
               </h3>
-              <p className="text-[10px] md:text-xs text-muted-foreground leading-relaxed">
+              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground leading-relaxed">
                 {description}
               </p>
             </div>
@@ -156,10 +156,10 @@ export default function Projects() {
                           {/* Polaroid Bottom Caption (Under Photo: Name only) */}
                           <div className="flex flex-col justify-between flex-1 pt-2">
                             <div>
-                              <h3 className="text-[10px] md:text-xs font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                              <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
                                 {mockup.name}
                               </h3>
-                              <p className="text-[8px] md:text-[10px] text-muted-foreground line-clamp-1 mt-0.5">
+                              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
                                 {mockup.category}
                               </p>
                             </div>
@@ -202,7 +202,7 @@ export default function Projects() {
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start">
                       <div className="flex-1 space-y-3">
-                        <div className="flex gap-4 items-start">
+                        <div className="flex gap-4 items-center">
                           {/* Cover Image - Double Border with Icon Button and Hover Rotate */}
                           {project.coverImage && (
                             <div className="flex-shrink-0 w-30 md:w-35 relative group">
@@ -236,12 +236,12 @@ export default function Projects() {
                           )}
 
                           {/* Text Content */}
-                          <div className="flex-1 space-y-1">
-                            <h4 className="text-[10px] md:text-xs leading-relaxed font-base font-semibold text-base-content">
+                          <div className="items-center justify-center flex-1 space-y-1">
+                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed font-base font-semibold text-base-content">
                               {project.title}
                             </h4>
                             {project.organization && (
-                              <p className="text-[8px] md:text-[10px] text-muted-foreground">
+                              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
                                 {project.organization}
                               </p>
                             )}
