@@ -15,31 +15,9 @@ const formatDate = (dateString) => {
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);
 
-  // Flatten all certificates from all categories and sort by date (most recent first)
-  const allCertificates = CERTIFICATE_CATEGORIES.flatMap(({ items }) => items).sort((a, b) => {
-    const dateA = a.issuedDate ? new Date(a.issuedDate) : new Date(0);
-    const dateB = b.issuedDate ? new Date(b.issuedDate) : new Date(0);
-    return dateB - dateA; // Descending order (newest first)
-  });
-
-  // Transform certificates into pin-list format
-  const pinListItems = allCertificates.map((cert) => ({
-    id: cert.id,
-    name: cert.title,
-    info: `${cert.org} • ${formatDate(cert.issuedDate) || 'No date'}`,
-    icon: cert.icon,
-    pinned: false, // Default unpinned, user can pin favorites
-    cert: cert, // Store original cert data for dialog
-  }));
-
-  const handleCertClick = (item) => {
-    // Open certificate dialog when clicking (not on pin button)
-    setActiveCert(item.cert);
-  };
-
   return (
     <section id="certificates" className="scroll-mt-24">
-      <header>
+      <header className="pt-10 mb-3 md:mb-6">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
             Certificates
@@ -50,11 +28,40 @@ export default function Certificates() {
         </div>
       </header>
 
-      <PinList
-        items={pinListItems}
-        className="space-y-3"
-        onItemClick={handleCertClick}
-      />
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+
+      {/* Categorized Certificates */}
+      <div className="space-y-6">
+        {CERTIFICATE_CATEGORIES.map((category) => {
+          const pinListItems = category.items.map((cert) => ({
+            id: cert.id,
+            name: cert.title,
+            info: `${cert.org} • ${formatDate(cert.issuedDate) || 'No date'}`,
+            icon: cert.icon,
+            pinned: false,
+            cert: cert,
+          }));
+
+          return (
+            <div key={category.category} className="space-y-2">
+              <div>
+                <h3 className="text-xs md:text-sm lg:text-base font-semibold text-base-content">
+                  {category.category}
+                </h3>
+                <p className="text-[8px] md:text-[10px] lg:text-xs text-base-content/70 leading-relaxed">
+                  {category.description}
+                </p>
+              </div>
+
+              <PinList
+                items={pinListItems}
+                className="space-y-3"
+                onItemClick={(item) => setActiveCert(item.cert)}
+              />
+            </div>
+          );
+        })}
+      </div>
 
       <CertificateDialog
         cert={activeCert}
@@ -62,6 +69,5 @@ export default function Certificates() {
         onClose={() => setActiveCert(null)}
       />
     </section>
-    
   );
 }

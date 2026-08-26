@@ -9,11 +9,6 @@ const techBadgeClasses = cn(
 );
 
 export default function TechStack() {
-  // Split the stack into two halves for desktop layout
-  const midPoint = Math.ceil(TECH_STACK.length / 2);
-  const leftStack = TECH_STACK.slice(0, midPoint);
-  const rightStack = TECH_STACK.slice(midPoint);
-
   const renderStackCategory = (stackCategory) => (
     <div key={stackCategory.category}>
       {/* Category Title and Description */}
@@ -53,7 +48,7 @@ export default function TechStack() {
 
   return (
     <section id="stack" className="scroll-mt-24">
-      <header className="mb-3 md:mb-6">
+      <header className="pt-10 mb-3 md:mb-6">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
@@ -68,17 +63,9 @@ export default function TechStack() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      {/* Mobile: Single column | Desktop: Two columns */}
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-6">
-        {/* Left Column */}
-        <div className="flex-1 space-y-4">
-          {leftStack.map(renderStackCategory)}
-        </div>
-
-        {/* Right Column - Only visible on desktop */}
-        <div className="flex-1 space-y-4">
-          {rightStack.map(renderStackCategory)}
-        </div>
+      {/* Single column stack layout */}
+      <div className="space-y-4 md:space-y-6">
+        {TECH_STACK.map(renderStackCategory)}
       </div>
     </section>
   );

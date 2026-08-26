@@ -28,7 +28,7 @@ export default function About() {
       className="space-y-4"
     >
       {/* Header - Left aligned */}
-      <header>
+      <header className="pt-10 mb-3 md:mb-6">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
             About

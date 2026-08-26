@@ -76,7 +76,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="scroll-mt-24">
-      <header className="mb-3 md:mb-6">
+      <header className="pt-10 mb-3 md:mb-6">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
             Projects

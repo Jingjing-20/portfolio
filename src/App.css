@@ -132,7 +132,7 @@
   opacity: 1 !important;
 }
 
-/* 5. Theme Switch Button Hover (.hover-theme-switch) */
+/* 5. Theme Switch Button & Navbar Hover (.hover-theme-switch) */
 .hover-theme-switch {
   transition: border-color 0.25s ease,
               box-shadow 0.25s ease,
@@ -150,6 +150,22 @@
   border-color: rgba(255, 255, 255, 0.7) !important;
   box-shadow: 0 8px 16px -4px rgba(255, 255, 255, 0.1) !important;
 }
+
+/* 6. Active Navbar Item Highlight (.nav-button-active) */
+.nav-button-active {
+  border-style: double !important;
+  border-color: #1f2937 !important;
+  background-color: #e5e7eb !important;
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dark .nav-button-active,
+[data-theme="dark"] .nav-button-active {
+  border-color: rgba(255, 255, 255, 0.85) !important;
+  background-color: #27272a !important;
+  box-shadow: 0 8px 20px -4px rgba(255, 255, 255, 0.08) !important;
+}
+
 
 /* Tech Stack Brand Color & Grayscale Hover Effect */
 .tool-icon-img {

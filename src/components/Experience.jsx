@@ -89,13 +89,13 @@ function ExperienceItem({ experience }) {
       </TimelineHeader>
       <TimelineContent>
         <div className="space-y-2">
-          {/* Company name - aligned with timeline */}
-          <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
-            {experience.company}
-          </h3>
 
           {/* Employment type, duration, location - compact */}
-          <div className="space-y-0.5">
+          <div className="">
+            {/* Company name - aligned with timeline */}
+            <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
+              {experience.company}
+            </h3>
             <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
               {experience.employmentType}
               <span className="mx-1 text-base-content/40">·</span>
@@ -109,7 +109,7 @@ function ExperienceItem({ experience }) {
           </div>
 
           {/* Role and Date range - compact */}
-          <div className="space-y-0.5">
+          <div className="">
             <h4 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
               {experience.role}
             </h4>
@@ -122,7 +122,7 @@ function ExperienceItem({ experience }) {
 
           {/* Description - compact */}
           {experience.description && (
-            <p className="text-[10px] md:text-xs lg:text-sm text-base-content/80 leading-relaxed">
+            <p className="text-[10px] md:text-xs text-base-content/80 leading-relaxed">
               {experience.description}
             </p>
           )}
@@ -187,7 +187,7 @@ function ExperienceItem({ experience }) {
 export default function Experience() {
   return (
     <section id="experience" className="scroll-mt-24">
-      <header className="mb-3 md:mb-6">
+      <header className="pt-10 mb-3 md:mb-6">
         <div>
           <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
             Experience

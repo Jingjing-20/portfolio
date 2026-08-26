@@ -135,21 +135,17 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
   );
 }
 
-export default function Navbar() {
-  const [activeTab, setActiveTab] = useState(null);
+export default function Navbar({ activePage = 'about', onSelectPage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (e, value, href) => {
+  const handleNavClick = (e, value) => {
     e.preventDefault();
-    setActiveTab(value);
-    setIsMobileMenuOpen(false);
-
-    if (href) {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+    if (onSelectPage) {
+      onSelectPage(value);
+    } else {
+      window.location.hash = value;
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -160,8 +156,8 @@ export default function Navbar() {
           {/* Portfolio identity */}
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'about', '#about')}
-            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0"
+            onClick={(event) => handleNavClick(event, 'about')}
+            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0 cursor-pointer"
             aria-label="About Gian Carlo N. Ulep"
           >
             <img
@@ -179,20 +175,30 @@ export default function Navbar() {
           {/* Desktop: Navigation Buttons + Theme Toggle */}
           <div className="flex items-center gap-3">
             <nav aria-label="Main navigation" className="flex items-center gap-2">
-              {NAV_ITEMS.map((item) => (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={(e) => handleNavClick(e, item.value, item.href)}
-                  className={navButtonClasses}
-                  aria-label={item.label}
-                >
-                  {item.icon}
-                  <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                    {item.label}
-                  </span>
-                </button>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const isActive = activePage === item.value;
+                return (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={(e) => handleNavClick(e, item.value)}
+                    className={cn(
+                      navButtonClasses,
+                      isActive && 'nav-button-active'
+                    )}
+                    aria-label={item.label}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {item.icon}
+                    <span className={cn(
+                      "text-[8px] md:text-[10px] font-medium text-base-content",
+                      isActive && "font-bold"
+                    )}>
+                      {item.label}
+                    </span>
+                  </button>
+                );
+              })}
             </nav>
 
             <div className="h-8 w-px bg-gray-300 dark:bg-white/20" />
@@ -210,8 +216,8 @@ export default function Navbar() {
         )}>
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'about', '#about')}
-            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            onClick={(event) => handleNavClick(event, 'about')}
+            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer"
             aria-label="About Gian Carlo N. Ulep"
           >
             <img
@@ -260,20 +266,31 @@ export default function Navbar() {
                       )}
                     >
                       <nav aria-label="Mobile navigation" className="space-y-2">
-                        {NAV_ITEMS.map((item) => (
-                          <button
-                            key={item.value}
-                            type="button"
-                            onClick={(e) => handleNavClick(e, item.value, item.href)}
-                            className={cn(mobileMenuButtonClasses, 'w-full justify-start')}
-                            aria-label={item.label}
-                          >
-                            {item.icon}
-                            <span className="text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content">
-                              {item.label}
-                            </span>
-                          </button>
-                        ))}
+                        {NAV_ITEMS.map((item) => {
+                          const isActive = activePage === item.value;
+                          return (
+                            <button
+                              key={item.value}
+                              type="button"
+                              onClick={(e) => handleNavClick(e, item.value)}
+                              className={cn(
+                                mobileMenuButtonClasses,
+                                'w-full justify-start',
+                                isActive && 'nav-button-active'
+                              )}
+                              aria-label={item.label}
+                              aria-current={isActive ? 'page' : undefined}
+                            >
+                              {item.icon}
+                              <span className={cn(
+                                "text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content",
+                                isActive && "font-bold"
+                              )}>
+                                {item.label}
+                              </span>
+                            </button>
+                          );
+                        })}
                       </nav>
                     </motion.div>
                   </>
