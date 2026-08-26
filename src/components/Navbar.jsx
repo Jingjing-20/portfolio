@@ -45,10 +45,6 @@ const navButtonClasses = cn(
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
 );
 
-const activeButtonClasses = cn(
-  'border-3 border-gray-800 dark:border-white/70'
-);
-
 const mobileMenuButtonClasses = cn(
   'shadow-xl inline-flex items-center gap-2 rounded-md p-2',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double shadow-xl cursor-pointer hover-theme-switch',
@@ -150,7 +146,6 @@ export default function Navbar() {
             onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0"
             aria-label="About Gian Carlo N. Ulep"
-            aria-current={activeTab === 'carddev' ? 'page' : undefined}
           >
             <img
               src={logoImg}
@@ -172,19 +167,13 @@ export default function Navbar() {
               className="flex items-center gap-2"
             >
               {NAV_ITEMS.map((item) => {
-                const isActive = activeTab === item.value;
-
                 return (
                   <button
                     key={item.value}
                     type="button"
                     onClick={(e) => handleNavClick(e, item.value, item.href)}
-                    className={cn(
-                      navButtonClasses,
-                      isActive && activeButtonClasses
-                    )}
+                    className={navButtonClasses}
                     aria-label={item.label}
-                    aria-current={isActive ? 'page' : undefined}
                   >
                     {item.icon}
                     <span className="text-[8px] md:text-[10px] font-medium text-base-content">
@@ -216,7 +205,6 @@ export default function Navbar() {
             onClick={(event) => handleNavClick(event, 'carddev', '#carddev')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label="About Gian Carlo N. Ulep"
-            aria-current={activeTab === 'carddev' ? 'page' : undefined}
           >
             <img
               src={logoImg}
@@ -270,7 +258,6 @@ export default function Navbar() {
                     >
                       <nav aria-label="Mobile navigation" className="space-y-2">
                         {NAV_ITEMS.map((item) => {
-                          const isActive = activeTab === item.value;
                           return (
                             <button
                               key={item.value}
@@ -278,11 +265,9 @@ export default function Navbar() {
                               onClick={(e) => handleNavClick(e, item.value, item.href)}
                               className={cn(
                                 mobileMenuButtonClasses,
-                                'w-full justify-start',
-                                isActive && activeButtonClasses
+                                'w-full justify-start'
                               )}
                               aria-label={item.label}
-                              aria-current={isActive ? 'page' : undefined}
                             >
                               {item.icon}
                               <span className="text-[8px] md:text-[10px] font-medium text-base-content">{item.label}</span>

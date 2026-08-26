@@ -35,15 +35,15 @@ export default function CardDev() {
           </h2>
 
           <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs">
-            BS in Information Technology - 2026
+            Bachelor of Science in Information Technology - 2026
           </p>
         </div>
       </header>
 
-      {/* Mobile: Card on left, Description + Contact on right */}
+      {/* Mobile: Centered | Desktop: Card on left, Description + Contact on right */}
       <div className="flex flex-col md:flex-row gap-4">
-        {/* Left Side - Profile Card */}
-        <div className="flex-shrink-0 md:w-auto">
+        {/* Profile Card */}
+        <div className="flex justify-center md:flex-shrink-0 md:justify-start">
           <Tilt
             rotationFactor={8}
             springOptions={{
@@ -54,13 +54,13 @@ export default function CardDev() {
             <TiltContent
               className={cn(
                 'relative overflow-hidden',
-                'w-full md:max-w-xl',
+                'max-w-2xl',
                 'rounded-xl',
                 'border-3 border-gray-300 dark:border-white/20',
                 'bg-gradient-card shadow-xl',
                 'p-3 md:p-4',
                 'flex flex-col items-center',
-                'gap-3 md:gap-4'
+                'gap-3 md:gap-4 lg:gap-5'
               )}
             >
               {/* Role - Positioned above image */}
@@ -165,10 +165,10 @@ export default function CardDev() {
           </Tilt>
         </div>
 
-        {/* Right Side - Description and Contact Buttons */}
-        <div className="flex-1 flex flex-col gap-4">
+        {/* Description and Contact Buttons */}
+        <div className="flex flex-col gap-4">
           {/* Description */}
-          <div className="w-full text-base-content leading-relaxed text-left">
+          <div className="w-full text-base-content leading-relaxed text-center md:text-left">
             <p className="text-[10px] md:text-xs">
               Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
               I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
@@ -178,7 +178,7 @@ export default function CardDev() {
           {/* Contact Buttons */}
           <nav
             aria-label="Contact links"
-            className="flex w-full flex-wrap items-start gap-1.5 md:gap-3"
+            className="flex w-full flex-wrap items-center justify-center md:items-start md:justify-start gap-1.5 md:gap-3"
           >
             {CONTACT_LINKS.map((contact) => (
               <button
