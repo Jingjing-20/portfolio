@@ -33,7 +33,7 @@ export default function About() {
       className="space-y-4 max-w-3xl mx-auto"
     >
       {/* Header */}
-      <header className="pt-10 mb-3 md:mb-6">
+      <header className="pt-5 md:pt-10 mb-3 md:mb-6">
         <div className="flex items-center gap-3 md:gap-4">
           <button
             type="button"
