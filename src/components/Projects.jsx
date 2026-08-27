@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ProjectDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
@@ -74,22 +74,44 @@ export default function Projects() {
     };
   }, [emblaApi]);
 
+  const handleBackToHome = () => {
+    window.location.hash = 'home';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section id="projects" className="scroll-mt-24">
       <header className="pt-10 mb-3 md:mb-6">
-        <div>
-          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
-            Projects
-          </h2>
+        <div className="flex items-start justify-between gap-4">
+          {/* Back button */}
+          <button
+            type="button"
+            onClick={handleBackToHome}
+            className={cn(
+              'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+              'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+            )}
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+          </button>
 
-          <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
-            Selected work and personal builds
-          </p>
+          <div className="flex-1 text-right">
+            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+              Projects
+            </h2>
+
+            <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
+              Selected work and personal builds
+            </p>
+          </div>
         </div>
       </header>
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
-      
+
       <div className="space-y-6 md:space-y-8">
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>

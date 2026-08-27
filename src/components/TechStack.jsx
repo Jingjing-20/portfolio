@@ -1,3 +1,4 @@
+import { ArrowLeft } from 'lucide-react';
 import { Tools } from '@/components/resume_sections/stack/tools';
 import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
 import { cn } from '@/lib/utils';
@@ -9,6 +10,11 @@ const techBadgeClasses = cn(
 );
 
 export default function TechStack() {
+  const handleBackToHome = () => {
+    window.location.hash = 'home';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const renderStackCategory = (stackCategory) => (
     <div key={stackCategory.category}>
       {/* Category Title and Description */}
@@ -50,7 +56,22 @@ export default function TechStack() {
     <section id="stack" className="scroll-mt-24">
       <header className="pt-10 mb-3 md:mb-6">
         <div className="flex items-start justify-between gap-4">
-          <div>
+          {/* Back button */}
+          <button
+            type="button"
+            onClick={handleBackToHome}
+            className={cn(
+              'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+              'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+            )}
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+          </button>
+
+          <div className="flex-1 text-right">
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Stack
             </h2>

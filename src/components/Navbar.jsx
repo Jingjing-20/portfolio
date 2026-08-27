@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X, Home } from 'lucide-react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
@@ -26,12 +26,6 @@ function NavIcon({ src, alt, size = 20 }) {
 }
 
 const NAV_ITEMS = [
-  {
-    value: 'home',
-    label: 'Home',
-    href: '#home',
-    icon: <Home className="h-5 w-5" />
-  },
   {
     value: 'about',
     label: 'About',

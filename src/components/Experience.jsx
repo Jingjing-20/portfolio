@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { EXPERIENCES } from '@/components/resume_sections/experience/experience_data';
 import {
   Timeline,
@@ -185,16 +186,38 @@ function ExperienceItem({ experience }) {
 }
 
 export default function Experience() {
+  const handleBackToHome = () => {
+    window.location.hash = 'home';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <section id="experience" className="scroll-mt-24">
       <header className="pt-10 mb-3 md:mb-6">
-        <div>
-          <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
-            Experience
-          </h2>
-          <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
-            Work history and professional engagements
-          </p>
+        <div className="flex items-start justify-between gap-4">
+          {/* Back button */}
+          <button
+            type="button"
+            onClick={handleBackToHome}
+            className={cn(
+              'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+              'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+            )}
+            aria-label="Back to home"
+          >
+            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+          </button>
+
+          <div className="flex-1 text-right">
+            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+              Experience
+            </h2>
+            <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
+              Work history and professional engagements
+            </p>
+          </div>
         </div>
       </header>
 
