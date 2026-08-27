@@ -1,6 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { EXPERIENCES } from '@/components/resume_sections/experience/experience_data';
+import { ExperienceDialog } from '@/components/resume_sections/experience/ExperienceDialog';
+import experienceIconSrc from '@/components/resume_sections/navbar/experience.svg';
 import {
   Timeline,
   TimelineContent,
@@ -17,61 +19,14 @@ import {
 } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 
-const skillBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2 whitespace-nowrap flex-shrink-0',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-[10px] md:text-xs font-medium cursor-default hover-theme-switch'
+const experienceButtonClasses = cn(
+  'shadow-xl inline-flex items-center justify-center rounded-md p-1.5 md:p-2 shrink-0',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-badge',
+  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+  'disabled:pointer-events-none disabled:opacity-50'
 );
 
-const arrowButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center rounded-md p-1.5 flex-shrink-0',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'cursor-pointer hover-theme-switch'
-);
-
-function ArrowIcon({ direction = 'right' }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="0.5em"
-      height="1em"
-      viewBox="0 0 12 24"
-      style={{ transform: direction === 'left' ? 'rotate(180deg)' : 'none' }}
-    >
-      <path fill="currentColor" fillRule="evenodd" d="M10.157 12.711L4.5 18.368l-1.414-1.414l4.95-4.95l-4.95-4.95L4.5 5.64l5.657 5.657a1 1 0 0 1 0 1.414" />
-    </svg>
-  );
-}
-
-function ExperienceItem({ experience }) {
-  const scrollContainerRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-
-  const checkScroll = () => {
-    if (scrollContainerRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
-    }
-  };
-
-  const scroll = (direction) => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 200;
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'right' ? scrollAmount : -scrollAmount,
-        behavior: 'smooth'
-      });
-      setTimeout(checkScroll, 100);
-    }
-  };
-
-  // Check scroll on mount
-  useEffect(() => {
-    setTimeout(checkScroll, 100);
-  }, [experience.skills]);
-
+function ExperienceItem({ experience, onOpenSkills }) {
   return (
     <TimelineItem
       step={experience.step}
@@ -90,27 +45,46 @@ function ExperienceItem({ experience }) {
       </TimelineHeader>
       <TimelineContent>
         <div className="space-y-2">
+          {/* Company name and top-right experience button */}
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+                {experience.company}
+              </h3>
+              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                {experience.employmentType}
+                <span className="mx-1 text-base-content/40">·</span>
+                {experience.durationMonths}
+              </p>
+              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                {experience.location}
+                <span className="mx-1 text-base-content/40">·</span>
+                {experience.workMode}
+              </p>
+            </div>
 
-          {/* Employment type, duration, location - compact */}
-          <div className="">
-            {/* Company name - aligned with timeline */}
-            <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-base font-semibold text-base-content">
-              {experience.company}
-            </h3>
-            <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
-              {experience.employmentType}
-              <span className="mx-1 text-base-content/40">·</span>
-              {experience.durationMonths}
-            </p>
-            <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
-              {experience.location}
-              <span className="mx-1 text-base-content/40">·</span>
-              {experience.workMode}
-            </p>
+            {/* Experience button from Navbar format */}
+            {experience.skills && experience.skills.length > 0 && (
+              <button
+                type="button"
+                className={experienceButtonClasses}
+                onClick={() => onOpenSkills(experience)}
+                aria-label={`View skills for ${experience.company}`}
+              >
+                <img
+                  src={experienceIconSrc}
+                  alt=""
+                  width={16}
+                  height={16}
+                  className="dark:invert h-3.5 w-3.5 md:h-4 md:w-4"
+                  aria-hidden="true"
+                />
+              </button>
+            )}
           </div>
 
           {/* Role and Date range - compact */}
-          <div className="">
+          <div>
             <h4 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
               {experience.role}
             </h4>
@@ -127,58 +101,6 @@ function ExperienceItem({ experience }) {
               {experience.description}
             </p>
           )}
-
-          {/* Skills - horizontal scrollable with arrows */}
-          {experience.skills && experience.skills.length > 0 && (
-            <div className="flex items-center gap-2 pt-1">
-              {/* Left arrow */}
-              {canScrollLeft && (
-                <button
-                  type="button"
-                  onClick={() => scroll('left')}
-                  className={arrowButtonClasses}
-                  aria-label="Scroll left"
-                >
-                  <ArrowIcon direction="left" />
-                </button>
-              )}
-
-              {/* Scrollable skills container */}
-              <div
-                ref={scrollContainerRef}
-                className="flex items-center gap-2 overflow-x-auto flex-1"
-                onScroll={checkScroll}
-                style={{
-                  scrollbarWidth: 'none',
-                  msOverflowStyle: 'none',
-                  WebkitOverflowScrolling: 'touch'
-                }}
-              >
-                {experience.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className={skillBadgeClasses}
-                  >
-                    <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                      {skill}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Right arrow */}
-              {canScrollRight && (
-                <button
-                  type="button"
-                  onClick={() => scroll('right')}
-                  className={arrowButtonClasses}
-                  aria-label="Scroll right"
-                >
-                  <ArrowIcon direction="right" />
-                </button>
-              )}
-            </div>
-          )}
         </div>
       </TimelineContent>
     </TimelineItem>
@@ -186,6 +108,8 @@ function ExperienceItem({ experience }) {
 }
 
 export default function Experience() {
+  const [selectedExperience, setSelectedExperience] = useState(null);
+
   const handleBackToHome = () => {
     window.location.hash = 'home';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -223,14 +147,23 @@ export default function Experience() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      <Timeline defaultValue={1} className=" w-full max-w-full ps-4">
+      <Timeline defaultValue={1} className="w-full max-w-full ps-4">
         {EXPERIENCES.map((experience) => (
           <ExperienceItem
             key={experience.step}
             experience={experience}
+            onOpenSkills={(exp) => setSelectedExperience(exp)}
           />
         ))}
       </Timeline>
+
+      {/* Experience Dialog */}
+      <ExperienceDialog
+        experience={selectedExperience}
+        open={selectedExperience !== null}
+        onClose={() => setSelectedExperience(null)}
+      />
     </section>
   );
 }
+

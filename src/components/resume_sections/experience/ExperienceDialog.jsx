@@ -4,44 +4,50 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@/components/animate-ui/components/headless/dialog';
+import { cn } from '@/lib/utils';
 
-export function DetailsDialog({ experience, open, onClose }) {
+export function ExperienceDialog({ experience, open, onClose }) {
   if (!experience) return null;
+
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
+      <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">Details</DialogTitle>
+          <DialogTitle className="text-sm md:text-base leading-relaxed font-semibold">
+            {experience.role || 'Experience Details'}
+          </DialogTitle>
           <hr />
-          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">
+          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content/80">
             {experience.company}
           </DialogDescription>
         </div>
 
-        <div className="max-h-[350px] overflow-y-auto border border-gray-300 dark:border-white/20 rounded-md">
-          <div className="p-1.5 md:p-2 text-[10px] md:text-xs space-y-3 leading-relaxed text-base-content">
-            <div>
-              <p className="font-semibold mb-1.5">Description:</p>
-              <div className="space-y-1.5">
-                {(experience.description ?? []).map((para, i) => (
-                  <p key={i}>{para}</p>
-                ))}
+        {/* Skills List */}
+        <div className="space-y-2">
+          <p className="text-[10px] md:text-xs font-semibold text-base-content/70 tracking-wider uppercase">
+            Skills & Technologies
+          </p>
+          <div className="max-h-[300px] overflow-y-auto pr-1 space-y-2">
+            {experience.skills?.map((skill, index) => (
+              <div
+                key={index}
+                className={cn(
+                  'flex items-center gap-2.5 px-3 py-2 rounded-md shadow-sm',
+                  'bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                  'text-[10px] md:text-xs font-medium text-base-content'
+                )}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-base-content/60 shrink-0" />
+                <span>{skill}</span>
               </div>
-            </div>
-            <div>
-              <p className="font-semibold mb-1.5">Key Contributions:</p>
-              <ul className="space-y-1.5 md:space-y-2">
-                {(experience.keyContributions ?? []).map((item, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="inline-block">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </DialogPanel>
     </Dialog>
   );
 }
+
+export { ExperienceDialog as DetailsDialog };
+export default ExperienceDialog;
+
