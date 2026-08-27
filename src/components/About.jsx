@@ -62,8 +62,8 @@ export default function About() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      {/* Image + Name + Details Row */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8 w-full">
+      {/* Image + Name + Details Row - Vertically centered */}
+      <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 w-full">
         {/* Image - Tilt Card (larger on mobile) */}
         <div className="shrink-0">
           <Tilt
@@ -140,7 +140,7 @@ export default function About() {
               </span>
             </div>
 
-            {/* Row 2: Location (span 1), Phone (span 2) */}
+            {/* Row 2: Phone (span 1), Location (span 2) */}
             <div className="flex flex-col col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Phone
@@ -158,7 +158,6 @@ export default function About() {
               </span>
             </div>
 
-
             {/* Row 3: Program (full width - span 3) */}
             <div className="flex flex-col col-span-3">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
@@ -172,37 +171,45 @@ export default function About() {
         </div>
       </div>
 
-      {/* Description - Left aligned */}
-      <div className="w-full max-w-2xl pt-2">
-        <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70 leading-relaxed text-left">
-          Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
-          I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
-        </p>
-      </div>
+      <hr />
 
-      {/* Contact Buttons - Centered */}
-      <nav
-        aria-label="Contact links"
-        className="flex w-full max-w-2xl mx-auto flex-wrap items-center justify-center gap-1.5 md:gap-3"
-      >
-        {CONTACT_LINKS.map((contact) => (
-          <button
-            key={contact.id}
-            type="button"
-            className={interactiveButtonClasses}
-            style={{ '--brand-color': contact.color }}
-            onClick={() => setActiveContact(contact)}
-            aria-label={contact.label}
-          >
-            <span className="tool-icon flex items-center justify-center">
-              {contact.icon}
-            </span>
-            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-              {contact.label}
-            </span>
-          </button>
-        ))}
-      </nav>
+      {/* Description + Contacts Grid - Left: Description, Right: Contacts */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
+        {/* Description - Left aligned (spans 2 columns on desktop) */}
+        <div className="md:col-span-2">
+          <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70 leading-relaxed text-left">
+            Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
+            I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
+          </p>
+        </div>
+
+        {/* Contact Buttons - Right side (spans 1 column on desktop) */}
+        <nav
+          aria-label="Contact links"
+          className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 md:gap-2"
+        >
+          {CONTACT_LINKS.map((contact) => (
+            <button
+              key={contact.id}
+              type="button"
+              className={cn(
+                interactiveButtonClasses,
+                'flex-1 min-w-[60px] md:flex-none md:min-w-0'
+              )}
+              style={{ '--brand-color': contact.color }}
+              onClick={() => setActiveContact(contact)}
+              aria-label={contact.label}
+            >
+              <span className="tool-icon flex items-center justify-center">
+                {contact.icon}
+              </span>
+              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                {contact.label}
+              </span>
+            </button>
+          ))}
+        </nav>
+      </div>
 
       {/* Contact Dialog */}
       <ContactDialog
