@@ -173,43 +173,37 @@ export default function About() {
 
       <hr />
 
-      {/* Description + Contacts Grid - Left: Description, Right: Contacts */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
-        {/* Description - Left aligned (spans 2 columns on desktop) */}
-        <div className="md:col-span-2">
-          <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70 leading-relaxed text-left">
-            Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
-            I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
-          </p>
-        </div>
-
-        {/* Contact Buttons - Right side (spans 1 column on desktop) */}
-        <nav
-          aria-label="Contact links"
-          className="flex flex-wrap items-center justify-center md:justify-start gap-1.5 md:gap-2"
-        >
-          {CONTACT_LINKS.map((contact) => (
-            <button
-              key={contact.id}
-              type="button"
-              className={cn(
-                interactiveButtonClasses,
-                'flex-1 min-w-[60px] md:flex-none md:min-w-0'
-              )}
-              style={{ '--brand-color': contact.color }}
-              onClick={() => setActiveContact(contact)}
-              aria-label={contact.label}
-            >
-              <span className="tool-icon flex items-center justify-center">
-                {contact.icon}
-              </span>
-              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                {contact.label}
-              </span>
-            </button>
-          ))}
-        </nav>
+      {/* Description */}
+      <div className="w-full">
+        <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70 leading-relaxed">
+          Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
+          I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
+        </p>
       </div>
+
+      {/* Contact Buttons - Centered below description */}
+      <nav
+        aria-label="Contact links"
+        className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3"
+      >
+        {CONTACT_LINKS.map((contact) => (
+          <button
+            key={contact.id}
+            type="button"
+            className={interactiveButtonClasses}
+            style={{ '--brand-color': contact.color }}
+            onClick={() => setActiveContact(contact)}
+            aria-label={contact.label}
+          >
+            <span className="tool-icon flex items-center justify-center">
+              {contact.icon}
+            </span>
+            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+              {contact.label}
+            </span>
+          </button>
+        ))}
+      </nav>
 
       {/* Contact Dialog */}
       <ContactDialog
