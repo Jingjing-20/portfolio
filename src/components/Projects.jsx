@@ -1,19 +1,9 @@
-import { useState, useEffect } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import { ChevronLeft, ChevronRight, ArrowLeft } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ProjectDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
-
-const outlineButtonWithLabelClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'disabled:pointer-events-none disabled:opacity-50',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm font-medium cursor-pointer hover-theme-switch'
-);
 
 const iconButtonClasses = cn(
   'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
@@ -45,34 +35,6 @@ function OpenIcon({ size = 18 }) {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [mockupProject, setMockupProject] = useState(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    slidesToScroll: 1,
-    align: 'start',
-  });
-
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
-
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSelect = () => {
-      setCanScrollPrev(emblaApi.canScrollPrev());
-      setCanScrollNext(emblaApi.canScrollNext());
-    };
-
-    emblaApi.on('select', onSelect);
-    emblaApi.on('reInit', onSelect);
-    onSelect();
-
-    return () => {
-      emblaApi.off('select', onSelect);
-      emblaApi.off('reInit', onSelect);
-    };
-  }, [emblaApi]);
 
   const handleBackToHome = () => {
     window.location.hash = 'home';
@@ -126,95 +88,68 @@ export default function Projects() {
 
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
-                // Carousel Mockup Layout
-                <div className="flex items-center gap-3">
-                  {/* Left control */}
-                  <button
-                    type="button"
-                    className={outlineButtonWithLabelClasses}
-                    onClick={scrollPrev}
-                    disabled={!canScrollPrev}
-                    aria-label="Previous mockups"
-                  >
-                    <ChevronLeft />
-                  </button>
+                // Mockups Grid Layout
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
+                  {items.map((mockup) => (
+                    <div
+                      key={mockup.id}
+                      className={cn(
+                        'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
+                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                        'hover-card cursor-pointer'
+                      )}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setMockupProject(mockup)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setMockupProject(mockup);
+                        }
+                      }}
+                    >
+                      {/* Open Icon Button - Top Right */}
+                      <button
+                        type="button"
+                        className={iconButtonClasses}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setMockupProject(mockup);
+                        }}
+                        aria-label={`Open ${mockup.name} mockup`}
+                      >
+                        <OpenIcon />
+                      </button>
 
-                  {/* Carousel container */}
-                  <div className="flex-1 py-3 overflow-hidden" ref={emblaRef}>
-                    <div className="flex touch-pan-y touch-pinch-zoom gap-3">
-                      {items.map((mockup) => (
-                        <div
-                          key={mockup.id}
-                          className={cn(
-                            'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
-                            'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                            'w-30 md:w-35 flex-shrink-0 hover-card'
-                          )}
-                          role="button"
-                          tabIndex={0}
-                          onClick={() => setMockupProject(mockup)}
-                          onKeyDown={(event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                              event.preventDefault();
-                              setMockupProject(mockup);
-                            }
-                          }}
-                        >
-                          {/* Open Icon Button - Top Right */}
-                          <button
-                            type="button"
-                            className={iconButtonClasses}
-                            onClick={(event) => {
-                              event.stopPropagation();
-                              setMockupProject(mockup);
-                            }}
-                            aria-label={`Open ${mockup.name} mockup`}
-                          >
-                            <OpenIcon />
-                          </button>
-
-                          {/* Polaroid Photo Frame - 16:9 aspect ratio */}
-                          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                            {mockup.previewImage ? (
-                              <img
-                                src={mockup.previewImage}
-                                alt={mockup.name}
-                                loading="lazy"
-                                className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                              />
-                            ) : (
-                              <div className="flex h-full w-full items-center justify-center text-base-content/40">
-                                <WebIcon size={32} />
-                              </div>
-                            )}
+                      {/* Polaroid Photo Frame - 16:9 aspect ratio */}
+                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                        {mockup.previewImage ? (
+                          <img
+                            src={mockup.previewImage}
+                            alt={mockup.name}
+                            loading="lazy"
+                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-base-content/40">
+                            <WebIcon size={32} />
                           </div>
+                        )}
+                      </div>
 
-                          {/* Polaroid Bottom Caption (Under Photo: Name only) */}
-                          <div className="flex flex-col justify-between flex-1 pt-2">
-                            <div>
-                              <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
-                                {mockup.name}
-                              </h3>
-                              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
-                                {mockup.category}
-                              </p>
-                            </div>
-                          </div>
+                      {/* Polaroid Bottom Caption (Under Photo: Name only) */}
+                      <div className="flex flex-col justify-between flex-1 pt-2">
+                        <div>
+                          <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                            {mockup.name}
+                          </h3>
+                          <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                            {mockup.category}
+                          </p>
                         </div>
-                      ))}
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Right control */}
-                  <button
-                    type="button"
-                    className={outlineButtonWithLabelClasses}
-                    onClick={scrollNext}
-                    disabled={!canScrollNext}
-                    aria-label="Next mockups"
-                  >
-                    <ChevronRight />
-                  </button>
+                  ))}
                 </div>
               ) : (
                 // Deployed project layout with cover image and icon button
