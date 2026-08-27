@@ -17,9 +17,6 @@ import experienceIcon from '@/components/resume_sections/navbar/experience.svg';
 import projectsIcon from '@/components/resume_sections/navbar/projects.svg';
 import certIcon from '@/components/resume_sections/navbar/certificate.svg';
 
-// Contact Data for Footer
-import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
-
 const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md px-6 py-3',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
@@ -227,24 +224,37 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Powered By & Footer */}
+      {/* Footer */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.55 }}
-        className="w-full pt-8 pb-4 text-center mt-auto space-y-4"
+        className="w-full pt-8 pb-4 mt-auto space-y-3"
       >
-        {/* Powered By (Icons Only) */}
-        <div className="space-y-2">
-          <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-base-content/60 font-semibold">
-            Powered By
-          </p>
-          <div className="flex items-center justify-center gap-2 md:gap-2.5 flex-wrap">
+        {/* Divider */}
+        <hr className="w-full max-w-4xl mx-auto border-gray-300/40 dark:border-white/10" />
+
+        {/* Footer Details & Powered By */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/70">
+          <div className="text-center sm:text-left space-y-0.5">
+            <p className="text-[10px] md:text-xs font-medium text-base-content">
+              © {new Date().getFullYear()} Gian Carlo N. Ulep
+            </p>
+            <p className="text-[8px] md:text-[10px] text-base-content/60">
+              Crafted with precision, passion & motion
+            </p>
+          </div>
+
+          {/* Powered By (Icons Only) */}
+          <div className="flex items-center gap-1.5 md:gap-2 flex-wrap justify-center sm:justify-end">
+            <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-base-content/60 font-semibold mr-1">
+              Powered by
+            </span>
             {POWERED_BY_STACK.map((tool) => (
               <div
                 key={tool.name}
                 className={cn(
-                  'shadow-md inline-flex items-center justify-center rounded-md p-1.5 md:p-2',
+                  'shadow-md inline-flex items-center justify-center rounded-md p-1.5',
                   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
                   'cursor-default hover-badge transition-transform duration-200 hover:scale-110'
                 )}
@@ -256,45 +266,6 @@ export default function Home() {
                   {tool.icon}
                 </span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <hr className="w-full max-w-md mx-auto border-gray-300/40 dark:border-white/10" />
-
-        {/* Footer Details & Social Links */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 max-w-2xl mx-auto px-4 text-xs text-base-content/70">
-          <div className="text-center sm:text-left space-y-0.5">
-            <p className="text-[10px] md:text-xs font-medium text-base-content">
-              © {new Date().getFullYear()} Gian Carlo N. Ulep
-            </p>
-            <p className="text-[8px] md:text-[10px] text-base-content/60">
-              Crafted with precision, passion & motion
-            </p>
-          </div>
-
-          {/* Quick Contact Icons */}
-          <div className="flex items-center gap-2">
-            {CONTACT_LINKS.map((link) => (
-              <a
-                key={link.id}
-                href={link.href || `mailto:${link.email}`}
-                target={link.href ? '_blank' : undefined}
-                rel={link.href ? 'noreferrer noopener' : undefined}
-                className={cn(
-                  'shadow-md inline-flex items-center justify-center rounded-md p-1.5',
-                  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'cursor-pointer hover-badge transition-transform duration-200 hover:scale-110'
-                )}
-                style={{ '--brand-color': link.color }}
-                title={link.label}
-                aria-label={link.label}
-              >
-                <span className="tool-icon flex items-center justify-center">
-                  {link.icon}
-                </span>
-              </a>
             ))}
           </div>
         </div>
