@@ -192,15 +192,15 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="scroll-mt-24">
+    <section id="experience" className="scroll-mt-24 max-w-3xl mx-auto">
       <header className="pt-10 mb-3 md:mb-6">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
           {/* Back button */}
           <button
             type="button"
             onClick={handleBackToHome}
             className={cn(
-              'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
               'text-sm md:text-base font-medium cursor-pointer hover-badge'
@@ -210,7 +210,7 @@ export default function Experience() {
             <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
           </button>
 
-          <div className="flex-1 text-right">
+          <div className="flex-1">
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Experience
             </h2>

@@ -32,7 +32,7 @@ export default function Home() {
       aria-label="Welcome"
       className="min-h-[calc(100vh-10rem)] flex items-center justify-center"
     >
-      <div className="w-full max-w-full mx-auto text-center space-y-8 px-4">
+      <div className="w-full max-w-7xl mx-auto text-center space-y-8 px-4">
         {/* Main Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,24 +43,24 @@ export default function Home() {
           <h1 className="font-bold tracking-tight text-base-content text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto">
             <span className="block md:hidden">
               <ShimmeringText
-                text="Welcome to"
+                text="Code. Build."
                 className="font-extrabold"
               />
               <ShimmeringText
-                text="My Portfolio"
+                text="Deliver."
                 className="font-extrabold"
               />
             </span>
             <span className="hidden md:block">
               <ShimmeringText
-                text="Welcome to My Portfolio"
+                text="Code. Build. Deliver."
                 className="font-extrabold"
               />
             </span>
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-base-content/70 leading-relaxed max-w-2xl mx-auto">
-            Where creativity meets code — I craft thoughtful web experiences 
+            Where creativity meets code — I craft thoughtful web experiences
             with precision, passion, and a commitment to excellence.
           </p>
         </motion.div>

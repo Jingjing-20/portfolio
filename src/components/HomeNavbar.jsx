@@ -45,7 +45,7 @@ function ThemeTogglerBtn() {
 export default function HomeNavbar() {
   return (
     <div className="fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
-      <div className="flex max-w-6xl mx-auto items-center justify-between px-4 md:px-6 py-3">
+      <div className="flex max-w-4xl mx-auto items-center justify-between px-4 md:px-6 py-3">
         {/* Portfolio identity */}
         <div className="flex items-center gap-2 flex-shrink-0">
           <img
