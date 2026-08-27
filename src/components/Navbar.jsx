@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Home } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
@@ -26,6 +26,12 @@ function NavIcon({ src, alt, size = 20 }) {
 }
 
 const NAV_ITEMS = [
+  {
+    value: 'home',
+    label: 'Home',
+    href: '#home',
+    icon: <Home className="h-5 w-5" />
+  },
   {
     value: 'about',
     label: 'About',
@@ -135,7 +141,7 @@ function ThemeTogglerBtn({ showLabel = false, className = '' }) {
   );
 }
 
-export default function Navbar({ activePage = 'about', onSelectPage }) {
+export default function Navbar({ activePage = 'home', onSelectPage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavClick = (e, value) => {
@@ -156,9 +162,9 @@ export default function Navbar({ activePage = 'about', onSelectPage }) {
           {/* Portfolio identity */}
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'about')}
+            onClick={(event) => handleNavClick(event, 'home')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0 cursor-pointer"
-            aria-label="About Gian Carlo N. Ulep"
+            aria-label="Home - Portfolio of Gian Carlo N. Ulep"
           >
             <img
               src={logoImg}
@@ -216,9 +222,9 @@ export default function Navbar({ activePage = 'about', onSelectPage }) {
         )}>
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'about')}
+            onClick={(event) => handleNavClick(event, 'home')}
             className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 cursor-pointer"
-            aria-label="About Gian Carlo N. Ulep"
+            aria-label="Home - Portfolio of Gian Carlo N. Ulep"
           >
             <img
               src={logoImg}
