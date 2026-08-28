@@ -1,6 +1,7 @@
 import { chmsuagrmImages } from '@/components/resume_sections/projects/chmsuagrm/chmsuagrm_ss';
 import { pgsoulpmmsImages } from '@/components/resume_sections/projects/pgsoulpmms/pgsoulpmms_ss';
 import { mockupsData } from '@/components/resume_sections/projects/mockups/mockups_data';
+import { minigamesData } from '@/components/resume_sections/projects/minigames/minigames_data';
 import chmsuagrmCover from '@/components/resume_sections/projects/chmsuagrm/chmsuagrm_cover.webp';
 import pgsoulpmmsCover from '@/components/resume_sections/projects/pgsoulpmms/pgsoulpmms_cover.webp';
 
@@ -54,5 +55,10 @@ export const PROJECT_CATEGORIES = [
     category: 'Mockups',
     description: 'Design concepts and interface prototypes available for development or licensing.',
     items: mockupsData,
+  },
+  {
+    category: 'Browser Games',
+    description: 'Interactive browser-based mini-games and playful web experiences.',
+    items: minigamesData,
   },
 ];

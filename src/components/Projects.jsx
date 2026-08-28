@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ProjectDialog } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
+import { MinigamesDialog } from '@/components/resume_sections/projects/MinigamesDialog';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
 const iconButtonClasses = cn(
@@ -35,6 +36,7 @@ function OpenIcon({ size = 18 }) {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [mockupProject, setMockupProject] = useState(null);
+  const [minigameProject, setMinigameProject] = useState(null);
 
   const handleBackToHome = () => {
     window.location.hash = 'home';
@@ -151,6 +153,70 @@ export default function Projects() {
                     </div>
                   ))}
                 </div>
+              ) : category === 'Browser Games' ? (
+                // Browser Games Grid Layout
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
+                  {items.map((minigame) => (
+                    <div
+                      key={minigame.id}
+                      className={cn(
+                        'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
+                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                        'hover-card cursor-pointer'
+                      )}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setMinigameProject(minigame)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setMinigameProject(minigame);
+                        }
+                      }}
+                    >
+                      {/* Open Icon Button - Top Right */}
+                      <button
+                        type="button"
+                        className={iconButtonClasses}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setMinigameProject(minigame);
+                        }}
+                        aria-label={`Open ${minigame.name} browser game`}
+                      >
+                        <OpenIcon />
+                      </button>
+
+                      {/* Polaroid Photo Frame - 16:9 aspect ratio */}
+                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                        {minigame.previewImage ? (
+                          <img
+                            src={minigame.previewImage}
+                            alt={minigame.name}
+                            loading="lazy"
+                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center text-base-content/40">
+                            <WebIcon size={32} />
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Polaroid Bottom Caption (Under Photo: Name only) */}
+                      <div className="flex flex-col justify-between flex-1 pt-2">
+                        <div>
+                          <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                            {minigame.name}
+                          </h3>
+                          <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                            {minigame.category}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               ) : (
                 // Deployed project layout with cover image and icon button
                 <ul className="space-y-6 md:space-y-7">
@@ -221,6 +287,11 @@ export default function Projects() {
         mockup={mockupProject}
         open={mockupProject !== null}
         onClose={() => setMockupProject(null)}
+      />
+      <MinigamesDialog
+        minigame={minigameProject}
+        open={minigameProject !== null}
+        onClose={() => setMinigameProject(null)}
       />
     </section>
   );
