@@ -177,7 +177,7 @@ export default function Home() {
                 className={cn(
                   'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl',
                   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'w-25 sm:w-30 md:w-35 flex-shrink-0 cursor-pointer hover-card text-center'
+                  'w-20 md:w-25 lg:w-30 flex-shrink-0 cursor-pointer hover-card text-center'
                 )}
                 role="button"
                 tabIndex={0}
