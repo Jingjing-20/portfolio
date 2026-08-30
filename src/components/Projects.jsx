@@ -182,7 +182,7 @@ export default function Projects() {
                     <li key={project.id} className="flex items-start">
                       <div className="flex-1 space-y-3">
                         <div className="flex gap-4 items-center">
-                          {/* Cover Image - Double Border with Hover Rotate */}
+                          {/* Cover Image - Double Border */}
                           {project.coverImage && (
                             <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative group">
                               <div
