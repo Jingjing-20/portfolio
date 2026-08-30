@@ -25,7 +25,7 @@ A modern, responsive personal portfolio website.
 
 ## Built With
 
-![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
 ![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
 ![shadcn/ui](https://img.shields.io/badge/-shadcn/ui-000000?logo=shadcnui&logoColor=white)
