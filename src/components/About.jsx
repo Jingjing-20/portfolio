@@ -198,7 +198,7 @@ export default function About() {
             <span className="tool-icon flex items-center justify-center">
               {contact.icon}
             </span>
-            <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+            <span className="hidden md:block text-[8px] md:text-[10px] font-medium text-base-content">
               {contact.label}
             </span>
           </button>

@@ -182,14 +182,20 @@
 }
 
 .hover-badge:hover .tool-icon-img,
+.hover-badge:focus-visible .tool-icon-img,
 .tech-badge-item:hover .tool-icon-img,
 .hover-list-item:hover .tool-icon-img,
+.hover-card:hover .tool-icon-img,
+.hover-card:focus-visible .tool-icon-img,
+.group:hover .tool-icon-img,
 .tool-icon-img:hover {
   filter: none !important;
 }
 
 .dark .hover-badge:hover .tool-icon-monochrome,
-[data-theme="dark"] .hover-badge:hover .tool-icon-monochrome {
+[data-theme="dark"] .hover-badge:hover .tool-icon-monochrome,
+.dark .hover-card:hover .tool-icon-monochrome,
+[data-theme="dark"] .hover-card:hover .tool-icon-monochrome {
   filter: invert(1) brightness(180%) !important;
 }
 

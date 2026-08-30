@@ -106,7 +106,7 @@ export default function Certificates() {
                         )}
                       </div>
                       {year && (
-                        <span className="text-[8px] md:text-[10px] text-muted-foreground font-medium whitespace-nowrap">
+                        <span className="text-[6px] md:text-[8px] font-medium whitespace-nowrap p-1 rounded-md border-3 border-content text-lg md:text-xl">
                           {year}
                         </span>
                       )}
@@ -117,8 +117,8 @@ export default function Certificates() {
                       <p className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-1 text-left">
                         {cert.org}
                       </p>
-                      <div className="flex-1 flex items-center justify-center">
-                        <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2 text-center">
+                      <div className="flex-1 flex items-center">
+                        <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2">
                           {cert.title}
                         </p>
                       </div>
