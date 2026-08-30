@@ -2,7 +2,7 @@ export const TECH_STACK = [
   {
     category: 'Frontend',
     description: 'Building responsive and interactive user interfaces.',
-    tools: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'Tailwind', 'React'],
+    tools: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Bootstrap', 'Tailwind CSS', 'React'],
   },
   {
     category: 'UI/UX & Design',
@@ -10,23 +10,38 @@ export const TECH_STACK = [
     tools: ['Figma', 'Framer', 'Canva'],
   },
   {
-    category: 'Backend & APIs',
+    category: 'Backend',
     description: 'Server-side development and API technologies.',
-    tools: ['PHP', 'Laravel', 'Node.js', 'REST'],
+    tools: ['PHP', 'Laravel', 'Node.js', 'REST APIs'],
   },
   {
-    category: 'Databases & Backend Services',
-    description: 'Data storage and backend-as-a-service platforms.',
+    category: 'Databases',
+    description: 'Relational and cloud-based data storage.',
     tools: ['MySQL', 'PostgreSQL', 'Supabase'],
   },
   {
-    category: 'Infrastructure & DevOps',
-    description: 'Deployment automation and CI/CD tools.',
-    tools: ['Apache', 'GitHub Actions'],
+    category: 'Web Servers',
+    description: 'Hosting and server management.',
+    tools: ['Apache'],
   },
   {
-    category: 'Development Tools',
-    description: 'Version control and AI-assisted development.',
-    tools: ['Git', 'GitHub', 'Antigravity', 'Codex', 'Claude'],
+    category: 'Hosting Platforms',
+    description: 'Application deployment and hosting services.',
+    tools: ['Vercel', 'Hostinger'],
+  },
+  {
+    category: 'CI/CD & Automation',
+    description: 'Continuous integration and deployment workflows.',
+    tools: ['GitHub Actions'],
+  },
+  {
+    category: 'Version Control',
+    description: 'Code management and collaboration.',
+    tools: ['Git', 'GitHub'],
+  },
+  {
+    category: 'AI-Assisted Development',
+    description: 'AI tools for coding and development.',
+    tools: ['Antigravity', 'Codex', 'Claude'],
   },
 ];

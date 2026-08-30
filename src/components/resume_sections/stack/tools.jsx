@@ -11,16 +11,20 @@ import gitSvg from './stack icons/git.svg';
 import githubSvg from './stack icons/github.svg';
 import githubActionsSvg from './stack icons/githubactions.svg';
 import antigravitySvg from './stack icons/google-antigravity.svg';
+import hostingerSvg from './stack icons/hostinger.svg';
 import htmlSvg from './stack icons/html.svg';
 import jsSvg from './stack icons/javascript.svg';
 import laravelSvg from './stack icons/laravel.svg';
 import mysqlSvg from './stack icons/mysql.svg';
+import nextSvg from './stack icons/nextjs.svg';
 import nodeSvg from './stack icons/node-js.svg';
 import phpSvg from './stack icons/php.svg';
 import postgresqlSvg from './stack icons/postgresql.svg';
 import reactSvg from './stack icons/react.svg';
 import restSvg from './stack icons/rest-api.svg';
 import supabaseSvg from './stack icons/supabase.svg';
+import typescriptSvg from './stack icons/typescript.svg';
+import vercelSvg from './stack icons/vercel.svg';
 import viteSvg from './stack icons/vitejs.svg';
 
 export const Tools = {
@@ -70,6 +74,16 @@ export const Tools = {
     category: 'Frontend',
     color: '#646CFF',
     icon: <img src={viteSvg} alt="Vite" className="tool-icon-img" />,
+  },
+  'Next.js': {
+    category: 'Frontend',
+    color: '#000000',
+    icon: <img src={nextSvg} alt="Next.js" className="tool-icon-img tool-icon-monochrome" />,
+  },
+  'TypeScript': {
+    category: 'Frontend',
+    color: '#007ACC',
+    icon: <img src={typescriptSvg} alt="TypeScript" className="tool-icon-img" />,
   },
   'Bootstrap': {
     category: 'Frontend',
@@ -121,6 +135,16 @@ export const Tools = {
     category: 'Infrastructure & DevOps',
     color: '#D22128',
     icon: <img src={apacheSvg} alt="Apache" className="tool-icon-img" />,
+  },
+  'Vercel': {
+    category: 'Infrastructure & DevOps',
+    color: '#000000',
+    icon: <img src={vercelSvg} alt="Vercel" className="tool-icon-img tool-icon-monochrome" />,
+  },
+  'Hostinger': {
+    category: 'Infrastructure & DevOps',
+    color: '#673DE6',
+    icon: <img src={hostingerSvg} alt="Hostinger" className="tool-icon-img" />,
   },
   'GitHub Actions': {
     category: 'Infrastructure & DevOps',

@@ -26,7 +26,7 @@ const buttonClasses = cn(
 );
 
 const iconButtonClasses = cn(
-  'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
+  'absolute top-0.5 right-0.5 p-1 md:p-1.5 rounded-full',
   'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
   'border border-gray-300 dark:border-white/30',
   'shadow-md z-10 hover-open-icon'

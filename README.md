@@ -4,18 +4,18 @@ A modern, high-performance, and responsive personal portfolio website showcasing
 
 ---
 
-## 🌟 Overview
+## Overview
 
 This portfolio is built to reflect my background as a **BS Information Technology student (2022–2026)** at Carlos Hilado Memorial State University (CHMSU) and an aspiring **Software Developer / Full-Stack Developer**.
 
 ### Key Portfolio Features
-- 🎴 **Interactive 3D Tilt Developer Card** with personal details and quick contact options.
-- 💫 **Interactive UI & Visual Effects**: Starfield canvas background, comet cursor trail, theme toggling (Dark/Light mode), and top scroll progress indicator.
-- 🚀 **Production System Showcases**: Detailed modal dialogs featuring deployed enterprise and academic web systems.
-- 🎨 **UI/UX Mockups Gallery**: Interactive prototype previews for diverse domains (Healthcare, Editorial, Hospitality, E-commerce, POS, Outdoor).
-- 💼 **Professional Experience Timeline**: Structured work experience highlighting roles and key contributions.
-- 📜 **Verified Credentials & Certifications**: Categorized certificates from Cisco, TestDome, Koenig Solutions, and more.
-- 📄 **Downloadable PDF Resume**: Instant access to the latest resume.
+- **Interactive 3D Tilt Developer Card** with personal details and quick contact options.
+- **Interactive UI & Visual Effects**: Starfield canvas background, comet cursor trail, theme toggling (Dark/Light mode), and top scroll progress indicator.
+- **Production System Showcases**: Detailed modal dialogs featuring deployed enterprise and academic web systems.
+- **UI/UX Mockups Gallery**: Interactive prototype previews for diverse domains (Healthcare, Editorial, Hospitality, E-commerce, POS, Outdoor).
+- **Professional Experience Timeline**: Structured work experience highlighting roles and key contributions.
+- **Verified Credentials & Certifications**: Categorized certificates from Cisco, TestDome, Koenig Solutions, and more.
+- **Downloadable PDF Resume**: Instant access to the latest resume.
 
 ---
 
