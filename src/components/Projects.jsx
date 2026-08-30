@@ -6,13 +6,6 @@ import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog
 import { MinigamesDialog } from '@/components/resume_sections/projects/MinigamesDialog';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
-const iconButtonClasses = cn(
-  'absolute top-1 right-1 p-1 md:p-1.5 rounded-full',
-  'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
-  'border border-gray-300 dark:border-white/30',
-  'shadow-md z-10 hover-open-icon'
-);
-
 function WebIcon({ size = 32 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
@@ -20,15 +13,6 @@ function WebIcon({ size = 32 }) {
         <path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
         <path fill="currentColor" d="M19 4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 8H5v6h14zm0-6H5v4h14zM7 7a1 1 0 1 1 0 2a1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2m3 0a1 1 0 1 1 0 2a1 1 0 0 1 0-2" />
       </g>
-    </svg>
-  );
-}
-
-function OpenIcon({ size = 18 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3 md:w-4 md:h-4">
-      <title>Open</title>
-      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
   );
 }
@@ -91,12 +75,12 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Mockups Grid Layout
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
                   {items.map((mockup) => (
                     <div
                       key={mockup.id}
                       className={cn(
-                        'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
+                        'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
                         'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
                         'hover-card cursor-pointer'
                       )}
@@ -110,19 +94,6 @@ export default function Projects() {
                         }
                       }}
                     >
-                      {/* Open Icon Button - Top Right */}
-                      <button
-                        type="button"
-                        className={iconButtonClasses}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          setMockupProject(mockup);
-                        }}
-                        aria-label={`Open ${mockup.name} mockup`}
-                      >
-                        <OpenIcon />
-                      </button>
-
                       {/* Polaroid Photo Frame - 16:9 aspect ratio */}
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                         {mockup.previewImage ? (
@@ -155,12 +126,12 @@ export default function Projects() {
                 </div>
               ) : category === 'Browser Games' ? (
                 // Browser Games Grid Layout
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 md:gap-4">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
                   {items.map((minigame) => (
                     <div
                       key={minigame.id}
                       className={cn(
-                        'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
+                        'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
                         'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
                         'hover-card cursor-pointer'
                       )}
@@ -174,19 +145,6 @@ export default function Projects() {
                         }
                       }}
                     >
-                      {/* Open Icon Button - Top Right */}
-                      <button
-                        type="button"
-                        className={iconButtonClasses}
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          setMinigameProject(minigame);
-                        }}
-                        aria-label={`Open ${minigame.name} browser game`}
-                      >
-                        <OpenIcon />
-                      </button>
-
                       {/* Polaroid Photo Frame - 16:9 aspect ratio */}
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                         {minigame.previewImage ? (
@@ -218,32 +176,19 @@ export default function Projects() {
                   ))}
                 </div>
               ) : (
-                // Deployed project layout with cover image and icon button
+                // Deployed project layout with cover image
                 <ul className="space-y-6 md:space-y-7">
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start">
                       <div className="flex-1 space-y-3">
                         <div className="flex gap-4 items-center">
-                          {/* Cover Image - Double Border with Icon Button and Hover Rotate */}
+                          {/* Cover Image - Double Border with Hover Rotate */}
                           {project.coverImage && (
-                            <div className="flex-shrink-0 w-30 md:w-35 relative group">
+                            <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative group">
                               <div
-                                className="relative p-1 md:p-1.5 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
+                                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
                                 onClick={() => setSelectedProject(project)}
                               >
-                                {/* Open Icon Button - Top Right */}
-                                <button
-                                  type="button"
-                                  className={iconButtonClasses}
-                                  onClick={(event) => {
-                                    event.stopPropagation();
-                                    setSelectedProject(project);
-                                  }}
-                                  aria-label={`Open ${project.title} details`}
-                                >
-                                  <OpenIcon />
-                                </button>
-
                                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                                   <img
                                     src={project.coverImage}
