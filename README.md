@@ -1,9 +1,9 @@
 # Gian Carlo N. Ulep - Portfolio
 
-![React](https://img.shields.io/badge/React-black?logo=react)
-![JavaScript](https://img.shields.io/badge/JavaScript-black?logo=javascript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-black?logo=tailwindcss)
-![shadcn/ui](https://img.shields.io/badge/Shadcn/UI-black?logo=shadcnui)
+![React](https://img.shields.io/badge/React-white?logo=react)
+![JavaScript](https://img.shields.io/badge/JavaScript-white?logo=javascript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-white?logo=tailwindcss)
+![shadcn/ui](https://img.shields.io/badge/Shadcn/UI-white?logo=shadcnui)
 
 A modern, responsive personal portfolio website.
 
