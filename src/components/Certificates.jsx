@@ -3,14 +3,21 @@ import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import CertificateDialog from '@/components/resume_sections/certificates/CertificateDialog';
 import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificates/certificates_data';
-import { PinList } from '@/components/animate-ui/components/community/pin-list';
 
+function CertIcon({ size = 32 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <g fill="none">
+        <path fill="currentColor" d="M4 3h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3l-3 4l-3-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2m4 11.5l1.5 2l1.5-2l-1.5-2zm7-7.5a3 3 0 1 0 0 6a3 3 0 0 0 0-6m-5 3a5 5 0 1 1 10 0a5 5 0 0 1-10 0" />
+      </g>
+    </svg>
+  );
+}
 
-// Helper function to format date
 const formatDate = (dateString) => {
   if (!dateString) return null;
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  return date.getFullYear();
 };
 
 export default function Certificates() {
@@ -54,36 +61,74 @@ export default function Certificates() {
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
       {/* Categorized Certificates */}
-      <div className="space-y-6">
-        {CERTIFICATE_CATEGORIES.map((category) => {
-          const pinListItems = category.items.map((cert) => ({
-            id: cert.id,
-            name: cert.title,
-            info: `${cert.org} • ${formatDate(cert.issuedDate) || 'No date'}`,
-            icon: cert.icon,
-            pinned: false,
-            cert: cert,
-          }));
-
-          return (
-            <div key={category.category} className="space-y-2">
-              <div>
-                <h3 className="text-xs md:text-sm lg:text-base font-semibold text-base-content">
-                  {category.category}
-                </h3>
-                <p className="text-[8px] md:text-[10px] lg:text-xs text-base-content/70 leading-relaxed">
-                  {category.description}
-                </p>
-              </div>
-
-              <PinList
-                items={pinListItems}
-                className="space-y-3"
-                onItemClick={(item) => setActiveCert(item.cert)}
-              />
+      <div className="space-y-6 md:space-y-8">
+        {CERTIFICATE_CATEGORIES.map((category) => (
+          <article key={category.category}>
+            <div className="space-y-1 mb-3">
+              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+                {category.category}
+              </h3>
+              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground leading-relaxed">
+                {category.description}
+              </p>
             </div>
-          );
-        })}
+
+            {/* Certificate Grid Layout - 2 columns on mobile, 3 on desktop */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+              {category.items.map((cert) => {
+                const CertIconComp = cert.icon;
+                const year = formatDate(cert.issuedDate);
+                return (
+                  <div
+                    key={cert.id}
+                    className={cn(
+                      'group relative flex flex-col p-3 md:p-4 rounded-lg shadow-xl',
+                      'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                      'hover-card cursor-pointer min-h-[120px]'
+                    )}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setActiveCert(cert)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        setActiveCert(cert);
+                      }
+                    }}
+                  >
+                    {/* Top Row: Logo (left) + Year (right) */}
+                    <div className="flex items-start justify-between w-full">
+                      <div className="flex items-center gap-2">
+                        {CertIconComp && (
+                          <span className="flex items-center justify-center flex-shrink-0 text-xl p-1 rounded-md border-3 border-content text-lg md:text-xl">
+                            <CertIconComp />
+                          </span>
+                        )}
+                      </div>
+                      {year && (
+                        <span className="text-[8px] md:text-[10px] text-muted-foreground font-medium whitespace-nowrap">
+                          {year}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Bottom Content: Org Name (left) + Cert Name (centered vertically) */}
+                    <div className="flex flex-col flex-1 mt-2 space-y-2">
+                      <p className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-1 text-left">
+                        {cert.org}
+                      </p>
+                      <div className="flex-1 flex items-center justify-center">
+                        <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2 text-center">
+                          {cert.title}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
+        ))}
       </div>
 
       <CertificateDialog

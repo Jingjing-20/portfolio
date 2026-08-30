@@ -18,7 +18,7 @@ import koenigSvg from '@/components/resume_sections/certificates/orgs/koenig sol
 import testdomeSvg from '@/components/resume_sections/certificates/orgs/testdome.svg';
 
 export const CiscoIcon = (props) => (
-  <img src={ciscoSvg} alt="Cisco" className="tool-icon-img size-5 object-contain" {...props} />
+  <img src={ciscoSvg} alt="Cisco Networking Academy" className="tool-icon-img size-5 object-contain" {...props} />
 );
 
 export const TestDomeIcon = (props) => (
@@ -43,7 +43,7 @@ export const CERTIFICATE_CATEGORIES = [
       {
         id: 'net-basics',
         title: 'Networking Basics',
-        org: 'Cisco',
+        org: 'Cisco Networking Academy',
         image: NetBasicsImg,
         icon: CiscoIcon,
         issuedDate: '2023-10-01',
@@ -52,7 +52,7 @@ export const CERTIFICATE_CATEGORIES = [
       {
         id: 'net-addressing',
         title: 'Network Addressing and Basic Troubleshooting',
-        org: 'Cisco',
+        org: 'Cisco Networking Academy',
         image: NetAddressingImg,
         icon: CiscoIcon,
         issuedDate: '2023-11-01',
@@ -61,7 +61,7 @@ export const CERTIFICATE_CATEGORIES = [
       {
         id: 'net-devices',
         title: 'Networking Devices and Initial Configuration',
-        org: 'Cisco',
+        org: 'Cisco Networking Academy',
         image: NetDevicesImg,
         icon: CiscoIcon,
         issuedDate: '2024-03-01',
