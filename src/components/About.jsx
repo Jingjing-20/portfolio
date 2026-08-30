@@ -102,7 +102,7 @@ export default function About() {
             <div className="mt-0">
               <ShimmeringText
                 text="Software Developer"
-                className="text-base-content font-extrabold text-lg md:text-xl tracking-wider"
+                className="text-base-content font-extrabold text-md md:text-lg tracking-wider"
               />
             </div>
           </div>
@@ -117,7 +117,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Birthdate
               </span>
-              <span className="text-xs md:text-sm text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 05/27/2004
               </span>
             </div>
@@ -126,7 +126,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Age
               </span>
-              <span className="text-xs md:text-sm text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 22
               </span>
             </div>
@@ -135,7 +135,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Gender
               </span>
-              <span className="text-xs md:text-sm text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 Male
               </span>
             </div>
@@ -145,7 +145,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Phone
               </span>
-              <span className="text-xs md:text-sm text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 09562657521
               </span>
             </div>
@@ -153,7 +153,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Location
               </span>
-              <span className="text-xs md:text-sm text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 Valladolid, Negros Occidental, Philippines
               </span>
             </div>
@@ -163,7 +163,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Program
               </span>
-              <span className="text-xs md:text-sm text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 Bachelor of Science in Information Technology - 2026
               </span>
             </div>
@@ -175,10 +175,8 @@ export default function About() {
 
       {/* Description */}
       <div className="w-full">
-        <p className="text-[10px] md:text-xs lg:text-sm text-base-content/70 leading-relaxed">
-          Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences.
-          I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning.
-        </p>
+        <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
+          Experienced in deploying production-grade systems for state university and government institutions. Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences. I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning. Knowledgeable in troubleshooting, networking, email systems, web technologies, databases, security, documentation, and hosting platforms.        </p>
       </div>
 
       {/* Contact Buttons - Centered below description */}
