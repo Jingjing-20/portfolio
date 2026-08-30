@@ -1,5 +1,10 @@
 # Gian Carlo N. Ulep - Portfolio
 
+![React](https://img.shields.io/badge/-61DAFB?logo=react&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-F7DF1E?logo=javascript&logoColor=black)
+![Tailwind CSS](https://img.shields.io/badge/-06B6D4?logo=tailwindcss&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/-000000?logo=shadcnui&logoColor=white)
+
 A modern, responsive personal portfolio website.
 
 ---
@@ -20,15 +25,6 @@ A modern, responsive personal portfolio website.
 - **GitHub**: [Jingjing-20](https://github.com/Jingjing-20)
 - **LinkedIn**: [Gian Carlo Ulep](https://linkedin.com/in/gian-carlo-ulep)
 - **Email**: [jingjing0527004@gmail.com](mailto:jingjing0527004@gmail.com)
-
----
-
-## Built With
-
-![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)
-![JavaScript](https://img.shields.io/badge/logo-javascript-blue?logo=javascript)
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
-![shadcn/ui](https://img.shields.io/badge/-shadcn/ui-000000?logo=shadcnui&logoColor=white)
 
 ---
 
