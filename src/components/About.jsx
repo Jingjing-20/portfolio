@@ -182,7 +182,7 @@ export default function About() {
                 Program
               </span>
               <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Bachelor of Science in Information Technology
+                BS in Information Technology
               </span>
             </div>
 
