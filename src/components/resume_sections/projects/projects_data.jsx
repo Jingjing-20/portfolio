@@ -17,7 +17,6 @@ export const PROJECT_CATEGORIES = [
         description:
           'A centralized web-based academic information system designed to automate grade computation, QR-based attendance tracking, academic record management, and report generation through role-based access control for administrators, faculty, and students.',
         details: [
-          'Created an academic management system for Carlos Hilado Memorial State University.',
           'Built separate dashboards for administrators, faculty, and students.',
           'Managed student, faculty, enrollment, program, and section records.',
           'Reduced manual grading by adding automatic grade computation.',

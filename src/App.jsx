@@ -19,8 +19,9 @@ const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'certif
 function getInitialPage() {
   if (typeof window !== 'undefined') {
     const hash = window.location.hash.replace('#', '').toLowerCase();
-    if (VALID_PAGES.includes(hash)) {
-      return hash;
+    const basePage = hash.split('/')[0];
+    if (VALID_PAGES.includes(basePage)) {
+      return basePage;
     }
   }
   return 'home';
@@ -38,8 +39,9 @@ function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (VALID_PAGES.includes(hash)) {
-        setActivePage(hash);
+      const basePage = hash.split('/')[0];
+      if (VALID_PAGES.includes(basePage)) {
+        setActivePage(basePage);
       }
     };
 

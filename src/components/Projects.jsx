@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ProjectPage } from '@/components/resume_sections/projects/ProjectDialogs';
+import { ProjectPage } from '@/components/resume_sections/projects/ProjectPage';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
 import { MinigamesDialog } from '@/components/resume_sections/projects/MinigamesDialog';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
-import ScrollReveal from '@/components/ScrollReveal';
+
+function getProjectFromHash() {
+  if (typeof window === 'undefined') return null;
+  const hash = window.location.hash.replace(/^#/, '');
+  const match = hash.match(/^projects\/([^/?#]+)/i) || hash.match(/^project-([^/?#]+)/i);
+  const projectId = match ? match[1] : null;
+  if (!projectId) return null;
+
+  for (const cat of PROJECT_CATEGORIES) {
+    const found = cat.items?.find((p) => p.id === projectId);
+    if (found) return found;
+  }
+  return null;
+}
 
 function WebIcon({ size = 32 }) {
   return (
@@ -19,34 +32,42 @@ function WebIcon({ size = 32 }) {
 }
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(getProjectFromHash);
   const [mockupProject, setMockupProject] = useState(null);
   const [minigameProject, setMinigameProject] = useState(null);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const proj = getProjectFromHash();
+      setSelectedProject(proj);
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
+  const handleSelectProject = (project) => {
+    setSelectedProject(project);
+    window.location.hash = `projects/${project.id}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToProjects = () => {
+    setSelectedProject(null);
+    window.location.hash = 'projects';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleBackToHome = () => {
     window.location.hash = 'home';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectProject = (project) => {
-    setSelectedProject(project);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleBackToProjects = () => {
-    setSelectedProject(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // If a project is selected, render full page view instead of dialog
   if (selectedProject) {
     return (
-      <ScrollReveal animation="fadeInUp" duration="0.3s" key={selectedProject.id || 'project-detail'}>
-        <ProjectPage
-          project={selectedProject}
-          onBack={handleBackToProjects}
-        />
-      </ScrollReveal>
+      <ProjectPage
+        project={selectedProject}
+        onBack={handleBackToProjects}
+      />
     );
   }
 
@@ -204,22 +225,14 @@ export default function Projects() {
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start">
                       <div className="flex-1 space-y-3">
-                        <div
-                          className="flex gap-4 items-center cursor-pointer group"
-                          onClick={() => handleSelectProject(project)}
-                          role="button"
-                          tabIndex={0}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              handleSelectProject(project);
-                            }
-                          }}
-                        >
+                        <div className="flex gap-4 items-center">
                           {/* Cover Image - Double Border */}
                           {project.coverImage && (
-                            <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative">
-                              <div className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 group-hover:border-double cursor-pointer hover-card">
+                            <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative group">
+                              <div
+                                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
+                                onClick={() => handleSelectProject(project)}
+                              >
                                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                                   <img
                                     src={project.coverImage}
@@ -233,8 +246,11 @@ export default function Projects() {
                           )}
 
                           {/* Text Content */}
-                          <div className="items-center justify-center flex-1 space-y-1">
-                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed font-base font-semibold text-base-content group-hover:underline underline-offset-2">
+                          <div
+                            className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
+                            onClick={() => handleSelectProject(project)}
+                          >
+                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed font-base font-semibold text-base-content group-hover/title:text-primary transition-colors">
                               {project.title}
                             </h4>
                             {project.organization && (
