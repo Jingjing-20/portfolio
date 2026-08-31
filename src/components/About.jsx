@@ -62,9 +62,9 @@ export default function About() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      {/* Image + Name + Details Row - Vertically centered */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-center gap-6 md:gap-8 w-full">
-        {/* Image - Tilt Card (larger on mobile) */}
+      {/* Image + Name + Role + Description Row */}
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8 w-full">
+        {/* Image - Tilt Card */}
         <div className="shrink-0">
           <Tilt
             rotationFactor={8}
@@ -91,9 +91,9 @@ export default function About() {
           </Tilt>
         </div>
 
-        {/* Right Side: Name + Details */}
+        {/* Right Side: Name + Role + Description */}
         <div className="flex-1 w-full">
-          {/* Name - with header format (title + subtitle) */}
+          {/* Name */}
           <div className="w-full text-center sm:text-left">
             <h3 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Gian Carlo N. Ulep
@@ -107,101 +107,22 @@ export default function About() {
             </div>
           </div>
 
-          {/* HR separator between name/role and details */}
+          {/* HR separator between name/role and description */}
           <hr className="my-3 md:my-4" />
 
-          {/* Details with grid layout */}
-          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
-            {/* Row 1: Birthdate, Age, Gender */}
-            <div className="flex flex-col">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Birthdate
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                05/27/2004
-              </span>
-            </div>
-
-            <div className="flex flex-col">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Age
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                22
-              </span>
-            </div>
-
-            <div className="flex flex-col">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Gender
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Male
-              </span>
-            </div>
-
-            {/* Row 2: Phone (span 1), Location (span 2) */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Phone
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                09562657521
-              </span>
-            </div>
-            <div className="flex flex-col col-span-2">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Location
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Valladolid, Negros Occidental, Philippines
-              </span>
-            </div>
-
-            {/* Row 4: Program (full width - span 3) */}
-            <div className="flex flex-col col-span-3">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                School
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Carlos Hilado Memorial State University - Aljis
-              </span>
-            </div>
-
-            {/* Row 2: Phone (span 1), Location (span 2) */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Duration
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                2022 - 2026
-              </span>
-            </div>
-            <div className="flex flex-col col-span-2">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Program
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                BS in Information Technology
-              </span>
-            </div>
-
+          {/* Description - Now under name and role */}
+          <div className="w-full">
+            <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
+              Experienced in deploying production-grade systems for government institutions and state universities.
+              Skilled in building scalable web applications from the ground up, with a strong focus on clean code, modern frameworks, and user-centric design.
+              Passionate about turning ideas into functional, efficient, and reliable solutions that solve real-world problems.
+            </p>
           </div>
         </div>
       </div>
 
-      <hr />
 
-      {/* Description */}
-      <div className="w-full">
-        <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-          Experienced in deploying production-grade systems for government institutions and state universities.
-          Skilled in building scalable web applications from the ground up, with a strong focus on clean code, modern frameworks, and user-centric design.
-          Passionate about turning ideas into functional, efficient, and reliable solutions that solve real-world problems.
-        </p>
-      </div>
-
-      {/* Contact Buttons - Centered below description */}
+      {/* Contact Buttons - Centered below details */}
       <nav
         aria-label="Contact links"
         className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3"
@@ -224,6 +145,107 @@ export default function About() {
           </button>
         ))}
       </nav>
+
+      <hr />
+
+      {/* Personal Details & Education - With category headers */}
+      <div className="w-full space-y-4">
+        {/* Personal Details Section */}
+        <div>
+          <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
+            Personal Details
+          </h4>
+          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
+            {/* Birthdate */}
+            <div className="flex flex-col">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Birthdate
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                05/27/2004
+              </span>
+            </div>
+
+            {/* Age */}
+            <div className="flex flex-col">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Age
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                22
+              </span>
+            </div>
+
+            {/* Gender */}
+            <div className="flex flex-col">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Gender
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Male
+              </span>
+            </div>
+
+            {/* Location */}
+            <div className="flex flex-col col-span-2">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Location
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Valladolid, Negros Occidental, Philippines
+              </span>
+            </div>
+
+            {/* Phone */}
+            <div className="flex flex-col col-span-1">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Phone
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                09562657521
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Education Section */}
+        <div>
+          <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
+            Education
+          </h4>
+          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
+            {/* School */}
+            <div className="flex flex-col col-span-3 md:col-span-2">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                School
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Carlos Hilado Memorial State University - Aljis
+              </span>
+            </div>
+
+            {/* Duration */}
+            <div className="flex flex-col col-span-2 md:col-span-1">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Duration
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                2022 - 2026
+              </span>
+            </div>
+
+            {/* Program */}
+            <div className="flex flex-col col-span-3">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Program
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Bachelor of Science in Information Technology
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Contact Dialog */}
       <ContactDialog

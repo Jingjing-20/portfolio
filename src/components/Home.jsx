@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
-import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 // Powered by SVGs
@@ -42,11 +41,6 @@ function OpenIcon({ size = 16 }) {
 
 // 5 Main Sections
 const SECTIONS = [
-  {
-    id: 'about',
-    title: 'About',
-    icon: aboutIcon,
-  },
   {
     id: 'stack',
     title: 'Stack',
@@ -122,7 +116,7 @@ export default function Home() {
           <h1 className="font-bold tracking-tight text-base-content text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto">
             <span className="block md:hidden">
               <ShimmeringText
-                text="Code. Build."
+                text="Design. Build."
                 className="font-extrabold"
               />
               <ShimmeringText
@@ -132,15 +126,14 @@ export default function Home() {
             </span>
             <span className="hidden md:block">
               <ShimmeringText
-                text="Code. Build. Deliver."
+                text="Design. Build. Deliver."
                 className="font-extrabold"
               />
             </span>
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-base-content/70 leading-relaxed max-w-2xl mx-auto">
-            Where creativity meets code — I craft thoughtful web experiences
-            with precision, passion, and a commitment to excellence.
+            Transforming ideas into high-impact web applications — built with clean code, modern architecture, and purposeful design.
           </p>
         </motion.div>
 
@@ -155,10 +148,15 @@ export default function Home() {
             type="button"
             onClick={() => handleNavigate('about')}
             className={buttonClasses}
-            aria-label="Explore my works"
+            aria-label="About Me"
           >
-            <span>Explore My Works</span>
-            <ArrowRight className="h-4 w-4" />
+            <img
+              src={aboutIcon}
+              alt=""
+              className="h-4 w-4 md:h-5 md:w-5 dark:invert"
+              aria-hidden="true"
+            />
+            <span>About Me</span>
           </button>
         </motion.div>
 

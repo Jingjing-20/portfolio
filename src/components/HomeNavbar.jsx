@@ -44,23 +44,47 @@ function ThemeTogglerBtn() {
 
 export default function HomeNavbar() {
   return (
-    <div className="fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
-      <div className="flex max-w-4xl mx-auto items-center justify-between px-4 md:px-6 py-3">
-        {/* Portfolio identity */}
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <img
-            src={logoImg}
-            alt=""
-            className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
-          />
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-base-content">
-            Portfolio
-          </h1>
-        </div>
+    <>
+      {/* Desktop Home Navbar */}
+      <div className="hidden md:block fixed top-4 left-4 right-4 z-50">
+        <div className="flex max-w-md mx-auto items-center justify-between px-4 py-2 bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-3xl">
+          {/* Portfolio identity */}
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <img
+              src={logoImg}
+              alt=""
+              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+            />
+            <h1 className="text-xl md:text-2xl font-bold text-base-content">
+              Portfolio
+            </h1>
+          </div>
 
-        {/* Theme Toggle */}
-        <ThemeTogglerBtn />
+          {/* Theme Toggle */}
+          <ThemeTogglerBtn />
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Home Navbar */}
+      <div className="md:hidden fixed top-4 left-4 right-4 z-50">
+        <div className={cn(
+          'flex max-w-3xl mx-auto w-full items-center justify-between px-4 py-2',
+          'bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-xl'
+        )}>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <img
+              src={logoImg}
+              alt=""
+              className="h-6 w-6 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+            />
+            <h1 className="text-xl font-bold text-base-content">
+              Portfolio
+            </h1>
+          </div>
+
+          <ThemeTogglerBtn />
+        </div>
+      </div>
+    </>
   );
 }

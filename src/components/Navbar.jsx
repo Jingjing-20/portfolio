@@ -151,8 +151,8 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
   return (
     <>
       {/* Desktop Navbar */}
-      <div className="hidden md:block fixed left-0 right-0 top-0 z-50 w-full bg-theme border-b-4 border-double border-gray-300 dark:border-white/20 shadow-xl">
-        <div className="flex max-w-6xl mx-auto items-center px-6 py-3">
+      <div className="hidden md:block fixed top-4 left-4 right-4 z-50">
+        <div className="flex max-w-4xl mx-auto items-center justify-between px-4 py-2 bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-3xl">
           {/* Portfolio identity */}
           <button
             type="button"
@@ -170,49 +170,43 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             </h1>
           </button>
 
-          <div className="flex-1" />
+          {/* Desktop: Navigation Buttons */}
+          <nav aria-label="Main navigation" className="flex items-center gap-2">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activePage === item.value;
+              return (
+                <button
+                  key={item.value}
+                  type="button"
+                  onClick={(e) => handleNavClick(e, item.value)}
+                  className={cn(
+                    navButtonClasses,
+                    isActive && 'nav-button-active'
+                  )}
+                  aria-label={item.label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  {item.icon}
+                  <span className={cn(
+                    "text-[8px] md:text-[10px] font-medium text-base-content",
+                    isActive && "font-bold"
+                  )}>
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
 
-          {/* Desktop: Navigation Buttons + Theme Toggle */}
-          <div className="flex items-center gap-3">
-            <nav aria-label="Main navigation" className="flex items-center gap-2">
-              {NAV_ITEMS.map((item) => {
-                const isActive = activePage === item.value;
-                return (
-                  <button
-                    key={item.value}
-                    type="button"
-                    onClick={(e) => handleNavClick(e, item.value)}
-                    className={cn(
-                      navButtonClasses,
-                      isActive && 'nav-button-active'
-                    )}
-                    aria-label={item.label}
-                    aria-current={isActive ? 'page' : undefined}
-                  >
-                    {item.icon}
-                    <span className={cn(
-                      "text-[8px] md:text-[10px] font-medium text-base-content",
-                      isActive && "font-bold"
-                    )}>
-                      {item.label}
-                    </span>
-                  </button>
-                );
-              })}
-            </nav>
-
-            <div className="h-8 w-px bg-gray-300 dark:bg-white/20" />
-
-            <ThemeTogglerBtn />
-          </div>
+          <ThemeTogglerBtn />
         </div>
       </div>
 
       {/* Mobile Navbar */}
-      <div className="md:hidden fixed left-0 right-0 top-0 z-50 w-full">
+      <div className="md:hidden fixed top-4 left-4 right-4 z-50">
         <div className={cn(
-          'flex w-full items-center justify-between px-4 py-3',
-          'bg-theme border-b-4 border-double border-gray-300 dark:border-white/20'
+          'flex max-w-3xl mx-auto w-full items-center justify-between px-4 py-2',
+          'bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-xl'
         )}>
           <button
             type="button"
