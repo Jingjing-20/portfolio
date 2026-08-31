@@ -85,7 +85,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-40 h-40 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover object-top"
+                className="rounded-lg w-50 h-50 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -164,7 +164,7 @@ export default function About() {
                 Program
               </span>
               <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Bachelor of Science in Information Technology - 2026
+                BS in Information Technology | 2025 - 2026
               </span>
             </div>
           </div>

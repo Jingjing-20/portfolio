@@ -21,7 +21,7 @@ const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md px-6 py-3',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-sm md:text-base font-medium cursor-pointer hover-badge',
+  'text-sm md:text-base font-medium cursor-pointer hover-theme-switch',
   'transition-all duration-200 hover:scale-105'
 );
 
@@ -35,7 +35,6 @@ const iconButtonClasses = cn(
 function OpenIcon({ size = 16 }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3 md:w-3.5 md:h-3.5">
-      <title>Open</title>
       <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
     </svg>
   );
@@ -207,7 +206,7 @@ export default function Home() {
                   <img
                     src={section.icon}
                     alt=""
-                    className="h-6 w-6 md:h-7 md:w-7 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
+                    className="h-5 w-5 md:h-6 md:w-6 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
                     aria-hidden="true"
                   />
                 </div>
