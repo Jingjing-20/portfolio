@@ -24,22 +24,7 @@ const buttonClasses = cn(
   'transition-all duration-200 hover:scale-105'
 );
 
-const iconButtonClasses = cn(
-  'absolute top-0.5 right-0.5 p-1 md:p-1.5 rounded-full',
-  'bg-white/80 dark:bg-black/80 backdrop-blur-sm',
-  'border border-gray-300 dark:border-white/30',
-  'shadow-md z-10 hover-open-icon'
-);
-
-function OpenIcon({ size = 16 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" className="w-3 h-3 md:w-3.5 md:h-3.5">
-      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
-    </svg>
-  );
-}
-
-// 5 Main Sections
+// 4 Main Sections
 const SECTIONS = [
   {
     id: 'stack',
@@ -63,7 +48,7 @@ const SECTIONS = [
   },
 ];
 
-// Portfolio tech stack tools from powered_by directory (Icons Only)
+// Portfolio tech stack tools from powered_by directory (Icons Only - No labels)
 const POWERED_BY_STACK = [
   {
     name: 'React',
@@ -114,26 +99,20 @@ export default function Home() {
           className="space-y-4 max-w-3xl mx-auto"
         >
           <h1 className="font-bold tracking-tight text-base-content text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto">
-            <span className="block md:hidden">
+            <span className="block">
               <ShimmeringText
-                text="Design. Build."
+                text="Building the Future,"
                 className="font-extrabold"
               />
               <ShimmeringText
-                text="Deliver."
-                className="font-extrabold"
-              />
-            </span>
-            <span className="hidden md:block">
-              <ShimmeringText
-                text="Design. Build. Deliver."
+                text="One Line of Code at a Time"
                 className="font-extrabold"
               />
             </span>
           </h1>
 
           <p className="text-sm md:text-base lg:text-lg text-base-content/70 leading-relaxed max-w-2xl mx-auto">
-            Transforming ideas into high-impact web applications — built with clean code, modern architecture, and purposeful design.
+            Software developer passionate about crafting clean, scalable, and impactful web experiences.
           </p>
         </motion.div>
 
@@ -148,7 +127,7 @@ export default function Home() {
             type="button"
             onClick={() => handleNavigate('about')}
             className={buttonClasses}
-            aria-label="About Me"
+            aria-label="Get to know me"
           >
             <img
               src={aboutIcon}
@@ -156,25 +135,58 @@ export default function Home() {
               className="h-4 w-4 md:h-5 md:w-5 dark:invert"
               aria-hidden="true"
             />
-            <span>About Me</span>
+            <span>Get to Know Me</span>
           </button>
         </motion.div>
 
-        {/* 5 Section Navigation Cards */}
+        {/* Powered By Section - Icons Only, No Labels, No Hover Enlarge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="pt-2 w-full max-w-4xl mx-auto"
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="w-full max-w-2xl mx-auto pt-2"
         >
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+          <div className="flex flex-col items-center gap-3">
+            <span className="text-[10px] md:text-xs uppercase tracking-wider text-base-content/50 font-semibold">
+              Powered by
+            </span>
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+              {POWERED_BY_STACK.map((tool) => (
+                <div
+                  key={tool.name}
+                  className={cn(
+                    'shadow-md inline-flex items-center justify-center rounded-md p-2',
+                    'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                    'cursor-default hover-badge'
+                  )}
+                  style={{ '--brand-color': tool.color }}
+                  title={tool.name}
+                  aria-label={tool.name}
+                >
+                  <span className="tool-icon flex items-center justify-center">
+                    {tool.icon}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 4 Section Navigation Cards - Grid 2 on mobile, 4 on desktop */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
+          className="pt-4 w-full max-w-4xl mx-auto"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {SECTIONS.map((section) => (
               <div
                 key={section.id}
                 className={cn(
-                  'group relative flex flex-col p-1.5 md:p-2 rounded-lg shadow-xl',
+                  'group relative flex flex-col p-3 md:p-4 rounded-lg shadow-xl',
                   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'w-20 md:w-25 lg:w-30 flex-shrink-0 cursor-pointer hover-card text-center'
+                  'cursor-pointer hover-card text-center transition-all duration-200 hover:scale-105'
                 )}
                 role="button"
                 tabIndex={0}
@@ -186,32 +198,19 @@ export default function Home() {
                   }
                 }}
               >
-                {/* Open Icon Button - Top Right */}
-                <button
-                  type="button"
-                  className={iconButtonClasses}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNavigate(section.id);
-                  }}
-                  aria-label={`Go to ${section.title}`}
-                >
-                  <OpenIcon />
-                </button>
-
                 {/* Icon Frame - 16:9 aspect ratio */}
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300/60 dark:bg-base-300/30 border border-black/10 dark:border-white/10 shadow-inner flex items-center justify-center">
                   <img
                     src={section.icon}
                     alt=""
-                    className="h-5 w-5 md:h-6 md:w-6 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
+                    className="h-8 w-8 md:h-10 md:w-10 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
                     aria-hidden="true"
                   />
                 </div>
 
                 {/* Bottom Caption: Name Only */}
-                <div className="pt-1.5 px-0.5">
-                  <h3 className="text-[10px] md:text-xs font-semibold tracking-tight text-base-content line-clamp-1">
+                <div className="pt-2 px-0.5">
+                  <h3 className="text-xs md:text-sm font-semibold tracking-tight text-base-content line-clamp-1">
                     {section.title}
                   </h3>
                 </div>
@@ -221,7 +220,7 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Footer */}
+      {/* Footer - Removed Powered By, added small details */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -231,7 +230,7 @@ export default function Home() {
         {/* Divider */}
         <hr className="w-full max-w-4xl mx-auto border-gray-300/40 dark:border-white/10" />
 
-        {/* Footer Details & Powered By */}
+        {/* Footer Details - Added more small details */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/70">
           <div className="text-center sm:text-left space-y-0.5">
             <p className="text-[10px] md:text-xs font-medium text-base-content">
@@ -242,28 +241,15 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Powered By (Icons Only) */}
-          <div className="flex items-center gap-1.5 md:gap-2 flex-wrap justify-center sm:justify-end">
-            <span className="text-[9px] md:text-[10px] uppercase tracking-wider text-base-content/60 font-semibold mr-1">
-              Powered by
-            </span>
-            {POWERED_BY_STACK.map((tool) => (
-              <div
-                key={tool.name}
-                className={cn(
-                  'shadow-md inline-flex items-center justify-center rounded-md p-1.5',
-                  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'cursor-default hover-badge transition-transform duration-200 hover:scale-110'
-                )}
-                style={{ '--brand-color': tool.color }}
-                title={tool.name}
-                aria-label={tool.name}
-              >
-                <span className="tool-icon flex items-center justify-center">
-                  {tool.icon}
-                </span>
-              </div>
-            ))}
+          <div className="text-center sm:text-right space-y-0.5">
+            <p className="text-[8px] md:text-[10px] text-base-content/50">
+              <span className="inline-block mx-1">✦</span>
+              Available for opportunities
+              <span className="inline-block mx-1">✦</span>
+            </p>
+            <p className="text-[8px] md:text-[10px] text-base-content/40 font-mono tracking-wider">
+              v1.0.0 · built with ♥
+            </p>
           </div>
         </div>
       </motion.footer>
