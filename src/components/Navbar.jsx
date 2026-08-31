@@ -18,7 +18,7 @@ import experienceIconSrc from '@/components/resume_sections/navbar/experience.sv
 import projectsIconSrc from '@/components/resume_sections/navbar/projects.svg';
 import certificateIconSrc from '@/components/resume_sections/navbar/certificate.svg';
 
-function NavIcon({ src, alt, size = 20 }) {
+function NavIcon({ src, alt, size = 15 }) {
   return (
     <img
       src={src}

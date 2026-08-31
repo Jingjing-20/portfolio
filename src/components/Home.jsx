@@ -17,11 +17,10 @@ import projectsIcon from '@/components/resume_sections/navbar/projects.svg';
 import certIcon from '@/components/resume_sections/navbar/certificate.svg';
 
 const buttonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md px-6 py-3',
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-3',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'text-sm md:text-base font-medium cursor-pointer hover-theme-switch',
-  'transition-all duration-200 hover:scale-105'
 );
 
 // 4 Main Sections
@@ -29,21 +28,25 @@ const SECTIONS = [
   {
     id: 'stack',
     title: 'Stack',
+    category: 'Technologies',
     icon: stackIcon,
   },
   {
     id: 'experience',
     title: 'Experience',
+    category: 'Career & Work',
     icon: experienceIcon,
   },
   {
     id: 'projects',
     title: 'Projects',
+    category: 'Selected Builds',
     icon: projectsIcon,
   },
   {
     id: 'certificates',
     title: 'Certificates',
+    category: 'Credentials',
     icon: certIcon,
   },
 ];
@@ -168,45 +171,50 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* 4 Section Navigation - Compact cards like Powered By icons */}
+        {/* 4 Section Navigation - Mockup card format */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
-          className="pt-4 w-full max-w-4xl mx-auto"
+          className="pt-2 w-full max-w-2xl mx-auto"
         >
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
             {SECTIONS.map((section) => (
               <div
                 key={section.id}
                 className={cn(
-                  'group relative flex items-center gap-2 px-4 py-2 rounded-md shadow-md',
+                  'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
                   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'cursor-pointer hover-card transition-all duration-200 hover:scale-105'
+                  'hover-card cursor-pointer'
                 )}
                 role="button"
                 tabIndex={0}
                 onClick={() => handleNavigate(section.id)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
                     handleNavigate(section.id);
                   }
                 }}
-                title={section.title}
-                aria-label={section.title}
               >
-                {/* Icon */}
-                <img
-                  src={section.icon}
-                  alt=""
-                  className="h-5 w-5 md:h-6 md:w-6 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
-                  aria-hidden="true"
-                />
-                {/* Label */}
-                <span className="text-xs md:text-sm font-semibold tracking-tight text-base-content">
-                  {section.title}
-                </span>
+                {/* Polaroid Photo Frame - 16:9 aspect ratio */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner flex items-center justify-center">
+                  <img
+                    src={section.icon}
+                    alt=""
+                    className="h-8 w-8 md:h-10 md:w-10 dark:invert transition-transform duration-500 group-hover:scale-110 object-contain"
+                    aria-hidden="true"
+                  />
+                </div>
+
+                {/* Polaroid Bottom Caption */}
+                <div className="flex flex-col justify-between flex-1 pt-2">
+                  <div>
+                    <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                      {section.title}
+                    </h3>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
