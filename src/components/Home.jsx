@@ -90,28 +90,24 @@ export default function Home() {
       className="min-h-[calc(100vh-8.5rem)] flex flex-col justify-between items-center"
     >
       {/* Main Center Content */}
-      <div className="w-full max-w-7xl mx-auto text-center space-y-6 md:space-y-8 px-4 my-auto flex-1 flex flex-col justify-center items-center">
+      <div className="w-full max-w-7xl mx-auto text-center space-y-3 md:space-y-6 px-4 my-auto flex-1 flex flex-col justify-center items-center">
         {/* Main Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="space-y-4 max-w-3xl mx-auto"
+          className="space-y-4 max-w-4xl mx-auto"
         >
-          <h1 className="font-bold tracking-tight text-base-content text-4xl md:text-5xl lg:text-7xl max-w-4xl mx-auto">
+          <h1 className="font-bold tracking-tight text-base-content text-3xl md:text-6xl lg:text-7xl max-w-4xl mx-auto">
             <span className="block">
               <ShimmeringText
-                text="Building the Future,"
-                className="font-extrabold"
-              />
-              <ShimmeringText
-                text="One Line of Code at a Time"
+                text="Code. Learn. Grow."
                 className="font-extrabold"
               />
             </span>
           </h1>
 
-          <p className="text-sm md:text-base lg:text-lg text-base-content/70 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs md:text-sm text-base-content/70 leading-relaxed max-w-2xl mx-auto">
             Software developer passionate about crafting clean, scalable, and impactful web experiences.
           </p>
         </motion.div>
@@ -172,21 +168,21 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* 4 Section Navigation Cards - Grid 2 on mobile, 4 on desktop */}
+        {/* 4 Section Navigation - Compact cards like Powered By icons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
           className="pt-4 w-full max-w-4xl mx-auto"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
             {SECTIONS.map((section) => (
               <div
                 key={section.id}
                 className={cn(
-                  'group relative flex flex-col p-3 md:p-4 rounded-lg shadow-xl',
+                  'group relative flex items-center gap-2 px-4 py-2 rounded-md shadow-md',
                   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'cursor-pointer hover-card text-center transition-all duration-200 hover:scale-105'
+                  'cursor-pointer hover-card transition-all duration-200 hover:scale-105'
                 )}
                 role="button"
                 tabIndex={0}
@@ -197,30 +193,27 @@ export default function Home() {
                     handleNavigate(section.id);
                   }
                 }}
+                title={section.title}
+                aria-label={section.title}
               >
-                {/* Icon Frame - 16:9 aspect ratio */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300/60 dark:bg-base-300/30 border border-black/10 dark:border-white/10 shadow-inner flex items-center justify-center">
-                  <img
-                    src={section.icon}
-                    alt=""
-                    className="h-8 w-8 md:h-10 md:w-10 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
-                    aria-hidden="true"
-                  />
-                </div>
-
-                {/* Bottom Caption: Name Only */}
-                <div className="pt-2 px-0.5">
-                  <h3 className="text-xs md:text-sm font-semibold tracking-tight text-base-content line-clamp-1">
-                    {section.title}
-                  </h3>
-                </div>
+                {/* Icon */}
+                <img
+                  src={section.icon}
+                  alt=""
+                  className="h-5 w-5 md:h-6 md:w-6 dark:invert transition-transform duration-300 group-hover:scale-110 object-contain"
+                  aria-hidden="true"
+                />
+                {/* Label */}
+                <span className="text-xs md:text-sm font-semibold tracking-tight text-base-content">
+                  {section.title}
+                </span>
               </div>
             ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Footer - Removed Powered By, added small details */}
+      {/* Footer */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -230,7 +223,7 @@ export default function Home() {
         {/* Divider */}
         <hr className="w-full max-w-4xl mx-auto border-gray-300/40 dark:border-white/10" />
 
-        {/* Footer Details - Added more small details */}
+        {/* Footer Details */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/70">
           <div className="text-center sm:text-left space-y-0.5">
             <p className="text-[10px] md:text-xs font-medium text-base-content">

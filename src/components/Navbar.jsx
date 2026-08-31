@@ -4,6 +4,12 @@ import { Moon, Sun, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
+import {
+  TooltipProvider,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from '@/components/animate-ui/primitives/animate/tooltip';
 import { cn } from '@/lib/utils';
 
 import aboutIconSrc from '@/components/resume_sections/navbar/about.svg';
@@ -152,53 +158,60 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
     <>
       {/* Desktop Navbar */}
       <div className="hidden md:block fixed top-4 left-4 right-4 z-50">
-        <div className="flex max-w-4xl mx-auto items-center justify-between px-4 py-2 bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-3xl">
+        <div className="grid grid-cols-[1fr_auto_1fr] max-w-3xl mx-auto items-center px-4 py-2 bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-3xl">
           {/* Portfolio identity */}
-          <button
-            type="button"
-            onClick={(event) => handleNavClick(event, 'home')}
-            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0 cursor-pointer"
-            aria-label="Home - Portfolio of Gian Carlo N. Ulep"
-          >
-            <img
-              src={logoImg}
-              alt=""
-              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
-            />
-            <h1 className="text-xl md:text-2xl font-bold text-base-content">
-              Portfolio
-            </h1>
-          </button>
+          <div className="flex items-center justify-start">
+            <button
+              type="button"
+              onClick={(event) => handleNavClick(event, 'home')}
+              className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0 cursor-pointer"
+              aria-label="Home - Portfolio of Gian Carlo N. Ulep"
+            >
+              <img
+                src={logoImg}
+                alt=""
+                className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+              />
+              <h1 className="text-xl md:text-2xl font-bold text-base-content">
+                Portfolio
+              </h1>
+            </button>
+          </div>
 
-          {/* Desktop: Navigation Buttons */}
-          <nav aria-label="Main navigation" className="flex items-center gap-2">
-            {NAV_ITEMS.map((item) => {
-              const isActive = activePage === item.value;
-              return (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={(e) => handleNavClick(e, item.value)}
-                  className={cn(
-                    navButtonClasses,
-                    isActive && 'nav-button-active'
-                  )}
-                  aria-label={item.label}
-                  aria-current={isActive ? 'page' : undefined}
-                >
-                  {item.icon}
-                  <span className={cn(
-                    "text-[8px] md:text-[10px] font-medium text-base-content",
-                    isActive && "font-bold"
-                  )}>
-                    {item.label}
-                  </span>
-                </button>
-              );
-            })}
-          </nav>
+          {/* Desktop: Navigation Buttons Centered with Tooltip */}
+          <TooltipProvider openDelay={80} closeDelay={150}>
+            <nav aria-label="Main navigation" className="flex items-center justify-center gap-2">
+              {NAV_ITEMS.map((item) => {
+                const isActive = activePage === item.value;
+                return (
+                  <Tooltip key={item.value} side="bottom" sideOffset={8}>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        onClick={(e) => handleNavClick(e, item.value)}
+                        className={cn(
+                          navButtonClasses,
+                          isActive && 'nav-button-active'
+                        )}
+                        aria-label={item.label}
+                        aria-current={isActive ? 'page' : undefined}
+                      >
+                        {item.icon}
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent className="px-2.5 py-1 text-[10px] md:text-xs font-semibold rounded-md shadow-xl bg-theme border border-gray-300 dark:border-white/20 text-base-content pointer-events-none select-none">
+                      {item.label}
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
+            </nav>
+          </TooltipProvider>
 
-          <ThemeTogglerBtn />
+          {/* Right: Theme Toggle */}
+          <div className="flex items-center justify-end">
+            <ThemeTogglerBtn />
+          </div>
         </div>
       </div>
 
