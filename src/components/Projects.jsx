@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { ProjectDialog } from '@/components/resume_sections/projects/ProjectDialogs';
+import { ProjectPage } from '@/components/resume_sections/projects/ProjectDialogs';
 import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
 import { MinigamesDialog } from '@/components/resume_sections/projects/MinigamesDialog';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
+import ScrollReveal from '@/components/ScrollReveal';
 
 function WebIcon({ size = 32 }) {
   return (
@@ -26,6 +27,28 @@ export default function Projects() {
     window.location.hash = 'home';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const handleSelectProject = (project) => {
+    setSelectedProject(project);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToProjects = () => {
+    setSelectedProject(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // If a project is selected, render full page view instead of dialog
+  if (selectedProject) {
+    return (
+      <ScrollReveal animation="fadeInUp" duration="0.3s" key={selectedProject.id || 'project-detail'}>
+        <ProjectPage
+          project={selectedProject}
+          onBack={handleBackToProjects}
+        />
+      </ScrollReveal>
+    );
+  }
 
   return (
     <section id="projects" className="scroll-mt-24 max-w-3xl mx-auto">
@@ -181,14 +204,22 @@ export default function Projects() {
                   {items.map((project) => (
                     <li key={project.id} className="flex items-start">
                       <div className="flex-1 space-y-3">
-                        <div className="flex gap-4 items-center">
+                        <div
+                          className="flex gap-4 items-center cursor-pointer group"
+                          onClick={() => handleSelectProject(project)}
+                          role="button"
+                          tabIndex={0}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              handleSelectProject(project);
+                            }
+                          }}
+                        >
                           {/* Cover Image - Double Border */}
                           {project.coverImage && (
-                            <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative group">
-                              <div
-                                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
-                                onClick={() => setSelectedProject(project)}
-                              >
+                            <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative">
+                              <div className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 group-hover:border-double cursor-pointer hover-card">
                                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
                                   <img
                                     src={project.coverImage}
@@ -203,7 +234,7 @@ export default function Projects() {
 
                           {/* Text Content */}
                           <div className="items-center justify-center flex-1 space-y-1">
-                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed font-base font-semibold text-base-content">
+                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed font-base font-semibold text-base-content group-hover:underline underline-offset-2">
                               {project.title}
                             </h4>
                             {project.organization && (
@@ -223,11 +254,6 @@ export default function Projects() {
         ))}
       </div>
 
-      <ProjectDialog
-        project={selectedProject}
-        open={selectedProject !== null}
-        onClose={() => setSelectedProject(null)}
-      />
       <MockupDialog
         mockup={mockupProject}
         open={mockupProject !== null}

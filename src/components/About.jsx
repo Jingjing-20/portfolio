@@ -158,15 +158,34 @@ export default function About() {
               </span>
             </div>
 
-            {/* Row 3: Program (full width - span 3) */}
+            {/* Row 4: Program (full width - span 3) */}
             <div className="flex flex-col col-span-3">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                School
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Carlos Hilado Memorial State University - Aljis
+              </span>
+            </div>
+
+            {/* Row 2: Phone (span 1), Location (span 2) */}
+            <div className="flex flex-col col-span-1">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Duration
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                2022 - 2026
+              </span>
+            </div>
+            <div className="flex flex-col col-span-2">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Program
               </span>
               <span className="text-[10px] md:text-xs text-base-content font-medium">
-                BS in Information Technology | 2025 - 2026
+                Bachelor of Science in Information Technology
               </span>
             </div>
+
           </div>
         </div>
       </div>
@@ -176,7 +195,10 @@ export default function About() {
       {/* Description */}
       <div className="w-full">
         <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-          Experienced in deploying production-grade systems for state university and government institutions. Passionate about building web and software applications with a keen eye for detail and a dedication to delivering exceptional user experiences. I enjoy transforming ideas into functional, efficient, and visually appealing solutions through clean code, modern technologies, and continuous learning. Knowledgeable in troubleshooting, networking, email systems, web technologies, databases, security, documentation, and hosting platforms.        </p>
+          Experienced in deploying production-grade systems for government institutions and state universities.
+          Skilled in building scalable web applications from the ground up, with a strong focus on clean code, modern frameworks, and user-centric design.
+          Passionate about turning ideas into functional, efficient, and reliable solutions that solve real-world problems.
+        </p>
       </div>
 
       {/* Contact Buttons - Centered below description */}
