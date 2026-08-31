@@ -2,22 +2,26 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ProjectPage } from '@/components/resume_sections/projects/ProjectPage';
-import { MockupDialog } from '@/components/resume_sections/projects/MockupDialog';
-import { MinigamesDialog } from '@/components/resume_sections/projects/MinigamesDialog';
+import { MockupPage } from '@/components/resume_sections/projects/MockupPage';
+import { MinigamePage } from '@/components/resume_sections/projects/MinigamePage';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
-function getProjectFromHash() {
-  if (typeof window === 'undefined') return null;
+function getActiveItemFromHash() {
+  if (typeof window === 'undefined') return { project: null, mockup: null, minigame: null };
   const hash = window.location.hash.replace(/^#/, '');
   const match = hash.match(/^projects\/([^/?#]+)/i) || hash.match(/^project-([^/?#]+)/i);
-  const projectId = match ? match[1] : null;
-  if (!projectId) return null;
+  const itemId = match ? match[1] : null;
+  if (!itemId) return { project: null, mockup: null, minigame: null };
 
   for (const cat of PROJECT_CATEGORIES) {
-    const found = cat.items?.find((p) => p.id === projectId);
-    if (found) return found;
+    const found = cat.items?.find((p) => p.id === itemId);
+    if (found) {
+      if (cat.category === 'Mockups') return { project: null, mockup: found, minigame: null };
+      if (cat.category === 'Browser Games') return { project: null, mockup: null, minigame: found };
+      return { project: found, mockup: null, minigame: null };
+    }
   }
-  return null;
+  return { project: null, mockup: null, minigame: null };
 }
 
 function WebIcon({ size = 32 }) {
@@ -32,14 +36,17 @@ function WebIcon({ size = 32 }) {
 }
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(getProjectFromHash);
-  const [mockupProject, setMockupProject] = useState(null);
-  const [minigameProject, setMinigameProject] = useState(null);
+  const initialItems = getActiveItemFromHash();
+  const [selectedProject, setSelectedProject] = useState(initialItems.project);
+  const [mockupProject, setMockupProject] = useState(initialItems.mockup);
+  const [minigameProject, setMinigameProject] = useState(initialItems.minigame);
 
   useEffect(() => {
     const handleHash = () => {
-      const proj = getProjectFromHash();
-      setSelectedProject(proj);
+      const active = getActiveItemFromHash();
+      setSelectedProject(active.project);
+      setMockupProject(active.mockup);
+      setMinigameProject(active.minigame);
     };
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
@@ -47,12 +54,32 @@ export default function Projects() {
 
   const handleSelectProject = (project) => {
     setSelectedProject(project);
+    setMockupProject(null);
+    setMinigameProject(null);
     window.location.hash = `projects/${project.id}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectMockup = (mockup) => {
+    setMockupProject(mockup);
+    setSelectedProject(null);
+    setMinigameProject(null);
+    window.location.hash = `projects/${mockup.id}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSelectMinigame = (minigame) => {
+    setMinigameProject(minigame);
+    setSelectedProject(null);
+    setMockupProject(null);
+    window.location.hash = `projects/${minigame.id}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToProjects = () => {
     setSelectedProject(null);
+    setMockupProject(null);
+    setMinigameProject(null);
     window.location.hash = 'projects';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -66,6 +93,24 @@ export default function Projects() {
     return (
       <ProjectPage
         project={selectedProject}
+        onBack={handleBackToProjects}
+      />
+    );
+  }
+
+  if (mockupProject) {
+    return (
+      <MockupPage
+        mockup={mockupProject}
+        onBack={handleBackToProjects}
+      />
+    );
+  }
+
+  if (minigameProject) {
+    return (
+      <MinigamePage
+        minigame={minigameProject}
         onBack={handleBackToProjects}
       />
     );
@@ -130,11 +175,11 @@ export default function Projects() {
                       )}
                       role="button"
                       tabIndex={0}
-                      onClick={() => setMockupProject(mockup)}
+                      onClick={() => handleSelectMockup(mockup)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
                           event.preventDefault();
-                          setMockupProject(mockup);
+                          handleSelectMockup(mockup);
                         }
                       }}
                     >
@@ -154,7 +199,7 @@ export default function Projects() {
                         )}
                       </div>
 
-                      {/* Polaroid Bottom Caption (Under Photo: Name only) */}
+                      {/* Polaroid Bottom Caption */}
                       <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
                           <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
@@ -181,11 +226,11 @@ export default function Projects() {
                       )}
                       role="button"
                       tabIndex={0}
-                      onClick={() => setMinigameProject(minigame)}
+                      onClick={() => handleSelectMinigame(minigame)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
                           event.preventDefault();
-                          setMinigameProject(minigame);
+                          handleSelectMinigame(minigame);
                         }
                       }}
                     >
@@ -205,7 +250,7 @@ export default function Projects() {
                         )}
                       </div>
 
-                      {/* Polaroid Bottom Caption (Under Photo: Name only) */}
+                      {/* Polaroid Bottom Caption */}
                       <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
                           <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
@@ -269,17 +314,6 @@ export default function Projects() {
           </article>
         ))}
       </div>
-
-      <MockupDialog
-        mockup={mockupProject}
-        open={mockupProject !== null}
-        onClose={() => setMockupProject(null)}
-      />
-      <MinigamesDialog
-        minigame={minigameProject}
-        open={minigameProject !== null}
-        onClose={() => setMinigameProject(null)}
-      />
     </section>
   );
 }

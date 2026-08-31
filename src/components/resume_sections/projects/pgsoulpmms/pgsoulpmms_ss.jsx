@@ -12,9 +12,9 @@ import PGSOULPMMS_unified_filing from '@/components/resume_sections/projects/pgs
 import PGSOULPMMS_asset_control from '@/components/resume_sections/projects/pgsoulpmms/Asset Control.webp';
 
 export const pgsoulpmmsImages = [
-  { src: PGSOULPMMS_home, alt: 'Home page' },
-  { src: PGSOULPMMS_lot_signin, alt: 'Lot Signin Page' },
-  { src: PGSOULPMMS_property_signin, alt: 'Property Signin Page' },
+  { src: PGSOULPMMS_home, alt: 'Home' },
+  { src: PGSOULPMMS_lot_signin, alt: 'Lot Signin' },
+  { src: PGSOULPMMS_property_signin, alt: 'Property Signin' },
   { src: PGSOULPMMS_interactive_mapping, alt: 'Interactive Mapping' },
   { src: PGSOULPMMS_details_monitoring, alt: 'Details Monitoring' },
   { src: PGSOULPMMS_centralized_oversight, alt: 'Centralized Oversight' },

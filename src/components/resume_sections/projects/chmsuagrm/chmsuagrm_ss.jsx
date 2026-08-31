@@ -9,12 +9,12 @@ import CHMSUAGRM_student_qr from '@/components/resume_sections/projects/chmsuagr
 
 export const chmsuagrmImages = [
   { src: CHMSUAGRM_index, alt: 'Index' },
-  { src: CHMSUAGRM_signin, alt: 'Signin form' },
+  { src: CHMSUAGRM_signin, alt: 'Signin' },
   { src: CHMSUAGRM_dashboard, alt: 'Dashboard' },
   { src: CHMSUAGRM_enrollments, alt: 'Enrollments' },
-  { src: CHMSUAGRM_enrollment_request, alt: 'Enrollment request' },
-  { src: CHMSUAGRM_assigned_class, alt: 'Assigned class' },
-  { src: CHMSUAGRM_attendance_qr, alt: 'Attendance QR scanning' },
+  { src: CHMSUAGRM_enrollment_request, alt: 'Enrollment Request' },
+  { src: CHMSUAGRM_assigned_class, alt: 'Assigned Class' },
+  { src: CHMSUAGRM_attendance_qr, alt: 'QR Scanning' },
   { src: CHMSUAGRM_student_qr, alt: 'Student QR' },
 ];
 

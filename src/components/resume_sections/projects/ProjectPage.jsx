@@ -38,11 +38,11 @@ export function ProjectPage({ project, onBack, onClose }) {
           </button>
 
           <div className="flex-1 min-w-0">
-            <h2 className="font-bold tracking-tight text-base-content text-xl md:text-2xl lg:text-3xl leading-tight">
+            <h2 className="font-bold tracking-tight text-base-content text-base md:text-xl leading-tight">
               {project.title}
             </h2>
             {project.organization && (
-              <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70 mt-0.5">
+              <p className="text-[10px] md:text-xs leading-relaxed text-base-content/70 mt-0.5">
                 {project.organization}
               </p>
             )}
@@ -57,7 +57,7 @@ export function ProjectPage({ project, onBack, onClose }) {
         {/* Screenshots Section with MotionCarousel */}
         {hasScreenshots && (
           <div className="space-y-2.5">
-            <h3 className="text-xs md:text-sm font-semibold text-base-content uppercase tracking-wider">
+            <h3 className="text-xs md:text-sm font-semibold text-base-content ">
               Screenshots
             </h3>
             <div className="w-full">
@@ -68,10 +68,10 @@ export function ProjectPage({ project, onBack, onClose }) {
 
         {/* Description Section */}
         <div className="space-y-2">
-          <h3 className="text-xs md:text-sm font-semibold text-base-content uppercase tracking-wider">
+          <h3 className="text-xs md:text-sm font-semibold text-base-content ">
             Description
           </h3>
-          <p className="text-xs md:text-sm text-base-content/85 leading-relaxed">
+          <p className="text-[10px] md:text-xs text-base-content/85 leading-relaxed">
             {project.description}
           </p>
         </div>
@@ -79,14 +79,14 @@ export function ProjectPage({ project, onBack, onClose }) {
         {/* Key Features Section */}
         {Array.isArray(project.details) && project.details.length > 0 && (
           <div className="space-y-2.5">
-            <h3 className="text-xs md:text-sm font-semibold text-base-content uppercase tracking-wider">
+            <h3 className="text-xs md:text-sm font-semibold text-base-content ">
               Key Features
             </h3>
             <ul className="space-y-1.5 md:space-y-2">
               {project.details.map((item, i) => (
                 <li
                   key={i}
-                  className="text-xs md:text-sm text-base-content/85 leading-relaxed flex items-start gap-2"
+                  className="text-[10px] md:text-xs text-base-content/85 leading-relaxed flex items-start gap-2"
                 >
                   <span className="inline-block mt-0.5 text-base-content/60">•</span>
                   <span>{item}</span>

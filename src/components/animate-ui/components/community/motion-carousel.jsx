@@ -18,7 +18,7 @@ const carouselButtonClasses = cn(
   'bg-textured border border-gray-300 dark:border-white/20',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
-  'cursor-pointer hover-theme-switch transition-all duration-200'
+  'cursor-pointer hover-theme-switch transition-all duration-200 shrink-0'
 );
 
 const useEmblaControls = (emblaApi) => {
@@ -72,6 +72,20 @@ const useEmblaControls = (emblaApi) => {
   };
 };
 
+function getVisibleIndices(total, current, maxVisible = 5) {
+  if (total <= maxVisible) return Array.from({ length: total }, (_, i) => i);
+  let start = current - Math.floor(maxVisible / 2);
+  let end = start + maxVisible;
+  if (start < 0) {
+    start = 0;
+    end = maxVisible;
+  } else if (end > total) {
+    end = total;
+    start = total - maxVisible;
+  }
+  return Array.from({ length: end - start }, (_, i) => start + i);
+}
+
 function MotionCarousel(props) {
   const { slides = [], options, className } = props;
   const emblaOptions = React.useMemo(
@@ -94,6 +108,11 @@ function MotionCarousel(props) {
     onNext,
   } = useEmblaControls(emblaApi);
 
+  const visibleIndices = React.useMemo(
+    () => getVisibleIndices(scrollSnaps.length, selectedIndex, 5),
+    [scrollSnaps.length, selectedIndex]
+  );
+
   return (
     <div
       className={cn(
@@ -101,7 +120,7 @@ function MotionCarousel(props) {
         className
       )}
     >
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div className="overflow-hidden border-3 border-solid border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg" ref={emblaRef}>
         <div className="flex touch-pan-y touch-pinch-zoom">
           {slides.map((slide, index) => {
             const isActive = index === selectedIndex;
@@ -115,7 +134,7 @@ function MotionCarousel(props) {
                 className="h-[var(--slide-height)] mr-[var(--slide-spacing)] basis-[var(--slide-size)] flex-none flex min-w-0"
               >
                 <motion.div
-                  className="size-full flex items-center justify-center select-none overflow-hidden rounded-xl bg-base-300/30"
+                  className="size-full flex items-center justify-center select-none overflow-hidden rounded-md bg-base-content border-3 border-solid border-gray-300 dark:border-white/20"
                   initial={false}
                   animate={{
                     scale: isActive ? 1 : 0.9,
@@ -140,7 +159,7 @@ function MotionCarousel(props) {
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center px-1">
         <button
           type="button"
           onClick={onPrev}
@@ -148,11 +167,12 @@ function MotionCarousel(props) {
           className={carouselButtonClasses}
           aria-label="Previous slide"
         >
-          <ChevronLeft className="size-5" />
+          <ChevronLeft className="size-4 md:size-5" />
         </button>
 
-        <div className="flex flex-wrap justify-center items-center gap-2">
-          {scrollSnaps.map((_, index) => {
+        {/* Single-row, non-wrapping dot track with windowing to hide excess dots */}
+        <div className="flex flex-nowrap justify-center items-center gap-1.5 max-w-[70%] overflow-hidden py-1">
+          {visibleIndices.map((index) => {
             const slide = slides[index];
             const label = typeof slide === 'object' && slide?.alt ? slide.alt : `Slide ${index + 1}`;
             return (
@@ -173,7 +193,7 @@ function MotionCarousel(props) {
           className={carouselButtonClasses}
           aria-label="Next slide"
         >
-          <ChevronRight className="size-5" />
+          <ChevronRight className="size-4 md:size-5" />
         </button>
       </div>
     </div>
@@ -187,17 +207,17 @@ function DotButton({ selected = false, label, onClick }) {
       onClick={onClick}
       layout
       initial={false}
-      className="flex cursor-pointer select-none items-center justify-center rounded-full border-none bg-primary text-primary-foreground text-xs md:text-sm font-medium"
+      className="flex cursor-pointer select-none items-center justify-center rounded-full border-none bg-primary text-primary-foreground shrink-0"
       animate={{
-        width: selected ? 'auto' : 12,
-        height: selected ? 28 : 12,
+        width: selected ? 'auto' : 10,
+        height: selected ? 26 : 10,
       }}
       transition={transition}
     >
       <motion.span
         layout
         initial={false}
-        className="block whitespace-nowrap px-3 py-1"
+        className="block whitespace-nowrap px-2.5 py-0.5 text-[10px] md:text-xs font-medium max-w-[110px] sm:max-w-[150px] truncate"
         animate={{
           opacity: selected ? 1 : 0,
           scale: selected ? 1 : 0,
