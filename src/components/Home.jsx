@@ -23,6 +23,12 @@ const buttonClasses = cn(
   'text-sm md:text-base font-medium cursor-pointer hover-theme-switch',
 );
 
+const techBadgeClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'text-sm md:text-base font-medium cursor-default hover-badge'
+);
+
 // 4 Main Sections
 const SECTIONS = [
   {
@@ -153,11 +159,7 @@ export default function Home() {
               {POWERED_BY_STACK.map((tool) => (
                 <div
                   key={tool.name}
-                  className={cn(
-                    'shadow-md inline-flex items-center justify-center rounded-md p-2',
-                    'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                    'cursor-default hover-badge'
-                  )}
+                  className={techBadgeClasses}
                   style={{ '--brand-color': tool.color }}
                   title={tool.name}
                   aria-label={tool.name}
@@ -168,55 +170,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </motion.div>
-
-        {/* 4 Section Navigation - Mockup card format */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="pt-2 w-full max-w-2xl mx-auto"
-        >
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
-            {SECTIONS.map((section) => (
-              <div
-                key={section.id}
-                className={cn(
-                  'group relative flex flex-col p-1 md:p-1.5 rounded-lg shadow-xl',
-                  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                  'hover-card cursor-pointer'
-                )}
-                role="button"
-                tabIndex={0}
-                onClick={() => handleNavigate(section.id)}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    handleNavigate(section.id);
-                  }
-                }}
-              >
-                {/* Polaroid Photo Frame - 16:9 aspect ratio */}
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner flex items-center justify-center">
-                  <img
-                    src={section.icon}
-                    alt=""
-                    className="h-8 w-8 md:h-10 md:w-10 dark:invert transition-transform duration-500 group-hover:scale-110 object-contain"
-                    aria-hidden="true"
-                  />
-                </div>
-
-                {/* Polaroid Bottom Caption */}
-                <div className="flex flex-col justify-between flex-1 pt-2">
-                  <div>
-                    <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
-                      {section.title}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </motion.div>
       </div>
