@@ -20,7 +20,7 @@ const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-3',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-sm md:text-base font-medium cursor-pointer hover-theme-switch',
+  'text-xs md:text-sm font-medium cursor-pointer hover-theme-switch',
 );
 
 const techBadgeClasses = cn(
