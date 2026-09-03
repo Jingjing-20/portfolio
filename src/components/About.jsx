@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import profileImage from '@/components/resume_sections/about/gian.webp';
 import {
   Tilt,
   TiltContent,
 } from '@/components/animate-ui/primitives/effects/tilt';
-import ContactDialog from '@/components/resume_sections/about/ContactDialog';
 import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
 import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
@@ -19,11 +17,30 @@ const interactiveButtonClasses = cn(
 );
 
 export default function About() {
-  const [activeContact, setActiveContact] = useState(null);
-
   const handleBackToHome = () => {
     window.location.hash = 'home';
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleContactClick = (contact) => {
+    if (contact.email) {
+      // For Gmail, open mailto link
+      window.location.href = `mailto:${contact.email}`;
+    } else if (contact.href) {
+      // For other links (GitHub, LinkedIn) or resume download
+      if (contact.id === 'resume') {
+        // For resume, trigger download
+        const link = document.createElement('a');
+        link.href = contact.href;
+        link.download = 'Gian_Carlo_Ulep_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        // For external links, open in new tab
+        window.open(contact.href, '_blank', 'noopener,noreferrer');
+      }
+    }
   };
 
   return (
@@ -133,7 +150,7 @@ export default function About() {
             type="button"
             className={interactiveButtonClasses}
             style={{ '--brand-color': contact.color }}
-            onClick={() => setActiveContact(contact)}
+            onClick={() => handleContactClick(contact)}
             aria-label={contact.label}
           >
             <span className="tool-icon flex items-center justify-center">
@@ -249,13 +266,6 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      {/* Contact Dialog */}
-      <ContactDialog
-        contact={activeContact}
-        open={activeContact !== null}
-        onClose={() => setActiveContact(null)}
-      />
     </section>
   );
 }
