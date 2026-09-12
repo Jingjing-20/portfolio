@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  Tilt,
+  TiltContent,
+} from '@/components/animate-ui/primitives/effects/tilt';
 import CertificateDialog from '@/components/resume_sections/certificates/CertificateDialog';
 import { CERTIFICATE_CATEGORIES } from '@/components/resume_sections/certificates/certificates_data';
 
@@ -79,51 +83,56 @@ export default function Certificates() {
                 const CertIconComp = cert.icon;
                 const year = formatDate(cert.issuedDate);
                 return (
-                  <div
+                  <Tilt
                     key={cert.id}
-                    className={cn(
-                      'group relative flex flex-col p-3 md:p-4 rounded-lg shadow-xl',
-                      'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                      'hover-card cursor-pointer min-h-[120px]'
-                    )}
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => setActiveCert(cert)}
-                    onKeyDown={(event) => {
-                      if (event.key === 'Enter' || event.key === ' ') {
-                        event.preventDefault();
-                        setActiveCert(cert);
-                      }
-                    }}
+                    maxTilt={12}
+                    className="h-full"
                   >
-                    {/* Top Row: Logo (left) + Year (right) */}
-                    <div className="flex items-start justify-between w-full">
-                      <div className="flex items-center gap-2">
-                        {CertIconComp && (
-                          <span className="flex items-center justify-center flex-shrink-0 text-xl p-1 rounded-md border-3 border-content text-lg md:text-xl">
-                            <CertIconComp />
+                    <TiltContent
+                      className={cn(
+                        'group relative flex flex-col p-3 md:p-4 rounded-lg shadow-xl h-full',
+                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20',
+                        'cursor-pointer min-h-[120px] transition-shadow duration-300 hover:shadow-2xl'
+                      )}
+                      role="button"
+                      tabIndex={0}
+                      onClick={() => setActiveCert(cert)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setActiveCert(cert);
+                        }
+                      }}
+                    >
+                      {/* Top Row: Logo (left) + Year (right) */}
+                      <div className="flex items-start justify-between w-full">
+                        <div className="flex items-center gap-2">
+                          {CertIconComp && (
+                            <span className="flex items-center justify-center flex-shrink-0 text-xl p-1 rounded-md border-3 border-content text-lg md:text-xl">
+                              <CertIconComp />
+                            </span>
+                          )}
+                        </div>
+                        {year && (
+                          <span className="text-[6px] md:text-[8px] font-medium whitespace-nowrap p-1 rounded-md border-3 border-content text-lg md:text-xl">
+                            {year}
                           </span>
                         )}
                       </div>
-                      {year && (
-                        <span className="text-[6px] md:text-[8px] font-medium whitespace-nowrap p-1 rounded-md border-3 border-content text-lg md:text-xl">
-                          {year}
-                        </span>
-                      )}
-                    </div>
 
-                    {/* Bottom Content: Org Name (left) + Cert Name (centered vertically) */}
-                    <div className="flex flex-col flex-1 mt-2 space-y-2">
-                      <p className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-1 text-left">
-                        {cert.org}
-                      </p>
-                      <div className="flex-1 flex items-center">
-                        <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2">
-                          {cert.title}
+                      {/* Bottom Content: Org Name (left) + Cert Name (centered vertically) */}
+                      <div className="flex flex-col flex-1 mt-2 space-y-2">
+                        <p className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-1 text-left">
+                          {cert.org}
                         </p>
+                        <div className="flex-1 flex items-center">
+                          <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2">
+                            {cert.title}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </TiltContent>
+                  </Tilt>
                 );
               })}
             </div>

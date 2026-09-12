@@ -5,7 +5,6 @@ import {
   TiltContent,
 } from '@/components/animate-ui/primitives/effects/tilt';
 import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
-import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
 
 const interactiveButtonClasses = cn(
@@ -79,7 +78,7 @@ export default function About() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      {/* Image + Name + Role + Description Row */}
+      {/* Image + Name + Contacts Row */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8 w-full">
         {/* Image - Tilt Card */}
         <div className="shrink-0">
@@ -108,65 +107,56 @@ export default function About() {
           </Tilt>
         </div>
 
-        {/* Right Side: Name + Role + Description */}
-        <div className="flex-1 w-full">
+        {/* Right Side: Name + Contact Buttons */}
+        <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
             <h3 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Gian Carlo N. Ulep
             </h3>
-            {/* Role under name with shimmering */}
-            <div className="mt-0">
-              <ShimmeringText
-                text="Software Developer"
-                className="text-base-content font-extrabold text-md md:text-lg tracking-wider"
-              />
-            </div>
           </div>
 
-          {/* HR separator between name/role and description */}
-          <hr className="my-3 md:my-4" />
+          <hr className="my-2 md:my-3" />
 
-          {/* Description - Now under name and role */}
-          <div className="w-full">
-            <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-              Experienced in deploying production-grade systems for government institutions and state universities.
-              Skilled in building scalable web applications from the ground up, with a strong focus on clean code, modern frameworks, and user-centric design.
-              Passionate about turning ideas into functional, efficient, and reliable solutions that solve real-world problems.
-            </p>
-          </div>
+          {/* Contact Buttons */}
+          <nav
+            aria-label="Contact links"
+            className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 md:gap-2.5"
+          >
+            {CONTACT_LINKS.map((contact) => (
+              <button
+                key={contact.id}
+                type="button"
+                className={interactiveButtonClasses}
+                style={{ '--brand-color': contact.color }}
+                onClick={() => handleContactClick(contact)}
+                aria-label={contact.label}
+              >
+                <span className="tool-icon flex items-center justify-center">
+                  {contact.icon}
+                </span>
+                <span className="hidden md:block text-[8px] md:text-[10px] font-medium text-base-content">
+                  {contact.label}
+                </span>
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title>open</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
+                </span>
+              </button>
+            ))}
+          </nav>
         </div>
       </div>
 
+      <hr className="my-3 md:my-4" />
 
-      {/* Contact Buttons - Centered below details */}
-      <nav
-        aria-label="Contact links"
-        className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3"
-      >
-        {CONTACT_LINKS.map((contact) => (
-          <button
-            key={contact.id}
-            type="button"
-            className={interactiveButtonClasses}
-            style={{ '--brand-color': contact.color }}
-            onClick={() => handleContactClick(contact)}
-            aria-label={contact.label}
-          >
-            <span className="tool-icon flex items-center justify-center">
-              {contact.icon}
-            </span>
-            <span className="hidden md:block text-[8px] md:text-[10px] font-medium text-base-content">
-              {contact.label}
-            </span>
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title>open</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
-            </span>
-          </button>
-        ))}
-      </nav>
+      {/* Description */}
+      <div className="w-full">
+        <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
+          IT professional with hands-on experience across software development, systems deployment, and technical support. Deployed and supported real-world systems used by government offices and university students, providing first-line troubleshooting for live users. Background includes call center experience (voice/customer support account) and a growing foundation in networking, currently upskilling through Cisco networking fundamentals (device configuration, addressing, and troubleshooting) to strengthen technical support capabilities. Detail-oriented and adaptable, with a track record of learning new platforms and tools quickly to keep systems stable and users supported.
+        </p>
+      </div>
 
-      <hr />
+      <hr className="my-3 md:my-4" />
 
       {/* Personal Details & Education - With category headers */}
       <div className="w-full space-y-4">

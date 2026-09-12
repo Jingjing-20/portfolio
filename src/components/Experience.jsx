@@ -34,9 +34,13 @@ function ExperienceItem({ experience, onOpenSkills }) {
     >
       <TimelineHeader>
         <TimelineSeparator className="bg-input! group-data-[orientation=vertical]/timeline:top-2 group-data-[orientation=vertical]/timeline:-left-8 group-data-[orientation=vertical]/timeline:h-[calc(100%-2.5rem)] group-data-[orientation=vertical]/timeline:translate-y-7" />
-        <TimelineIndicator className="size-8 overflow-hidden rounded-full border-2 border-border group-data-[orientation=vertical]/timeline:-left-8 bg-background shadow-xl">
+        <TimelineIndicator className="size-8 overflow-hidden rounded-full border-3 border-solid border-gray-300 dark:border-white/20 group-data-[orientation=vertical]/timeline:-left-8 bg-background shadow-xl flex items-center justify-center p-0.5">
           <Avatar className="size-full">
-            <AvatarImage src={experience.logo} alt={experience.company} />
+            <AvatarImage
+              src={experience.logo}
+              alt={experience.company}
+              className="object-contain size-full rounded-full"
+            />
             <AvatarFallback className="text-[10px] lg:text-xs">
               {experience.logoInitials}
             </AvatarFallback>
@@ -51,16 +55,24 @@ function ExperienceItem({ experience, onOpenSkills }) {
               <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
                 {experience.company}
               </h3>
-              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
-                {experience.employmentType}
-                <span className="mx-1 text-base-content/40">·</span>
-                {experience.durationMonths}
-              </p>
-              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
-                {experience.location}
-                <span className="mx-1 text-base-content/40">·</span>
-                {experience.workMode}
-              </p>
+              {(experience.employmentType || experience.durationMonths) && (
+                <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                  {experience.employmentType}
+                  {experience.employmentType && experience.durationMonths && (
+                    <span className="mx-1 text-base-content/40">·</span>
+                  )}
+                  {experience.durationMonths}
+                </p>
+              )}
+              {(experience.location || experience.workMode) && (
+                <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                  {experience.location}
+                  {experience.location && experience.workMode && (
+                    <span className="mx-1 text-base-content/40">·</span>
+                  )}
+                  {experience.workMode}
+                </p>
+              )}
             </div>
 
             {/* Experience button from Navbar format */}
@@ -90,8 +102,12 @@ function ExperienceItem({ experience, onOpenSkills }) {
             </h4>
             <TimelineDate className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
               {experience.dateRange}
-              <span className="mx-1 text-base-content/40">·</span>
-              {experience.durationMonths}
+              {experience.durationMonths && experience.durationMonths !== experience.dateRange && (
+                <>
+                  <span className="mx-1 text-base-content/40">·</span>
+                  {experience.durationMonths}
+                </>
+              )}
             </TimelineDate>
           </div>
 
