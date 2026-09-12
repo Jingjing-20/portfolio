@@ -100,7 +100,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-50 h-50 sm:w-25 sm:h-25 md:w-30 md:h-30 lg:w-35 lg:h-35 object-cover object-top"
+                className="rounded-lg w-40 h-40 md:w-25 md:h-25 lg:w-30 lg:h-30 object-cover object-top"
               />
             </TiltContent>
           </Tilt>

@@ -2,7 +2,7 @@ export const TECH_STACK = [
   {
     category: 'Software & Web Development',
     description: 'Frontend interfaces, backend architecture, and RESTful APIs.',
-    tools: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'React', 'PHP', 'Laravel', 'Node.js', 'REST APIs'],
+    tools: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'Bootstrap', 'React', 'Vite', 'PHP', 'Laravel', 'Node.js', 'REST APIs'],
   },
   {
     category: 'Databases & Backend Services',
