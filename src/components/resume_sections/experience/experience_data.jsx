@@ -30,7 +30,7 @@ export const EXPERIENCES = [
     logo: PanasiaticImg,
     logoInitials: 'PS',
     employmentType: 'Full-time',
-    durationMonths: '1 mo',
+    durationMonths: '2 mos',
     location: 'Bacolod, Negros Occidental, Philippines',
     workMode: 'On-site',
     role: 'Customer Service Representative',
