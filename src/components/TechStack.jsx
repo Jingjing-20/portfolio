@@ -1,12 +1,11 @@
 import { ArrowLeft } from 'lucide-react';
-import { Tools } from '@/components/resume_sections/stack/tools';
 import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
 import { cn } from '@/lib/utils';
 
 const techBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'shadow-xl inline-flex items-center justify-center px-3 py-1.5 rounded-md',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base font-medium cursor-default hover-badge'
+  'text-[8px] md:text-[10px] font-medium cursor-default hover-badge text-base-content'
 );
 
 export default function TechStack() {
@@ -27,27 +26,16 @@ export default function TechStack() {
         </p>
       </div>
 
-      {/* Tools */}
+      {/* Tools / Skills Badges (Text Only) */}
       <div className="flex flex-wrap items-center gap-2">
-        {stackCategory.tools.map((tool) => {
-          const stackTool = Tools[tool];
-          if (!stackTool) return null;
-
-          return (
-            <div
-              key={tool}
-              className={techBadgeClasses}
-              style={{ '--brand-color': stackTool.color }}
-            >
-              <span className="tool-icon flex items-center justify-center">
-                {stackTool.icon}
-              </span>
-              <span className="text-[8px] md:text-[10px] font-medium text-base-content">
-                {tool}
-              </span>
-            </div>
-          );
-        })}
+        {stackCategory.tools.map((tool) => (
+          <div
+            key={tool}
+            className={techBadgeClasses}
+          >
+            <span>{tool}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -73,10 +61,10 @@ export default function TechStack() {
 
           <div className="flex-1">
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
-              Stack
+              Technical Skills
             </h2>
             <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
-              Tools and technologies I work with
+              Technologies, networking, systems, and technical competencies
             </p>
           </div>
         </div>

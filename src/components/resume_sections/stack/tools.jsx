@@ -26,6 +26,7 @@ import supabaseSvg from './stack icons/supabase.svg';
 import typescriptSvg from './stack icons/typescript.svg';
 import vercelSvg from './stack icons/vercel.svg';
 import viteSvg from './stack icons/vitejs.svg';
+import ciscoSvg from '@/components/resume_sections/certificates/orgs/cisco.svg';
 
 export const Tools = {
   // UI/UX & Design
@@ -128,6 +129,69 @@ export const Tools = {
     category: 'Databases & Backend Services',
     color: '#3ECF8E',
     icon: <img src={supabaseSvg} alt="Supabase" className="tool-icon-img" />,
+  },
+
+  // Networking & Infrastructure
+  'Cisco': {
+    category: 'Networking & Infrastructure',
+    color: '#00BCEB',
+    icon: <img src={ciscoSvg} alt="Cisco" className="tool-icon-img" />,
+  },
+  'Packet Tracer': {
+    category: 'Networking & Infrastructure',
+    color: '#00843D',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className="tool-icon-img">
+        <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+      </svg>
+    ),
+  },
+  'Network Configuration': {
+    category: 'Networking & Infrastructure',
+    color: '#0284C7',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className="tool-icon-img">
+        <path fill="currentColor" d="M4 1h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1m0 8h16a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1m8 8a3 3 0 0 1 3 3h4a1 1 0 0 1 0 2h-4a3 3 0 0 1-6 0H5a1 1 0 0 1 0-2h4a3 3 0 0 1 3-3" />
+      </svg>
+    ),
+  },
+
+  // IT Operations & Technical Support
+  'Technical Support': {
+    category: 'IT Operations & Technical Support',
+    color: '#10B981',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className="tool-icon-img">
+        <path fill="currentColor" d="M12 1a9 9 0 0 0-9 9v7a3 3 0 0 0 3 3h3v-8H5v-2a7 7 0 0 1 14 0v2h-4v8h3a3 3 0 0 0 3-3v-7a9 9 0 0 0-9-9" />
+      </svg>
+    ),
+  },
+  'Systems Deployment': {
+    category: 'IT Operations & Technical Support',
+    color: '#6366F1',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className="tool-icon-img">
+        <path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
+      </svg>
+    ),
+  },
+  'Device Troubleshooting': {
+    category: 'IT Operations & Technical Support',
+    color: '#F59E0B',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className="tool-icon-img">
+        <path fill="currentColor" d="M22 17H2V3h20v14zm-9 2h-2v2H7v1h10v-1h-4v-2zM4 5v10h16V5H4z" />
+      </svg>
+    ),
+  },
+  'Customer Service': {
+    category: 'IT Operations & Technical Support',
+    color: '#EC4899',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className="tool-icon-img">
+        <path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+      </svg>
+    ),
   },
 
   // Infrastructure & DevOps

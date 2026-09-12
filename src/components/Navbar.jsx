@@ -40,9 +40,9 @@ const NAV_ITEMS = [
   },
   {
     value: 'stack',
-    label: 'Stack',
+    label: 'Skills',
     href: '#stack',
-    icon: <NavIcon src={stackIconSrc} alt="Stack" />
+    icon: <NavIcon src={stackIconSrc} alt="Skills" />
   },
   {
     value: 'experience',

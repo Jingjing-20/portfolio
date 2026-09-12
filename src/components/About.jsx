@@ -8,11 +8,10 @@ import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
 import { cn } from '@/lib/utils';
 
 const interactiveButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
+  'shadow-xl inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-md px-2.5 py-1.5 md:px-3 md:py-1.5',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm md:text-base font-medium cursor-pointer hover-badge'
+  'text-[8px] md:text-[10px] font-medium cursor-pointer hover-badge'
 );
 
 export default function About() {
@@ -101,7 +100,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-50 h-50 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-cover object-top"
+                className="rounded-lg w-50 h-50 sm:w-25 sm:h-25 md:w-30 md:h-30 lg:w-35 lg:h-35 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -111,12 +110,10 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h3 className="font-bold tracking-tight text-base-content text-4xl md:text-5xl lg:text-6xl">
               Gian Carlo N. Ulep
             </h3>
           </div>
-
-          <hr className="my-2 md:my-3" />
 
           {/* Contact Buttons */}
           <nav
@@ -132,15 +129,12 @@ export default function About() {
                 onClick={() => handleContactClick(contact)}
                 aria-label={contact.label}
               >
-                <span className="tool-icon flex items-center justify-center">
-                  {contact.icon}
-                </span>
-                <span className="hidden md:block text-[8px] md:text-[10px] font-medium text-base-content">
+                <span className="font-medium text-base-content">
                   {contact.label}
                 </span>
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><title>open</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5"/></svg>
-                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" className="size-3 md:size-3.5 opacity-70">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
+                </svg>
               </button>
             ))}
           </nav>
@@ -152,8 +146,7 @@ export default function About() {
       {/* Description */}
       <div className="w-full">
         <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-          IT professional with hands-on experience across software development, systems deployment, and technical support. Deployed and supported real-world systems used by government offices and university students, providing first-line troubleshooting for live users. Background includes call center experience (voice/customer support account) and a growing foundation in networking, currently upskilling through Cisco networking fundamentals (device configuration, addressing, and troubleshooting) to strengthen technical support capabilities. Detail-oriented and adaptable, with a track record of learning new platforms and tools quickly to keep systems stable and users supported.
-        </p>
+          Background in software development, systems deployment, and technical support, including support for systems used by government offices and university users. Brings customer service experience with a focus on assisting users and resolving concerns. Gained a foundation in networking through academic coursework and practical learning. Detail-oriented and adaptable, with an interest in software development, networking, technical support, and IT operations.        </p>
       </div>
 
       <hr className="my-3 md:my-4" />
@@ -225,7 +218,7 @@ export default function About() {
           </h4>
           <div className="grid grid-cols-3 gap-x-4 gap-y-3">
             {/* School */}
-            <div className="flex flex-col col-span-3 md:col-span-2">
+            <div className="flex flex-col col-span-2 md:col-span-2">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 School
               </span>
@@ -235,7 +228,7 @@ export default function About() {
             </div>
 
             {/* Duration */}
-            <div className="flex flex-col col-span-2 md:col-span-1">
+            <div className="flex flex-col col-span-1 md:col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Duration
               </span>

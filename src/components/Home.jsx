@@ -33,8 +33,8 @@ const techBadgeClasses = cn(
 const SECTIONS = [
   {
     id: 'stack',
-    title: 'Stack',
-    category: 'Technologies',
+    title: 'Skills',
+    category: 'Technologies & Tools',
     icon: stackIcon,
   },
   {
