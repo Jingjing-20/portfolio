@@ -152,7 +152,7 @@ export default function Experience() {
 
           <div className="flex-1">
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
-              Experience
+              Work Experience
             </h2>
             <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
               Work history and professional engagements

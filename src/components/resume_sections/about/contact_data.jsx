@@ -1,13 +1,8 @@
-import ResumeImg from '@/components/resume_sections/about/resume.webp';
 import LinkedInImg from '@/components/resume_sections/about/linkedin.webp';
 import GitHubImg from '@/components/resume_sections/about/github.webp';
-import GmailImg from '@/components/resume_sections/about/gmail.webp';
-import ResumePDF from '@/components/resume_sections/about/resumes/GCNU - RESUME v15.pdf';
 
 import githubSvg from './contact icons/github.svg';
-import gmailSvg from './contact icons/gmail-2026.svg';
 import linkedinSvg from './contact icons/linkedin.svg';
-import resumeSvg from './contact icons/resume pdf.svg';
 
 export const CONTACT_LINKS = [
   {
@@ -27,23 +22,5 @@ export const CONTACT_LINKS = [
     previewImage: LinkedInImg,
     color: '#0A66C2',
     icon: <img src={linkedinSvg} alt="LinkedIn" className="tool-icon-img" />,
-  },
-  {
-    id: 'gmail',
-    label: 'Gmail',
-    email: 'ulep.giancarlo.17@gmail.com',
-    description: 'Send me an email.',
-    previewImage: GmailImg,
-    color: '#EA4335',
-    icon: <img src={gmailSvg} alt="Gmail" className="tool-icon-img" />,
-  },
-  {
-    id: 'resume',
-    label: 'Resume',
-    href: ResumePDF,
-    description: 'Download my resume PDF.',
-    previewImage: ResumeImg,
-    color: '#EF5350',
-    icon: <img src={resumeSvg} alt="Resume" className="tool-icon-img" />,
   },
 ];

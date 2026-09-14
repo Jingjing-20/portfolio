@@ -53,10 +53,10 @@ export default function Certificates() {
 
           <div className="flex-1">
             <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-              Certificates
+              TRAINING & ASSESSMENTS
             </h2>
             <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
-              Certifications, webinars, and earned credentials
+              Training programs, skill assessments, webinars, and earned credentials
             </p>
           </div>
         </div>

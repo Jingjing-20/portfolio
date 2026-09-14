@@ -25,19 +25,8 @@ export default function About() {
       // For Gmail, open mailto link
       window.location.href = `mailto:${contact.email}`;
     } else if (contact.href) {
-      // For other links (GitHub, LinkedIn) or resume download
-      if (contact.id === 'resume') {
-        // For resume, trigger download
-        const link = document.createElement('a');
-        link.href = contact.href;
-        link.download = 'Gian_Carlo_Ulep_Resume.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        // For external links, open in new tab
-        window.open(contact.href, '_blank', 'noopener,noreferrer');
-      }
+      // For external links, open in new tab
+      window.open(contact.href, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -66,7 +55,7 @@ export default function About() {
 
           <div className="flex-1">
             <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
-              About
+              About Me
             </h2>
             <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
               Get to know me better
@@ -208,6 +197,19 @@ export default function About() {
               <span className="text-[10px] md:text-xs text-base-content font-medium">
                 09562657521
               </span>
+            </div>
+
+            {/* Email */}
+            <div className="flex flex-col col-span-3">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Email
+              </span>
+              <a
+                href="mailto:ulep.giancarlo.17@gmail.com"
+                className="text-[10px] md:text-xs text-base-content font-medium hover:underline break-all"
+              >
+                ulep.giancarlo.17@gmail.com
+              </a>
             </div>
           </div>
         </div>

@@ -34,33 +34,38 @@ function NavIcon({ src, alt, size = 15 }) {
 const NAV_ITEMS = [
   {
     value: 'about',
-    label: 'About',
+    label: 'About Me',
+    shortLabel: 'About',
     href: '#about',
-    icon: <NavIcon src={aboutIconSrc} alt="About" />
+    icon: <NavIcon src={aboutIconSrc} alt="About Me" />
   },
   {
     value: 'stack',
-    label: 'Skills',
+    label: 'Technical Skills',
+    shortLabel: 'Skills',
     href: '#stack',
-    icon: <NavIcon src={stackIconSrc} alt="Skills" />
+    icon: <NavIcon src={stackIconSrc} alt="Technical Skills" />
   },
   {
     value: 'experience',
-    label: 'Experience',
+    label: 'Work Experience',
+    shortLabel: 'Experience',
     href: '#experience',
-    icon: <NavIcon src={experienceIconSrc} alt="Experience" />
+    icon: <NavIcon src={experienceIconSrc} alt="Work Experience" />
   },
   {
     value: 'projects',
-    label: 'Projects',
+    label: 'Recent Projects',
+    shortLabel: 'Projects',
     href: '#projects',
-    icon: <NavIcon src={projectsIconSrc} alt="Projects" />
+    icon: <NavIcon src={projectsIconSrc} alt="Recent Projects" />
   },
   {
     value: 'certificates',
-    label: 'Certificates',
+    label: 'Training & Assessments',
+    shortLabel: 'Training',
     href: '#certificates',
-    icon: <NavIcon src={certificateIconSrc} alt="Certificates" />
+    icon: <NavIcon src={certificateIconSrc} alt="Training & Assessments" />
   },
 ];
 
@@ -287,7 +292,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                                 'w-full justify-start',
                                 isActive && 'nav-button-active'
                               )}
-                              aria-label={item.label}
+                              aria-label={item.shortLabel || item.label}
                               aria-current={isActive ? 'page' : undefined}
                             >
                               {item.icon}
@@ -295,7 +300,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                                 "text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content",
                                 isActive && "font-bold"
                               )}>
-                                {item.label}
+                                {item.shortLabel || item.label}
                               </span>
                             </button>
                           );

@@ -33,25 +33,25 @@ const techBadgeClasses = cn(
 const SECTIONS = [
   {
     id: 'stack',
-    title: 'Skills',
+    title: 'Technical Skills',
     category: 'Technologies & Tools',
     icon: stackIcon,
   },
   {
     id: 'experience',
-    title: 'Experience',
+    title: 'Work Experience',
     category: 'Career & Work',
     icon: experienceIcon,
   },
   {
     id: 'projects',
-    title: 'Projects',
+    title: 'Recent Projects',
     category: 'Selected Builds',
     icon: projectsIcon,
   },
   {
     id: 'certificates',
-    title: 'Certificates',
+    title: 'Training & Assessments',
     category: 'Credentials',
     icon: certIcon,
   },
@@ -132,7 +132,7 @@ export default function Home() {
             type="button"
             onClick={() => handleNavigate('about')}
             className={buttonClasses}
-            aria-label="Get to know me"
+            aria-label="About Me"
           >
             <img
               src={aboutIcon}
@@ -140,7 +140,7 @@ export default function Home() {
               className="h-4 w-4 md:h-5 md:w-5 dark:invert"
               aria-hidden="true"
             />
-            <span>Get to Know Me</span>
+            <span>About Me</span>
           </button>
         </motion.div>
 
