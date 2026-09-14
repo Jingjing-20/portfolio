@@ -146,7 +146,8 @@ export default function About() {
       {/* Description */}
       <div className="w-full">
         <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-          Background in software development, systems deployment, and technical support, including support for systems used by government offices and university users. Brings customer service experience with a focus on assisting users and resolving concerns. Gained a foundation in networking through academic coursework and practical learning. Detail-oriented and adaptable, with an interest in software development, networking, technical support, and IT operations.        </p>
+          Background in software development, systems deployment, and technical support, including support for systems used by government offices and university users. Brings customer service experience with a focus on assisting users and resolving concerns. Built a networking foundation through academic coursework and hands-on projects, and is currently relearning networking to strengthen that skill set. Detail-oriented and adaptable, with an interest in software development, networking, technical support, and IT operations.
+        </p>
       </div>
 
       <hr className="my-3 md:my-4" />
