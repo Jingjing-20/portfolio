@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import profileImage from '@/components/resume_sections/about/gian.webp';
 import {
@@ -5,6 +6,7 @@ import {
   TiltContent,
 } from '@/components/animate-ui/primitives/effects/tilt';
 import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
+import ContactDialog from '@/components/resume_sections/about/ContactDialog';
 import { cn } from '@/lib/utils';
 
 const interactiveButtonClasses = cn(
@@ -15,6 +17,8 @@ const interactiveButtonClasses = cn(
 );
 
 export default function About() {
+  const [selectedContact, setSelectedContact] = useState(null);
+
   const handleBackToHome = () => {
     window.location.hash = 'home';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -22,10 +26,8 @@ export default function About() {
 
   const handleContactClick = (contact) => {
     if (contact.email) {
-      // For Gmail, open mailto link
-      window.location.href = `mailto:${contact.email}`;
+      setSelectedContact(contact);
     } else if (contact.href) {
-      // For external links, open in new tab
       window.open(contact.href, '_blank', 'noopener,noreferrer');
     }
   };
@@ -198,19 +200,6 @@ export default function About() {
                 09562657521
               </span>
             </div>
-
-            {/* Email */}
-            <div className="flex flex-col col-span-3">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Email
-              </span>
-              <a
-                href="mailto:ulep.giancarlo.17@gmail.com"
-                className="text-[10px] md:text-xs text-base-content font-medium hover:underline break-all"
-              >
-                ulep.giancarlo.17@gmail.com
-              </a>
-            </div>
           </div>
         </div>
 
@@ -252,6 +241,13 @@ export default function About() {
           </div>
         </div>
       </div>
+
+      {/* Contact Dialog */}
+      <ContactDialog
+        contact={selectedContact}
+        open={selectedContact !== null}
+        onClose={() => setSelectedContact(null)}
+      />
     </section>
   );
 }

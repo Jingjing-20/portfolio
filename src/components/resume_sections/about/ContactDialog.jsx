@@ -55,7 +55,7 @@ export function ContactDialog({ contact, open, onClose }) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
-        <div className="space-y-1.5 pr-">
+        <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
           <hr />
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{contact.description}</DialogDescription>
@@ -81,7 +81,26 @@ export function ContactDialog({ contact, open, onClose }) {
             className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
           />
           {isEmail || isPhone ? (
-            <CopyButton content={contact.email ?? contact.phone} variant="outline" aria-label="Copy to clipboard" />
+            <>
+              <CopyButton
+                content={contact.email ?? contact.phone}
+                variant="outline"
+                className="cursor-pointer hover-theme-switch"
+                aria-label="Copy to clipboard"
+              />
+              {isEmail && (
+                <button
+                  type="button"
+                  className={buttonClasses}
+                  onClick={() => {
+                    window.location.href = `mailto:${contact.email}`;
+                  }}
+                  aria-label={`Send email to ${contact.email}`}
+                >
+                  <SquareArrowOutUpRight size={16} />
+                </button>
+              )}
+            </>
           ) : isResume ? (
             <ButtonPrimitive
               type="button"
