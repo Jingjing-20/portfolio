@@ -137,7 +137,7 @@ export default function About() {
       {/* Description */}
       <div className="w-full">
         <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-          Background in software development, systems deployment, and technical support, including support for systems used by government offices and university users. Brings customer service experience with a focus on assisting users and resolving concerns. Built a networking foundation through academic coursework and hands-on projects, and is currently relearning networking to strengthen that skill set. Detail-oriented and adaptable, with an interest in software development, networking, technical support, and IT operations.
+          Experience in software development, systems deployment, and technical support, including systems used by government offices and a state university. Brings customer service experience and a solid foundation in computer networking through academic coursework and hands-on projects.
         </p>
       </div>
 
@@ -150,9 +150,9 @@ export default function About() {
           <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
             Personal Details
           </h4>
-          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-3">
             {/* Birthdate */}
-            <div className="flex flex-col">
+            <div className="flex flex-col col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Birthdate
               </span>
@@ -162,7 +162,7 @@ export default function About() {
             </div>
 
             {/* Age */}
-            <div className="flex flex-col">
+            <div className="flex flex-col col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Age
               </span>
@@ -172,7 +172,7 @@ export default function About() {
             </div>
 
             {/* Gender */}
-            <div className="flex flex-col">
+            <div className="flex flex-col col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Gender
               </span>
@@ -181,18 +181,8 @@ export default function About() {
               </span>
             </div>
 
-            {/* Zodiac Sign */}
-            <div className="flex flex-col">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Zodiac Sign
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Gemini
-              </span>
-            </div>
-
             {/* Nationality */}
-            <div className="flex flex-col">
+            <div className="flex flex-col col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Nationality
               </span>
@@ -201,20 +191,20 @@ export default function About() {
               </span>
             </div>
 
-            {/* Phone */}
-            <div className="flex flex-col">
+            {/* Zodiac Sign - shown beside nationality on desktop */}
+            <div className="hidden md:flex flex-col md:col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Phone
+                Zodiac Sign
               </span>
               <span className="text-[10px] md:text-xs text-base-content font-medium">
-                09562657521
+                Gemini
               </span>
             </div>
 
-            {/* Location */}
+            {/* Address */}
             <div className="flex flex-col col-span-2">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Location
+                Address
               </span>
               <span className="text-[10px] md:text-xs text-base-content font-medium">
                 Valladolid, Negros Occidental, Philippines
@@ -230,6 +220,16 @@ export default function About() {
                 English, Filipino
               </span>
             </div>
+
+            {/* Phone */}
+            <div className="flex flex-col col-span-1">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Phone
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                09562657521
+              </span>
+            </div>
           </div>
         </div>
 
@@ -238,18 +238,36 @@ export default function About() {
           <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
             Educational Background
           </h4>
-          <div className="space-y-0.5">
-            <div className="flex items-baseline justify-between gap-3">
-              <h5 className="text-xs md:text-sm font-semibold text-base-content leading-relaxed">
-                Bachelor of Science in Information Technology
-              </h5>
-              <span className="text-[10px] md:text-xs font-semibold text-base-content/80 shrink-0">
+          <div className="grid grid-cols-5 gap-x-4 gap-y-3">
+            {/* School */}
+            <div className="flex flex-col col-span-3 md:col-span-2">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                School
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Carlos Hilado Memorial State University – Alijis
+              </span>
+            </div>
+
+            {/* Duration */}
+            <div className="flex flex-col col-span-2 md:col-span-1">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Duration
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
                 2022–2026
               </span>
             </div>
-            <p className="text-[10px] md:text-xs text-base-content/70">
-              Carlos Hilado Memorial State University – Alijis
-            </p>
+
+            {/* Program */}
+            <div className="flex flex-col col-span-5 md:col-span-2">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Program
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Bachelor of Science in Information Technology
+              </span>
+            </div>
           </div>
         </div>
       </div>
