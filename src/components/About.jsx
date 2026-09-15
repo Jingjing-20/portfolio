@@ -181,6 +181,36 @@ export default function About() {
               </span>
             </div>
 
+            {/* Zodiac Sign */}
+            <div className="flex flex-col">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Zodiac Sign
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Gemini
+              </span>
+            </div>
+
+            {/* Nationality */}
+            <div className="flex flex-col">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Nationality
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                Filipino
+              </span>
+            </div>
+
+            {/* Phone */}
+            <div className="flex flex-col">
+              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
+                Phone
+              </span>
+              <span className="text-[10px] md:text-xs text-base-content font-medium">
+                09562657521
+              </span>
+            </div>
+
             {/* Location */}
             <div className="flex flex-col col-span-2">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
@@ -191,53 +221,35 @@ export default function About() {
               </span>
             </div>
 
-            {/* Phone */}
+            {/* Languages */}
             <div className="flex flex-col col-span-1">
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Phone
+                Languages
               </span>
               <span className="text-[10px] md:text-xs text-base-content font-medium">
-                09562657521
+                English, Filipino
               </span>
             </div>
           </div>
         </div>
 
-        {/* Education Section */}
+        {/* Educational Background Section */}
         <div>
           <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
-            Education
+            Educational Background
           </h4>
-          <div className="grid grid-cols-3 gap-x-4 gap-y-3">
-            {/* School */}
-            <div className="flex flex-col col-span-2 md:col-span-2">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                School
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                Carlos Hilado Memorial State University - Aljis
-              </span>
-            </div>
-
-            {/* Duration */}
-            <div className="flex flex-col col-span-1 md:col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Duration
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
-                2022 - 2026
-              </span>
-            </div>
-
-            {/* Program */}
-            <div className="flex flex-col col-span-3">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Program
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+          <div className="space-y-0.5">
+            <div className="flex items-baseline justify-between gap-3">
+              <h5 className="text-xs md:text-sm font-semibold text-base-content leading-relaxed">
                 Bachelor of Science in Information Technology
+              </h5>
+              <span className="text-[10px] md:text-xs font-semibold text-base-content/80 shrink-0">
+                2022–2026
               </span>
             </div>
+            <p className="text-[10px] md:text-xs text-base-content/70">
+              Carlos Hilado Memorial State University – Alijis
+            </p>
           </div>
         </div>
       </div>
