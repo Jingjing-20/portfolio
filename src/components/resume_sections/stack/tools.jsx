@@ -4,6 +4,7 @@ import canvaSvg from './stack icons/canva.svg';
 import claudeSvg from './stack icons/claude.svg';
 import codexSvg from './stack icons/codex-light.svg';
 import cssSvg from './stack icons/css.svg';
+import djangoSvg from './stack icons/django.svg';
 import figmaSvg from './stack icons/figma.svg';
 import tailwindSvg from './stack icons/file-type-tailwind.svg';
 import framerSvg from './stack icons/framer-filled.svg';
@@ -20,6 +21,7 @@ import nextSvg from './stack icons/nextjs.svg';
 import nodeSvg from './stack icons/node-js.svg';
 import phpSvg from './stack icons/php.svg';
 import postgresqlSvg from './stack icons/postgresql.svg';
+import pythonSvg from './stack icons/python.svg';
 import reactSvg from './stack icons/react.svg';
 import restSvg from './stack icons/rest-api.svg';
 import supabaseSvg from './stack icons/supabase.svg';
@@ -102,6 +104,16 @@ export const Tools = {
     category: 'Backend & APIs',
     color: '#FF2D20',
     icon: <img src={laravelSvg} alt="Laravel" className="tool-icon-img" />,
+  },
+  'Python': {
+    category: 'Backend & APIs',
+    color: '#3776AB',
+    icon: <img src={pythonSvg} alt="Python" className="tool-icon-img" />,
+  },
+  'Django': {
+    category: 'Backend & APIs',
+    color: '#092E20',
+    icon: <img src={djangoSvg} alt="Django" className="tool-icon-img" />,
   },
   'Node.js': {
     category: 'Backend & APIs',

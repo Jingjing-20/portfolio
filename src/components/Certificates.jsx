@@ -86,7 +86,8 @@ export default function Certificates() {
                   <Tilt
                     key={cert.id}
                     maxTilt={12}
-                    className="h-full"
+                    className="h-full cursor-pointer"
+                    onClick={() => setActiveCert(cert)}
                   >
                     <TiltContent
                       className={cn(

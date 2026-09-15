@@ -92,6 +92,15 @@ export const CERTIFICATE_CATEGORIES = [
         link: 'https://www.testdome.com/certificates/8be7dc5ac42d4fb195d649f551edd55d',
       },
       {
+        id: 'python-testdome',
+        title: 'Python',
+        org: 'TestDome',
+        image: pythonImg,
+        icon: TestDomeIcon,
+        issuedDate: '2026-08-19',
+        link: 'https://www.testdome.com/certificates/961006f82e884675b462f8f12e0fa45c',
+      },
+      {
         id: 'html/css-testdome',
         title: 'HTML/CSS',
         org: 'TestDome',
