@@ -61,17 +61,6 @@ export function ContactDialog({ contact, open, onClose }) {
           <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{contact.description}</DialogDescription>
         </div>
 
-        {/* Contact Preview Image Container */}
-        {contact.previewImage && (
-          <div className="relative flex items-center justify-center overflow-hidden rounded-lg border border-gray-300 dark:border-white/20 bg-theme p-2 w-full">
-            <img
-              src={contact.previewImage}
-              alt={contact.label}
-              className="max-h-56 w-full object-contain rounded"
-            />
-          </div>
-        )}
-
         <div className="flex items-center gap-2">
           <input
             type="text"
@@ -81,26 +70,12 @@ export function ContactDialog({ contact, open, onClose }) {
             className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
           />
           {isEmail || isPhone ? (
-            <>
-              <CopyButton
-                content={contact.email ?? contact.phone}
-                variant="outline"
-                className="cursor-pointer hover-theme-switch"
-                aria-label="Copy to clipboard"
-              />
-              {isEmail && (
-                <button
-                  type="button"
-                  className={buttonClasses}
-                  onClick={() => {
-                    window.location.href = `mailto:${contact.email}`;
-                  }}
-                  aria-label={`Send email to ${contact.email}`}
-                >
-                  <SquareArrowOutUpRight size={16} />
-                </button>
-              )}
-            </>
+            <CopyButton
+              content={contact.email ?? contact.phone}
+              variant="outline"
+              className="cursor-pointer hover-theme-switch"
+              aria-label="Copy to clipboard"
+            />
           ) : isResume ? (
             <ButtonPrimitive
               type="button"
