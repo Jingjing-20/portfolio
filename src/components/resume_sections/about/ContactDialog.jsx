@@ -67,7 +67,7 @@ export function ContactDialog({ contact, open, onClose }) {
             readOnly
             value={value}
             aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : isResume ? 'Resume file' : 'Profile URL'}
-            className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-[10px] md:text-xs text-base-content outline-none dark:border-white/40"
+            className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-xs md:text-sm text-base-content outline-none dark:border-white/40"
           />
           {isEmail || isPhone ? (
             <CopyButton
