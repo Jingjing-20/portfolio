@@ -10,10 +10,10 @@ import ContactDialog from '@/components/resume_sections/about/ContactDialog';
 import { cn } from '@/lib/utils';
 
 const interactiveButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-md px-2.5 py-1.5 md:px-3 md:py-1.5',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'shadow-xl inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-sm px-2.5 py-1.5 md:px-3 md:py-1.5',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-[8px] md:text-[10px] cursor-pointer hover-badge'
+  'text-[10px] md:text-xs cursor-pointer hover-badge'
 );
 
 export default function About() {
@@ -56,9 +56,9 @@ export default function About() {
           </button>
 
           <div className="flex-1">
-            <h2 className="tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <p className="font-bold tracking-tight text-base-content text-xl md:text-2xl lg:text-3xl">
               About Me
-            </h2>
+            </p>
             <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
               Get to know me better
             </p>
@@ -91,7 +91,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-40 h-40 md:w-25 md:h-25 lg:w-30 lg:h-30 object-cover object-top"
+                className="rounded-lg w-40 h-40 md:w-40 md:h-40 lg:w-45 lg:h-45 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -101,11 +101,10 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="tracking-tight text-base-content text-4xl md:text-5xl lg:text-6xl">
+            <h3 className="font-extrabold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Gian Carlo N. Ulep
             </h3>
           </div>
-
           {/* Contact Buttons */}
           <nav
             aria-label="Contact links"
@@ -123,22 +122,13 @@ export default function About() {
                 <span className="text-base-content">
                   {contact.label}
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" className="size-3 md:size-3.5 opacity-70">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2l8-8m0 0v5m0-5h-5" />
-                </svg>
               </button>
             ))}
           </nav>
+          <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
+            Experience in software development, systems deployment, and technical support, including systems used by government offices and a state university. Brings customer service experience and a solid foundation in computer networking through academic coursework and hands-on projects.
+          </p>
         </div>
-      </div>
-
-      <hr className="my-3 md:my-4" />
-
-      {/* Description */}
-      <div className="w-full">
-        <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
-          Experience in software development, systems deployment, and technical support, including systems used by government offices and a state university. Brings customer service experience and a solid foundation in computer networking through academic coursework and hands-on projects.
-        </p>
       </div>
 
       <hr className="my-3 md:my-4" />
