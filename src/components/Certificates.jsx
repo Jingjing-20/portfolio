@@ -44,7 +44,7 @@ export default function Certificates() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+              'text-sm md:text-base cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
@@ -52,7 +52,7 @@ export default function Certificates() {
           </button>
 
           <div className="flex-1">
-            <h2 className="text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
+            <h2 className="text-3xl tracking-tight text-base-content md:text-4xl lg:text-5xl">
               TRAINING & ASSESSMENTS
             </h2>
             <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
@@ -69,7 +69,7 @@ export default function Certificates() {
         {CERTIFICATE_CATEGORIES.map((category) => (
           <article key={category.category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed text-base-content">
                 {category.category}
               </h3>
               <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground leading-relaxed">
@@ -115,7 +115,7 @@ export default function Certificates() {
                           )}
                         </div>
                         {year && (
-                          <span className="text-[6px] md:text-[8px] font-medium whitespace-nowrap p-1 rounded-md border-3 border-content text-lg md:text-xl">
+                          <span className="text-[6px] md:text-[8px] whitespace-nowrap p-1 rounded-md border-3 border-content text-lg md:text-xl">
                             {year}
                           </span>
                         )}
@@ -123,7 +123,7 @@ export default function Certificates() {
 
                       {/* Bottom Content: Org Name (left) + Cert Name (centered vertically) */}
                       <div className="flex flex-col flex-1 mt-2 space-y-2">
-                        <p className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-1 text-left">
+                        <p className="text-[10px] md:text-xs text-base-content line-clamp-1 text-left">
                           {cert.org}
                         </p>
                         <div className="flex-1 flex items-center">

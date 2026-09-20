@@ -128,7 +128,7 @@ export default function Projects() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+              'text-sm md:text-base cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
@@ -136,7 +136,7 @@ export default function Projects() {
           </button>
 
           <div className="flex-1">
-            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Recent Projects
             </h2>
 
@@ -153,7 +153,7 @@ export default function Projects() {
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed text-base-content">
                 {category}
               </h3>
               <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground leading-relaxed">
@@ -202,7 +202,7 @@ export default function Projects() {
                       {/* Polaroid Bottom Caption */}
                       <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
-                          <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                          <h3 className="text-[10px] md:text-xs lg:text-sm tracking-tight leading-snug text-base-content line-clamp-1">
                             {mockup.name}
                           </h3>
                           <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
@@ -253,7 +253,7 @@ export default function Projects() {
                       {/* Polaroid Bottom Caption */}
                       <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
-                          <h3 className="text-[10px] md:text-xs lg:text-sm font-semibold tracking-tight leading-snug text-base-content line-clamp-1">
+                          <h3 className="text-[10px] md:text-xs lg:text-sm tracking-tight leading-snug text-base-content line-clamp-1">
                             {minigame.name}
                           </h3>
                           <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
@@ -295,7 +295,7 @@ export default function Projects() {
                             className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
                             onClick={() => handleSelectProject(project)}
                           >
-                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed font-base font-semibold text-base-content group-hover/title:text-primary transition-colors">
+                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content group-hover/title:text-primary transition-colors">
                               {project.title}
                             </h4>
                             {project.organization && (

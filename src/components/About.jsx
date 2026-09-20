@@ -13,7 +13,7 @@ const interactiveButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-md px-2.5 py-1.5 md:px-3 md:py-1.5',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-[8px] md:text-[10px] font-medium cursor-pointer hover-badge'
+  'text-[8px] md:text-[10px] cursor-pointer hover-badge'
 );
 
 export default function About() {
@@ -48,7 +48,7 @@ export default function About() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+              'text-sm md:text-base cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
@@ -56,7 +56,7 @@ export default function About() {
           </button>
 
           <div className="flex-1">
-            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               About Me
             </h2>
             <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
@@ -101,7 +101,7 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-bold tracking-tight text-base-content text-4xl md:text-5xl lg:text-6xl">
+            <h3 className="tracking-tight text-base-content text-4xl md:text-5xl lg:text-6xl">
               Gian Carlo N. Ulep
             </h3>
           </div>
@@ -120,7 +120,7 @@ export default function About() {
                 onClick={() => handleContactClick(contact)}
                 aria-label={contact.label}
               >
-                <span className="font-medium text-base-content">
+                <span className="text-base-content">
                   {contact.label}
                 </span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" aria-hidden="true" className="size-3 md:size-3.5 opacity-70">
@@ -147,7 +147,7 @@ export default function About() {
       <div className="w-full space-y-4">
         {/* Personal Details Section */}
         <div>
-          <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
+          <h4 className="text-xs md:text-sm text-base-content/80 tracking-wider uppercase mb-2">
             Personal Details
           </h4>
           <div className="grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-3">
@@ -156,7 +156,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Birthdate
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 05/27/2004
               </span>
             </div>
@@ -166,7 +166,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Age
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 22
               </span>
             </div>
@@ -176,7 +176,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Gender
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 Male
               </span>
             </div>
@@ -186,7 +186,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Nationality
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 Filipino
               </span>
             </div>
@@ -196,7 +196,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Zodiac Sign
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 Gemini
               </span>
             </div>
@@ -206,7 +206,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Address
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 Valladolid, Negros Occidental, Philippines
               </span>
             </div>
@@ -216,7 +216,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Languages
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 English, Filipino
               </span>
             </div>
@@ -226,7 +226,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Phone
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 09562657521
               </span>
             </div>
@@ -235,7 +235,7 @@ export default function About() {
 
         {/* Educational Background Section */}
         <div>
-          <h4 className="text-xs md:text-sm font-semibold text-base-content/80 tracking-wider uppercase mb-2">
+          <h4 className="text-xs md:text-sm text-base-content/80 tracking-wider uppercase mb-2">
             Educational Background
           </h4>
           <div className="grid grid-cols-5 gap-x-4 gap-y-3">
@@ -244,7 +244,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 School
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 Carlos Hilado Memorial State University – Alijis
               </span>
             </div>
@@ -254,7 +254,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Duration
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 2022–2026
               </span>
             </div>
@@ -264,7 +264,7 @@ export default function About() {
               <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
                 Program
               </span>
-              <span className="text-[10px] md:text-xs text-base-content font-medium">
+              <span className="text-[10px] md:text-xs text-base-content">
                 Bachelor of Science in Information Technology
               </span>
             </div>

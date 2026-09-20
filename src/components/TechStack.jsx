@@ -3,9 +3,9 @@ import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
 import { cn } from '@/lib/utils';
 
 const techBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center p-1 md:p-2 rounded-md',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-[8px] md:text-[10px] font-medium cursor-default hover-badge text-base-content'
+  'shadow-xl inline-flex items-center justify-center p-1 md:p-2 rounded-sm',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover-badge',
+  'text-[10px] md:text-xs cursor-default text-base-content'
 );
 
 export default function TechStack() {
@@ -18,7 +18,7 @@ export default function TechStack() {
     <div key={stackCategory.category}>
       {/* Category Title and Description */}
       <div className="mb-2">
-        <h3 className="text-xs md:text-sm lg:text-base font-semibold text-base-content">
+        <h3 className="text-xs md:text-sm lg:text-base text-base-content">
           {stackCategory.category}
         </h3>
         <p className="text-[8px] md:text-[10px] lg:text-xs text-base-content/70 leading-relaxed">
@@ -52,7 +52,7 @@ export default function TechStack() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+              'text-sm md:text-base cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
@@ -60,7 +60,7 @@ export default function TechStack() {
           </button>
 
           <div className="flex-1">
-            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="tracking-tight text-base-content text-2xl md:text-3xl lg:text-4xl">
               Technical Skills
             </h2>
             <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">

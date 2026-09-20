@@ -22,7 +22,7 @@ const outlineButtonWithLabelClasses = cn(
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50',
   "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
-  'text-sm md:text-base font-medium cursor-pointer hover-badge'
+  'text-sm md:text-base cursor-pointer hover-badge'
 );
 
 export default function Footer() {
@@ -31,7 +31,7 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Left: Built with Stack */}
         <div className="space-y-2 text-center md:text-left">
-          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs lg:text-sm text-base-content font-semibold tracking-wider">
+          <div className="flex items-center gap-1.5 justify-center md:justify-start text-[10px] md:text-xs lg:text-sm text-base-content tracking-wider">
             <Code2 className="h-3.5 w-3.5 lg:h-4 lg:w-4 text-base-content/60" />
             <span>Built With</span>
           </div>
@@ -41,7 +41,7 @@ export default function Footer() {
                 <span className="shrink-0 text-base-content [&_svg]:h-5 [&_svg]:w-5">
                   {item.icon}
                 </span>
-                <span className="text-[8px] md:text-[10px] font-medium text-base-content">
+                <span className="text-[8px] md:text-[10px] text-base-content">
                   {item.name}
                 </span>
               </div>
@@ -52,7 +52,7 @@ export default function Footer() {
         {/* Right: Copyright & Back to Top */}
         <div className="flex items-center gap-4 text-center md:text-right">
           <div className="space-y-1">
-            <p className="text-[10px] md:text-xs lg:text-sm font-medium text-base-content">
+            <p className="text-[10px] md:text-xs lg:text-sm text-base-content">
               © {new Date().getFullYear()} Gian Carlo N. Ulep
             </p>
             <p className="text-[8px] md:text-[10px] lg:text-xs text-base-content/60">

@@ -20,13 +20,13 @@ const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-3',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-xs md:text-sm font-medium cursor-pointer hover-theme-switch',
+  'text-xs md:text-sm cursor-pointer hover-theme-switch',
 );
 
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base font-medium cursor-default hover-badge'
+  'text-sm md:text-base cursor-default hover-badge'
 );
 
 // 4 Main Sections
@@ -107,11 +107,10 @@ export default function Home() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="space-y-4 max-w-4xl mx-auto"
         >
-          <h1 className="font-bold tracking-tight text-base-content text-3xl md:text-6xl lg:text-7xl max-w-4xl mx-auto">
+          <h1 className="tracking-tight text-base-content text-3xl md:text-6xl lg:text-7xl max-w-4xl mx-auto">
             <span className="block">
               <ShimmeringText
                 text="Code. Learn. Grow."
-                className="font-extrabold"
               />
             </span>
           </h1>
@@ -152,7 +151,7 @@ export default function Home() {
           className="w-full max-w-2xl mx-auto pt-2"
         >
           <div className="flex flex-col items-center gap-3">
-            <span className="text-[10px] md:text-xs uppercase tracking-wider text-base-content/50 font-semibold">
+            <span className="text-[10px] md:text-xs uppercase tracking-wider text-base-content/50">
               Powered by
             </span>
             <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
@@ -187,7 +186,7 @@ export default function Home() {
         {/* Footer Details */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/70">
           <div className="text-center sm:text-left space-y-0.5">
-            <p className="text-[10px] md:text-xs font-medium text-base-content">
+            <p className="text-[10px] md:text-xs text-base-content">
               © {new Date().getFullYear()} Gian Carlo N. Ulep
             </p>
             <p className="text-[8px] md:text-[10px] text-base-content/60">

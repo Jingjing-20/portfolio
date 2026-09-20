@@ -176,7 +176,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               alt=""
               className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl md:text-2xl font-bold text-base-content">
+            <h1 className="text-xl md:text-2xl text-base-content">
               Portfolio
             </h1>
           </button>
@@ -204,7 +204,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                           {item.icon}
                         </button>
                       </TooltipTrigger>
-                      <TooltipContent className="px-2.5 py-1 text-[10px] md:text-xs font-semibold rounded-md shadow-xl bg-theme border border-gray-300 dark:border-white/20 text-base-content pointer-events-none select-none">
+                      <TooltipContent className="px-2.5 py-1 text-[10px] md:text-xs rounded-md shadow-xl bg-theme border border-gray-300 dark:border-white/20 text-base-content pointer-events-none select-none">
                         {item.label}
                       </TooltipContent>
                     </Tooltip>
@@ -239,7 +239,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               alt=""
               className="h-6 w-6 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl font-bold text-base-content">Portfolio</h1>
+            <h1 className="text-xl text-base-content">Portfolio</h1>
           </button>
 
           <div className="flex items-center gap-2">
@@ -296,10 +296,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                               aria-current={isActive ? 'page' : undefined}
                             >
                               {item.icon}
-                              <span className={cn(
-                                "text-[8px] md:text-[10px] lg:text-xs font-medium text-base-content",
-                                isActive && "font-bold"
-                              )}>
+                              <span className="text-[8px] md:text-[10px] lg:text-xs text-base-content">
                                 {item.shortLabel || item.label}
                               </span>
                             </button>

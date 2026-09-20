@@ -52,7 +52,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
           {/* Company name and top-right experience button */}
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed text-base-content">
                 {experience.company}
               </h3>
               {(experience.employmentType || experience.durationMonths) && (
@@ -97,7 +97,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
           {/* Role and Date range - compact */}
           <div>
-            <h4 className="text-xs md:text-sm lg:text-base leading-relaxed font-semibold text-base-content">
+            <h4 className="text-xs md:text-sm lg:text-base leading-relaxed text-base-content">
               {experience.role}
             </h4>
             <TimelineDate className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
@@ -143,7 +143,7 @@ export default function Experience() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base font-medium cursor-pointer hover-badge'
+              'text-sm md:text-base cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
@@ -151,7 +151,7 @@ export default function Experience() {
           </button>
 
           <div className="flex-1">
-            <h2 className="font-bold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h2 className="tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
               Work Experience
             </h2>
             <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
