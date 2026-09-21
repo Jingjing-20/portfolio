@@ -53,9 +53,9 @@ export default function HomeNavbar() {
             <img
               src={logoImg}
               alt=""
-              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl md:text-2xl text-base-content">
+            <h1 className="font-extrabold text-md md:text-lg lg:text-xl text-base-content">
               Portfolio
             </h1>
           </div>

@@ -36,7 +36,7 @@ export default function About() {
     <section
       id="about"
       aria-label="About me"
-      className="space-y-4 max-w-3xl mx-auto"
+      className="space-y-4 max-w-2xl mx-auto"
     >
       {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
@@ -46,13 +46,13 @@ export default function About() {
             onClick={handleBackToHome}
             className={cn(
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base cursor-pointer hover-badge'
+              'cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
-            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
           </button>
 
           <div className="flex-1">
@@ -91,7 +91,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-40 h-40 md:w-40 md:h-40 lg:w-45 lg:h-45 object-cover object-top"
+                className="rounded-lg w-40 h-40 md:w-40 md:h-40 lg:w-50 lg:h-50 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -135,94 +135,6 @@ export default function About() {
 
       {/* Personal Details & Education - With category headers */}
       <div className="w-full space-y-4">
-        {/* Personal Details Section */}
-        <div>
-          <h4 className="text-xs md:text-sm text-base-content/80 tracking-wider uppercase mb-2">
-            Personal Details
-          </h4>
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-3">
-            {/* Birthdate */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Birthdate
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                05/27/2004
-              </span>
-            </div>
-
-            {/* Age */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Age
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                22
-              </span>
-            </div>
-
-            {/* Gender */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Gender
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                Male
-              </span>
-            </div>
-
-            {/* Nationality */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Nationality
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                Filipino
-              </span>
-            </div>
-
-            {/* Zodiac Sign - shown beside nationality on desktop */}
-            <div className="hidden md:flex flex-col md:col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Zodiac Sign
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                Gemini
-              </span>
-            </div>
-
-            {/* Address */}
-            <div className="flex flex-col col-span-2">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Address
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                Valladolid, Negros Occidental, Philippines
-              </span>
-            </div>
-
-            {/* Languages */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Languages
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                English, Filipino
-              </span>
-            </div>
-
-            {/* Phone */}
-            <div className="flex flex-col col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Phone
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                09562657521
-              </span>
-            </div>
-          </div>
-        </div>
-
         {/* Educational Background Section */}
         <div>
           <h4 className="text-xs md:text-sm text-base-content/80 tracking-wider uppercase mb-2">

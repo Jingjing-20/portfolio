@@ -18,14 +18,14 @@ import certIcon from '@/components/resume_sections/navbar/certificate.svg';
 
 const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-3',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'text-xs md:text-sm cursor-pointer hover-theme-switch',
 );
 
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'text-sm md:text-base cursor-default hover-badge'
 );
 
@@ -136,7 +136,7 @@ export default function Home() {
             <img
               src={aboutIcon}
               alt=""
-              className="h-4 w-4 md:h-5 md:w-5 dark:invert"
+              className="h-3 w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 dark:invert"
               aria-hidden="true"
             />
             <span>About Me</span>
@@ -196,9 +196,7 @@ export default function Home() {
 
           <div className="text-center sm:text-right space-y-0.5">
             <p className="text-[8px] md:text-[10px] text-base-content/50">
-              <span className="inline-block mx-1">✦</span>
               Available for opportunities
-              <span className="inline-block mx-1">✦</span>
             </p>
             <p className="text-[8px] md:text-[10px] text-base-content/40 font-mono tracking-wider">
               v1.0.0 · built with ♥

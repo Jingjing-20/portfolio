@@ -18,7 +18,7 @@ import experienceIconSrc from '@/components/resume_sections/navbar/experience.sv
 import projectsIconSrc from '@/components/resume_sections/navbar/projects.svg';
 import certificateIconSrc from '@/components/resume_sections/navbar/certificate.svg';
 
-function NavIcon({ src, alt, size = 15 }) {
+function NavIcon({ src, alt, size = 13 }) {
   return (
     <img
       src={src}
@@ -176,7 +176,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               alt=""
               className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl md:text-2xl text-base-content">
+            <h1 className="font-extrabold text-md md:text-lg lg:text-xl text-base-content">
               Portfolio
             </h1>
           </button>
@@ -239,7 +239,8 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               alt=""
               className="h-6 w-6 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
-            <h1 className="text-xl text-base-content">Portfolio</h1>
+            <h1 className="font-extrabold text-md md:text-lg lg:text-xl text-base-content">
+              Portfolio</h1>
           </button>
 
           <div className="flex items-center gap-2">
