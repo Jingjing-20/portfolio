@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
 
 const experienceButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-1.5 md:p-2 shrink-0',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-badge',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-badge',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
   'disabled:pointer-events-none disabled:opacity-50'
 );
@@ -56,19 +56,19 @@ function ExperienceItem({ experience, onOpenSkills }) {
                 {experience.company}
               </h3>
               {(experience.employmentType || experience.durationMonths) && (
-                <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                <p className="text-[8px] md:text-[10px]">
                   {experience.employmentType}
                   {experience.employmentType && experience.durationMonths && (
-                    <span className="mx-1 text-base-content/40">·</span>
+                    <span className="mx-1 text-base-content/50">·</span>
                   )}
                   {experience.durationMonths}
                 </p>
               )}
               {(experience.location || experience.workMode) && (
-                <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                <p className="text-[8px] md:text-[10px]">
                   {experience.location}
                   {experience.location && experience.workMode && (
-                    <span className="mx-1 text-base-content/40">·</span>
+                    <span className="mx-1 text-base-content/50">·</span>
                   )}
                   {experience.workMode}
                 </p>
@@ -86,9 +86,9 @@ function ExperienceItem({ experience, onOpenSkills }) {
                 <img
                   src={experienceIconSrc}
                   alt=""
-                  width={16}
-                  height={16}
-                  className="dark:invert h-3.5 w-3.5 md:h-4 md:w-4"
+                  width={13}
+                  height={13}
+                  className="dark:invert"
                   aria-hidden="true"
                 />
               </button>
@@ -100,11 +100,11 @@ function ExperienceItem({ experience, onOpenSkills }) {
             <h4 className="text-xs md:text-sm lg:text-base  text-base-content">
               {experience.role}
             </h4>
-            <TimelineDate className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+            <TimelineDate className="text-[8px] md:text-[10px] text-base-content/50">
               {experience.dateRange}
               {experience.durationMonths && experience.durationMonths !== experience.dateRange && (
                 <>
-                  <span className="mx-1 text-base-content/40">·</span>
+                  <span className="mx-1 text-base-content/50">·</span>
                   {experience.durationMonths}
                 </>
               )}
@@ -113,7 +113,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
           {/* Description - compact */}
           {experience.description && (
-            <p className="text-[10px] md:text-xs text-base-content/80 ">
+            <p className="text-[10px] md:text-xs text-base-content ">
               {experience.description}
             </p>
           )}
