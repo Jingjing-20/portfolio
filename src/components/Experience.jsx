@@ -133,28 +133,28 @@ export default function Experience() {
 
   return (
     <section id="experience" className="scroll-mt-24 max-w-3xl mx-auto">
+      {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
         <div className="flex items-center gap-3 md:gap-4">
-          {/* Back button */}
           <button
             type="button"
             onClick={handleBackToHome}
             className={cn(
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base cursor-pointer hover-badge'
+              'cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
-            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
           </button>
 
           <div className="flex-1">
-            <h2 className="tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <p className="text-base-content text-md md:text-lg lg:text-xl">
               Work Experience
-            </h2>
-            <p className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content/70">
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/70">
               Work history and professional engagements
             </p>
           </div>

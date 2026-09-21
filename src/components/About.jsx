@@ -56,10 +56,10 @@ export default function About() {
           </button>
 
           <div className="flex-1">
-            <p className="font-bold tracking-tight text-base-content text-xl md:text-2xl lg:text-3xl">
+            <p className="text-base-content text-md md:text-lg lg:text-xl">
               About Me
             </p>
-            <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
+            <p className="text-[10px] md:text-xs text-base-content/70">
               Get to know me better
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function About() {
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
       {/* Image + Name + Contacts Row */}
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 md:gap-8 w-full">
+      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 md:gap-6 w-full">
         {/* Image - Tilt Card */}
         <div className="shrink-0">
           <Tilt
@@ -91,7 +91,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-40 h-40 md:w-40 md:h-40 lg:w-50 lg:h-50 object-cover object-top"
+                className="rounded-lg w-40 h-40 md:w-40 md:h-40 lg:w-45 lg:h-45 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -101,7 +101,7 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-extrabold tracking-tight text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h3 className="font-extrabold text-base-content text-3xl md:text-4xl lg:text-5xl">
               Gian Carlo N. Ulep
             </h3>
           </div>
@@ -125,54 +125,13 @@ export default function About() {
               </button>
             ))}
           </nav>
-          <p className="text-[10px] md:text-xs text-base-content/70 leading-relaxed">
+          <p className="text-[10px] md:text-xs text-base-content">
             Experience in software development, systems deployment, and technical support, including systems used by government offices and a state university. Brings customer service experience and a solid foundation in computer networking through academic coursework and hands-on projects.
           </p>
         </div>
       </div>
 
       <hr className="my-3 md:my-4" />
-
-      {/* Personal Details & Education - With category headers */}
-      <div className="w-full space-y-4">
-        {/* Educational Background Section */}
-        <div>
-          <h4 className="text-xs md:text-sm text-base-content/80 tracking-wider uppercase mb-2">
-            Educational Background
-          </h4>
-          <div className="grid grid-cols-5 gap-x-4 gap-y-3">
-            {/* School */}
-            <div className="flex flex-col col-span-3 md:col-span-2">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                School
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                Carlos Hilado Memorial State University – Alijis
-              </span>
-            </div>
-
-            {/* Duration */}
-            <div className="flex flex-col col-span-2 md:col-span-1">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Duration
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                2022–2026
-              </span>
-            </div>
-
-            {/* Program */}
-            <div className="flex flex-col col-span-5 md:col-span-2">
-              <span className="text-[8px] md:text-[10px] text-base-content/70 tracking-wider uppercase">
-                Program
-              </span>
-              <span className="text-[10px] md:text-xs text-base-content">
-                Bachelor of Science in Information Technology
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Contact Dialog */}
       <ContactDialog

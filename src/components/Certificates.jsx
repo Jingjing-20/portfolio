@@ -34,28 +34,28 @@ export default function Certificates() {
 
   return (
     <section id="certificates" className="scroll-mt-24 max-w-3xl mx-auto">
+      {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
         <div className="flex items-center gap-3 md:gap-4">
-          {/* Back button */}
           <button
             type="button"
             onClick={handleBackToHome}
             className={cn(
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'text-sm md:text-base cursor-pointer hover-badge'
+              'cursor-pointer hover-badge'
             )}
             aria-label="Back to home"
           >
-            <ArrowLeft className="h-4 w-4 md:h-5 md:w-5" />
+            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
           </button>
 
           <div className="flex-1">
-            <h2 className="text-3xl tracking-tight text-base-content md:text-4xl lg:text-5xl">
-              TRAINING & ASSESSMENTS
-            </h2>
-            <p className="text-[10px] leading-relaxed text-base-content/70 md:text-xs lg:text-sm">
+            <p className="text-base-content text-md md:text-lg lg:text-xl">
+              Training & Assessments
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/70">
               Training programs, skill assessments, webinars, and earned credentials
             </p>
           </div>
