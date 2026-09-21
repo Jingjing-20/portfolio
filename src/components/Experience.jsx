@@ -52,7 +52,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
           {/* Company name and top-right experience button */}
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-xs md:text-sm lg:text-base  text-base-content">
+              <h3 className="text-[10px] md:text-xs text-base-content">
                 {experience.company}
               </h3>
               {(experience.employmentType || experience.durationMonths) && (
@@ -97,7 +97,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
           {/* Role and Date range - compact */}
           <div>
-            <h4 className="text-xs md:text-sm lg:text-base  text-base-content">
+            <h4 className="text-xs md:text-sm  text-base-content">
               {experience.role}
             </h4>
             <TimelineDate className="text-[8px] md:text-[10px] text-base-content/50">
