@@ -35,7 +35,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
 
   return (
     <ScrollReveal animation="fadeInUp" duration="0.4s">
-      <section className="scroll-mt-24 max-w-3xl mx-auto space-y-4 md:space-y-6">
+      <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
         {/* Header */}
         <header className="pt-5 md:pt-10 mb-3 md:mb-6">
           <div className="flex items-center gap-3 md:gap-4">
@@ -53,7 +53,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
                 {minigame.name}
               </p>
               {minigame.type && (
-                <p className="text-[10px] md:text-xs text-base-content/70">
+                <p className="text-[10px] md:text-xs text-base-content/50">
                   {minigame.type}
                 </p>
               )}
@@ -120,7 +120,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
                     key={index}
                     className="text-[10px] md:text-xs text-base-content/85 leading-relaxed flex items-start gap-2 whitespace-pre-line"
                   >
-                    <span className="inline-block mt-0.5 text-base-content/60">•</span>
+                    <span className="inline-block mt-0.5 text-base-content/50">•</span>
                     <span>{feature}</span>
                   </li>
                 ))}
