@@ -18,10 +18,10 @@ export default function TechStack() {
     <div key={stackCategory.category}>
       {/* Category Title and Description */}
       <div className="mb-2">
-        <h3 className="text-xs md:text-sm lg:text-base text-base-content">
+        <h3 className="text-xs md:text-sm text-base-content">
           {stackCategory.category}
         </h3>
-        <p className="text-[8px] md:text-[10px] lg:text-xs text-base-content/70 leading-relaxed">
+        <p className="text-[8px] md:text-[10px] text-base-content/50 ">
           {stackCategory.description}
         </p>
       </div>
@@ -63,7 +63,7 @@ export default function TechStack() {
             <p className="text-base-content text-md md:text-lg lg:text-xl">
               Technical Skills
             </p>
-            <p className="text-[10px] md:text-xs text-base-content/70">
+            <p className="text-[10px] md:text-xs text-base-content/50">
               Technologies, networking, systems, and technical competencies
             </p>
           </div>

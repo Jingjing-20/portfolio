@@ -115,7 +115,7 @@ export default function Home() {
             </span>
           </h1>
 
-          <p className="text-xs md:text-sm text-base-content/70 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xs md:text-sm text-base-content/50  max-w-2xl mx-auto">
             Software developer passionate about crafting clean, scalable, and impactful web experiences.
           </p>
         </motion.div>
@@ -184,7 +184,7 @@ export default function Home() {
         <hr className="w-full max-w-4xl mx-auto border-gray-300/40 dark:border-white/10" />
 
         {/* Footer Details */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/70">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/50">
           <div className="text-center sm:text-left space-y-0.5">
             <p className="text-[10px] md:text-xs text-base-content">
               © {new Date().getFullYear()} Gian Carlo N. Ulep

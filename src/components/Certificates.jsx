@@ -55,7 +55,7 @@ export default function Certificates() {
             <p className="text-base-content text-md md:text-lg lg:text-xl">
               Training & Assessments
             </p>
-            <p className="text-[10px] md:text-xs text-base-content/70">
+            <p className="text-[10px] md:text-xs text-base-content/50">
               Training programs, skill assessments, webinars, and earned credentials
             </p>
           </div>
@@ -69,10 +69,10 @@ export default function Certificates() {
         {CERTIFICATE_CATEGORIES.map((category) => (
           <article key={category.category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed text-base-content">
+              <h3 className="text-xs md:text-sm lg:text-base  text-base-content">
                 {category.category}
               </h3>
-              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground ">
                 {category.description}
               </p>
             </div>

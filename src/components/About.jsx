@@ -59,7 +59,7 @@ export default function About() {
             <p className="text-base-content text-md md:text-lg lg:text-xl">
               About Me
             </p>
-            <p className="text-[10px] md:text-xs text-base-content/70">
+            <p className="text-[10px] md:text-xs text-base-content/50">
               Get to know me better
             </p>
           </div>

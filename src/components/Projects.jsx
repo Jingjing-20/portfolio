@@ -139,7 +139,7 @@ export default function Projects() {
             <p className="text-base-content text-md md:text-lg lg:text-xl">
               Recent Projects
             </p>
-            <p className="text-[10px] md:text-xs text-base-content/70">
+            <p className="text-[10px] md:text-xs text-base-content/50">
               Selected work and personal builds
             </p>
           </div>
@@ -152,10 +152,10 @@ export default function Projects() {
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm lg:text-base leading-relaxed text-base-content">
+              <h3 className="text-xs md:text-sm lg:text-base  text-base-content">
                 {category}
               </h3>
-              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground ">
                 {description}
               </p>
             </div>
@@ -294,7 +294,7 @@ export default function Projects() {
                             className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
                             onClick={() => handleSelectProject(project)}
                           >
-                            <h4 className="text-[10px] md:text-xs lg:text-sm leading-relaxed text-base-content group-hover/title:text-primary transition-colors">
+                            <h4 className="text-[10px] md:text-xs lg:text-sm  text-base-content group-hover/title:text-primary transition-colors">
                               {project.title}
                             </h4>
                             {project.organization && (
