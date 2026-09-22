@@ -120,7 +120,7 @@ export default function Projects() {
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
-        <div className="flex items-center gap-3 md:gap-4">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             onClick={handleBackToHome}
@@ -163,7 +163,7 @@ export default function Projects() {
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
                 // Mockups Grid Layout
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
                   {items.map((mockup) => (
                     <div
                       key={mockup.id}
@@ -214,7 +214,7 @@ export default function Projects() {
                 </div>
               ) : category === 'Browser Games' ? (
                 // Browser Games Grid Layout
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
                   {items.map((minigame) => (
                     <div
                       key={minigame.id}
