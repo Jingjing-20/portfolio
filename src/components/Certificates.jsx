@@ -105,32 +105,32 @@ export default function Certificates() {
                         }
                       }}
                     >
-                      {/* Top Row: Logo (left) + Year (right) */}
-                      <div className="flex items-start justify-between w-full">
+                      {/* Top Row: Logo (left) + Org Name & Year (right) */}
+                      <div className="flex items-start justify-between w-full gap-2">
                         <div className="flex items-center gap-2">
                           {CertIconComp && (
-                            <span className="flex items-center justify-center flex-shrink-0 text-xl p-1 rounded-md border-3 border-content text-lg md:text-xl">
+                            <span className="flex items-center justify-center flex-shrink-0 text-md p-1 rounded-md border-3 border-content text-md md:text-lg">
                               <CertIconComp />
                             </span>
                           )}
                         </div>
-                        {year && (
-                          <span className="text-[6px] md:text-[8px] whitespace-nowrap p-1 rounded-md border-3 border-content text-lg md:text-xl">
-                            {year}
-                          </span>
-                        )}
+                        <div className="flex flex-col items-end text-right min-w-0">
+                          <p className="text-[10px] md:text-xs text-base-content">
+                            {cert.org}
+                          </p>
+                          {year && (
+                            <span className="text-[7px] md:text-[8px] whitespace-nowrap text-base-content/50">
+                              {year}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
-                      {/* Bottom Content: Org Name (left) + Cert Name (centered vertically) */}
-                      <div className="flex flex-col flex-1 mt-2 space-y-1">
-                        <p className="text-[10px] md:text-xs text-base-content text-left">
-                          {cert.org}
+                      {/* Bottom Content: Cert Name (centered vertically) */}
+                      <div className="flex-1 flex items-center mt-2">
+                        <p className="text-[9px] md:text-[10px] text-base-content/50">
+                          {cert.title}
                         </p>
-                        <div className="flex-1 flex items-center">
-                          <p className="text-[8px] md:text-[10px] text-base-content/50">
-                            {cert.title}
-                          </p>
-                        </div>
                       </div>
                     </TiltContent>
                   </Tilt>
