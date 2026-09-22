@@ -133,6 +133,109 @@ export default function About() {
 
       <hr className="my-3 md:my-4" />
 
+      {/* Focus Areas / What I Do */}
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <h3 className="text-xs md:text-sm text-base-content">
+            What I Do & Focus Areas
+          </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Key areas of technical expertise and practical experience
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1.5 hover-card">
+            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+              Full-Stack Development
+            </h4>
+            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
+              Building interactive, responsive web interfaces with React, Tailwind CSS, and robust backends in PHP, Python, and Node.js.
+            </p>
+          </div>
+
+          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1.5 hover-card">
+            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+              Systems & Databases
+            </h4>
+            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
+              Designing relational databases (MySQL, PostgreSQL), document management, RBAC authorization, and automated reporting systems.
+            </p>
+          </div>
+
+          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1.5 hover-card">
+            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+              Networking & Operations
+            </h4>
+            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
+              Configuring devices, network troubleshooting, production software deployment, and live operational support for office staff.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr className="my-3 md:my-4" />
+
+      {/* Education */}
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <h3 className="text-xs md:text-sm text-base-content">
+            Education
+          </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Academic foundation and university coursework
+          </p>
+        </div>
+
+        <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="space-y-0.5">
+            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+              Bachelor of Science in Information Technology
+            </h4>
+            <p className="text-[8px] md:text-[10px] text-base-content/60">
+              Carlos Hilado Memorial State University (CHMSU) – Alijis Campus
+            </p>
+          </div>
+          <span className="text-[8px] md:text-[10px] text-base-content/50 whitespace-nowrap self-start sm:self-auto">
+            Bacolod, Philippines
+          </span>
+        </div>
+      </div>
+
+      <hr className="my-3 md:my-4" />
+
+      {/* Guiding Principles */}
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <h3 className="text-xs md:text-sm text-base-content">
+            Approach & Values
+          </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Principles guiding how I build software and collaborate
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1">
+            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+              Real-World Usability
+            </h4>
+            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
+              Prioritizing accessible, straightforward interfaces that eliminate operational friction and solve genuine workflow challenges.
+            </p>
+          </div>
+
+          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1">
+            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+              Continuous Improvement
+            </h4>
+            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
+              Consistently expanding technical depth through self-directed builds, credential assessments, and hands-on operational work.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Contact Dialog */}
       <ContactDialog
         contact={selectedContact}
