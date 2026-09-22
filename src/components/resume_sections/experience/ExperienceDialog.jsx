@@ -13,21 +13,24 @@ export function ExperienceDialog({ experience, open, onClose }) {
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-sm w-full">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-xs md:text-sm">
-            {experience.role || 'Experience Details'}
+          <DialogTitle className="text-[10px] md:text-xs">
+            {experience.company || 'Experience Details'}
           </DialogTitle>
           <hr />
           <DialogDescription className="text-[10px] md:text-xs text-base-content">
-            {experience.company}
+            <p className="text-[10px] md:text-xs text-base-content/50">
+              Role :
+            </p>
+            {experience.role}
           </DialogDescription>
         </div>
 
         {/* Skills List */}
         <div className="space-y-1">
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Skills & Technologies
+            Skills & Technologies :
           </p>
-          <div className="max-h-[300px] overflow-y-auto pr-1 space-y-1">
+          <div className="overflow-y-auto pr-1">
             {experience.skills?.map((skill, index) => (
               <div
                 key={index}

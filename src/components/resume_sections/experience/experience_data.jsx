@@ -4,9 +4,9 @@ import PanasiaticImg from '@/components/resume_sections/experience/panasiatic.pn
 export const EXPERIENCES = [
   {
     step: 1,
-    company: 'Provincial Government of Negros Occidental',
+    company: 'PGNO – GSO, Property Management Division',
     logo: PGNOImg,
-    logoInitials: 'PG',
+    logoInitials: 'PGNO',
     employmentType: 'Internship',
     durationMonths: '4 mos',
     location: 'Bacolod, Negros Occidental, Philippines',
@@ -26,9 +26,9 @@ export const EXPERIENCES = [
   },
   {
     step: 2,
-    company: 'Panasiatic Solutions - Straight Talk Account',
+    company: 'Panasiatic Solutions - Straight Talk',
     logo: PanasiaticImg,
-    logoInitials: 'PS',
+    logoInitials: 'PSST',
     employmentType: 'Full-time',
     durationMonths: '2 mos',
     location: 'Bacolod, Negros Occidental, Philippines',

@@ -69,10 +69,10 @@ export default function Certificates() {
         {CERTIFICATE_CATEGORIES.map((category) => (
           <article key={category.category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm lg:text-base  text-base-content">
+              <h3 className="text-xs md:text-sm text-base-content">
                 {category.category}
               </h3>
-              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground ">
+              <p className="text-[8px] md:text-[10px] text-base-content/50">
                 {category.description}
               </p>
             </div>
@@ -91,7 +91,7 @@ export default function Certificates() {
                   >
                     <TiltContent
                       className={cn(
-                        'group relative flex flex-col p-3 md:p-4 rounded-lg shadow-xl h-full',
+                        'group relative flex flex-col p-2 md:p-3 rounded-lg shadow-xl h-full',
                         'bg-textured border-3 border-solid border-gray-300 dark:border-white/20',
                         'cursor-pointer min-h-[120px] transition-shadow duration-300 hover:shadow-2xl'
                       )}
