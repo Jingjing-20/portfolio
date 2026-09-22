@@ -122,12 +122,12 @@ export default function Certificates() {
                       </div>
 
                       {/* Bottom Content: Org Name (left) + Cert Name (centered vertically) */}
-                      <div className="flex flex-col flex-1 mt-2 space-y-2">
-                        <p className="text-[10px] md:text-xs text-base-content line-clamp-1 text-left">
+                      <div className="flex flex-col flex-1 mt-2 space-y-1">
+                        <p className="text-[10px] md:text-xs text-base-content text-left">
                           {cert.org}
                         </p>
                         <div className="flex-1 flex items-center">
-                          <p className="text-[10px] md:text-xs text-muted-foreground line-clamp-2">
+                          <p className="text-[8px] md:text-[10px] text-base-content/50">
                             {cert.title}
                           </p>
                         </div>
