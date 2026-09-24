@@ -3,7 +3,7 @@ import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
 import { cn } from '@/lib/utils';
 
 const techBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center p-1 md:p-2 rounded-sm',
+  'shadow-xl inline-flex items-center justify-center p-2 rounded-sm',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover-badge',
   'text-[10px] md:text-xs cursor-default text-base-content'
 );

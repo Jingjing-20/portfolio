@@ -161,9 +161,9 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
 
   return (
     <>
-      {/* Desktop Navbar */}
-      <div className="hidden md:block fixed top-4 left-4 right-4 z-50">
-        <div className="flex max-w-xl mx-auto items-center justify-between px-4 py-2 bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-3xl">
+      {/* Desktop Navbar (Non-floating) */}
+      <header className="hidden md:block fixed top-0 left-0 right-0 w-full z-50 bg-theme border-b-3 border-double border-gray-300 dark:border-white/20 shadow-md">
+        <div className="flex max-w-2xl mx-auto items-center justify-between px-4 py-2.5">
           {/* Portfolio identity */}
           <button
             type="button"
@@ -220,14 +220,11 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <ThemeTogglerBtn />
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Navbar */}
-      <div className="md:hidden fixed top-4 left-4 right-4 z-50">
-        <div className={cn(
-          'flex max-w-3xl mx-auto w-full items-center justify-between px-4 py-2',
-          'bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-xl'
-        )}>
+      {/* Mobile Navbar (Non-floating) */}
+      <header className="md:hidden fixed top-0 left-0 right-0 w-full z-50 bg-theme border-b-3 border-double border-gray-300 dark:border-white/20 shadow-md">
+        <div className="flex w-full items-center justify-between px-4 py-2.5">
           <button
             type="button"
             onClick={(event) => handleNavClick(event, 'home')}
@@ -240,7 +237,8 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               className="h-6 w-6 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
             />
             <h1 className="font-extrabold text-md md:text-lg lg:text-xl text-base-content">
-              Portfolio</h1>
+              Portfolio
+            </h1>
           </button>
 
           <div className="flex items-center gap-2">
@@ -311,7 +309,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 }

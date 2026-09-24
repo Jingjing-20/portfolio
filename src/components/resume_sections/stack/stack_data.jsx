@@ -12,17 +12,17 @@ export const TECH_STACK = [
   {
     category: 'Networking & Infrastructure',
     description: 'Network addressing, device configuration, web servers, and cloud hosting.',
-    tools: ['Cisco Packet Tracer', 'Network Addressing & Subnetting', 'Device Configuration', 'Network Troubleshooting', 'Apache Web Server', 'Vercel', 'Hostinger'],
+    tools: ['Packet Tracer', 'IP Addressing', 'Subnetting', 'Device Configuration', 'Network Troubleshooting', 'Apache', 'Vercel', 'Hostinger'],
   },
   {
     category: 'IT Operations & Technical Support',
     description: 'Live system deployment, user support, troubleshooting, and device maintenance.',
-    tools: ['Technical Support', 'Systems Deployment', 'Live User Troubleshooting', 'Hardware & Device Support', 'Customer Service'],
+    tools: ['Technical Support', 'Systems Deployment', 'User Troubleshooting', 'Hardware Support', 'Device Maintenance', 'Customer Service'],
   },
   {
     category: 'UI/UX & Creative Tools',
     description: 'Wireframing, graphics design, video editing, and interactive prototypes.',
-    tools: ['Figma', 'Adobe Photoshop', 'CapCut', 'Canva', 'Framer'],
+    tools: ['Figma', 'Photoshop', 'CapCut', 'Canva', 'Framer'],
   },
   {
     category: 'DevOps & Development Tools',
