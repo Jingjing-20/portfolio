@@ -91,7 +91,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-40 h-40 md:w-40 md:h-40 lg:w-45 lg:h-45 object-cover object-top"
+                className="rounded-lg w-40 h-40 md:w-35 md:h-35 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -101,7 +101,7 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-bold text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h3 className="font-bold text-base-content text-3xl md:text-4xl">
               Gian Carlo N. Ulep
             </h3>
           </div>
