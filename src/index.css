@@ -15,9 +15,11 @@ html {
   scroll-padding-top: 5.5rem;
 }
 
+
 :root {
   color-scheme: light;
-  font-family: 'montserrat', sans-serif;
+  font-family: 'Geist Mono', monospace;
+  font-optical-sizing: auto;
   background: transparent;
 }
 

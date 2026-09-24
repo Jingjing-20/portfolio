@@ -48,7 +48,7 @@ export default function About() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'cursor-pointer hover-badge'
+              'cursor-pointer hover-theme-switch'
             )}
             aria-label="Back to home"
           >
@@ -57,7 +57,7 @@ export default function About() {
 
           <div className="flex-1">
             <p className="text-base-content text-md md:text-lg lg:text-xl">
-              About Me
+              About
             </p>
             <p className="text-[10px] md:text-xs text-base-content/50">
               Get to know me better
@@ -101,7 +101,7 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-extrabold text-base-content text-3xl md:text-4xl lg:text-5xl">
+            <h3 className="font-bold text-base-content text-3xl md:text-4xl lg:text-5xl">
               Gian Carlo N. Ulep
             </h3>
           </div>

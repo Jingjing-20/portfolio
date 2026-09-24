@@ -44,7 +44,7 @@ export default function Certificates() {
               'shadow-xl inline-flex items-center justify-center rounded-md p-2',
               'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'cursor-pointer hover-badge'
+              'cursor-pointer hover-theme-switch'
             )}
             aria-label="Back to home"
           >
@@ -53,7 +53,7 @@ export default function Certificates() {
 
           <div className="flex-1">
             <p className="text-base-content text-md md:text-lg lg:text-xl">
-              Training & Assessments
+              Certifications
             </p>
             <p className="text-[10px] md:text-xs text-base-content/50">
               Training programs, skill assessments, webinars, and earned credentials
@@ -77,23 +77,23 @@ export default function Certificates() {
               </p>
             </div>
 
-            {/* Certificate Grid Layout - 2 columns on mobile, 3 on desktop */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {/* Certificate Grid Layout - follows image wireframe */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               {category.items.map((cert) => {
                 const CertIconComp = cert.icon;
                 const year = formatDate(cert.issuedDate);
                 return (
                   <Tilt
                     key={cert.id}
-                    maxTilt={12}
+                    maxTilt={10}
                     className="h-full cursor-pointer"
                     onClick={() => setActiveCert(cert)}
                   >
                     <TiltContent
                       className={cn(
-                        'group relative flex flex-col p-2 md:p-3 rounded-lg shadow-xl h-full',
-                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20',
-                        'cursor-pointer min-h-[120px] transition-shadow duration-300 hover:shadow-2xl'
+                        'group relative flex flex-col justify-between p-3 md:p-3.5 rounded-xl shadow-xl h-full',
+                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                        'cursor-pointer transition-all duration-300 hover:shadow-2xl'
                       )}
                       role="button"
                       tabIndex={0}
@@ -105,32 +105,39 @@ export default function Certificates() {
                         }
                       }}
                     >
-                      {/* Top Row: Logo (left) + Org Name & Year (right) */}
-                      <div className="flex items-start justify-between w-full gap-2">
-                        <div className="flex items-center gap-2">
-                          {CertIconComp && (
-                            <span className="flex items-center justify-center flex-shrink-0 text-md p-1 rounded-md border-3 border-content text-md md:text-lg">
+                      <div className="flex-1 flex flex-col">
+                        {/* Top Row: Square Icon Box (left) + Pill Badge Year (right) */}
+                        <div className="flex items-center justify-between w-full mb-2.5">
+                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1.5 shadow-sm">
+                            {CertIconComp ? (
                               <CertIconComp />
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex flex-col items-end text-right min-w-0">
-                          <p className="text-[10px] md:text-xs text-base-content">
-                            {cert.org}
-                          </p>
+                            ) : (
+                              <CertIcon size={20} />
+                            )}
+                          </div>
                           {year && (
-                            <span className="text-[7px] md:text-[8px] whitespace-nowrap text-base-content/50">
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[8px] md:text-[9px] bg-textured border border-gray-300 dark:border-white/20 text-base-content/60 shadow-sm">
                               {year}
                             </span>
                           )}
                         </div>
+
+                        {/* Middle: Title (prominent) */}
+                        <h4 className="text-[11px] md:text-xs font-semibold text-base-content line-clamp-2 leading-snug">
+                          {cert.title}
+                        </h4>
+
+                        {/* Subtitle: Organization */}
+                        <p className="text-[9px] md:text-[10px] text-base-content/50 mt-1 line-clamp-2">
+                          {cert.org}
+                        </p>
                       </div>
 
-                      {/* Bottom Content: Cert Name (centered vertically) */}
-                      <div className="flex-1 flex items-center mt-2">
-                        <p className="text-[9px] md:text-[10px] text-base-content/50">
-                          {cert.title}
-                        </p>
+                      {/* Bottom Action Bar: Outlined container button */}
+                      <div className="pt-3 mt-2">
+                        <div className="w-full py-1.5 px-2 rounded-md bg-textured border border-solid border-gray-300 dark:border-white/20 text-center text-[9px] md:text-[10px] text-base-content/80 flex items-center justify-center gap-1.5 shadow-sm group-hover:border-double">
+                          <span>View Certificate</span>
+                        </div>
                       </div>
                     </TiltContent>
                   </Tilt>

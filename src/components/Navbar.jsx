@@ -34,38 +34,38 @@ function NavIcon({ src, alt, size = 13 }) {
 const NAV_ITEMS = [
   {
     value: 'about',
-    label: 'About Me',
+    label: 'About',
     shortLabel: 'About',
     href: '#about',
-    icon: <NavIcon src={aboutIconSrc} alt="About Me" />
+    icon: <NavIcon src={aboutIconSrc} alt="About" />
   },
   {
     value: 'stack',
-    label: 'Technical Skills',
+    label: 'Skills',
     shortLabel: 'Skills',
     href: '#stack',
-    icon: <NavIcon src={stackIconSrc} alt="Technical Skills" />
+    icon: <NavIcon src={stackIconSrc} alt="Skills" />
   },
   {
     value: 'experience',
-    label: 'Work Experience',
+    label: 'Experience',
     shortLabel: 'Experience',
     href: '#experience',
-    icon: <NavIcon src={experienceIconSrc} alt="Work Experience" />
+    icon: <NavIcon src={experienceIconSrc} alt="Experience" />
   },
   {
     value: 'projects',
-    label: 'Recent Projects',
+    label: 'Projects',
     shortLabel: 'Projects',
     href: '#projects',
-    icon: <NavIcon src={projectsIconSrc} alt="Recent Projects" />
+    icon: <NavIcon src={projectsIconSrc} alt="Projects" />
   },
   {
     value: 'certificates',
-    label: 'Training & Assessments',
-    shortLabel: 'Training',
+    label: 'Certifications',
+    shortLabel: 'Certifications',
     href: '#certificates',
-    icon: <NavIcon src={certificateIconSrc} alt="Training & Assessments" />
+    icon: <NavIcon src={certificateIconSrc} alt="Certifications" />
   },
 ];
 
