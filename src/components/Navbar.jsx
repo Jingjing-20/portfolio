@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Mail, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
-import {
-  TooltipProvider,
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from '@/components/animate-ui/primitives/animate/tooltip';
+import { CopyButton } from '@/components/animate-ui/components/buttons/copy';
 import { cn } from '@/lib/utils';
 
 import aboutIconSrc from '@/components/resume_sections/navbar/about.svg';
@@ -18,14 +13,16 @@ import experienceIconSrc from '@/components/resume_sections/navbar/experience.sv
 import projectsIconSrc from '@/components/resume_sections/navbar/projects.svg';
 import certificateIconSrc from '@/components/resume_sections/navbar/certificate.svg';
 
-function NavIcon({ src, alt, size = 13 }) {
+const EMAIL = 'ulep.giancarlo.17@gmail.com';
+
+function NavIcon({ src, alt, size = 14 }) {
   return (
     <img
       src={src}
       alt={alt}
       width={size}
       height={size}
-      className="dark:invert"
+      className="dark:invert shrink-0"
       aria-hidden="true"
     />
   );
@@ -70,11 +67,10 @@ const NAV_ITEMS = [
 ];
 
 const navButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-theme-switch',
+  'shadow-xl inline-flex items-center gap-2.5 rounded-md px-3 py-2 text-xs font-medium w-full text-left',
+  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-theme-switch transition-all',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'disabled:pointer-events-none disabled:opacity-50',
-  "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0"
+  'disabled:pointer-events-none disabled:opacity-50'
 );
 
 const mobileMenuButtonClasses = cn(
@@ -161,70 +157,111 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
 
   return (
     <>
-      {/* Desktop Navbar (Non-floating) */}
-      <header className="hidden md:block fixed top-0 left-0 right-0 w-full z-50 bg-theme border-b-3 border-double border-gray-300 dark:border-white/20 shadow-md">
-        <div className="flex max-w-2xl mx-auto items-center justify-between px-4 py-2.5">
-          {/* Portfolio identity */}
+      {/* Desktop Inset Persistent Wide Left Navigation Sidebar */}
+      <aside
+        className="hidden md:flex flex-col sticky top-8 z-40 shrink-0 self-start select-none w-52 lg:w-56"
+        aria-label="Sidebar navigation"
+      >
+        <div className="flex flex-col gap-3 p-3 bg-theme border-3 border-double border-gray-300 dark:border-white/20 shadow-xl rounded-2xl w-full">
+          {/* Identity / Home Button */}
           <button
             type="button"
-            onClick={(event) => handleNavClick(event, 'home')}
-            className="flex items-center gap-2 rounded-md text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50 flex-shrink-0 cursor-pointer"
-            aria-label="Home - Portfolio of Gian Carlo N. Ulep"
+            onClick={(e) => handleNavClick(e, 'home')}
+            className="flex items-center gap-2.5 p-1 rounded-xl text-left cursor-pointer hover-theme-switch transition-all outline-none focus-visible:ring-3 focus-visible:ring-ring/50 w-full"
+            aria-label="Return to Home"
           >
             <img
               src={logoImg}
               alt=""
-              className="h-6 w-6 md:h-8 md:w-8 rounded-full object-cover border-3 border-gray-300 dark:border-white/20"
+              className="h-8 w-8 rounded-full object-cover border-2 border-gray-300 dark:border-white/20 shrink-0"
             />
-            <h1 className="font-extrabold text-md md:text-lg lg:text-xl text-base-content">
-              Portfolio
-            </h1>
+            <div className="flex flex-col min-w-0">
+              <span className="font-extrabold text-sm text-base-content leading-tight">
+                Portfolio
+              </span>
+              <span className="text-[10px] text-base-content/50 truncate">
+                Gian Carlo Ulep
+              </span>
+            </div>
           </button>
 
-          {/* Right side: Navigation + Theme Toggle with separator */}
-          <div className="flex items-center gap-3">
-            {/* Desktop Navigation Buttons with Tooltip */}
-            <TooltipProvider openDelay={80} closeDelay={150}>
-              <nav aria-label="Main navigation" className="flex items-center gap-2">
-                {NAV_ITEMS.map((item) => {
-                  const isActive = activePage === item.value;
-                  return (
-                    <Tooltip key={item.value} side="bottom" sideOffset={8}>
-                      <TooltipTrigger asChild>
-                        <button
-                          type="button"
-                          onClick={(e) => handleNavClick(e, item.value)}
-                          className={cn(
-                            navButtonClasses,
-                            isActive && 'nav-button-active'
-                          )}
-                          aria-label={item.label}
-                          aria-current={isActive ? 'page' : undefined}
-                        >
-                          {item.icon}
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent className="px-2.5 py-1 text-[10px] md:text-xs rounded-md shadow-xl bg-theme border border-gray-300 dark:border-white/20 text-base-content pointer-events-none select-none">
-                        {item.label}
-                      </TooltipContent>
-                    </Tooltip>
-                  );
-                })}
-              </nav>
-            </TooltipProvider>
+          {/* Divider */}
+          <div className="h-px w-full bg-gray-300 dark:bg-white/20" />
 
-            {/* Vertical Separator */}
-            <div className="h-7 w-px bg-gray-300 dark:bg-white/20" />
+          {/* Navigation Items with Visible Labels Beside Icons */}
+          <nav aria-label="Main navigation" className="flex flex-col gap-1.5 w-full">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activePage === item.value;
+              return (
+                <button
+                  key={item.value}
+                  type="button"
+                  onClick={(e) => handleNavClick(e, item.value)}
+                  className={cn(
+                    navButtonClasses,
+                    isActive && 'nav-button-active'
+                  )}
+                  aria-label={item.label}
+                  aria-current={isActive ? 'page' : undefined}
+                >
+                  <span className="shrink-0 flex items-center justify-center size-4">
+                    {item.icon}
+                  </span>
+                  <span className="text-base-content text-xs font-medium">
+                    {item.label}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
 
-            {/* Theme Toggle */}
+          {/* Divider */}
+          <div className="h-px w-full bg-gray-300 dark:bg-white/20" />
+
+          {/* Theme Toggler */}
+          <div className="flex items-center justify-between px-1 py-0.5">
+            <span className="text-[11px] text-base-content/60 font-medium">
+              Theme
+            </span>
             <ThemeTogglerBtn />
           </div>
-        </div>
-      </header>
 
-      {/* Mobile Navbar (Non-floating) */}
+          {/* Divider */}
+          <div className="h-px w-full bg-gray-300 dark:bg-white/20" />
+
+          {/* Gmail Section with CopyButton */}
+          <div className="p-2.5 rounded-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-md space-y-1.5">
+            <div className="flex items-center justify-between gap-1.5">
+              <div className="flex items-center gap-1.5 min-w-0">
+                <Mail className="h-3.5 w-3.5 text-red-500 shrink-0" />
+                <span className="text-[11px] font-semibold text-base-content truncate">
+                  Gmail
+                </span>
+              </div>
+              <CopyButton
+                content={EMAIL}
+                size="xs"
+                variant="outline"
+                className="h-6 w-6 p-0 shrink-0 bg-theme border-gray-300 dark:border-white/20 hover-theme-switch cursor-pointer shadow-sm"
+                title="Copy email address"
+                aria-label="Copy email address"
+              />
+            </div>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="block text-[9px] font-mono text-base-content/60 hover:text-base-content truncate hover:underline tracking-tight"
+              title={`Send email to ${EMAIL}`}
+            >
+              {EMAIL}
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      {/* Mobile Navbar (Retained exact format & behavior) */}
       <header className="md:hidden fixed top-0 left-0 right-0 w-full z-50 bg-theme border-b-3 border-double border-gray-300 dark:border-white/20 shadow-md">
         <div className="flex w-full items-center justify-between px-4 py-2.5">
+          {/* Portfolio identity */}
           <button
             type="button"
             onClick={(event) => handleNavClick(event, 'home')}
@@ -248,7 +285,11 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={cn(navButtonClasses, 'h-9 w-9')}
+                className={cn(
+                  'shadow-xl inline-flex items-center justify-center rounded-md p-2 h-9 w-9',
+                  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-theme-switch',
+                  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]'
+                )}
                 aria-label="Open menu"
                 aria-expanded={isMobileMenuOpen}
               >
@@ -273,7 +314,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                       exit={{ opacity: 0, scale: 0.94, y: -10 }}
                       transition={{ type: 'spring', stiffness: 400, damping: 28 }}
                       className={cn(
-                        'absolute right-0 top-full mt-2 z-50 w-30',
+                        'absolute right-0 top-full mt-2 z-50 w-44',
                         'shadow-2xl rounded-xl bg-theme border border-gray-300 dark:border-white/20',
                         'p-3 space-y-2 origin-top-right'
                       )}
@@ -295,12 +336,33 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                               aria-current={isActive ? 'page' : undefined}
                             >
                               {item.icon}
-                              <span className="text-[8px] md:text-[10px] lg:text-xs text-base-content">
+                              <span className="text-[10px] lg:text-xs text-base-content">
                                 {item.shortLabel || item.label}
                               </span>
                             </button>
                           );
                         })}
+
+                        {/* Mobile Gmail & Copy Button */}
+                        <div className="pt-2 border-t border-gray-300 dark:border-white/10 flex items-center justify-between gap-2 px-1">
+                          <a
+                            href={`mailto:${EMAIL}`}
+                            className="flex items-center gap-1.5 min-w-0 text-base-content"
+                          >
+                            <Mail className="h-3.5 w-3.5 text-red-500 shrink-0" />
+                            <span className="text-[10px] font-mono truncate max-w-[90px]">
+                              {EMAIL}
+                            </span>
+                          </a>
+                          <CopyButton
+                            content={EMAIL}
+                            size="xs"
+                            variant="outline"
+                            className="h-6 w-6 p-0 shrink-0 bg-theme border-gray-300 dark:border-white/20 hover-theme-switch cursor-pointer"
+                            title="Copy email"
+                            aria-label="Copy email"
+                          />
+                        </div>
                       </nav>
                     </motion.div>
                   </>

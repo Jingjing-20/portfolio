@@ -73,55 +73,59 @@ function App() {
 
         {/* Main content layer */}
         <div className="relative z-10 min-h-screen">
-          {/* Conditional Navbar: HomeNavbar for home page, regular Navbar for others */}
+          {/* Conditional Layout: Home page vs Pages with Inset Navigation Rail */}
           {activePage === 'home' ? (
-            <HomeNavbar />
-          ) : (
-            <Navbar activePage={activePage} onSelectPage={handlePageChange} />
-          )}
-
-          <div className="pb-8 pt-20">
-            <div className="mx-auto px-4 md:px-6 lg:px-8">
-              {/* Display active page only */}
-              <div>
-                {activePage === 'home' && (
+            <>
+              <HomeNavbar />
+              <div className="pb-8 pt-20">
+                <div className="mx-auto px-4 md:px-6 lg:px-8">
                   <ScrollReveal animation="fadeInUp" duration="0.4s" key="home">
                     <Home />
                   </ScrollReveal>
-                )}
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="pb-12 pt-20 md:pt-10">
+              <div className="mx-auto px-4 md:px-6 max-w-4xl lg:max-w-5xl flex flex-col md:flex-row items-center md:items-start justify-center gap-6 lg:gap-8">
+                {/* Inset Left Navigation Rail on desktop & Fixed Header on mobile */}
+                <Navbar activePage={activePage} onSelectPage={handlePageChange} />
 
-                {activePage === 'about' && (
-                  <ScrollReveal animation="fadeInUp" duration="0.4s" key="about">
-                    <About />
-                  </ScrollReveal>
-                )}
+                {/* Main Content Area */}
+                <div className="w-full max-w-2xl flex-1 min-w-0">
+                  {activePage === 'about' && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="about">
+                      <About />
+                    </ScrollReveal>
+                  )}
 
-                {activePage === 'stack' && (
-                  <ScrollReveal animation="fadeInUp" duration="0.4s" key="stack">
-                    <TechStack />
-                  </ScrollReveal>
-                )}
+                  {activePage === 'stack' && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="stack">
+                      <TechStack />
+                    </ScrollReveal>
+                  )}
 
-                {activePage === 'experience' && (
-                  <ScrollReveal animation="fadeInUp" duration="0.4s" key="experience">
-                    <Experience />
-                  </ScrollReveal>
-                )}
+                  {activePage === 'experience' && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="experience">
+                      <Experience />
+                    </ScrollReveal>
+                  )}
 
-                {activePage === 'projects' && (
-                  <ScrollReveal animation="fadeInUp" duration="0.4s" key="projects">
-                    <Projects />
-                  </ScrollReveal>
-                )}
+                  {activePage === 'projects' && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="projects">
+                      <Projects />
+                    </ScrollReveal>
+                  )}
 
-                {activePage === 'certificates' && (
-                  <ScrollReveal animation="fadeInUp" duration="0.4s" key="certificates">
-                    <Certificates />
-                  </ScrollReveal>
-                )}
+                  {activePage === 'certificates' && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="certificates">
+                      <Certificates />
+                    </ScrollReveal>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </main>
     </>
