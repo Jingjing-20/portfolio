@@ -153,17 +153,16 @@
 
 /* 6. Active Navbar Item Highlight (.nav-button-active) */
 .nav-button-active {
-  border-style: double !important;
-  border-color: #1f2937 !important;
-  background-color: #e5e7eb !important;
-  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.15) !important;
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .dark .nav-button-active,
 [data-theme="dark"] .nav-button-active {
-  border-color: rgba(255, 255, 255, 0.85) !important;
-  background-color: #27272a !important;
-  box-shadow: 0 8px 20px -4px rgba(255, 255, 255, 0.08) !important;
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 

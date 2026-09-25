@@ -86,9 +86,9 @@ function App() {
               </div>
             </>
           ) : (
-            <div className="pb-12 pt-20 md:pt-10">
+            <div className="pb-12">
               <div className="mx-auto px-4 md:px-6 max-w-4xl lg:max-w-5xl flex flex-col md:flex-row items-center md:items-start justify-center gap-6 lg:gap-8">
-                {/* Inset Left Navigation Rail on desktop & Fixed Header on mobile */}
+                {/* Inset Left Navigation Sidebar on desktop & Header on mobile */}
                 <Navbar activePage={activePage} onSelectPage={handlePageChange} />
 
                 {/* Main Content Area */}

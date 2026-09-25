@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import profileImage from '@/components/resume_sections/about/gian.webp';
 import {
   Tilt,
@@ -19,11 +18,6 @@ const interactiveButtonClasses = cn(
 export default function About() {
   const [selectedContact, setSelectedContact] = useState(null);
 
-  const handleBackToHome = () => {
-    window.location.hash = 'home';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const handleContactClick = (contact) => {
     if (contact.email) {
       setSelectedContact(contact);
@@ -40,29 +34,13 @@ export default function About() {
     >
       {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
-        <div className="flex items-center gap-3 md:gap-4">
-          <button
-            type="button"
-            onClick={handleBackToHome}
-            className={cn(
-              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'cursor-pointer hover-theme-switch'
-            )}
-            aria-label="Back to home"
-          >
-            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
-          </button>
-
-          <div className="flex-1">
-            <p className="text-base-content text-md md:text-lg lg:text-xl">
-              About
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/50">
-              Get to know me better
-            </p>
-          </div>
+        <div>
+          <p className="text-base-content text-md md:text-lg lg:text-xl">
+            About
+          </p>
+          <p className="text-[10px] md:text-xs text-base-content/50">
+            Get to know me better
+          </p>
         </div>
       </header>
 

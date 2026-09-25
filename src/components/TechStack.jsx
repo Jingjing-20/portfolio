@@ -1,4 +1,3 @@
-import { ArrowLeft } from 'lucide-react';
 import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
 import { cn } from '@/lib/utils';
 
@@ -9,11 +8,6 @@ const techBadgeClasses = cn(
 );
 
 export default function TechStack() {
-  const handleBackToHome = () => {
-    window.location.hash = 'home';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   const renderStackCategory = (stackCategory) => (
     <div key={stackCategory.category}>
       {/* Category Title and Description */}
@@ -44,29 +38,13 @@ export default function TechStack() {
     <section id="stack" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
-        <div className="flex items-center gap-3 md:gap-4">
-          <button
-            type="button"
-            onClick={handleBackToHome}
-            className={cn(
-              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'cursor-pointer hover-theme-switch'
-            )}
-            aria-label="Back to home"
-          >
-            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
-          </button>
-
-          <div className="flex-1">
-            <p className="text-base-content text-md md:text-lg lg:text-xl">
-              Skills
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/50">
-              Technologies, networking, systems, and technical competencies
-            </p>
-          </div>
+        <div>
+          <p className="text-base-content text-md md:text-lg lg:text-xl">
+            Skills
+          </p>
+          <p className="text-[10px] md:text-xs text-base-content/50">
+            Technologies, networking, systems, and technical competencies
+          </p>
         </div>
       </header>
 

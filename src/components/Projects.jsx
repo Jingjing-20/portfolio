@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ProjectPage } from '@/components/resume_sections/projects/ProjectPage';
 import { MockupPage } from '@/components/resume_sections/projects/MockupPage';
@@ -84,11 +83,6 @@ export default function Projects() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleBackToHome = () => {
-    window.location.hash = 'home';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   if (selectedProject) {
     return (
       <ProjectPage
@@ -120,29 +114,13 @@ export default function Projects() {
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={handleBackToHome}
-            className={cn(
-              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'cursor-pointer hover-theme-switch'
-            )}
-            aria-label="Back to home"
-          >
-            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
-          </button>
-
-          <div className="flex-1">
-            <p className="text-base-content text-md md:text-lg lg:text-xl">
-              Projects
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/50">
-              Selected work and personal builds
-            </p>
-          </div>
+        <div>
+          <p className="text-base-content text-md md:text-lg lg:text-xl">
+            Projects
+          </p>
+          <p className="text-[10px] md:text-xs text-base-content/50">
+            Selected work and personal builds
+          </p>
         </div>
       </header>
 

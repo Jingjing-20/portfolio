@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Tilt,
@@ -27,38 +26,17 @@ const formatDate = (dateString) => {
 export default function Certificates() {
   const [activeCert, setActiveCert] = useState(null);
 
-  const handleBackToHome = () => {
-    window.location.hash = 'home';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <section id="certificates" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
       <header className="pt-5 md:pt-10 mb-3 md:mb-6">
-        <div className="flex items-center gap-3 md:gap-4">
-          <button
-            type="button"
-            onClick={handleBackToHome}
-            className={cn(
-              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-              'cursor-pointer hover-theme-switch'
-            )}
-            aria-label="Back to home"
-          >
-            <ArrowLeft className="h-3 w-3 md:h-4 md:w-4" />
-          </button>
-
-          <div className="flex-1">
-            <p className="text-base-content text-md md:text-lg lg:text-xl">
-              Certifications
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/50">
-              Training programs, skill assessments, webinars, and earned credentials
-            </p>
-          </div>
+        <div>
+          <p className="text-base-content text-md md:text-lg lg:text-xl">
+            Certifications
+          </p>
+          <p className="text-[10px] md:text-xs text-base-content/50">
+            Training programs, skill assessments, webinars, and earned credentials
+          </p>
         </div>
       </header>
 
