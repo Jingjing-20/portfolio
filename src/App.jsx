@@ -11,17 +11,18 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Certificates from './components/Certificates'
+import Socials from './components/Socials'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
 import { CometCursor } from '@/components/ui/comet-cursor'
 
-const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'certificates'];
+const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'certificates', 'socials', 'contact'];
 
 function getInitialPage() {
   if (typeof window !== 'undefined') {
     const hash = window.location.hash.replace('#', '').toLowerCase();
     const basePage = hash.split('/')[0];
     if (VALID_PAGES.includes(basePage)) {
-      return basePage;
+      return basePage === 'contact' ? 'socials' : basePage;
     }
   }
   return 'home';
@@ -41,7 +42,7 @@ function App() {
       const hash = window.location.hash.replace('#', '').toLowerCase();
       const basePage = hash.split('/')[0];
       if (VALID_PAGES.includes(basePage)) {
-        setActivePage(basePage);
+        setActivePage(basePage === 'contact' ? 'socials' : basePage);
       }
     };
 
@@ -50,8 +51,9 @@ function App() {
   }, []);
 
   const handlePageChange = (page) => {
-    setActivePage(page);
-    window.location.hash = page;
+    const targetPage = page === 'contact' ? 'socials' : page;
+    setActivePage(targetPage);
+    window.location.hash = targetPage;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -120,6 +122,12 @@ function App() {
                   {activePage === 'certificates' && (
                     <ScrollReveal animation="fadeInUp" duration="0.4s" key="certificates">
                       <Certificates />
+                    </ScrollReveal>
+                  )}
+
+                  {(activePage === 'socials' || activePage === 'contact') && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="socials">
+                      <Socials />
                     </ScrollReveal>
                   )}
                 </div>

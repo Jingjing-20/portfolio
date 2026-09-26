@@ -1,27 +1,24 @@
-import { useState } from 'react';
 import profileImage from '@/components/resume_sections/about/gian.webp';
 import {
   Tilt,
   TiltContent,
 } from '@/components/animate-ui/primitives/effects/tilt';
-import { CONTACT_LINKS } from '@/components/resume_sections/about/contact_data';
-import ContactDialog from '@/components/resume_sections/about/ContactDialog';
 import { cn } from '@/lib/utils';
 
-const interactiveButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-1.5 md:gap-2 rounded-sm px-2.5 py-1.5 md:px-3 md:py-1.5',
-  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-[10px] md:text-xs cursor-pointer hover-badge'
+const roleBadgeClasses = cn(
+  'shadow-xl inline-flex items-center justify-center p-2 rounded-sm',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover-badge',
+  'text-[10px] md:text-xs cursor-default text-base-content'
 );
 
+const ROLES = [
+  'Software & Web Development',
+  'UX/UI Design',
+  'Technical Support',
+  'Computer Networking',
+];
+
 export default function About() {
-  const [selectedContact, setSelectedContact] = useState(null);
-
-  const handleContactClick = (contact) => {
-    setSelectedContact(contact);
-  };
-
   return (
     <section
       id="about"
@@ -42,7 +39,7 @@ export default function About() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      {/* Image + Name + Contacts Row */}
+      {/* Image + Name + Description */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 md:gap-6 w-full">
         {/* Image - Tilt Card */}
         <div className="shrink-0">
@@ -71,7 +68,7 @@ export default function About() {
           </Tilt>
         </div>
 
-        {/* Right Side: Name + Contact Buttons */}
+        {/* Right Side: Name + Bio */}
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
@@ -86,28 +83,24 @@ export default function About() {
       </div>
 
       <hr className="my-3 md:my-4" />
-      {/* Contact Buttons */}
-      <nav
-        aria-label="Contact links"
-        className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 md:gap-2.5"
-      >
-        {CONTACT_LINKS.map((contact) => (
-          <button
-            key={contact.id}
-            type="button"
-            className={interactiveButtonClasses}
-            style={{ '--brand-color': contact.color }}
-            onClick={() => handleContactClick(contact)}
-            aria-label={contact.label}
-          >
-            <span className="text-base-content">
-              {contact.label}
-            </span>
-          </button>
-        ))}
-      </nav>
 
-      <hr className="my-3 md:my-4" />
+      {/* Roles / Focus Areas */}
+      <div className="space-y-2">
+        <div className="space-y-1">
+          <h3 className="text-[10px] md:text-xs text-base-content">
+            Role :
+          </h3>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {ROLES.map((role) => (
+            <div key={role} className={roleBadgeClasses}>
+              <span>{role}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <br className="mt-3 md:mt-4" />
 
       {/* Education */}
       <div className="space-y-3">
@@ -131,47 +124,6 @@ export default function About() {
           </span>
         </div>
       </div>
-
-      <hr className="my-3 md:my-4" />
-
-      {/* Guiding Principles */}
-      <div className="space-y-3">
-        <div className="space-y-1">
-          <h3 className="text-xs md:text-sm text-base-content">
-            Approach & Values
-          </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Principles guiding how I build software and collaborate
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1">
-            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
-              Real-World Usability
-            </h4>
-            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
-              Prioritizing accessible, straightforward interfaces that eliminate operational friction and solve genuine workflow challenges.
-            </p>
-          </div>
-
-          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1">
-            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
-              Continuous Improvement
-            </h4>
-            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
-              Consistently expanding technical depth through self-directed builds, credential assessments, and hands-on operational work.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Contact Dialog */}
-      <ContactDialog
-        contact={selectedContact}
-        open={selectedContact !== null}
-        onClose={() => setSelectedContact(null)}
-      />
     </section>
   );
 }

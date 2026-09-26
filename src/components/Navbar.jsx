@@ -39,6 +39,11 @@ function CertificateIcon({ className = '', size = '1em' }) {
   return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m8.36 12.166l2.475 2.474l4.951-4.951M6 4.999h2.686a1 1 0 0 0 .707-.293l1.9-1.9a1 1 0 0 1 1.414 0l1.9 1.9a1 1 0 0 0 .707.293H18a1 1 0 0 1 1 1v2.686a1 1 0 0 0 .293.707l1.9 1.9a1 1 0 0 1 0 1.414l-1.9 1.9a1 1 0 0 0-.293.707v2.686a1 1 0 0 1-1 1h-2.687a1 1 0 0 0-.707.293l-1.9 1.9a1 1 0 0 1-1.413 0l-1.9-1.9a1 1 0 0 0-.707-.293H6a1 1 0 0 1-1-1v-2.686a1 1 0 0 0-.293-.707l-1.9-1.9a1 1 0 0 1 0-1.414l1.9-1.9A1 1 0 0 0 5 8.686V6a1 1 0 0 1 1-1" /></svg>;
 }
 
+function SocialIcon({ className = '', size = '1em' }) {
+  return (<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M384 336a63.78 63.78 0 0 0-46.12 19.7l-148-83.27a63.85 63.85 0 0 0 0-32.86l148-83.27a63.8 63.8 0 1 0-15.73-27.87l-148 83.27a64 64 0 1 0 0 88.6l148 83.27A64 64 0 1 0 384 336" /></svg>
+  );
+}
+
 const NAV_ITEMS = [
   { value: 'home', label: 'Home', icon: <HomeIcon size={14} className="shrink-0" /> },
   { value: 'about', label: 'About', icon: <AboutIcon size={14} className="shrink-0" /> },
@@ -46,6 +51,7 @@ const NAV_ITEMS = [
   { value: 'experience', label: 'Experience', icon: <ExperienceIcon size={14} className="shrink-0" /> },
   { value: 'projects', label: 'Projects', icon: <ProjectsIcon size={14} className="shrink-0" /> },
   { value: 'certificates', label: 'Certifications', icon: <CertificateIcon size={14} className="shrink-0" /> },
+  { value: 'socials', label: 'Socials', icon: <SocialIcon size={14} className="shrink-0" /> },
 ];
 
 const THEME_OPTIONS = [
@@ -78,7 +84,8 @@ function ThemeToggle({ size = 'md', className = '' }) {
 
         return (
           <button
-            key={value} type="button"
+            key={value}
+            type="button"
             role="radio"
             aria-checked={isActive}
             aria-label={label}
