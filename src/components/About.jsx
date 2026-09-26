@@ -19,11 +19,7 @@ export default function About() {
   const [selectedContact, setSelectedContact] = useState(null);
 
   const handleContactClick = (contact) => {
-    if (contact.email) {
-      setSelectedContact(contact);
-    } else if (contact.href) {
-      window.open(contact.href, '_blank', 'noopener,noreferrer');
-    }
+    setSelectedContact(contact);
   };
 
   return (

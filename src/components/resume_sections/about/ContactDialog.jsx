@@ -98,14 +98,23 @@ export function ContactDialog({ contact, open, onClose }) {
               </AnimatePresence>
             </ButtonPrimitive>
           ) : (
-            <button
-              type="button"
-              className={buttonClasses}
-              onClick={handleOpenLink}
-              aria-label={`Open ${contact.label}`}
-            >
-              <SquareArrowOutUpRight size={16} />
-            </button>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <CopyButton
+                content={contact.href}
+                variant="outline"
+                className="cursor-pointer hover-theme-switch"
+                aria-label="Copy link to clipboard"
+              />
+              <button
+                type="button"
+                className={buttonClasses}
+                onClick={handleOpenLink}
+                aria-label={`Open ${contact.label}`}
+                title={`Open ${contact.label}`}
+              >
+                <SquareArrowOutUpRight size={16} />
+              </button>
+            </div>
           )}
         </div>
       </DialogPanel>
