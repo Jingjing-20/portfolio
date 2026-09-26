@@ -57,7 +57,7 @@ export default function About() {
               className={cn(
                 'relative overflow-hidden',
                 'rounded-xl',
-                'border-3 border-gray-300 dark:border-white/20',
+                'border-2 border-gray-300 dark:border-white/20',
                 'bg-gradient-image-border shadow-xl',
                 'p-1'
               )}
@@ -65,7 +65,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-40 h-40 md:w-35 md:h-35 object-cover object-top"
+                className="rounded-lg w-35 h-35 md:w-35 md:h-35 object-cover object-top"
               />
             </TiltContent>
           </Tilt>
@@ -112,25 +112,22 @@ export default function About() {
       {/* Education */}
       <div className="space-y-3">
         <div className="space-y-1">
-          <h3 className="text-xs md:text-sm text-base-content">
-            Education
+          <h3 className="text-[10px] md:text-xs text-base-content">
+            Education :
           </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Academic foundation and university coursework
-          </p>
         </div>
 
-        <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="space-y-0.5">
             <h4 className="text-[10px] md:text-xs text-base-content font-medium">
               Bachelor of Science in Information Technology
             </h4>
             <p className="text-[8px] md:text-[10px] text-base-content/60">
-              Carlos Hilado Memorial State University (CHMSU) – Alijis Campus
+              Carlos Hilado Memorial State University – Alijis Campus
             </p>
           </div>
-          <span className="text-[8px] md:text-[10px] text-base-content/50 whitespace-nowrap self-start sm:self-auto">
-            Bacolod, Philippines
+          <span className="text-[6px] md:text-[8px] text-base-content/80 whitespace-nowrap self-start sm:self-auto">
+            Bacolod City, Negros Occidental, Philippines
           </span>
         </div>
       </div>
