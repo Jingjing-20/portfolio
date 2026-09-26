@@ -29,7 +29,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
-      <header className="pt-5 md:pt-10 mb-3 md:mb-6">
+      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl">
             Certifications
