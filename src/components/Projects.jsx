@@ -130,10 +130,10 @@ export default function Projects() {
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm lg:text-base  text-base-content">
+              <h3 className="text-[10px] md:text-xs text-base-content">
                 {category}
               </h3>
-              <p className="text-[10px] md:text-xs lg:text-sm text-muted-foreground ">
+              <p className="text-[8px] md:text-[10px] text-base-content/50 ">
                 {description}
               </p>
             </div>
@@ -179,10 +179,10 @@ export default function Projects() {
                       {/* Polaroid Bottom Caption */}
                       <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
-                          <h3 className="text-[10px] md:text-xs lg:text-sm tracking-tight leading-snug text-base-content line-clamp-1">
+                          <h3 className="text-[10px] md:text-xs text-base-content truncate">
                             {mockup.name}
                           </h3>
-                          <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                          <p className="text-[8px] md:text-[10px] mt-0.5 truncate">
                             {mockup.category}
                           </p>
                         </div>
@@ -230,10 +230,10 @@ export default function Projects() {
                       {/* Polaroid Bottom Caption */}
                       <div className="flex flex-col justify-between flex-1 pt-2">
                         <div>
-                          <h3 className="text-[10px] md:text-xs lg:text-sm tracking-tight leading-snug text-base-content line-clamp-1">
+                          <h3 className="text-[10px] md:text-xs text-base-content truncate">
                             {minigame.name}
                           </h3>
-                          <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground line-clamp-1 mt-0.5">
+                          <p className="text-[8px] md:text-[10px] mt-0.5 truncate">
                             {minigame.category}
                           </p>
                         </div>
@@ -250,7 +250,7 @@ export default function Projects() {
                         <div className="flex gap-4 items-center">
                           {/* Cover Image - Double Border */}
                           {project.coverImage && (
-                            <div className="flex-shrink-0 w-30 sm:w-40 md:w-50 relative group">
+                            <div className="flex-shrink-0 w-30 md:w-40 relative group">
                               <div
                                 className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
                                 onClick={() => handleSelectProject(project)}
@@ -272,11 +272,11 @@ export default function Projects() {
                             className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
                             onClick={() => handleSelectProject(project)}
                           >
-                            <h4 className="text-[10px] md:text-xs lg:text-sm  text-base-content group-hover/title:text-primary transition-colors">
+                            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors">
                               {project.title}
                             </h4>
                             {project.organization && (
-                              <p className="text-[8px] md:text-[10px] lg:text-xs text-muted-foreground">
+                              <p className="text-[8px] md:text-[10px] text-base-content/80">
                                 {project.organization}
                               </p>
                             )}

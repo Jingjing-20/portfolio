@@ -7,13 +7,13 @@ const backButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-badge'
+  'cursor-pointer hover-theme-switch'
 );
 
 const actionButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base font-medium cursor-default hover-badge'
+  'text-sm md:text-base font-medium cursor-default hover-theme-switch'
 );
 
 export function MockupPage({ mockup, onBack, onClose }) {
@@ -68,8 +68,8 @@ export function MockupPage({ mockup, onBack, onClose }) {
           {/* Preview Image */}
           {mockup.previewImage && (
             <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                Preview
+              <h3 className="text-xs md:text-sm text-base-content">
+                Preview ;
               </h3>
               <div className="overflow-hidden border-2 border-solid border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
@@ -102,10 +102,10 @@ export function MockupPage({ mockup, onBack, onClose }) {
           <div className="space-y-4">
             {mockup.category && (
               <div className="space-y-1">
-                <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                  Category
+                <h3 className="text-xs md:text-sm text-base-content">
+                  Category :
                 </h3>
-                <p className="text-[10px] md:text-xs text-base-content/85 leading-relaxed">
+                <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                   {mockup.category}
                 </p>
               </div>
@@ -113,10 +113,10 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
             {mockup.format && (
               <div className="space-y-1">
-                <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                  Format
+                <h3 className="text-xs md:text-sm text-base-content ">
+                  Format :
                 </h3>
-                <p className="text-[10px] md:text-xs text-base-content/85 leading-relaxed">
+                <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                   {mockup.format}
                 </p>
               </div>
@@ -124,10 +124,10 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
             {mockup.styling && (
               <div className="space-y-1">
-                <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                  Styling
+                <h3 className="text-xs md:text-sm text-base-content">
+                  Styling :
                 </h3>
-                <p className="text-[10px] md:text-xs text-base-content/85 leading-relaxed">
+                <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                   {mockup.styling}
                 </p>
               </div>

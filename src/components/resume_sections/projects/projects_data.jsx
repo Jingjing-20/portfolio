@@ -32,7 +32,7 @@ export const PROJECT_CATEGORIES = [
         id: 'pgsoulpmms',
         title: 'Unified Lot and Property Management and Monitoring',
         organization:
-          'Provincial Government of Negros Occidental : General Services Office - Property Management Division',
+          'PGNO – GSO, Property Management Division',
         description:
           'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',
         details: [

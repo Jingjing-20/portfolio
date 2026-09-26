@@ -42,7 +42,7 @@ export default function Socials() {
       <div key={cat.category}>
         {/* Category Title and Description */}
         <div className="mb-2">
-          <h3 className="text-xs md:text-sm text-base-content">
+          <h3 className="text-[10px] md:text-xs text-base-content">
             {cat.category}
           </h3>
           <p className="text-[8px] md:text-[10px] text-base-content/50">

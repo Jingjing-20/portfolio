@@ -7,7 +7,7 @@ const backButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-badge'
+  'cursor-pointer hover-theme-switch'
 );
 
 // Full Page view for Project Details with MotionCarousel & plain text description
@@ -59,8 +59,8 @@ export function ProjectPage({ project, onBack, onClose }) {
           {/* Screenshots Section with MotionCarousel */}
           {hasScreenshots && (
             <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                Screenshots
+              <h3 className="text-xs md:text-sm text-base-content">
+                Screenshots :
               </h3>
               <div className="w-full">
                 <MotionCarousel slides={project.images} />
@@ -70,10 +70,10 @@ export function ProjectPage({ project, onBack, onClose }) {
 
           {/* Description Section */}
           <div className="space-y-2">
-            <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-              Description
+            <h3 className="text-xs md:text-sm text-base-content">
+              Description :
             </h3>
-            <p className="text-[10px] md:text-xs text-base-content/85 leading-relaxed">
+            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
               {project.description}
             </p>
           </div>
@@ -81,14 +81,14 @@ export function ProjectPage({ project, onBack, onClose }) {
           {/* Key Features Section */}
           {Array.isArray(project.details) && project.details.length > 0 && (
             <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm font-semibold text-base-content ">
+              <h3 className="text-xs md:text-sm text-base-content">
                 Key Features
               </h3>
               <ul className="space-y-1.5 md:space-y-2">
                 {project.details.map((item, i) => (
                   <li
                     key={i}
-                    className="text-[10px] md:text-xs text-base-content/85 leading-relaxed flex items-start gap-2"
+                    className="text-[10px] md:text-xs text-base-content leading-relaxed flex items-start gap-2"
                   >
                     <span className="inline-block mt-0.5 text-base-content/50">•</span>
                     <span>{item}</span>

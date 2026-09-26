@@ -47,7 +47,7 @@ export default function Certificates() {
         {CERTIFICATE_CATEGORIES.map((category) => (
           <article key={category.category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-xs md:text-sm text-base-content">
+              <h3 className="text-[10px] md:text-xs text-base-content">
                 {category.category}
               </h3>
               <p className="text-[8px] md:text-[10px] text-base-content/50">
@@ -55,23 +55,27 @@ export default function Certificates() {
               </p>
             </div>
 
-            {/* Certificate Grid Layout - follows image wireframe */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {/* Certificate Grid Layout */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               {category.items.map((cert) => {
                 const CertIconComp = cert.icon;
                 const year = formatDate(cert.issuedDate);
                 return (
                   <Tilt
                     key={cert.id}
-                    maxTilt={10}
+                    rotationFactor={8}
+                    springOptions={{
+                      stiffness: 350,
+                      damping: 25,
+                    }}
                     className="h-full cursor-pointer"
                     onClick={() => setActiveCert(cert)}
                   >
                     <TiltContent
                       className={cn(
-                        'group relative flex flex-col justify-between p-3 md:p-3.5 rounded-xl shadow-xl h-full',
-                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                        'cursor-pointer transition-all duration-300 hover:shadow-2xl'
+                        'group relative flex flex-col justify-between p-3.5 md:p-4 rounded-lg shadow-xl h-full',
+                        'bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                        'cursor-pointer transition-all duration-300'
                       )}
                       role="button"
                       tabIndex={0}
@@ -84,8 +88,8 @@ export default function Certificates() {
                       }}
                     >
                       <div className="flex-1 flex flex-col">
-                        {/* Top Row: Square Icon Box (left) + Pill Badge Year (right) */}
-                        <div className="flex items-center justify-between w-full mb-2.5">
+                        {/* Top Row: Icon (left) + Year (right) */}
+                        <div className="flex items-center justify-between w-full mb-3">
                           <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1.5 shadow-sm">
                             {CertIconComp ? (
                               <CertIconComp />
@@ -94,28 +98,21 @@ export default function Certificates() {
                             )}
                           </div>
                           {year && (
-                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[8px] md:text-[9px] bg-textured border border-gray-300 dark:border-white/20 text-base-content/60 shadow-sm">
+                            <span className="inline-flex items-center px-1 py-0.5 rounded-sm text-[8px] md:text-[9px] bg-textured border border-gray-300 dark:border-white/20 text-base-content/60 shadow-sm font-medium">
                               {year}
                             </span>
                           )}
                         </div>
 
-                        {/* Middle: Title (prominent) */}
-                        <h4 className="text-[11px] md:text-xs font-semibold text-base-content line-clamp-2 leading-snug">
-                          {cert.title}
-                        </h4>
-
-                        {/* Subtitle: Organization */}
-                        <p className="text-[9px] md:text-[10px] text-base-content/50 mt-1 line-clamp-2">
+                        {/* Organization Title */}
+                        <p className="text-[8px] md:text-[10px] font-medium text-base-content/60 line-clamp-1 mb-1">
                           {cert.org}
                         </p>
-                      </div>
 
-                      {/* Bottom Action Bar: Outlined container button */}
-                      <div className="pt-3 mt-2">
-                        <div className="w-full py-1.5 px-2 rounded-md bg-textured border border-solid border-gray-300 dark:border-white/20 text-center text-[9px] md:text-[10px] text-base-content/80 flex items-center justify-center gap-1.5 shadow-sm group-hover:border-double">
-                          <span>View Certificate</span>
-                        </div>
+                        {/* Certificate Name */}
+                        <h4 className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-2 leading-snug">
+                          {cert.title}
+                        </h4>
                       </div>
                     </TiltContent>
                   </Tilt>

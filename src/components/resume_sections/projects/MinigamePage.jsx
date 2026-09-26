@@ -7,13 +7,13 @@ const backButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-badge'
+  'cursor-pointer hover-theme-switch'
 );
 
 const actionButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base font-medium cursor-default hover-badge'
+  'text-sm md:text-base font-medium cursor-default hover-theme-switch'
 );
 
 export function MinigamePage({ minigame, onBack, onClose }) {
@@ -102,7 +102,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
               <h3 className="text-xs md:text-sm font-semibold text-base-content ">
                 About
               </h3>
-              <p className="text-[10px] md:text-xs text-base-content/85 leading-relaxed whitespace-pre-line">
+              <p className="text-[10px] md:text-xs text-base-content">
                 {minigame.description}
               </p>
             </div>
@@ -118,7 +118,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
                 {minigame.features.map((feature, index) => (
                   <li
                     key={index}
-                    className="text-[10px] md:text-xs text-base-content/85 leading-relaxed flex items-start gap-2 whitespace-pre-line"
+                    className="text-[10px] md:text-xs text-base-content leading-relaxed flex items-start gap-2 whitespace-pre-line"
                   >
                     <span className="inline-block mt-0.5 text-base-content/50">•</span>
                     <span>{feature}</span>
