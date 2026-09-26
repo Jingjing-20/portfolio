@@ -51,23 +51,23 @@ function ExperienceItem({ experience, onOpenSkills }) {
           {/* Company name and top-right experience button */}
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-[10px] md:text-xs text-base-content font-bold">
+              <h3 className="text-[10px] md:text-xs text-base-content font-medium">
                 {experience.company}
               </h3>
               {(experience.employmentType || experience.durationMonths) && (
-                <p className="text-[8px] md:text-[10px]">
+                <p className="text-[8px] md:text-[10px] text-base-content/80">
                   {experience.employmentType}
                   {experience.employmentType && experience.durationMonths && (
-                    <span className="mx-1 text-base-content/50">·</span>
+                    <span className="mx-1 text-base-content">·</span>
                   )}
                   {experience.durationMonths}
                 </p>
               )}
               {(experience.location || experience.workMode) && (
-                <p className="text-[8px] md:text-[10px]">
+                <p className="text-[8px] md:text-[10px] text-base-content/80">
                   {experience.location}
                   {experience.location && experience.workMode && (
-                    <span className="mx-1 text-base-content/50">·</span>
+                    <span className="mx-1 text-base-content">·</span>
                   )}
                   {experience.workMode}
                 </p>
@@ -96,14 +96,14 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
           {/* Role and Date range - compact */}
           <div>
-            <h4 className="text-xs md:text-sm  text-base-content font-bold">
+            <h4 className="text-xs md:text-sm text-base-content font-medium">
               {experience.role}
             </h4>
-            <TimelineDate className="text-[8px] md:text-[10px] text-base-content/50">
+            <TimelineDate className="text-[8px] md:text-[10px] text-base-content/80">
               {experience.dateRange}
               {experience.durationMonths && experience.durationMonths !== experience.dateRange && (
                 <>
-                  <span className="mx-1 text-base-content/50">·</span>
+                  <span className="mx-1 text-base-content">·</span>
                   {experience.durationMonths}
                 </>
               )}
@@ -112,7 +112,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
           {/* Description - compact */}
           {experience.description && (
-            <p className="text-[10px] md:text-xs text-base-content ">
+            <p className="text-[10px] md:text-xs text-base-content">
               {experience.description}
             </p>
           )}

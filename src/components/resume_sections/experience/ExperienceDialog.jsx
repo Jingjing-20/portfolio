@@ -11,14 +11,14 @@ export function ExperienceDialog({ experience, open, onClose }) {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-sm w-full">
+      <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full">
         <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-[10px] md:text-xs">
             {experience.company || 'Experience Details'}
           </DialogTitle>
           <hr />
           <DialogDescription className="text-[10px] md:text-xs text-base-content">
-            <p className="text-[10px] md:text-xs text-base-content/50">
+            <p className="text-[10px] md:text-xs text-base-content/80">
               Role :
             </p>
             {experience.role}
@@ -27,7 +27,7 @@ export function ExperienceDialog({ experience, open, onClose }) {
 
         {/* Skills List */}
         <div className="space-y-1">
-          <p className="text-[10px] md:text-xs text-base-content/50">
+          <p className="text-[10px] md:text-xs text-base-content/80">
             Skills & Technologies :
           </p>
           <div className="overflow-y-auto pr-1">
@@ -39,7 +39,7 @@ export function ExperienceDialog({ experience, open, onClose }) {
                   'text-[10px] md:text-xs font-medium text-base-content'
                 )}
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-base-content/50 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0" />
                 <span>{skill}</span>
               </div>
             ))}
