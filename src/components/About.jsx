@@ -75,7 +75,7 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-bold text-base-content text-3xl md:text-4xl">
+            <h3 className="font-bold text-base-content text-2xl md:text-4xl">
               Gian Carlo N. Ulep
             </h3>
           </div>
@@ -123,7 +123,7 @@ export default function About() {
               Bachelor of Science in Information Technology
             </h4>
             <p className="text-[8px] md:text-[10px] text-base-content/60">
-              Carlos Hilado Memorial State University – Alijis Campus
+              Carlos Hilado Memorial State University – Alijis
             </p>
           </div>
           <span className="text-[6px] md:text-[8px] text-base-content/80 whitespace-nowrap self-start sm:self-auto">

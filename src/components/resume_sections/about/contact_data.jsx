@@ -1,13 +1,3 @@
-import LinkedInImg from '@/components/resume_sections/about/linkedin.webp';
-import GitHubImg from '@/components/resume_sections/about/github.webp';
-import GmailImg from '@/components/resume_sections/about/gmail.webp';
-
-import githubSvg from './contact icons/github.svg';
-import linkedinSvg from './contact icons/linkedin.svg';
-import gmailSvg from './contact icons/gmail-2026.svg';
-import instagramSvg from './contact icons/instagram.svg';
-import facebookSvg from './contact icons/facebook.svg';
-
 export const CONTACT_LINKS = [
   {
     id: 'github',
