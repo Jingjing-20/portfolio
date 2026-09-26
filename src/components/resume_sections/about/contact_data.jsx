@@ -30,7 +30,7 @@ export const CONTACT_LINKS = [
   {
     id: 'gmail',
     label: 'Gmail',
-    email: 'ulep.giancarlo.17@gmail.com',
+    email: 'jingjing052704@gmail.com',
     description: 'Send me an email for inquiries, collaborations, and opportunities.',
     previewImage: GmailImg,
     color: '#EA4335',

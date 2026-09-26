@@ -54,7 +54,7 @@ export function ContactDialog({ contact, open, onClose }) {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-sm">
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-lg">
         <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
           <hr />

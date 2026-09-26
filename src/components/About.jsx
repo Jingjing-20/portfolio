@@ -79,26 +79,6 @@ export default function About() {
               Gian Carlo N. Ulep
             </h3>
           </div>
-          {/* Contact Buttons */}
-          <nav
-            aria-label="Contact links"
-            className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 md:gap-2.5"
-          >
-            {CONTACT_LINKS.map((contact) => (
-              <button
-                key={contact.id}
-                type="button"
-                className={interactiveButtonClasses}
-                style={{ '--brand-color': contact.color }}
-                onClick={() => handleContactClick(contact)}
-                aria-label={contact.label}
-              >
-                <span className="text-base-content">
-                  {contact.label}
-                </span>
-              </button>
-            ))}
-          </nav>
           <p className="text-[10px] md:text-xs text-base-content">
             Experience in software development, systems deployment, and technical support, including systems used by government offices and a state university. Brings customer service experience and a solid foundation in computer networking through academic coursework and hands-on projects.
           </p>
@@ -106,47 +86,26 @@ export default function About() {
       </div>
 
       <hr className="my-3 md:my-4" />
-
-      {/* Focus Areas / What I Do */}
-      <div className="space-y-3">
-        <div className="space-y-1">
-          <h3 className="text-xs md:text-sm text-base-content">
-            What I Do & Focus Areas
-          </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Key areas of technical expertise and practical experience
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1.5 hover-card">
-            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
-              Full-Stack Development
-            </h4>
-            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
-              Building interactive, responsive web interfaces with React, Tailwind CSS, and robust backends in PHP, Python, and Node.js.
-            </p>
-          </div>
-
-          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1.5 hover-card">
-            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
-              Systems & Databases
-            </h4>
-            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
-              Designing relational databases (MySQL, PostgreSQL), document management, RBAC authorization, and automated reporting systems.
-            </p>
-          </div>
-
-          <div className="p-3 md:p-3.5 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-1.5 hover-card">
-            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
-              Networking & Operations
-            </h4>
-            <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed">
-              Configuring devices, network troubleshooting, production software deployment, and live operational support for office staff.
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* Contact Buttons */}
+      <nav
+        aria-label="Contact links"
+        className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 md:gap-2.5"
+      >
+        {CONTACT_LINKS.map((contact) => (
+          <button
+            key={contact.id}
+            type="button"
+            className={interactiveButtonClasses}
+            style={{ '--brand-color': contact.color }}
+            onClick={() => handleContactClick(contact)}
+            aria-label={contact.label}
+          >
+            <span className="text-base-content">
+              {contact.label}
+            </span>
+          </button>
+        ))}
+      </nav>
 
       <hr className="my-3 md:my-4" />
 
