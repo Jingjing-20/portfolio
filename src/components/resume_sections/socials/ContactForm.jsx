@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, Check, Copy, RotateCcw } from 'lucide-react';
+import { Send, Check, AlertCircle, RotateCcw, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const inputClasses = cn(
@@ -12,7 +12,8 @@ const inputClasses = cn(
 const actionBtnClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-1.5 p-2 rounded-sm',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double hover-theme-switch',
-  'text-[10px] md:text-xs font-medium cursor-pointer text-base-content transition-all'
+  'text-[10px] md:text-xs font-medium cursor-pointer text-base-content transition-all',
+  'disabled:opacity-50 disabled:pointer-events-none'
 );
 
 export default function ContactForm() {
@@ -23,46 +24,64 @@ export default function ContactForm() {
     message: '',
   });
 
-  const [submitted, setSubmitted] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (status !== 'idle' && status !== 'submitting') {
+      setStatus('idle');
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+    if (
+      !formData.name.trim() ||
+      !formData.email.trim() ||
+      !formData.subject.trim() ||
+      !formData.message.trim()
+    ) {
       return;
     }
 
-    const subjectText = formData.subject.trim() || `Inquiry from ${formData.name}`;
-    const bodyText = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    setStatus('submitting');
+    setErrorMessage('');
 
-    const mailtoUrl = `mailto:jingjing052704@gmail.com?subject=${encodeURIComponent(
-      subjectText
-    )}&body=${encodeURIComponent(bodyText)}`;
-
-    window.location.href = mailtoUrl;
-    setSubmitted(true);
-  };
-
-  const handleCopyMessage = async () => {
-    const fullMessage = `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\n${formData.message}`;
     try {
-      await navigator.clipboard.writeText(fullMessage);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2500);
-    } catch {
-      // fallback
+      const response = await fetch('https://formsubmit.co/ajax/jingjing052704@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          _subject: formData.subject.trim(),
+          message: formData.message.trim(),
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Failed to send message. Please try again.');
+      }
+    } catch (err) {
+      setStatus('error');
+      setErrorMessage(err.message || 'Something went wrong. Please try again later.');
     }
   };
 
   const handleReset = () => {
     setFormData({ name: '', email: '', subject: '', message: '' });
-    setSubmitted(false);
-    setCopied(false);
+    setStatus('idle');
+    setErrorMessage('');
   };
 
   return (
@@ -70,10 +89,10 @@ export default function ContactForm() {
       {/* Category Title & Description */}
       <div className="mb-3">
         <h3 className="text-[10px] md:text-xs text-base-content">
-          Direct Message : jingjing052704@gmail.com
+          Send a Message :
         </h3>
         <p className="text-[8px] md:text-[10px] text-base-content/50">
-          Send a direct message or project inquiry straight to my inbox
+          Fill out the form below to send a message directly to my inbox
         </p>
       </div>
 
@@ -82,7 +101,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
               <label htmlFor="name" className="block text-[8px] md:text-[10px] text-base-content/80">
-                Your Name <span className="text-error">*</span>
+                Your Name <span className="text-error font-bold">*</span>
               </label>
               <input
                 id="name"
@@ -98,7 +117,7 @@ export default function ContactForm() {
 
             <div className="space-y-1">
               <label htmlFor="email" className="block text-[8px] md:text-[10px] text-base-content/80">
-                Your Email <span className="text-error">*</span>
+                Your Email <span className="text-error font-bold">*</span>
               </label>
               <input
                 id="email"
@@ -115,12 +134,13 @@ export default function ContactForm() {
 
           <div className="space-y-1">
             <label htmlFor="subject" className="block text-[8px] md:text-[10px] text-base-content/80">
-              Subject
+              Subject <span className="text-error font-bold">*</span>
             </label>
             <input
               id="subject"
               name="subject"
               type="text"
+              required
               value={formData.subject}
               onChange={handleChange}
               placeholder="e.g. Project Inquiry / Collaboration"
@@ -130,7 +150,7 @@ export default function ContactForm() {
 
           <div className="space-y-1">
             <label htmlFor="message" className="block text-[8px] md:text-[10px] text-base-content/80">
-              Message <span className="text-error">*</span>
+              Message <span className="text-error font-bold">*</span>
             </label>
             <textarea
               id="message"
@@ -147,36 +167,27 @@ export default function ContactForm() {
           <div className="flex flex-wrap items-center gap-2 pt-1">
             <button
               type="submit"
+              disabled={status === 'submitting'}
               className={actionBtnClasses}
             >
-              <Send className="h-3 w-3 md:h-3.5 md:w-3.5" />
-              <span>Send via Email</span>
+              {status === 'submitting' ? (
+                <>
+                  <Loader2 className="h-3 w-3 md:h-3.5 md:w-3.5 animate-spin" />
+                  <span>Sending...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="h-3 w-3 md:h-3.5 md:w-3.5" />
+                  <span>Send Message</span>
+                </>
+              )}
             </button>
-
-            {formData.message && (
-              <button
-                type="button"
-                onClick={handleCopyMessage}
-                className={actionBtnClasses}
-              >
-                {copied ? (
-                  <>
-                    <Check className="h-3 w-3 md:h-3.5 md:w-3.5 text-success" />
-                    <span>Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-3 w-3 md:h-3.5 md:w-3.5" />
-                    <span>Copy Text</span>
-                  </>
-                )}
-              </button>
-            )}
 
             {(formData.name || formData.email || formData.subject || formData.message) && (
               <button
                 type="button"
                 onClick={handleReset}
+                disabled={status === 'submitting'}
                 className={cn(actionBtnClasses, 'text-base-content/60')}
                 title="Reset form"
               >
@@ -187,19 +198,26 @@ export default function ContactForm() {
           </div>
         </form>
 
-        {submitted && (
-          <div className="p-2.5 rounded-md bg-base-300/40 border border-gray-300 dark:border-white/20 text-[10px] md:text-xs text-base-content flex items-start gap-2">
+        {/* Status Alerts */}
+        {status === 'success' && (
+          <div className="p-2.5 rounded-md bg-success/15 border border-success/30 text-[10px] md:text-xs text-base-content flex items-start gap-2 animate-in fade-in duration-300">
             <Check className="h-4 w-4 text-success shrink-0 mt-0.5" />
             <div className="space-y-0.5">
-              <p className="font-semibold">Email client opened!</p>
-              <p className="text-base-content/70 text-[8px] md:text-[10px]">
-                If your email client didn't open automatically, you can click "Copy Text" above and send it directly to{' '}
-                <a
-                  href="mailto:jingjing052704@gmail.com"
-                  className="underline font-medium text-base-content"
-                >
-                  jingjing052704@gmail.com
-                </a>.
+              <p className="font-semibold text-success">Message sent successfully!</p>
+              <p className="text-base-content/80 text-[8px] md:text-[10px]">
+                Thank you for reaching out. Your message has been delivered directly to my inbox and I will get back to you soon.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {status === 'error' && (
+          <div className="p-2.5 rounded-md bg-error/15 border border-error/30 text-[10px] md:text-xs text-base-content flex items-start gap-2 animate-in fade-in duration-300">
+            <AlertCircle className="h-4 w-4 text-error shrink-0 mt-0.5" />
+            <div className="space-y-0.5">
+              <p className="font-semibold text-error">Failed to send message</p>
+              <p className="text-base-content/80 text-[8px] md:text-[10px]">
+                {errorMessage || 'Please check your connection or try again later.'}
               </p>
             </div>
           </div>
