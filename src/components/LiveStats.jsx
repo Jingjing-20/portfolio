@@ -65,32 +65,27 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
   return (
     <div
       className={cn(
-        'rounded-lg bg-textured border border-solid border-gray-300 dark:border-white/20 shadow-sm p-2 text-base-content select-none',
+        'text-base-content select-none',
         isMobile ? 'mx-0 space-y-1.5' : 'space-y-1',
         className
       )}
     >
       {/* Live Viewers Indicator */}
-      <div className="flex items-center justify-between gap-1 text-[9px] md:text-[10px]">
-        <div className="flex items-center gap-1.5 font-medium text-base-content/80">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
+      <div className="flex items-center justify-between gap-1 text-[10px] md:text-xs">
+        <div className="flex items-center gap-1.5 font-medium text-base-contentborder">
           <span>Live Viewers</span>
         </div>
         <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-          {activeViewers} online
+          {activeViewers}
         </span>
       </div>
 
       {/* Total Views Count */}
-      <div className="flex items-center justify-between gap-1 text-[9px] md:text-[10px] pt-1 border-t border-gray-300/40 dark:border-white/10">
-        <div className="flex items-center gap-1.5 text-base-content/70">
-          <Eye className="h-3 w-3 opacity-60" />
+      <div className="flex items-center justify-between gap-1 text-[10px] md:text-xs pt-1">
+        <div className="flex items-center gap-1.5 text-base-content">
           <span>Total Views</span>
         </div>
-        <span className="font-medium text-base-content/90 font-mono">
+        <span className="font-medium text-base-content">
           {loading ? '...' : (totalViews ?? 142).toLocaleString()}
         </span>
       </div>

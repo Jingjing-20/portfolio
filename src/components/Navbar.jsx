@@ -197,6 +197,8 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <ThemeToggle />
           </div>
 
+          <hr className="my-2" />
+
           <div className="py-1">
             <LiveStats variant="desktop" />
           </div>
@@ -229,13 +231,6 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
           <LogoMark onNavigate={(e) => handleNavClick(e, 'home')} />
 
           <div className="flex items-center gap-2">
-            <CopyButton
-              content="jingjing052704@gmail.com"
-              variant="outline"
-              size="xs"
-              className={cn('cursor-pointer bg-textured shadow-xl hover-theme-switch size-9', CHROME)}
-              aria-label="Copy email address"
-            />
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen((open) => !open)}
@@ -258,7 +253,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             transition={{ duration: 0.18, ease: 'easeOut' }}
             className="md:hidden fixed top-[56px] inset-x-0 bottom-0 z-40 bg-theme p-4 flex flex-col justify-between overflow-y-auto"
           >
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col">
               <NavList activePage={activePage} onSelect={handleNavClick} variant="mobile" />
 
               <hr className="my-2" />
@@ -267,6 +262,8 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                 <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
                 <ThemeToggle size="lg" />
               </div>
+
+              <hr className="my-2" />
 
               <div className="px-3">
                 <LiveStats variant="mobile" />
