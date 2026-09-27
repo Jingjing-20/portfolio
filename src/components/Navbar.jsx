@@ -4,6 +4,8 @@ import { Menu, Moon, Sun, Monitor, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 import { cn } from '@/lib/utils';
+import { GmailIcon } from '@/components/resume_sections/socials/contact_data';
+import { CopyButton } from '@/components/animate-ui/components/buttons/copy';
 
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 
@@ -193,6 +195,26 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
             <ThemeToggle />
           </div>
+
+          <div className="pt-2">
+            <div className="flex items-center justify-between gap-1 p-1.5 rounded-md shadow-xl bg-textured border border-gray-300 dark:border-white/20">
+              <a
+                href="mailto:jingjing052704@gmail.com"
+                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-[9px] lg:text-[10.5px] font-medium text-base-content hover:underline truncate cursor-pointer"
+                title="Send email to jingjing052704@gmail.com"
+              >
+                <GmailIcon size="1.15em" className="shrink-0" />
+                <span className="truncate">jingjing052704@gmail.com</span>
+              </a>
+              <CopyButton
+                content="jingjing052704@gmail.com"
+                variant="outline"
+                size="xs"
+                className="shrink-0 cursor-pointer hover-theme-switch size-6"
+                aria-label="Copy email address"
+              />
+            </div>
+          </div>
         </div>
       </aside>
 
@@ -200,15 +222,24 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
         <div className="flex w-full items-center justify-between px-4 py-2.5">
           <LogoMark onNavigate={(e) => handleNavClick(e, 'home')} />
 
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-            className={cn('inline-flex items-center justify-center rounded-md p-2 h-9 w-9 cursor-pointer bg-textured shadow-xl', CHROME, FOCUS_RING, TEXT)}
-          >
-            {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-2">
+            <CopyButton
+              content="jingjing052704@gmail.com"
+              variant="outline"
+              size="xs"
+              className={cn('cursor-pointer bg-textured shadow-xl hover-theme-switch size-9', CHROME)}
+              aria-label="Copy email address"
+            />
+            <button
+              type="button"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              className={cn('inline-flex items-center justify-center rounded-md p-2 h-9 w-9 cursor-pointer bg-textured shadow-xl', CHROME, FOCUS_RING, TEXT)}
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -229,6 +260,25 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               <div className="flex items-center justify-between px-3 py-1.5">
                 <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
                 <ThemeToggle size="lg" />
+              </div>
+
+              <div className="px-1 pt-1">
+                <div className="flex items-center justify-between gap-2 p-2 rounded-md shadow-xl bg-textured border border-gray-300 dark:border-white/20">
+                  <a
+                    href="mailto:jingjing052704@gmail.com"
+                    className="flex items-center gap-2 min-w-0 flex-1 text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
+                  >
+                    <GmailIcon size="1.2em" className="shrink-0" />
+                    <span className="truncate">jingjing052704@gmail.com</span>
+                  </a>
+                  <CopyButton
+                    content="jingjing052704@gmail.com"
+                    variant="outline"
+                    size="xs"
+                    className="shrink-0 cursor-pointer hover-theme-switch size-7"
+                    aria-label="Copy email address"
+                  />
+                </div>
               </div>
             </div>
           </motion.div>

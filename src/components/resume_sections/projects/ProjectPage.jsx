@@ -28,7 +28,7 @@ export function ProjectPage({ project, onBack, onClose }) {
     <ScrollReveal animation="fadeInUp" duration="0.4s">
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
         {/* Header */}
-        <header className="pt-5 md:pt-10 mb-3 md:mb-6">
+        <header className="pt-20 md:pt-10 mb-3 md:mb-6">
           <div className="flex items-center gap-3 md:gap-4">
             <button
               type="button"
@@ -58,8 +58,8 @@ export function ProjectPage({ project, onBack, onClose }) {
         <div className="space-y-6 md:space-y-8">
           {/* Screenshots Section with MotionCarousel */}
           {hasScreenshots && (
-            <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm text-base-content">
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
                 Screenshots :
               </h3>
               <div className="w-full">
@@ -70,7 +70,7 @@ export function ProjectPage({ project, onBack, onClose }) {
 
           {/* Description Section */}
           <div className="space-y-2">
-            <h3 className="text-xs md:text-sm text-base-content">
+            <h3 className="text-[10px] md:text-xs text-base-content">
               Description :
             </h3>
             <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
@@ -80,9 +80,9 @@ export function ProjectPage({ project, onBack, onClose }) {
 
           {/* Key Features Section */}
           {Array.isArray(project.details) && project.details.length > 0 && (
-            <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm text-base-content">
-                Key Features
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Key Features :
               </h3>
               <ul className="space-y-1.5 md:space-y-2">
                 {project.details.map((item, i) => (

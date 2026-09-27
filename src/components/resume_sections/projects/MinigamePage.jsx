@@ -37,7 +37,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
     <ScrollReveal animation="fadeInUp" duration="0.4s">
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
         {/* Header */}
-        <header className="pt-5 md:pt-10 mb-3 md:mb-6">
+        <header className="pt-20 md:pt-10 mb-3 md:mb-6">
           <div className="flex items-center gap-3 md:gap-4">
             <button
               type="button"
@@ -67,9 +67,9 @@ export function MinigamePage({ minigame, onBack, onClose }) {
         <div className="space-y-6 md:space-y-8">
           {/* Preview Image */}
           {minigame.previewImage && (
-            <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                Preview
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Preview :
               </h3>
               <div className="overflow-hidden border-3 border-solid border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
@@ -85,24 +85,26 @@ export function MinigamePage({ minigame, onBack, onClose }) {
 
           {/* Live Preview Link - Button only */}
           {minigame.livePreview && (
-            <button
-              type="button"
-              className={actionButtonClasses}
-              onClick={handleOpenLink}
-              aria-label="Open live game"
-            >
-              <SquareArrowOutUpRight size={16} />
-              <span className='text-[8px] md:text-[10px]'>Play Now</span>
-            </button>
+            <div>
+              <button
+                type="button"
+                className={actionButtonClasses}
+                onClick={handleOpenLink}
+                aria-label="Open live game"
+              >
+                <SquareArrowOutUpRight size={14} />
+                <span className="text-[10px] md:text-xs">Play Now</span>
+              </button>
+            </div>
           )}
 
           {/* Description Section */}
           {minigame.description && (
             <div className="space-y-2">
-              <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                About
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                About :
               </h3>
-              <p className="text-[10px] md:text-xs text-base-content">
+              <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                 {minigame.description}
               </p>
             </div>
@@ -110,9 +112,9 @@ export function MinigamePage({ minigame, onBack, onClose }) {
 
           {/* Features Section */}
           {Array.isArray(minigame.features) && minigame.features.length > 0 && (
-            <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm font-semibold text-base-content ">
-                Features
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Features :
               </h3>
               <ul className="space-y-1.5 md:space-y-2">
                 {minigame.features.map((feature, index) => (

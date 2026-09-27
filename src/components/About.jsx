@@ -12,10 +12,13 @@ const roleBadgeClasses = cn(
 );
 
 const ROLES = [
-  'Software & Web Development',
-  'UX/UI Design',
-  'Technical Support',
-  'Computer Networking',
+  'Full-Stack Developer',
+  'Frontend Developer',
+  'Backend Developer',
+  'Mobile Developer',
+  'IT Support Specialist',
+  'Network Support Specialist',
+  'UI/UX Designer',
 ];
 
 export default function About() {
@@ -77,8 +80,7 @@ export default function About() {
             </h3>
           </div>
           <p className="text-[10px] md:text-xs text-base-content">
-            Experience in software development, systems deployment, and technical support, including systems used by government offices and a state university. Brings customer service experience and a solid foundation in computer networking through academic coursework and hands-on projects.
-          </p>
+            2 years of project-based experience in software and web development, including systems for government offices and a state university. Brings customer/technical support experience and a solid foundation in computer networking through academic coursework and hands-on projects.          </p>
         </div>
       </div>
 

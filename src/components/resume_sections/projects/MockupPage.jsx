@@ -37,7 +37,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
     <ScrollReveal animation="fadeInUp" duration="0.4s">
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
         {/* Header */}
-        <header className="pt-5 md:pt-10 mb-3 md:mb-6">
+        <header className="pt-20 md:pt-10 mb-3 md:mb-6">
           <div className="flex items-center gap-3 md:gap-4">
             <button
               type="button"
@@ -67,9 +67,9 @@ export function MockupPage({ mockup, onBack, onClose }) {
         <div className="space-y-6 md:space-y-8">
           {/* Preview Image */}
           {mockup.previewImage && (
-            <div className="space-y-2.5">
-              <h3 className="text-xs md:text-sm text-base-content">
-                Preview ;
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Preview :
               </h3>
               <div className="overflow-hidden border-2 border-solid border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
@@ -85,15 +85,15 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
           {/* Live Preview Link - Button only */}
           {mockup.livePreview && (
-            <div className="space-y-2">
+            <div>
               <button
                 type="button"
                 className={actionButtonClasses}
                 onClick={handleOpenLink}
                 aria-label="Open live preview"
               >
-                <SquareArrowOutUpRight size={16} />
-                <span className='text-[8px] md:text-[10px]'>View Live</span>
+                <SquareArrowOutUpRight size={14} />
+                <span className="text-[10px] md:text-xs">View Live</span>
               </button>
             </div>
           )}
@@ -102,7 +102,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
           <div className="space-y-4">
             {mockup.category && (
               <div className="space-y-1">
-                <h3 className="text-xs md:text-sm text-base-content">
+                <h3 className="text-[10px] md:text-xs text-base-content">
                   Category :
                 </h3>
                 <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
@@ -113,7 +113,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
             {mockup.format && (
               <div className="space-y-1">
-                <h3 className="text-xs md:text-sm text-base-content ">
+                <h3 className="text-[10px] md:text-xs text-base-content">
                   Format :
                 </h3>
                 <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
@@ -124,7 +124,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
             {mockup.styling && (
               <div className="space-y-1">
-                <h3 className="text-xs md:text-sm text-base-content">
+                <h3 className="text-[10px] md:text-xs text-base-content">
                   Styling :
                 </h3>
                 <p className="text-[10px] md:text-xs text-base-content leading-relaxed">

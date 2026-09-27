@@ -2,6 +2,8 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 import { Switch, SwitchThumb } from '@/components/animate-ui/primitives/radix/switch';
+import { CopyButton } from '@/components/animate-ui/components/buttons/copy';
+import { GmailIcon } from '@/components/resume_sections/socials/contact_data';
 import { cn } from '@/lib/utils';
 
 function ThemeTogglerBtn() {
@@ -60,8 +62,26 @@ export default function HomeNavbar() {
             </h1>
           </div>
 
-          {/* Theme Toggle */}
-          <ThemeTogglerBtn />
+          {/* Actions: Email + Copy Button + Theme Toggle */}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 py-0.5 px-2 rounded-full bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl">
+              <a
+                href="mailto:jingjing052704@gmail.com"
+                className="text-[10px] md:text-xs font-medium text-base-content hover:underline truncate max-w-[140px] md:max-w-none"
+                title="jingjing052704@gmail.com"
+              >
+                jingjing052704@gmail.com
+              </a>
+              <CopyButton
+                content="jingjing052704@gmail.com"
+                variant="outline"
+                size="xs"
+                className="shrink-0 cursor-pointer hover-theme-switch size-6"
+                aria-label="Copy email address"
+              />
+            </div>
+            <ThemeTogglerBtn />
+          </div>
         </div>
       </div>
 
@@ -82,7 +102,16 @@ export default function HomeNavbar() {
             </h1>
           </div>
 
-          <ThemeTogglerBtn />
+          <div className="flex items-center gap-2">
+            <CopyButton
+              content="jingjing052704@gmail.com"
+              variant="outline"
+              size="xs"
+              className="shrink-0 cursor-pointer bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl hover-theme-switch size-7.5 rounded-full"
+              aria-label="Copy email address"
+            />
+            <ThemeTogglerBtn />
+          </div>
         </div>
       </div>
     </>

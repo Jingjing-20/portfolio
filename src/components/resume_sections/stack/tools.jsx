@@ -63,6 +63,11 @@ export const Tools = {
     color: '#61DAFB',
     icon: <img src={reactSvg} alt="React" className="tool-icon-img" />,
   },
+  'React Native': {
+    category: 'Frontend',
+    color: '#61DAFB',
+    icon: <img src={reactSvg} alt="React Native" className="tool-icon-img" />,
+  },
   'JavaScript': {
     category: 'Frontend',
     color: '#F7DF1E',

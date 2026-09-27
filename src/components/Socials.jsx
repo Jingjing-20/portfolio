@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CONTACT_LINKS } from '@/components/resume_sections/socials/contact_data';
 import ContactDialog from '@/components/resume_sections/socials/ContactDialog';
+import ContactForm from '@/components/resume_sections/socials/ContactForm';
 import { cn } from '@/lib/utils';
 
 const socialBadgeClasses = cn(
@@ -10,47 +11,41 @@ const socialBadgeClasses = cn(
   'text-[10px] md:text-xs cursor-pointer hover-badge'
 );
 
-const SOCIAL_CATEGORIES = [
-  {
-    category: 'Professional & Code',
-    description: 'Software repositories, open-source work, and professional network',
-    items: ['github', 'linkedin'],
-  },
-  {
-    category: 'Direct Contact',
-    description: 'Email for inquiries, collaborations, and opportunities',
-    items: ['gmail'],
-  },
-  {
-    category: 'Social Media',
-    description: 'Personal profiles, social channels, and messaging',
-    items: ['instagram', 'facebook'],
-  },
-];
+const SOCIAL_ITEMS = ['github', 'linkedin', 'instagram', 'facebook'];
 
 export default function Socials() {
   const [selectedContact, setSelectedContact] = useState(null);
 
   const contactMap = new Map(CONTACT_LINKS.map((item) => [item.id, item]));
+  const contacts = SOCIAL_ITEMS.map((id) => contactMap.get(id)).filter(Boolean);
 
-  const renderCategory = (cat) => {
-    const contacts = cat.items
-      .map((id) => contactMap.get(id))
-      .filter(Boolean);
+  return (
+    <section id="socials" className="scroll-mt-24 max-w-2xl mx-auto">
+      {/* Header */}
+      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+        <div>
+          <p className="text-base-content text-md md:text-lg lg:text-xl">
+            Socials
+          </p>
+          <p className="text-[10px] md:text-xs text-base-content/50">
+            Connect, collaborate, and reach out with me across platforms
+          </p>
+        </div>
+      </header>
 
-    return (
-      <div key={cat.category}>
-        {/* Category Title and Description */}
+      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+
+      {/* Single Category Social Badges */}
+      <div>
         <div className="mb-2">
           <h3 className="text-[10px] md:text-xs text-base-content">
-            {cat.category}
+            Profiles & Accounts :
           </h3>
           <p className="text-[8px] md:text-[10px] text-base-content/50">
-            {cat.description}
+            Software repositories, professional network, and personal channels
           </p>
         </div>
 
-        {/* Social Badges */}
         <div className="flex flex-wrap items-center gap-2">
           {contacts.map((contact) => (
             <button
@@ -70,29 +65,11 @@ export default function Socials() {
           ))}
         </div>
       </div>
-    );
-  };
 
-  return (
-    <section id="socials" className="scroll-mt-24 max-w-2xl mx-auto">
-      {/* Header */}
-      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
-        <div>
-          <p className="text-base-content text-md md:text-lg lg:text-xl">
-            Socials
-          </p>
-          <p className="text-[10px] md:text-xs text-base-content/50">
-            Connect, collaborate, and reach out with me across platforms
-          </p>
-        </div>
-      </header>
+      <hr className="my-6" />
 
-      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
-
-      {/* Stack Format Layout */}
-      <div className="space-y-4 md:space-y-6">
-        {SOCIAL_CATEGORIES.map(renderCategory)}
-      </div>
+      {/* Direct Contact Form */}
+      <ContactForm />
 
       {/* Contact Dialog */}
       <ContactDialog
