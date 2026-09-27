@@ -3,7 +3,6 @@ import { useTheme } from 'next-themes'
 import { Analytics } from '@vercel/analytics/react'
 import './App.css'
 import Navbar from './components/Navbar'
-import HomeNavbar from './components/HomeNavbar'
 import ScrollReveal from './components/ScrollReveal'
 import Home from './components/Home'
 import About from './components/About'
@@ -77,16 +76,13 @@ function App() {
         <div className="relative z-10 min-h-screen">
           {/* Conditional Layout: Home page vs Pages with Inset Navigation Rail */}
           {activePage === 'home' ? (
-            <>
-              <HomeNavbar />
-              <div className="pb-8 pt-20">
-                <div className="mx-auto px-4 md:px-6 lg:px-8">
-                  <ScrollReveal animation="fadeInUp" duration="0.4s" key="home">
-                    <Home />
-                  </ScrollReveal>
-                </div>
+            <div className="pb-8 pt-8 md:pt-12 min-h-screen flex flex-col justify-center">
+              <div className="mx-auto px-4 md:px-6 lg:px-8 w-full">
+                <ScrollReveal animation="fadeInUp" duration="0.4s" key="home">
+                  <Home />
+                </ScrollReveal>
               </div>
-            </>
+            </div>
           ) : (
             <div className="pb-12">
               <div className="mx-auto px-4 md:px-6 max-w-4xl lg:max-w-5xl flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6 lg:gap-8 min-h-[calc(100vh-3rem)]">

@@ -84,17 +84,20 @@ export function ProjectPage({ project, onBack, onClose }) {
               <h3 className="text-[10px] md:text-xs text-base-content">
                 Key Features :
               </h3>
-              <ul className="space-y-1.5 md:space-y-2">
+              <div className="space-y-1">
                 {project.details.map((item, i) => (
-                  <li
+                  <div
                     key={i}
-                    className="text-[10px] md:text-xs text-base-content leading-relaxed flex items-start gap-2"
+                    className={cn(
+                      'flex items-start gap-3 p-1 rounded-md',
+                      'text-[10px] md:text-xs font-medium text-base-content leading-relaxed'
+                    )}
                   >
-                    <span className="inline-block mt-0.5 text-base-content/50">•</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
                     <span>{item}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
         </div>

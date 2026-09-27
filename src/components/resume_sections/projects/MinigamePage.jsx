@@ -12,7 +12,7 @@ const backButtonClasses = cn(
 
 const actionButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'text-sm md:text-base font-medium cursor-default hover-theme-switch'
 );
 
@@ -71,7 +71,7 @@ export function MinigamePage({ minigame, onBack, onClose }) {
               <h3 className="text-[10px] md:text-xs text-base-content">
                 Preview :
               </h3>
-              <div className="overflow-hidden border-3 border-solid border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
+              <div className="overflow-hidden border border-solid border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
                   <img
                     src={minigame.previewImage}
@@ -116,17 +116,20 @@ export function MinigamePage({ minigame, onBack, onClose }) {
               <h3 className="text-[10px] md:text-xs text-base-content">
                 Features :
               </h3>
-              <ul className="space-y-1.5 md:space-y-2">
+              <div className="space-y-1">
                 {minigame.features.map((feature, index) => (
-                  <li
+                  <div
                     key={index}
-                    className="text-[10px] md:text-xs text-base-content leading-relaxed flex items-start gap-2 whitespace-pre-line"
+                    className={cn(
+                      'flex items-start gap-3 p-1 rounded-md',
+                      'text-[10px] md:text-xs font-medium text-base-content leading-relaxed whitespace-pre-line'
+                    )}
                   >
-                    <span className="inline-block mt-0.5 text-base-content/50">•</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
                     <span>{feature}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           )}
         </div>

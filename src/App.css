@@ -166,35 +166,16 @@
 }
 
 
-/* Tech Stack Brand Color & Grayscale Hover Effect */
+/* Tech Stack Brand Color - Displayed in full color by default */
 .tool-icon-img {
   width: 1.2em;
   height: 1.2em;
   object-fit: contain;
-  filter: grayscale(100%) contrast(150%);
-  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-.dark .tool-icon-img,
-[data-theme="dark"] .tool-icon-img {
-  filter: grayscale(100%) invert(1) brightness(180%);
-}
-
-.hover-badge:hover .tool-icon-img,
-.hover-badge:focus-visible .tool-icon-img,
-.tech-badge-item:hover .tool-icon-img,
-.hover-list-item:hover .tool-icon-img,
-.hover-card:hover .tool-icon-img,
-.hover-card:focus-visible .tool-icon-img,
-.group:hover .tool-icon-img,
-.tool-icon-img:hover {
-  filter: none !important;
-}
-
-.dark .hover-badge:hover .tool-icon-monochrome,
-[data-theme="dark"] .hover-badge:hover .tool-icon-monochrome,
-.dark .hover-card:hover .tool-icon-monochrome,
-[data-theme="dark"] .hover-card:hover .tool-icon-monochrome {
+.dark .tool-icon-monochrome,
+[data-theme="dark"] .tool-icon-monochrome {
   filter: invert(1) brightness(180%) !important;
 }
 

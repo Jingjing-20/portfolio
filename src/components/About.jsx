@@ -16,8 +16,9 @@ const ROLES = [
   'Frontend Developer',
   'Backend Developer',
   'Mobile Developer',
-  'IT Support Specialist',
-  'Network Support Specialist',
+  'IT Support',
+  'Network Support',
+  'Customer/Technical Support',
   'UI/UX Designer',
 ];
 
@@ -90,7 +91,7 @@ export default function About() {
       <div className="space-y-2">
         <div className="space-y-1">
           <h3 className="text-[10px] md:text-xs text-base-content">
-            Role :
+            Open Role :
           </h3>
         </div>
         <div className="flex flex-wrap items-center gap-2">

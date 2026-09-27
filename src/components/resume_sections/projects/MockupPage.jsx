@@ -12,7 +12,7 @@ const backButtonClasses = cn(
 
 const actionButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'text-sm md:text-base font-medium cursor-default hover-theme-switch'
 );
 
@@ -130,6 +130,52 @@ export function MockupPage({ mockup, onBack, onClose }) {
                 <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                   {mockup.styling}
                 </p>
+              </div>
+            )}
+
+            {/* Features Section */}
+            {Array.isArray(mockup.features) && mockup.features.length > 0 && (
+              <div className="space-y-2">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Features :
+                </h3>
+                <div className="space-y-1">
+                  {mockup.features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className={cn(
+                        'flex items-start gap-3 p-1 rounded-md',
+                        'text-[10px] md:text-xs font-medium text-base-content leading-relaxed whitespace-pre-line'
+                      )}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Key Features / Details Section */}
+            {Array.isArray(mockup.details) && mockup.details.length > 0 && (
+              <div className="space-y-2">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Key Features :
+                </h3>
+                <div className="space-y-1">
+                  {mockup.details.map((item, i) => (
+                    <div
+                      key={i}
+                      className={cn(
+                        'flex items-start gap-3 p-1 rounded-md',
+                        'text-[10px] md:text-xs font-medium text-base-content leading-relaxed'
+                      )}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
