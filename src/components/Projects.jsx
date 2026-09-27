@@ -147,7 +147,7 @@ export default function Projects() {
                       key={mockup.id}
                       className={cn(
                         'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
-                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                        'bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double',
                         'hover-card cursor-pointer'
                       )}
                       role="button"
@@ -198,7 +198,7 @@ export default function Projects() {
                       key={minigame.id}
                       className={cn(
                         'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
-                        'bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double',
+                        'bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double',
                         'hover-card cursor-pointer'
                       )}
                       role="button"
@@ -252,7 +252,7 @@ export default function Projects() {
                           {project.coverImage && (
                             <div className="flex-shrink-0 w-30 md:w-40 relative group">
                               <div
-                                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-3 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
+                                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
                                 onClick={() => handleSelectProject(project)}
                               >
                                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
