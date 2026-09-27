@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { GmailIcon } from '@/components/resume_sections/socials/contact_data';
 import { CopyButton } from '@/components/animate-ui/components/buttons/copy';
+import LiveStats from './LiveStats';
 
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 
@@ -196,6 +197,10 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <ThemeToggle />
           </div>
 
+          <div className="py-1">
+            <LiveStats variant="desktop" />
+          </div>
+
           <hr className="my-2" />
 
           <div>
@@ -261,6 +266,10 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               <div className="flex items-center justify-between px-3">
                 <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
                 <ThemeToggle size="lg" />
+              </div>
+
+              <div className="px-3">
+                <LiveStats variant="mobile" />
               </div>
 
               <hr className="my-2" />
