@@ -185,25 +185,26 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <LogoMark onNavigate={(e) => handleNavClick(e, 'home')} />
           </header>
 
-          <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+          <hr className="my-2" />
 
           <NavList activePage={activePage} onSelect={handleNavClick} variant="desktop" />
 
-          <hr className="my-3 md:my-4" />
+          <hr className="my-2" />
 
           <div className="flex items-center justify-between py-1">
             <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
             <ThemeToggle />
           </div>
 
-          <div className="pt-2">
-            <div className="flex items-center justify-between gap-1 p-1.5 rounded-md shadow-xl bg-textured border border-gray-300 dark:border-white/20">
+          <hr className="my-2" />
+
+          <div>
+            <div className="flex items-center justify-between gap-1">
               <a
                 href="mailto:jingjing052704@gmail.com"
                 className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-[9px] lg:text-[10.5px] font-medium text-base-content hover:underline truncate cursor-pointer"
                 title="Send email to jingjing052704@gmail.com"
               >
-                <GmailIcon size="1.15em" className="shrink-0" />
                 <span className="truncate">jingjing052704@gmail.com</span>
               </a>
               <CopyButton
@@ -255,20 +256,21 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <div className="flex flex-col gap-3">
               <NavList activePage={activePage} onSelect={handleNavClick} variant="mobile" />
 
-              <hr className="my-1 border-gray-300 dark:border-white/20" />
+              <hr className="my-2" />
 
-              <div className="flex items-center justify-between px-3 py-1.5">
+              <div className="flex items-center justify-between px-3">
                 <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
                 <ThemeToggle size="lg" />
               </div>
 
-              <div className="px-1 pt-1">
-                <div className="flex items-center justify-between gap-2 p-2 rounded-md shadow-xl bg-textured border border-gray-300 dark:border-white/20">
+              <hr className="my-2" />
+
+              <div className="px-3">
+                <div className="flex items-center justify-between gap-2">
                   <a
                     href="mailto:jingjing052704@gmail.com"
                     className="flex items-center gap-2 min-w-0 flex-1 text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
                   >
-                    <GmailIcon size="1.2em" className="shrink-0" />
                     <span className="truncate">jingjing052704@gmail.com</span>
                   </a>
                   <CopyButton

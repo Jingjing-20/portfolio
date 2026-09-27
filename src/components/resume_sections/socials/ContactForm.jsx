@@ -70,14 +70,14 @@ export default function ContactForm() {
       {/* Category Title & Description */}
       <div className="mb-3">
         <h3 className="text-[10px] md:text-xs text-base-content">
-          Direct Message :
+          Direct Message : jingjing052704@gmail.com
         </h3>
         <p className="text-[8px] md:text-[10px] text-base-content/50">
           Send a direct message or project inquiry straight to my inbox
         </p>
       </div>
 
-      <div className="p-3 md:p-4 rounded-lg bg-textured border-3 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-3">
+      <div className="p-3 md:p-4 rounded-lg bg-textured border-2 border-solid border-gray-300 dark:border-white/20 shadow-xl space-y-3">
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">

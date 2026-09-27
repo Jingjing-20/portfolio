@@ -54,7 +54,7 @@ export function ContactDialog({ contact, open, onClose }) {
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-lg">
+      <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-md">
         <div className="space-y-1.5 pr-6">
           <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
           <hr />
@@ -69,53 +69,17 @@ export function ContactDialog({ contact, open, onClose }) {
             aria-label={isEmail ? 'Email address' : isPhone ? 'Phone number' : isResume ? 'Resume file' : 'Profile URL'}
             className="flex-1 rounded-md border border-gray-300 dark:border-white/20 bg-theme p-2 text-xs md:text-sm text-base-content outline-none dark:border-white/40"
           />
-          {isEmail || isPhone ? (
-            <CopyButton
-              content={contact.email ?? contact.phone}
-              variant="outline"
-              className="cursor-pointer hover-theme-switch"
-              aria-label="Copy to clipboard"
-            />
-          ) : isResume ? (
-            <ButtonPrimitive
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
               type="button"
-              data-slot="download-button"
-              className={cn(buttonVariants({ variant: 'outline', size: 'default' }))}
-              onClick={handleDownload}
-              disabled={isDownloaded}
-              aria-label={isDownloaded ? `Downloaded ${contact.label}` : `Download ${contact.label}`}
+              className={buttonClasses}
+              onClick={handleOpenLink}
+              aria-label={`Open ${contact.label}`}
+              title={`Open ${contact.label}`}
             >
-              <AnimatePresence mode="popLayout">
-                <motion.span
-                  key={isDownloaded ? 'check' : 'download'}
-                  data-slot="download-button-icon"
-                  initial={{ scale: 0, opacity: 0.4, filter: 'blur(4px)' }}
-                  animate={{ scale: 1, opacity: 1, filter: 'blur(0px)' }}
-                  exit={{ scale: 0, opacity: 0.4, filter: 'blur(4px)' }}
-                  transition={{ duration: 0.25 }}>
-                  {isDownloaded ? <CheckIcon /> : <Download size={16} />}
-                </motion.span>
-              </AnimatePresence>
-            </ButtonPrimitive>
-          ) : (
-            <div className="flex items-center gap-1.5 shrink-0">
-              <CopyButton
-                content={contact.href}
-                variant="outline"
-                className="cursor-pointer hover-theme-switch"
-                aria-label="Copy link to clipboard"
-              />
-              <button
-                type="button"
-                className={buttonClasses}
-                onClick={handleOpenLink}
-                aria-label={`Open ${contact.label}`}
-                title={`Open ${contact.label}`}
-              >
-                <SquareArrowOutUpRight size={16} />
-              </button>
-            </div>
-          )}
+              <SquareArrowOutUpRight size={16} />
+            </button>
+          </div>
         </div>
       </DialogPanel>
     </Dialog>
