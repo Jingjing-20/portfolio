@@ -18,8 +18,8 @@ function HomeIcon({ className = '', size = '1em' }) {
   return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true"><path fill="currentColor" d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75" /></svg>;
 }
 
-function ArrowIcon({ className = '', size = '1em' }) {
-  return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 15 15" className={className} aria-hidden="true"><path fill="currentColor" d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1-1.414-1.414" /></svg>;
+function Pointer({ className = '', size = '1em' }) {
+  return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" fill="currentColor"><g fill="none"><g clip-path="url(#SVGRVeuBdhT)"><path fill="currentColor" fill-rule="evenodd" d="m2.5 6l2.906-3.737a1.978 1.978 0 0 1 3.48 1.694L8.626 5h5.432a1.942 1.942 0 0 1 .421 3.838L11.5 9.5l-.457 2.744A3 3 0 0 1 7.31 14.65L3 13.5zm5.197 7.2l-3.272-.872l-.39-5.858L6.59 3.184a.478.478 0 0 1 .84.41l-.26 1.042L6.704 6.5h7.354a.442.442 0 0 1 .096.874l-2.98.662l-.987.22l-.166.997l-.458 2.744A1.5 1.5 0 0 1 7.697 13.2m-7.195.103a.75.75 0 0 0 1.496-.106l-.5-7a.75.75 0 1 0-1.496.106z" clip-rule="evenodd" /></g><defs><clipPath id="SVGRVeuBdhT"><path fill="currentColor" d="M0 0h16v16H0z" /></clipPath></defs></g></svg>;
 }
 
 function AboutIcon({ className = '', size = '1em' }) {
@@ -145,7 +145,7 @@ function NavList({ activePage, onSelect, variant = 'desktop' }) {
               isMobile ? 'gap-2.5 py-2.5 px-3 rounded-md text-xs font-medium' : 'gap-2 px-1 py-1.5 text-xs font-medium'
             )}
           >
-            {isActive && <ArrowIcon size={12} className="shrink-0" />}
+            {isActive && <Pointer size={12} className="shrink-0" />}
             <span className={cn('shrink-0 flex items-center justify-center', isMobile && 'size-4')}>{item.icon}</span>
             <span>{item.label}</span>
           </button>
