@@ -251,10 +251,6 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
           aria-label="View live viewers details"
         >
           <div className="flex items-center gap-1.5 font-medium">
-            <span className="relative flex size-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full size-1.5 bg-emerald-500" />
-            </span>
             <span>Live Viewers</span>
           </div>
           <span className="font-extrabold text-emerald-600 dark:text-emerald-400">
