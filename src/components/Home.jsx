@@ -1,14 +1,45 @@
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { ArrowRight, Sparkles, FolderGit2, Code2, Briefcase, Award, User, Send } from 'lucide-react';
+import { ArrowRight, Send } from 'lucide-react';
 
-// Powered by SVGs
 import reactSvg from '@/components/resume_sections/home/powered_by/react.svg';
 import jsSvg from '@/components/resume_sections/home/powered_by/javascript.svg';
 import tailwindSvg from '@/components/resume_sections/home/powered_by/file-type-tailwind.svg';
 import shadcnSvg from '@/components/resume_sections/home/powered_by/shadcn-ui.svg';
 import motionSvg from '@/components/resume_sections/home/powered_by/motion.svg';
 
+function ProjectsOutlinedIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path fill="currentColor" d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h6l2 2h8q.825 0 1.413.588T22 8v10q0 .825-.587 1.413T20 20zm0-2h16V8h-8.825l-2-2H4zm0 0V6z" />
+    </svg>
+  );
+}
+
+function SkillsOutlinedIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path fill="currentColor" d="m20.083 15.2l1.202.721a.5.5 0 0 1 0 .858l-8.77 5.262a1 1 0 0 1-1.03 0l-8.77-5.262a.5.5 0 0 1 0-.858l1.202-.721L12 20.05zm0-4.7l1.202.721a.5.5 0 0 1 0 .858L12 17.649l-9.285-5.57a.5.5 0 0 1 0-.858l1.202-.721L12 15.35zm-7.569-9.191l8.771 5.262a.5.5 0 0 1 0 .858L12 12.999L2.715 7.43a.5.5 0 0 1 0-.858l8.77-5.262a1 1 0 0 1 1.03 0M12 3.332L5.887 7L12 10.668L18.113 7z" />
+    </svg>
+  );
+}
+
+function ExperienceOutlinedIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 512 512" className={className} aria-hidden="true">
+      <rect width="448" height="320" x="32" y="128" fill="none" stroke="currentColor" strokeLinejoin="round" strokeWidth="32" rx="48" ry="48" />
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M144 128V96a32 32 0 0 1 32-32h160a32 32 0 0 1 32 32v32m112 112H32m288 0v24a8 8 0 0 1-8 8H200a8 8 0 0 1-8-8v-24" />
+    </svg>
+  );
+}
+
+function CertificateOutlinedIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m8.36 12.166l2.475 2.474l4.951-4.951M6 4.999h2.686a1 1 0 0 0 .707-.293l1.9-1.9a1 1 0 0 1 1.414 0l1.9 1.9a1 1 0 0 0 .707.293H18a1 1 0 0 1 1 1v2.686a1 1 0 0 0 .293.707l1.9 1.9a1 1 0 0 1 0 1.414l-1.9 1.9a1 1 0 0 0-.293.707v2.686a1 1 0 0 1-1 1h-2.687a1 1 0 0 0-.707.293l-1.9 1.9a1 1 0 0 1-1.413 0l-1.9-1.9a1 1 0 0 0-.707-.293H6a1 1 0 0 1-1-1v-2.686a1 1 0 0 0-.293-.707l-1.9-1.9a1 1 0 0 1 0-1.414l1.9-1.9A1 1 0 0 0 5 8.686V6a1 1 0 0 1 1-1" />
+    </svg>
+  );
+}
 
 const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2.5 md:p-3',
@@ -28,14 +59,13 @@ const sectionCardClasses = cn(
   'hover:border-double shadow-xl cursor-pointer hover-theme-switch transition-all duration-200'
 );
 
-// Portfolio Highlights accurately mapping to navbar sections
 const PORTFOLIO_SECTIONS = [
   {
     id: 'projects',
     title: 'Projects',
     badge: 'Showcase',
     description: 'Explore featured software projects, web applications, and interactive digital experiences.',
-    icon: FolderGit2,
+    icon: ProjectsOutlinedIcon,
     accent: '#00bcd4',
   },
   {
@@ -43,7 +73,7 @@ const PORTFOLIO_SECTIONS = [
     title: 'Skills',
     badge: 'Tech Stack',
     description: 'Overview of technical proficiencies, development tools, and core engineering capabilities.',
-    icon: Code2,
+    icon: SkillsOutlinedIcon,
     accent: '#f7df1e',
   },
   {
@@ -51,7 +81,7 @@ const PORTFOLIO_SECTIONS = [
     title: 'Experience',
     badge: 'Career Path',
     description: 'Professional background, practical industry roles, and collaborative work history.',
-    icon: Briefcase,
+    icon: ExperienceOutlinedIcon,
     accent: '#44a8b3',
   },
   {
@@ -59,12 +89,11 @@ const PORTFOLIO_SECTIONS = [
     title: 'Certifications',
     badge: 'Credentials',
     description: 'Accredited certifications, technical skill assessments, and professional training.',
-    icon: Award,
+    icon: CertificateOutlinedIcon,
     accent: '#a855f7',
   },
 ];
 
-// Portfolio tech stack tools from powered_by directory (Icons Only - No labels)
 const POWERED_BY_STACK = [
   {
     name: 'React',
@@ -110,13 +139,10 @@ export default function Home() {
       aria-label="Portfolio Home"
       className="min-h-[calc(100vh-5rem)] flex flex-col justify-between items-center py-4 md:py-6"
     >
-      {/* Main Content Area */}
       <div className="w-full max-w-4xl mx-auto space-y-8 md:space-y-10 px-2 sm:px-4 my-auto flex-1 flex flex-col justify-center">
 
-        {/* Hero Section */}
         <div className="text-center space-y-4 md:space-y-5">
 
-          {/* Main Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -134,7 +160,6 @@ export default function Home() {
             </p>
           </motion.div>
 
-          {/* Primary Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -163,7 +188,6 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* What's Inside the Portfolio - 4 Interactive Feature Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -180,41 +204,43 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-            {PORTFOLIO_SECTIONS.map((sec) => (
-              <div
-                key={sec.id}
-                onClick={() => handleNavigate(sec.id)}
-                className={sectionCardClasses}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && handleNavigate(sec.id)}
-              >
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <div className="flex items-center gap-2">
-                    <sec.icon
-                      className="h-4 w-4 md:h-5 md:w-5 shrink-0"
-                      aria-hidden="true"
-                    />
-                    <h3 className="text-xs md:text-sm font-semibold text-base-content group-hover:underline underline-offset-2">
-                      {sec.title}
-                    </h3>
+            {PORTFOLIO_SECTIONS.map((sec) => {
+              const Icon = sec.icon;
+              return (
+                <div
+                  key={sec.id}
+                  onClick={() => handleNavigate(sec.id)}
+                  className={sectionCardClasses}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === 'Enter' && handleNavigate(sec.id)}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <Icon
+                        size={16}
+                        className="shrink-0 text-base-content"
+                      />
+                      <h3 className="text-xs md:text-sm font-semibold text-base-content group-hover:underline underline-offset-2">
+                        {sec.title}
+                      </h3>
+                    </div>
+                    <span className="text-[9px] md:text-[10px] px-2 py-0.5 rounded-full bg-base-300/60 text-base-content/70 font-medium whitespace-nowrap">
+                      {sec.badge}
+                    </span>
                   </div>
-                  <span className="text-[9px] md:text-[10px] px-2 py-0.5 rounded-full bg-base-300/60 text-base-content/70 font-medium whitespace-nowrap">
-                    {sec.badge}
-                  </span>
+
+                  <hr className="my-2" />
+
+                  <p className="text-[10px] md:text-xs text-base-content/60 leading-relaxed">
+                    {sec.description}
+                  </p>
                 </div>
-
-                <hr className="my-2" />
-
-                <p className="text-[10px] md:text-xs text-base-content/60 leading-relaxed">
-                  {sec.description}
-                </p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
 
-        {/* Powered By Section - Full brand colors by default */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -247,17 +273,14 @@ export default function Home() {
         </motion.div>
       </div>
 
-      {/* Footer */}
       <motion.footer
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
         className="w-full pt-8 pb-2 mt-auto space-y-3"
       >
-        {/* Divider */}
         <hr className="w-full max-w-4xl mx-auto border-gray-300/40 dark:border-white/10" />
 
-        {/* Footer Details */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-4 text-xs text-base-content/50">
           <div className="text-center sm:text-left space-y-0.5">
             <p className="text-[10px] md:text-xs text-base-content">

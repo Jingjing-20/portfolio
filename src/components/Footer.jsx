@@ -1,6 +1,29 @@
 import { Code2 } from 'lucide-react';
-import { Tools } from '@/components/resume_sections/stack/tools';
 import { cn } from '@/lib/utils';
+
+const ReactIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" {...props}>
+    <circle cx="12" cy="12" r="2" fill="#61DAFB" />
+    <g stroke="#61DAFB" strokeWidth="1.2">
+      <ellipse cx="12" cy="12" rx="10" ry="4" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+    </g>
+  </svg>
+);
+
+const JavaScriptIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <rect width="24" height="24" rx="2" fill="#F7DF1E" />
+    <path fill="#000" d="M3.2 4h17.6v17.6H3.2V4zm8.45 14.14c.52.79 1.26 1.4 2.42 1.4 1.48 0 2.09-.76 2.09-1.94 0-1.33-.73-1.86-1.96-2.57l-.41-.24c-.88-.51-1.48-.87-1.48-1.8 0-.7.53-1.25 1.32-1.25.71 0 1.21.27 1.7.74l1.12-1.44c-.79-.73-1.83-1.08-3.02-1.08-1.79 0-2.92 1.08-2.92 2.46 0 1.42.79 1.98 2.04 2.69l.41.23c1.03.6 1.65.94 1.65 1.95 0 .8-.63 1.26-1.51 1.26-.95 0-1.61-.47-2.02-1.19l-1.47.84zm7.3-.27c.52.79 1.26 1.4 2.42 1.4 1.47 0 2.09-.76 2.09-1.94 0-1.33-.73-1.86-1.96-2.57l-.41-.24c-.88-.51-1.48-.87-1.48-1.8 0-.7.53-1.25 1.32-1.25.71 0 1.21.27 1.7.74l1.12-1.44c-.79-.73-1.83-1.08-3.02-1.08-1.79 0-2.92 1.08-2.92 2.46 0 1.42.79 1.98 2.04 2.69l.41.23c1.03.6 1.65.94 1.65 1.95 0 .8-.63 1.26-1.51 1.26-.95 0-1.61-.47-2.02-1.19l-1.47.84z" />
+  </svg>
+);
+
+const TailwindIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <path fill="#38BDF8" d="M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.77.19 1.31.74 1.92 1.36C13.41 10.86 14.56 12 17 12c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.77-.19-1.31-.74-1.92-1.36C15.59 7.14 14.44 6 12 6zM7 12c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.77.19 1.31.74 1.92 1.36C8.41 16.86 9.56 18 12 18c2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.77-.19-1.31-.74-1.92-1.36C10.59 13.14 9.44 12 7 12z" />
+  </svg>
+);
 
 const ShadcnIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
@@ -9,9 +32,9 @@ const ShadcnIcon = (props) => (
 );
 
 const PORTFOLIO_STACK = [
-  { name: 'React', icon: Tools['React']?.icon },
-  { name: 'JavaScript', icon: Tools['JavaScript']?.icon },
-  { name: 'Tailwind', icon: Tools['Tailwind']?.icon },
+  { name: 'React', icon: <ReactIcon className="h-5 w-5" /> },
+  { name: 'JavaScript', icon: <JavaScriptIcon className="h-5 w-5" /> },
+  { name: 'Tailwind', icon: <TailwindIcon className="h-5 w-5" /> },
   { name: 'Shadcn UI', icon: <ShadcnIcon className="h-5 w-5" /> },
 ];
 

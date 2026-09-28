@@ -10,7 +10,6 @@ const techBadgeClasses = cn(
 export default function TechStack() {
   const renderStackCategory = (stackCategory) => (
     <div key={stackCategory.category}>
-      {/* Category Title and Description */}
       <div className="mb-2">
         <h3 className="text-[10px] md:text-xs text-base-content">
           {stackCategory.category}
@@ -20,7 +19,6 @@ export default function TechStack() {
         </p>
       </div>
 
-      {/* Tools / Skills Badges (Text Only) */}
       <div className="flex flex-wrap items-center gap-2">
         {stackCategory.tools.map((tool) => (
           <div
@@ -36,7 +34,6 @@ export default function TechStack() {
 
   return (
     <section id="stack" className="scroll-mt-24 max-w-2xl mx-auto">
-      {/* Header */}
       <header className="pt-20 md:pt-10 mb-3 md:mb-6">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
@@ -50,7 +47,6 @@ export default function TechStack() {
 
       <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
 
-      {/* Single column stack layout */}
       <div className="space-y-4 md:space-y-6">
         {TECH_STACK.map(renderStackCategory)}
       </div>
