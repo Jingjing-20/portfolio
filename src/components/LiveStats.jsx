@@ -217,7 +217,12 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
       const res = await fetch('/api/stats');
       if (res.ok) {
         const data = await res.json();
-        if (!data.error) setStats(data);
+        const hasAnyValue =
+          data.totalViews != null ||
+          data.views7d != null ||
+          data.views24h != null ||
+          (Array.isArray(data.topPages) && data.topPages.length > 0);
+        if (hasAnyValue || !data.error) setStats(data);
       }
     } catch {
       // API not available locally — silently ignore

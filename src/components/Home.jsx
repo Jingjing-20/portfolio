@@ -3,6 +3,7 @@ import { cn } from '@/lib/utils';
 import { ArrowRight, Send } from 'lucide-react';
 
 import reactSvg from '@/components/resume_sections/home/powered_by/react.svg';
+import viteSvg from '@/components/resume_sections/home/powered_by/vitejs.svg';
 import jsSvg from '@/components/resume_sections/home/powered_by/javascript.svg';
 import tailwindSvg from '@/components/resume_sections/home/powered_by/file-type-tailwind.svg';
 import shadcnSvg from '@/components/resume_sections/home/powered_by/shadcn-ui.svg';
@@ -99,31 +100,31 @@ const POWERED_BY_STACK = [
     name: 'React',
     color: '#00bcd4',
     icon: <img src={reactSvg} alt="React" className="tool-icon-img" />,
-    stack: 'React',
+  },
+  {
+    name: 'Vite',
+    color: '#000000',
+    icon: <img src={viteSvg} alt="Vite" className="tool-icon-img" />,
   },
   {
     name: 'JavaScript',
     color: '#f7df1e',
     icon: <img src={jsSvg} alt="JavaScript" className="tool-icon-img" />,
-    stack: 'JavaScript',
   },
   {
     name: 'Tailwind CSS',
     color: '#44a8b3',
     icon: <img src={tailwindSvg} alt="Tailwind CSS" className="tool-icon-img" />,
-    stack: 'Tailwind CSS',
   },
   {
     name: 'shadcn/ui',
     color: '#000000',
     icon: <img src={shadcnSvg} alt="shadcn/ui" className="tool-icon-img tool-icon-monochrome" />,
-    stack: 'shadcn/ui',
   },
   {
     name: 'Motion',
     color: '#ff0055',
     icon: <img src={motionSvg} alt="Motion" className="tool-icon-img tool-icon-monochrome" />,
-    stack: 'Motion',
   },
 ];
 
@@ -262,9 +263,6 @@ export default function Home() {
                 >
                   <span className="flex items-center justify-center size-3.5 md:size-4 shrink-0">
                     {tool.icon}
-                  </span>
-                  <span className="text-base-content">
-                    {tool.stack}
                   </span>
                 </div>
               ))}
