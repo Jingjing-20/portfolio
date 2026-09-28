@@ -64,7 +64,7 @@ function ViewersDialog({ open, onClose, activeViewers }) {
   );
 }
 
-function ViewsDialog({ open, onClose, totalViews, totalLoading, stats, statsLoading }) {
+function ViewsDialog({ open, onClose, stats, statsLoading }) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full bg-theme">
@@ -81,8 +81,8 @@ function ViewsDialog({ open, onClose, totalViews, totalLoading, stats, statsLoad
         <div className="space-y-0.5">
           <StatRow
             label="All-time Page Views"
-            value={totalLoading ? null : (totalViews ?? 142).toLocaleString()}
-            loading={totalLoading}
+            value={stats?.allTimeViews != null ? stats.allTimeViews.toLocaleString() : null}
+            loading={statsLoading}
             accent="text-base-content"
           />
           <StatRow
@@ -99,7 +99,7 @@ function ViewsDialog({ open, onClose, totalViews, totalLoading, stats, statsLoad
           />
           <StatRow
             label="Views (Last 30 days)"
-            value={stats?.totalViews != null ? stats.totalViews.toLocaleString() : null}
+            value={stats?.views30d != null ? stats.views30d.toLocaleString() : null}
             loading={statsLoading}
             accent="text-blue-600 dark:text-blue-400"
           />
@@ -151,14 +151,14 @@ function ViewsDialog({ open, onClose, totalViews, totalLoading, stats, statsLoad
 
 export function LiveStats({ variant = 'desktop', className = '' }) {
   const [stats, setStats] = useState(null);
-  const [totalViews, setTotalViews] = useState(null);
+  const [counterApiViews, setCounterApiViews] = useState(null);
   const [activeViewers, setActiveViewers] = useState(1);
   const [loading, setLoading] = useState(true);
   const [statsLoading, setStatsLoading] = useState(false);
   const [viewersOpen, setViewersOpen] = useState(false);
   const [viewsOpen, setViewsOpen] = useState(false);
 
-  // ── CounterAPI (total views) ───────────────────────────────────────────────
+  // ── CounterAPI (legacy/fallback counter) ──────────────────────────────────
   useEffect(() => {
     let isMounted = true;
 
@@ -173,20 +173,18 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
         if (res.ok) {
           const data = await res.json();
           if (isMounted && typeof data.count === 'number') {
-            setTotalViews(data.count);
+            setCounterApiViews(data.count);
             sessionStorage.setItem('portfolio_view_counted', 'true');
           }
         } else {
           const fallback = parseInt(localStorage.getItem('fallback_views') || '142', 10) + (hasCounted ? 0 : 1);
           localStorage.setItem('fallback_views', fallback.toString());
-          if (isMounted) setTotalViews(fallback);
+          if (isMounted) setCounterApiViews(fallback);
         }
       } catch {
         const fallback = parseInt(localStorage.getItem('fallback_views') || '142', 10) + (hasCounted ? 0 : 1);
         localStorage.setItem('fallback_views', fallback.toString());
-        if (isMounted) setTotalViews(fallback);
-      } finally {
-        if (isMounted) setLoading(false);
+        if (isMounted) setCounterApiViews(fallback);
       }
     }
 
@@ -218,14 +216,19 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
       if (res.ok) {
         const data = await res.json();
         const hasAnyValue =
-          data.totalViews != null ||
+          data.allTimeViews != null ||
+          data.views30d != null ||
           data.views7d != null ||
           data.views24h != null ||
           (Array.isArray(data.topPages) && data.topPages.length > 0);
-        if (hasAnyValue || !data.error) setStats(data);
+        if (hasAnyValue || !data.error) {
+          setStats(data);
+          setLoading(false); // Vercel data loaded
+        }
       }
     } catch {
       // API not available locally — silently ignore
+      setLoading(false);
     } finally {
       setStatsLoading(false);
     }
@@ -238,6 +241,9 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
   };
 
   const isMobile = variant === 'mobile';
+
+  // Display total views: prefer Vercel all-time, fallback to CounterAPI
+  const displayTotalViews = stats?.allTimeViews ?? counterApiViews ?? 142;
 
   return (
     <>
@@ -278,7 +284,7 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
             className="font-extrabold text-base-content hover:underline cursor-pointer"
             aria-label="View total views details"
           >
-            {loading ? '...' : (totalViews ?? 142).toLocaleString()}
+            {loading ? '...' : displayTotalViews.toLocaleString()}
           </span>
         </div>
       </div>
@@ -293,8 +299,6 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
       <ViewsDialog
         open={viewsOpen}
         onClose={() => setViewsOpen(false)}
-        totalViews={totalViews}
-        totalLoading={loading}
         stats={stats}
         statsLoading={statsLoading}
       />

@@ -49,11 +49,14 @@ export default async function handler(req, res) {
     '24h': { since: now - day, until: now },
     '7d':  { since: now - 7 * day, until: now },
     '30d': { since: now - 30 * day, until: now },
+    // All-time: use a date far in the past (e.g., Jan 1, 2020)
+    'all': { since: new Date('2020-01-01').getTime(), until: now },
   };
 
   const tp = teamParam();
   const result = {
-    totalViews: null,
+    allTimeViews: null,
+    views30d: null,
     views7d: null,
     views24h: null,
     topPages: [],
@@ -61,13 +64,15 @@ export default async function handler(req, res) {
   };
 
   try {
-    const [views30d, views7d, views24h] = await Promise.all([
+    const [viewsAll, views30d, views7d, views24h] = await Promise.all([
+      vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['all'].since}&until=${periods['all'].until}${tp}`),
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['30d'].since}&until=${periods['30d'].until}${tp}`),
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['7d'].since}&until=${periods['7d'].until}${tp}`),
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['24h'].since}&until=${periods['24h'].until}${tp}`),
     ]);
 
-    result.totalViews = views30d?.data?.pageviews ?? null;
+    result.allTimeViews = viewsAll?.data?.pageviews ?? null;
+    result.views30d = views30d?.data?.pageviews ?? null;
     result.views7d = views7d?.data?.pageviews ?? null;
     result.views24h = views24h?.data?.pageviews ?? null;
   } catch (err) {
