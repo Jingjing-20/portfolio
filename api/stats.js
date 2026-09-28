@@ -3,8 +3,9 @@
  * Proxies Vercel Analytics API securely — token never reaches the browser.
  * Deployed automatically by Vercel when this file exists in /api.
  */
+/* global process */
 
-const BASE = 'https://vercel.com/api';
+const BASE = 'https://api.vercel.com';
 const TOKEN = process.env.VERCEL_API_TOKEN;
 const PROJECT_ID = process.env.VERCEL_PROJECT_ID;
 
@@ -28,10 +29,9 @@ async function vFetch(path) {
 }
 
 export default async function handler(req, res) {
-  // CORS — allow your own domain only in production
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET');
-  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600'); // 5-min cache
+  res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
 
   if (!TOKEN || !PROJECT_ID) {
     return res.status(500).json({ error: 'Missing VERCEL_API_TOKEN or VERCEL_PROJECT_ID env vars.' });
@@ -40,37 +40,40 @@ export default async function handler(req, res) {
   const now = Date.now();
   const day = 86400000;
 
-  // Time ranges for queries
   const periods = {
-    '24h': { from: now - day, to: now },
-    '7d':  { from: now - 7 * day, to: now },
-    '30d': { from: now - 30 * day, to: now },
+    '24h': { since: now - day, until: now },
+    '7d':  { since: now - 7 * day, until: now },
+    '30d': { since: now - 30 * day, until: now },
   };
 
   try {
-    // Fetch 30-day page views and unique visitors
     const [views30d, views7d, views24h] = await Promise.all([
-      vFetch(`/v1/web/analytics/pageviews?projectId=${PROJECT_ID}&from=${periods['30d'].from}&to=${periods['30d'].to}&limit=1`),
-      vFetch(`/v1/web/analytics/pageviews?projectId=${PROJECT_ID}&from=${periods['7d'].from}&to=${periods['7d'].to}&limit=1`),
-      vFetch(`/v1/web/analytics/pageviews?projectId=${PROJECT_ID}&from=${periods['24h'].from}&to=${periods['24h'].to}&limit=1`),
+      vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['30d'].since}&until=${periods['30d'].until}`),
+      vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['7d'].since}&until=${periods['7d'].until}`),
+      vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['24h'].since}&until=${periods['24h'].until}`),
     ]);
 
-    // Fetch top pages (30d)
-    const topPages = await vFetch(
-      `/v1/web/analytics/pageviews?projectId=${PROJECT_ID}&from=${periods['30d'].from}&to=${periods['30d'].to}&groupBy=path&limit=5&sort=views:desc`
+    const topPagesRaw = await vFetch(
+      `/v1/query/web-analytics/visits/aggregate?projectId=${PROJECT_ID}&since=${periods['30d'].since}&until=${periods['30d'].until}&by[]=requestPath&limit=5`
     );
 
+    const topPages = (topPagesRaw?.data ?? [])
+      .map((item) => ({
+        path: item.requestPath ?? item.route ?? item.path ?? '/',
+        views: item.pageviews ?? item.count ?? 0,
+      }))
+      .sort((a, b) => b.views - a.views);
+
     return res.status(200).json({
-      totalViews: views30d?.total ?? null,
-      views7d: views7d?.total ?? null,
-      views24h: views24h?.total ?? null,
-      topPages: topPages?.data ?? [],
+      totalViews: views30d?.data?.pageviews ?? null,
+      views7d: views7d?.data?.pageviews ?? null,
+      views24h: views24h?.data?.pageviews ?? null,
+      topPages,
     });
 
   } catch (err) {
     console.error('[api/stats]', err.message);
 
-    // Return a 200 with null values so the frontend can gracefully fallback
     return res.status(200).json({
       totalViews: null,
       views7d: null,
