@@ -75,7 +75,7 @@ export default function About() {
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
           <div className="w-full text-center sm:text-left">
-            <h3 className="font-bold text-base-content text-2xl md:text-4xl">
+            <h3 className="font-extrabold text-base-content text-2xl md:text-4xl">
               Gian Carlo N. Ulep
             </h3>
           </div>

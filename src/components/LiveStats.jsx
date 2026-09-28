@@ -244,34 +244,38 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
         )}
       >
         {/* Live Viewers */}
-        <button
-          type="button"
-          onClick={handleOpenViewers}
-          className="w-full flex items-center justify-between gap-1 text-xs md:text-[10px] cursor-pointer hover:opacity-80 transition-opacity"
-          aria-label="View live viewers details"
-        >
+        <div className="w-full flex items-center justify-between gap-1 text-xs md:text-[10px]">
           <div className="flex items-center gap-1.5 font-medium">
             <span>Live Viewers</span>
           </div>
-          <span className="font-extrabold text-emerald-600 dark:text-emerald-400">
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={handleOpenViewers}
+            onKeyDown={(e) => e.key === 'Enter' && handleOpenViewers()}
+            className="font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+            aria-label="View live viewers details"
+          >
             {activeViewers} online
           </span>
-        </button>
+        </div>
 
         {/* Total Views */}
-        <button
-          type="button"
-          onClick={handleOpenViews}
-          className="w-full flex items-center justify-between gap-1 text-xs md:text-[10px] pt-1 cursor-pointer hover:opacity-80 transition-opacity"
-          aria-label="View total views details"
-        >
+        <div className="w-full flex items-center justify-between gap-1 text-xs md:text-[10px] pt-1">
           <div className="flex items-center gap-1.5 text-base-content">
             <span>Total Views</span>
           </div>
-          <span className="font-extrabold text-base-content">
+          <span
+            role="button"
+            tabIndex={0}
+            onClick={handleOpenViews}
+            onKeyDown={(e) => e.key === 'Enter' && handleOpenViews()}
+            className="font-extrabold text-base-content hover:underline cursor-pointer"
+            aria-label="View total views details"
+          >
             {loading ? '...' : (totalViews ?? 142).toLocaleString()}
           </span>
-        </button>
+        </div>
       </div>
 
       {/* Dialogs */}
