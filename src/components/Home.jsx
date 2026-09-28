@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { ShimmeringText } from '@/components/animate-ui/primitives/texts/shimmering';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Sparkles, FolderGit2, Code2, Briefcase, Award, User, Send } from 'lucide-react';
 
@@ -27,7 +26,7 @@ const buttonClasses = cn(
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base cursor-default hover-badge select-none'
+  'text-[10px] md:text-xs cursor-pointer hover-badge'
 );
 
 const sectionCardClasses = cn(
@@ -35,41 +34,37 @@ const sectionCardClasses = cn(
   'hover:border-double shadow-xl cursor-pointer hover-theme-switch transition-all duration-200'
 );
 
-// Portfolio Highlights accurately mapping to actual portfolio content
+// Portfolio Highlights accurately mapping to navbar sections
 const PORTFOLIO_SECTIONS = [
   {
     id: 'projects',
-    title: 'Selected Projects',
-    badge: '3 Categories',
-    description: 'Full-stack enterprise systems (Property Guardian, CHMSU AGRM), boutique UI mockups & Phaser browser games.',
-    tags: ['Full-Stack Systems', 'UI/UX Mockups', 'Browser Games'],
+    title: 'Projects',
+    badge: 'Showcase',
+    description: 'Explore featured software projects, web applications, and interactive digital experiences.',
     icon: projectsIcon,
     accent: '#00bcd4',
   },
   {
     id: 'stack',
-    title: 'Technical Skills',
-    badge: '30+ Tools',
-    description: 'Modern frontend frameworks, robust backend APIs, database design, Cisco networking & developer workflows.',
-    tags: ['React & Next.js', 'PHP & Laravel', 'Cisco & Networking', 'SQL & Supabase'],
+    title: 'Skills',
+    badge: 'Tech Stack',
+    description: 'Overview of technical proficiencies, development tools, and core engineering capabilities.',
     icon: stackIcon,
     accent: '#f7df1e',
   },
   {
     id: 'experience',
-    title: 'Work & Experience',
-    badge: '2+ Years Project Exp',
-    description: 'Hands-on software development for government agencies, university management systems & IT technical support.',
-    tags: ['Government Systems', 'University Portals', 'Technical Support'],
+    title: 'Experience',
+    badge: 'Career Path',
+    description: 'Professional background, practical industry roles, and collaborative work history.',
     icon: experienceIcon,
     accent: '#44a8b3',
   },
   {
     id: 'certificates',
     title: 'Certifications',
-    badge: 'Industry Verified',
-    description: 'Verified credentials in Cisco Networking, TestDome technical skill assessments, AI tools & project management.',
-    tags: ['Cisco Networking', 'TestDome Certified', 'AI & PM Credentials'],
+    badge: 'Credentials',
+    description: 'Accredited certifications, technical skill assessments, and professional training.',
     icon: certIcon,
     accent: '#a855f7',
   },
@@ -81,26 +76,31 @@ const POWERED_BY_STACK = [
     name: 'React',
     color: '#00bcd4',
     icon: <img src={reactSvg} alt="React" className="tool-icon-img" />,
+    stack: 'React',
   },
   {
     name: 'JavaScript',
     color: '#f7df1e',
     icon: <img src={jsSvg} alt="JavaScript" className="tool-icon-img" />,
+    stack: 'JavaScript',
   },
   {
     name: 'Tailwind CSS',
     color: '#44a8b3',
     icon: <img src={tailwindSvg} alt="Tailwind CSS" className="tool-icon-img" />,
+    stack: 'Tailwind CSS',
   },
   {
     name: 'shadcn/ui',
     color: '#000000',
     icon: <img src={shadcnSvg} alt="shadcn/ui" className="tool-icon-img tool-icon-monochrome" />,
+    stack: 'shadcn/ui',
   },
   {
     name: 'Motion',
     color: '#ff0055',
     icon: <img src={motionSvg} alt="Motion" className="tool-icon-img tool-icon-monochrome" />,
+    stack: 'Motion',
   },
 ];
 
@@ -131,7 +131,7 @@ export default function Home() {
           >
             <h1 className="tracking-tight text-base-content text-3xl md:text-6xl lg:text-7xl font-bold">
               <span className="block">
-                <ShimmeringText text="Code. Learn. Grow." />
+                Code. Learn. Grow.
               </span>
             </h1>
 
@@ -212,20 +212,11 @@ export default function Home() {
                   </span>
                 </div>
 
-                <p className="text-[10px] md:text-xs text-base-content/60 leading-relaxed mb-3">
+                <hr className="my-2" />
+
+                <p className="text-[10px] md:text-xs text-base-content/60 leading-relaxed">
                   {sec.description}
                 </p>
-
-                <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-gray-300/40 dark:border-white/10">
-                  {sec.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[9px] md:text-[10px] px-1.5 py-0.5 rounded bg-base-200/50 text-base-content/80"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>
@@ -251,8 +242,11 @@ export default function Home() {
                   title={tool.name}
                   aria-label={tool.name}
                 >
-                  <span className="tool-icon flex items-center justify-center">
+                  <span className="flex items-center justify-center size-3.5 md:size-4 shrink-0">
                     {tool.icon}
+                  </span>
+                  <span className="text-base-content">
+                    {tool.stack}
                   </span>
                 </div>
               ))}

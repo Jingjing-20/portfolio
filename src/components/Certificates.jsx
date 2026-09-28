@@ -63,19 +63,16 @@ export default function Certificates() {
                 return (
                   <Tilt
                     key={cert.id}
-                    rotationFactor={8}
-                    springOptions={{
-                      stiffness: 350,
-                      damping: 25,
-                    }}
+                    maxTilt={22}
+                    perspective={800}
                     className="h-full cursor-pointer"
                     onClick={() => setActiveCert(cert)}
                   >
                     <TiltContent
                       className={cn(
-                        'group relative flex flex-col justify-between p-3.5 md:p-4 rounded-lg shadow-xl h-full',
+                        'group relative flex flex-col justify-between p-2 md:p-3 rounded-lg shadow-xl h-full select-none',
                         'bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                        'cursor-pointer transition-all duration-300'
+                        'cursor-pointer'
                       )}
                       role="button"
                       tabIndex={0}
@@ -89,8 +86,8 @@ export default function Certificates() {
                     >
                       <div className="flex-1 flex flex-col">
                         {/* Top Row: Icon (left) + Year (right) */}
-                        <div className="flex items-center justify-between w-full mb-3">
-                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1.5 shadow-sm">
+                        <div className="flex justify-between w-full mb-3">
+                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1 shadow-sm">
                             {CertIconComp ? (
                               <CertIconComp />
                             ) : (
@@ -98,7 +95,7 @@ export default function Certificates() {
                             )}
                           </div>
                           {year && (
-                            <span className="inline-flex items-center px-1 py-0.5 rounded-sm text-[8px] md:text-[9px] bg-textured border border-gray-300 dark:border-white/20 text-base-content/60 shadow-sm font-medium">
+                            <span className="text-[8px] md:text-[9px] text-base-content/60 font-medium">
                               {year}
                             </span>
                           )}

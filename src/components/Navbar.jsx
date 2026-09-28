@@ -11,7 +11,7 @@ import LiveStats from './LiveStats';
 import logoImg from '@/components/resume_sections/about/android-chrome-512x512.png';
 
 const TEXT = 'text-base-content';
-const CHROME = 'border-2 border-solid border-gray-300 dark:border-white/20';
+const CHROME = 'border border-solid border-gray-300 dark:border-white/20';
 const FOCUS_RING = 'outline-none focus-visible:ring-2 focus-visible:ring-ring/50';
 
 function HomeIcon({ className = '', size = '1em' }) {
@@ -180,7 +180,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
 
   return (
     <>
-      <aside className="hidden md:flex flex-col border-r border-gray-300 dark:border-white/20 pr-6 lg:pr-8 shrink-0 self-stretch select-none w-48 lg:w-52" aria-label="Sidebar navigation">
+      <aside className="hidden md:flex flex-col border-r border-gray-300 dark:border-white/20 pr-6 lg:pr-8 shrink-0 self-stretch select-none" aria-label="Sidebar navigation">
         <div className="sticky top-0 flex flex-col">
           <header className="pt-20 md:pt-10">
             <LogoMark onNavigate={(e) => handleNavClick(e, 'home')} />
@@ -193,7 +193,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
           <hr className="my-2" />
 
           <div className="flex items-center justify-between py-1">
-            <span className={cn('text-xs font-medium', TEXT)}>Theme</span>
+            <span className={cn('text-[10px] font-medium', TEXT)}>Theme</span>
             <ThemeToggle />
           </div>
 
@@ -209,10 +209,10 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <div className="flex items-center justify-between gap-1">
               <a
                 href="mailto:jingjing052704@gmail.com"
-                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-[9px] lg:text-[10.5px] font-medium text-base-content hover:underline truncate cursor-pointer"
+                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
                 title="Send email to jingjing052704@gmail.com"
               >
-                <span className="truncate">jingjing052704@gmail.com</span>
+                <span className="truncate font-extrabold">jingjing052704@gmail.com</span>
               </a>
               <CopyButton
                 content="jingjing052704@gmail.com"

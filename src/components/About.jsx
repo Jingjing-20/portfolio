@@ -12,6 +12,8 @@ const roleBadgeClasses = cn(
 );
 
 const ROLES = [
+  'Software Developer',
+  'Web Developer',
   'Full-Stack Developer',
   'Frontend Developer',
   'Backend Developer',
@@ -48,15 +50,12 @@ export default function About() {
         {/* Image - Tilt Card */}
         <div className="shrink-0">
           <Tilt
-            rotationFactor={8}
-            springOptions={{
-              stiffness: 350,
-              damping: 25,
-            }}
+            maxTilt={22}
+            perspective={800}
           >
             <TiltContent
               className={cn(
-                'relative overflow-hidden',
+                'relative overflow-hidden select-none',
                 'rounded-xl',
                 'border-2 border-gray-300 dark:border-white/20',
                 'bg-gradient-image-border shadow-xl',
@@ -66,7 +65,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-35 h-35 md:w-35 md:h-35 object-cover object-top"
+                className="rounded-lg w-35 h-35 md:w-35 md:h-35 object-cover object-top pointer-events-none"
               />
             </TiltContent>
           </Tilt>
@@ -113,17 +112,17 @@ export default function About() {
           </h3>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-[10px] md:text-xs text-base-content font-medium">
+            <h4 className="text-xs md:text-sm text-base-content font-medium">
               Bachelor of Science in Information Technology
             </h4>
-            <p className="text-[8px] md:text-[10px] text-base-content/60">
+            <p className="text-[10px] md:text-xs text-base-content/60">
               Carlos Hilado Memorial State University – Alijis
             </p>
           </div>
-          <span className="text-[6px] md:text-[8px] text-base-content/80 whitespace-nowrap self-start sm:self-auto">
-            Bacolod City, Negros Occidental, Philippines
+          <span className="text-[8px] md:text-[10px] text-base-content/80">
+            Negros Occidental, Philippines
           </span>
         </div>
       </div>

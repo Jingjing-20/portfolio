@@ -71,21 +71,21 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
       )}
     >
       {/* Live Viewers Indicator */}
-      <div className="flex items-center justify-between gap-1 text-[10px] md:text-xs">
+      <div className="flex items-center justify-between gap-1 text-xs md:text-[10px]">
         <div className="flex items-center gap-1.5 font-medium text-base-contentborder">
           <span>Live Viewers</span>
         </div>
-        <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+        <span className="font-extrabold text-emerald-600 dark:text-emerald-400">
           {activeViewers}
         </span>
       </div>
 
       {/* Total Views Count */}
-      <div className="flex items-center justify-between gap-1 text-[10px] md:text-xs pt-1">
+      <div className="flex items-center justify-between gap-1 text-xs md:text-[10px] pt-1">
         <div className="flex items-center gap-1.5 text-base-content">
           <span>Total Views</span>
         </div>
-        <span className="font-medium text-base-content">
+        <span className="font-extrabold text-base-content">
           {loading ? '...' : (totalViews ?? 142).toLocaleString()}
         </span>
       </div>
