@@ -28,7 +28,7 @@ export function CertificateDialog({ cert, open, onClose }) {
       {cert && (
         <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full bg-theme">
           <div className="space-y-1.5 pr-6">
-            <DialogTitle className="text-[10px] md:text-xs font-bold">{cert.org}</DialogTitle>
+            <DialogTitle className="text-xs md:text-sm font-bold">{cert.org}</DialogTitle>
             <hr />
             <DialogDescription className="font-extrabold text-base-content">{cert.title}</DialogDescription>
           </div>

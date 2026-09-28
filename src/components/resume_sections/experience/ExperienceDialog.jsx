@@ -13,7 +13,7 @@ export function ExperienceDialog({ experience, open, onClose }) {
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-[10px] md:text-xs font-bold">
+          <DialogTitle className="text-xs md:text-sm font-bold">
             {experience.company || 'Experience Details'}
           </DialogTitle>
           <hr />

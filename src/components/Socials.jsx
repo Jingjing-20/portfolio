@@ -11,7 +11,7 @@ const socialBadgeClasses = cn(
   'text-[10px] md:text-xs cursor-pointer hover-badge'
 );
 
-const SOCIAL_ITEMS = ['github', 'linkedin', 'instagram', 'facebook'];
+const SOCIAL_ITEMS = ['github', 'linkedin', 'instagram', 'facebook', 'threads', 'twitter'];
 
 export default function Socials() {
   const [selectedContact, setSelectedContact] = useState(null);

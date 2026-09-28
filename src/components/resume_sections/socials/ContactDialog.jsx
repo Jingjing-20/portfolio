@@ -56,9 +56,9 @@ export function ContactDialog({ contact, open, onClose }) {
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-2 md:px-0 p-4 md:p-6 max-w-md">
         <div className="space-y-1.5 pr-6">
-          <DialogTitle className="text-sm md:text-base leading-relaxed">{contact.label}</DialogTitle>
+          <DialogTitle className="text-xs md:text-sm font-bold">{contact.label}</DialogTitle>
           <hr />
-          <DialogDescription className="text-xs md:text-sm leading-relaxed text-base-content">{contact.description}</DialogDescription>
+          <DialogDescription className="text-[10px] md:text-xs text-base-content">{contact.description}</DialogDescription>
         </div>
 
         <div className="flex items-center gap-2">
