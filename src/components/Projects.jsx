@@ -115,7 +115,7 @@ export default function Projects() {
       {/* Header */}
       <header className="pt-20 md:pt-10 mb-3 md:mb-6">
         <div>
-          <p className="text-base-content text-md md:text-lg lg:text-xl">
+          <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
             Projects
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">

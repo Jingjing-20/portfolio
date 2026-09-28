@@ -76,7 +76,7 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
           <span>Live Viewers</span>
         </div>
         <span className="font-extrabold text-emerald-600 dark:text-emerald-400">
-          {activeViewers}
+          {activeViewers} online
         </span>
       </div>
 

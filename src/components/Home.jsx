@@ -9,12 +9,6 @@ import tailwindSvg from '@/components/resume_sections/home/powered_by/file-type-
 import shadcnSvg from '@/components/resume_sections/home/powered_by/shadcn-ui.svg';
 import motionSvg from '@/components/resume_sections/home/powered_by/motion.svg';
 
-// Section Icons
-import aboutIcon from '@/components/resume_sections/navbar/about.svg';
-import stackIcon from '@/components/resume_sections/navbar/stack.svg';
-import experienceIcon from '@/components/resume_sections/navbar/experience.svg';
-import projectsIcon from '@/components/resume_sections/navbar/projects.svg';
-import certIcon from '@/components/resume_sections/navbar/certificate.svg';
 
 const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2.5 md:p-3',
