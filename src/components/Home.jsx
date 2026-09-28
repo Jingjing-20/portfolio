@@ -35,7 +35,7 @@ const PORTFOLIO_SECTIONS = [
     title: 'Projects',
     badge: 'Showcase',
     description: 'Explore featured software projects, web applications, and interactive digital experiences.',
-    icon: projectsIcon,
+    icon: FolderGit2,
     accent: '#00bcd4',
   },
   {
@@ -43,7 +43,7 @@ const PORTFOLIO_SECTIONS = [
     title: 'Skills',
     badge: 'Tech Stack',
     description: 'Overview of technical proficiencies, development tools, and core engineering capabilities.',
-    icon: stackIcon,
+    icon: Code2,
     accent: '#f7df1e',
   },
   {
@@ -51,7 +51,7 @@ const PORTFOLIO_SECTIONS = [
     title: 'Experience',
     badge: 'Career Path',
     description: 'Professional background, practical industry roles, and collaborative work history.',
-    icon: experienceIcon,
+    icon: Briefcase,
     accent: '#44a8b3',
   },
   {
@@ -59,7 +59,7 @@ const PORTFOLIO_SECTIONS = [
     title: 'Certifications',
     badge: 'Credentials',
     description: 'Accredited certifications, technical skill assessments, and professional training.',
-    icon: certIcon,
+    icon: Award,
     accent: '#a855f7',
   },
 ];
@@ -191,10 +191,8 @@ export default function Home() {
               >
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
-                    <img
-                      src={sec.icon}
-                      alt=""
-                      className="h-4 w-4 md:h-5 md:w-5 dark:invert shrink-0"
+                    <sec.icon
+                      className="h-4 w-4 md:h-5 md:w-5 shrink-0"
                       aria-hidden="true"
                     />
                     <h3 className="text-xs md:text-sm font-semibold text-base-content group-hover:underline underline-offset-2">
