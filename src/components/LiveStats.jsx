@@ -64,7 +64,7 @@ function ViewersDialog({ open, onClose, activeViewers }) {
   );
 }
 
-function ViewsDialog({ open, onClose, stats, statsLoading }) {
+function ViewsDialog({ open, onClose, stats, statsLoading, counterApiViews }) {
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full bg-theme">
@@ -81,7 +81,7 @@ function ViewsDialog({ open, onClose, stats, statsLoading }) {
         <div className="space-y-0.5">
           <StatRow
             label="All-time Page Views"
-            value={stats?.allTimeViews != null ? stats.allTimeViews.toLocaleString() : null}
+            value={(stats?.allTimeViews ?? counterApiViews) != null ? (stats?.allTimeViews ?? counterApiViews).toLocaleString() : null}
             loading={statsLoading}
             accent="text-base-content"
           />
@@ -185,6 +185,8 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
         const fallback = parseInt(localStorage.getItem('fallback_views') || '142', 10) + (hasCounted ? 0 : 1);
         localStorage.setItem('fallback_views', fallback.toString());
         if (isMounted) setCounterApiViews(fallback);
+      } finally {
+        if (isMounted) setLoading(false);
       }
     }
 
@@ -301,6 +303,7 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
         onClose={() => setViewsOpen(false)}
         stats={stats}
         statsLoading={statsLoading}
+        counterApiViews={counterApiViews}
       />
     </>
   );

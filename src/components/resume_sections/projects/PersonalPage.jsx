@@ -16,7 +16,7 @@ const actionButtonClasses = cn(
   'text-sm md:text-base font-medium cursor-default hover-theme-switch'
 );
 
-export function MinigamePage({ minigame, onBack, onClose }) {
+export function PersonalPage({ personal, onBack, onClose }) {
   const handleBack = () => {
     if (onBack) {
       onBack();
@@ -25,11 +25,11 @@ export function MinigamePage({ minigame, onBack, onClose }) {
     }
   };
 
-  if (!minigame) return null;
+  if (!personal) return null;
 
   const handleOpenLink = () => {
-    if (minigame.livePreview) {
-      window.open(minigame.livePreview, '_blank', 'noopener,noreferrer');
+    if (personal.livePreview) {
+      window.open(personal.livePreview, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -50,11 +50,11 @@ export function MinigamePage({ minigame, onBack, onClose }) {
 
             <div className="flex-1 min-w-0">
               <p className="text-base-content text-md md:text-lg lg:text-xl">
-                {minigame.name}
+                {personal.name}
               </p>
-              {minigame.type && (
+              {personal.type && (
                 <p className="text-[10px] md:text-xs text-base-content/50">
-                  {minigame.type}
+                  {personal.type}
                 </p>
               )}
             </div>
@@ -66,16 +66,16 @@ export function MinigamePage({ minigame, onBack, onClose }) {
         {/* Content - All displayed at once */}
         <div className="space-y-6 md:space-y-8">
           {/* Preview Image */}
-          {minigame.previewImage && (
+          {personal.previewImage && (
             <div className="space-y-2">
               <h3 className="text-[10px] md:text-xs text-base-content">
                 Preview :
               </h3>
-              <div className="overflow-hidden border  border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
+              <div className="overflow-hidden border-2  border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
                   <img
-                    src={minigame.previewImage}
-                    alt={minigame.name}
+                    src={personal.previewImage}
+                    alt={personal.name}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
@@ -84,40 +84,40 @@ export function MinigamePage({ minigame, onBack, onClose }) {
           )}
 
           {/* Live Preview Link - Button only */}
-          {minigame.livePreview && (
+          {personal.livePreview && (
             <div>
               <button
                 type="button"
                 className={actionButtonClasses}
                 onClick={handleOpenLink}
-                aria-label="Open live game"
+                aria-label="Open live preview"
               >
                 <SquareArrowOutUpRight size={14} />
-                <span className="text-[10px] md:text-xs">Play Now</span>
+                <span className="text-[10px] md:text-xs">View Live</span>
               </button>
             </div>
           )}
 
           {/* Description Section */}
-          {minigame.description && (
+          {personal.description && (
             <div className="space-y-2">
               <h3 className="text-[10px] md:text-xs text-base-content">
-                About :
+            About :
               </h3>
               <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
-                {minigame.description}
+                {personal.description}
               </p>
             </div>
           )}
 
           {/* Features Section */}
-          {Array.isArray(minigame.features) && minigame.features.length > 0 && (
+          {Array.isArray(personal.features) && personal.features.length > 0 && (
             <div className="space-y-2">
               <h3 className="text-[10px] md:text-xs text-base-content">
                 Features :
               </h3>
               <div className="space-y-1">
-                {minigame.features.map((feature, index) => (
+                {personal.features.map((feature, index) => (
                   <div
                     key={index}
                     className={cn(
@@ -138,4 +138,4 @@ export function MinigamePage({ minigame, onBack, onClose }) {
   );
 }
 
-export default MinigamePage;
+export default PersonalPage;

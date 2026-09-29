@@ -1,11 +1,11 @@
-import wordpopPreview from '@/components/resume_sections/projects/minigames/wordpop.webp';
+import wordpopPreview from '@/components/resume_sections/projects/personal/wordpop.webp';
 
-export const minigamesData = [
+export const personalData = [
   {
     id: 'wordpop',
     name: 'Word Pop ESL',
     type: 'ESL Listening & Vocabulary Mini-Game for Kids',
-    category: 'Educational / Browser Game',
+    category: 'Personal / Educational Game',
     description:
       'A vibrant, fast-paced ESL (English as a Second Language) listening and vocabulary mini-game designed for kids and early learners.\n\nListen to the spoken English word, identify the matching picture, and pop the floating balloon before time runs out!',
     features: [

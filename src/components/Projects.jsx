@@ -2,25 +2,25 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { ProjectPage } from '@/components/resume_sections/projects/ProjectPage';
 import { MockupPage } from '@/components/resume_sections/projects/MockupPage';
-import { MinigamePage } from '@/components/resume_sections/projects/MinigamePage';
+import { PersonalPage } from '@/components/resume_sections/projects/PersonalPage';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
 function getActiveItemFromHash() {
-  if (typeof window === 'undefined') return { project: null, mockup: null, minigame: null };
+  if (typeof window === 'undefined') return { project: null, mockup: null, personal: null };
   const hash = window.location.hash.replace(/^#/, '');
   const match = hash.match(/^projects\/([^/?#]+)/i) || hash.match(/^project-([^/?#]+)/i);
   const itemId = match ? match[1] : null;
-  if (!itemId) return { project: null, mockup: null, minigame: null };
+  if (!itemId) return { project: null, mockup: null, personal: null };
 
   for (const cat of PROJECT_CATEGORIES) {
     const found = cat.items?.find((p) => p.id === itemId);
     if (found) {
-      if (cat.category === 'Mockups') return { project: null, mockup: found, minigame: null };
-      if (cat.category === 'Browser Games') return { project: null, mockup: null, minigame: found };
-      return { project: found, mockup: null, minigame: null };
+      if (cat.category === 'Mockups') return { project: null, mockup: found, personal: null };
+      if (cat.category === 'Personal') return { project: null, mockup: null, personal: found };
+      return { project: found, mockup: null, personal: null };
     }
   }
-  return { project: null, mockup: null, minigame: null };
+  return { project: null, mockup: null, personal: null };
 }
 
 function WebIcon({ size = 32 }) {
@@ -38,14 +38,14 @@ export default function Projects() {
   const initialItems = getActiveItemFromHash();
   const [selectedProject, setSelectedProject] = useState(initialItems.project);
   const [mockupProject, setMockupProject] = useState(initialItems.mockup);
-  const [minigameProject, setMinigameProject] = useState(initialItems.minigame);
+  const [personalProject, setPersonalProject] = useState(initialItems.personal);
 
   useEffect(() => {
     const handleHash = () => {
       const active = getActiveItemFromHash();
       setSelectedProject(active.project);
       setMockupProject(active.mockup);
-      setMinigameProject(active.minigame);
+      setPersonalProject(active.personal);
     };
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
@@ -54,7 +54,7 @@ export default function Projects() {
   const handleSelectProject = (project) => {
     setSelectedProject(project);
     setMockupProject(null);
-    setMinigameProject(null);
+    setPersonalProject(null);
     window.location.hash = `projects/${project.id}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -62,23 +62,23 @@ export default function Projects() {
   const handleSelectMockup = (mockup) => {
     setMockupProject(mockup);
     setSelectedProject(null);
-    setMinigameProject(null);
+    setPersonalProject(null);
     window.location.hash = `projects/${mockup.id}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleSelectMinigame = (minigame) => {
-    setMinigameProject(minigame);
+  const handleSelectPersonal = (personal) => {
+    setPersonalProject(personal);
     setSelectedProject(null);
     setMockupProject(null);
-    window.location.hash = `projects/${minigame.id}`;
+    window.location.hash = `projects/${personal.id}`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToProjects = () => {
     setSelectedProject(null);
     setMockupProject(null);
-    setMinigameProject(null);
+    setPersonalProject(null);
     window.location.hash = 'projects';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -101,14 +101,54 @@ export default function Projects() {
     );
   }
 
-  if (minigameProject) {
+  if (personalProject) {
     return (
-      <MinigamePage
-        minigame={minigameProject}
+      <PersonalPage
+        personal={personalProject}
         onBack={handleBackToProjects}
       />
     );
   }
+
+  const PolaroidCard = ({ item, onClick, onKeyDown, imgSrc, name, subtitle }) => (
+    <div
+      key={item.id}
+      className={cn(
+        'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
+        'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
+        'hover-card cursor-pointer'
+      )}
+      role="button"
+      tabIndex={0}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
+      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+        {imgSrc ? (
+          <img
+            src={imgSrc}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-base-content/40">
+            <WebIcon size={32} />
+          </div>
+        )}
+      </div>
+      <div className="flex flex-col justify-between flex-1 pt-2">
+        <div>
+          <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate">
+            {name}
+          </h3>
+          <p className="text-[8px] md:text-[10px] mt-0.5 truncate">
+            {subtitle}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
@@ -140,18 +180,15 @@ export default function Projects() {
 
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
-                // Mockups Grid Layout
+                // Mockups Grid Layout (3 cols mobile, 4 cols desktop)
                 <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
                   {items.map((mockup) => (
-                    <div
+                    <PolaroidCard
                       key={mockup.id}
-                      className={cn(
-                        'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
-                        'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                        'hover-card cursor-pointer'
-                      )}
-                      role="button"
-                      tabIndex={0}
+                      item={mockup}
+                      imgSrc={mockup.previewImage}
+                      name={mockup.name}
+                      subtitle={mockup.category}
                       onClick={() => handleSelectMockup(mockup)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
@@ -159,133 +196,49 @@ export default function Projects() {
                           handleSelectMockup(mockup);
                         }
                       }}
-                    >
-                      {/* Polaroid Photo Frame - 16:9 aspect ratio */}
-                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                        {mockup.previewImage ? (
-                          <img
-                            src={mockup.previewImage}
-                            alt={mockup.name}
-                            loading="lazy"
-                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center text-base-content/40">
-                            <WebIcon size={32} />
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Polaroid Bottom Caption */}
-                      <div className="flex flex-col justify-between flex-1 pt-2">
-                        <div>
-                          <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate">
-                            {mockup.name}
-                          </h3>
-                          <p className="text-[8px] md:text-[10px] mt-0.5 truncate">
-                            {mockup.category}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    />
                   ))}
                 </div>
-              ) : category === 'Browser Games' ? (
-                // Browser Games Grid Layout
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-                  {items.map((minigame) => (
-                    <div
-                      key={minigame.id}
-                      className={cn(
-                        'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
-                        'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                        'hover-card cursor-pointer'
-                      )}
-                      role="button"
-                      tabIndex={0}
-                      onClick={() => handleSelectMinigame(minigame)}
+              ) : category === 'Personal' ? (
+                // Personal Grid Layout - always 3 columns
+                <div className="grid grid-cols-3 gap-3">
+                  {items.map((personal) => (
+                    <PolaroidCard
+                      key={personal.id}
+                      item={personal}
+                      imgSrc={personal.previewImage}
+                      name={personal.name}
+                      subtitle={personal.category}
+                      onClick={() => handleSelectPersonal(personal)}
                       onKeyDown={(event) => {
                         if (event.key === 'Enter' || event.key === ' ') {
                           event.preventDefault();
-                          handleSelectMinigame(minigame);
+                          handleSelectPersonal(personal);
                         }
                       }}
-                    >
-                      {/* Polaroid Photo Frame - 16:9 aspect ratio */}
-                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                        {minigame.previewImage ? (
-                          <img
-                            src={minigame.previewImage}
-                            alt={minigame.name}
-                            loading="lazy"
-                            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="flex h-full w-full items-center justify-center text-base-content/40">
-                            <WebIcon size={32} />
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Polaroid Bottom Caption */}
-                      <div className="flex flex-col justify-between flex-1 pt-2">
-                        <div>
-                          <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate">
-                            {minigame.name}
-                          </h3>
-                          <p className="text-[8px] md:text-[10px] mt-0.5 truncate">
-                            {minigame.category}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                    />
                   ))}
                 </div>
               ) : (
-                // Deployed project layout with cover image
-                <ul className="space-y-6 md:space-y-7">
+                // Deployed Grid Layout - always 3 columns, polaroid format
+                <div className="grid grid-cols-3 gap-3">
                   {items.map((project) => (
-                    <li key={project.id} className="flex items-start">
-                      <div className="flex-1 space-y-3">
-                        <div className="flex gap-4 items-center">
-                          {/* Cover Image - Double Border */}
-                          {project.coverImage && (
-                            <div className="flex-shrink-0 w-30 md:w-40 relative group">
-                              <div
-                                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
-                                onClick={() => handleSelectProject(project)}
-                              >
-                                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                                  <img
-                                    src={project.coverImage}
-                                    alt={`${project.title} cover`}
-                                    loading="lazy"
-                                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          )}
-
-                          {/* Text Content */}
-                          <div
-                            className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
-                            onClick={() => handleSelectProject(project)}
-                          >
-                            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors">
-                              {project.title}
-                            </h4>
-                            {project.organization && (
-                              <p className="text-[8px] md:text-[10px] text-base-content/80">
-                                {project.organization}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    <PolaroidCard
+                      key={project.id}
+                      item={project}
+                      imgSrc={project.previewImage || project.coverImage}
+                      name={project.name || project.title}
+                      subtitle={project.category || project.organization}
+                      onClick={() => handleSelectProject(project)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          handleSelectProject(project);
+                        }
+                      }}
+                    />
                   ))}
-                </ul>
+                </div>
               )}
             </div>
           </article>

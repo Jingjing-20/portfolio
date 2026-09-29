@@ -44,13 +44,13 @@ export default async function handler(req, res) {
 
   const now = Date.now();
   const day = 86400000;
+  const MAX_RETENTION_MS = 31 * day;
 
   const periods = {
     '24h': { since: now - day, until: now },
     '7d':  { since: now - 7 * day, until: now },
     '30d': { since: now - 30 * day, until: now },
-    // All-time: use a date far in the past (e.g., Jan 1, 2020)
-    'all': { since: new Date('2020-01-01').getTime(), until: now },
+    'all': { since: now - MAX_RETENTION_MS, until: now },
   };
 
   const tp = teamParam();
@@ -63,20 +63,33 @@ export default async function handler(req, res) {
     error: null,
   };
 
+  function extractCount(response) {
+    if (!response) return null;
+    const d = response.data ?? response;
+    return d.pageviews ?? d.count ?? d.total ?? d.views ?? d.value ?? null;
+  }
+
   try {
-    const [viewsAll, views30d, views7d, views24h] = await Promise.all([
+    const results = await Promise.allSettled([
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['all'].since}&until=${periods['all'].until}${tp}`),
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['30d'].since}&until=${periods['30d'].until}${tp}`),
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['7d'].since}&until=${periods['7d'].until}${tp}`),
       vFetch(`/v1/query/web-analytics/visits/count?projectId=${PROJECT_ID}&since=${periods['24h'].since}&until=${periods['24h'].until}${tp}`),
     ]);
 
-    result.allTimeViews = viewsAll?.data?.pageviews ?? null;
-    result.views30d = views30d?.data?.pageviews ?? null;
-    result.views7d = views7d?.data?.pageviews ?? null;
-    result.views24h = views24h?.data?.pageviews ?? null;
+    const unwrap = (r) => (r.status === 'fulfilled' ? r.value : null);
+    result.allTimeViews = extractCount(unwrap(results[0]));
+    result.views30d = extractCount(unwrap(results[1]));
+    result.views7d = extractCount(unwrap(results[2]));
+    result.views24h = extractCount(unwrap(results[3]));
+
+    const firstRejection = results.find((r) => r.status === 'rejected');
+    if (firstRejection) {
+      console.error('[api/stats] some count(s) failed:', firstRejection.reason?.message ?? firstRejection.reason);
+      if (!result.error) result.error = firstRejection.reason?.message ?? String(firstRejection.reason);
+    }
   } catch (err) {
-    console.error('[api/stats] counts failed:', err.message);
+    console.error('[api/stats] counts completely failed:', err.message);
     result.error = err.message;
   }
 
@@ -85,11 +98,17 @@ export default async function handler(req, res) {
       `/v1/query/web-analytics/visits/aggregate?projectId=${PROJECT_ID}&since=${periods['30d'].since}&until=${periods['30d'].until}&by=requestPath&limit=5${tp}`
     );
 
-    result.topPages = (topPagesRaw?.data ?? [])
+    const rawArr = Array.isArray(topPagesRaw?.data)
+      ? topPagesRaw.data
+      : Array.isArray(topPagesRaw)
+      ? topPagesRaw
+      : topPagesRaw?.rows ?? [];
+    result.topPages = rawArr
       .map((item) => ({
-        path: item.requestPath ?? item.route ?? item.path ?? '/',
-        views: item.pageviews ?? item.count ?? 0,
+        path: item.requestPath ?? item.route ?? item.path ?? item.key ?? '/',
+        views: item.pageviews ?? item.count ?? item.value ?? item.total ?? 0,
       }))
+      .filter((p) => p.views > 0)
       .sort((a, b) => b.views - a.views);
   } catch (err) {
     console.error('[api/stats] topPages failed:', err.message);
