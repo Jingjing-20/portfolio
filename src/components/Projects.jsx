@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { ProjectPage } from '@/components/resume_sections/projects/ProjectPage';
+import { DeployedPage } from '@/components/resume_sections/projects/DeployedPage';
 import { MockupPage } from '@/components/resume_sections/projects/MockupPage';
 import { PersonalPage } from '@/components/resume_sections/projects/PersonalPage';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
@@ -85,7 +85,7 @@ export default function Projects() {
 
   if (selectedProject) {
     return (
-      <ProjectPage
+      <DeployedPage
         project={selectedProject}
         onBack={handleBackToProjects}
       />
@@ -150,6 +150,48 @@ export default function Projects() {
     </div>
   );
 
+  const CoverListItem = ({ item, onClick, coverImage, title, organization }) => (
+    <li key={item.id} className="flex items-start">
+      <div className="flex-1 space-y-3">
+        <div className="flex gap-4 items-center">
+          {/* Cover Image - Double Border */}
+          {coverImage && (
+            <div className="flex-shrink-0 w-30 md:w-40 relative group">
+              <div
+                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
+                onClick={onClick}
+              >
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                  <img
+                    src={coverImage}
+                    alt={`${title} cover`}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Text Content */}
+          <div
+            className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
+            onClick={onClick}
+          >
+            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors">
+              {title}
+            </h4>
+            {organization && (
+              <p className="text-[8px] md:text-[10px] text-base-content/80">
+                {organization}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+
   return (
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
@@ -200,45 +242,33 @@ export default function Projects() {
                   ))}
                 </div>
               ) : category === 'Personal' ? (
-                // Personal Grid Layout - always 3 columns
-                <div className="grid grid-cols-3 gap-3">
+                // Personal: Cover Image + Inline Text List (matches Deployed format)
+                <ul className="space-y-6 md:space-y-7">
                   {items.map((personal) => (
-                    <PolaroidCard
+                    <CoverListItem
                       key={personal.id}
                       item={personal}
-                      imgSrc={personal.previewImage}
-                      name={personal.name}
-                      subtitle={personal.category}
+                      coverImage={personal.coverImage || personal.previewImage}
+                      title={personal.title || personal.name}
+                      organization={personal.organization || personal.type}
                       onClick={() => handleSelectPersonal(personal)}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                          event.preventDefault();
-                          handleSelectPersonal(personal);
-                        }
-                      }}
                     />
                   ))}
-                </div>
+                </ul>
               ) : (
-                // Deployed Grid Layout - always 3 columns, polaroid format
-                <div className="grid grid-cols-3 gap-3">
+                // Deployed: Cover Image + Inline Text List (original format)
+                <ul className="space-y-6 md:space-y-7">
                   {items.map((project) => (
-                    <PolaroidCard
+                    <CoverListItem
                       key={project.id}
                       item={project}
-                      imgSrc={project.previewImage || project.coverImage}
-                      name={project.name || project.title}
-                      subtitle={project.category || project.organization}
+                      coverImage={project.coverImage || project.previewImage}
+                      title={project.title || project.name}
+                      organization={project.organization || project.type}
                       onClick={() => handleSelectProject(project)}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                          event.preventDefault();
-                          handleSelectProject(project);
-                        }
-                      }}
                     />
                   ))}
-                </div>
+                </ul>
               )}
             </div>
           </article>

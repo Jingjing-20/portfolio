@@ -209,6 +209,32 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
     };
   }, []);
 
+  const clampStats = useCallback((data) => {
+    if (!data) return data;
+    let allTime = data.allTimeViews;
+    let v30 = data.views30d;
+    let v7 = data.views7d;
+    let v24 = data.views24h;
+    if (v24 != null) {
+      if (v7 != null && v24 > v7) v7 = v24;
+      if (v30 != null && v7 != null && v7 > v30) v30 = v7;
+      if (allTime != null && v30 != null && v30 > allTime) allTime = v30;
+    }
+    if (v7 != null) {
+      if (v30 != null && v7 > v30) v30 = v7;
+      if (allTime != null && v30 != null && v30 > allTime) allTime = v30;
+    }
+    if (v30 != null && allTime != null && v30 > allTime) {
+      allTime = v30;
+    }
+    if (counterApiViews != null) {
+      if (allTime == null || counterApiViews > allTime) {
+        allTime = counterApiViews;
+      }
+    }
+    return { ...data, allTimeViews: allTime, views30d: v30, views7d: v7, views24h: v24 };
+  }, [counterApiViews]);
+
   // ── Vercel Analytics API (fetched on demand) ──────────────────────────────
   const fetchVercelStats = useCallback(async () => {
     if (stats) return;
@@ -224,7 +250,7 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
           data.views24h != null ||
           (Array.isArray(data.topPages) && data.topPages.length > 0);
         if (hasAnyValue || !data.error) {
-          setStats(data);
+          setStats(clampStats(data));
           setLoading(false); // Vercel data loaded
         }
       }
@@ -234,7 +260,7 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
     } finally {
       setStatsLoading(false);
     }
-  }, [stats]);
+  }, [stats, clampStats]);
 
   const handleOpenViewers = () => setViewersOpen(true);
   const handleOpenViews = () => {

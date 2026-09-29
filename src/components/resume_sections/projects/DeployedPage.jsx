@@ -10,8 +10,8 @@ const backButtonClasses = cn(
   'cursor-pointer hover-theme-switch'
 );
 
-// Full Page view for Project Details with MotionCarousel & plain text description
-export function ProjectPage({ project, onBack, onClose }) {
+// Full Page view for Deployed Project Details with MotionCarousel & plain text description
+export function DeployedPage({ project, onBack, onClose }) {
   const handleBack = () => {
     if (onBack) {
       onBack();
@@ -100,10 +100,33 @@ export function ProjectPage({ project, onBack, onClose }) {
               </div>
             </div>
           )}
+
+          {/* Stack Section */}
+          {Array.isArray(project.stack) && project.stack.length > 0 && (
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Stack :
+              </h3>
+              <div className="space-y-1">
+                {project.stack.map((item, i) => (
+                  <div
+                    key={i}
+                    className={cn(
+                      'flex items-start gap-3 p-1 rounded-md',
+                      'text-[10px] md:text-xs font-medium text-base-content leading-relaxed whitespace-pre-line'
+                    )}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </ScrollReveal>
   );
 }
 
-export default ProjectPage;
+export default DeployedPage;
