@@ -65,6 +65,8 @@ function ViewersDialog({ open, onClose, activeViewers }) {
 }
 
 function ViewsDialog({ open, onClose, stats, statsLoading, counterApiViews }) {
+  const displayTotalViews = stats?.allTimeViews ?? counterApiViews;
+  
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full bg-theme">
@@ -74,74 +76,28 @@ function ViewsDialog({ open, onClose, stats, statsLoading, counterApiViews }) {
           </DialogTitle>
           <hr />
           <DialogDescription className="text-[10px] md:text-xs text-base-content">
-            Page view breakdown across time periods
+            Total page views since deployment
           </DialogDescription>
         </div>
 
-        <div className="space-y-0.5">
-          <StatRow
-            label="All-time Page Views"
-            value={(stats?.allTimeViews ?? counterApiViews) != null ? (stats?.allTimeViews ?? counterApiViews).toLocaleString() : null}
-            loading={statsLoading}
-            accent="text-base-content"
-          />
-          <StatRow
-            label="Views (Last 24h)"
-            value={stats?.views24h != null ? stats.views24h.toLocaleString() : null}
-            loading={statsLoading}
-            accent="text-blue-600 dark:text-blue-400"
-          />
-          <StatRow
-            label="Views (Last 7 days)"
-            value={stats?.views7d != null ? stats.views7d.toLocaleString() : null}
-            loading={statsLoading}
-            accent="text-blue-600 dark:text-blue-400"
-          />
-          <StatRow
-            label="Views (Last 30 days)"
-            value={stats?.views30d != null ? stats.views30d.toLocaleString() : null}
-            loading={statsLoading}
-            accent="text-blue-600 dark:text-blue-400"
-          />
+        <div className="flex items-center justify-between p-2.5 rounded-lg bg-blue-50 dark:bg-blue-900/20 border border-blue-200/60 dark:border-blue-500/20">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] md:text-xs font-semibold text-blue-700 dark:text-blue-300">
+              Total Views
+            </span>
+          </div>
+          {statsLoading ? (
+            <span className="inline-block h-5 w-16 rounded bg-blue-200/50 dark:bg-blue-700/30 animate-pulse" />
+          ) : (
+            <span className="text-sm md:text-base font-extrabold text-blue-600 dark:text-blue-400">
+              {displayTotalViews != null ? displayTotalViews.toLocaleString() : '—'}
+            </span>
+          )}
         </div>
 
-        {/* Top Pages */}
-        {(statsLoading || (stats?.topPages && stats.topPages.length > 0)) && (
-          <div className="space-y-1">
-            <p className="text-[10px] md:text-xs text-base-content/80">
-              Top Pages (30d) :
-            </p>
-            {statsLoading ? (
-              <div className="space-y-1.5">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="flex items-center justify-between gap-2 py-1">
-                    <span className="inline-block h-3 w-24 rounded bg-base-content/10 animate-pulse" />
-                    <span className="inline-block h-3 w-8 rounded bg-base-content/10 animate-pulse" />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-0.5">
-                {stats.topPages.map((page, i) => (
-                  <div key={i} className="flex items-center justify-between gap-2 py-1">
-                    <span className="text-[10px] text-base-content/70 truncate max-w-[60%]">
-                      {page.path ?? page.url ?? `Page ${i + 1}`}
-                    </span>
-                    <span className="text-[10px] font-bold text-base-content shrink-0">
-                      {(page.views ?? page.count ?? 0).toLocaleString()}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {!statsLoading && !stats && (
-          <p className="text-[9px] md:text-[10px] text-base-content/40">
-            Detailed breakdown available after deployment to Vercel.
-          </p>
-        )}
+        <p className="text-[9px] md:text-[10px] text-base-content/50 leading-relaxed">
+          View count tracks all page visits since initial deployment. Visitor identity is anonymized — no personal data is collected or stored.
+        </p>
       </DialogPanel>
     </Dialog>
   );

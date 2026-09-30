@@ -41,28 +41,31 @@ export default function Socials() {
           <h3 className="text-[10px] md:text-xs text-base-content">
             Profiles & Accounts :
           </h3>
+        </div>
+
+        <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-sm space-y-2">
           <p className="text-[8px] md:text-[10px] text-base-content/50">
             Software repositories, professional network, and personal channels
           </p>
-        </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          {contacts.map((contact) => (
-            <button
-              key={contact.id}
-              type="button"
-              className={socialBadgeClasses}
-              onClick={() => setSelectedContact(contact)}
-              aria-label={contact.label}
-            >
-              <span className="flex items-center justify-center size-3.5 md:size-4 shrink-0">
-                {contact.icon}
-              </span>
-              <span className="text-base-content">
-                {contact.label}
-              </span>
-            </button>
-          ))}
+          <div className="flex flex-wrap items-center gap-2">
+            {contacts.map((contact) => (
+              <button
+                key={contact.id}
+                type="button"
+                className={socialBadgeClasses}
+                onClick={() => setSelectedContact(contact)}
+                aria-label={contact.label}
+              >
+                <span className="flex items-center justify-center size-3.5 md:size-4 shrink-0">
+                  {contact.icon}
+                </span>
+                <span className="text-base-content">
+                  {contact.label}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 

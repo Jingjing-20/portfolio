@@ -14,20 +14,23 @@ export default function TechStack() {
         <h3 className="text-[10px] md:text-xs text-base-content">
           {stackCategory.category}
         </h3>
-        <p className="text-[8px] md:text-[10px] text-base-content/50 ">
-          {stackCategory.description}
-        </p>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
-        {stackCategory.tools.map((tool) => (
-          <div
-            key={tool}
-            className={techBadgeClasses}
-          >
-            <span>{tool}</span>
-          </div>
-        ))}
+      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-sm space-y-2">
+        <p className="text-[8px] md:text-[10px] text-base-content/50">
+          {stackCategory.description}
+        </p>
+
+        <div className="flex flex-wrap items-center gap-2">
+          {stackCategory.tools.map((tool) => (
+            <div
+              key={tool}
+              className={techBadgeClasses}
+            >
+              <span>{tool}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

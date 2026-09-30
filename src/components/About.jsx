@@ -93,12 +93,14 @@ export default function About() {
             Open Role :
           </h3>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          {ROLES.map((role) => (
-            <div key={role} className={roleBadgeClasses}>
-              <span>{role}</span>
-            </div>
-          ))}
+        <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-sm">
+          <div className="flex flex-wrap items-center gap-2">
+            {ROLES.map((role) => (
+              <div key={role} className={roleBadgeClasses}>
+                <span>{role}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
