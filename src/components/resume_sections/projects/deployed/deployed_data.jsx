@@ -48,6 +48,8 @@ export const pgsoulpmmsImages = [
   { src: PGSOULPMMS_asset_control, alt: 'Asset Control' },
 ];
 
+export const mdsImages = [];
+
 export const deployedData = [
   {
     id: 'chmsuagrm',
@@ -56,26 +58,52 @@ export const deployedData = [
     type: 'Carlos Hilado Memorial State University - Alijis',
     organization: 'Carlos Hilado Memorial State University - Alijis',
     description:
-      'A centralized web-based academic information system designed to automate grade computation, QR-based attendance tracking, academic record management, and report generation through role-based access control for administrators, faculty, and students.',
+      'A comprehensive academic management system built to centralize and streamline institutional data for Carlos Hilado Memorial State University - Alijis Campus.',
+    purpose:
+      'Optimize academic processes and improve transparency by providing centralized student record management, automated grade calculations, QR-based attendance tracking, and efficient report generation to enhance accuracy and reduce manual work in academic administration.',
     category: 'Academic Information System',
     details: [
-      'Role-based dashboards for administrators, faculty, and students.',
-      'Automatic grade computation reducing manual grading work.',
-      'QR-code-based attendance recording.',
-      'Student self-service access to grades and enrollment status online.',
-      'Email notifications for account verification and password recovery.',
-      'PDF and Excel report generation for official school records.',
-    ],
-    stack: [
-      'Frontend: React, TypeScript, Vite, Tailwind CSS, daisyUI',
-      'Backend: Node.js, Express',
-      'Database: MySQL / PostgreSQL',
-      'Reports: PDF Generation (jsPDF), Excel export (SheetJS)',
-      'Attendance: QR Code scanning library',
+      'Created an academic management system for Carlos Hilado Memorial State University',
+      'Built separate dashboards for administrators, faculty, and students',
+      'Managed student, faculty, enrollment, program, and section records',
+      'Reduced manual grading by adding automatic grade computation',
+      'Allowed students to check academic records, grades and enrollment status online',
+      'Used QR codes to make attendance recording faster and easier',
+      'Sent email notifications for account verification and password recovery',
+      'Generated PDF and Excel reports for school records',
     ],
     images: chmsuagrmImages,
     previewImage: chmsuagrmCover,
     coverImage: chmsuagrmCover,
+  },
+  {
+    id: 'mds',
+    name: 'MDS Memo Distribution',
+    title: 'Memo Distribution and Document Management System',
+    type: 'MDS (Memo Distribution System)',
+    organization: 'Internal Office Workflow',
+    description:
+      'A memo distribution and document management system with QR code generation capabilities for tracking and distributing internal memos and documents across departments and offices.',
+    purpose:
+      'Digitize memo creation and distribution workflows by enabling QR-based document tracking and verification, centralizing memo management and archiving, and facilitating inter-departmental communication with complete audit trails.',
+    category: 'Document Management System',
+    details: [
+      'Memo creation, display, and distribution management',
+      'QR code generation for unique memo tracking and verification',
+      'Secure user authentication and session management',
+      'Department and office organization with employee management',
+      'Employee CRUD operations for managing records and positions',
+      'Email integration for memo distribution via PHPMailer',
+      'PDF report generation using FPDF',
+      'File upload and document attachment management',
+      'Modal-based notification system for user alerts',
+      'Centralized dashboard with memo statistics and activity monitoring',
+      'QR code scanning interface for document verification',
+      'Server-side DataTables processing for efficient data handling',
+    ],
+    images: mdsImages,
+    previewImage: undefined,
+    coverImage: undefined,
   },
   {
     id: 'pgsoulpmms',
@@ -84,23 +112,19 @@ export const deployedData = [
     type: 'PGNO – GSO, Property Management Division',
     organization: 'PGNO – GSO, Property Management Division',
     description:
-      'A provincial-scale property management platform designed to monitor government-owned housing lots and assets, featuring interactive lot mapping, beneficiary and payment tracking, document management, real-time analytics, bulk data processing, and official report generation.',
+      'A digital platform for the Provincial General Services Office - Property Management Division to manage government housing lots and property assets with integrated tracking, documentation, and interactive mapping capabilities.',
+    purpose:
+      'Modernize management of all provincial properties including housing lots, buildings, and land through a centralized system integrating lot status tracking, awardee records, payment transactions, contract monitoring, asset mapping, and legal document organization to ensure transparency, efficient resource allocation, and data-driven oversight.',
     category: 'Property Management Platform',
     details: [
-      'Separate modules for lot management and property asset management.',
-      'Beneficiary tracking, lot assignments, and payment records.',
-      'Interactive Leaflet.js maps showing lot boundaries and locations.',
-      'Document management repository with duplicate transaction detection.',
-      'Real-time analytics dashboards with charts and statistics.',
-      'Bulk Excel import and export operations.',
-      'Print-ready official report generation.',
-    ],
-    stack: [
-      'Frontend: React, TypeScript, Vite, Tailwind CSS, daisyUI',
-      'Mapping: Leaflet.js with interactive lot boundaries',
-      'Backend: Node.js, Express',
-      'Database: MySQL / PostgreSQL',
-      'Data Processing: SheetJS Excel import/export',
+      'Developed a digital platform for managing government housing lots and property assets',
+      'Built separate modules for lot management and property management',
+      'Tracked beneficiaries, lot assignments, and payment records',
+      'Added document management and duplicate transaction checking',
+      'Used Leaflet.js to display lot boundaries and property locations',
+      'Created dashboards with charts and real-time statistics',
+      'Supported bulk operations through Excel import and export features',
+      'Generated print-ready reports for official records',
     ],
     images: pgsoulpmmsImages,
     previewImage: pgsoulpmmsCover,

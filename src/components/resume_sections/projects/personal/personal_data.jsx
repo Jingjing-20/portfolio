@@ -1,31 +1,37 @@
-import wordpopPreview from '@/components/resume_sections/projects/personal/wordpop.webp';
-import atmosWeatherPreview from '@/components/resume_sections/projects/personal/atmos-wather.webp';
+import wordpopPreview from '@/components/resume_sections/projects/personal/wordpop/wordpop.webp';
+import atmosWeatherPreview from '@/components/resume_sections/projects/personal/atmos-weather/atmos-wather.webp';
+
+export const atmosWeatherImages = [
+  { src: atmosWeatherPreview, alt: 'Atmos Weather Preview' },
+];
+
+export const wordpopImages = [
+  { src: wordpopPreview, alt: 'Word Pop ESL Preview' },
+];
 
 export const personalData = [
   {
     id: 'atmos-weather',
     name: 'Atmos Weather',
     title: 'Atmos Weather',
-    type: 'Weather Application',
-    organization: 'odern Weather Dashboard',
+    type: 'Weather Forecasting Web Application',
+    organization: 'Modern Weather Dashboard',
     category: 'Personal / Weather Dashboard',
     description:
-      'A modern weather dashboard showcasing clean React + TypeScript engineering. Displays real-time conditions, 3-hour interval forecasts, and a 5-day outlook for any city via the OpenWeatherMap Classic API. Features a monochrome card aesthetic with light/dark/system themes, mobile-first responsive layout, and graceful loading and error states.',
+      'A modern, responsive weather application that provides current weather information and forecasts using the OpenWeatherMap API. Designed as a portfolio-quality project demonstrating professional development practices.',
+    purpose:
+      'Demonstrate modern web development skills through a production-ready weather application featuring React, TypeScript, API integration, clean architecture, responsive UI/UX, and professional Git workflows with CI/CD deployment.',
     features: [
-      'Current weather card with temp, feels-like, min/max, humidity, wind, and pressure.',
-      'Horizontal hourly forecast strip with 8 time slots and rain probability.',
-      '5-day outlook aggregated from 3-hour forecast data.',
-      'Full-width details grid: Humidity, Wind, Pressure, Visibility, Sunrise, Sunset.',
-      'Debounced city search (400ms) with inline validation.',
-      'Loading skeletons and five distinct user-friendly error states.',
-      'Light / Dark / System theme toggle with smooth view-transitions.',
+      'Real-time weather data for any city worldwide with search functionality',
+      'Detailed weather metrics: temperature, humidity, wind speed, pressure, visibility, sunrise/sunset',
+      '5-day/3-hour forecast with hourly and daily aggregations',
+      'Geolocation support for automatic weather detection',
+      'Mobile-first responsive design with dark mode support',
+      'Loading and error state management for better UX',
+      'API rate limiting with debounced search and response caching',
     ],
-    stack: [
-      'Frontend: React 19, TypeScript 6, Vite 8, Tailwind CSS 4, daisyUI 5, Lucide, Geist Mono',
-      'Data: OpenWeatherMap Classic API (/weather + /forecast, metric)',
-      'Quality: Vitest, Type-aware ESLint (react-x / react-dom / no-misused-promises), React Compiler',
-      'Ops: Vercel hosting + Vercel Analytics, GitHub Actions CI (typecheck → eslint → vitest)',
-    ],
+    livePreview: 'https://atmos-weather-517i.vercel.app/',
+    images: atmosWeatherImages,
     previewImage: atmosWeatherPreview,
     coverImage: atmosWeatherPreview,
   },
@@ -37,23 +43,20 @@ export const personalData = [
     organization: 'Listening & Vocabulary Mini-Game',
     category: 'Personal / Educational Game',
     description:
-      'A vibrant, fast-paced ESL listening and vocabulary mini-game for kids and early learners. Listen to the spoken English word, identify the matching picture, and pop the floating balloon before time runs out.',
+      'An interactive ESL (English as a Second Language) listening and vocabulary mini-game where players listen to spoken words, identify matching pictures, and pop floating balloons before time runs out. Designed for kids and early learners.',
+    purpose:
+      'Provide an engaging, gamified educational experience for children learning English vocabulary by combining audio learning with visual recognition through interactive gameplay with progressive difficulty levels.',
     features: [
-      'Web Speech API pronunciation with child-friendly pitch and pacing.',
-      'Phaser 2D balloon physics with particles, confetti, and pop effects.',
-      'Programmatic Web Audio SFX (chimes, buzzers, melodies) — no audio asset dependencies.',
-      'Three difficulty tiers (Easy 90s / Medium 90s / Hard 75s) with growing vocabulary sets.',
-      'Streak and combo multiplier scoring system.',
-      'Post-round review: score, accuracy, streak records, missed words.',
-      'Fully responsive across desktop, tablet, and mobile touchscreens.',
-    ],
-    stack: [
-      'Frontend: React, TypeScript, Vite, Tailwind CSS, daisyUI',
-      'Game Engine: Phaser 2D',
-      'Audio: Web Speech API (SpeechSynthesis), Web Audio API (custom SFX)',
-      'Ops: Vercel hosting',
+      'Interactive audio pronunciation using Web Speech API with child-friendly pacing',
+      'Phaser game engine with smooth balloon physics, particle effects, and confetti animations',
+      'Programmatic Web Audio SFX without external audio dependencies',
+      '3 difficulty levels: Easy (3-letter words, 90s), Medium (common vocabulary, 90s), Hard (multi-syllable words, 75s)',
+      'Streak and combo multiplier system for bonus points',
+      'Post-round review with score, accuracy, streak records, and missed words list',
+      'Responsive design with automatic canvas scaling for desktop, tablet, and mobile touchscreens',
     ],
     livePreview: 'https://wordpop-virid.vercel.app/',
+    images: wordpopImages,
     previewImage: wordpopPreview,
     coverImage: wordpopPreview,
   },

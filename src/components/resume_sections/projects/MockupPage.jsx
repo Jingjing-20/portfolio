@@ -10,12 +10,6 @@ const backButtonClasses = cn(
   'cursor-pointer hover-theme-switch'
 );
 
-const actionButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border  border-gray-300 dark:border-white/20 hover:border-double',
-  'text-sm md:text-base font-medium cursor-default hover-theme-switch'
-);
-
 export function MockupPage({ mockup, onBack, onClose }) {
   const handleBack = () => {
     if (onBack) {
@@ -27,7 +21,9 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
   if (!mockup) return null;
 
-  const handleOpenLink = () => {
+  const hasLivePreview = Boolean(mockup.livePreview);
+
+  const handleOpenLive = () => {
     if (mockup.livePreview) {
       window.open(mockup.livePreview, '_blank', 'noopener,noreferrer');
     }
@@ -58,6 +54,17 @@ export function MockupPage({ mockup, onBack, onClose }) {
                 </p>
               )}
             </div>
+
+            {hasLivePreview && (
+              <button
+                type="button"
+                onClick={handleOpenLive}
+                className={backButtonClasses}
+                aria-label="View live site"
+              >
+                <SquareArrowOutUpRight size={14} className="h-3 w-3 md:h-4 md:w-4" />
+              </button>
+            )}
           </div>
         </header>
 
@@ -80,21 +87,6 @@ export function MockupPage({ mockup, onBack, onClose }) {
                   />
                 </div>
               </div>
-            </div>
-          )}
-
-          {/* Live Preview Link - Button only */}
-          {mockup.livePreview && (
-            <div>
-              <button
-                type="button"
-                className={actionButtonClasses}
-                onClick={handleOpenLink}
-                aria-label="Open live preview"
-              >
-                <SquareArrowOutUpRight size={14} />
-                <span className="text-[10px] md:text-xs">View Live</span>
-              </button>
             </div>
           )}
 

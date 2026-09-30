@@ -1,4 +1,5 @@
 import { ArrowLeft } from 'lucide-react';
+import { SquareArrowOutUpRight } from '@/components/animate-ui/icons/square-arrow-out-up-right';
 import { MotionCarousel } from '@/components/animate-ui/components/community/motion-carousel';
 import { cn } from '@/lib/utils';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -22,7 +23,15 @@ export function DeployedPage({ project, onBack, onClose }) {
 
   if (!project) return null;
 
-  const hasScreenshots = Array.isArray(project.images) && project.images.length > 0;
+  const hasImages = Array.isArray(project.images) && project.images.length > 0;
+  const hasMultipleImages = Array.isArray(project.images) && project.images.length > 1;
+  const hasLivePreview = Boolean(project.livePreview);
+
+  const handleOpenLive = () => {
+    if (project.livePreview) {
+      window.open(project.livePreview, '_blank', 'noopener,noreferrer');
+    }
+  };
 
   return (
     <ScrollReveal animation="fadeInUp" duration="0.4s">
@@ -49,6 +58,17 @@ export function DeployedPage({ project, onBack, onClose }) {
                 </p>
               )}
             </div>
+
+            {hasLivePreview && (
+              <button
+                type="button"
+                onClick={handleOpenLive}
+                className={backButtonClasses}
+                aria-label="View live site"
+              >
+                <SquareArrowOutUpRight size={14} className="h-3 w-3 md:h-4 md:w-4" />
+              </button>
+            )}
           </div>
         </header>
 
@@ -56,16 +76,23 @@ export function DeployedPage({ project, onBack, onClose }) {
 
         {/* Content - All displayed at once */}
         <div className="space-y-6 md:space-y-8">
-          {/* Screenshots Section with MotionCarousel */}
-          {hasScreenshots && (
-            <div className="space-y-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                Screenshots :
-              </h3>
+          {/* Image Gallery: Carousel if >1, simple preview if exactly 1 */}
+          {hasImages && (
+            hasMultipleImages ? (
               <div className="w-full">
                 <MotionCarousel slides={project.images} />
               </div>
-            </div>
+            ) : (
+              <div className="overflow-hidden border-2  border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
+                  <img
+                    src={project.images[0].src}
+                    alt={project.images[0].alt ?? project.name}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+            )
           )}
 
           {/* Description Section */}
@@ -77,6 +104,18 @@ export function DeployedPage({ project, onBack, onClose }) {
               {project.description}
             </p>
           </div>
+
+          {/* Purpose Section */}
+          {project.purpose && (
+            <div className="space-y-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Purpose :
+              </h3>
+              <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
+                {project.purpose}
+              </p>
+            </div>
+          )}
 
           {/* Key Features Section */}
           {Array.isArray(project.details) && project.details.length > 0 && (
