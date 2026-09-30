@@ -49,6 +49,13 @@ const buttonClasses = cn(
   'text-xs md:text-sm cursor-pointer hover-theme-switch select-none'
 );
 
+const invertedButtonClasses = cn(
+  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2.5 md:p-3',
+  'bg-base-content text-base-100 border border-solid border-base-content hover:border-double',
+  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+  'text-xs md:text-sm cursor-pointer hover:opacity-90 transition-opacity select-none'
+);
+
 const techBadgeClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
@@ -170,7 +177,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => handleNavigate('about')}
-              className={cn(buttonClasses, 'font-semibold')}
+              className={cn(invertedButtonClasses, 'font-semibold')}
               aria-label="View Projects"
             >
               <span>Explore</span>

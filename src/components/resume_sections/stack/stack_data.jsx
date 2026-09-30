@@ -7,7 +7,7 @@ export const TECH_STACK = [
   {
     category: 'Databases & Backend Services',
     description: 'Relational databases, SQL querying, and cloud-hosted data services.',
-    tools: ['MySQL', 'PostgreSQL', 'Supabase'],
+    tools: ['MySQL', 'PostgreSQL', 'SQLite', 'Firebase', 'Supabase'],
   },
   {
     category: 'Networking & Infrastructure',

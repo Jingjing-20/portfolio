@@ -76,7 +76,7 @@ export const deployedData = [
     previewImage: chmsuagrmCover,
     coverImage: chmsuagrmCover,
   },
-  {
+  /*{
     id: 'mds',
     name: 'MDS Memo Distribution',
     title: 'Memo Distribution and Document Management System',
@@ -104,7 +104,7 @@ export const deployedData = [
     images: mdsImages,
     previewImage: undefined,
     coverImage: undefined,
-  },
+  },*/
   {
     id: 'pgsoulpmms',
     name: 'PGSO Lot & Property',

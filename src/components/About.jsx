@@ -93,7 +93,7 @@ export default function About() {
             Open Role :
           </h3>
         </div>
-        <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-sm">
+        <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200">
           <div className="flex flex-wrap items-center gap-2">
             {ROLES.map((role) => (
               <div key={role} className={roleBadgeClasses}>
@@ -116,7 +116,7 @@ export default function About() {
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-xs md:text-sm text-base-content font-medium">
+            <h4 className="text-xs md:text-sm text-base-content font-bold">
               Bachelor of Science in Information Technology
             </h4>
             <p className="text-[10px] md:text-xs text-base-content/60">

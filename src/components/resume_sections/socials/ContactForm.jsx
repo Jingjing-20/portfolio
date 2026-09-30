@@ -87,16 +87,19 @@ export default function ContactForm() {
   return (
     <div className="pt-2">
       {/* Category Title & Description */}
-      <div className="mb-3">
+      <div className="mb-2">
         <h3 className="text-[10px] md:text-xs text-base-content">
           Send a Message : <span className="font-extrabold text-[10px] md:text-xs">jingjing052704@gmail.com</span>
         </h3>
+      </div>
+
+      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200 space-y-3">
         <p className="text-[8px] md:text-[10px] text-base-content/50">
           Fill out the form below to send a message directly to my inbox
         </p>
-      </div>
 
-      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-600 dark:border-gray-300 shadow-xl space-y-3">
+        <hr />
+
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">

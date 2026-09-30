@@ -16,10 +16,12 @@ export default function TechStack() {
         </h3>
       </div>
 
-      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-sm space-y-2">
+      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200 space-y-2">
         <p className="text-[8px] md:text-[10px] text-base-content/50">
           {stackCategory.description}
         </p>
+
+        <hr />
 
         <div className="flex flex-wrap items-center gap-2">
           {stackCategory.tools.map((tool) => (

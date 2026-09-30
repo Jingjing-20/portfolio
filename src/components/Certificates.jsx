@@ -87,7 +87,7 @@ export default function Certificates() {
                       <div className="flex-1 flex flex-col">
                         {/* Top Row: Icon (left) + Year (right) */}
                         <div className="flex justify-between w-full mb-3">
-                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1 shadow-sm">
+                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1 shadow-sm grayscale">
                             {CertIconComp ? (
                               <CertIconComp />
                             ) : (
