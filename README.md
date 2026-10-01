@@ -2,50 +2,67 @@
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
+![Motion](https://img.shields.io/badge/Motion-FF0055?style=for-the-badge&logo=framer&logoColor=white)
 
-A modern, responsive personal portfolio website.
-
----
-
-## Sections
-
-- **About** - Personal introduction with background, education, and quick-access social links
-- **Stack** - Technical skills and tools used across development
-- **Experience** - Professional internship experience with key contributions and responsibilities
-- **Projects** - Showcase of deployed systems, UI/UX mockups, and browser-based games
-- **Certificates** - Verified credentials organized by domain: networking, web technologies, and professional development
+A modern, interactive personal portfolio website showcasing professional experience, technical skills, projects, and certifications with smooth animations and responsive design.
 
 ---
 
-## Links
+## 📋 Sections
+
+- **Home** - Landing page with portfolio overview and quick navigation to key sections
+- **About** - Personal introduction, background, education, and professional focus areas
+- **Skills** - Comprehensive tech stack including web development, databases, networking, UI/UX tools, and DevOps
+- **Experience** - Professional work history including current roles, internships, and freelance projects
+- **Projects** - Deployed systems for government offices and state universities, plus personal projects and UI/UX mockups
+- **Certifications** - Verified credentials in networking, web technologies, AI tools, and professional development
+- **Socials** - Contact form and social media profiles for professional networking
+
+---
+
+## 🔗 Links
 
 - **Live Demo**: [portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)
 - **GitHub**: [Jingjing-20](https://github.com/Jingjing-20)
-- **LinkedIn**: [Gian Carlo Ulep](https://linkedin.com/in/gian-carlo-ulep)
+- **LinkedIn**: [Gian Carlo Ulep](https://www.linkedin.com/in/gian-carlo-ulep-003490346/)
 - **Email**: [jingjing0527004@gmail.com](mailto:jingjing0527004@gmail.com)
 
 ---
 
-## Getting Started
+## 🛠️ Built With
 
-### Prerequisites
-- Node.js (v16+)
-- npm or yarn
+- **React** - UI component library
+- **Vite** - Build tool and development server
+- **JavaScript** - Programming language
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Re-usable component library
+- **Motion (Framer Motion)** - Animation library
+- **Radix UI** - Headless UI primitives
+- **Lucide React** - Icon library
 
-### Installation
+---
 
-```bash
-# Clone the repository
-git clone https://github.com/Jingjing-20/portfolio.git
+## 📊 Features
 
-# Navigate to the project directory
-cd portfolio
+- ⚡ Fast and optimized with Vite
+- 🎨 Modern UI with Tailwind CSS and shadcn/ui components
+- 🌓 Dark/Light theme support
+- 📱 Fully responsive design
+- ✨ Smooth animations with Motion
+- 🎯 Interactive elements with tilt effects
+- 📈 Real-time analytics integration
+- 🔒 Privacy-focused visitor tracking
+- 📧 Functional contact form with EmailJS
 
-# Install dependencies
-npm install
+---
 
-# Start the development server
-npm run dev
-```
+## 📄 License
+
+This project is open source and available for reference. Please respect the personal content and provide attribution if you use any part of this design.
+
+---
+
+© 2026 Gian Carlo N. Ulep · Full-Stack Developer

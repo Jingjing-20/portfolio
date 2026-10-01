@@ -63,7 +63,7 @@ export const EXPERIENCES = [
     description: 'Deployed and maintained a comprehensive lot allocation and property monitoring system utilized by government office personnel, featuring interactive mapping, document management, Excel reporting, real-time dashboards, and role-based access control. Delivered first-line technical support to resolve access issues, data discrepancies, and system errors within a live operational environment. Monitored system performance to identify functionality issues and documented recurring problems, resolutions, and user guidance to ensure knowledge continuity and facilitate ongoing system maintenance.',
     skills: [
       'Full Stack Development',
-      'Geographic Information Systems (GIS) Integration',
+      'GIS data integration using GeoJSON and Leaflet',
       'Document Management Systems',
       'Data Visualization & Reporting',
       'System Security & Access Control',

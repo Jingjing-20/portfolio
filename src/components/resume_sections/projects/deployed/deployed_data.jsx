@@ -121,7 +121,7 @@ export const deployedData = [
       'Built separate modules for lot management and property management',
       'Tracked beneficiaries, lot assignments, and payment records',
       'Added document management and duplicate transaction checking',
-      'Used Leaflet.js to display lot boundaries and property locations',
+      'Used Leaflet.js to display lot boundaries and property locations via imported GeoJSON',
       'Created dashboards with charts and real-time statistics',
       'Supported bulk operations through Excel import and export features',
       'Generated print-ready reports for official records',
