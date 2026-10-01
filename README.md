@@ -1,4 +1,4 @@
-Gian Carlo N. Ulep - Portfolio
+# Gian Carlo N. Ulep - Portfolio
 
 [portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)
 
