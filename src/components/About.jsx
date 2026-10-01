@@ -6,9 +6,8 @@ import {
 import { cn } from '@/lib/utils';
 
 const roleBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center p-2 rounded-sm',
-  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover-badge',
-  'text-[10px] md:text-xs cursor-default text-base-content'
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
 );
 
 const ROLES = [
@@ -32,10 +31,10 @@ export default function About() {
       className="scroll-mt-24 max-w-2xl mx-auto"
     >
       {/* Header */}
-      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+      <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            About
+            About Me
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
             Get to know me better
@@ -43,7 +42,7 @@ export default function About() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      <hr className="mb-3 md:mb-6 mt-3" />
 
       {/* Image + Name + Description */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 md:gap-6 w-full">

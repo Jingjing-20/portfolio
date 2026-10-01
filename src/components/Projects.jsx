@@ -150,7 +150,7 @@ export default function Projects() {
     </div>
   );
 
-  const CoverListItem = ({ item, onClick, coverImage, title, organization }) => (
+  const CoverListItem = ({ item, onClick, coverImage, title, organization, techStack }) => (
     <li key={item.id} className="flex items-start">
       <div className="flex-1 space-y-3">
         <div className="flex gap-4 items-center">
@@ -186,6 +186,21 @@ export default function Projects() {
                 {organization}
               </p>
             )}
+            {/* Tech Stack Icons */}
+            {/* Temporarily hidden - uncomment to show tech stack
+            {techStack && techStack.length > 0 && (
+              <div className="flex flex-wrap gap-1 mt-1">
+                {techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-[7px] md:text-[8px] px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+            */}
           </div>
         </div>
       </div>
@@ -195,10 +210,10 @@ export default function Projects() {
   return (
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
-      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+      <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Projects
+            Built Projects
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
             Selected work and personal builds
@@ -206,7 +221,7 @@ export default function Projects() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      <hr className="mb-3 md:mb-6 mt-3" />
 
       <div className="space-y-6 md:space-y-8">
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
@@ -251,6 +266,7 @@ export default function Projects() {
                       coverImage={personal.coverImage || personal.previewImage}
                       title={personal.title || personal.name}
                       organization={personal.organization || personal.type}
+                      techStack={personal.techStack}
                       onClick={() => handleSelectPersonal(personal)}
                     />
                   ))}
@@ -265,6 +281,7 @@ export default function Projects() {
                       coverImage={project.coverImage || project.previewImage}
                       title={project.title || project.name}
                       organization={project.organization || project.type}
+                      techStack={project.techStack}
                       onClick={() => handleSelectProject(project)}
                     />
                   ))}

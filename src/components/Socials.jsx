@@ -5,10 +5,10 @@ import ContactForm from '@/components/resume_sections/socials/ContactForm';
 import { cn } from '@/lib/utils';
 
 const socialBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-1.5 md:gap-2 p-2 rounded-sm',
-  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-[10px] md:text-xs cursor-pointer hover-badge'
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-pointer',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0',
+  'shadow-xl inline-flex items-center justify-center',
+  'focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2'
 );
 
 const SOCIAL_ITEMS = ['github', 'linkedin', 'instagram', 'facebook', 'threads', 'twitter'];
@@ -22,10 +22,10 @@ export default function Socials() {
   return (
     <section id="socials" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
-      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+      <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Socials
+            Social Links
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
             Connect, collaborate, and reach out with me across platforms
@@ -33,7 +33,7 @@ export default function Socials() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      <hr className="mb-3 md:mb-6 mt-3" />
 
       {/* Single Category Social Badges */}
       <div>
@@ -59,9 +59,6 @@ export default function Socials() {
                 onClick={() => setSelectedContact(contact)}
                 aria-label={contact.label}
               >
-                <span className="flex items-center justify-center size-3.5 md:size-4 shrink-0">
-                  {contact.icon}
-                </span>
                 <span className="text-base-content">
                   {contact.label}
                 </span>

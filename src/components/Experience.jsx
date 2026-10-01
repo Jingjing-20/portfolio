@@ -132,10 +132,10 @@ export default function Experience() {
 
   return (
     <section id="experience" className="scroll-mt-24 max-w-2xl mx-auto">
-      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+      <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Experience
+            Work Experience
           </p>
 
           <p className="text-[10px] md:text-xs text-base-content/50">
@@ -144,7 +144,7 @@ export default function Experience() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      <hr className="mb-3 md:mb-6 mt-3" />
 
       <Timeline
         defaultValue={1}

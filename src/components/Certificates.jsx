@@ -29,10 +29,10 @@ export default function Certificates() {
   return (
     <section id="certificates" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
-      <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+      <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Certifications
+            Credentials Earned
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
             Training programs, skill assessments, webinars, and earned credentials
@@ -40,7 +40,7 @@ export default function Certificates() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+      <hr className="mb-3 md:mb-6 mt-3" />
 
       {/* Categorized Certificates */}
       <div className="space-y-6 md:space-y-8">
@@ -86,7 +86,7 @@ export default function Certificates() {
                     >
                       <div className="flex-1 flex flex-col">
                         {/* Top Row: Icon (left) + Year (right) */}
-                        <div className="flex justify-between w-full mb-3">
+                        <div className="flex justify-between items-start w-full mb-3">
                           <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1 shadow-sm grayscale">
                             {CertIconComp ? (
                               <CertIconComp />
@@ -95,7 +95,7 @@ export default function Certificates() {
                             )}
                           </div>
                           {year && (
-                            <span className="text-[8px] md:text-[9px] text-base-content/60 font-medium">
+                            <span className="text-[7px] md:text-[8px] px-1 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale whitespace-nowrap shrink-0">
                               {year}
                             </span>
                           )}

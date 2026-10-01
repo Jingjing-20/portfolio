@@ -89,7 +89,7 @@ export default function ContactForm() {
       {/* Category Title & Description */}
       <div className="mb-2">
         <h3 className="text-[10px] md:text-xs text-base-content">
-          Send a Message : <span className="font-extrabold text-[10px] md:text-xs">jingjing052704@gmail.com</span>
+          Send a Message : <span className="font-extrabold text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0">jingjing052704@gmail.com</span>
         </h3>
       </div>
 

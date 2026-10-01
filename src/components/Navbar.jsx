@@ -73,43 +73,43 @@ function Pointer({ className = '', size = '1em' }) {
 const NAV_ITEMS = [
   {
     value: 'home',
-    label: 'Home',
+    label: 'Home Page',
     outlined: <HomeOutlinedIcon size={14} className="shrink-0" />,
     filled: <HomeOutlinedIcon size={14} className="shrink-0" />,
   },
   {
     value: 'about',
-    label: 'About',
+    label: 'About Me',
     outlined: <AboutOutlinedIcon size={14} className="shrink-0" />,
     filled: <AboutFilledIcon size={14} className="shrink-0" />,
   },
   {
     value: 'stack',
-    label: 'Skills',
+    label: 'Technical Skills',
     outlined: <SkillsOutlinedIcon size={14} className="shrink-0" />,
     filled: <SkillsFilledIcon size={14} className="shrink-0" />,
   },
   {
     value: 'experience',
-    label: 'Experience',
+    label: 'Work Experience',
     outlined: <ExperienceOutlinedIcon size={14} className="shrink-0" />,
     filled: <ExperienceFilledIcon size={14} className="shrink-0" />,
   },
   {
     value: 'projects',
-    label: 'Projects',
+    label: 'Built Projects',
     outlined: <ProjectsOutlinedIcon size={14} className="shrink-0" />,
     filled: <ProjectsFilledIcon size={14} className="shrink-0" />,
   },
   {
     value: 'certificates',
-    label: 'Certifications',
+    label: 'Credentials Earned',
     outlined: <CertificateOutlinedIcon size={14} className="shrink-0" />,
     filled: <CertificateFilledIcon size={14} className="shrink-0" />,
   },
   {
     value: 'socials',
-    label: 'Socials',
+    label: 'Social Links',
     outlined: <SocialOutlinedIcon size={14} className="shrink-0" />,
     filled: <SocialFilledIcon size={14} className="shrink-0" />,
   },
@@ -318,10 +318,10 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <div className="flex items-center justify-between gap-1">
               <a
                 href="mailto:jingjing052704@gmail.com"
-                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
+                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-[10px] md:text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
                 title="Send email to jingjing052704@gmail.com"
               >
-                <span className="truncate font-extrabold">
+                <span className="truncate font-extrabold text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0">
                   jingjing052704@gmail.com
                 </span>
               </a>
@@ -403,9 +403,9 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                 <div className="flex items-center justify-between gap-2">
                   <a
                     href="mailto:jingjing052704@gmail.com"
-                    className="flex items-center gap-2 min-w-0 flex-1 text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
+                    className="flex items-center gap-2 min-w-0 flex-1 text-[10px] md:text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
                   >
-                    <span className="font-extrabold truncate">
+                    <span className="truncate">
                       jingjing052704@gmail.com
                     </span>
                   </a>

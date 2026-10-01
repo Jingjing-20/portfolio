@@ -57,9 +57,14 @@ const invertedButtonClasses = cn(
 );
 
 const techBadgeClasses = cn(
-  'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2',
-  'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-  'text-[10px] md:text-xs cursor-pointer hover-badge'
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0',
+  'shadow-xl inline-flex items-center justify-center'
+);
+
+const sectionBadgeClasses = cn(
+  'text-[9px] md:text-[10px] px-2 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale whitespace-nowrap',
+  'transition-all duration-200 group-hover:bg-base-content/20 group-hover:grayscale-0'
 );
 
 const sectionCardClasses = cn(
@@ -70,32 +75,32 @@ const sectionCardClasses = cn(
 const PORTFOLIO_SECTIONS = [
   {
     id: 'projects',
-    title: 'Projects',
-    badge: 'Showcase',
+    title: 'Built Projects',
+    badge: 'Built Projects',
     description: 'Explore featured software projects, web applications, and interactive digital experiences.',
     icon: ProjectsOutlinedIcon,
     accent: '#00bcd4',
   },
   {
     id: 'stack',
-    title: 'Skills',
-    badge: 'Tech Stack',
+    title: 'Technical Skills',
+    badge: 'Technical Skills',
     description: 'Overview of technical proficiencies, development tools, and core engineering capabilities.',
     icon: SkillsOutlinedIcon,
     accent: '#f7df1e',
   },
   {
     id: 'experience',
-    title: 'Experience',
-    badge: 'Career Path',
+    title: 'Work Experience',
+    badge: 'Work Experience',
     description: 'Professional background, practical industry roles, and collaborative work history.',
     icon: ExperienceOutlinedIcon,
     accent: '#44a8b3',
   },
   {
     id: 'certificates',
-    title: 'Certifications',
-    badge: 'Credentials',
+    title: 'Credentials Earned',
+    badge: 'Credentials Earned',
     description: 'Accredited certifications, technical skill assessments, and professional training.',
     icon: CertificateOutlinedIcon,
     accent: '#a855f7',
@@ -233,7 +238,7 @@ export default function Home() {
                         {sec.title}
                       </h3>
                     </div>
-                    <span className="text-[9px] md:text-[10px] px-2 py-0.5 rounded-full bg-base-300/60 text-base-content/70 font-medium whitespace-nowrap">
+                    <span className={sectionBadgeClasses}>
                       {sec.badge}
                     </span>
                   </div>
@@ -264,13 +269,10 @@ export default function Home() {
                 <div
                   key={tool.name}
                   className={techBadgeClasses}
-                  style={{ '--brand-color': tool.color }}
                   title={tool.name}
                   aria-label={tool.name}
                 >
-                  <span className="flex items-center justify-center size-3.5 md:size-4 shrink-0">
-                    {tool.icon}
-                  </span>
+                  <span>{tool.name}</span>
                 </div>
               ))}
             </div>

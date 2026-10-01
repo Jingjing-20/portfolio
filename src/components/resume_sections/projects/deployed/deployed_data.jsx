@@ -62,6 +62,7 @@ export const deployedData = [
     purpose:
       'Optimize academic processes and improve transparency by providing centralized student record management, automated grade calculations, QR-based attendance tracking, and efficient report generation to enhance accuracy and reduce manual work in academic administration.',
     category: 'Academic Information System',
+    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript'],
     details: [
       'Created an academic management system for Carlos Hilado Memorial State University',
       'Built separate dashboards for administrators, faculty, and students',
@@ -87,6 +88,7 @@ export const deployedData = [
     purpose:
       'Digitize memo creation and distribution workflows by enabling QR-based document tracking and verification, centralizing memo management and archiving, and facilitating inter-departmental communication with complete audit trails.',
     category: 'Document Management System',
+    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript'],
     details: [
       'Memo creation, display, and distribution management',
       'QR code generation for unique memo tracking and verification',
@@ -116,6 +118,7 @@ export const deployedData = [
     purpose:
       'Modernize management of all provincial properties including housing lots, buildings, and land through a centralized system integrating lot status tracking, awardee records, payment transactions, contract monitoring, asset mapping, and legal document organization to ensure transparency, efficient resource allocation, and data-driven oversight.',
     category: 'Property Management Platform',
+    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'Leaflet.js'],
     details: [
       'Developed a digital platform for managing government housing lots and property assets',
       'Built separate modules for lot management and property management',

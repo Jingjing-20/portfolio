@@ -1,7 +1,8 @@
-import PGNOImg from '@/components/resume_sections/experience/pgno.png';
-import PanasiaticImg from '@/components/resume_sections/experience/panasiatic.png';
+import PGNOImg from '@/components/resume_sections/experience/pgno.webp';
+import PanasiaticImg from '@/components/resume_sections/experience/panasiatic.webp';
 import ConcentrixImg from '@/components/resume_sections/experience/concentrix.webp';
 import FreelanceImg from '@/components/resume_sections/experience/freelance.webp';
+import MobileLegendsImg from '@/components/resume_sections/experience/mobile-legends.webp';
 
 export const EXPERIENCES = [
       /*
@@ -91,6 +92,28 @@ export const EXPERIENCES = [
       'Device & Connectivity Troubleshooting',
       'Queue Management & Fast-Paced Resolution',
       'Professional Communication'
+    ],
+  },
+  {
+    step: 5,
+    company: 'Mobile Legends: Bang Bang',
+    logo: MobileLegendsImg,
+    logoInitials: 'MLBB',
+    employmentType: 'Competitive Gaming',
+    durationMonths: '',
+    location: 'Online',
+    workMode: 'Remote',
+    role: 'EXP Laner',
+    dateRange: 'Sep 2019 – Present · 7 yrs 1 mo',
+    description: 'Competitive player specializing in the EXP Lane role, mastering solo lane mechanics, map awareness, and strategic decision-making. Developed strong skills in 1v1 combat, split-pushing, team fight initiation, and objective control while maintaining consistent performance across ranked matches.',
+    skills: [
+      'Strategic Planning',
+      'Decision Making Under Pressure',
+      'Team Coordination',
+      'Map Awareness & Positioning',
+      'Objective Control & Timing',
+      '1v1 Combat & Lane Management',
+      'Adaptability & Meta Understanding'
     ],
   },
 ];
