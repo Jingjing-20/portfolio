@@ -192,7 +192,7 @@ export default function Home() {
             <h2 className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-base-content/60">
               Portfolio Overview
             </h2>
-            <span className="text-[9px] md:text-[11px] text-base-content/40">
+            <span className="text-[8px] md:text-[10px] text-base-content/40">
               Select any section to explore
             </span>
           </div>
@@ -245,7 +245,7 @@ export default function Home() {
             <span className="text-[10px] md:text-xs uppercase tracking-wider text-base-content/50">
               Built With
             </span>
-            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+            <div className="px-9 flex flex-wrap items-center justify-center gap-2 md:gap-3">
               {POWERED_BY_STACK.map((tool) => (
                 <div
                   key={tool.name}
