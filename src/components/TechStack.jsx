@@ -12,7 +12,7 @@ export default function TechStack() {
     <div key={stackCategory.category}>
       <div className="mb-2">
         <h3 className="text-[10px] md:text-xs text-base-content">
-          {stackCategory.category}
+          {stackCategory.category} :
         </h3>
       </div>
 

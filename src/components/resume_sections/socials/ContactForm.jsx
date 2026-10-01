@@ -104,7 +104,7 @@ export default function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
               <label htmlFor="name" className="block text-[8px] md:text-[10px] text-base-content/80">
-                Your Name <span className="text-error font-bold">*</span>
+                Your Name :
               </label>
               <input
                 id="name"
@@ -120,7 +120,7 @@ export default function ContactForm() {
 
             <div className="space-y-1">
               <label htmlFor="email" className="block text-[8px] md:text-[10px] text-base-content/80">
-                Your Email <span className="text-error font-bold">*</span>
+                Your Email :
               </label>
               <input
                 id="email"
@@ -137,7 +137,7 @@ export default function ContactForm() {
 
           <div className="space-y-1">
             <label htmlFor="subject" className="block text-[8px] md:text-[10px] text-base-content/80">
-              Subject <span className="text-error font-bold">*</span>
+              Subject :
             </label>
             <input
               id="subject"
@@ -153,7 +153,7 @@ export default function ContactForm() {
 
           <div className="space-y-1">
             <label htmlFor="message" className="block text-[8px] md:text-[10px] text-base-content/80">
-              Message <span className="text-error font-bold">*</span>
+              Message :
             </label>
             <textarea
               id="message"
@@ -167,7 +167,7 @@ export default function ContactForm() {
             />
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 pt-1">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="submit"
               disabled={status === 'submitting'}
