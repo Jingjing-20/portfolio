@@ -2,13 +2,6 @@ import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Send } from 'lucide-react';
 
-import reactSvg from '@/components/resume_sections/home/powered_by/react.svg';
-import viteSvg from '@/components/resume_sections/home/powered_by/vitejs.svg';
-import jsSvg from '@/components/resume_sections/home/powered_by/javascript.svg';
-import tailwindSvg from '@/components/resume_sections/home/powered_by/file-type-tailwind.svg';
-import shadcnSvg from '@/components/resume_sections/home/powered_by/shadcn-ui.svg';
-import motionSvg from '@/components/resume_sections/home/powered_by/motion.svg';
-
 function ProjectsOutlinedIcon({ className = '', size = '1em' }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -110,33 +103,21 @@ const PORTFOLIO_SECTIONS = [
 const POWERED_BY_STACK = [
   {
     name: 'React',
-    color: '#00bcd4',
-    icon: <img src={reactSvg} alt="React" className="tool-icon-img" />,
   },
   {
     name: 'Vite',
-    color: '#000000',
-    icon: <img src={viteSvg} alt="Vite" className="tool-icon-img" />,
   },
   {
     name: 'JavaScript',
-    color: '#f7df1e',
-    icon: <img src={jsSvg} alt="JavaScript" className="tool-icon-img" />,
   },
   {
     name: 'Tailwind CSS',
-    color: '#44a8b3',
-    icon: <img src={tailwindSvg} alt="Tailwind CSS" className="tool-icon-img" />,
   },
   {
     name: 'shadcn/ui',
-    color: '#000000',
-    icon: <img src={shadcnSvg} alt="shadcn/ui" className="tool-icon-img tool-icon-monochrome" />,
   },
   {
-    name: 'Motion',
-    color: '#ff0055',
-    icon: <img src={motionSvg} alt="Motion" className="tool-icon-img tool-icon-monochrome" />,
+    name: 'Motion One',
   },
 ];
 
