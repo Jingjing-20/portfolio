@@ -1,6 +1,7 @@
-# Gian Carlo N. Ulep - Portfolio
+Gian Carlo N. Ulep - Portfolio
 
-**[portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)**
+[portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)
+
 ---
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -16,7 +17,7 @@ A modern, interactive personal portfolio website showcasing professional experie
 
 ---
 
-## Sections
+Sections
 
 - **Home** - Landing page with portfolio overview and quick navigation to key sections
 - **About** - Personal introduction, background, education, and professional focus areas
@@ -28,7 +29,7 @@ A modern, interactive personal portfolio website showcasing professional experie
 
 ---
 
-## ️ Built With
+Built With
 
 - **React** - UI component library
 - **Vite** - Build tool and development server
