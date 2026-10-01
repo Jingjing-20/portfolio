@@ -1,5 +1,7 @@
 # Gian Carlo N. Ulep - Portfolio
 
+**[portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)**
+
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
@@ -23,16 +25,7 @@ A modern, interactive personal portfolio website showcasing professional experie
 
 ---
 
-## 🔗 Links
-
-- **Live Demo**: [portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)
-- **GitHub**: [Jingjing-20](https://github.com/Jingjing-20)
-- **LinkedIn**: [Gian Carlo Ulep](https://www.linkedin.com/in/gian-carlo-ulep-003490346/)
-- **Email**: [jingjing0527004@gmail.com](mailto:jingjing0527004@gmail.com)
-
----
-
-## 🛠️ Built With
+## ️ Built With
 
 - **React** - UI component library
 - **Vite** - Build tool and development server
@@ -42,20 +35,6 @@ A modern, interactive personal portfolio website showcasing professional experie
 - **Motion (Framer Motion)** - Animation library
 - **Radix UI** - Headless UI primitives
 - **Lucide React** - Icon library
-
----
-
-## 📊 Features
-
-- ⚡ Fast and optimized with Vite
-- 🎨 Modern UI with Tailwind CSS and shadcn/ui components
-- 🌓 Dark/Light theme support
-- 📱 Fully responsive design
-- ✨ Smooth animations with Motion
-- 🎯 Interactive elements with tilt effects
-- 📈 Real-time analytics integration
-- 🔒 Privacy-focused visitor tracking
-- 📧 Functional contact form with EmailJS
 
 ---
 
