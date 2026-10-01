@@ -1,6 +1,7 @@
 # Gian Carlo N. Ulep - Portfolio
 
 **[portfolio-giancarlo.vercel.app](https://portfolio-giancarlo.vercel.app)**
+---
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
@@ -9,11 +10,13 @@
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-000000?style=for-the-badge&logo=shadcnui&logoColor=white)
 ![Motion](https://img.shields.io/badge/Motion-FF0055?style=for-the-badge&logo=framer&logoColor=white)
 
+---
+
 A modern, interactive personal portfolio website showcasing professional experience, technical skills, projects, and certifications with smooth animations and responsive design.
 
 ---
 
-## 📋 Sections
+## Sections
 
 - **Home** - Landing page with portfolio overview and quick navigation to key sections
 - **About** - Personal introduction, background, education, and professional focus areas
@@ -35,13 +38,3 @@ A modern, interactive personal portfolio website showcasing professional experie
 - **Motion (Framer Motion)** - Animation library
 - **Radix UI** - Headless UI primitives
 - **Lucide React** - Icon library
-
----
-
-## 📄 License
-
-This project is open source and available for reference. Please respect the personal content and provide attribution if you use any part of this design.
-
----
-
-© 2026 Gian Carlo N. Ulep · Full-Stack Developer
