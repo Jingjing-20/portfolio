@@ -35,7 +35,7 @@ export default function Certificates() {
             Credentials Earned
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Training programs, skill assessments, webinars, and earned credentials
+            Certifications and technical training
           </p>
         </div>
       </header>

@@ -44,7 +44,7 @@ export default function TechStack() {
             Technical Skills
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Technologies, software development, networking, systems, and technical competencies
+            Languages, frameworks, and tools
           </p>
         </div>
       </header>

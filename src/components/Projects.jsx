@@ -216,7 +216,7 @@ export default function Projects() {
             Built Projects
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Selected work and personal builds
+            Web applications and personal projects
           </p>
         </div>
       </header>

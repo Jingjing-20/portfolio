@@ -143,8 +143,7 @@ function ThemeToggle({ size = 'md', className = '' }) {
       role="radiogroup"
       aria-label="Theme"
       className={cn(
-        'inline-flex items-center gap-0.5 rounded-full bg-textured p-0.5 shadow-xl',
-        CHROME,
+        'inline-flex items-center gap-1',
         className
       )}
     >
@@ -163,7 +162,8 @@ function ThemeToggle({ size = 'md', className = '' }) {
             style={isActive ? { viewTransitionName: `theme-toggle-${value}` } : undefined}
             className={cn(
               buttonSize,
-              'inline-flex items-center justify-center rounded-full cursor-pointer',
+              'inline-flex items-center justify-center rounded-md cursor-pointer transition-colors',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20 shadow-xl',
               TEXT,
               isActive && 'bg-base-content text-base-100'
             )}
@@ -321,7 +321,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                 className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-[10px] md:text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
                 title="Send email to jingjing052704@gmail.com"
               >
-                <span className="truncate font-extrabold text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0">
+                <span className="truncate font-extrabold text-[10px] px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0">
                   jingjing052704@gmail.com
                 </span>
               </a>
@@ -403,7 +403,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                 <div className="flex items-center justify-between gap-2">
                   <a
                     href="mailto:jingjing052704@gmail.com"
-                    className="flex items-center gap-2 min-w-0 flex-1 text-[10px] md:text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
+                    className="flex items-center gap-2 min-w-0 flex-1 text-[10px] font-medium text-base-content hover:underline truncate cursor-pointer"
                   >
                     <span className="truncate">
                       jingjing052704@gmail.com

@@ -13,14 +13,15 @@ const roleBadgeClasses = cn(
 const ROLES = [
   'Software Developer',
   'Web Developer',
-  'Full-Stack Developer',
   'Frontend Developer',
   'Backend Developer',
   'Mobile Developer',
-  'IT Support',
-  'Network Support',
-  'Customer/Technical Support',
   'UI/UX Designer',
+  'IT Support Specialist',
+  'Customer/Technical Support',
+  'Help Desk Analyst',
+  'NOC Tier 1 Engineer',
+  'Network Support Technician',
 ];
 
 export default function About() {
@@ -37,7 +38,7 @@ export default function About() {
             About Me
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Get to know me better
+            Background, education, and career goals
           </p>
         </div>
       </header>
@@ -89,7 +90,7 @@ export default function About() {
       <div className="space-y-2">
         <div className="space-y-1">
           <h3 className="text-[10px] md:text-xs text-base-content">
-            Open Role :
+            Open for Junior/Entry-Level Roles :
           </h3>
         </div>
         <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200">
@@ -122,9 +123,52 @@ export default function About() {
               Carlos Hilado Memorial State University – Alijis
             </p>
           </div>
-          <span className="text-[8px] md:text-[10px] text-base-content/80">
-            Negros Occidental, Philippines
-          </span>
+          <div className="flex flex-col sm:items-end mt-1 sm:mt-0">
+            <span className="text-[8px] md:text-[10px] text-base-content/80">
+              2022 – 2026
+            </span>
+            <span className="text-[8px] md:text-[10px] text-base-content/60">
+              Negros Occidental, Philippines
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <br className="mt-3 md:mt-4" />
+
+      {/* Additional Info */}
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <h3 className="text-[10px] md:text-xs text-base-content">
+            Highlights :
+          </h3>
+        </div>
+
+        <div className="space-y-1">
+          <div className="flex items-start gap-3 p-1 rounded-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
+              Passionate about building user-centric applications that solve real-world problems
+            </p>
+          </div>
+          <div className="flex items-start gap-3 p-1 rounded-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
+              Continuously learning and experimenting with modern frameworks, best practices, and emerging technologies
+            </p>
+          </div>
+          <div className="flex items-start gap-3 p-1 rounded-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
+              Strong communicator who thrives in collaborative environments and values clean, maintainable code
+            </p>
+          </div>
+          <div className="flex items-start gap-3 p-1 rounded-md">
+            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
+              Active learner exploring AI-assisted development tools and modern web development workflows
+            </p>
+          </div>
         </div>
       </div>
     </section>

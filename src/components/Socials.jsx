@@ -28,7 +28,7 @@ export default function Socials() {
             Social Links
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Connect, collaborate, and reach out with me across platforms
+            Connect and reach out
           </p>
         </div>
       </header>

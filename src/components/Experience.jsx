@@ -139,7 +139,7 @@ export default function Experience() {
           </p>
 
           <p className="text-[10px] md:text-xs text-base-content/50">
-            Work history and professional engagements
+            Professional roles and responsibilities
           </p>
         </div>
       </header>

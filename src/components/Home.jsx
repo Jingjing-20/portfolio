@@ -2,6 +2,15 @@ import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Send } from 'lucide-react';
 
+function ArrowTopRightIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 15 15" className={className} aria-hidden="true">
+      <title>arrow-top-right</title>
+      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z"/>
+    </svg>
+  );
+}
+
 function ProjectsOutlinedIcon({ className = '', size = '1em' }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -60,6 +69,10 @@ const sectionBadgeClasses = cn(
   'transition-all duration-200 group-hover:bg-base-content/20 group-hover:grayscale-0'
 );
 
+const sectionLabelClasses = cn(
+  'text-[9px] md:text-[10px] text-base-content/40 font-medium uppercase tracking-wider'
+);
+
 const sectionCardClasses = cn(
   'group text-left p-3.5 md:p-4 rounded-xl bg-textured border border-solid border-gray-300 dark:border-white/20',
   'hover:border-double shadow-xl cursor-pointer hover-theme-switch transition-all duration-200'
@@ -69,7 +82,7 @@ const PORTFOLIO_SECTIONS = [
   {
     id: 'projects',
     title: 'Built Projects',
-    badge: 'Built Projects',
+    badge: 'View Portfolio',
     description: 'Explore featured software projects, web applications, and interactive digital experiences.',
     icon: ProjectsOutlinedIcon,
     accent: '#00bcd4',
@@ -77,7 +90,7 @@ const PORTFOLIO_SECTIONS = [
   {
     id: 'stack',
     title: 'Technical Skills',
-    badge: 'Technical Skills',
+    badge: 'View Skills',
     description: 'Overview of technical proficiencies, development tools, and core engineering capabilities.',
     icon: SkillsOutlinedIcon,
     accent: '#f7df1e',
@@ -85,7 +98,7 @@ const PORTFOLIO_SECTIONS = [
   {
     id: 'experience',
     title: 'Work Experience',
-    badge: 'Work Experience',
+    badge: 'View Experience',
     description: 'Professional background, practical industry roles, and collaborative work history.',
     icon: ExperienceOutlinedIcon,
     accent: '#44a8b3',
@@ -93,7 +106,7 @@ const PORTFOLIO_SECTIONS = [
   {
     id: 'certificates',
     title: 'Credentials Earned',
-    badge: 'Credentials Earned',
+    badge: 'View Credentials',
     description: 'Accredited certifications, technical skill assessments, and professional training.',
     icon: CertificateOutlinedIcon,
     accent: '#a855f7',
@@ -210,18 +223,10 @@ export default function Home() {
                   onKeyDown={(e) => e.key === 'Enter' && handleNavigate(sec.id)}
                 >
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <div className="flex items-center gap-2">
-                      <Icon
-                        size={16}
-                        className="shrink-0 text-base-content"
-                      />
-                      <h3 className="text-xs md:text-sm font-semibold text-base-content group-hover:underline underline-offset-2">
-                        {sec.title}
-                      </h3>
-                    </div>
-                    <span className={sectionBadgeClasses}>
-                      {sec.badge}
-                    </span>
+                    <h3 className="text-xs md:text-sm font-semibold text-base-content group-hover:underline underline-offset-2">
+                      {sec.title}
+                    </h3>
+                    <ArrowTopRightIcon size={16} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
                   </div>
 
                   <hr className="my-2" />
