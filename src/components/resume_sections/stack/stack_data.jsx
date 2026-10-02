@@ -2,12 +2,12 @@ export const TECH_STACK = [
   {
     category: 'Frontend Development',
     description: 'Building modern, responsive user interfaces with industry-standard frameworks and tools.',
-    tools: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Vue', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Vite'],
+    tools: ['JavaScript', 'TypeScript', 'React', 'Vue', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Vite'],
   },
   {
     category: 'Backend Development',
     description: 'Server-side development, API design, and application security implementation.',
-    tools: ['PHP', 'Laravel', 'Node.js', 'Python', 'Django', 'FastAPI', 'REST APIs', 'JSON', 'CRUD Operations', 'Authentication', 'Authorization', 'Input Validation'],
+    tools: ['PHP', 'Laravel', 'Node.js', 'Python', 'Django', 'FastAPI', 'REST APIs'],
   },
   {
     category: 'Mobile Development',
