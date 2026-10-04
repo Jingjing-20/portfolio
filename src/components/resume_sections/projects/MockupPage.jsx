@@ -33,7 +33,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
     <ScrollReveal animation="fadeInUp" duration="0.4s">
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
         {/* Header */}
-        <header className="pt-20 md:pt-10">
+      <header className="pt-20 md:pt-10 mb-3">
           <div className="flex items-center gap-3 md:gap-4">
             <button
               type="button"
@@ -45,7 +45,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
             </button>
 
             <div className="flex-1 min-w-0">
-              <p className="text-base-content text-sm md:text-md">
+              <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
                 {mockup.name}
               </p>
               {mockup.type && (

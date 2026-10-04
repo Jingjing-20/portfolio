@@ -13,7 +13,7 @@ const roleBadgeClasses = cn(
   'transition-all duration-200'
 );
 
-const dividerClasses = 'my-3 md:my-4 border-base-content/30';
+const dividerClasses = 'my-3 md:my-4';
 
 const ROLES = [
   'Software Developer',
@@ -60,7 +60,7 @@ export default function About() {
         </div>
       </header>
 
-      <hr className={cn('mb-3 md:mb-6 mt-3', dividerClasses)} />
+      <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       {/* Image + Name + Description */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 md:gap-6 w-full">
