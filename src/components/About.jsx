@@ -8,11 +8,12 @@ import { cn } from '@/lib/utils';
 const roleBadgeClasses = cn(
   'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
   'border border-transparent',
-  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
-  'hover:text-base-content hover:border-base-content',
-  'font-medium grayscale cursor-default',
-  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
+  'bg-base-content/10 text-base-content/60 font-medium grayscale cursor-default',
+  'hover:text-base-content hover:border-base-content hover:bg-base-content/20 hover:grayscale-0 hover:font-bold',
+  'transition-all duration-200'
 );
+
+const dividerClasses = 'my-3 md:my-4 border-base-content/30';
 
 const ROLES = [
   'Software Developer',
@@ -31,6 +32,13 @@ const ROLES = [
   'WordPress Developer',
   'UI Developer',
   'Customer Support',
+];
+
+const HIGHLIGHTS = [
+  'Passionate about building user-centric applications that solve real-world problems',
+  'Continuously learning and experimenting with modern frameworks, best practices, and emerging technologies',
+  'Strong communicator who thrives in collaborative environments and values clean, maintainable code',
+  'Active learner exploring AI-assisted development tools and modern web development workflows',
 ];
 
 export default function About() {
@@ -52,16 +60,13 @@ export default function About() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3" />
+      <hr className={cn('mb-3 md:mb-6 mt-3', dividerClasses)} />
 
       {/* Image + Name + Description */}
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3 md:gap-6 w-full">
         {/* Image - Tilt Card */}
         <div className="shrink-0">
-          <Tilt
-            maxTilt={22}
-            perspective={800}
-          >
+          <Tilt maxTilt={22} perspective={800}>
             <TiltContent
               className={cn(
                 'relative overflow-hidden select-none',
@@ -74,7 +79,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-35 h-35 md:w-35 md:h-35 object-cover object-top pointer-events-none"
+                className="rounded-lg w-32 h-32 md:w-40 md:h-40 object-cover object-top pointer-events-none"
               />
             </TiltContent>
           </Tilt>
@@ -83,26 +88,30 @@ export default function About() {
         {/* Right Side: Name + Bio */}
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
-          <div className="w-full text-center sm:text-left">
+          <div className="w-full text-center sm:text-left space-y-1">
             <h3 className="font-extrabold text-base-content text-2xl md:text-4xl">
               Gian Carlo N. Ulep
             </h3>
+            <p className="text-[10px] md:text-xs text-base-content/60">
+              Based in Bacolod City, Negros Occidental, Philippines
+            </p>
           </div>
           <p className="text-[10px] md:text-xs text-base-content">
-            2 years of project-based experience in software and web development, including systems for government offices and a state university. Brings customer/technical support experience and a solid foundation in computer networking through academic coursework and hands-on projects.          </p>
+            2 years of project-based experience in software and web development, including systems for government offices and a state university. Brings customer/technical support experience and a solid foundation in computer networking through academic coursework and hands-on projects.
+          </p>
         </div>
       </div>
 
-      <hr className="my-3 md:my-4" />
+      <hr className={dividerClasses} />
 
-      {/* Roles / Focus Areas */}
+      {/* Open for Junior/Entry-Level Roles */}
       <div className="space-y-2">
         <div className="space-y-1">
           <h3 className="text-[10px] md:text-xs text-base-content">
             Open for Junior/Entry-Level Roles :
           </h3>
           <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Career opportunities I'm actively seeking and prepared for
+            Full-time, part-time, or contract opportunities I'm actively seeking and prepared for
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
@@ -114,7 +123,7 @@ export default function About() {
         </div>
       </div>
 
-      <br className="mt-3 md:mt-4" />
+      <hr className={dividerClasses} />
 
       {/* Education */}
       <div className="space-y-3">
@@ -147,9 +156,73 @@ export default function About() {
         </div>
       </div>
 
-      <br className="mt-3 md:mt-4" />
+      <hr className={dividerClasses} />
 
-      {/* Additional Info */}
+      {/* Personal Information */}
+      <div className="space-y-3">
+        <div className="space-y-1">
+          <h3 className="text-[10px] md:text-xs text-base-content">
+            Personal Information :
+          </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Location, languages, and availability
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="space-y-1">
+            <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
+              Location
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content">
+              Bacolod City, Negros Occidental
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/80">
+              Philippines 🇵🇭
+            </p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
+              Languages
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content">
+              English (Professional Working Proficiency)
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/80">
+              Filipino / Tagalog (Native)
+            </p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
+              Availability
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content">
+              Immediate
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/80">
+              Open to full-time, part-time &amp; contract roles
+            </p>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
+              Work Setup
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content">
+              On-site, Remote, or Hybrid
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/80">
+              Flexible and adaptable
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr className={dividerClasses} />
+
+      {/* Highlights */}
       <div className="space-y-3">
         <div className="space-y-1">
           <h3 className="text-[10px] md:text-xs text-base-content">
@@ -161,30 +234,17 @@ export default function About() {
         </div>
 
         <div className="space-y-1">
-          <div className="flex items-start gap-3 p-1 rounded-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
-            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
-              Passionate about building user-centric applications that solve real-world problems
-            </p>
-          </div>
-          <div className="flex items-start gap-3 p-1 rounded-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
-            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
-              Continuously learning and experimenting with modern frameworks, best practices, and emerging technologies
-            </p>
-          </div>
-          <div className="flex items-start gap-3 p-1 rounded-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
-            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
-              Strong communicator who thrives in collaborative environments and values clean, maintainable code
-            </p>
-          </div>
-          <div className="flex items-start gap-3 p-1 rounded-md">
-            <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
-            <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
-              Active learner exploring AI-assisted development tools and modern web development workflows
-            </p>
-          </div>
+          {HIGHLIGHTS.map((highlight) => (
+            <div
+              key={highlight}
+              className="flex items-start gap-3 p-1 rounded-md"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
+              <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
+                {highlight}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

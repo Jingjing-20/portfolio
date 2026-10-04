@@ -228,7 +228,7 @@ const techBadgeClasses = cn(
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3" />
+      <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       <div className="space-y-6 md:space-y-8">
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (

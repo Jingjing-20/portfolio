@@ -80,7 +80,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
           </div>
         </header>
 
-        <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+        <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
         {/* Content */}
         <div className="space-y-6 md:space-y-8">
@@ -182,8 +182,8 @@ export function PersonalPage({ personal, onBack, onClose }) {
             )}
 
           {/* Stack */}
-          {Array.isArray(personal.stack) &&
-            personal.stack.length > 0 && (
+          {Array.isArray(personal.techStack) &&
+            personal.techStack.length > 0 && (
               <div className="space-y-2">
                 <div className="space-y-1">
                   <h3 className="text-[10px] md:text-xs text-base-content">
@@ -194,7 +194,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
                   </p>
                 </div>
                 <div className="space-y-1">
-                  {personal.stack.map((item, index) => (
+                  {personal.techStack.map((item, index) => (
                     <div
                       key={index}
                       className={cn(

@@ -35,7 +35,7 @@ export default function Socials() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3" />
+      <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       {/* Single Category Social Badges */}
       <div>

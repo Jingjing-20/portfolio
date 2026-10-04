@@ -54,7 +54,7 @@ export const deployedData = [
   {
     id: 'chmsuagrm',
     name: 'CHMSU Grade & Records',
-    title: 'Integrated Online Platform for Academic Grade and Report Management',
+    title: 'Academic Grade and Report Management',
     type: 'Carlos Hilado Memorial State University - Alijis',
     organization: 'Carlos Hilado Memorial State University - Alijis',
     description:

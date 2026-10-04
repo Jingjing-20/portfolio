@@ -291,7 +291,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <LogoMark onNavigate={(e) => handleNavClick(e, 'home')} />
           </header>
 
-          <hr className="my-2" />
+          <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
           <NavList
             activePage={activePage}

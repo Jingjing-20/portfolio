@@ -35,6 +35,8 @@ export default function TechStack() {
           ))}
         </div>
       </div>
+
+       <hr className="my-3 md:my-4" />
     </div>
   );
 
@@ -51,7 +53,7 @@ export default function TechStack() {
         </div>
       </header>
 
-      <hr className="mb-3 md:mb-6 mt-3" />
+      <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       <div className="space-y-4 md:space-y-6">
         {TECH_STACK.map(renderStackCategory)}

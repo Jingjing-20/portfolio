@@ -72,7 +72,7 @@ export function DeployedPage({ project, onBack, onClose }) {
           </div>
         </header>
 
-        <hr className="mb-3 md:mb-6 mt-3 md:mt-6" />
+        <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
         {/* Content - All displayed at once */}
         <div className="space-y-6 md:space-y-8">
@@ -168,7 +168,7 @@ export function DeployedPage({ project, onBack, onClose }) {
           )}
 
           {/* Stack Section */}
-          {Array.isArray(project.stack) && project.stack.length > 0 && (
+          {Array.isArray(project.techStack) && project.techStack.length > 0 && (
             <div className="space-y-2">
               <div className="space-y-1">
                 <h3 className="text-[10px] md:text-xs text-base-content">
@@ -179,7 +179,7 @@ export function DeployedPage({ project, onBack, onClose }) {
                 </p>
               </div>
               <div className="space-y-1">
-                {project.stack.map((item, i) => (
+                {project.techStack.map((item, i) => (
                   <div
                     key={i}
                     className={cn(
