@@ -15,10 +15,9 @@ const transition = {
 
 const carouselButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-  'bg-textured border border-gray-300 dark:border-white/20',
+  'bg-textured border  border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'disabled:pointer-events-none disabled:opacity-50',
-  'cursor-pointer hover-theme-switch transition-all duration-200 shrink-0'
+  'hover-theme-switch'
 );
 
 const useEmblaControls = (emblaApi) => {
@@ -167,7 +166,7 @@ function MotionCarousel(props) {
           className={carouselButtonClasses}
           aria-label="Previous slide"
         >
-          <ChevronLeft className="size-4 md:size-5" />
+          <ChevronLeft className="h-3 w-3 md:h-4 md:w-4"/>
         </button>
 
         {/* Single-row, non-wrapping dot track with windowing to hide excess dots */}
@@ -193,7 +192,7 @@ function MotionCarousel(props) {
           className={carouselButtonClasses}
           aria-label="Next slide"
         >
-          <ChevronRight className="size-4 md:size-5" />
+          <ChevronRight className="h-3 w-3 md:h-4 md:w-4"/>
         </button>
       </div>
     </div>
@@ -207,7 +206,7 @@ function DotButton({ selected = false, label, onClick }) {
       onClick={onClick}
       layout
       initial={false}
-      className="flex cursor-pointer select-none items-center justify-center rounded-full border-none bg-primary text-primary-foreground shrink-0"
+      className="flex select-none items-center justify-center rounded-full border-none bg-primary text-primary-foreground shrink-0"
       animate={{
         width: selected ? 'auto' : 10,
         height: selected ? 26 : 10,
@@ -217,7 +216,7 @@ function DotButton({ selected = false, label, onClick }) {
       <motion.span
         layout
         initial={false}
-        className="block whitespace-nowrap px-2.5 py-0.5 text-[10px] md:text-xs font-medium max-w-[110px] sm:max-w-[150px] truncate"
+        className="block whitespace-nowrap px-2.5 py-0.5 text-[8px] md:text-[10px] font-medium max-w-[110px] sm:max-w-[150px] truncate"
         animate={{
           opacity: selected ? 1 : 0,
           scale: selected ? 1 : 0,

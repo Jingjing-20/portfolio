@@ -18,15 +18,15 @@ import koenigSvg from '@/components/resume_sections/certificates/orgs/koenig sol
 import testdomeSvg from '@/components/resume_sections/certificates/orgs/testdome.svg';
 
 export const CiscoIcon = (props) => (
-  <img src={ciscoSvg} alt="Cisco Networking Academy" className="size-5 object-contain" {...props} />
+  <img src={ciscoSvg} alt="Cisco Networking Academy" className="size-5 object-contain dark:invert" {...props} />
 );
 
 export const TestDomeIcon = (props) => (
-  <img src={testdomeSvg} alt="TestDome" className="size-5 object-contain" {...props} />
+  <img src={testdomeSvg} alt="TestDome" className="size-5 object-contain dark:invert" {...props} />
 );
 
 export const KoenigIcon = (props) => (
-  <img src={koenigSvg} alt="Koenig Solutions" className="size-5 object-contain" {...props} />
+  <img src={koenigSvg} alt="Koenig Solutions" className="size-5 object-contain dark:invert" {...props} />
 );
 
 export const GoogleIcon = (props) => (

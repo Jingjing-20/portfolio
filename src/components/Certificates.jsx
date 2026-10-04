@@ -65,14 +65,13 @@ export default function Certificates() {
                     key={cert.id}
                     maxTilt={22}
                     perspective={800}
-                    className="h-full cursor-pointer"
+                    className="h-full"
                     onClick={() => setActiveCert(cert)}
                   >
                     <TiltContent
                       className={cn(
                         'group relative flex flex-col justify-between p-2 md:p-3 rounded-lg shadow-xl h-full select-none',
-                        'bg-textured border-2 border-solid border-gray-300 dark:border-white/20 hover:border-double',
-                        'cursor-pointer'
+                        'bg-textured border border-black/50 dark:border-white/50'
                       )}
                       role="button"
                       tabIndex={0}
@@ -95,7 +94,7 @@ export default function Certificates() {
                             )}
                           </div>
                           {year && (
-                            <span className="text-[7px] md:text-[8px] px-1 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale whitespace-nowrap shrink-0">
+                            <span className="text-[7px] md:text-[8px] px-1 py-0.5 rounded bg-base-content/10 text-base-content font-medium grayscale whitespace-nowrap shrink-0">
                               {year}
                             </span>
                           )}

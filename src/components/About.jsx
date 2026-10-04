@@ -6,7 +6,11 @@ import {
 import { cn } from '@/lib/utils';
 
 const roleBadgeClasses = cn(
-  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-default',
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
   'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
 );
 
@@ -16,12 +20,17 @@ const ROLES = [
   'Frontend Developer',
   'Backend Developer',
   'Mobile Developer',
-  'UI/UX Designer',
-  'IT Support Specialist',
-  'Customer/Technical Support',
-  'Help Desk Analyst',
-  'NOC Tier 1 Engineer',
-  'Network Support Technician',
+  'Application Support',
+  'IT Support',
+  'Technical Support',
+  'IT Operations',
+  'Help Desk',
+  'NOC Support',
+  'Network Support',
+  'SQL Developer',
+  'WordPress Developer',
+  'UI Developer',
+  'Customer Support',
 ];
 
 export default function About() {
@@ -92,15 +101,16 @@ export default function About() {
           <h3 className="text-[10px] md:text-xs text-base-content">
             Open for Junior/Entry-Level Roles :
           </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Career opportunities I'm actively seeking and prepared for
+          </p>
         </div>
-        <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200">
-          <div className="flex flex-wrap items-center gap-2">
-            {ROLES.map((role) => (
-              <div key={role} className={roleBadgeClasses}>
-                <span>{role}</span>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-wrap items-center gap-2">
+          {ROLES.map((role) => (
+            <div key={role} className={roleBadgeClasses}>
+              <span>{role}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -112,6 +122,9 @@ export default function About() {
           <h3 className="text-[10px] md:text-xs text-base-content">
             Education :
           </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Academic background and formal qualifications
+          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
@@ -142,6 +155,9 @@ export default function About() {
           <h3 className="text-[10px] md:text-xs text-base-content">
             Highlights :
           </h3>
+          <p className="text-[8px] md:text-[10px] text-base-content/50">
+            Key strengths, interests, and professional values
+          </p>
         </div>
 
         <div className="space-y-1">

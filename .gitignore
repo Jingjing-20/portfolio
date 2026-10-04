@@ -25,6 +25,9 @@ dist-ssr
 .agents
 .antigravitycli
 
+# Resume templates (personal job application documents)
+resume-templates/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

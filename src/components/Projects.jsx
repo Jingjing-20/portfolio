@@ -110,13 +110,22 @@ export default function Projects() {
     );
   }
 
+const techBadgeClasses = cn(
+  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
+);
+
   const PolaroidCard = ({ item, onClick, onKeyDown, imgSrc, name, subtitle }) => (
     <div
       key={item.id}
       className={cn(
         'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
         'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-        'hover-card cursor-pointer'
+        'hover-card'
       )}
       role="button"
       tabIndex={0}
@@ -158,7 +167,7 @@ export default function Projects() {
           {coverImage && (
             <div className="flex-shrink-0 w-30 md:w-40 relative group">
               <div
-                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double cursor-pointer hover-card"
+                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double hover-card"
                 onClick={onClick}
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
@@ -175,7 +184,7 @@ export default function Projects() {
 
           {/* Text Content */}
           <div
-            className="items-center justify-center flex-1 space-y-1 cursor-pointer group/title"
+            className="items-center justify-center flex-1 space-y-1 group/title"
             onClick={onClick}
           >
             <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors">
@@ -187,20 +196,18 @@ export default function Projects() {
               </p>
             )}
             {/* Tech Stack Icons */}
-            {/* Temporarily hidden - uncomment to show tech stack
             {techStack && techStack.length > 0 && (
               <div className="flex flex-wrap gap-1 mt-1">
                 {techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-[7px] md:text-[8px] px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale"
+                    className={techBadgeClasses}
                   >
                     {tech}
                   </span>
                 ))}
               </div>
             )}
-            */}
           </div>
         </div>
       </div>

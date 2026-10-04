@@ -5,10 +5,12 @@ import ContactForm from '@/components/resume_sections/socials/ContactForm';
 import { cn } from '@/lib/utils';
 
 const socialBadgeClasses = cn(
-  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-pointer',
-  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0',
-  'shadow-xl inline-flex items-center justify-center',
-  'focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2'
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
 );
 
 const SOCIAL_ITEMS = ['github', 'linkedin', 'instagram', 'facebook', 'threads', 'twitter'];
@@ -43,12 +45,10 @@ export default function Socials() {
           </h3>
         </div>
 
-        <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200 space-y-2">
+        <div className="space-y-2">
           <p className="text-[8px] md:text-[10px] text-base-content/50">
             Software repositories, professional network, and personal channels
           </p>
-
-          <hr />
 
           <div className="flex flex-wrap items-center gap-2">
             {contacts.map((contact) => (
@@ -59,7 +59,7 @@ export default function Socials() {
                 onClick={() => setSelectedContact(contact)}
                 aria-label={contact.label}
               >
-                <span className="text-base-content">
+                <span className="">
                   {contact.label}
                 </span>
               </button>

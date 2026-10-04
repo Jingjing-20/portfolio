@@ -48,34 +48,30 @@ const buttonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2.5 md:p-3',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-xs md:text-sm cursor-pointer hover-theme-switch select-none'
+  'text-xs md:text-sm hover-theme-switch select-none'
 );
 
 const invertedButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-2 rounded-md p-2.5 md:p-3',
-  'bg-base-content text-base-100 border border-solid border-base-content hover:border-double',
+  'bg-base-content text-base-100',
+  'border border-solid border-base-content/20',
+  'hover:bg-base-100 hover:text-base-content hover:border-base-content duration-300',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'text-xs md:text-sm cursor-pointer hover:opacity-90 transition-opacity select-none'
+  'text-xs md:text-sm transition-all duration-200 hover-theme-switch select-none'
 );
 
 const techBadgeClasses = cn(
-  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-default',
-  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0',
-  'shadow-xl inline-flex items-center justify-center'
-);
-
-const sectionBadgeClasses = cn(
-  'text-[9px] md:text-[10px] px-2 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale whitespace-nowrap',
-  'transition-all duration-200 group-hover:bg-base-content/20 group-hover:grayscale-0'
-);
-
-const sectionLabelClasses = cn(
-  'text-[9px] md:text-[10px] text-base-content/40 font-medium uppercase tracking-wider'
+  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
 );
 
 const sectionCardClasses = cn(
   'group text-left p-3.5 md:p-4 rounded-xl bg-textured border border-solid border-gray-300 dark:border-white/20',
-  'hover:border-double shadow-xl cursor-pointer hover-theme-switch transition-all duration-200'
+  'hover:border-double shadow-xl hover-theme-switch transition-all duration-200'
 );
 
 const PORTFOLIO_SECTIONS = [
@@ -179,7 +175,7 @@ export default function Home() {
               className={cn(invertedButtonClasses, 'font-semibold')}
               aria-label="View Projects"
             >
-              <span>Explore</span>
+              <span>About Me</span>
               <ArrowRight className="h-3 w-3 md:h-3.5 md:w-3.5 opacity-60" />
             </button>
 
@@ -247,7 +243,7 @@ export default function Home() {
           className="w-full max-w-2xl mx-auto pt-2"
         >
           <div className="flex flex-col items-center gap-3">
-            <span className="text-[10px] md:text-xs uppercase tracking-wider text-base-content/50">
+            <span className="text-[8px] md:text-[10px] uppercase tracking-wider text-base-content/50">
               Built With
             </span>
             <div className="px-9 flex flex-wrap items-center justify-center gap-2 md:gap-3">

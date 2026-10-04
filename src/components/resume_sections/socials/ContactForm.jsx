@@ -12,8 +12,17 @@ const inputClasses = cn(
 const actionBtnClasses = cn(
   'shadow-xl inline-flex items-center justify-center gap-1.5 p-2 rounded-sm',
   'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double hover-theme-switch',
-  'text-[10px] md:text-xs font-medium cursor-pointer text-base-content transition-all',
+  'text-[10px] md:text-xs font-medium cursor-default text-base-content transition-all',
   'disabled:opacity-50 disabled:pointer-events-none'
+);
+
+const emailformat = cn(
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
 );
 
 export default function ContactForm() {
@@ -89,11 +98,11 @@ export default function ContactForm() {
       {/* Category Title & Description */}
       <div className="mb-2">
         <h3 className="text-[10px] md:text-xs text-base-content">
-          Send a Message : <span className="font-extrabold text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0">jingjing052704@gmail.com</span>
+          Send a Message : <span className={emailformat}>jingjing052704@gmail.com</span>
         </h3>
       </div>
 
-      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200 space-y-3">
+      <div className="p-3 md:p-4 rounded-lg bg-textured border border-black/50 dark:border-white/50 shadow-xl space-y-3">
         <p className="text-[8px] md:text-[10px] text-base-content/50">
           Fill out the form below to send a message directly to my inbox
         </p>

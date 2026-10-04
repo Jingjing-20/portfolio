@@ -9,6 +9,10 @@ import { cn } from '@/lib/utils';
 export function ExperienceDialog({ experience, open, onClose }) {
   if (!experience) return null;
 
+  // Display only first 10 major skills in dialog
+  const MAX_DIALOG_SKILLS = 10;
+  const dialogSkills = experience.skills?.slice(0, MAX_DIALOG_SKILLS) || [];
+
   return (
     <Dialog open={open} onClose={onClose}>
       <DialogPanel className="gap-4 px-3 md:px-0 p-4 md:p-6 max-w-md w-full">
@@ -31,7 +35,7 @@ export function ExperienceDialog({ experience, open, onClose }) {
             Skills & Technologies :
           </p>
           <div className="overflow-y-auto pr-1">
-            {experience.skills?.map((skill, index) => (
+            {dialogSkills.map((skill, index) => (
               <div
                 key={index}
                 className={cn(

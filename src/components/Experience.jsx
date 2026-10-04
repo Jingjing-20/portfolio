@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { EXPERIENCES } from '@/components/resume_sections/experience/experience_data';
 import { ExperienceDialog } from '@/components/resume_sections/experience/ExperienceDialog';
 import {
@@ -17,20 +17,54 @@ import {
 } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 
-function ExperienceIcon({ className = '', size = '1em' }) {
+function MoreDotsIcon({ className = '', size = '1em' }) {
   return (
-   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 512 512" className={className} aria-hidden="true"><path fill="none" d="M336 80H176a16 16 0 0 0-16 16v16h192V96a16 16 0 0 0-16-16" /><path fill="currentColor" d="M496 176a64.07 64.07 0 0 0-64-64h-48V96a48.05 48.05 0 0 0-48-48H176a48.05 48.05 0 0 0-48 48v16H80a64.07 64.07 0 0 0-64 64v48h480Zm-144-64H160V96a16 16 0 0 1 16-16h160a16 16 0 0 1 16 16Zm-16 152a24 24 0 0 1-24 24H200a24 24 0 0 1-24-24v-4a4 4 0 0 0-4-4H16v144a64 64 0 0 0 64 64h352a64 64 0 0 0 64-64V256H340a4 4 0 0 0-4 4Z" /></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className}>
+      <title>dots-filled</title>
+      <path fill="currentColor" d="M7 12a2 2 0 1 1-4 0q0-.053.005-.102A1.996 1.996 0 0 1 5 10a2 2 0 0 1 2 2m7 0a2 2 0 1 1-4 0q0-.053.005-.102A1.996 1.996 0 0 1 12 10a2 2 0 0 1 2 2m7 0a2 2 0 1 1-4 0q0-.053.005-.102A1.996 1.996 0 0 1 19 10a2 2 0 0 1 2 2"/>
+    </svg>
   );
 }
 
-const experienceButtonClasses = cn(
-  'shadow-xl inline-flex items-center justify-center rounded-md p-2',
-  'bg-textured border  border-gray-300 dark:border-white/20 hover:border-double',
-  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-theme-switch'
+const techBadgeClasses = cn(
+  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0',
+  'whitespace-nowrap'
+);
+
+const moreButtonClasses = cn(
+  'inline-flex items-center justify-center',
+  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60',
+  'hover:text-base-content hover:border-base-content hover:bg-base-content/20',
+  'cursor-pointer',
+  'transition-all duration-200',
+  'shrink-0'
 );
 
 function ExperienceItem({ experience, onOpenSkills }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint is 768px
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Display 3 skills on mobile, 5 on desktop
+  const MAX_VISIBLE_SKILLS = isMobile ? 3 : 5;
+  const visibleSkills = experience.skills?.slice(0, MAX_VISIBLE_SKILLS) || [];
+  const hasMoreSkills = experience.skills && experience.skills.length > MAX_VISIBLE_SKILLS;
+
   return (
     <TimelineItem
       step={experience.step}
@@ -55,46 +89,33 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
       <TimelineContent>
         <div className="space-y-2">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <h3 className="text-[10px] md:text-xs text-base-content font-bold">
-                {experience.company}
-              </h3>
+          <div>
+            <h3 className="text-[10px] md:text-xs text-base-content font-bold">
+              {experience.company}
+            </h3>
 
-              {(experience.employmentType || experience.durationMonths) && (
-                <p className="text-[8px] md:text-[10px] text-base-content/80">
-                  {experience.employmentType}
+            {(experience.employmentType || experience.durationMonths) && (
+              <p className="text-[8px] md:text-[10px] text-base-content/60">
+                {experience.employmentType}
 
-                  {experience.employmentType && experience.durationMonths && (
-                    <span className="mx-1 text-base-content">·</span>
-                  )}
+                {experience.employmentType && experience.durationMonths && (
+                  <span className="mx-1 text-base-content">·</span>
+                )}
 
-                  {experience.durationMonths}
-                </p>
-              )}
+                {experience.durationMonths}
+              </p>
+            )}
 
-              {(experience.location || experience.workMode) && (
-                <p className="text-[8px] md:text-[10px] text-base-content/80">
-                  {experience.location}
+            {(experience.location || experience.workMode) && (
+              <p className="text-[8px] md:text-[10px] text-base-content/60">
+                {experience.location}
 
-                  {experience.location && experience.workMode && (
-                    <span className="mx-1 text-base-content">·</span>
-                  )}
+                {experience.location && experience.workMode && (
+                  <span className="mx-1 text-base-content">·</span>
+                )}
 
-                  {experience.workMode}
-                </p>
-              )}
-            </div>
-
-            {experience.skills && experience.skills.length > 0 && (
-              <button
-                type="button"
-                className={experienceButtonClasses}
-                onClick={() => onOpenSkills(experience)}
-                aria-label={`View skills for ${experience.company}`}
-              >
-                <ExperienceIcon className="h-3 w-3" />
-              </button>
+                {experience.workMode}
+              </p>
             )}
           </div>
 
@@ -103,7 +124,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
               {experience.role}
             </h4>
 
-            <TimelineDate className="text-[8px] md:text-[10px] text-base-content/80">
+            <TimelineDate className="text-[8px] md:text-[10px] text-base-content/60">
               {experience.dateRange}
 
               {experience.durationMonths &&
@@ -117,9 +138,35 @@ function ExperienceItem({ experience, onOpenSkills }) {
           </div>
 
           {experience.description && (
-            <p className="text-[10px] md:text-xs text-base-content">
+            <p className="text-[8px] md:text-[10px] text-base-content/60">
               {experience.description}
             </p>
+          )}
+
+          {/* Skills & Technologies inline - display 5, then dots button */}
+          {experience.skills && experience.skills.length > 0 && (
+            <div className="relative w-full mt-2">
+              <div className="flex flex-wrap gap-1 items-center">
+                {visibleSkills.map((skill) => (
+                  <span
+                    key={skill}
+                    className={techBadgeClasses}
+                  >
+                    {skill}
+                  </span>
+                ))}
+                {hasMoreSkills && (
+                  <button
+                    type="button"
+                    className={moreButtonClasses}
+                    onClick={() => onOpenSkills(experience)}
+                    aria-label={`View all skills for ${experience.company}`}
+                  >
+                    <MoreDotsIcon size="14" />
+                  </button>
+                )}
+              </div>
+            </div>
           )}
         </div>
       </TimelineContent>

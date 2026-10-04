@@ -8,7 +8,7 @@ const backButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
   'bg-textured border border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-theme-switch'
+  'hover-theme-switch'
 );
 
 export function PersonalPage({ personal, onBack, onClose }) {
@@ -37,7 +37,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
 
         {/* Header */}
-        <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+        <header className="pt-20 md:pt-10">
           <div className="flex items-center gap-3 md:gap-4">
 
             {/* Back Button */}
@@ -52,7 +52,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
 
             {/* Title */}
             <div className="flex-1 min-w-0">
-              <p className="text-base-content text-md md:text-lg lg:text-xl">
+              <p className="text-base-content text-sm md:text-md">
                 {personal.name}
               </p>
 
@@ -87,30 +87,46 @@ export function PersonalPage({ personal, onBack, onClose }) {
 
           {/* Image Gallery: Carousel if >1, simple preview if exactly 1 */}
           {hasImages && (
-            hasMultipleImages ? (
-              <div className="w-full">
-                <MotionCarousel slides={personal.images} />
+            <div className="space-y-2">
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  {hasMultipleImages ? 'Gallery :' : 'Preview :'}
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  {hasMultipleImages 
+                    ? 'Visual walkthrough of the project' 
+                    : 'Project interface and design'}
+                </p>
               </div>
-            ) : (
-              <div className="overflow-hidden border-2 border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
-                  <img
-                    src={personal.images[0].src}
-                    alt={personal.images[0].alt ?? personal.name}
-                    className="w-full h-full object-cover object-top"
-                  />
+              {hasMultipleImages ? (
+                <div className="w-full">
+                  <MotionCarousel slides={personal.images} />
                 </div>
-              </div>
-            )
+              ) : (
+                <div className="overflow-hidden border-2 border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
+                    <img
+                      src={personal.images[0].src}
+                      alt={personal.images[0].alt ?? personal.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
           )}
 
           {/* Description */}
           {personal.description && (
             <div className="space-y-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                Description :
-              </h3>
-
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Description :
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  Overview of the project and its purpose
+                </p>
+              </div>
               <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                 {personal.description}
               </p>
@@ -120,10 +136,14 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {/* Purpose */}
           {personal.purpose && (
             <div className="space-y-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                Purpose :
-              </h3>
-
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Purpose :
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  The problem it solves or goal it achieves
+                </p>
+              </div>
               <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                 {personal.purpose}
               </p>
@@ -134,10 +154,14 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {Array.isArray(personal.features) &&
             personal.features.length > 0 && (
               <div className="space-y-2">
-                <h3 className="text-[10px] md:text-xs text-base-content">
-                  Features :
-                </h3>
-
+                <div className="space-y-1">
+                  <h3 className="text-[10px] md:text-xs text-base-content">
+                    Features :
+                  </h3>
+                  <p className="text-[8px] md:text-[10px] text-base-content/50">
+                    Main functionalities and capabilities
+                  </p>
+                </div>
                 <div className="space-y-1">
                   {personal.features.map((feature, index) => (
                     <div
@@ -161,10 +185,14 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {Array.isArray(personal.stack) &&
             personal.stack.length > 0 && (
               <div className="space-y-2">
-                <h3 className="text-[10px] md:text-xs text-base-content">
-                  Stack :
-                </h3>
-
+                <div className="space-y-1">
+                  <h3 className="text-[10px] md:text-xs text-base-content">
+                    Stack :
+                  </h3>
+                  <p className="text-[8px] md:text-[10px] text-base-content/50">
+                    Technologies and tools used in development
+                  </p>
+                </div>
                 <div className="space-y-1">
                   {personal.stack.map((item, index) => (
                     <div

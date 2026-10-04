@@ -241,14 +241,14 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
         {/* Live Viewers */}
         <div className="w-full flex items-center justify-between gap-1 text-xs md:text-[10px]">
           <div className="flex items-center gap-1.5 font-medium">
-            <span>Live Viewers</span>
+            <span>Live</span>
           </div>
           <span
             role="button"
             tabIndex={0}
             onClick={handleOpenViewers}
             onKeyDown={(e) => e.key === 'Enter' && handleOpenViewers()}
-            className="font-extrabold text-emerald-600 dark:text-emerald-400 hover:underline cursor-pointer"
+            className="font-extrabold text-xs text-emerald-600 dark:text-emerald-400 hover:underline"
             aria-label="View live viewers details"
           >
             {activeViewers} online
@@ -258,14 +258,14 @@ export function LiveStats({ variant = 'desktop', className = '' }) {
         {/* Total Views */}
         <div className="w-full flex items-center justify-between gap-1 text-xs md:text-[10px] pt-1">
           <div className="flex items-center gap-1.5 text-base-content">
-            <span>Total Views</span>
+            <span>Total</span>
           </div>
           <span
             role="button"
             tabIndex={0}
             onClick={handleOpenViews}
             onKeyDown={(e) => e.key === 'Enter' && handleOpenViews()}
-            className="font-extrabold text-base-content hover:underline cursor-pointer"
+            className="font-extrabold text-xs text-base-content hover:underline"
             aria-label="View total views details"
           >
             {loading ? '...' : displayTotalViews.toLocaleString()}

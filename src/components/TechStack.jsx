@@ -2,7 +2,11 @@ import { TECH_STACK } from '@/components/resume_sections/stack/stack_data';
 import { cn } from '@/lib/utils';
 
 const techBadgeClasses = cn(
-  'text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 font-medium grayscale cursor-default',
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
   'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
 );
 
@@ -15,12 +19,10 @@ export default function TechStack() {
         </h3>
       </div>
 
-      <div className="p-3 md:p-4 rounded-lg bg-textured border border-gray-300 dark:border-white/20 shadow-xl hover:border-double hover-theme-switch transition-all duration-200 space-y-2">
+      <div className="space-y-2">
         <p className="text-[8px] md:text-[10px] text-base-content/50">
           {stackCategory.description}
         </p>
-
-        <hr />
 
         <div className="flex flex-wrap items-center gap-2">
           {stackCategory.tools.map((tool) => (

@@ -5,7 +5,6 @@ import FreelanceImg from '@/components/resume_sections/experience/freelance.webp
 import MobileLegendsImg from '@/components/resume_sections/experience/mobile-legends.webp';
 
 export const EXPERIENCES = [
-      /*
   {
     step: 1,
     company: 'Concentrix - Mediacom',
@@ -15,19 +14,22 @@ export const EXPERIENCES = [
     durationMonths: '',
     location: 'Bacolod, Negros Occidental, Philippines',
     workMode: 'On-site',
-    role: 'Technical Advisor',
+    role: 'Advisor II, Customer Service',
     dateRange: 'Oct 2026 – Present',
     description: 'Deliver technical support and customer assistance for Mediacom telecommunications services, encompassing troubleshooting of internet connectivity, cable television, and phone service issues. Resolve technical problems efficiently while ensuring optimal customer satisfaction and service quality.',
     skills: [
       'Technical Support',
-      'Telecommunications',
-      'Internet Connectivity Troubleshooting',
-      'Cable & Phone Services',
-      'Problem Resolution',
+      'Telecommunications Support',
+      'Internet Troubleshooting',
+      'Cable Services',
+      'Phone Services',
       'Customer Service',
-      'Issue Escalation & Management'
+      'Problem Resolution',
+      'Billing Support',
+      'Issue Escalation',
+      'Customer Communication',
     ],
-  },*/
+  },
   {
     step: 2,
     company: 'Freelance',
@@ -41,13 +43,16 @@ export const EXPERIENCES = [
     dateRange: 'Jul 2026 – Present · 3 mos',
     description: 'Develop and deliver custom web solutions for diverse clients, including web applications, responsive websites, and interactive digital experiences. Leverage modern technologies to build scalable, user-focused solutions while managing client relationships and project timelines.',
     skills: [
+      'Software Development',
       'Web Development',
-      'Full Stack Development',
-      'Client Communication',
-      'Project Management',
-      'Custom Solutions',
-      'Remote Collaboration',
-      'Technical Consulting'
+      'Frontend Development',
+      'Backend Development',
+      'API Development',
+      'Database Management',
+      'UI Development',
+      'System Integration',
+      'Application Deployment',
+      'Technical Troubleshooting',
     ],
   },
   {
@@ -63,13 +68,16 @@ export const EXPERIENCES = [
     dateRange: 'Feb 2026 – May 2026 · 4 mos',
     description: 'Deployed and maintained a comprehensive lot allocation and property monitoring system utilized by government office personnel, featuring interactive mapping, document management, Excel reporting, real-time dashboards, and role-based access control. Delivered first-line technical support to resolve access issues, data discrepancies, and system errors within a live operational environment. Monitored system performance to identify functionality issues and documented recurring problems, resolutions, and user guidance to ensure knowledge continuity and facilitate ongoing system maintenance.',
     skills: [
-      'Full Stack Development',
-      'GIS data integration using GeoJSON and Leaflet',
-      'Document Management Systems',
-      'Data Visualization & Reporting',
-      'System Security & Access Control',
+      'Software Development',
+      'Web Development',
+      'PHP & MySQL',
       'Database Management',
-      'Process Automation'
+      'GIS Integration',
+      'GeoJSON Files',
+      'System Deployment',
+      'IT Support',
+      'Troubleshooting',
+      'IT Operations',
     ],
   },
   {
@@ -85,13 +93,16 @@ export const EXPERIENCES = [
     dateRange: 'Jul 2024 – Aug 2024 · 2 mos',
     description: 'Delivered customer support and technical troubleshooting for a U.S. prepaid wireless telecommunications account, assisting customers with billing inquiries, account activation, and device connectivity issues. Maintained clear and professional communication to resolve inquiries efficiently within a fast-paced, queue-based contact center environment.',
     skills: [
-      'Customer Support',
-      'Technical Support & Troubleshooting',
-      'U.S. Telecom & Wireless Services',
-      'Billing & Account Activation',
-      'Device & Connectivity Troubleshooting',
-      'Queue Management & Fast-Paced Resolution',
-      'Professional Communication'
+      'Customer Service',
+      'Telecommunications Support',
+      'Mobile Support',
+      'Account Management',
+      'Billing Support',
+      'Technical Troubleshooting',
+      'Problem Resolution',
+      'Customer Communication',
+      'Issue Escalation',
+      'CRM Systems',
     ],
   },
   {
@@ -107,13 +118,16 @@ export const EXPERIENCES = [
     dateRange: 'Sep 2019 – Present · 7 yrs 1 mo',
     description: 'Competitive player specializing in the EXP Lane role, mastering solo lane mechanics, map awareness, and strategic decision-making. Developed strong skills in 1v1 combat, split-pushing, team fight initiation, and objective control while maintaining consistent performance across ranked matches.',
     skills: [
-      'Strategic Planning',
-      'Decision Making Under Pressure',
+      'Competitive Gaming',
+      'EXP Laning',
+      'Game Strategy',
       'Team Coordination',
-      'Map Awareness & Positioning',
-      'Objective Control & Timing',
-      '1v1 Combat & Lane Management',
-      'Adaptability & Meta Understanding'
+      'Team Communication',
+      'Map Awareness',
+      'Decision Making',
+      'Resource Management',
+      'Player Adaptability',
+      'Team Play',
     ],
   },
 ];

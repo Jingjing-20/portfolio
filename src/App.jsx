@@ -12,7 +12,7 @@ import TechStack from './components/TechStack'
 import Certificates from './components/Certificates'
 import Socials from './components/Socials'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
-import { CometCursor } from '@/components/ui/comet-cursor'
+
 
 const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'certificates', 'socials', 'contact'];
 
@@ -64,8 +64,7 @@ function App() {
       <Analytics />
       <main className="custom-background relative min-h-screen transition-colors duration-300">
 
-        {/* Comet Cursor Trail */}
-        <CometCursor />
+
 
         {/* Background stars */}
         <div className="fixed inset-0 pointer-events-none z-0">
@@ -85,7 +84,7 @@ function App() {
             </div>
           ) : (
             <div className="pb-12">
-              <div className="mx-auto px-4 md:px-6 max-w-4xl lg:max-w-5xl flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6 lg:gap-8 min-h-[calc(100vh-3rem)]">
+              <div className="mx-auto px-4 md:px-6 max-w-4xl lg:max-w-5xl flex flex-col md:flex-row items-center md:items-stretch justify-center gap-6 min-h-[calc(100vh-3rem)]">
                 {/* Inset Left Navigation Sidebar on desktop & Header on mobile */}
                 <Navbar activePage={activePage} onSelectPage={handlePageChange} />
 

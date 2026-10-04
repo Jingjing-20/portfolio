@@ -66,9 +66,12 @@ function SocialFilledIcon({ className = '', size = '1em' }) {
   return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 512 512" className={className} aria-hidden="true"><path fill="currentColor" d="M384 336a63.78 63.78 0 0 0-46.12 19.7l-148-83.27a63.85 63.85 0 0 0 0-32.86l148-83.27a63.8 63.8 0 1 0-15.73-27.87l-148 83.27a64 64 0 1 0 0 88.6l148 83.27A64 64 0 1 0 384 336" /></svg>;
 }
 
-function Pointer({ className = '', size = '1em' }) {
-  return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 16 16" className={className} aria-hidden="true"><path fill="currentColor" fillRule="evenodd" d="m2.5 6l2.906-3.737a1.978 1.978 0 0 1 3.48 1.694L8.626 5h5.432a1.942 1.942 0 0 1 .421 3.838L11.5 9.5l-.457 2.744A3 3 0 0 1 7.31 14.65L3 13.5zm5.197 7.2l-3.272-.872l-.39-5.858L6.59 3.184a.478.478 0 0 1 .84.41l-.26 1.042L6.704 6.5h7.354a.442.442 0 0 1 .096.874l-2.98.662l-.987.22l-.166.997l-.458 2.744A1.5 1.5 0 0 1 7.697 13.2m-7.195.103a.75.75 0 0 0 1.496-.106l-.5-7a.75.75 0 1 0-1.496.106z" clipRule="evenodd" /></svg>;
-}
+const buttons = cn(
+  'shadow-xl inline-flex items-center justify-center rounded-sm p-1.5',
+  'bg-textured border  border-gray-300 dark:border-white/20 hover:border-double',
+  'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+  'hover-theme-switch'
+);
 
 const NAV_ITEMS = [
   {
@@ -135,9 +138,6 @@ function ThemeToggle({ size = 'md', className = '' }) {
     }
   };
 
-  const buttonSize = size === 'lg' ? 'h-7 w-7' : 'h-6 w-6';
-  const iconSize = size === 'lg' ? 'h-3.5 w-3.5' : 'h-3 w-3';
-
   return (
     <div
       role="radiogroup"
@@ -161,14 +161,10 @@ function ThemeToggle({ size = 'md', className = '' }) {
             onClick={() => selectTheme(value)}
             style={isActive ? { viewTransitionName: `theme-toggle-${value}` } : undefined}
             className={cn(
-              buttonSize,
-              'inline-flex items-center justify-center rounded-md cursor-pointer transition-colors',
-              'bg-textured border border-solid border-gray-300 dark:border-white/20 shadow-xl',
-              TEXT,
-              isActive && 'bg-base-content text-base-100'
+              buttons,isActive && 'bg-base-content text-base-100'
             )}
           >
-            <Icon className={iconSize} />
+            <Icon className="h-3 w-3" />
           </button>
         );
       })}
@@ -176,13 +172,22 @@ function ThemeToggle({ size = 'md', className = '' }) {
   );
 }
 
+const emailformat = cn(
+  'px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
+);
+
 function LogoMark({ onNavigate }) {
   return (
     <button
       type="button"
       onClick={onNavigate}
       className={cn(
-        'flex items-center gap-2.5 text-left cursor-pointer w-full',
+        'flex items-center gap-2.5 text-left w-full',
         FOCUS_RING,
         TEXT
       )}
@@ -225,7 +230,7 @@ function NavList({ activePage, onSelect, variant = 'desktop' }) {
             aria-label={item.label}
             aria-current={isActive ? 'page' : undefined}
             className={cn(
-              'inline-flex items-center text-left w-full cursor-pointer bg-transparent border-0 hover:underline underline-offset-4',
+              'inline-flex items-center text-left w-full bg-transparent border-0 hover:underline underline-offset-4',
               FOCUS_RING,
               TEXT,
               'font-medium',
@@ -235,8 +240,6 @@ function NavList({ activePage, onSelect, variant = 'desktop' }) {
                 : 'gap-2 px-1 py-1.5 text-xs'
             )}
           >
-            {isActive && <Pointer size={12} className="shrink-0" />}
-
             <span
               className={cn(
                 'shrink-0 flex items-center justify-center',
@@ -280,7 +283,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
   return (
     <>
       <aside
-        className="hidden md:flex flex-col border-r border-gray-300 dark:border-white/20 pr-6 lg:pr-8 shrink-0 self-stretch select-none"
+        className="hidden md:flex flex-col border-r border-gray-300 dark:border-white/20 pr-3 shrink-0 self-stretch select-none"
         aria-label="Sidebar navigation"
       >
         <div className="sticky top-0 flex flex-col">
@@ -318,10 +321,9 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
             <div className="flex items-center justify-between">
               <a
                 href="mailto:jingjing052704@gmail.com"
-                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-[10px] md:text-xs font-medium text-base-content hover:underline truncate cursor-pointer"
-                title="Send email to jingjing052704@gmail.com"
+                className="flex items-center gap-1.5 min-w-0 flex-1 px-1 text-xs font-medium text-base-content hover:underline truncate"
               >
-                <span className="truncate font-extrabold text-[10px] px-1.5 py-0.5 rounded bg-base-content/10 text-base-content/60 transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0">
+                <span className={emailformat}>
                   jingjing052704@gmail.com
                 </span>
               </a>
@@ -330,7 +332,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                 content="jingjing052704@gmail.com"
                 variant="outline"
                 size="xs"
-                className="shrink-0 cursor-pointer hover-theme-switch size-6"
+                className={buttons}
                 aria-label="Copy email address"
               />
             </div>
@@ -349,7 +351,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isMobileMenuOpen}
               className={cn(
-                'inline-flex items-center justify-center rounded-md p-2 h-9 w-9 cursor-pointer bg-textured shadow-xl',
+                'inline-flex items-center justify-center rounded-md p-2 h-9 w-9 bg-textured shadow-xl',
                 CHROME,
                 FOCUS_RING,
                 TEXT
@@ -403,9 +405,9 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                 <div className="flex items-center justify-between gap-2">
                   <a
                     href="mailto:jingjing052704@gmail.com"
-                    className="flex items-center gap-2 min-w-0 flex-1 text-[10px] font-medium text-base-content hover:underline truncate cursor-pointer"
+                    className="flex items-center gap-2 min-w-0 flex-1 text-xs font-medium text-base-content hover:underline truncate"
                   >
-                    <span className="truncate">
+                    <span className={emailformat}>
                       jingjing052704@gmail.com
                     </span>
                   </a>
@@ -414,7 +416,7 @@ export default function Navbar({ activePage = 'home', onSelectPage }) {
                     content="jingjing052704@gmail.com"
                     variant="outline"
                     size="xs"
-                    className="shrink-0 cursor-pointer hover-theme-switch size-7"
+                    className="shrink-0 hover-theme-switch size-7"
                     aria-label="Copy email address"
                   />
                 </div>

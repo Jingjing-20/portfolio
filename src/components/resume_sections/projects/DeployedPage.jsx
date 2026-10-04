@@ -8,7 +8,7 @@ const backButtonClasses = cn(
   'shadow-xl inline-flex items-center justify-center rounded-md p-2',
   'bg-textured border  border-gray-300 dark:border-white/20 hover:border-double',
   'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
-  'cursor-pointer hover-theme-switch'
+  'hover-theme-switch'
 );
 
 // Full Page view for Deployed Project Details with MotionCarousel & plain text description
@@ -37,7 +37,7 @@ export function DeployedPage({ project, onBack, onClose }) {
     <ScrollReveal animation="fadeInUp" duration="0.4s">
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
         {/* Header */}
-        <header className="pt-20 md:pt-10 mb-3 md:mb-6">
+        <header className="pt-20 md:pt-10">
           <div className="flex items-center gap-3 md:gap-4">
             <button
               type="button"
@@ -49,7 +49,7 @@ export function DeployedPage({ project, onBack, onClose }) {
             </button>
 
             <div className="flex-1 min-w-0">
-              <p className="text-base-content text-md md:text-lg lg:text-xl">
+              <p className="text-base-content text-sm md:text-md">
                 {project.title}
               </p>
               {project.organization && (
@@ -78,28 +78,45 @@ export function DeployedPage({ project, onBack, onClose }) {
         <div className="space-y-6 md:space-y-8">
           {/* Image Gallery: Carousel if >1, simple preview if exactly 1 */}
           {hasImages && (
-            hasMultipleImages ? (
-              <div className="w-full">
-                <MotionCarousel slides={project.images} />
+            <div className="space-y-2">
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  {hasMultipleImages ? 'Gallery :' : 'Screenshot :'}
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  {hasMultipleImages 
+                    ? 'Visual showcase of the deployed application' 
+                    : 'Live application interface and features'}
+                </p>
               </div>
-            ) : (
-              <div className="overflow-hidden border-2  border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
-                  <img
-                    src={project.images[0].src}
-                    alt={project.images[0].alt ?? project.name}
-                    className="w-full h-full object-cover object-top"
-                  />
+              {hasMultipleImages ? (
+                <div className="w-full">
+                  <MotionCarousel slides={project.images} />
                 </div>
-              </div>
-            )
+              ) : (
+                <div className="overflow-hidden border-2  border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
+                    <img
+                      src={project.images[0].src}
+                      alt={project.images[0].alt ?? project.name}
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
           )}
 
           {/* Description Section */}
           <div className="space-y-2">
-            <h3 className="text-[10px] md:text-xs text-base-content">
-              Description :
-            </h3>
+            <div className="space-y-1">
+              <h3 className="text-[10px] md:text-xs text-base-content">
+                Description :
+              </h3>
+              <p className="text-[8px] md:text-[10px] text-base-content/50">
+                Overview of the project and its purpose
+              </p>
+            </div>
             <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
               {project.description}
             </p>
@@ -108,9 +125,14 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Purpose Section */}
           {project.purpose && (
             <div className="space-y-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                Purpose :
-              </h3>
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Purpose :
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  The problem it solves or goal it achieves
+                </p>
+              </div>
               <p className="text-[10px] md:text-xs text-base-content leading-relaxed">
                 {project.purpose}
               </p>
@@ -120,9 +142,14 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Key Features Section */}
           {Array.isArray(project.details) && project.details.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                Key Features :
-              </h3>
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Key Features :
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  Main functionalities and capabilities
+                </p>
+              </div>
               <div className="space-y-1">
                 {project.details.map((item, i) => (
                   <div
@@ -143,9 +170,14 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Stack Section */}
           {Array.isArray(project.stack) && project.stack.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                Stack :
-              </h3>
+              <div className="space-y-1">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  Stack :
+                </h3>
+                <p className="text-[8px] md:text-[10px] text-base-content/50">
+                  Technologies and tools used in development
+                </p>
+              </div>
               <div className="space-y-1">
                 {project.stack.map((item, i) => (
                   <div
