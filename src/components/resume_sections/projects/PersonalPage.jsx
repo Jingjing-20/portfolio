@@ -11,6 +11,15 @@ const backButtonClasses = cn(
   'hover-theme-switch'
 );
 
+const techBadgeClasses = cn(
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
+  'border border-transparent',
+  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+  'hover:text-base-content hover:border-base-content',
+  'font-medium grayscale cursor-default',
+  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
+);
+
 export function PersonalPage({ personal, onBack, onClose }) {
   const handleBack = () => {
     if (onBack) {
@@ -193,18 +202,12 @@ export function PersonalPage({ personal, onBack, onClose }) {
                     Technologies and tools used in development
                   </p>
                 </div>
-                <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-2">
                   {personal.techStack.map((item, index) => (
                     <div
                       key={index}
-                      className={cn(
-                        'flex items-start gap-3 p-1 rounded-md',
-                        'text-[10px] md:text-xs font-medium text-base-content',
-                        'leading-relaxed whitespace-pre-line'
-                      )}
+                      className={techBadgeClasses}
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-base-content/80 shrink-0 mt-1.5" />
-
                       <span>{item}</span>
                     </div>
                   ))}

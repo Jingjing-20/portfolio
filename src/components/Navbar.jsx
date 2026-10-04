@@ -76,7 +76,7 @@ const buttons = cn(
 const NAV_ITEMS = [
   {
     value: 'home',
-    label: 'Home Page',
+    label: 'Home',
     outlined: <HomeOutlinedIcon size={14} className="shrink-0" />,
     filled: <HomeOutlinedIcon size={14} className="shrink-0" />,
   },
