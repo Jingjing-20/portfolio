@@ -45,7 +45,7 @@ export default function TechStack() {
       <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Technical Skills
+            Skills
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
             Languages, frameworks, and tools

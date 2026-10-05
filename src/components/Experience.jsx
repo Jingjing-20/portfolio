@@ -109,12 +109,6 @@ function ExperienceItem({ experience, onOpenSkills }) {
             {(experience.location || experience.workMode) && (
               <p className="text-[8px] md:text-[10px] text-base-content/60">
                 {experience.location}
-
-                {experience.location && experience.workMode && (
-                  <span className="mx-1 text-base-content">·</span>
-                )}
-
-                {experience.workMode}
               </p>
             )}
           </div>
@@ -182,7 +176,7 @@ export default function Experience() {
       <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Work Experience
+            Experience
           </p>
 
           <p className="text-[10px] md:text-xs text-base-content/50">

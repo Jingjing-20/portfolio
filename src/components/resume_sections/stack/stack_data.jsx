@@ -1,12 +1,22 @@
 export const TECH_STACK = [
   {
     category: 'Frontend Development',
-    description: 'Building modern, responsive user interfaces with industry-standard frameworks and tools.',
-    tools: ['JavaScript', 'TypeScript', 'React', 'Vue', 'Next.js', 'Tailwind CSS', 'Bootstrap', 'Vite'],
+    description: 'Building modern, responsive web interfaces and applications.',
+    tools: [
+      'JavaScript',
+      'TypeScript',
+      'React',
+      'Vue',
+      'Next.js',
+      'Tailwind CSS',
+      'Bootstrap',
+      'Vite',
+    ],
   },
+
   {
     category: 'Backend Development',
-    description: 'Server-side development, API design, authentication, and application security implementation.',
+    description: 'Building server-side applications, APIs, and web services.',
     tools: [
       'PHP',
       'Laravel',
@@ -15,82 +25,88 @@ export const TECH_STACK = [
       'Django',
       'FastAPI',
       'REST APIs',
-      'JWT Authentication',
-      'Session Management',
-      'Middleware',
-      'ORM (Eloquent)',
-      'Query Builder',
-      'MVC Pattern',
-      'Email Integration',
-      'File Upload Handling',
-      'PDF Generation',
-      'Excel Export',
-      'QR Code Generation',
     ],
   },
+
   {
     category: 'Mobile Development',
-    description: 'Cross-platform mobile application development for iOS and Android.',
-    tools: ['React Native', 'Flutter'],
-  },
-  {
-    category: 'Databases & Data Services',
-    description: 'Database management, SQL operations, and cloud-hosted data solutions.',
-    tools: ['MySQL', 'PostgreSQL', 'SQLite', 'SQL', 'Database Design', 'Data Modeling', 'Firebase', 'Supabase'],
-  },
-  {
-    category: 'Security & Authentication',
-    description: 'Application security, user authentication, and data protection practices.',
+    description: 'Developing cross-platform mobile applications.',
     tools: [
-      'JWT (JSON Web Tokens)',
-      'Session Management',
-      'Password Hashing',
-      'CORS',
-      'Input Validation',
-      'SQL Injection Prevention',
-      'XSS Protection',
-      'CSRF Protection',
+      'React Native',
+      'Flutter',
     ],
   },
+
   {
-    category: 'Software Development',
-    description: 'Core programming principles, design patterns, and development best practices.',
-    tools: ['Object-Oriented Programming', 'Component-Based Development', 'Error Handling', 'Code Reusability', 'API Integration', 'Technical Documentation', 'Debugging', 'Manual Testing'],
-  },
-  {
-    category: 'Networking Fundamentals',
-    description: 'Network protocols, addressing schemes, and infrastructure troubleshooting.',
-    tools: ['IP Addressing', 'Subnetting', 'TCP/IP', 'VLAN', 'DNS', 'DHCP', 'Network Troubleshooting'],
-  },
-  {
-    category: 'Version Control & Development Tools',
-    description: 'Collaborative development, code versioning, package management, and debugging utilities.',
+    category: 'Databases & Data Services',
+    description: 'Working with relational databases and cloud data services.',
     tools: [
-      'Git',
-      'GitHub',
-      'Composer',
-      'npm',
-      'yarn',
-      'Postman',
-      'Browser DevTools',
-      'VS Code',
-      'Apache',
+      'MySQL',
+      'PostgreSQL',
+      'Firebase',
+      'Supabase',
+    ],
+  },
+
+  {
+    category: 'Networking',
+    description: 'Foundational computer networking, infrastructure, and troubleshooting.',
+    tools: [
+      'IP Addressing',
+      'Subnetting',
+      'TCP/IP',
+      'VLAN',
+      'DNS',
+      'DHCP',
+      'Routing',
+      'Switching',
       'Cisco Packet Tracer',
     ],
   },
+
   {
-    category: 'CMS & Web Platforms',
-    description: 'Content management systems for dynamic website creation and management.',
-    tools: ['WordPress'],
+    category: 'Version Control',
+    description: 'Managing source code and development workflows.',
+    tools: [
+      'Git',
+      'GitHub',
+    ],
   },
+
   {
-    category: 'UI/UX & Creative Tools',
-    description: 'Design, prototyping, and multimedia content creation tools.',
-    tools: ['Figma', 'Photoshop', 'Canva', 'Framer', 'CapCut'],
+    category: 'UI/UX & Design',
+    description: 'Interface design and visual content creation.',
+    tools: [
+      'Figma',
+      'Photoshop',
+      'Canva',
+    ],
   },
+
   {
     category: 'AI-Assisted Development',
-    description: 'Leveraging AI-powered tools to enhance coding efficiency and productivity.',
-    tools: ['Claude', 'Gemini', 'Codex', 'Antigravity'],
+    description: 'AI tools used to support software development.',
+    tools: [
+      'Claude',
+      'Gemini',
+      'Codex',
+      'Cursor',
+      'Antigravity',
+    ],
+  },
+
+  {
+    category: 'IT Support & Help Desk',
+    description: 'Providing technical assistance, troubleshooting, and user support.',
+    tools: [
+      'Windows',
+      'Hardware Troubleshooting',
+      'Software Troubleshooting',
+      'System Troubleshooting',
+      'Technical Support',
+      'User Support',
+      'Remote Assistance',
+      'Technical Documentation',
+    ],
   },
 ];

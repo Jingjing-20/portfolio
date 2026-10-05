@@ -25,20 +25,15 @@ const ROLES = [
   'IT Support',
   'Technical Support',
   'IT Operations',
-  'Help Desk',
   'NOC Support',
   'Network Support',
   'SQL Developer',
-  'WordPress Developer',
-  'UI Developer',
-  'Customer Support',
 ];
 
 const HIGHLIGHTS = [
-  'Passionate about building user-centric applications that solve real-world problems',
-  'Continuously learning and experimenting with modern frameworks, best practices, and emerging technologies',
-  'Strong communicator who thrives in collaborative environments and values clean, maintainable code',
-  'Active learner exploring AI-assisted development tools and modern web development workflows',
+  'Builds practical software solutions for real-world organizational needs',
+  'Experienced with system deployment, troubleshooting, technical support, and maintenance',
+  'Explores modern development workflows and AI-assisted development tools',
 ];
 
 export default function About() {
@@ -52,7 +47,7 @@ export default function About() {
       <header className="pt-20 md:pt-10 mb-3">
         <div>
           <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            About Me
+            About
           </p>
           <p className="text-[10px] md:text-xs text-base-content/50">
             Background, education, and career goals
@@ -93,7 +88,7 @@ export default function About() {
               Gian Carlo N. Ulep
             </h3>
             <p className="text-[10px] md:text-xs text-base-content/60">
-              Based in Bacolod City, Negros Occidental, Philippines
+              Based in Negros Occidental, Philippines
             </p>
           </div>
           <p className="text-[10px] md:text-xs text-base-content">
@@ -131,9 +126,6 @@ export default function About() {
           <h3 className="text-[10px] md:text-xs text-base-content">
             Education :
           </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Academic background and formal qualifications
-          </p>
         </div>
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between">
@@ -158,39 +150,21 @@ export default function About() {
 
       <hr className={dividerClasses} />
 
-      {/* Personal Information */}
+      {/* Work Preferences */}
       <div className="space-y-3">
         <div className="space-y-1">
           <h3 className="text-[10px] md:text-xs text-base-content">
-            Personal Information :
+            Work Preferences :
           </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Location, languages, and availability
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div className="space-y-1">
             <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
-              Location
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content">
-              Bacolod City, Negros Occidental
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/80">
-              Philippines 🇵🇭
-            </p>
-          </div>
-
-          <div className="space-y-1">
-            <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
               Languages
             </p>
             <p className="text-[10px] md:text-xs text-base-content">
-              English (Professional Working Proficiency)
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/80">
-              Filipino / Tagalog (Native)
+              English · Filipino / Tagalog
             </p>
           </div>
 
@@ -199,10 +173,7 @@ export default function About() {
               Availability
             </p>
             <p className="text-[10px] md:text-xs text-base-content">
-              Immediate
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/80">
-              Open to full-time, part-time &amp; contract roles
+              Full-time · Part-time · Contract
             </p>
           </div>
 
@@ -211,10 +182,16 @@ export default function About() {
               Work Setup
             </p>
             <p className="text-[10px] md:text-xs text-base-content">
-              On-site, Remote, or Hybrid
+              On-site · Remote · Hybrid
             </p>
-            <p className="text-[10px] md:text-xs text-base-content/80">
-              Flexible and adaptable
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-[8px] md:text-[10px] text-base-content/60 font-medium">
+              Work Hours
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content">
+              Day Shift · Night Shift · Flexible
             </p>
           </div>
         </div>
@@ -228,9 +205,6 @@ export default function About() {
           <h3 className="text-[10px] md:text-xs text-base-content">
             Highlights :
           </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Key strengths, interests, and professional values
-          </p>
         </div>
 
         <div className="space-y-1">
