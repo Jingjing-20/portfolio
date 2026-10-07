@@ -17,9 +17,9 @@ export const personalData = [
     type: 'Weather Forecasting Web Application',
     organization: 'Modern Weather Dashboard',
     category: 'Personal / Weather Dashboard',
-    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
+    techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'OpenWeatherMap API', 'Vercel'],
     description:
-      'A modern, responsive weather application that provides current weather information and forecasts using the OpenWeatherMap API. Designed as a portfolio-quality project demonstrating professional development practices.',
+      'A modern, responsive weather application that provides current weather information and forecasts using the OpenWeatherMap API. Designed as a portfolio-quality project demonstrating professional development practices and deployed on Vercel.',
     purpose:
       'Demonstrate modern web development skills through a production-ready weather application featuring React, TypeScript, API integration, clean architecture, responsive UI/UX, and professional Git workflows with CI/CD deployment.',
     features: [
@@ -43,9 +43,9 @@ export const personalData = [
     type: 'ESL Listening & Vocabulary Mini-Game for Kids',
     organization: 'Listening & Vocabulary Mini-Game',
     category: 'Personal / Educational Game',
-    techStack: ['React', 'TypeScript', 'Phaser', 'Vite'],
+    techStack: ['React', 'TypeScript', 'Phaser', 'Vite', 'Vercel'],
     description:
-      'An interactive ESL (English as a Second Language) listening and vocabulary mini-game where players listen to spoken words, identify matching pictures, and pop floating balloons before time runs out. Designed for kids and early learners.',
+      'An interactive ESL (English as a Second Language) listening and vocabulary mini-game where players listen to spoken words, identify matching pictures, and pop floating balloons before time runs out. Designed for kids and early learners and deployed on Vercel.',
     purpose:
       'Provide an engaging, gamified educational experience for children learning English vocabulary by combining audio learning with visual recognition through interactive gameplay with progressive difficulty levels.',
     features: [

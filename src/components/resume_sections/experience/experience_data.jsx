@@ -5,7 +5,7 @@ import FreelanceImg from '@/components/resume_sections/experience/freelance.webp
 import MobileLegendsImg from '@/components/resume_sections/experience/mobile-legends.webp';
 
 export const EXPERIENCES = [
-  {
+  /*{
     step: 1,
     company: 'Concentrix - Mediacom',
     logo: ConcentrixImg,
@@ -29,9 +29,9 @@ export const EXPERIENCES = [
       'Issue Escalation',
       'Customer Communication',
     ],
-  },
+  },*/
   {
-    step: 2,
+    step: 1,
     company: 'Freelance',
     logo: FreelanceImg,
     logoInitials: 'FL',
@@ -41,7 +41,7 @@ export const EXPERIENCES = [
     workMode: 'Remote',
     role: 'Software Developer',
     dateRange: 'Jul 2026 – Present · 3 mos',
-    description: 'Develop and deliver custom web solutions for diverse clients, including web applications, responsive websites, and interactive digital experiences. Leverage modern technologies to build scalable, user-focused solutions while managing client relationships and project timelines.',
+    description: 'Develop and deliver custom web solutions for clients primarily within the regional market, including web applications, responsive websites, and interactive digital experiences. Leverage modern technologies to build scalable, user-focused solutions while managing client relationships and project timelines.',
     skills: [
       'Software Development',
       'Web Development',
@@ -56,7 +56,7 @@ export const EXPERIENCES = [
     ],
   },
   {
-    step: 3,
+    step: 2,
     company: 'PGNO – GSO, Property Management Division',
     logo: PGNOImg,
     logoInitials: 'PGNO',
@@ -84,7 +84,7 @@ export const EXPERIENCES = [
 
   },
   {
-    step: 4,
+    step: 3,
     company: 'Panasiatic Solutions - Straight Talk',
     logo: PanasiaticImg,
     logoInitials: 'PSST',

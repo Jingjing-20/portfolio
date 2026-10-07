@@ -110,14 +110,14 @@ export default function Projects() {
     );
   }
 
-const techBadgeClasses = cn(
-  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
-  'border border-transparent',
-  'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
-  'hover:text-base-content hover:border-base-content',
-  'font-medium grayscale cursor-default',
-  'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
-);
+  const techBadgeClasses = cn(
+    'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+    'border border-transparent',
+    'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
+    'hover:text-base-content hover:border-base-content',
+    'font-medium grayscale cursor-default',
+    'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
+  );
 
   const PolaroidCard = ({ item, onClick, onKeyDown, imgSrc, name, subtitle }) => (
     <div
@@ -160,12 +160,12 @@ const techBadgeClasses = cn(
   );
 
   const CoverListItem = ({ item, onClick, coverImage, title, organization, techStack }) => (
-    <li key={item.id} className="flex items-start">
-      <div className="flex-1 space-y-3">
-        <div className="flex gap-4 items-center">
-          {/* Cover Image - Double Border */}
+    <li key={item.id} className="flex items-start min-w-0">
+      <div className="flex-1 min-w-0">
+        <div className="flex gap-3 md:gap-4 items-center min-w-0">
+          {/* Cover Image - Double Border - Smaller on mobile */}
           {coverImage && (
-            <div className="flex-shrink-0 w-30 md:w-40 relative group">
+            <div className="flex-shrink-0 w-20 md:w-40 relative group">
               <div
                 className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double hover-card"
                 onClick={onClick}
@@ -184,24 +184,30 @@ const techBadgeClasses = cn(
 
           {/* Text Content */}
           <div
-            className="items-center justify-center flex-1 space-y-1 group/title"
+            className="flex flex-col justify-center flex-1 min-w-0 space-y-1 group/title"
             onClick={onClick}
           >
-            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors">
+            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors truncate">
               {title}
             </h4>
             {organization && (
-              <p className="text-[8px] md:text-[10px] text-base-content/80">
+              <p className="text-[8px] md:text-[10px] text-base-content/80 truncate">
                 {organization}
               </p>
             )}
-            {/* Tech Stack Icons */}
+            {/* Tech Stack Icons - horizontally scrollable, no wrapping */}
             {techStack && techStack.length > 0 && (
-              <div className="flex flex-wrap gap-1 mt-1">
+              <div
+                className={cn(
+                  'flex gap-1 mt-1 w-full min-w-0 overflow-x-auto whitespace-nowrap',
+                  '[-ms-overflow-style:none] [scrollbar-width:none]',
+                  '[&::-webkit-scrollbar]:hidden'
+                )}
+              >
                 {techStack.map((tech) => (
                   <span
                     key={tech}
-                    className={techBadgeClasses}
+                    className={cn(techBadgeClasses, 'flex-shrink-0')}
                   >
                     {tech}
                   </span>
@@ -244,8 +250,8 @@ const techBadgeClasses = cn(
 
             <div className="space-y-6 md:space-y-7">
               {category === 'Mockups' ? (
-                // Mockups Grid Layout (3 cols mobile, 4 cols desktop)
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                // Mockups Grid Layout (2 cols mobile, 4 cols desktop)
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {items.map((mockup) => (
                     <PolaroidCard
                       key={mockup.id}

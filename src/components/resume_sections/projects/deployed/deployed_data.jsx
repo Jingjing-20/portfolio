@@ -58,11 +58,11 @@ export const deployedData = [
     type: 'Carlos Hilado Memorial State University - Alijis',
     organization: 'Carlos Hilado Memorial State University - Alijis',
     description:
-      'A comprehensive academic management system built to centralize and streamline institutional data for Carlos Hilado Memorial State University - Alijis Campus.',
+      'A comprehensive academic management system built to centralize and streamline institutional data for Carlos Hilado Memorial State University - Alijis Campus. Developed locally using XAMPP and successfully deployed via Hostinger web hosting service.',
     purpose:
       'Optimize academic processes and improve transparency by providing centralized student record management, automated grade calculations, QR-based attendance tracking, and efficient report generation to enhance accuracy and reduce manual work in academic administration.',
     category: 'Academic Information System',
-    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript'],
+    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'XAMPP', 'Hostinger'],
     details: [
       'Created an academic management system for Carlos Hilado Memorial State University',
       'Built separate dashboards for administrators, faculty, and students',
@@ -114,11 +114,11 @@ export const deployedData = [
     type: 'PGNO – GSO, Property Management Division',
     organization: 'PGNO – GSO, Property Management Division',
     description:
-      'A digital platform for the Provincial General Services Office - Property Management Division to manage government housing lots and property assets with integrated tracking, documentation, and interactive mapping capabilities.',
+      'A digital platform for the Provincial General Services Office - Property Management Division to manage government housing lots and property assets with integrated tracking, documentation, and interactive mapping capabilities. Built as a local area network (LAN) based system using XAMPP, designed for office-based access through wired network connections.',
     purpose:
       'Modernize management of all provincial properties including housing lots, buildings, and land through a centralized system integrating lot status tracking, awardee records, payment transactions, contract monitoring, asset mapping, and legal document organization to ensure transparency, efficient resource allocation, and data-driven oversight.',
     category: 'Property Management Platform',
-    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'Leaflet.js'],
+    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'Leaflet.js', 'XAMPP'],
     details: [
       'Developed a digital platform for managing government housing lots and property assets',
       'Built separate modules for lot management and property management',
