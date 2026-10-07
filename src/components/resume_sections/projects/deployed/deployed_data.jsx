@@ -118,7 +118,7 @@ export const deployedData = [
     purpose:
       'Modernize management of all provincial properties including housing lots, buildings, and land through a centralized system integrating lot status tracking, awardee records, payment transactions, contract monitoring, asset mapping, and legal document organization to ensure transparency, efficient resource allocation, and data-driven oversight.',
     category: 'Property Management Platform',
-    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'Leaflet.js', 'XAMPP'],
+    techStack: ['PHP', 'MySQL', 'Tailwind CSS', 'JavaScript', 'React', 'Vite', 'Leaflet.js', 'XAMPP'],
     details: [
       'Developed a digital platform for managing government housing lots and property assets',
       'Built separate modules for lot management and property management',

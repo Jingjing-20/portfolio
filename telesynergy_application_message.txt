@@ -1,0 +1,47 @@
+Subject: WEB DEVELOPER
+
+Dear Hiring Manager,
+
+I am writing to express my strong interest in the Full-Stack Web Developer position at Telesynergy Corp. Bacolod. With 2+ years of project-based experience in full-stack web development and a proven track record of delivering comprehensive web solutions, I am excited about the opportunity to contribute to your team.
+
+Why I'm a Strong Fit for This Role:
+
+TECHNICAL EXPERTISE:
+• Full-Stack Development: Proficient in both frontend (JavaScript, TypeScript, React, Vue, HTML5, CSS3) and backend (PHP, Laravel, Node.js, Python) technologies
+• Database Management: Extensive experience with MySQL and PostgreSQL, including schema design and data migration
+• Modern Frameworks: Hands-on experience with React, Vue, Next.js, and modern build tools like Vite
+• Web Hosting & Security: Practical experience with web hosting management, domain setup, DNS configuration, SSL certificate implementation, and HTTPS security best practices
+• UI/UX Design: Strong focus on responsive design and user-friendly interfaces using Tailwind CSS and Bootstrap
+
+PROVEN PROJECT EXPERIENCE:
+• Developed and deployed a comprehensive academic management system for Carlos Hilado Memorial State University using PHP/MySQL, successfully hosted on Hostinger
+• Built a government property management platform with interactive mapping capabilities and real-time dashboards using React and Vite
+• Created modern web applications using React/TypeScript deployed on Vercel
+• Managed complete project lifecycles from development to deployment
+
+CLIENT INTERACTION & COMMUNICATION:
+• Successfully managed client relationships during freelance projects with regional businesses
+• Provided technical support and troubleshooting for government office personnel
+• Experience in translating client requirements into functional web solutions
+• Strong problem-solving skills with attention to detail
+
+ADDITIONAL STRENGTHS:
+• Experience with API integration (REST APIs, OpenWeatherMap API)
+• Version control proficiency with Git/GitHub
+• System deployment and server management experience
+• Local development environment setup using XAMPP
+• Cross-platform development capabilities
+
+I am particularly drawn to Telesynergy because of your focus on comprehensive web solutions and client-centered approach. My experience in delivering complete web applications from conception to deployment, combined with my strong communication skills and technical expertise, aligns perfectly with your requirements.
+
+I am available for full-time employment and can start immediately. I would welcome the opportunity to discuss how my technical skills and project experience can contribute to Telesynergy's continued success.
+
+Thank you for considering my application. I look forward to hearing from you soon.
+
+Best regards,
+Gian Carlo N. Ulep
+
+Portfolio: [Your Portfolio Website URL]
+GitHub: https://github.com/Jingjing-20
+Email: [Your Email Address]
+Phone: [Your Phone Number]

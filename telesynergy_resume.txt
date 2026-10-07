@@ -1,0 +1,99 @@
+GIAN CARLO N. ULEP
+Full-Stack Web Developer
+Negros Occidental, Philippines
+Email: [Your Email]
+Phone: [Your Phone Number]
+
+PROFESSIONAL SUMMARY
+Experienced Full-Stack Web Developer with 2+ years of project-based experience in software and web development. Proven track record of delivering comprehensive web solutions for government offices and educational institutions. Strong expertise in both frontend and backend development with excellent client communication skills and system deployment experience.
+
+TECHNICAL SKILLS
+
+Frontend Development:
+• JavaScript, TypeScript, HTML5, CSS3
+• React, Vue, Next.js
+• Tailwind CSS, Bootstrap
+• Responsive Web Design, UI/UX Best Practices
+• Modern Build Tools (Vite)
+
+Backend Development:
+• PHP, Laravel
+• Node.js, Python, Django, FastAPI
+• REST API Development
+• Server-side Applications
+
+Databases:
+• MySQL, PostgreSQL
+• Database Design & Management
+• Data Migration & Schema Management
+
+Web Technologies & Hosting:
+• Web Hosting Management
+• Domain Management & DNS Configuration
+• SSL Certificate Implementation
+• HTTPS Setup & Security Best Practices
+• XAMPP (Local Development)
+• Hostinger, Vercel (Deployment Platforms)
+
+Additional Skills:
+• Git Version Control (GitHub)
+• GIS Mapping & GeoJSON Integration
+• System Troubleshooting & Technical Support
+• Client Communication & Project Management
+
+PROFESSIONAL EXPERIENCE
+
+Software Developer (Freelance)                                    Jul 2026 – Present
+Remote
+• Develop and deliver custom web solutions for clients primarily within the regional market
+• Build scalable, user-focused web applications and responsive websites
+• Manage client relationships and project timelines
+• Leverage modern technologies for full-stack development
+
+Software Developer / IT Operations Support Intern               Feb 2026 – May 2026
+PGNO – GSO, Property Management Division, Bacolod
+• Enhanced, deployed, and maintained government property monitoring system
+• Performed database schema revisions and data migration
+• Managed system deployment and server management
+• Implemented interactive property mapping using GIS and GeoJSON
+• Provided technical support for system errors and hardware problems
+• Created real-time dashboards and Excel reporting features
+
+Customer Service Representative                                 Jul 2024 – Aug 2024
+Panasiatic Solutions - Straight Talk, Bacolod
+• Delivered customer support and technical troubleshooting
+• Handled billing inquiries and account management
+• Maintained professional client communication in fast-paced environment
+
+KEY PROJECTS
+
+CHMSU Academic Grade and Report Management System
+• Comprehensive academic management system for state university
+• Built separate dashboards for administrators, faculty, and students
+• Implemented automated grade calculations and QR-based attendance
+• Generated PDF/Excel reports and email notifications
+• Tech Stack: PHP, MySQL, JavaScript, Tailwind CSS, XAMPP, Hostinger
+
+PGSO Unified Lot and Property Management Platform
+• Digital platform for government property and housing lot management
+• Integrated mapping capabilities with Leaflet.js and GeoJSON
+• Built real-time dashboards with charts and statistics
+• Supported bulk operations and document management
+• Tech Stack: PHP, MySQL, JavaScript, React, Vite, Tailwind CSS, Leaflet.js, XAMPP
+
+Atmos Weather Application
+• Modern, responsive weather application with OpenWeatherMap API
+• Real-time weather data with geolocation support
+• Mobile-first responsive design with dark mode
+• Tech Stack: React, TypeScript, Vite, Tailwind CSS, OpenWeatherMap API, Vercel
+
+EDUCATION
+Bachelor of Science in Information Technology (2022 – 2026)
+Carlos Hilado Memorial State University – Alijis
+Negros Occidental, Philippines
+
+CERTIFICATIONS & TRAINING
+• Modern Web Development Frameworks
+• Database Management & Design
+• Web Security & SSL Implementation
+• GIS Mapping & Spatial Data Management
