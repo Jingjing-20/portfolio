@@ -5,6 +5,15 @@ import { MockupPage } from '@/components/resume_sections/projects/MockupPage';
 import { PersonalPage } from '@/components/resume_sections/projects/PersonalPage';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
+function ArrowTopRightIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 15 15" className={className} aria-hidden="true">
+      <title>arrow-top-right</title>
+      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z"/>
+    </svg>
+  );
+}
+
 function getActiveItemFromHash() {
   if (typeof window === 'undefined') return { project: null, mockup: null, personal: null };
   const hash = window.location.hash.replace(/^#/, '');
@@ -119,6 +128,56 @@ export default function Projects() {
     'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
   );
 
+  const projectCardClasses = cn(
+    'group text-left p-3.5 md:p-4 rounded-xl bg-textured border border-solid border-gray-300 dark:border-white/20',
+    'hover:border-double shadow-xl hover-theme-switch transition-all duration-200 cursor-pointer'
+  );
+
+  const ProjectCard = ({ item, onClick, title, organization, techStack }) => (
+    <div
+      key={item.id}
+      className={projectCardClasses}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      }}
+    >
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <h4 className="text-xs md:text-sm font-semibold text-base-content group-hover:underline underline-offset-2 flex-1">
+          {title}
+        </h4>
+        <ArrowTopRightIcon size={16} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
+      </div>
+
+      <hr className="my-2" />
+
+      {organization && (
+        <p className="text-[10px] md:text-xs text-base-content/60 leading-relaxed mb-2">
+          {organization}
+        </p>
+      )}
+      
+      {/* Tech Stack */}
+      {techStack && techStack.length > 0 && (
+        <div className="flex flex-wrap items-center gap-1.5 mt-2">
+          {techStack.map((tech) => (
+            <span
+              key={tech}
+              className={techBadgeClasses}
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
   const PolaroidCard = ({ item, onClick, onKeyDown, imgSrc, name, subtitle }) => (
     <div
       key={item.id}
@@ -159,67 +218,6 @@ export default function Projects() {
     </div>
   );
 
-  const CoverListItem = ({ item, onClick, coverImage, title, organization, techStack }) => (
-    <li key={item.id} className="flex items-start min-w-0">
-      <div className="flex-1 min-w-0">
-        <div className="flex gap-3 md:gap-4 items-center min-w-0">
-          {/* Cover Image - Double Border - Smaller on mobile */}
-          {coverImage && (
-            <div className="flex-shrink-0 w-20 md:w-40 relative group">
-              <div
-                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double hover-card"
-                onClick={onClick}
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                  <img
-                    src={coverImage}
-                    alt={`${title} cover`}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Text Content */}
-          <div
-            className="flex flex-col justify-center flex-1 min-w-0 space-y-1 group/title"
-            onClick={onClick}
-          >
-            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors truncate">
-              {title}
-            </h4>
-            {organization && (
-              <p className="text-[8px] md:text-[10px] text-base-content/80 truncate">
-                {organization}
-              </p>
-            )}
-            {/* Tech Stack Icons - horizontally scrollable, no wrapping */}
-            {techStack && techStack.length > 0 && (
-              <div
-                className={cn(
-                  'flex gap-1 mt-1 w-full min-w-0 overflow-x-auto whitespace-nowrap',
-                  '[-ms-overflow-style:none] [scrollbar-width:none]',
-                  '[&::-webkit-scrollbar]:hidden'
-                )}
-              >
-                {techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className={cn(techBadgeClasses, 'flex-shrink-0')}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </li>
-  );
-
   return (
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
       {/* Header */}
@@ -248,7 +246,7 @@ export default function Projects() {
               </p>
             </div>
 
-            <div className="space-y-6 md:space-y-7">
+            <div className="space-y-3">
               {category === 'Mockups' ? (
                 // Mockups Grid Layout (2 cols mobile, 4 cols desktop)
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -270,35 +268,33 @@ export default function Projects() {
                   ))}
                 </div>
               ) : category === 'Personal' ? (
-                // Personal: Cover Image + Inline Text List (matches Deployed format)
-                <ul className="space-y-6 md:space-y-7">
+                // Personal: Card Format (one by one)
+                <>
                   {items.map((personal) => (
-                    <CoverListItem
+                    <ProjectCard
                       key={personal.id}
                       item={personal}
-                      coverImage={personal.coverImage || personal.previewImage}
                       title={personal.title || personal.name}
                       organization={personal.organization || personal.type}
                       techStack={personal.techStack}
                       onClick={() => handleSelectPersonal(personal)}
                     />
                   ))}
-                </ul>
+                </>
               ) : (
-                // Deployed: Cover Image + Inline Text List (original format)
-                <ul className="space-y-6 md:space-y-7">
+                // Deployed: Card Format (one by one)
+                <>
                   {items.map((project) => (
-                    <CoverListItem
+                    <ProjectCard
                       key={project.id}
                       item={project}
-                      coverImage={project.coverImage || project.previewImage}
                       title={project.title || project.name}
                       organization={project.organization || project.type}
                       techStack={project.techStack}
                       onClick={() => handleSelectProject(project)}
                     />
                   ))}
-                </ul>
+                </>
               )}
             </div>
           </article>

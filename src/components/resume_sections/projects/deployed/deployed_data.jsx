@@ -57,6 +57,7 @@ export const deployedData = [
     title: 'Academic Grade and Report Management',
     type: 'Carlos Hilado Memorial State University - Alijis',
     organization: 'Carlos Hilado Memorial State University - Alijis',
+    summary: 'Comprehensive academic management system centralizing student records, grades, and attendance with QR-based tracking.',
     description:
       'A comprehensive academic management system built to centralize and streamline institutional data for Carlos Hilado Memorial State University - Alijis Campus. Developed locally using XAMPP and successfully deployed via Hostinger web hosting service.',
     purpose:
@@ -113,6 +114,7 @@ export const deployedData = [
     title: 'Unified Lot and Property Management and Monitoring',
     type: 'PGNO – GSO, Property Management Division',
     organization: 'PGNO – GSO, Property Management Division',
+    summary: 'Digital platform for managing government housing lots and property assets with interactive mapping and document tracking.',
     description:
       'A digital platform for the Provincial General Services Office - Property Management Division to manage government housing lots and property assets with integrated tracking, documentation, and interactive mapping capabilities. Built as a local area network (LAN) based system using XAMPP, designed for office-based access through wired network connections.',
     purpose:

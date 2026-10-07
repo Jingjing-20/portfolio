@@ -18,6 +18,7 @@ export const personalData = [
     organization: 'Modern Weather Dashboard',
     category: 'Personal / Weather Dashboard',
     techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'OpenWeatherMap API', 'Vercel'],
+    summary: 'Modern weather application with real-time data, forecasts, and geolocation support using OpenWeatherMap API.',
     description:
       'A modern, responsive weather application that provides current weather information and forecasts using the OpenWeatherMap API. Designed as a portfolio-quality project demonstrating professional development practices and deployed on Vercel.',
     purpose:
@@ -44,6 +45,7 @@ export const personalData = [
     organization: 'Listening & Vocabulary Mini-Game',
     category: 'Personal / Educational Game',
     techStack: ['React', 'TypeScript', 'Phaser', 'Vite', 'Vercel'],
+    summary: 'Interactive ESL vocabulary game combining audio learning with visual recognition through balloon-popping gameplay.',
     description:
       'An interactive ESL (English as a Second Language) listening and vocabulary mini-game where players listen to spoken words, identify matching pictures, and pop floating balloons before time runs out. Designed for kids and early learners and deployed on Vercel.',
     purpose:
