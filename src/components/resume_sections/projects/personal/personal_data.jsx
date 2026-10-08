@@ -1,8 +1,10 @@
 import wordpopPreview from '@/components/resume_sections/projects/personal/wordpop/wordpop.webp';
-import atmosWeatherPreview from '@/components/resume_sections/projects/personal/atmos-weather/atmos-wather.webp';
+import atmosWeatherDark from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-dark (1).webp';
+import atmosWeatherLight from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-ligh.webp';
 
 export const atmosWeatherImages = [
-  { src: atmosWeatherPreview, alt: 'Atmos Weather Preview' },
+  { src: atmosWeatherDark, alt: 'Dark Mode' },
+  { src: atmosWeatherLight, alt: 'Light Mode' },
 ];
 
 export const wordpopImages = [
@@ -14,7 +16,7 @@ export const personalData = [
     id: 'atmos-weather',
     name: 'Atmos Weather',
     title: 'Atmos Weather',
-    type: 'Weather Forecasting Web Application',
+    type: 'Weather Forecast',
     organization: 'Modern Weather Dashboard',
     category: 'Personal / Weather Dashboard',
     techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'OpenWeatherMap API', 'Vercel'],
@@ -34,8 +36,8 @@ export const personalData = [
     ],
     livePreview: 'https://atmos-weather-517i.vercel.app/',
     images: atmosWeatherImages,
-    previewImage: atmosWeatherPreview,
-    coverImage: atmosWeatherPreview,
+    previewImage: atmosWeatherDark,
+    coverImage: atmosWeatherDark,
   },
   {
     id: 'wordpop',

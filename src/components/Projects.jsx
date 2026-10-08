@@ -5,6 +5,14 @@ import { MockupPage } from '@/components/resume_sections/projects/MockupPage';
 import { PersonalPage } from '@/components/resume_sections/projects/PersonalPage';
 import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projects_data';
 
+function ArrowTopRightIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 15 15" className={className} aria-hidden="true">
+      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z"/>
+    </svg>
+  );
+}
+
 function getActiveItemFromHash() {
   if (typeof window === 'undefined') return { project: null, mockup: null, personal: null };
   const hash = window.location.hash.replace(/^#/, '');
@@ -159,69 +167,65 @@ export default function Projects() {
     </div>
   );
 
-  const CoverListItem = ({ item, onClick, coverImage, title, organization, techStack }) => (
-    <li key={item.id} className="flex items-start">
-      <div className="flex-1 space-y-3">
-        <div className="flex gap-2 md:gap-4 items-center">
-          {/* Cover Image - Double Border - smaller on mobile */}
-          {coverImage && (
-            <div className="flex-shrink-0 w-16 sm:w-20 md:w-40 relative group">
-              <div
-                className="relative p-0.5 md:p-1 rounded-lg shadow-xl bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double hover-card"
-                onClick={onClick}
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
-                  <img
-                    src={coverImage}
-                    alt={`${title} cover`}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-              </div>
+  const CoverListItem = ({ item, onClick, title, organization, techStack, isLast }) => (
+    <li key={item.id} className="flex flex-col">
+      <div
+        className="group flex items-center gap-2 md:gap-3 py-2.5 md:py-3 cursor-pointer select-none"
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            onClick && onClick();
+          }
+        }}
+      >
+        {/* Text Content */}
+        <div className="flex-1 min-w-0 space-y-1 group/title">
+          <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors truncate">
+            {title}
+          </h4>
+          {organization && (
+            <p className="text-[8px] md:text-[10px] text-base-content/80 truncate">
+              {organization}
+            </p>
+          )}
+          {/* Tech Stack - single horizontal scrollable line */}
+          {techStack && techStack.length > 0 && (
+            <div
+              className={cn(
+                'flex flex-nowrap gap-1 mt-1',
+                'overflow-x-auto whitespace-nowrap',
+                'scrollbar-thin scrollbar-thumb-base-content/20 scrollbar-track-transparent',
+                'pb-0.5'
+              )}
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(120,120,120,0.3) transparent',
+              }}
+            >
+              {techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className={techBadgeClasses}
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
           )}
-
-          {/* Text Content */}
-          <div
-            className="items-center justify-center flex-1 min-w-0 space-y-1 group/title"
-            onClick={onClick}
-          >
-            <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors truncate">
-              {title}
-            </h4>
-            {organization && (
-              <p className="text-[8px] md:text-[10px] text-base-content/80 truncate">
-                {organization}
-              </p>
-            )}
-            {/* Tech Stack - single horizontal scrollable line */}
-            {techStack && techStack.length > 0 && (
-              <div
-                className={cn(
-                  'flex flex-nowrap gap-1 mt-1',
-                  'overflow-x-auto whitespace-nowrap',
-                  'scrollbar-thin scrollbar-thumb-base-content/20 scrollbar-track-transparent',
-                  'pb-0.5'
-                )}
-                style={{
-                  scrollbarWidth: 'thin',
-                  scrollbarColor: 'rgba(120,120,120,0.3) transparent',
-                }}
-              >
-                {techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className={techBadgeClasses}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
+
+        {/* Arrow Icon - vertically centered on the right */}
+        <ArrowTopRightIcon
+          size={16}
+          className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
+        />
       </div>
+      {!isLast && (
+        <hr className="border-base-content/15" />
+      )}
     </li>
   );
 
@@ -275,32 +279,30 @@ export default function Projects() {
                   ))}
                 </div>
               ) : category === 'Personal' ? (
-                // Personal: Cover Image + Inline Text List (matches Deployed format)
-                <ul className="space-y-6 md:space-y-7">
-                  {items.map((personal) => (
+                <ul>
+                  {items.map((personal, idx) => (
                     <CoverListItem
                       key={personal.id}
                       item={personal}
-                      coverImage={personal.coverImage || personal.previewImage}
                       title={personal.title || personal.name}
-                      organization={personal.organization || personal.type}
+                      organization={personal.type || personal.organization}
                       techStack={personal.techStack}
                       onClick={() => handleSelectPersonal(personal)}
+                      isLast={idx === items.length - 1}
                     />
                   ))}
                 </ul>
               ) : (
-                // Deployed: Cover Image + Inline Text List (original format)
-                <ul className="space-y-6 md:space-y-7">
-                  {items.map((project) => (
+                <ul>
+                  {items.map((project, idx) => (
                     <CoverListItem
                       key={project.id}
                       item={project}
-                      coverImage={project.coverImage || project.previewImage}
                       title={project.title || project.name}
-                      organization={project.organization || project.type}
+                      organization={project.type || project.organization}
                       techStack={project.techStack}
                       onClick={() => handleSelectProject(project)}
+                      isLast={idx === items.length - 1}
                     />
                   ))}
                 </ul>

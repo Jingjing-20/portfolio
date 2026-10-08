@@ -55,7 +55,7 @@ export const deployedData = [
     id: 'chmsuagrm',
     name: 'CHMSU Grade & Records',
     title: 'Academic Grade and Report Management',
-    type: 'Carlos Hilado Memorial State University - Alijis',
+    type: 'Academic Management',
     organization: 'Carlos Hilado Memorial State University - Alijis',
     summary: 'Comprehensive academic management system centralizing student records, grades, and attendance with QR-based tracking.',
     description:
@@ -111,8 +111,8 @@ export const deployedData = [
   {
     id: 'pgsoulpmms',
     name: 'PGSO Lot & Property',
-    title: 'Unified Lot and Property Management and Monitoring',
-    type: 'PGNO – GSO, Property Management Division',
+    title: 'Property Management and Monitoring',
+    type: 'Property Management',
     organization: 'PGNO – GSO, Property Management Division',
     summary: 'Digital platform for managing government housing lots and property assets with interactive mapping and document tracking.',
     description:
