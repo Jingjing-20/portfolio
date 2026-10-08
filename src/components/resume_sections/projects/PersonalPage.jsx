@@ -65,9 +65,9 @@ export function PersonalPage({ personal, onBack, onClose }) {
                 {personal.name}
               </p>
 
-              {personal.type && (
+              {(personal.type || personal.organization) && (
                 <p className="text-[10px] md:text-xs text-base-content/50">
-                  {personal.type}
+                  {personal.type || personal.organization}
                 </p>
               )}
             </div>

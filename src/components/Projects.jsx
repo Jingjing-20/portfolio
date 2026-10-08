@@ -167,7 +167,7 @@ export default function Projects() {
     </div>
   );
 
-  const CoverListItem = ({ item, onClick, title, organization, techStack, isLast }) => (
+  const CoverListItem = ({ item, onClick, title, type, techStack, isLast }) => (
     <li key={item.id} className="flex flex-col">
       <div
         className="group flex items-center gap-2 md:gap-3 py-2.5 md:py-3 cursor-pointer select-none"
@@ -186,9 +186,9 @@ export default function Projects() {
           <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors truncate">
             {title}
           </h4>
-          {organization && (
+          {type && (
             <p className="text-[8px] md:text-[10px] text-base-content/80 truncate">
-              {organization}
+              {type}
             </p>
           )}
           {/* Tech Stack - single horizontal scrollable line */}
@@ -285,7 +285,7 @@ export default function Projects() {
                       key={personal.id}
                       item={personal}
                       title={personal.title || personal.name}
-                      organization={personal.type || personal.organization}
+                      type={personal.type || personal.organization}
                       techStack={personal.techStack}
                       onClick={() => handleSelectPersonal(personal)}
                       isLast={idx === items.length - 1}
@@ -299,7 +299,7 @@ export default function Projects() {
                       key={project.id}
                       item={project}
                       title={project.title || project.name}
-                      organization={project.type || project.organization}
+                      type={project.type || project.organization}
                       techStack={project.techStack}
                       onClick={() => handleSelectProject(project)}
                       isLast={idx === items.length - 1}

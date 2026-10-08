@@ -61,9 +61,9 @@ export function DeployedPage({ project, onBack, onClose }) {
               <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
                 {project.title}
               </p>
-              {project.organization && (
+              {(project.type || project.organization) && (
                 <p className="text-[10px] md:text-xs text-base-content/50">
-                  {project.organization}
+                  {project.type || project.organization}
                 </p>
               )}
             </div>

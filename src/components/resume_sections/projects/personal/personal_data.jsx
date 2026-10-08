@@ -20,7 +20,7 @@ export const personalData = [
     id: 'atmos-weather',
     name: 'Atmos Weather',
     title: 'Atmos Weather',
-    type: 'Weather Forecast',
+    type: 'Weather Forecast Web Application',
     organization: 'Modern Weather Dashboard',
     category: 'Personal / Weather Dashboard',
     techStack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'OpenWeatherMap API', 'Vercel'],
