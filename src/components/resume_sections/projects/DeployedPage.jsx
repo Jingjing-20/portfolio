@@ -108,7 +108,7 @@ export function DeployedPage({ project, onBack, onClose }) {
                     <img
                       src={project.images[0].src}
                       alt={project.images[0].alt ?? project.name}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-contain object-center"
                     />
                   </div>
                 </div>

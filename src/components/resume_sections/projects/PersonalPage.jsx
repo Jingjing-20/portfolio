@@ -117,7 +117,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
                     <img
                       src={personal.images[0].src}
                       alt={personal.images[0].alt ?? personal.name}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-contain object-center"
                     />
                   </div>
                 </div>

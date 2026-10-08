@@ -3,6 +3,7 @@ import wordpop2 from '@/components/resume_sections/projects/personal/wordpop/p2.
 import wordpop3 from '@/components/resume_sections/projects/personal/wordpop/p3.webp';
 import atmosWeatherDark from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-dark.webp';
 import atmosWeatherLight from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-light.webp';
+import gitmsgPreview from '@/components/resume_sections/projects/personal/gitmsg/gitmsg.webp';
 
 export const atmosWeatherImages = [
   { src: atmosWeatherDark, alt: 'Dark Mode' },
@@ -13,6 +14,10 @@ export const wordpopImages = [
   { src: wordpop1, alt: 'Main Menu' },
   { src: wordpop2, alt: 'Gameplay' },
   { src: wordpop3, alt: 'Results Screen' },
+];
+
+export const gitmsgImages = [
+  { src: gitmsgPreview, alt: 'GitMsg CLI Preview' },
 ];
 
 export const personalData = [
@@ -69,5 +74,35 @@ export const personalData = [
     images: wordpopImages,
     previewImage: wordpop1,
     coverImage: wordpop1,
+  },
+  {
+    id: 'gitmsg',
+    name: 'GitMsg',
+    title: 'GitMsg',
+    type: 'Conventional Commit Message Generator',
+    organization: 'Automated Commit CLI Tool',
+    category: 'Personal / Developer Tool',
+    techStack: ['Python', 'Typer', 'Rich', 'Pyperclip', 'pytest', 'Ruff', 'setuptools'],
+    summary: 'Local-first Python CLI tool that analyzes staged Git diffs and automatically generates meaningful Conventional Commits messages — fully offline, no AI required.',
+    description:
+      'GitMsg is a local-first Python CLI tool that analyzes staged Git changes and automatically generates meaningful Conventional Commits messages. It inspects diffs, classifies the type of change, determines scope, and produces a ready-to-use commit message — all without requiring any external AI or LLM service.',
+    purpose:
+      'Writing good commit messages is tedious and often inconsistent, especially across teams. Developers frequently resort to vague messages like "fix stuff" or "update code". GitMsg eliminates guesswork by reading actual staged diffs, enforces Conventional Commits standard (feat, fix, refactor, docs, etc.), saves time with one command, and keeps developers in control by suggesting and copying messages but never auto-committing.',
+    features: [
+      'Staged diff analysis — parses git diff --cached to inspect only what is about to be committed',
+      'File change detection — identifies added, modified, deleted, renamed, and copied files',
+      'Automatic classification — determines Conventional Commit type (feat, fix, refactor, docs, style, test, chore, build, ci, perf)',
+      'Scope inference — detects scope from file paths when consistent enough (e.g., feat(auth):, fix(api):)',
+      'Confidence scoring — provides a heuristic confidence percentage for the suggested message',
+      'Mixed change detection — warns when staged changes span multiple unrelated concerns',
+      'Clipboard integration — automatically copies the generated message for quick pasting',
+      'Multiple CLI modes: default (analyze + generate + copy), --analyze, --dry-run, --suggest',
+      'Project configuration via optional .gitmsg/config.toml for per-project settings',
+      'Fully offline — no API keys, no network calls, no external AI dependencies',
+    ],
+    livePreview: 'https://github.com/Jingjing-20/gitmsg',
+    images: gitmsgImages,
+    previewImage: gitmsgPreview,
+    coverImage: gitmsgPreview,
   },
 ];

@@ -131,7 +131,7 @@ export default function Projects() {
     <div
       key={item.id}
       className={cn(
-        'group relative flex flex-col p-0.5 md:p-1 rounded-lg shadow-xl',
+        'group relative flex flex-col p-1 md:p-1.5 rounded-md shadow-xl',
         'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
         'hover-card'
       )}

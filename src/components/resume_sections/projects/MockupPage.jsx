@@ -88,7 +88,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
                   <img
                     src={mockup.previewImage}
                     alt={mockup.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-contain object-center"
                   />
                 </div>
               </div>
