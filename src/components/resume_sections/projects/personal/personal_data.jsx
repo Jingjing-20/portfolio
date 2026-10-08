@@ -1,6 +1,8 @@
-import wordpopPreview from '@/components/resume_sections/projects/personal/wordpop/wordpop.webp';
-import atmosWeatherDark from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-dark (1).webp';
-import atmosWeatherLight from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-ligh.webp';
+import wordpop1 from '@/components/resume_sections/projects/personal/wordpop/p1.webp';
+import wordpop2 from '@/components/resume_sections/projects/personal/wordpop/p2.webp';
+import wordpop3 from '@/components/resume_sections/projects/personal/wordpop/p3.webp';
+import atmosWeatherDark from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-dark.webp';
+import atmosWeatherLight from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-light.webp';
 
 export const atmosWeatherImages = [
   { src: atmosWeatherDark, alt: 'Dark Mode' },
@@ -8,7 +10,9 @@ export const atmosWeatherImages = [
 ];
 
 export const wordpopImages = [
-  { src: wordpopPreview, alt: 'Word Pop ESL Preview' },
+  { src: wordpop1, alt: 'Main Menu' },
+  { src: wordpop2, alt: 'Gameplay' },
+  { src: wordpop3, alt: 'Results Screen' },
 ];
 
 export const personalData = [
@@ -63,7 +67,7 @@ export const personalData = [
     ],
     livePreview: 'https://wordpop-virid.vercel.app/',
     images: wordpopImages,
-    previewImage: wordpopPreview,
-    coverImage: wordpopPreview,
+    previewImage: wordpop1,
+    coverImage: wordpop1,
   },
 ];
