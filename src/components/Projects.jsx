@@ -127,6 +127,81 @@ export default function Projects() {
     'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
   );
 
+  const ProjectCard = ({ item, onClick, title, organization, coverImage, techStack }) => (
+    <div
+      key={item.id}
+      className="group cursor-pointer"
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      }}
+    >
+      <div className="flex gap-2 md:gap-3">
+        {/* Cover Image with Card Styling */}
+        {coverImage && (
+          <div className="flex-shrink-0 w-24 md:w-40">
+            <div className={cn(
+              'relative p-1 md:p-1.5 rounded-md shadow-xl',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
+              'hover-card'
+            )}>
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+                <img
+                  src={coverImage}
+                  alt={title}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Content */}
+        <div className="flex-1 min-w-0 flex flex-col justify-center">
+          <div className="flex items-start justify-between gap-2">
+            <div className="flex-1 min-w-0 space-y-0.5">
+              <h3 className="text-[10px] md:text-xs font-bold text-base-content">
+                {title}
+              </h3>
+              {organization && (
+                <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
+                  {organization}
+                </p>
+              )}
+              {/* Tech Stack - horizontal scrollable without scrollbar */}
+              {techStack && techStack.length > 0 && (
+                <div
+                  className={cn(
+                    'flex flex-nowrap gap-1 mt-1',
+                    'overflow-x-auto whitespace-nowrap',
+                    '[-ms-overflow-style:none] [scrollbar-width:none]',
+                    '[&::-webkit-scrollbar]:hidden'
+                  )}
+                >
+                  {techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className={techBadgeClasses}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+            <ArrowTopRightIcon size={14} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   const PolaroidCard = ({ item, onClick, onKeyDown, imgSrc, name, subtitle }) => (
     <div
       key={item.id}
@@ -140,7 +215,7 @@ export default function Projects() {
       onClick={onClick}
       onKeyDown={onKeyDown}
     >
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+      <div className="relative w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
         {imgSrc ? (
           <img
             src={imgSrc}
@@ -165,68 +240,6 @@ export default function Projects() {
         </div>
       </div>
     </div>
-  );
-
-  const CoverListItem = ({ item, onClick, title, type, techStack, isLast }) => (
-    <li key={item.id} className="flex flex-col">
-      <div
-        className="group flex items-center gap-2 md:gap-3 py-2.5 md:py-3 cursor-pointer select-none"
-        onClick={onClick}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            onClick && onClick();
-          }
-        }}
-      >
-        {/* Text Content */}
-        <div className="flex-1 min-w-0 space-y-1 group/title">
-          <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover/title:text-primary transition-colors truncate">
-            {title}
-          </h4>
-          {type && (
-            <p className="text-[8px] md:text-[10px] text-base-content/80 truncate">
-              {type}
-            </p>
-          )}
-          {/* Tech Stack - single horizontal scrollable line */}
-          {techStack && techStack.length > 0 && (
-            <div
-              className={cn(
-                'flex flex-nowrap gap-1 mt-1',
-                'overflow-x-auto whitespace-nowrap',
-                'scrollbar-thin scrollbar-thumb-base-content/20 scrollbar-track-transparent',
-                'pb-0.5'
-              )}
-              style={{
-                scrollbarWidth: 'thin',
-                scrollbarColor: 'rgba(120,120,120,0.3) transparent',
-              }}
-            >
-              {techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className={techBadgeClasses}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Arrow Icon - vertically centered on the right */}
-        <ArrowTopRightIcon
-          size={16}
-          className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
-        />
-      </div>
-      {!isLast && (
-        <hr className="border-base-content/15" />
-      )}
-    </li>
   );
 
   return (
@@ -257,7 +270,7 @@ export default function Projects() {
               </p>
             </div>
 
-            <div className="space-y-6 md:space-y-7">
+            <div className="space-y-3">
               {category === 'Mockups' ? (
                 // Mockups Grid Layout (3 cols mobile, 4 cols desktop)
                 <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
@@ -279,33 +292,35 @@ export default function Projects() {
                   ))}
                 </div>
               ) : category === 'Personal' ? (
-                <ul>
-                  {items.map((personal, idx) => (
-                    <CoverListItem
+                // Personal: Card Format with image
+                <>
+                  {items.map((personal) => (
+                    <ProjectCard
                       key={personal.id}
                       item={personal}
                       title={personal.title || personal.name}
-                      type={personal.type || personal.organization}
+                      organization={personal.organization || personal.type}
+                      coverImage={personal.coverImage || personal.previewImage}
                       techStack={personal.techStack}
                       onClick={() => handleSelectPersonal(personal)}
-                      isLast={idx === items.length - 1}
                     />
                   ))}
-                </ul>
+                </>
               ) : (
-                <ul>
-                  {items.map((project, idx) => (
-                    <CoverListItem
+                // Deployed: Card Format with image
+                <>
+                  {items.map((project) => (
+                    <ProjectCard
                       key={project.id}
                       item={project}
                       title={project.title || project.name}
-                      type={project.type || project.organization}
+                      organization={project.organization || project.type}
+                      coverImage={project.coverImage || project.previewImage}
                       techStack={project.techStack}
                       onClick={() => handleSelectProject(project)}
-                      isLast={idx === items.length - 1}
                     />
                   ))}
-                </ul>
+                </>
               )}
             </div>
           </article>
