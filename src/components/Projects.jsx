@@ -232,7 +232,7 @@ export default function Projects() {
           <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate">
             {name}
           </h3>
-          <p className="text-[8px] md:text-[10px] mt-0.5 truncate">
+          <p className="text-[8px] md:text-[10px] text-base-content/60 mt-0.5 truncate">
             {subtitle}
           </p>
         </div>

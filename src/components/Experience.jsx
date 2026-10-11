@@ -114,7 +114,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
           </div>
 
           <div>
-            <h4 className="text-xs md:text-sm text-base-content font-extrabold">
+            <h4 className="text-xs md:text-sm text-base-content font-bold">
               {experience.role}
             </h4>
 
@@ -132,7 +132,7 @@ function ExperienceItem({ experience, onOpenSkills }) {
           </div>
 
           {experience.description && (
-            <p className="text-[8px] md:text-[10px] text-base-content/60">
+            <p className="text-[10px] md:text-xs text-base-content/60">
               {experience.description}
             </p>
           )}
