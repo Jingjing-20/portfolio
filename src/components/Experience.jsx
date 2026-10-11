@@ -60,8 +60,8 @@ function ExperienceItem({ experience, onOpenSkills }) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Display 3 skills on mobile, 5 on desktop
-  const MAX_VISIBLE_SKILLS = isMobile ? 3 : 5;
+  // Display 1 skill on mobile, 3 on desktop
+  const MAX_VISIBLE_SKILLS = isMobile ? 1 : 3;
   const visibleSkills = experience.skills?.slice(0, MAX_VISIBLE_SKILLS) || [];
   const hasMoreSkills = experience.skills && experience.skills.length > MAX_VISIBLE_SKILLS;
 
