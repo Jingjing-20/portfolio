@@ -102,7 +102,7 @@ export default function About() {
       {/* Open for Junior/Entry-Level Roles */}
       <div className="space-y-2">
         <div className="space-y-1">
-          <h3 className="text-[10px] md:text-xs text-base-content font-bold">
+          <h3 className="text-[10px] md:text-xs text-base-content">
             Open for Junior/Entry-Level Roles :
           </h3>
 

@@ -259,11 +259,11 @@ export default function Projects() {
       <div className="space-y-6 md:space-y-8">
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>
-            <div className="space-y-1 mb-3">
-              <h3 className="text-[10px] md:text-xs text-base-content font-bold">
+            <div className="mb-2">
+              <h3 className="text-[10px] md:text-xs text-base-content">
                 {category} :
               </h3>
-              <p className="text-[8px] md:text-[10px] text-base-content/50 ">
+              <p className="text-[8px] md:text-[10px] text-base-content/50">
                 {description}
               </p>
             </div>

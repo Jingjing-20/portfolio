@@ -97,7 +97,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {/* Image Gallery: Carousel if >1, simple preview if exactly 1 */}
           {hasImages && (
             <div className="space-y-2">
-              <div className="space-y-1">
+              <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   {hasMultipleImages ? 'Gallery :' : 'Preview :'}
                 </h3>
@@ -128,7 +128,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {/* Description */}
           {personal.description && (
             <div className="space-y-2">
-              <div className="space-y-1">
+              <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   Description :
                 </h3>
@@ -145,7 +145,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {/* Purpose */}
           {personal.purpose && (
             <div className="space-y-2">
-              <div className="space-y-1">
+              <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   Purpose :
                 </h3>
@@ -163,7 +163,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {Array.isArray(personal.features) &&
             personal.features.length > 0 && (
               <div className="space-y-2">
-                <div className="space-y-1">
+                <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Features :
                   </h3>
@@ -194,7 +194,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
           {Array.isArray(personal.techStack) &&
             personal.techStack.length > 0 && (
               <div className="space-y-2">
-                <div className="space-y-1">
+                <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Stack :
                   </h3>

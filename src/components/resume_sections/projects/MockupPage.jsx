@@ -99,7 +99,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
           <div className="space-y-4">
             {mockup.category && (
               <div className="space-y-1">
-                <div className="space-y-1">
+              <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Category :
                   </h3>
@@ -115,7 +115,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
             {mockup.format && (
               <div className="space-y-1">
-                <div className="space-y-1">
+              <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Format :
                   </h3>
@@ -131,7 +131,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
 
             {mockup.styling && (
               <div className="space-y-1">
-                <div className="space-y-1">
+              <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Styling :
                   </h3>
@@ -148,7 +148,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
             {/* Features Section */}
             {Array.isArray(mockup.features) && mockup.features.length > 0 && (
               <div className="space-y-2">
-                <div className="space-y-1">
+                <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Features :
                   </h3>
@@ -176,7 +176,7 @@ export function MockupPage({ mockup, onBack, onClose }) {
             {/* Key Features / Details Section */}
             {Array.isArray(mockup.details) && mockup.details.length > 0 && (
               <div className="space-y-2">
-                <div className="space-y-1">
+                <div className="mb-2">
                   <h3 className="text-[10px] md:text-xs text-base-content">
                     Key Features :
                   </h3>

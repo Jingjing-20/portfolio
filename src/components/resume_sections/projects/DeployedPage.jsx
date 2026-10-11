@@ -88,7 +88,7 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Image Gallery: Carousel if >1, simple preview if exactly 1 */}
           {hasImages && (
             <div className="space-y-2">
-              <div className="space-y-1">
+            <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   {hasMultipleImages ? 'Gallery :' : 'Screenshot :'}
                 </h3>
@@ -118,7 +118,7 @@ export function DeployedPage({ project, onBack, onClose }) {
 
           {/* Description Section */}
           <div className="space-y-2">
-            <div className="space-y-1">
+            <div className="mb-2">
               <h3 className="text-[10px] md:text-xs text-base-content">
                 Description :
               </h3>
@@ -134,7 +134,7 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Purpose Section */}
           {project.purpose && (
             <div className="space-y-2">
-              <div className="space-y-1">
+              <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   Purpose :
                 </h3>
@@ -151,7 +151,7 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Key Features Section */}
           {Array.isArray(project.details) && project.details.length > 0 && (
             <div className="space-y-2">
-              <div className="space-y-1">
+              <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   Key Features :
                 </h3>
@@ -179,7 +179,7 @@ export function DeployedPage({ project, onBack, onClose }) {
           {/* Stack Section */}
           {Array.isArray(project.techStack) && project.techStack.length > 0 && (
             <div className="space-y-2">
-              <div className="space-y-1">
+              <div className="mb-2">
                 <h3 className="text-[10px] md:text-xs text-base-content">
                   Stack :
                 </h3>
