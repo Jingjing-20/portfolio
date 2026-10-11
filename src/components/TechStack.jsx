@@ -17,13 +17,12 @@ export default function TechStack() {
         <h3 className="text-[10px] md:text-xs text-base-content">
           {stackCategory.category} :
         </h3>
-      </div>
-
-      <div className="space-y-2">
         <p className="text-[8px] md:text-[10px] text-base-content/50">
           {stackCategory.description}
         </p>
+      </div>
 
+      <div className="space-y-2">
         <div className="flex flex-wrap items-center gap-2">
           {stackCategory.tools.map((tool) => (
             <div
@@ -36,7 +35,7 @@ export default function TechStack() {
         </div>
       </div>
 
-       <hr className="my-3 md:my-4" />
+      <hr className="my-3 md:my-4" />
     </div>
   );
 

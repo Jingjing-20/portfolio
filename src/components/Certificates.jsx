@@ -47,7 +47,7 @@ export default function Certificates() {
         {CERTIFICATE_CATEGORIES.map((category) => (
           <article key={category.category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-[10px] md:text-xs text-base-content">
+              <h3 className="text-[10px] md:text-xs text-base-content font-bold">
                 {category.category} :
               </h3>
               <p className="text-[8px] md:text-[10px] text-base-content/50">

@@ -3,7 +3,10 @@ import wordpop2 from '@/components/resume_sections/projects/personal/wordpop/p2.
 import wordpop3 from '@/components/resume_sections/projects/personal/wordpop/p3.webp';
 import atmosWeatherDark from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-dark.webp';
 import atmosWeatherLight from '@/components/resume_sections/projects/personal/atmos-weather/atmos-weather-light.webp';
-import gitmsgPreview from '@/components/resume_sections/projects/personal/gitmsg/gitmsg.webp';
+import gitmsg1 from '@/components/resume_sections/projects/personal/gitmsg/IDE Integration.webp';
+import gitmsg2 from '@/components/resume_sections/projects/personal/gitmsg/Multi-File Analysis.webp';
+import gitmsg3 from '@/components/resume_sections/projects/personal/gitmsg/Single-File Analysis.webp';
+
 
 export const atmosWeatherImages = [
   { src: atmosWeatherDark, alt: 'Dark Mode' },
@@ -17,13 +20,14 @@ export const wordpopImages = [
 ];
 
 export const gitmsgImages = [
-  { src: gitmsgPreview, alt: 'GitMsg CLI Preview' },
+  { src: gitmsg1, alt: 'IDE Integration' },
+  { src: gitmsg2, alt: 'Multi-File Analysis' },
+  { src: gitmsg3, alt: 'Single-File Analysis' },
 ];
 
 export const personalData = [
   {
     id: 'atmos-weather',
-    name: 'Atmos Weather',
     title: 'Atmos Weather',
     type: 'Weather Forecast Web Application',
     organization: 'Modern Weather Dashboard',
@@ -50,7 +54,6 @@ export const personalData = [
   },
   {
     id: 'wordpop',
-    name: 'Word Pop ESL',
     title: 'Word Pop ESL',
     type: 'ESL Listening & Vocabulary Mini-Game for Kids',
     organization: 'Listening & Vocabulary Mini-Game',
@@ -77,12 +80,11 @@ export const personalData = [
   },
   {
     id: 'gitmsg',
-    name: 'GitMsg',
     title: 'GitMsg',
     type: 'Conventional Commit Message Generator',
     organization: 'Automated Commit CLI Tool',
     category: 'Personal / Developer Tool',
-    techStack: ['Python', 'Typer', 'Rich', 'Pyperclip', 'pytest', 'Ruff', 'setuptools'],
+    techStack: ['Python', 'Typer', 'Rich', 'Pyperclip', 'Git CLI', 'pytest', 'Ruff'],
     summary: 'Local-first Python CLI tool that analyzes staged Git diffs and automatically generates meaningful Conventional Commits messages — fully offline, no AI required.',
     description:
       'GitMsg is a local-first Python CLI tool that analyzes staged Git changes and automatically generates meaningful Conventional Commits messages. It inspects diffs, classifies the type of change, determines scope, and produces a ready-to-use commit message — all without requiring any external AI or LLM service.',
@@ -94,6 +96,7 @@ export const personalData = [
       'Automatic classification — determines Conventional Commit type (feat, fix, refactor, docs, style, test, chore, build, ci, perf)',
       'Scope inference — detects scope from file paths when consistent enough (e.g., feat(auth):, fix(api):)',
       'Confidence scoring — provides a heuristic confidence percentage for the suggested message',
+      'Multi-change descriptions — combines multiple staged changes into one description, collapsing shared verbs and appending "and more" when the length limit is reached',
       'Mixed change detection — warns when staged changes span multiple unrelated concerns',
       'Clipboard integration — automatically copies the generated message for quick pasting',
       'Multiple CLI modes: default (analyze + generate + copy), --analyze, --dry-run, --suggest',
@@ -102,7 +105,7 @@ export const personalData = [
     ],
     livePreview: 'https://github.com/Jingjing-20/gitmsg',
     images: gitmsgImages,
-    previewImage: gitmsgPreview,
-    coverImage: gitmsgPreview,
+    previewImage: gitmsg1,
+    coverImage: gitmsg1,
   },
 ];

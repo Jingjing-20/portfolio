@@ -53,7 +53,6 @@ export const mdsImages = [];
 export const deployedData = [
   {
     id: 'chmsuagrm',
-    name: 'CHMSU Grade & Records',
     title: 'Grade Sheet',
     type: 'Academic Grade and Report Management',
     organization: 'Carlos Hilado Memorial State University - Alijis',
@@ -110,7 +109,6 @@ export const deployedData = [
   },*/
   {
     id: 'pgsoulpmms',
-    name: 'PGSO Lot & Property',
     title: 'ULPMMS',
     type: 'Property Management and Monitoring',
     organization: 'PGNO – GSO, Property Management Division',

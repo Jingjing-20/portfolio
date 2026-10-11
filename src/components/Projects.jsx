@@ -8,7 +8,7 @@ import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projec
 function ArrowTopRightIcon({ className = '', size = '1em' }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 15 15" className={className} aria-hidden="true">
-      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z"/>
+      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z" />
     </svg>
   );
 }
@@ -127,7 +127,7 @@ export default function Projects() {
     'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
   );
 
-  const ProjectCard = ({ item, onClick, title, organization, coverImage, techStack }) => (
+  const ProjectCard = ({ item, onClick, title, type, coverImage, techStack }) => (
     <div
       key={item.id}
       className="group cursor-pointer"
@@ -144,9 +144,9 @@ export default function Projects() {
       <div className="flex gap-2 md:gap-3">
         {/* Cover Image with Card Styling */}
         {coverImage && (
-          <div className="flex-shrink-0 w-24 md:w-40">
+          <div className="flex-shrink-0 w-30 md:w-40">
             <div className={cn(
-              'relative p-1 md:p-1.5 rounded-md shadow-xl',
+              'relative p-0.5 md:p-1 rounded-sm shadow-xl',
               'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'hover-card'
             )}>
@@ -169,11 +169,9 @@ export default function Projects() {
               <h3 className="text-[10px] md:text-xs font-bold text-base-content">
                 {title}
               </h3>
-              {organization && (
-                <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
-                  {organization}
-                </p>
-              )}
+              <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
+                {type}
+              </p>
               {/* Tech Stack - horizontal scrollable without scrollbar */}
               {techStack && techStack.length > 0 && (
                 <div
@@ -262,7 +260,7 @@ export default function Projects() {
         {PROJECT_CATEGORIES.map(({ category, description, items }) => (
           <article key={category}>
             <div className="space-y-1 mb-3">
-              <h3 className="text-[10px] md:text-xs text-base-content">
+              <h3 className="text-[10px] md:text-xs text-base-content font-bold">
                 {category} :
               </h3>
               <p className="text-[8px] md:text-[10px] text-base-content/50 ">
@@ -273,7 +271,7 @@ export default function Projects() {
             <div className="space-y-3">
               {category === 'Mockups' ? (
                 // Mockups Grid Layout (3 cols mobile, 4 cols desktop)
-                <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
                   {items.map((mockup) => (
                     <PolaroidCard
                       key={mockup.id}
@@ -299,7 +297,7 @@ export default function Projects() {
                       key={personal.id}
                       item={personal}
                       title={personal.title || personal.name}
-                      organization={personal.organization || personal.type}
+                      type={personal.type}
                       coverImage={personal.coverImage || personal.previewImage}
                       techStack={personal.techStack}
                       onClick={() => handleSelectPersonal(personal)}
@@ -314,7 +312,7 @@ export default function Projects() {
                       key={project.id}
                       item={project}
                       title={project.title || project.name}
-                      organization={project.organization || project.type}
+                      type={project.type}
                       coverImage={project.coverImage || project.previewImage}
                       techStack={project.techStack}
                       onClick={() => handleSelectProject(project)}

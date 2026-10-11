@@ -102,12 +102,10 @@ export default function About() {
       {/* Open for Junior/Entry-Level Roles */}
       <div className="space-y-2">
         <div className="space-y-1">
-          <h3 className="text-[10px] md:text-xs text-base-content">
+          <h3 className="text-[10px] md:text-xs text-base-content font-bold">
             Open for Junior/Entry-Level Roles :
           </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/50">
-            Full-time, part-time, or contract opportunities I'm actively seeking and prepared for
-          </p>
+
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {ROLES.map((role) => (
