@@ -46,7 +46,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
       <section className="scroll-mt-24 max-w-2xl mx-auto space-y-4 md:space-y-6">
 
         {/* Header */}
-      <header className="pt-20 md:pt-10 mb-3">
+        <header className="pt-20 md:pt-10 mb-3">
           <div className="flex items-center gap-3 md:gap-4">
 
             {/* Back Button */}
@@ -62,7 +62,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
             {/* Title */}
             <div className="flex-1 min-w-0">
               <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-                {personal.name}
+                {personal.type}
               </p>
 
               {(personal.type || personal.organization) && (
@@ -102,8 +102,8 @@ export function PersonalPage({ personal, onBack, onClose }) {
                   {hasMultipleImages ? 'Gallery :' : 'Preview :'}
                 </h3>
                 <p className="text-[8px] md:text-[10px] text-base-content/50">
-                  {hasMultipleImages 
-                    ? 'Visual walkthrough of the project' 
+                  {hasMultipleImages
+                    ? 'Visual walkthrough of the project'
                     : 'Project interface and design'}
                 </p>
               </div>
@@ -116,7 +116,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
                   <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
                     <img
                       src={personal.images[0].src}
-                      alt={personal.images[0].alt ?? personal.name}
+                      alt={personal.images[0].alt ?? personal.type}
                       className="w-full h-full object-contain object-center"
                     />
                   </div>

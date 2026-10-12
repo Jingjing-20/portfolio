@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { CheckIcon } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import {
   Dialog,

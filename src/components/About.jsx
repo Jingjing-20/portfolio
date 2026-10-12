@@ -83,24 +83,24 @@ export default function About() {
         {/* Right Side: Name + Bio */}
         <div className="flex-1 w-full space-y-3 md:space-y-4">
           {/* Name */}
-          <div className="w-full text-center sm:text-left space-y-1">
+          <div className="w-full text-center sm:text-left space-y-2">
             <h3 className="font-extrabold text-base-content text-2xl md:text-4xl">
               Gian Carlo N. Ulep
             </h3>
             <p className="text-[10px] md:text-xs text-base-content/60">
               Based in Negros Occidental, Philippines
             </p>
+            <p className="text-[10px] md:text-xs text-base-content">
+              2 years of project-based experience in software and web development, including systems for government offices and a state university. Brings customer/technical support experience and a solid foundation in computer networking through academic coursework and hands-on projects.
+            </p>
           </div>
-          <p className="text-[10px] md:text-xs text-base-content">
-            2 years of project-based experience in software and web development, including systems for government offices and a state university. Brings customer/technical support experience and a solid foundation in computer networking through academic coursework and hands-on projects.
-          </p>
         </div>
       </div>
 
       <hr className={dividerClasses} />
 
       {/* Open for Junior/Entry-Level Roles */}
-      <div className="space-y-2">
+      <div className="space-y-3">
         <div className="space-y-1">
           <h3 className="text-[10px] md:text-xs text-base-content">
             Open for Junior/Entry-Level Roles :
