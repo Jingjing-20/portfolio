@@ -172,26 +172,6 @@ export default function Projects() {
               <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
                 {type}
               </p>
-              {/* Tech Stack - horizontal scrollable without scrollbar */}
-              {techStack && techStack.length > 0 && (
-                <div
-                  className={cn(
-                    'flex flex-nowrap gap-1 mt-1',
-                    'overflow-x-auto whitespace-nowrap',
-                    '[-ms-overflow-style:none] [scrollbar-width:none]',
-                    '[&::-webkit-scrollbar]:hidden'
-                  )}
-                >
-                  {techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className={techBadgeClasses}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
             <ArrowTopRightIcon size={14} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
           </div>

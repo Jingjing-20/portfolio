@@ -21,6 +21,7 @@ export const TECH_STACK = [
       'PHP',
       'Laravel',
       'Node.js',
+      'Express.js',
       'Python',
       'Django',
       'FastAPI',
