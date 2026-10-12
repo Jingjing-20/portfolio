@@ -27,7 +27,7 @@ function MoreDotsIcon({ className = '', size = '1em' }) {
 }
 
 const techBadgeClasses = cn(
-  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
   'border border-transparent',
   'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
   'hover:text-base-content hover:border-base-content',

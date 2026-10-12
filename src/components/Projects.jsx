@@ -119,7 +119,7 @@ export default function Projects() {
   }
 
   const techBadgeClasses = cn(
-    'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded shrink-0',
+    'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
     'border border-transparent',
     'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
     'hover:text-base-content hover:border-base-content',
@@ -271,7 +271,7 @@ export default function Projects() {
             <div className="space-y-3">
               {category === 'Mockups' ? (
                 // Mockups Grid Layout (3 cols mobile, 4 cols desktop)
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3">
                   {items.map((mockup) => (
                     <PolaroidCard
                       key={mockup.id}

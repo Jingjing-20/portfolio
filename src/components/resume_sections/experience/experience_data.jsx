@@ -5,7 +5,7 @@ import FreelanceImg from '@/components/resume_sections/experience/freelance.webp
 import MobileLegendsImg from '@/components/resume_sections/experience/mobile-legends.webp';
 
 export const EXPERIENCES = [
-  /*{
+  {
     step: 1,
     company: 'Concentrix - Mediacom',
     logo: ConcentrixImg,
@@ -29,9 +29,9 @@ export const EXPERIENCES = [
       'Issue Escalation',
       'Customer Communication',
     ],
-  },*/
+  },
   {
-    step: 1,
+    step: 2,
     company: 'Freelance',
     logo: FreelanceImg,
     logoInitials: 'FL',
@@ -56,7 +56,7 @@ export const EXPERIENCES = [
     ],
   },
   {
-    step: 2,
+    step: 3,
     company: 'PGNO – GSO, Property Management Division',
     logo: PGNOImg,
     logoInitials: 'PGNO',
@@ -68,7 +68,7 @@ export const EXPERIENCES = [
     dateRange: 'Feb 2026 – May 2026 · 4 mos',
     description: 'Enhanced, deployed, and maintained a lot allocation and property monitoring system used by government office personnel. Performed database schema revisions, data migration, system deployment, and server management while supporting interactive property mapping, document management, Excel reporting, real-time dashboards, and role-based access control. Used GIS software to plot property boundaries, export them as GeoJSON, and upload the files into the system for map visualization. Provided technical support for access issues, data discrepancies, system errors, and hardware problems, while documenting recurring issues and resolutions for ongoing system maintenance.',
     skills: [
-      'Software Development',    
+      'Software Development',
       'PHP & MySQL',
       'Database Management',
       'Schema Revision',
@@ -84,7 +84,7 @@ export const EXPERIENCES = [
 
   },
   {
-    step: 3,
+    step: 4,
     company: 'Panasiatic Solutions - Straight Talk',
     logo: PanasiaticImg,
     logoInitials: 'PSST',

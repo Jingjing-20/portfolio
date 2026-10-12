@@ -187,7 +187,7 @@ function LogoMark({ onNavigate }) {
       type="button"
       onClick={onNavigate}
       className={cn(
-        'flex items-center gap-2.5 text-left w-full',
+        'flex items-center gap-2.5 text-left',
         FOCUS_RING,
         TEXT
       )}
