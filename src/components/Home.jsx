@@ -61,7 +61,7 @@ const invertedButtonClasses = cn(
 );
 
 const techBadgeClasses = cn(
-  'text-[7px] md:text-[8px] px-1.5 py-0.5 rounded',
+  'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
   'border border-transparent',
   'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
   'hover:text-base-content hover:border-base-content',
@@ -150,11 +150,11 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="space-y-3 max-w-3xl mx-auto"
+            className="space-y-3 mx-auto"
           >
             <h1 className="tracking-tight text-base-content text-3xl md:text-6xl lg:text-7xl font-bold">
-              <span className="block">
-                Code. Learn. Grow.
+              <span className="block md:whitespace-nowrap">
+                Design. Build. Deliver.
               </span>
             </h1>
 
