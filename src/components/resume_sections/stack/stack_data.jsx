@@ -1,3 +1,4 @@
+
 export const TECH_STACK = [
   {
     category: 'Frontend Development',
@@ -86,7 +87,7 @@ export const TECH_STACK = [
 
   {
     category: 'AI-Assisted Development',
-    description: 'AI tools used to support software development.',
+    description: 'Using AI tools to support software development.',
     tools: [
       'Claude',
       'Gemini',
@@ -97,17 +98,35 @@ export const TECH_STACK = [
   },
 
   {
-    category: 'IT Support & Help Desk',
-    description: 'Providing technical assistance, troubleshooting, and user support.',
+    category: 'Computer Basics',
+    description: 'Understanding computer hardware, software, and everyday system use.',
     tools: [
       'Windows',
-      'Hardware Troubleshooting',
-      'Software Troubleshooting',
-      'System Troubleshooting',
+      'Computer Hardware',
+      'Operating Systems',
+      'Software Installation',
+      'System Settings',
+      'File Management',
+      'Computer Maintenance',
+      'Device Setup',
+    ],
+  },
+
+  {
+    category: 'Customer & Technical Support',
+    description: 'Assisting customers with telecommunications services, technical issues, and account inquiries.',
+    tools: [
       'Technical Support',
-      'User Support',
-      'Remote Assistance',
-      'Technical Documentation',
+      'Customer Service',
+      'Telecommunications Support',
+      'Internet Troubleshooting',
+      'Cable Services Support',
+      'Mobile Device Support',
+      'Billing Support Systems',
+      'CRM Systems',
+      'Issue Escalation',
+      'Account Management',
+      'Customer Communication',
     ],
   },
 ];
