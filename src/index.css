@@ -32,3 +32,14 @@ body {
 #root {
   min-height: 100svh;
 }
+
+::selection {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.dark ::selection,
+[data-theme="dark"] ::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
