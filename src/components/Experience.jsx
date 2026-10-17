@@ -62,8 +62,76 @@ function ExperienceItem({ experience, onOpenSkills }) {
 
   // Display 1 skill on mobile, 3 on desktop
   const MAX_VISIBLE_SKILLS = isMobile ? 1 : 3;
-  const visibleSkills = experience.skills?.slice(0, MAX_VISIBLE_SKILLS) || [];
-  const hasMoreSkills = experience.skills && experience.skills.length > MAX_VISIBLE_SKILLS;
+
+  // Check if this experience has multiple roles
+  const hasMultipleRoles = experience.roles && experience.roles.length > 0;
+
+  // Single role rendering function
+  const renderRole = (roleData, isNested = false) => {
+    const visibleSkills = roleData.skills?.slice(0, MAX_VISIBLE_SKILLS) || [];
+    const hasMoreSkills = roleData.skills && roleData.skills.length > MAX_VISIBLE_SKILLS;
+
+    return (
+      <div className={cn("space-y-2", isNested && "relative pl-6")}>
+        {/* Timeline dot for nested roles */}
+        {isNested && (
+          <div className="absolute left-0 top-1">
+            <div className="size-3 rounded-full border-2 border-base-content/40 bg-background" />
+          </div>
+        )}
+        
+        <div>
+          <h4 className="text-xs md:text-sm text-base-content font-bold">
+            {roleData.role}
+          </h4>
+
+          <TimelineDate className="text-[8px] md:text-[10px] text-base-content/60">
+            {roleData.dateRange}
+
+            {roleData.durationMonths &&
+              roleData.durationMonths !== roleData.dateRange && (
+                <>
+                  <span className="mx-1 text-base-content">·</span>
+                  {roleData.durationMonths}
+                </>
+              )}
+          </TimelineDate>
+        </div>
+
+        {roleData.description && (
+          <p className="text-[10px] md:text-xs text-base-content/60">
+            {roleData.description}
+          </p>
+        )}
+
+        {/* Skills & Technologies inline */}
+        {roleData.skills && roleData.skills.length > 0 && (
+          <div className="relative w-full mt-2">
+            <div className="flex flex-wrap gap-1 items-center">
+              {visibleSkills.map((skill) => (
+                <span
+                  key={skill}
+                  className={techBadgeClasses}
+                >
+                  {skill}
+                </span>
+              ))}
+              {hasMoreSkills && (
+                <button
+                  type="button"
+                  className={moreButtonClasses}
+                  onClick={() => onOpenSkills({ ...experience, ...roleData })}
+                  aria-label={`View all skills for ${roleData.role}`}
+                >
+                  <MoreDotsIcon size="14" />
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <TimelineItem
@@ -113,54 +181,21 @@ function ExperienceItem({ experience, onOpenSkills }) {
             )}
           </div>
 
-          <div>
-            <h4 className="text-xs md:text-sm text-base-content font-bold">
-              {experience.role}
-            </h4>
-
-            <TimelineDate className="text-[8px] md:text-[10px] text-base-content/60">
-              {experience.dateRange}
-
-              {experience.durationMonths &&
-                experience.durationMonths !== experience.dateRange && (
-                  <>
-                    <span className="mx-1 text-base-content">·</span>
-                    {experience.durationMonths}
-                  </>
-                )}
-            </TimelineDate>
-          </div>
-
-          {experience.description && (
-            <p className="text-[10px] md:text-xs text-base-content/60">
-              {experience.description}
-            </p>
-          )}
-
-          {/* Skills & Technologies inline - display 5, then dots button */}
-          {experience.skills && experience.skills.length > 0 && (
-            <div className="relative w-full mt-2">
-              <div className="flex flex-wrap gap-1 items-center">
-                {visibleSkills.map((skill) => (
-                  <span
-                    key={skill}
-                    className={techBadgeClasses}
-                  >
-                    {skill}
-                  </span>
-                ))}
-                {hasMoreSkills && (
-                  <button
-                    type="button"
-                    className={moreButtonClasses}
-                    onClick={() => onOpenSkills(experience)}
-                    aria-label={`View all skills for ${experience.company}`}
-                  >
-                    <MoreDotsIcon size="14" />
-                  </button>
-                )}
-              </div>
+          {/* Render multiple roles if available */}
+          {hasMultipleRoles ? (
+            <div className="space-y-4 mt-3 relative">
+              {/* Vertical line connecting nested roles */}
+              <div className="absolute left-[5px] top-2 bottom-2 w-[2px] bg-base-content/20" />
+              
+              {experience.roles.map((role, index) => (
+                <div key={index}>
+                  {renderRole(role, true)}
+                </div>
+              ))}
             </div>
+          ) : (
+            /* Render single role (backward compatibility) */
+            renderRole(experience, false)
           )}
         </div>
       </TimelineContent>

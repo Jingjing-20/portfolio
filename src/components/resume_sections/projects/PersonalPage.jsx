@@ -62,7 +62,7 @@ export function PersonalPage({ personal, onBack, onClose }) {
             {/* Title */}
             <div className="flex-1 min-w-0">
               <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-                {personal.type}
+                {personal.title}
               </p>
 
               {(personal.type || personal.organization) && (

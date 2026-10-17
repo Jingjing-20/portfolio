@@ -4,6 +4,51 @@ import ConcentrixImg from '@/components/resume_sections/experience/concentrix.we
 import FreelanceImg from '@/components/resume_sections/experience/freelance.webp';
 import MobileLegendsImg from '@/components/resume_sections/experience/mobile-legends.webp';
 
+/* 
+ * EXPERIENCE DATA STRUCTURE
+ * 
+ * Single Role Format (Backward Compatible):
+ * {
+ *   step: 1,
+ *   company: 'Company Name',
+ *   logo: CompanyImg,
+ *   logoInitials: 'CN',
+ *   employmentType: 'Full-time · On-site',
+ *   location: 'City, Country',
+ *   role: 'Job Title',
+ *   dateRange: 'Jan 2024 – Present',
+ *   description: 'Job description...',
+ *   skills: ['Skill 1', 'Skill 2'],
+ * }
+ * 
+ * Multiple Roles Format (Progressive Roles in Same Company):
+ * {
+ *   step: 1,
+ *   company: 'Company Name',
+ *   logo: CompanyImg,
+ *   logoInitials: 'CN',
+ *   employmentType: 'Full-time · On-site',
+ *   durationMonths: '2 yrs 3 mos',  // Total duration at company
+ *   location: 'City, Country',
+ *   roles: [
+ *     {
+ *       role: 'Senior Engineer',
+ *       dateRange: 'Jan 2025 – Present',
+ *       durationMonths: '10 mos',
+ *       description: 'Latest role description...',
+ *       skills: ['Skill 1', 'Skill 2'],
+ *     },
+ *     {
+ *       role: 'Engineer',
+ *       dateRange: 'Jan 2024 – Dec 2024',
+ *       durationMonths: '1 yr',
+ *       description: 'Previous role description...',
+ *       skills: ['Skill 3', 'Skill 4'],
+ *     },
+ *   ],
+ * }
+ */
+
 export const EXPERIENCES = [
   {
     step: 1,
