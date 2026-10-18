@@ -276,7 +276,7 @@ export default function Home() {
               © {new Date().getFullYear()} Gian Carlo N. Ulep
             </p>
             <p className="text-[8px] md:text-[10px] text-base-content/60">
-              Bachelor of Science in Information Technology · CHMSU
+              Bachelor of Science in Information Technology · CHMSU-A
             </p>
           </div>
 
