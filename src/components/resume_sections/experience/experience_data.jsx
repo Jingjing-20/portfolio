@@ -1,8 +1,6 @@
 import PGNOImg from '@/components/resume_sections/experience/pgno.webp';
 import PanasiaticImg from '@/components/resume_sections/experience/panasiatic.webp';
-import ConcentrixImg from '@/components/resume_sections/experience/concentrix.webp';
 import FreelanceImg from '@/components/resume_sections/experience/freelance.webp';
-import MobileLegendsImg from '@/components/resume_sections/experience/mobile-legends.webp';
 
 /* 
  * EXPERIENCE DATA STRUCTURE
@@ -52,31 +50,6 @@ import MobileLegendsImg from '@/components/resume_sections/experience/mobile-leg
 export const EXPERIENCES = [
   {
     step: 1,
-    company: 'Concentrix - Mediacom',
-    logo: ConcentrixImg,
-    logoInitials: 'CNX',
-    employmentType: 'Full-time · On-site',
-    durationMonths: '',
-    location: 'Bacolod, Negros Occidental, Philippines',
-    workMode: 'On-site',
-    role: 'Advisor II, Customer Service',
-    dateRange: 'Oct 2026 – Present',
-    description: 'Deliver technical support and customer assistance for Mediacom telecommunications services, encompassing troubleshooting of internet connectivity, cable television, and phone service issues. Resolve technical problems efficiently while ensuring optimal customer satisfaction and service quality.',
-    skills: [
-      'Technical Support',
-      'Telecommunications Support',
-      'Internet Troubleshooting',
-      'Cable Services',
-      'Phone Services',
-      'Customer Service',
-      'Problem Resolution',
-      'Billing Support',
-      'Issue Escalation',
-      'Customer Communication',
-    ],
-  },
-  {
-    step: 2,
     company: 'Freelance',
     logo: FreelanceImg,
     logoInitials: 'FL',
@@ -101,7 +74,7 @@ export const EXPERIENCES = [
     ],
   },
   {
-    step: 3,
+    step: 2,
     company: 'PGNO – GSO, Property Management Division',
     logo: PGNOImg,
     logoInitials: 'PGNO',
@@ -129,7 +102,7 @@ export const EXPERIENCES = [
 
   },
   {
-    step: 4,
+    step: 3,
     company: 'Panasiatic Solutions - Straight Talk',
     logo: PanasiaticImg,
     logoInitials: 'PSST',
