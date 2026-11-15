@@ -168,8 +168,9 @@ export default function Journal() {
                   <div className="flex-shrink-0 w-24 sm:w-28 md:w-32">
                     <div
                       className={cn(
-                        'relative p-0.5 rounded-sm shadow-md transition-colors duration-200',
-                        'bg-textured border border-solid border-gray-300 dark:border-white/20 group-hover:border-base-content/50'
+                        'relative p-0.5 rounded-sm shadow-md transition-all duration-200',
+                        'bg-textured border border-solid border-gray-300 dark:border-white/20',
+                        'hover-card-border'
                       )}
                     >
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
@@ -193,28 +194,29 @@ export default function Journal() {
                   </div>
 
                   {/* Content (description shown in list) */}
-                  <div className="flex-1 min-w-0 flex flex-col justify-center space-y-0.5">
-                    <div className="flex items-center gap-1.5 text-[8px] md:text-[9px] text-base-content/50 font-medium">
-                      <span>{post.date}</span>
-                      <span>·</span>
-                      <span>{post.readTime}</span>
-                    </div>
+                  <div className="flex-1 min-w-0 flex items-center justify-between gap-2 md:gap-3">
+                    <div className="flex-1 min-w-0 space-y-0.5">
+                      <div className="flex items-center gap-1.5 text-[8px] md:text-[9px] text-base-content/50 font-medium">
+                        <span>{post.date}</span>
+                        <span>·</span>
+                        <span>{post.readTime}</span>
+                      </div>
 
-                    <div className="flex items-center justify-between gap-2">
-                      <h3 className="text-[11px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 truncate">
+                      <h3 className="text-[11px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
                         {post.title}
                       </h3>
-                      <ArrowTopRightIcon
-                        size={14}
-                        className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
-                      />
+
+                      {post.subtitle && (
+                        <p className="text-[8px] md:text-[10px] text-base-content/50 line-clamp-2 leading-relaxed">
+                          {post.subtitle}
+                        </p>
+                      )}
                     </div>
 
-                    {post.subtitle && (
-                      <p className="text-[8px] md:text-[10px] text-base-content/50 line-clamp-2 leading-relaxed">
-                        {post.subtitle}
-                      </p>
-                    )}
+                    <ArrowTopRightIcon
+                      size={14}
+                      className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
+                    />
                   </div>
                 </div>
               </div>
@@ -232,8 +234,9 @@ export default function Journal() {
             <div
               key={post.id}
               className={cn(
-                'group cursor-pointer flex flex-col p-1 md:p-1.5 rounded-sm shadow-md transition-colors duration-200',
-                'bg-textured border border-solid border-gray-300 dark:border-white/20 group-hover:border-base-content/50'
+                'group cursor-pointer flex flex-col p-1 md:p-1.5 rounded-sm shadow-md transition-all duration-200',
+                'bg-textured border border-solid border-gray-300 dark:border-white/20',
+                'hover-card-border'
               )}
               onClick={() => handleSelectPost(post)}
               role="button"
@@ -273,13 +276,13 @@ export default function Journal() {
                   <span>·</span>
                   <span>{post.readTime}</span>
                 </div>
-                <div className="flex items-center justify-between gap-1">
-                  <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 truncate">
+                <div className="flex items-start justify-between gap-1">
+                  <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
                     {post.title}
                   </h3>
                   <ArrowTopRightIcon
                     size={12}
-                    className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
+                    className="shrink-0 mt-0.5 text-base-content/40 group-hover:text-base-content transition-colors"
                   />
                 </div>
               </div>

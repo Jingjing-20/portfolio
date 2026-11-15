@@ -71,7 +71,8 @@ export default function Certificates() {
                     <TiltContent
                       className={cn(
                         'group relative flex flex-col justify-between p-0.5 rounded-lg shadow-xl h-full select-none cursor-pointer',
-                        'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double'
+                        'bg-textured border border-solid border-gray-300 dark:border-white/20',
+                        'hover-card-border'
                       )}
                       role="button"
                       tabIndex={0}

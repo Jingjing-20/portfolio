@@ -149,9 +149,9 @@ export default function Projects() {
     else handleSelectProject(item);
   };
 
-  const ProjectCard = ({ onClick, title, type, coverImage }) => (
+  const ProjectCard = ({ onClick, title, type, description, coverImage }) => (
     <div
-      className="group cursor-pointer"
+      className="group cursor-pointer py-1"
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -162,14 +162,14 @@ export default function Projects() {
         }
       }}
     >
-      <div className="flex gap-2 md:gap-3 items-center">
+      <div className="flex gap-2.5 md:gap-3.5 items-center">
         {/* Cover Image with Card Styling */}
         {coverImage && (
-          <div className="flex-shrink-0 w-30 md:w-40">
+          <div className="flex-shrink-0 w-24 sm:w-28 md:w-32">
             <div className={cn(
-              'relative p-0.5 md:p-1 rounded-sm shadow-xl',
-              'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-              'hover-card'
+              'relative p-0.5 rounded-sm shadow-md transition-all duration-200',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20',
+              'hover-card-border'
             )}>
               <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
                 <img
@@ -183,32 +183,35 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Content - description shown in list */}
-        <div className="flex-1 min-w-0 flex flex-col justify-center">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex-1 min-w-0 space-y-0.5">
-              <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
-                {title}
-              </h3>
-              {type && (
-                <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
-                  {type}
-                </p>
-              )}
-            </div>
-            <ArrowTopRightIcon size={14} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
+        {/* Content (title, type, description) & Arrow */}
+        <div className="flex-1 min-w-0 flex items-center justify-between gap-2 md:gap-3">
+          <div className="flex-1 min-w-0 space-y-0.5">
+            <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
+              {title}
+            </h3>
+            {type && (
+              <p className="text-[8px] md:text-[10px] font-medium text-base-content/70">
+                {type}
+              </p>
+            )}
+            {description && (
+              <p className="text-[8px] md:text-[10px] text-base-content/50 line-clamp-2 leading-relaxed">
+                {description}
+              </p>
+            )}
           </div>
+          <ArrowTopRightIcon size={14} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
         </div>
       </div>
     </div>
   );
 
-  const PolaroidCard = ({ onClick, onKeyDown, imgSrc, name }) => (
+  const PolaroidCard = ({ onClick, onKeyDown, imgSrc, name, type }) => (
     <div
       className={cn(
-        'group relative flex flex-col p-1 md:p-1.5 rounded-md shadow-xl cursor-pointer',
-        'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
-        'hover-card'
+        'group cursor-pointer flex flex-col p-1 md:p-1.5 rounded-sm shadow-md transition-all duration-200',
+        'bg-textured border border-solid border-gray-300 dark:border-white/20',
+        'hover-card-border'
       )}
       role="button"
       tabIndex={0}
@@ -232,12 +235,20 @@ export default function Projects() {
           )}
         </div>
       </div>
-      {/* Text inside the border (polaroid style) - no description in grid */}
-      <div className="flex items-center justify-between gap-1 pt-1.5 min-w-0">
-        <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate group-hover:underline underline-offset-2">
-          {name}
-        </h3>
-        <ArrowTopRightIcon size={12} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
+
+      {/* Text inside the border (polaroid style) */}
+      <div className="pt-1.5 space-y-0.5 min-w-0">
+        <div className="flex items-start justify-between gap-1">
+          <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
+            {name}
+          </h3>
+          <ArrowTopRightIcon size={12} className="shrink-0 mt-0.5 text-base-content/40 group-hover:text-base-content transition-colors" />
+        </div>
+        {type && (
+          <p className="text-[7px] md:text-[8px] font-medium text-base-content/60 truncate">
+            {type}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -309,6 +320,7 @@ export default function Projects() {
                     item={item}
                     imgSrc={item.previewImage || item.coverImage}
                     name={item.title || item.name}
+                    type={item.type || item.category}
                     onClick={() => handleItemClick(category, item)}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter' || event.key === ' ') {
@@ -327,6 +339,7 @@ export default function Projects() {
                     <ProjectCard
                       title={item.title || item.name}
                       type={item.type || item.category}
+                      description={item.summary || item.description || item.format}
                       coverImage={item.coverImage || item.previewImage}
                       onClick={() => handleItemClick(category, item)}
                     />
