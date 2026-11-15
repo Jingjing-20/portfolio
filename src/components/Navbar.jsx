@@ -50,6 +50,22 @@ function ProjectsFilledIcon({ className = '', size = '1em' }) {
   return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true"><path fill="currentColor" d="M4 20q-.825 0-1.412-.587T2 18V6q0-.825.588-1.412T4 4h6l2 2h8q.825 0 1.413.588T22 8v10q0 .825-.587 1.413T20 20z" /></svg>;
 }
 
+function JournalOutlinedIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5M6 6h10M6 10h10" />
+    </svg>
+  );
+}
+
+function JournalFilledIcon({ className = '', size = '1em' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path fill="currentColor" d="M6 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2H6zm0 2a.5.5 0 0 0-.5.5v15a.5.5 0 0 0 .5.5H19V4H6zm2 2h8v2H8V6zm0 4h8v2H8v-2z" />
+    </svg>
+  );
+}
+
 function CertificateOutlinedIcon({ className = '', size = '1em' }) {
   return <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m8.36 12.166l2.475 2.474l4.951-4.951M6 4.999h2.686a1 1 0 0 0 .707-.293l1.9-1.9a1 1 0 0 1 1.414 0l1.9 1.9a1 1 0 0 0 .707.293H18a1 1 0 0 1 1 1v2.686a1 1 0 0 0 .293.707l1.9 1.9a1 1 0 0 1 0 1.414l-1.9 1.9a1 1 0 0 0-.293.707v2.686a1 1 0 0 1-1 1h-2.687a1 1 0 0 0-.707.293l-1.9 1.9a1 1 0 0 1-1.413 0l-1.9-1.9a1 1 0 0 0-.707-.293H6a1 1 0 0 1-1-1v-2.686a1 1 0 0 0-.293-.707l-1.9-1.9a1 1 0 0 1 0-1.414l1.9-1.9A1 1 0 0 0 5 8.686V6a1 1 0 0 1 1-1" /></svg>;
 }
@@ -103,6 +119,12 @@ const NAV_ITEMS = [
     label: 'Projects',
     outlined: <ProjectsOutlinedIcon size={14} className="shrink-0" />,
     filled: <ProjectsFilledIcon size={14} className="shrink-0" />,
+  },
+  {
+    value: 'journal',
+    label: 'Journal',
+    outlined: <JournalOutlinedIcon size={14} className="shrink-0" />,
+    filled: <JournalFilledIcon size={14} className="shrink-0" />,
   },
   {
     value: 'certificates',

@@ -70,8 +70,8 @@ export default function Certificates() {
                   >
                     <TiltContent
                       className={cn(
-                        'group relative flex flex-col justify-between p-2 md:p-3 rounded-lg shadow-xl h-full select-none',
-                        'bg-textured border border-black/50 dark:border-white/50'
+                        'group relative flex flex-col justify-between p-0.5 rounded-lg shadow-xl h-full select-none cursor-pointer',
+                        'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double'
                       )}
                       role="button"
                       tabIndex={0}
@@ -83,10 +83,10 @@ export default function Certificates() {
                         }
                       }}
                     >
-                      <div className="flex-1 flex flex-col">
+                      <div className="flex-1 flex flex-col justify-between p-2 rounded-md border border-dashed border-base-content/20 dark:border-white/20">
                         {/* Top Row: Icon (left) + Year (right) */}
                         <div className="flex justify-between items-start w-full mb-3">
-                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-gray-300 dark:border-white/20 p-1 shadow-sm grayscale">
+                          <div className="flex items-center justify-center size-8 md:size-9 rounded-md bg-textured border border-solid border-gray-300 dark:border-white/20 p-1 shadow-sm grayscale">
                             {CertIconComp ? (
                               <CertIconComp />
                             ) : (
@@ -100,15 +100,17 @@ export default function Certificates() {
                           )}
                         </div>
 
-                        {/* Organization Title */}
-                        <p className="text-[8px] md:text-[10px] font-medium text-base-content/60 line-clamp-1 mb-1">
-                          {cert.org}
-                        </p>
+                        <div>
+                          {/* Organization Title */}
+                          <p className="text-[8px] md:text-[10px] font-medium text-base-content/60 line-clamp-1 mb-1">
+                            {cert.org}
+                          </p>
 
-                        {/* Certificate Name */}
-                        <h4 className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-2 leading-snug">
-                          {cert.title}
-                        </h4>
+                          {/* Certificate Name */}
+                          <h4 className="text-[10px] md:text-xs font-semibold text-base-content line-clamp-2 leading-snug">
+                            {cert.title}
+                          </h4>
+                        </div>
                       </div>
                     </TiltContent>
                   </Tilt>

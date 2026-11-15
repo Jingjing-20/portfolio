@@ -10,11 +10,12 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import TechStack from './components/TechStack'
 import Certificates from './components/Certificates'
+import Journal from './components/Journal'
 import Socials from './components/Socials'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
 
 
-const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'certificates', 'socials', 'contact'];
+const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'journal', 'certificates', 'socials', 'contact'];
 
 function getInitialPage() {
   if (typeof window !== 'undefined') {
@@ -111,6 +112,12 @@ function App() {
                   {activePage === 'projects' && (
                     <ScrollReveal animation="fadeInUp" duration="0.4s" key="projects">
                       <Projects />
+                    </ScrollReveal>
+                  )}
+
+                  {activePage === 'journal' && (
+                    <ScrollReveal animation="fadeInUp" duration="0.4s" key="journal">
+                      <Journal />
                     </ScrollReveal>
                   )}
 

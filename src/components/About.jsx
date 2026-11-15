@@ -21,12 +21,17 @@ const ROLES = [
   'Frontend Developer',
   'Backend Developer',
   'Mobile Developer',
-  'Application Support',
+  'Helpdesk Support',
+  'IT Helpdesk Specialist',
+  'Service Desk Analyst',
+  'Desktop Support',
   'IT Support',
   'Technical Support',
+  'Application Support',
   'IT Operations',
   'NOC Support',
   'Network Support',
+  'Junior QA Tester',
   'SQL Developer',
 ];
 

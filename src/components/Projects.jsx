@@ -148,7 +148,7 @@ export default function Projects() {
               'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
               'hover-card'
             )}>
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
                 <img
                   src={coverImage}
                   alt={title}
@@ -191,7 +191,7 @@ export default function Projects() {
       onClick={onClick}
       onKeyDown={onKeyDown}
     >
-      <div className="relative w-full overflow-hidden rounded-sm bg-base-300 border border-black/10 dark:border-white/10 shadow-inner">
+      <div className="relative w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
         {imgSrc ? (
           <img
             src={imgSrc}
