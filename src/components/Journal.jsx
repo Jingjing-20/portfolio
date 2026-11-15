@@ -148,79 +148,93 @@ export default function Journal() {
 
       {/* Journal Entries - Chronological by Date */}
       {viewMode === 'list' ? (
-        <div className="space-y-2.5 md:space-y-3">
-          {JOURNAL_POSTS.map((post) => (
-            <div
-              key={post.id}
-              className="group cursor-pointer py-0.5"
-              onClick={() => handleSelectPost(post)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  handleSelectPost(post);
-                }
-              }}
-            >
-              <div className="flex gap-2.5 md:gap-3.5 items-center">
-                {/* Thumbnail Container (Solid border outside, dashed border inside) */}
-                <div className="flex-shrink-0 w-24 sm:w-28 md:w-32">
-                  <div
-                    className={cn(
-                      'relative p-0.5 rounded-sm shadow-md transition-colors duration-200',
-                      'bg-textured border border-solid border-gray-300 dark:border-white/20 group-hover:border-base-content/50'
-                    )}
-                  >
-                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
-                      {post.coverImage ? (
-                        <img
-                          src={post.coverImage}
-                          alt={post.title}
-                          loading="lazy"
-                          className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex flex-col items-center justify-center h-full w-full gap-0.5 bg-base-200/30 text-base-content/30 group-hover:text-base-content/50 transition-colors">
-                          <ImageIcon size={16} />
-                          <span className="text-[7px] md:text-[8px] uppercase tracking-wider font-mono">
-                            Image
-                          </span>
-                        </div>
+        <div>
+          {JOURNAL_POSTS.map((post, index) => (
+            <div key={post.id}>
+              <div
+                className="group cursor-pointer py-1.5"
+                onClick={() => handleSelectPost(post)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    handleSelectPost(post);
+                  }
+                }}
+              >
+                <div className="flex gap-2.5 md:gap-3.5 items-center">
+                  {/* Thumbnail Container (Solid border outside, dashed border inside) */}
+                  <div className="flex-shrink-0 w-24 sm:w-28 md:w-32">
+                    <div
+                      className={cn(
+                        'relative p-0.5 rounded-sm shadow-md transition-colors duration-200',
+                        'bg-textured border border-solid border-gray-300 dark:border-white/20 group-hover:border-base-content/50'
                       )}
+                    >
+                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
+                        {post.coverImage ? (
+                          <img
+                            src={post.coverImage}
+                            alt={post.title}
+                            loading="lazy"
+                            className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="flex flex-col items-center justify-center h-full w-full gap-0.5 bg-base-200/30 text-base-content/30 group-hover:text-base-content/50 transition-colors">
+                            <ImageIcon size={16} />
+                            <span className="text-[7px] md:text-[8px] uppercase tracking-wider font-mono">
+                              Image
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Content (No description displayed) */}
-                <div className="flex-1 min-w-0 flex flex-col justify-center space-y-0.5">
-                  <div className="flex items-center gap-1.5 text-[8px] md:text-[9px] text-base-content/50 font-medium">
-                    <span>{post.date}</span>
-                    <span>·</span>
-                    <span>{post.readTime}</span>
-                  </div>
+                  {/* Content (description shown in list) */}
+                  <div className="flex-1 min-w-0 flex flex-col justify-center space-y-0.5">
+                    <div className="flex items-center gap-1.5 text-[8px] md:text-[9px] text-base-content/50 font-medium">
+                      <span>{post.date}</span>
+                      <span>·</span>
+                      <span>{post.readTime}</span>
+                    </div>
 
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-[11px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 truncate">
-                      {post.title}
-                    </h3>
-                    <ArrowTopRightIcon
-                      size={14}
-                      className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
-                    />
+                    <div className="flex items-center justify-between gap-2">
+                      <h3 className="text-[11px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 truncate">
+                        {post.title}
+                      </h3>
+                      <ArrowTopRightIcon
+                        size={14}
+                        className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
+                      />
+                    </div>
+
+                    {post.subtitle && (
+                      <p className="text-[8px] md:text-[10px] text-base-content/50 line-clamp-2 leading-relaxed">
+                        {post.subtitle}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
+              {/* HR separator between items */}
+              {index < JOURNAL_POSTS.length - 1 && (
+                <hr className="my-2 md:my-2.5 border-base-content/10" />
+              )}
             </div>
           ))}
         </div>
       ) : (
-        /* Grid Layout: 2 columns on mobile, 3 columns on desktop */
+        /* Grid Layout: Polaroid format - 2 columns on mobile, 3 columns on desktop */
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-3.5">
           {JOURNAL_POSTS.map((post) => (
             <div
               key={post.id}
-              className="group cursor-pointer flex flex-col"
+              className={cn(
+                'group cursor-pointer flex flex-col p-1 md:p-1.5 rounded-sm shadow-md transition-colors duration-200',
+                'bg-textured border border-solid border-gray-300 dark:border-white/20 group-hover:border-base-content/50'
+              )}
               onClick={() => handleSelectPost(post)}
               role="button"
               tabIndex={0}
@@ -231,14 +245,9 @@ export default function Journal() {
                 }
               }}
             >
-              {/* Thumbnail Container (Solid border outside, dashed border inside) */}
-              <div
-                className={cn(
-                  'relative p-0.5 rounded-sm shadow-md transition-colors duration-200',
-                  'bg-textured border border-solid border-gray-300 dark:border-white/20 group-hover:border-base-content/50'
-                )}
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
+              {/* Image inside dashed border with p-0.5 so dashes are visible */}
+              <div className="p-0.5 border border-dashed border-base-content/20 dark:border-white/20 rounded-sm">
+                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 shadow-inner">
                   {post.coverImage ? (
                     <img
                       src={post.coverImage}
@@ -257,7 +266,7 @@ export default function Journal() {
                 </div>
               </div>
 
-              {/* Info below thumbnail (No description displayed) */}
+              {/* Text inside the border (polaroid style) - no description in grid */}
               <div className="pt-1.5 space-y-0.5 min-w-0">
                 <div className="flex items-center gap-1.5 text-[7px] md:text-[8px] text-base-content/50 font-medium">
                   <span>{post.date}</span>

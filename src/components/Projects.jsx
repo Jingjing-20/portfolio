@@ -143,6 +143,12 @@ export default function Projects() {
     );
   }
 
+  const handleItemClick = (category, item) => {
+    if (category === 'Mockups') handleSelectMockup(item);
+    else if (category === 'Personal') handleSelectPersonal(item);
+    else handleSelectProject(item);
+  };
+
   const ProjectCard = ({ onClick, title, type, coverImage }) => (
     <div
       className="group cursor-pointer"
@@ -177,7 +183,7 @@ export default function Projects() {
           </div>
         )}
 
-        {/* Content */}
+        {/* Content - description shown in list */}
         <div className="flex-1 min-w-0 flex flex-col justify-center">
           <div className="flex items-center justify-between gap-2">
             <div className="flex-1 min-w-0 space-y-0.5">
@@ -197,7 +203,7 @@ export default function Projects() {
     </div>
   );
 
-  const PolaroidCard = ({ onClick, onKeyDown, imgSrc, name, subtitle }) => (
+  const PolaroidCard = ({ onClick, onKeyDown, imgSrc, name }) => (
     <div
       className={cn(
         'group relative flex flex-col p-1 md:p-1.5 rounded-md shadow-xl cursor-pointer',
@@ -209,20 +215,24 @@ export default function Projects() {
       onClick={onClick}
       onKeyDown={onKeyDown}
     >
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
-        {imgSrc ? (
-          <img
-            src={imgSrc}
-            alt={name}
-            loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center text-base-content/40">
-            <WebIcon size={32} />
-          </div>
-        )}
+      {/* Image inside dashed border with p-0.5 so dashes are visible */}
+      <div className="p-0.5 border border-dashed border-base-content/20 dark:border-white/20 rounded-sm">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 shadow-inner">
+          {imgSrc ? (
+            <img
+              src={imgSrc}
+              alt={name}
+              loading="lazy"
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-base-content/40">
+              <WebIcon size={32} />
+            </div>
+          )}
+        </div>
       </div>
+      {/* Text inside the border (polaroid style) - no description in grid */}
       <div className="flex items-center justify-between gap-1 pt-1.5 min-w-0">
         <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate group-hover:underline underline-offset-2">
           {name}
@@ -299,38 +309,32 @@ export default function Projects() {
                     item={item}
                     imgSrc={item.previewImage || item.coverImage}
                     name={item.title || item.name}
-                    subtitle={item.type || item.category}
-                    onClick={() => {
-                      if (category === 'Mockups') handleSelectMockup(item);
-                      else if (category === 'Personal') handleSelectPersonal(item);
-                      else handleSelectProject(item);
-                    }}
+                    onClick={() => handleItemClick(category, item)}
                     onKeyDown={(event) => {
                       if (event.key === 'Enter' || event.key === ' ') {
                         event.preventDefault();
-                        if (category === 'Mockups') handleSelectMockup(item);
-                        else if (category === 'Personal') handleSelectPersonal(item);
-                        else handleSelectProject(item);
+                        handleItemClick(category, item);
                       }
                     }}
                   />
                 ))}
               </div>
             ) : (
-              /* List Layout */
-              <div className="space-y-3">
-                {items.map((item) => (
-                  <ProjectCard
-                    key={item.id}
-                    title={item.title || item.name}
-                    type={item.type || item.category}
-                    coverImage={item.coverImage || item.previewImage}
-                    onClick={() => {
-                      if (category === 'Mockups') handleSelectMockup(item);
-                      else if (category === 'Personal') handleSelectPersonal(item);
-                      else handleSelectProject(item);
-                    }}
-                  />
+              /* List Layout with HR separators */
+              <div>
+                {items.map((item, index) => (
+                  <div key={item.id}>
+                    <ProjectCard
+                      title={item.title || item.name}
+                      type={item.type || item.category}
+                      coverImage={item.coverImage || item.previewImage}
+                      onClick={() => handleItemClick(category, item)}
+                    />
+                    {/* HR separator between items */}
+                    {index < items.length - 1 && (
+                      <hr className="my-2 md:my-2.5 border-base-content/10" />
+                    )}
+                  </div>
                 ))}
               </div>
             )}

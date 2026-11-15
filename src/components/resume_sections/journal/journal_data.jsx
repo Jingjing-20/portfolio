@@ -1,7 +1,7 @@
 export const JOURNAL_POSTS = [
   {
     id: 'part-time-developer-full-time-csr',
-    title: 'Part-Time Dev, Full-Time CSR',
+    title: 'Part-Time Developer, Full-Time CSR Agent',
     subtitle: 'Living the dual reality — navigating full-time telecommunications shifts by day and writing software by night.',
     category: 'Reality',
     date: 'Nov 2026',
@@ -49,7 +49,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'from-software-developer-to-csr-agent',
-    title: 'From Developer to CSR',
+    title: 'From Software Developer to CSR Agent',
     subtitle: 'Not by choice but by circumstances — accepting a CSR role to support my daily needs while keeping my development goals alive.',
     category: 'Reality',
     date: 'Oct 2026',
@@ -97,7 +97,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'painful-reality-of-geographical-opportunities',
-    title: 'Geographical Reality',
+    title: 'The Painful Reality of Geographical Opportunities',
     subtitle: 'The painful truth that where you live has a massive impact on the opportunities and career paths available to you.',
     category: 'Reality',
     date: 'Oct 2026',
@@ -145,7 +145,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'software-developers-client-struggles',
-    title: 'Client Struggles',
+    title: 'Software Developer Client Struggles',
     subtitle: 'The ongoing uphill battle of competing for international clients while navigating lowball offers from local ones.',
     category: 'Freelance',
     date: 'Sep 2026',
@@ -193,7 +193,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'countless-rejections-in-applications',
-    title: 'Countless Rejections',
+    title: 'Countless Rejections in Job Applications',
     subtitle: 'Facing hundreds of online submissions, interview ghosting, and building resilience through the silence.',
     category: 'Job Hunt',
     date: 'Sep 2026',
@@ -241,7 +241,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'remote-job-hunt-reality',
-    title: 'Remote Job Hunt Reality',
+    title: 'The Reality of Remote Job Hunting',
     subtitle: 'The five-month reality check of searching for junior remote software developer roles in a hyper-competitive market.',
     category: 'Job Hunt',
     date: 'Aug 2026',
@@ -289,7 +289,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'gso-internship',
-    title: 'GSO Internship',
+    title: 'GSO Government Internship Experience',
     subtitle: 'Four months of hands-on software development, database maintenance, and IT operations at the Provincial Government of Negros Occidental.',
     category: 'Experience',
     date: 'May 2026',
@@ -337,7 +337,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'gis-property-mapping',
-    title: 'GIS Property Mapping',
+    title: 'GIS Property Mapping for Government',
     subtitle: 'Digitizing provincial property boundaries with QGIS and rendering interactive GeoJSON maps in Leaflet.js.',
     category: 'Project',
     date: 'Apr 2026',
@@ -385,7 +385,7 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'academic-grade-sheet',
-    title: 'Academic Grade Sheet',
+    title: 'Building the Academic Grade Sheet',
     subtitle: 'Building a full-stack student record, automatic grading, and QR attendance platform for CHMSU.',
     category: 'Project',
     date: 'Dec 2025',
