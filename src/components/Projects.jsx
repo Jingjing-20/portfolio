@@ -7,7 +7,33 @@ import { PROJECT_CATEGORIES } from '@/components/resume_sections/projects/projec
 
 function ArrowTopRightIcon({ className = '', size = '1em' }) {
   return (
-<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} className={className} viewBox="0 0 24 24"> <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7h10m0 0v10m0-10L7 17"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} className={className} viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 7h10m0 0v10m0-10L7 17" />
+    </svg>
+  );
+}
+
+function ListIcon({ className = '', size = 14 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <line x1="8" y1="6" x2="21" y2="6" />
+      <line x1="8" y1="12" x2="21" y2="12" />
+      <line x1="8" y1="18" x2="21" y2="18" />
+      <line x1="3" y1="6" x2="3.01" y2="6" />
+      <line x1="3" y1="12" x2="3.01" y2="12" />
+      <line x1="3" y1="18" x2="3.01" y2="18" />
+    </svg>
+  );
+}
+
+function GridIcon({ className = '', size = 14 }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <rect width="7" height="7" x="3" y="3" rx="1" />
+      <rect width="7" height="7" x="14" y="3" rx="1" />
+      <rect width="7" height="7" x="14" y="14" rx="1" />
+      <rect width="7" height="7" x="3" y="14" rx="1" />
+    </svg>
   );
 }
 
@@ -45,6 +71,7 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(initialItems.project);
   const [mockupProject, setMockupProject] = useState(initialItems.mockup);
   const [personalProject, setPersonalProject] = useState(initialItems.personal);
+  const [viewMode, setViewMode] = useState('list');
 
   useEffect(() => {
     const handleHash = () => {
@@ -116,18 +143,8 @@ export default function Projects() {
     );
   }
 
-  const techBadgeClasses = cn(
-    'text-[10px] md:text-xs px-1.5 py-0.5 rounded',
-    'border border-transparent',
-    'bg-base-content/10 text-base-content/60 font-medium hover:font-bold',
-    'hover:text-base-content hover:border-base-content',
-    'font-medium grayscale cursor-default',
-    'transition-all duration-200 hover:bg-base-content/20 hover:grayscale-0'
-  );
-
-  const ProjectCard = ({ item, onClick, title, type, coverImage, techStack }) => (
+  const ProjectCard = ({ onClick, title, type, coverImage }) => (
     <div
-      key={item.id}
       className="group cursor-pointer"
       onClick={onClick}
       role="button"
@@ -139,7 +156,7 @@ export default function Projects() {
         }
       }}
     >
-      <div className="flex gap-2 md:gap-3">
+      <div className="flex gap-2 md:gap-3 items-center">
         {/* Cover Image with Card Styling */}
         {coverImage && (
           <div className="flex-shrink-0 w-30 md:w-40">
@@ -162,14 +179,16 @@ export default function Projects() {
 
         {/* Content */}
         <div className="flex-1 min-w-0 flex flex-col justify-center">
-          <div className="flex items-start justify-between gap-2">
+          <div className="flex items-center justify-between gap-2">
             <div className="flex-1 min-w-0 space-y-0.5">
-              <h3 className="text-[10px] md:text-xs font-bold text-base-content">
+              <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
                 {title}
               </h3>
-              <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
-                {type}
-              </p>
+              {type && (
+                <p className="text-[8px] md:text-[10px] text-base-content/60 truncate">
+                  {type}
+                </p>
+              )}
             </div>
             <ArrowTopRightIcon size={14} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
           </div>
@@ -178,11 +197,10 @@ export default function Projects() {
     </div>
   );
 
-  const PolaroidCard = ({ item, onClick, onKeyDown, imgSrc, name, subtitle }) => (
+  const PolaroidCard = ({ onClick, onKeyDown, imgSrc, name, subtitle }) => (
     <div
-      key={item.id}
       className={cn(
-        'group relative flex flex-col p-1 md:p-1.5 rounded-md shadow-xl',
+        'group relative flex flex-col p-1 md:p-1.5 rounded-md shadow-xl cursor-pointer',
         'bg-textured border border-solid border-gray-300 dark:border-white/20 hover:border-double',
         'hover-card'
       )}
@@ -191,7 +209,7 @@ export default function Projects() {
       onClick={onClick}
       onKeyDown={onKeyDown}
     >
-      <div className="relative w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
+      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
         {imgSrc ? (
           <img
             src={imgSrc}
@@ -205,100 +223,117 @@ export default function Projects() {
           </div>
         )}
       </div>
-      <div className="flex flex-col justify-between flex-1 pt-2">
-        <div>
-          <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate">
-            {name}
-          </h3>
-          <p className="text-[8px] md:text-[10px] text-base-content/60 mt-0.5 truncate">
-            {subtitle}
-          </p>
-        </div>
+      <div className="flex items-center justify-between gap-1 pt-1.5 min-w-0">
+        <h3 className="text-[10px] md:text-xs font-bold text-base-content truncate group-hover:underline underline-offset-2">
+          {name}
+        </h3>
+        <ArrowTopRightIcon size={12} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors" />
       </div>
     </div>
   );
 
   return (
     <section id="projects" className="scroll-mt-24 max-w-2xl mx-auto">
-      {/* Header */}
+      {/* Header with Title and View Toggle */}
       <header className="pt-20 md:pt-10 mb-3">
-        <div>
-          <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-            Projects
-          </p>
-          <p className="text-[10px] md:text-xs text-base-content/50">
-            Web applications and personal projects
-          </p>
+        <div className="flex items-center justify-between gap-3">
+          <div>
+            <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
+              Projects
+            </p>
+            <p className="text-[10px] md:text-xs text-base-content/50">
+              Web applications and personal projects
+            </p>
+          </div>
+
+          {/* List / Grid Toggle */}
+          <div className="inline-flex items-center gap-1 p-0.5 rounded-md border border-gray-300 dark:border-white/20 bg-base-300/30 shrink-0">
+            <button
+              type="button"
+              onClick={() => setViewMode('list')}
+              aria-label="List view"
+              className={cn(
+                'p-1.5 rounded-sm transition-colors cursor-pointer',
+                viewMode === 'list'
+                  ? 'bg-base-content text-base-100 shadow-sm'
+                  : 'text-base-content/50 hover:text-base-content'
+              )}
+            >
+              <ListIcon size={14} />
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode('grid')}
+              aria-label="Grid view"
+              className={cn(
+                'p-1.5 rounded-sm transition-colors cursor-pointer',
+                viewMode === 'grid'
+                  ? 'bg-base-content text-base-100 shadow-sm'
+                  : 'text-base-content/50 hover:text-base-content'
+              )}
+            >
+              <GridIcon size={14} />
+            </button>
+          </div>
         </div>
       </header>
 
       <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       <div className="space-y-6 md:space-y-8">
-        {PROJECT_CATEGORIES.map(({ category, description, items }) => (
+        {PROJECT_CATEGORIES.map(({ category, items }) => (
           <article key={category}>
+            {/* Category title without description */}
             <div className="mb-2">
               <h3 className="text-[10px] md:text-xs text-base-content">
                 {category} :
               </h3>
-              <p className="text-[8px] md:text-[10px] text-base-content/50">
-                {description}
-              </p>
             </div>
 
-            <div className="space-y-3">
-              {category === 'Mockups' ? (
-                // Mockups Grid Layout (3 cols mobile, 4 cols desktop)
-                <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                  {items.map((mockup) => (
-                    <PolaroidCard
-                      key={mockup.id}
-                      item={mockup}
-                      imgSrc={mockup.previewImage}
-                      name={mockup.name}
-                      subtitle={mockup.category}
-                      onClick={() => handleSelectMockup(mockup)}
-                      onKeyDown={(event) => {
-                        if (event.key === 'Enter' || event.key === ' ') {
-                          event.preventDefault();
-                          handleSelectMockup(mockup);
-                        }
-                      }}
-                    />
-                  ))}
-                </div>
-              ) : category === 'Personal' ? (
-                // Personal: Card Format with image
-                <>
-                  {items.map((personal) => (
-                    <ProjectCard
-                      key={personal.id}
-                      item={personal}
-                      title={personal.title || personal.name}
-                      type={personal.type}
-                      coverImage={personal.coverImage || personal.previewImage}
-                      techStack={personal.techStack}
-                      onClick={() => handleSelectPersonal(personal)}
-                    />
-                  ))}
-                </>
-              ) : (
-                // Deployed: Card Format with image
-                <>
-                  {items.map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      item={project}
-                      title={project.title || project.name}
-                      type={project.type}
-                      coverImage={project.coverImage || project.previewImage}
-                      techStack={project.techStack}
-                      onClick={() => handleSelectProject(project)}
-                    />
-                  ))}
-                </>
-              )}
-            </div>
+            {viewMode === 'grid' ? (
+              /* Grid Layout: 2 minimum on mobile, 3 on desktop */
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {items.map((item) => (
+                  <PolaroidCard
+                    key={item.id}
+                    item={item}
+                    imgSrc={item.previewImage || item.coverImage}
+                    name={item.title || item.name}
+                    subtitle={item.type || item.category}
+                    onClick={() => {
+                      if (category === 'Mockups') handleSelectMockup(item);
+                      else if (category === 'Personal') handleSelectPersonal(item);
+                      else handleSelectProject(item);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        if (category === 'Mockups') handleSelectMockup(item);
+                        else if (category === 'Personal') handleSelectPersonal(item);
+                        else handleSelectProject(item);
+                      }
+                    }}
+                  />
+                ))}
+              </div>
+            ) : (
+              /* List Layout */
+              <div className="space-y-3">
+                {items.map((item) => (
+                  <ProjectCard
+                    key={item.id}
+                    title={item.title || item.name}
+                    type={item.type || item.category}
+                    coverImage={item.coverImage || item.previewImage}
+                    onClick={() => {
+                      if (category === 'Mockups') handleSelectMockup(item);
+                      else if (category === 'Personal') handleSelectPersonal(item);
+                      else handleSelectProject(item);
+                    }}
+                  />
+                ))}
+              </div>
+            )}
           </article>
         ))}
       </div>
