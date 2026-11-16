@@ -47,40 +47,38 @@ export function JournalPostPage({ post, onBack }) {
         {/* Content */}
         <div className="space-y-6 md:space-y-8">
 
-          {/* Compact Cover Photo / Thumbnail (Solid border outside, dashed border inside) */}
-          <div className="w-full max-w-xs sm:max-w-sm mx-auto">
-            <div className="overflow-hidden border border-solid border-gray-300 dark:border-white/20 p-1 rounded-md bg-base-300/30 shadow-sm">
-              <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300/50 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
-                {post.coverImage ? (
-                  <img
-                    src={post.coverImage}
-                    alt={post.title}
-                    className="w-full h-full object-cover object-center"
-                  />
-                ) : (
-                  <div className="flex flex-col items-center justify-center h-full w-full gap-1.5 text-base-content/30 bg-base-200/20">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="size-6 text-base-content/35"
-                    >
-                      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-                      <circle cx="9" cy="9" r="2" />
-                      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-                    </svg>
-                    <span className="text-[8px] md:text-[9px] tracking-wider uppercase font-mono">
-                      Cover Image Placeholder
-                    </span>
-                  </div>
-                )}
-              </div>
+          {/* Cover Photo / Thumbnail (Full-width mockup-style presentation) */}
+          <div className="overflow-hidden border-2 border-gray-300 dark:border-white/20 p-1.5 md:p-3 rounded-lg bg-base-300/30">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md bg-base-300">
+              {post.coverImage ? (
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  className="w-full h-full object-contain object-center"
+                />
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full w-full gap-1.5 text-base-content/30 bg-base-200/20">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="size-6 text-base-content/35"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                    <circle cx="9" cy="9" r="2" />
+                    <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                  </svg>
+                  <span className="text-[8px] md:text-[9px] tracking-wider uppercase font-mono">
+                    Journal Cover
+                  </span>
+                </div>
+              )}
             </div>
           </div>
 

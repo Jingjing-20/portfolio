@@ -255,7 +255,7 @@ function NavList({ activePage, onSelect, variant = 'desktop' }) {
   return (
     <nav
       aria-label={isMobile ? 'Mobile main navigation' : 'Main navigation'}
-      className={cn('flex flex-col gap-3 md:gap-3.5 w-full', isMobile && 'pt-1')}
+      className={cn('flex flex-col gap-1 w-full', isMobile && 'pt-1')}
     >
       {NAV_GROUPS.map((group, groupIndex) => (
         <div key={groupIndex} className="flex flex-col gap-0.5">
@@ -293,6 +293,16 @@ function NavList({ activePage, onSelect, variant = 'desktop' }) {
               </button>
             );
           })}
+
+          {groupIndex < NAV_GROUPS.length - 1 && (
+            <div className="flex items-center justify-center py-2 select-none" aria-hidden="true">
+              <div className="flex items-center gap-1.5 text-base-content/35 dark:text-white/35">
+                <span className="w-3.5 h-px bg-current" />
+                <span className="size-1 rotate-45 border border-current bg-base-content/20" />
+                <span className="w-3.5 h-px bg-current" />
+              </div>
+            </div>
+          )}
         </div>
       ))}
     </nav>

@@ -1,3 +1,13 @@
+import partTimeDevCsrImg from '@/components/resume_sections/journal/posts/Part-Time Developer, Full-Time CSR Agent.webp';
+import devToCsrImg from '@/components/resume_sections/journal/posts/From Software Developer to CSR Agent.webp';
+import geoRealityImg from '@/components/resume_sections/journal/posts/The Painful Reality of Geographical Opportunities.webp';
+import clientStrugglesImg from '@/components/resume_sections/journal/posts/Software Developer Client Struggles.webp';
+import countlessRejectionsImg from '@/components/resume_sections/journal/posts/Countless Rejections in Job Applications.webp';
+import remoteJobHuntImg from '@/components/resume_sections/journal/posts/The Reality of Remote Job Hunting.webp';
+import gsoInternshipImg from '@/components/resume_sections/journal/posts/GSO Government Internship Experience.webp';
+import gisPropertyMappingImg from '@/components/resume_sections/journal/posts/GIS Property Mapping for Government.webp';
+import academicGradeSheetImg from '@/components/resume_sections/journal/posts/Building the Academic Grade Sheet.webp';
+
 export const JOURNAL_POSTS = [
   {
     id: 'part-time-developer-full-time-csr',
@@ -6,7 +16,7 @@ export const JOURNAL_POSTS = [
     category: 'Reality',
     date: 'Nov 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: partTimeDevCsrImg,
     content: [
       {
         type: 'paragraph',
@@ -54,7 +64,7 @@ export const JOURNAL_POSTS = [
     category: 'Reality',
     date: 'Oct 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: devToCsrImg,
     content: [
       {
         type: 'paragraph',
@@ -102,7 +112,7 @@ export const JOURNAL_POSTS = [
     category: 'Reality',
     date: 'Oct 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: geoRealityImg,
     content: [
       {
         type: 'paragraph',
@@ -150,7 +160,7 @@ export const JOURNAL_POSTS = [
     category: 'Freelance',
     date: 'Sep 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: clientStrugglesImg,
     content: [
       {
         type: 'paragraph',
@@ -198,7 +208,7 @@ export const JOURNAL_POSTS = [
     category: 'Job Hunt',
     date: 'Sep 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: countlessRejectionsImg,
     content: [
       {
         type: 'paragraph',
@@ -246,7 +256,7 @@ export const JOURNAL_POSTS = [
     category: 'Job Hunt',
     date: 'Aug 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: remoteJobHuntImg,
     content: [
       {
         type: 'paragraph',
@@ -294,7 +304,7 @@ export const JOURNAL_POSTS = [
     category: 'Experience',
     date: 'May 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: gsoInternshipImg,
     content: [
       {
         type: 'paragraph',
@@ -342,7 +352,7 @@ export const JOURNAL_POSTS = [
     category: 'Project',
     date: 'Apr 2026',
     readTime: '4 min read',
-    coverImage: null,
+    coverImage: gisPropertyMappingImg,
     content: [
       {
         type: 'paragraph',
@@ -390,7 +400,7 @@ export const JOURNAL_POSTS = [
     category: 'Project',
     date: 'Dec 2025',
     readTime: '5 min read',
-    coverImage: null,
+    coverImage: academicGradeSheetImg,
     content: [
       {
         type: 'paragraph',

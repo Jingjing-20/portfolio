@@ -3,59 +3,6 @@ import { cn } from '@/lib/utils';
 import { JOURNAL_POSTS } from '@/components/resume_sections/journal/journal_data';
 import { JournalPostPage } from '@/components/resume_sections/journal/JournalPostPage';
 
-function ArrowTopRightIcon({ className = '', size = '1em' }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} className={className} viewBox="0 0 24 24">
-      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 7h10m0 0v10m0-10L7 17" />
-    </svg>
-  );
-}
-
-function ImageIcon({ className = '', size = 18 }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
-      <circle cx="9" cy="9" r="2" />
-      <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
-    </svg>
-  );
-}
-
-function ListIcon({ className = '', size = 14 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <line x1="8" y1="6" x2="21" y2="6" />
-      <line x1="8" y1="12" x2="21" y2="12" />
-      <line x1="8" y1="18" x2="21" y2="18" />
-      <line x1="3" y1="6" x2="3.01" y2="6" />
-      <line x1="3" y1="12" x2="3.01" y2="12" />
-      <line x1="3" y1="18" x2="3.01" y2="18" />
-    </svg>
-  );
-}
-
-function GridIcon({ className = '', size = 14 }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <rect width="7" height="7" x="3" y="3" rx="1" />
-      <rect width="7" height="7" x="14" y="3" rx="1" />
-      <rect width="7" height="7" x="14" y="14" rx="1" />
-      <rect width="7" height="7" x="3" y="14" rx="1" />
-    </svg>
-  );
-}
-
 function getActivePostFromHash() {
   if (typeof window === 'undefined') return null;
   const hash = window.location.hash.replace(/^#/, '');
@@ -67,7 +14,6 @@ function getActivePostFromHash() {
 
 export default function Journal() {
   const [selectedPost, setSelectedPost] = useState(getActivePostFromHash);
-  const [viewMode, setViewMode] = useState('list');
 
   useEffect(() => {
     const handleHash = () => {
@@ -100,196 +46,80 @@ export default function Journal() {
 
   return (
     <section id="journal" className="scroll-mt-24 max-w-2xl mx-auto">
-      {/* Header with Title and Format Toggle */}
+      {/* Header */}
       <header className="pt-20 md:pt-10 mb-3">
-        <div className="flex items-center justify-between gap-3">
-          <div>
-            <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
-              Journal
-            </p>
-            <p className="text-[10px] md:text-xs text-base-content/50">
-              Notes, reflections, and technical deep dives
-            </p>
-          </div>
-
-          {/* List / Grid Toggle */}
-          <div className="inline-flex items-center gap-1 p-0.5 rounded-md border border-gray-300 dark:border-white/20 bg-base-300/30 shrink-0">
-            <button
-              type="button"
-              onClick={() => setViewMode('list')}
-              aria-label="List view"
-              className={cn(
-                'p-1.5 rounded-sm transition-colors cursor-pointer',
-                viewMode === 'list'
-                  ? 'bg-base-content text-base-100 shadow-sm'
-                  : 'text-base-content/50 hover:text-base-content'
-              )}
-            >
-              <ListIcon size={14} />
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewMode('grid')}
-              aria-label="Grid view"
-              className={cn(
-                'p-1.5 rounded-sm transition-colors cursor-pointer',
-                viewMode === 'grid'
-                  ? 'bg-base-content text-base-100 shadow-sm'
-                  : 'text-base-content/50 hover:text-base-content'
-              )}
-            >
-              <GridIcon size={14} />
-            </button>
-          </div>
-        </div>
+        <p className="text-base-content text-md md:text-lg lg:text-xl font-bold">
+          Journal
+        </p>
+        <p className="text-[10px] md:text-xs text-base-content/50">
+          Notes, reflections, and technical deep dives
+        </p>
       </header>
 
       <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
-      {/* Journal Entries - Chronological by Date */}
-      {viewMode === 'list' ? (
-        <div>
-          {JOURNAL_POSTS.map((post, index) => (
-            <div key={post.id}>
-              <div
-                className="group cursor-pointer py-1.5"
-                onClick={() => handleSelectPost(post)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    handleSelectPost(post);
-                  }
-                }}
-              >
-                <div className="flex gap-2.5 md:gap-3.5 items-center">
-                  {/* Thumbnail Container (Solid border outside, dashed border inside) */}
-                  <div className="flex-shrink-0 w-24 sm:w-28 md:w-32">
-                    <div
-                      className={cn(
-                        'relative p-0.5 rounded-sm shadow-md transition-all duration-200',
-                        'bg-textured border border-solid border-gray-300 dark:border-white/20',
-                        'hover-card-border'
-                      )}
-                    >
-                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 border border-dashed border-base-content/20 dark:border-white/20 shadow-inner">
-                        {post.coverImage ? (
-                          <img
-                            src={post.coverImage}
-                            alt={post.title}
-                            loading="lazy"
-                            className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="flex flex-col items-center justify-center h-full w-full gap-0.5 bg-base-200/30 text-base-content/30 group-hover:text-base-content/50 transition-colors">
-                            <ImageIcon size={16} />
-                            <span className="text-[7px] md:text-[8px] uppercase tracking-wider font-mono">
-                              Image
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content (description shown in list) */}
-                  <div className="flex-1 min-w-0 flex items-center justify-between gap-2 md:gap-3">
-                    <div className="flex-1 min-w-0 space-y-0.5">
-                      <div className="flex items-center gap-1.5 text-[8px] md:text-[9px] text-base-content/50 font-medium">
-                        <span>{post.date}</span>
-                        <span>·</span>
-                        <span>{post.readTime}</span>
-                      </div>
-
-                      <h3 className="text-[11px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
-                        {post.title}
-                      </h3>
-
-                      {post.subtitle && (
-                        <p className="text-[8px] md:text-[10px] text-base-content/50 line-clamp-2 leading-relaxed">
-                          {post.subtitle}
-                        </p>
-                      )}
-                    </div>
-
-                    <ArrowTopRightIcon
-                      size={14}
-                      className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors"
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* HR separator between items */}
-              {index < JOURNAL_POSTS.length - 1 && (
-                <hr className="my-2 md:my-2.5 border-base-content/10" />
+      {/* Grid Layout: 1 column on mobile, 3 columns on desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {JOURNAL_POSTS.map((post) => (
+          <div
+            key={post.id}
+            className={cn(
+              'group cursor-pointer flex flex-col rounded-xl overflow-hidden shadow-sm transition-all duration-200',
+              'bg-textured border border-solid border-gray-300 dark:border-white/20',
+              'hover-card-border hover:shadow-md'
+            )}
+            onClick={() => handleSelectPost(post)}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                handleSelectPost(post);
+              }
+            }}
+          >
+            {/* Top Banner (Occupies whole space in header of card image) */}
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-base-300 border-b border-gray-300/70 dark:border-white/10">
+              {post.coverImage ? (
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                />
+              ) : (
+                <div className="h-full w-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black dark:from-zinc-100 dark:via-neutral-200 dark:to-zinc-300" />
               )}
             </div>
-          ))}
-        </div>
-      ) : (
-        /* Grid Layout: Polaroid format - 2 columns on mobile, 3 columns on desktop */
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-3.5">
-          {JOURNAL_POSTS.map((post) => (
-            <div
-              key={post.id}
-              className={cn(
-                'group cursor-pointer flex flex-col p-1 md:p-1.5 rounded-sm shadow-md transition-all duration-200',
-                'bg-textured border border-solid border-gray-300 dark:border-white/20',
-                'hover-card-border'
-              )}
-              onClick={() => handleSelectPost(post)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  handleSelectPost(post);
-                }
-              }}
-            >
-              {/* Image inside dashed border with p-0.5 so dashes are visible */}
-              <div className="p-0.5 border border-dashed border-base-content/20 dark:border-white/20 rounded-sm">
-                <div className="relative aspect-[16/9] w-full overflow-hidden rounded-sm bg-base-300 shadow-inner">
-                  {post.coverImage ? (
-                    <img
-                      src={post.coverImage}
-                      alt={post.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="flex flex-col items-center justify-center h-full w-full gap-0.5 bg-base-200/30 text-base-content/30 group-hover:text-base-content/50 transition-colors">
-                      <ImageIcon size={18} />
-                      <span className="text-[7px] md:text-[8px] uppercase tracking-wider font-mono">
-                        Image
-                      </span>
-                    </div>
-                  )}
-                </div>
+
+            {/* Bottom Content Area */}
+            <div className="p-3 md:p-3.5 flex flex-col flex-1 justify-between">
+              <div>
+                {/* Title */}
+                <h3 className="text-[10px] md:text-xs font-bold text-base-content leading-snug line-clamp-2 mb-1 group-hover:underline underline-offset-2">
+                  {post.title}
+                </h3>
+
+                {/* Subtitle / Excerpt */}
+                {post.subtitle && (
+                  <p className="text-[8px] md:text-[10px] text-base-content/60 leading-relaxed line-clamp-2 mb-2">
+                    {post.subtitle}
+                  </p>
+                )}
               </div>
 
-              {/* Text inside the border (polaroid style) - no description in grid */}
-              <div className="pt-1.5 space-y-0.5 min-w-0">
-                <div className="flex items-center gap-1.5 text-[7px] md:text-[8px] text-base-content/50 font-medium">
-                  <span>{post.date}</span>
-                  <span>·</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <div className="flex items-start justify-between gap-1">
-                  <h3 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2">
-                    {post.title}
-                  </h3>
-                  <ArrowTopRightIcon
-                    size={12}
-                    className="shrink-0 mt-0.5 text-base-content/40 group-hover:text-base-content transition-colors"
-                  />
-                </div>
+              {/* Metadata Footer: Date · Read Time · — */}
+              <div className="flex items-center gap-1.5 text-[7px] md:text-[8px] text-base-content/50 font-mono mt-auto">
+                <span>{post.date}</span>
+                <span>·</span>
+                <span>{post.readTime}</span>
+                <span>·</span>
+                <span>—</span>
               </div>
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
     </section>
   );
 }
