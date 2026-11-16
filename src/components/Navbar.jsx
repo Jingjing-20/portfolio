@@ -53,7 +53,8 @@ function ProjectsFilledIcon({ className = '', size = '1em' }) {
 function JournalOutlinedIcon({ className = '', size = '1em' }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5M6 6h10M6 10h10" />
+      <title>journal-outline</title>
+      <path fill="currentColor" d="M17 4v6l-2-2l-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z" />
     </svg>
   );
 }
@@ -61,7 +62,8 @@ function JournalOutlinedIcon({ className = '', size = '1em' }) {
 function JournalFilledIcon({ className = '', size = '1em' }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path fill="currentColor" d="M6 2h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2H6zm0 2a.5.5 0 0 0-.5.5v15a.5.5 0 0 0 .5.5H19V4H6zm2 2h8v2H8V6zm0 4h8v2H8v-2z" />
+      <title>journal</title>
+      <path fill="currentColor" d="M3 7V5h2V4a2 2 0 0 1 2-2h6v7l2.5-1.5L18 9V2h1c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm4 4H5v2h2zm0-4V5H5v2zm0 12v-2H5v2z" />
     </svg>
   );
 }
@@ -89,56 +91,70 @@ const buttons = cn(
   'hover-theme-switch'
 );
 
-const NAV_ITEMS = [
-  {
-    value: 'home',
-    label: 'Home',
-    outlined: <HomeOutlinedIcon size={14} className="shrink-0" />,
-    filled: <HomeOutlinedIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'about',
-    label: 'About',
-    outlined: <AboutOutlinedIcon size={14} className="shrink-0" />,
-    filled: <AboutFilledIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'stack',
-    label: 'Skills',
-    outlined: <SkillsOutlinedIcon size={14} className="shrink-0" />,
-    filled: <SkillsFilledIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'experience',
-    label: 'Experience',
-    outlined: <ExperienceOutlinedIcon size={14} className="shrink-0" />,
-    filled: <ExperienceFilledIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'projects',
-    label: 'Projects',
-    outlined: <ProjectsOutlinedIcon size={14} className="shrink-0" />,
-    filled: <ProjectsFilledIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'journal',
-    label: 'Journal',
-    outlined: <JournalOutlinedIcon size={14} className="shrink-0" />,
-    filled: <JournalFilledIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'certificates',
-    label: 'Certificates',
-    outlined: <CertificateOutlinedIcon size={14} className="shrink-0" />,
-    filled: <CertificateFilledIcon size={14} className="shrink-0" />,
-  },
-  {
-    value: 'socials',
-    label: 'Contact',
-    outlined: <SocialOutlinedIcon size={14} className="shrink-0" />,
-    filled: <SocialFilledIcon size={14} className="shrink-0" />,
-  },
+const NAV_GROUPS = [
+  // Home
+  [
+    {
+      value: 'home',
+      label: 'Home',
+      outlined: <HomeOutlinedIcon size={14} className="shrink-0" />,
+      filled: <HomeOutlinedIcon size={14} className="shrink-0" />,
+    },
+  ],
+  // About, Skills, Experience, Projects, Certificates
+  [
+    {
+      value: 'about',
+      label: 'About',
+      outlined: <AboutOutlinedIcon size={14} className="shrink-0" />,
+      filled: <AboutFilledIcon size={14} className="shrink-0" />,
+    },
+    {
+      value: 'stack',
+      label: 'Skills',
+      outlined: <SkillsOutlinedIcon size={14} className="shrink-0" />,
+      filled: <SkillsFilledIcon size={14} className="shrink-0" />,
+    },
+    {
+      value: 'experience',
+      label: 'Experience',
+      outlined: <ExperienceOutlinedIcon size={14} className="shrink-0" />,
+      filled: <ExperienceFilledIcon size={14} className="shrink-0" />,
+    },
+    {
+      value: 'projects',
+      label: 'Projects',
+      outlined: <ProjectsOutlinedIcon size={14} className="shrink-0" />,
+      filled: <ProjectsFilledIcon size={14} className="shrink-0" />,
+    },
+    {
+      value: 'certificates',
+      label: 'Certificates',
+      outlined: <CertificateOutlinedIcon size={14} className="shrink-0" />,
+      filled: <CertificateFilledIcon size={14} className="shrink-0" />,
+    },
+  ],
+  // Journal
+  [
+    {
+      value: 'journal',
+      label: 'Journal',
+      outlined: <JournalOutlinedIcon size={14} className="shrink-0" />,
+      filled: <JournalFilledIcon size={14} className="shrink-0" />,
+    },
+  ],
+  // Contact
+  [
+    {
+      value: 'socials',
+      label: 'Contact',
+      outlined: <SocialOutlinedIcon size={14} className="shrink-0" />,
+      filled: <SocialFilledIcon size={14} className="shrink-0" />,
+    },
+  ],
 ];
+
+const NAV_ITEMS = NAV_GROUPS.flat();
 
 const THEME_OPTIONS = [
   { value: 'light', label: 'Light', icon: Sun },
@@ -239,42 +255,46 @@ function NavList({ activePage, onSelect, variant = 'desktop' }) {
   return (
     <nav
       aria-label={isMobile ? 'Mobile main navigation' : 'Main navigation'}
-      className={cn('flex flex-col gap-1 w-full', isMobile && 'pt-1')}
+      className={cn('flex flex-col gap-3 md:gap-3.5 w-full', isMobile && 'pt-1')}
     >
-      {NAV_ITEMS.map((item) => {
-        const isActive = activePage === item.value;
+      {NAV_GROUPS.map((group, groupIndex) => (
+        <div key={groupIndex} className="flex flex-col gap-0.5">
+          {group.map((item) => {
+            const isActive = activePage === item.value;
 
-        return (
-          <button
-            key={item.value}
-            type="button"
-            onClick={(e) => onSelect(e, item.value)}
-            aria-label={item.label}
-            aria-current={isActive ? 'page' : undefined}
-            className={cn(
-              'inline-flex items-center text-left w-full bg-transparent border-0 hover:underline underline-offset-4',
-              FOCUS_RING,
-              TEXT,
-              'font-medium',
-              isActive && 'font-extrabold underline underline-offset-4',
-              isMobile
-                ? 'gap-2.5 py-2.5 px-3 rounded-md text-xs'
-                : 'gap-2 px-1 py-1.5 text-xs'
-            )}
-          >
-            <span
-              className={cn(
-                'shrink-0 flex items-center justify-center',
-                isMobile && 'size-4'
-              )}
-            >
-              {isActive ? item.filled : item.outlined}
-            </span>
+            return (
+              <button
+                key={item.value}
+                type="button"
+                onClick={(e) => onSelect(e, item.value)}
+                aria-label={item.label}
+                aria-current={isActive ? 'page' : undefined}
+                className={cn(
+                  'inline-flex items-center text-left w-full bg-transparent border-0 hover:underline underline-offset-4 cursor-pointer',
+                  FOCUS_RING,
+                  TEXT,
+                  'font-medium',
+                  isActive && 'font-extrabold underline underline-offset-4',
+                  isMobile
+                    ? 'gap-2.5 py-2.5 px-3 rounded-md text-xs'
+                    : 'gap-2 px-1 py-1.5 text-xs'
+                )}
+              >
+                <span
+                  className={cn(
+                    'shrink-0 flex items-center justify-center',
+                    isMobile && 'size-4'
+                  )}
+                >
+                  {isActive ? item.filled : item.outlined}
+                </span>
 
-            <span>{item.label}</span>
-          </button>
-        );
-      })}
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      ))}
     </nav>
   );
 }
