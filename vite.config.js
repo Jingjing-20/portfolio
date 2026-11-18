@@ -9,6 +9,9 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@animate-ui/react/primitives/avatar-group": fileURLToPath(
+        new URL("./src/components/animate-ui/primitives/avatar-group.jsx", import.meta.url)
+      ),
     },
   },
   build: {

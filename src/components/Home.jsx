@@ -1,12 +1,73 @@
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { ArrowRight, Send } from 'lucide-react';
+import {
+  AvatarGroup,
+  AvatarGroupTooltip,
+  AvatarGroupTooltipArrow,
+} from '@/components/animate-ui/primitives/avatar-group';
+
+function ReactIcon({ className = 'size-5' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <title>react</title>
+      <path fill="currentColor" d="M12 10.11c1.03 0 1.87.84 1.87 1.89c0 1-.84 1.85-1.87 1.85S10.13 13 10.13 12c0-1.05.84-1.89 1.87-1.89M7.37 20c.63.38 2.01-.2 3.6-1.7c-.52-.59-1.03-1.23-1.51-1.9a23 23 0 0 1-2.4-.36c-.51 2.14-.32 3.61.31 3.96m.71-5.74l-.29-.51c-.11.29-.22.58-.29.86c.27.06.57.11.88.16zm6.54-.76l.81-1.5l-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17 9 12.6 9 12 9s-1.17 0-1.71.03c-.29.47-.61.94-.91 1.47L8.57 12l.81 1.5c.3.53.62 1 .91 1.47c.54.03 1.11.03 1.71.03s1.17 0 1.71-.03c.29-.47.61-.94.91-1.47M12 6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0 10.44c.19-.22.39-.45.59-.72h-1.18c.2.27.4.5.59.72M16.62 4c-.62-.38-2 .2-3.59 1.7c.52.59 1.03 1.23 1.51 1.9c.82.08 1.63.2 2.4.36c.51-2.14.32-3.61-.32-3.96m-.7 5.74l.29.51c.11-.29.22-.58.29-.86c-.27-.06-.57-.11-.88-.16zm1.45-7.05c1.47.84 1.63 3.05 1.01 5.63c2.54.75 4.37 1.99 4.37 3.68s-1.83 2.93-4.37 3.68c.62 2.58.46 4.79-1.01 5.63c-1.46.84-3.45-.12-5.37-1.95c-1.92 1.83-3.91 2.79-5.38 1.95c-1.46-.84-1.62-3.05-1-5.63c-2.54-.75-4.37-1.99-4.37-3.68s1.83-2.93 4.37-3.68c-.62-2.58-.46-4.79 1-5.63c1.47-.84 3.46.12 5.38 1.95c1.92-1.83 3.91-2.79 5.37-1.95M17.08 12c.34.75.64 1.5.89 2.26c2.1-.63 3.28-1.53 3.28-2.26s-1.18-1.63-3.28-2.26c-.25.76-.55 1.51-.89 2.26M6.92 12c-.34-.75-.64-1.5-.89-2.26c-2.1.63-3.28 1.53-3.28 2.26s1.18 1.63 3.28 2.26c.25-.76.55-1.51.89-2.26m9 2.26l-.3.51c.31-.05.61-.1.88-.16c-.07-.28-.18-.57-.29-.86zm-2.89 4.04c1.59 1.5 2.97 2.08 3.59 1.7c.64-.35.83-1.82.32-3.96c-.77.16-1.58.28-2.4.36c-.48.67-.99 1.31-1.51 1.9M8.08 9.74l.3-.51c-.31.05-.61.1-.88.16c.07.28.18.57.29.86zm2.89-4.04C9.38 4.2 8 3.62 7.37 4c-.63.35-.82 1.82-.31 3.96a23 23 0 0 1 2.4-.36c.48-.67.99-1.31 1.51-1.9" />
+    </svg>
+  );
+}
+
+function ViteIcon({ className = 'size-5' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <title>vite</title>
+      <path fill="currentColor" d="m8.525 4.63l-5.132-.915a1.17 1.17 0 0 0-1.164.468a1.16 1.16 0 0 0-.07 1.28l8.901 15.58a1.182 1.182 0 0 0 2.057-.008l8.729-15.578c.49-.875-.262-1.917-1.242-1.739l-4.574.813l-.206.754l4.906-.871a.474.474 0 0 1 .498.697L12.5 20.689a.47.47 0 0 1-.5.234a.47.47 0 0 1-.326-.231L2.772 5.112a.474.474 0 0 1 .496-.7l5.133.916l.074.013z" />
+      <path fill="currentColor" d="m15.097 5.26l.162-.593l-.6.107zm-5.88-.506l.513.09l-.542.427z" />
+      <path fill="currentColor" d="m15.549 2.367l-6.1 1.26a.22.22 0 0 0-.126.077a.25.25 0 0 0-.055.142l-.375 6.685a.24.24 0 0 0 .079.194a.21.21 0 0 0 .195.05l1.698-.414c.16-.038.302.11.27.278l-.505 2.606c-.034.176.122.326.285.274l1.049-.336c.162-.052.319.098.284.274l-.801 4.093c-.05.257.272.396.407.177l.09-.147l4.97-10.464c.084-.175-.06-.375-.242-.338l-1.748.356c-.165.034-.304-.128-.258-.297l1.14-4.173c.047-.17-.093-.331-.257-.297" />
+    </svg>
+  );
+}
+
+function JavaScriptIcon({ className = 'size-5' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <title>javascript-fill</title>
+      <path fill="currentColor" d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm7.334 13.055q1.08.87 2.156.858q.66 0 1.012-.242a.75.75 0 0 0 .341-.66a.97.97 0 0 0-.34-.748q-.352-.307-1.332-.616q-1.177-.34-1.815-.88q-.626-.54-.638-1.507q0-.913.792-1.529q.77-.616 1.97-.616q1.672 0 2.683.814l-.77 1.199a2.6 2.6 0 0 0-.935-.462a3.2 3.2 0 0 0-.946-.165q-.57 0-.913.209q-.34.21-.34.55q0 .374.417.638q.42.254 1.43.561q1.221.363 1.738.968t.517 1.54q0 .957-.737 1.65q-.726.682-2.112.715q-1.815 0-3.036-1.089zm-5.53.638q.352.22.847.22q.517 0 .858-.297q.34-.308.341-1.067v-5.302h1.485v5.588q-.033 1.298-.748 1.87a2.5 2.5 0 0 1-.891.484a3.3 3.3 0 0 1-.935.143q-.825 0-1.463-.286q-.682-.307-1.144-1.089l1.034-.847q.285.385.616.583" />
+    </svg>
+  );
+}
+
+function TailwindIcon({ className = 'size-5' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <title>tailwind</title>
+      <path fill="currentColor" d="M12 6c-2.67 0-4.33 1.33-5 4c1-1.33 2.17-1.83 3.5-1.5c.76.19 1.31.74 1.91 1.35c.98 1 2.09 2.15 4.59 2.15c2.67 0 4.33-1.33 5-4c-1 1.33-2.17 1.83-3.5 1.5c-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.5 6 12 6m-5 6c-2.67 0-4.33 1.33-5 4c1-1.33 2.17-1.83 3.5-1.5c.76.19 1.3.74 1.91 1.35C8.39 16.85 9.5 18 12 18c2.67 0 4.33-1.33 5-4c-1 1.33-2.17 1.83-3.5 1.5c-.76-.19-1.3-.74-1.91-1.35C10.61 13.15 9.5 12 7 12" />
+    </svg>
+  );
+}
+
+function ShadcnIcon({ className = 'size-5' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" className={className} aria-hidden="true">
+      <title>file-type-light-shadcn</title>
+      <path stroke="currentColor" strokeLinecap="round" strokeWidth="4.48" fill="none" d="m27.76 16.56l-11.2 11.2m8.96-23.52L4.24 25.52" />
+    </svg>
+  );
+}
+
+function MotionIcon({ className = 'size-5' }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 128 128" className={className} aria-hidden="true">
+      <title>motion</title>
+      <path fill="currentColor" d="M48.379 39.997L23.063 88.003H0L19.77 50.52c3.064-5.814 10.708-10.523 17.078-10.523ZM104.937 52c0-6.631 5.162-12.002 11.531-12.002S128 45.368 128 52c0 6.629-5.162 12-11.532 12c-6.369 0-11.531-5.37-11.531-12.001M52.703 39.997h23.063L50.45 88.003H27.387Zm27.238 0h23.063L83.241 77.48c-3.065 5.814-10.715 10.523-17.084 10.523H54.625Z" />
+    </svg>
+  );
+}
 
 function ArrowTopRightIcon({ className = '', size = '1em' }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 15 15" className={className} aria-hidden="true">
       <title>arrow-top-right</title>
-      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z"/>
+      <path fill="currentColor" d="M11.5 3a.5.5 0 0 1 .5.5V9l-.01.102a.5.5 0 0 1-.98-.001L11 9V4.707l-6.647 6.647a.5.5 0 0 1-.707-.707L10.293 4H6a.5.5 0 0 1 0-1z" />
     </svg>
   );
 }
@@ -112,21 +173,27 @@ const PORTFOLIO_SECTIONS = [
 const POWERED_BY_STACK = [
   {
     name: 'React',
+    icon: ReactIcon,
   },
   {
     name: 'Vite',
+    icon: ViteIcon,
   },
   {
     name: 'JavaScript',
+    icon: JavaScriptIcon,
   },
   {
     name: 'Tailwind CSS',
+    icon: TailwindIcon,
   },
   {
     name: 'shadcn/ui',
+    icon: ShadcnIcon,
   },
   {
-    name: 'Motion One',
+    name: 'Motion',
+    icon: MotionIcon,
   },
 ];
 
@@ -246,18 +313,24 @@ export default function Home() {
             <span className="text-[8px] md:text-[10px] uppercase tracking-wider text-base-content/50">
               Built With
             </span>
-            <div className="px-9 flex flex-wrap items-center justify-center gap-2 md:gap-3">
-              {POWERED_BY_STACK.map((tool) => (
-                <div
-                  key={tool.name}
-                  className={techBadgeClasses}
-                  title={tool.name}
-                  aria-label={tool.name}
-                >
-                  <span>{tool.name}</span>
-                </div>
-              ))}
-            </div>
+            <AvatarGroup className="h-11 md:h-12 -space-x-2.5 md:-space-x-3" invertOverlap>
+              {POWERED_BY_STACK.map((tool) => {
+                const Icon = tool.icon;
+                return (
+                  <div
+                    key={tool.name}
+                    aria-label={tool.name}
+                    className="relative flex size-9 md:size-10 items-center justify-center rounded-full border border-black dark:border-white bg-base-200 dark:bg-base-300 text-base-content shadow-sm transition-all"
+                  >
+                    <Icon className="size-4 md:size-5 shrink-0" />
+                    <AvatarGroupTooltip>
+                      {tool.name}
+                      <AvatarGroupTooltipArrow />
+                    </AvatarGroupTooltip>
+                  </div>
+                );
+              })}
+            </AvatarGroup>
           </div>
         </motion.div>
       </div>
