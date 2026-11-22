@@ -59,8 +59,8 @@ export const JOURNAL_POSTS = [
   },
   {
     id: 'from-software-developer-to-csr-agent',
-    title: 'From Software Developer to CSR Agent',
-    subtitle: 'Not by choice but by circumstances — accepting a CSR role to support my daily needs while keeping my development goals alive.',
+    title: 'From Code to Customer Support: Embracing the Frontline',
+    subtitle: 'Discovering the grit, empathy, and high-stakes problem-solving of telecommunications customer service, and how it shapes better engineering.',
     category: 'Reality',
     date: 'Oct 2026',
     readTime: '4 min read',
@@ -68,40 +68,40 @@ export const JOURNAL_POSTS = [
     content: [
       {
         type: 'paragraph',
-        text: 'This transition was not something I planned or dreamed of, but life demanded it. After months of putting all my energy into software development, applying endlessly, and facing the realities of the local job market in Bacolod City, financial survival became urgent. Bills do not wait for interview callbacks.',
+        text: 'Stepping into a Customer Service Representative role in telecommunications opened an unexpected yet transformative chapter. While my primary background is in software engineering, entering the customer support world in Bacolod City gave me a direct, ground-level perspective on how real people experience technology when things go wrong.',
       },
       {
         type: 'heading',
-        text: 'The Circumstance Over Choice',
+        text: 'The High-Stakes Discipline of Customer Service',
       },
       {
         type: 'paragraph',
-        text: 'Accepting a Customer Service Representative role in telecommunications was a pragmatic decision. In our city, BPO and customer service positions are far more accessible, faster to hire, and provide the steady income I currently need to support myself and my family. Coming to terms with that took humility and honesty.',
+        text: 'Working the phone queue troubleshooting internet, phone, and cable services is one of the most demanding, fast-paced environments I have ever experienced. Being a CSR requires far more than following a script—it demands deep emotional intelligence, active listening, composure under pressure, and rapid analytical troubleshooting with live customers who need immediate solutions.',
       },
       {
         type: 'heading',
-        text: 'Holding Onto the Tech Path',
+        text: 'How the Frontline Builds Better Developers',
       },
       {
         type: 'paragraph',
-        text: 'Taking this role does not mean I am abandoning software development. Far from it. I view this job as fuel: it covers my living expenses so I can continue learning, coding on nights and rest days, refining my portfolio, and applying for developer roles with a clear head rather than desperation.',
+        text: 'Software engineers often design systems inside clean code editors and controlled test suites, disconnected from the frustrations end-users face in the wild. Being on the frontlines bridges that gap completely. It turns abstract concepts like accessibility, resilience, and error handling into urgent human needs.',
       },
       {
         type: 'list',
         items: [
-          'Earning steady income while removing financial anxiety',
-          'Sharpening real-time communication and problem-solving skills on every call',
-          'Dedicating rest days to building personal projects and studying modern tech stacks',
-          'Keeping perspective: this is a stepping stone for survival, not my final destination',
+          'Translating complex network diagnostics and technical jargon into clear, reassuring guidance',
+          'Developing instinctive empathy for non-technical users facing service disruptions',
+          'Sharpening real-time problem-solving and calm de-escalation skills across diverse customer situations',
+          'Achieving reliable financial grounding while continuing to write code and take on development projects',
         ],
       },
       {
         type: 'heading',
-        text: 'Perspective',
+        text: 'The Synergy of Both Worlds',
       },
       {
         type: 'paragraph',
-        text: 'There is no shame in doing what you need to do to survive. Many developers in the provinces walk this exact path. The key is staying hungry and never letting your headset replace your keyboard forever.',
+        text: 'I have immense respect for the customer support community. Handling back-to-back customer challenges with empathy and professionalism is a craft in its own right. Paired with late-night coding sessions and ongoing web development projects, this experience ensures that everything I build in the future is grounded in human empathy and practical real-world utility.',
       },
     ],
   },
