@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { JOURNAL_POSTS } from '@/components/resume_sections/journal/journal_data';
 import { JournalPostPage } from '@/components/resume_sections/journal/JournalPostPage';
+
+const POSTS_PER_PAGE = 6;
 
 function getActivePostFromHash() {
   if (typeof window === 'undefined') return null;
@@ -14,6 +17,11 @@ function getActivePostFromHash() {
 
 export default function Journal() {
   const [selectedPost, setSelectedPost] = useState(getActivePostFromHash);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(JOURNAL_POSTS.length / POSTS_PER_PAGE);
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+  const currentPosts = JOURNAL_POSTS.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
   useEffect(() => {
     const handleHash = () => {
@@ -32,6 +40,12 @@ export default function Journal() {
   const handleBackToJournal = () => {
     setSelectedPost(null);
     window.location.hash = 'journal';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handlePageChange = (newPage) => {
+    if (newPage < 1 || newPage > totalPages) return;
+    setCurrentPage(newPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -59,8 +73,8 @@ export default function Journal() {
       <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       {/* Grid Layout: 1 column on mobile, 3 columns on desktop */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {JOURNAL_POSTS.map((post) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {currentPosts.map((post) => (
           <div
             key={post.id}
             className={cn(
@@ -120,6 +134,45 @@ export default function Journal() {
           </div>
         ))}
       </div>
+
+      {/* Pagination Controls */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-center gap-4 pt-6 pb-2 select-none">
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            aria-label="Previous page"
+            className={cn(
+              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
+              'bg-textured border border-gray-300 dark:border-white/20 hover:border-double',
+              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+              'hover-theme-switch disabled:opacity-25 disabled:pointer-events-none cursor-pointer'
+            )}
+          >
+            <ArrowLeft className="h-3.5 w-3.5 text-base-content" />
+          </button>
+
+          <span className="text-[10px] md:text-xs font-mono text-base-content/60">
+            Page {currentPage} of {totalPages}
+          </span>
+
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            aria-label="Next page"
+            className={cn(
+              'shadow-xl inline-flex items-center justify-center rounded-md p-2',
+              'bg-textured border border-gray-300 dark:border-white/20 hover:border-double',
+              'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+              'hover-theme-switch disabled:opacity-25 disabled:pointer-events-none cursor-pointer'
+            )}
+          >
+            <ArrowRight className="h-3.5 w-3.5 text-base-content" />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

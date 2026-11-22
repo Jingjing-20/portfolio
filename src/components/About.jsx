@@ -79,7 +79,7 @@ export default function About() {
               <img
                 src={profileImage}
                 alt="Gian Carlo N. Ulep"
-                className="rounded-lg w-32 h-32 md:w-40 md:h-40 object-cover object-top pointer-events-none"
+                className="rounded-lg w-32 h-32 md:w-40 md:h-40 object-cover object-top pointer-events-none flex-1 flex flex-col justify-between rounded-md border border-dashed border-base-content/20 dark:border-white/20"
               />
             </TiltContent>
           </Tilt>
