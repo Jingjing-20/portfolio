@@ -113,6 +113,54 @@ export default function Projects() {
     else handleSelectProject(item);
   };
 
+  const MockupGridCard = ({ onClick, name, category, previewImage }) => (
+    <div
+      className={cn(
+        'group cursor-pointer flex flex-col rounded-xl overflow-hidden shadow-sm transition-all duration-200',
+        'bg-textured border border-solid border-gray-300 dark:border-white/20',
+        'hover-card-border hover:shadow-md'
+      )}
+      onClick={onClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          onClick();
+        }
+      }}
+    >
+      {/* Top Banner with Mockup Preview Image */}
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-base-300 border-b border-gray-300/70 dark:border-white/10">
+        {previewImage ? (
+          <img
+            src={previewImage}
+            alt={name}
+            loading="lazy"
+            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="h-full w-full bg-gradient-to-br from-neutral-800 via-neutral-900 to-black dark:from-zinc-100 dark:via-neutral-200 dark:to-zinc-300" />
+        )}
+      </div>
+
+      {/* Bottom Content Area: Name & Category only */}
+      <div className="p-2.5 md:p-3 flex flex-col flex-1 justify-between gap-1">
+        <div className="flex items-start justify-between gap-1.5">
+          <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 leading-snug">
+            {name}
+          </h4>
+          <ArrowTopRightIcon size={12} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors mt-0.5" />
+        </div>
+        {category && (
+          <span className="text-[7px] md:text-[8px] font-mono uppercase tracking-wider text-base-content/60">
+            {category}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+
   const ProjectCard = ({ onClick, title, type, description, coverImage }) => (
     <div
       className="group cursor-pointer py-1"
@@ -185,35 +233,54 @@ export default function Projects() {
       <hr className="mb-3 md:mb-6 mt-3 border-base-content" />
 
       <div className="space-y-6 md:space-y-8">
-        {PROJECT_CATEGORIES.map(({ category, items }) => (
-          <article key={category}>
-            {/* Category title */}
-            <div className="mb-2">
-              <h3 className="text-[10px] md:text-xs text-base-content">
-                {category} :
-              </h3>
-            </div>
+        {PROJECT_CATEGORIES.map(({ category, items }) => {
+          const isMockup = category === 'Mockups';
 
-            {/* List Layout with HR separators */}
-            <div>
-              {items.map((item, index) => (
-                <div key={item.id}>
-                  <ProjectCard
-                    title={item.title || item.name}
-                    type={item.type || item.category}
-                    description={item.summary || item.description || item.format}
-                    coverImage={item.coverImage || item.previewImage}
-                    onClick={() => handleItemClick(category, item)}
-                  />
-                  {/* HR separator between items */}
-                  {index < items.length - 1 && (
-                    <hr className="my-2 md:my-2.5 border-base-content/10" />
-                  )}
+          return (
+            <article key={category}>
+              {/* Category title */}
+              <div className="mb-2">
+                <h3 className="text-[10px] md:text-xs text-base-content">
+                  {category} :
+                </h3>
+              </div>
+
+              {isMockup ? (
+                /* Grid Layout for Mockups (preview image, name and category only) */
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 md:gap-3">
+                  {items.map((item) => (
+                    <MockupGridCard
+                      key={item.id}
+                      name={item.name || item.title}
+                      category={item.category || item.type}
+                      previewImage={item.previewImage || item.coverImage}
+                      onClick={() => handleItemClick(category, item)}
+                    />
+                  ))}
                 </div>
-              ))}
-            </div>
-          </article>
-        ))}
+              ) : (
+                /* List Layout with HR separators for actual system projects (Deployed & Personal) */
+                <div>
+                  {items.map((item, index) => (
+                    <div key={item.id}>
+                      <ProjectCard
+                        title={item.title || item.name}
+                        type={item.type || item.category}
+                        description={item.summary || item.description || item.format}
+                        coverImage={item.coverImage || item.previewImage}
+                        onClick={() => handleItemClick(category, item)}
+                      />
+                      {/* HR separator between items */}
+                      {index < items.length - 1 && (
+                        <hr className="my-2 md:my-2.5 border-base-content/10" />
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </article>
+          );
+        })}
       </div>
     </section>
   );
