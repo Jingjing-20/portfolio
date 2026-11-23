@@ -147,7 +147,7 @@ export default function Projects() {
       {/* Bottom Content Area: Name & Category only */}
       <div className="p-2.5 md:p-3 flex flex-col flex-1 justify-between gap-1">
         <div className="flex items-start justify-between gap-1.5">
-          <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 leading-snug">
+          <h4 className="text-[10px] md:text-xs font-bold text-base-content group-hover:underline underline-offset-2 leading-snug truncate">
             {name}
           </h4>
           <ArrowTopRightIcon size={12} className="shrink-0 text-base-content/40 group-hover:text-base-content transition-colors mt-0.5" />
@@ -177,7 +177,7 @@ export default function Projects() {
       <div className="flex gap-2.5 md:gap-3.5 items-center">
         {/* Cover Image with Card Styling */}
         {coverImage && (
-          <div className="flex-shrink-0 w-24 sm:w-28 md:w-32">
+          <div className="flex-shrink-0 w-35 md:w-40">
             <div className={cn(
               'relative p-0.5 rounded-sm shadow-md transition-all duration-200',
               'bg-textured border border-solid border-gray-300 dark:border-white/20',
@@ -247,7 +247,7 @@ export default function Projects() {
 
               {isMockup ? (
                 /* Grid Layout for Mockups (preview image, name and category only) */
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 md:gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 md:gap-3">
                   {items.map((item) => (
                     <MockupGridCard
                       key={item.id}

@@ -57,7 +57,8 @@ function TabsTrigger({
       className={cn(
         "relative inline-flex items-center justify-center gap-1.5 rounded px-2.5 py-1 text-[9px] md:text-[10.5px] font-medium whitespace-nowrap",
         "text-base-content/60 hover:text-base-content transition-all cursor-pointer outline-none select-none",
-        "data-active:bg-base-content data-active:text-base-100 data-active:hover:text-base-100 data-active:font-bold data-active:shadow-xs",
+        "data-active:bg-base-content data-active:text-base-100 data-active:font-bold data-active:shadow-xs",
+        "[&[data-active]]:hover:text-base-100",
         className
       )}
       {...props}
