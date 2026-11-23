@@ -13,6 +13,7 @@ import Certificates from './components/Certificates'
 import Journal from './components/Journal'
 import Socials from './components/Socials'
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars'
+import { Click } from '@animate-ui/react/primitives/effects/click'
 
 
 const VALID_PAGES = ['home', 'about', 'stack', 'experience', 'projects', 'journal', 'certificates', 'socials', 'contact'];
@@ -63,6 +64,7 @@ function App() {
   return (
     <>
       <Analytics />
+      <Click variant="ring" size={90} duration={500} color="currentColor" />
       <main className="custom-background relative min-h-screen transition-colors duration-300">
 
 

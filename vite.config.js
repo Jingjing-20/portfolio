@@ -18,6 +18,9 @@ export default defineConfig({
       "@animate-ui/react/primitives/base-ui/tabs": fileURLToPath(
         new URL("./src/components/animate-ui/primitives/base-ui/tabs.jsx", import.meta.url)
       ),
+      "@animate-ui/react/primitives/effects/click": fileURLToPath(
+        new URL("./src/components/animate-ui/primitives/effects/click.jsx", import.meta.url)
+      ),
     },
   },
   build: {
