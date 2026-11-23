@@ -12,6 +12,12 @@ export default defineConfig({
       "@animate-ui/react/primitives/avatar-group": fileURLToPath(
         new URL("./src/components/animate-ui/primitives/avatar-group.jsx", import.meta.url)
       ),
+      "@animate-ui/react/primitives/base-ui/select": fileURLToPath(
+        new URL("./src/components/animate-ui/primitives/base-ui/select.jsx", import.meta.url)
+      ),
+      "@animate-ui/react/primitives/base-ui/tabs": fileURLToPath(
+        new URL("./src/components/animate-ui/primitives/base-ui/tabs.jsx", import.meta.url)
+      ),
     },
   },
   build: {
